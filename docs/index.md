@@ -612,15 +612,13 @@ an Action of Action Type “Advanced”.
 Configuration of the action needs to provide all needed script inputs in the
 following format:
 
-**{**
-
+```json
+{
 "Destination Hour Of Day Field Name": "TraceHourOfDay",
-
 "Destination Day Of Week Field Name": "TraceDayOfWeek",
-
 "Timezone": "Central Standard Time"
-
-**}**
+}
+```
 
 For reference:
 
