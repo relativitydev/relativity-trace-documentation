@@ -1,8 +1,59 @@
----
-title: Relativity Trace Documentation
----
+Relativity Trace Documentation
+================================
 
-**Please contact trace\@relativity.com with any questions**
+- [Release Notes](#release-notes)
+- [Introduction to Relativity Trace](#introduction-to-relativity-trace)
+- [Prerequisites](#prerequisites)
+    + [Agents:](#agents)
+    + [Applications:](#applications)
+- [Setting up Relativity Trace](#setting-up-relativity-trace)
+- [Trace Document Flow Overview](#trace-document-flow-overview)
+  * [Error Resolution Workflow and Retry](#error-resolution-workflow-and-retry)
+- [Trace Rules Engine Overview](#trace-rules-engine-overview)
+  * [1 - Creating a Rule](#1---creating-a-rule)
+  * [2 – Customizing and Running a R­ule](#2---customizing-and-running-a-r-ule)
+  * [3 - Validating Results](#3---validating-results)
+  * [Terms](#terms)
+    + [Creating Terms](#creating-terms)
+    + [Highlighting](#highlighting)
+  * [Actions](#actions)
+    + [Move To Folder Action Type](#move-to-folder-action-type)
+    + [Data Archive Action Type](#data-archive-action-type)
+    + [Advanced Action Type](#advanced-action-type)
+    + [Alert Action Types](#alert-action-types)
+    + [­Replacement Tokens](#-replacement-tokens)
+      - [Email Action Type](#email-action-type)
+      - [Slack Action Type](#slack-action-type)
+      - [Webhook Action Type (Preview)](#webhook-action-type--preview-)
+    + [Custom RelativityScripts](#custom-relativityscripts)
+- [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
+  * [Data Sources](#data-sources)
+    + [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
+    + [Relativity Native Data Extraction Data Source](#relativity-native-data-extraction-data-source)
+  * [Monitored Individuals](#monitored-individuals)
+  * [Data Transformations](#data-transformations)
+    + [Replace Data Transformation](#replace-data-transformation)
+    + [Deduplication Data Transformation](#deduplication-data-transformation)
+  * [Data Batches](#data-batches)
+  * [Error Resolution Workflow and Retry](#error-resolution-workflow-and-retry-1)
+  * [Automatic Discovery of Monitored Individuals](#automatic-discovery-of-monitored-individuals)
+- [Setup](#setup)
+  * [Tasks](#tasks)
+  * [Alerts and Notifications](#alerts-and-notifications)
+  * [Errors and Logging](#errors-and-logging)
+- [Built-In Self-Test (BIST)](#built-in-self-test--bist-)
+- [Reporting](#reporting)
+  * [Trace Terms Report](#trace-terms-report)
+- [Considerations](#considerations)
+  * [Usability Considerations](#usability-considerations)
+  * [Infrastructure and Environment Considerations](#infrastructure-and-environment-considerations)
+- [Glossary](#glossary)
+- [Appendix A: Trace Object Architecture](#appendix-a--trace-object-architecture)
+- [Appendix B: Trace Document Extraction Fields](#appendix-b--trace-document-extraction-fields)
+- [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c--create-email-fields-map-integration-point-profile)
+
+Release Notes
+================================
 
 | **Trace Version** | **Release Date** | **Release Notes** | **Relativity Compatibility** |
 |-------------------|------------------|-------------------|------------------------------|
@@ -90,7 +141,7 @@ Prerequisites
 Ensure the default Relativity infrastructure has been setup and operational. In
 addition, Relativity Trace utilizes the following components for its processes:
 
-### Agents:
+### Agents
 
 -   dtSearch Index Manager
 
@@ -133,7 +184,7 @@ agents are set up:
     Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
     first)
 
-### Applications:
+### Applications
 
 -   [Relativity Integration
     Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
