@@ -1,110 +1,70 @@
-Relativity Trace Documentation
-================================
+---
+title: Relativity Trace Documentation
+---
 
-- [Release Notes](#release-notes)
-- [Introduction to Relativity Trace](#introduction-to-relativity-trace)
-- [Prerequisites](#prerequisites)
-    + [Agents](#agents)
-    + [Applications](#applications)
-- [Setting up Relativity Trace](#setting-up-relativity-trace)
-- [Trace Document Flow Overview](#trace-document-flow-overview)
-  * [Error Resolution Workflow and Retry](#error-resolution-workflow-and-retry)
-- [Trace Rules Engine Overview](#trace-rules-engine-overview)
-  * [1 - Creating a Rule](#1---creating-a-rule)
-  * [2 – Customizing and Running a R­ule](#2---customizing-and-running-a-r-ule)
-  * [3 - Validating Results](#3---validating-results)
-  * [Terms](#terms)
-    + [Creating Terms](#creating-terms)
-    + [Highlighting](#highlighting)
-  * [Actions](#actions)
-    + [Move To Folder Action Type](#move-to-folder-action-type)
-    + [Data Archive Action Type](#data-archive-action-type)
-    + [Advanced Action Type](#advanced-action-type)
-    + [Alert Action Types](#alert-action-types)
-    + [Trace Replacement Tokens](#trace-replacement-tokens)
-      - [Email Action Type](#email-action-type)
-      - [Slack Action Type](#slack-action-type)
-      - [Webhook Action Type (Preview)](#webhook-action-type--preview-)
-    + [Trace Custom Scripts](#trace-custom-scripts)
-- [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
-  * [Data Sources](#data-sources)
-    + [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
-    + [Relativity Native Data Extraction Data Source](#relativity-native-data-extraction-data-source)
-    + [Trace Monitored Individuals](#trace-monitored-individuals)
-    + [Trace Data Transformations](#trace-data-transformations)
-    + [Replace Data Transformation](#replace-data-transformation)
-    + [Deduplication Data Transformation](#deduplication-data-transformation)
-  * [Data Batches](#data-batches)
-    + [Error Resolution Workflow and Retry](#error-resolution-workflow-and-retry-1)
-    + [Automatic Discovery of Monitored Individuals](#automatic-discovery-of-monitored-individuals)
-- [Setup](#setup)
-  * [Tasks](#tasks)
-  * [Alerts and Notifications](#alerts-and-notifications)
-  * [Errors and Logging](#errors-and-logging)
-- [Reporting](#reporting)
-  * [Trace Terms Report](#trace-terms-report)
-- [Considerations](#considerations)
-  * [Usability Considerations](#usability-considerations)
-  * [Infrastructure and Environment Considerations](#infrastructure-and-environment-considerations)
-- [Glossary](#glossary)
-- [Appendix A: Trace Object Architecture](#appendix-a--trace-object-architecture)
-- [Appendix B: Trace Document Extraction Fields](#appendix-b--trace-document-extraction-fields)
-- [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c--create-email-fields-map-integration-point-profile)
+**Please contact trace\@relativity.com with any questions**
 
-> Please contact trace@relativity.com with any questions!
+| **Trace Version** | **Release Date** | **Release Notes** | **Relativity Compatibility** |
+|-------------------|------------------|-------------------|------------------------------|
+| 11.2.9.2          | 15 July 2019     | **New Features**  | \> 9.6.202.10                |
 
-Release Notes
-================================
-
-**Trace Version:** 11.2.9.2
-
-**Release Date:** 15 July 2019
-
-**Relativity Compatibility:** > 9.6.202.10
-
-
-**New Features**
 -   BIST auto-run automation
+
 -   In production, you can dedicate a workspace for continuous integration
     testing and enable automatic execution of tests ensuring the infrastructure
     is in good shape
--   Full configuration of tasks, actions, data sources is now formally exposed
-    via custom field store UI
+
+-   Configuration of tasks, actions, data sources and data transformations is
+    now entered and validated within text fields (instead of JSON) using the
+    custom fields UI
 
 **Enhancements**
+
 -   BIST now includes additional coverage and verification
--   Reporting task now utilizes kCura.Notification encrypted instance settings
-    for email configuration
--   Email (alert) action now utilizes kCura.Notification encrypted instance
-    settings for email configuration
--   Data Sources now report transient errors directly on the object and not
-    generate data batches with errors - this reduces manual involvement with
-    resolving data batch errors
--   Various performance optimizations for workspaces with large number of
-    documents
--   Additional metrics surrounding data retrieval and extraction process are now
-    added as part of Telemetry reporting
--   Globanet data sources configuration for monitored individuals is now
+
+-   Reporting task and Email (alert) action now utilize kCura.Notification
+    encrypted instance settings for email (SMTP) configuration
+
+-   Data Sources now report data retrieval errors directly on the Data Source
+    object and no longer generate data batches with errors, reducing the number
+    of failed data batches and the amount of manual resolution required
+
+-   Various performance optimizations for workspaces containing a large number
+    of documents
+
+-   Additional metrics surrounding data retrieval and extraction processes are
+    now added as part of Telemetry reporting
+
+-   Data Extraction can now discover monitored individuals within emails if they
+    are not specified in the load file(s) generated by the Data Source
+
+-   Configuration of monitored individuals for Globanet data sources is now
     streamlined via CSV file
 
 **Defect Fixes**
--   Excessive accumulation of .net threads (resources) during Trace Exchange
-    data retrieval process
+
+-   Fixed an issue where .NET thread count (resource usage) would climb if
+    Microsoft Exchange Data Source was misconfigured
+
 -   Embedded attachments inside of MS Office files and other containers are now
     correctly extracted
+
 -   Addressed feedback from security penetration testing
 
 **Deprecated**
--   Trace Office 365 data source (based on GraphAPI) is deprecated. Use Trace
-    Exchange data source instead
+
+-   Microsoft Office 365 data source (based on GraphAPI) is deprecated, use
+    Microsoft Exchange data source instead
 
 **Upgrade Considerations**
--   In order to enable BIST on the workspace you need to update
-    TraceWorkspaceSettings instance setting
--   Data Sources with Fileshare source path configurations are now explicitly
-    validated to be within the workspace Fileshare bounds. You must adjust the
-    Source Path settings for each impacted data source to be relative folder
-    path within the default Fileshare configured for the workspace
+
+-   In order to enable BIST functionality on a workspace you will need to enable
+    it via *TraceWorkspaceSettings* instance setting
+
+-   Data Sources that requires source folder now required to be within the
+    default workspace fileshare base folder. You must adjust the Source Path
+    settings for each impacted data source to be a relative folder path within
+    the default file share configured for the workspace.
 
 Introduction to Relativity Trace
 ================================
@@ -130,7 +90,7 @@ Prerequisites
 Ensure the default Relativity infrastructure has been setup and operational. In
 addition, Relativity Trace utilizes the following components for its processes:
 
-### Agents
+### Agents:
 
 -   dtSearch Index Manager
 
@@ -173,7 +133,7 @@ agents are set up:
     Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
     first)
 
-### Applications
+### Applications:
 
 -   [Relativity Integration
     Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
@@ -333,6 +293,9 @@ status of documents is reflected on a few key fields on the Document object
     (note, currently only data transformations of type Replace are attached to
     documents)
 
+8.  **Trace Monitored Individuals –** MultiObject field tracking the people that
+    are associated with the document (Monitored Individuals)
+
 You can get a quick understanding of the status of your system and documents by
 applying appropriate aggregations and dashboards on these fields:
 
@@ -402,7 +365,7 @@ The Rule Creation form contains the following fields:
     -   **Slack:** generates a Slack message with metadata about alerted
         documents
 
-    -   **Webhook:** makes a generic API hosted within Relativity
+    -   **Webhook:** makes a generic API call hosted within Relativity
 
 -   **NOTE:** Batching action has been deprecated. You can still create a Batch
     Set manually from any saved search.
@@ -516,10 +479,10 @@ folder, inheriting folder permissions. This action can be used to effectively
 secure the documents to specific set of users/groups. This can also be used to
 drive regional review workflow in conjunction with alerting actions.
 
-You can configure the action by specifiying the ArtifactID of the destination
+You can configure the action by specifying the ArtifactID of the destination
 folder where the documents are to be moved. Additional Information section
 automatically populates the list of available folders and their corresponding
-ArtifactIDs for your conveneince.
+ArtifactIDs for your convenience.
 
 ![](media/4ea5493c6871466e5ab385ec5c08f8ff.png)
 
@@ -596,13 +559,15 @@ an Action of Action Type “Advanced”.
 Configuration of the action needs to provide all needed script inputs in the
 following format:
 
-```json
-{
-  "Destination Hour Of Day Field Name": "TraceHourOfDay",
-  "Destination Day Of Week Field Name": "TraceDayOfWeek",
-  "Timezone": "Central Standard Time"
-}
-```
+**{**
+
+"Destination Hour Of Day Field Name": "TraceHourOfDay",
+
+"Destination Day Of Week Field Name": "TraceDayOfWeek",
+
+"Timezone": "Central Standard Time"
+
+**}**
 
 For reference:
 
@@ -630,7 +595,7 @@ script to be aware of what has already been acted on.
 Trace supports the following modes of notification: Email, Slack, and Webhook.
 These actions can be used as part of any rule.
 
-### Trace Replacement Tokens
+### ­Replacement Tokens
 
 You can specify Trace Replacement Tokens in any configuration field for any
 Alert Action Type. These tokens will be replaced with information relevant to
@@ -657,20 +622,24 @@ workspace that generated the alert
 #### Email Action Type
 
 You can configure the Email action to send out an email about specific document
-matching rule conditions.
+matching rule conditions. Note that the Email Action uses the SMTPUserName,
+SMTPPassword, SMTPServer, SMTPPort and SMTPSSLisRequired settings from the
+kCura.Notification Section of Instance Settings to send your email messages, so
+be sure they are configured properly.
 
-![](media/3aa695ac555ea188b2e6d119b1f3afce.png)
+![](media/fb23c341f2d2b27248d50d6180c4a201.png)
 
 Configuration
 
-Body Template – HTML body of the email (good place to use tokens)
+Email Settings – Body Template: HTML body of the email (good place to use
+tokens)
 
-Subject Template – subject of the email (good place to use tokens)
+Email Settings – Subject Template: subject of the email (good place to use
+tokens)
 
-Recipients – recipients of the email (supports to/cc/bcc)
+Email Settings – Recipients: recipients of the email (supports to/cc/bcc)
 
-Email Settings (Host /Port / Use SSL / From Address / User / Password) – SMTP
-server configuration used to send the email
+Email Settings – From Address: Sender of the email
 
 Document Link / Document Text – allows to specify custom metadata about alerted
 documents including custom text and link to document in Relativity
@@ -735,9 +704,10 @@ Relativity
 Trace agent. The access_token is retrieved from
 ClaimsPrincipal.Current.Identities
 
-### Trace Custom Scripts
+### Custom RelativityScripts
 
-Several useful Relativity Scripts are shipped by default with Trace application.
+Several useful SQL RelativityScripts are shipped by default with Trace
+application.
 
 | **Script Name**   | **Description**                                                                                                | **Inputs and Outputs**                                                                                                                                                                                                                                                                                    |
 |-------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -787,9 +757,9 @@ to import data for that Data Source (field mappings). Data Batches reference
 Data Source to dynamically lookup which Integration Profile to use during
 import.
 
-![](media/cb3f419380cc5f510f6a86a8e708bcd4.png)
+![](media/21c4697ae7410c35b716e82c5a65937f.png)
 
-The following are inputs on the Data Source Object:
+The following are fields on the Data Source Object:
 
 -   **Name:** The name of Data Source
 
@@ -804,20 +774,35 @@ The following are inputs on the Data Source Object:
 
 -   **Start Date:** Date from which data will be pulled/pushed into Relativity
 
+-   **Last Runtime (UTC):** The timestamp when this Data Source was last
+    executed
+
+-   **Status:** The last status message recorded by the Data Source
+
+-   **Last Error Date:** Timestamp of the last time this Data Source failed, if
+    it happened recently (based on Last Error Retention in Hours setting under
+    Data Source Specific Fields)
+
+-   **Last Error:** Error message from the last time this Data Source failed, if
+    it happened recently (based on Last Error Retention in Hours setting under
+    Data Source Specific Fields)
+
 -   **Data Source Specific Fields:** this section defines input fields specific
     to particular data source
-
--   **Enable/Disable Data Source:** Enables (or disables) data retrieval for
-    particular data source
-
--   **Reset Data Source:** Resets data source to its original state, so data can
-    start coming in from specified Start Date
 
 -   **Trace Monitored Individuals:** Configures which monitored individual’s
     data should be retrieved from the data source
 
 -   **Data Transformations:** Determines which Data Transformations (replacement
     or deduplication) will be applied to the data retrieved by this data source
+
+-   **Data Batches:** Data Batches generated by this Data Source
+
+-   **Enable/Disable Data Source (Console Button):** Enables (or disables) data
+    retrieval for particular data source
+
+-   **Reset Data Source (Console Button):** Resets data source to its original
+    state, so data can start coming in from specified Start Date
 
 ### Microsoft Exchange Data Source
 
@@ -860,7 +845,7 @@ reach out to <trace@relativity.com>.
 
 3.  Select Data Source Type: “Microsoft Exchange”
 
-    ![](media/894e02c1bd3bd9d74413b72f2fda9c17.png)
+    ![](media/45f8a402b934539e3a94ed74d11081b3.png)
 
 4.  Select Integration Point Profile created in **Step 1**
 
@@ -873,25 +858,27 @@ reach out to <trace@relativity.com>.
 7.  Set Start Date to the earliest email timestamp you would like imported (UTC
     time)
 
-8.  Under Data Source Specific Fields, set the Exchange Url and Exchange Version
-    fields
+8.  Under Data Source Specific Fields, set Exchange Settings - Url and Exchange
+    Settings - Version (there are a lot of other settings that can be
+    configured, but the default values are fine, please contact us if you would
+    like more information)
 
-    ![](media/0b98fb97ad322d316ac10866dec21fd0.png)
+    ![](media/63dbaf42485943e3216cac7737e429a5.png)
 
-    1.  Exchange Url gives you the chance to specify the exact URL used when
-        connecting to your exchange server. If this field is left blank,
-        Microsoft’s Autodiscover technology will be used to populate the field
-        with a URL based on the credentials provided in the Username and
+    1.  *Exchange Settings – Url* gives you the chance to specify the exact URL
+        used when connecting to your exchange server. If this field is left
+        blank, Microsoft’s Autodiscover technology will be used to populate the
+        field with a URL based on the credentials provided in the Username and
         Password fields. Autodiscover is typically a suitable option and works
         for Office 365 and many on premises solutions but it is not guaranteed
         to work.
 
-    2.  Exchange Version allows you to specify the version of your exchange
-        server. For Office 365, the default is the correct choice. For on
-        premises servers, provide the correct version. It needs to be an exact
-        match to one of the options, filling it out incorrectly will provide a
-        list of all of the options available in the error message at the top of
-        the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
+    2.  *Exchange Settings - Version* allows you to specify the version of your
+        exchange server. For Office 365, the default is the correct choice. For
+        on premises servers, provide the correct version. It needs to be an
+        exact match to one of the options, filling it out incorrectly will
+        provide a list of all of the options available in the error message at
+        the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
         Exchange2010_SP2, Exchange2013, Exchange2013_SP1
 
 9.  Click “Save”
@@ -919,7 +906,8 @@ and their metadata. Container attachment file types (zips and similar archives)
 are automatically extracted into individual documents – e.g. zip with 10 word
 (.docx) documents = 11 Relativity documents. In addition, images from email
 content and each individual document are automatically expanded into separate
-Relativity documents.
+Relativity documents. **Note: the Microsoft Exchange data source only retrieves
+emails. It does not retrieve other exchange metadata at this time.**
 
 Please, refer to **Appendix B** for field descriptions.
 
@@ -937,9 +925,9 @@ imported and *Trace Data Enrichment Needed* field is set to *Yes:*
 
 1.  Integration Points Profile
 
-    1.  Please, re-use profile creation steps documented for Microsoft Office
-        365 Data Source above OR re-use existing “Microsoft Office 365 Profile”
-        profile. Ensure import option is set to Append/Overlay.
+    1.  Please, re-use profile creation steps documented for Microsoft Exchange
+        above OR re-use existing “Microsoft Office 365 Profile” profile. Ensure
+        import option is set to Append/Overlay.
 
 2.  Create Relativity Native Data Extraction Data Source
 
@@ -976,7 +964,8 @@ for field descriptions.
 **Warning:** Containers with many children documents (and nested containers)
 could produce significant number of expanded items in Relativity.
 
-### Trace Monitored Individuals
+Monitored Individuals
+---------------------
 
 Trace Monitored Individual is a Relativity Dynamic Object (RDO) that ships with
 Trace application. It allows administrators to define an individual that can be
@@ -995,7 +984,8 @@ the Identifier is the employee’s email address. Identifier is **case-sensitive
 (e.g. <Test@test.com> and <test@test.com> are treated as two different email
 addresses / identifiers)
 
-### Trace Data Transformations
+Data Transformations
+--------------------
 
 Trace Data Transformation is a Relativity Dynamic Object (RDO) that ships with
 Trace application. It allows administrators to specify a way data should be
@@ -1006,27 +996,33 @@ Transformations section of the Data Source Layout.
 
 ### Replace Data Transformation
 
-Data Transformations of type Replace allow you to strip exact blocks of text out
-of the Extracted Text for any documents imported by the associated Data Source.
-This allows for removal of things like email signatures and other frequently
-occurring, benign text so that they do not match Terms. A Data Source can be
-associated with multiple Data Transformations of type Replace.
+Data Transformations of type *Replace* allow you to strip exact blocks of text
+out of the Extracted Text for any documents imported by the associated Data
+Source. This allows for removal of things like email signatures and other
+frequently occurring, benign text so that they do not match Terms. A Data Source
+can be associated with multiple Data Transformations of type Replace.
 
-![](media/fe792207ad823678c6aab787bc11a7d3.png)
+By Default, content will simply be replaced with nothing (empty string). This
+can be changed by entering Match Replacement Text in the Configuration section.
+
+![](media/5c3b02bf2c121e73f3a3916db799b306.png)
 
 ### Deduplication Data Transformation
 
-Data Transformations of type Deduplication prevent a Data Source from importing
-a document if the same document already exists in the workspace. Only one Data
-Transformation of type Deduplication should be associated with each Data Source.
+Data Transformations of type *Deduplication* prevent a Data Source from
+importing a document if the same document already exists in the workspace. Only
+one Data Transformation of type Deduplication should be associated with each
+Data Source.
 
 Deduplication is driven by a SHA256 hashing algorithm that populates the Trace
-Document Hash field on each document. If the document is an email, the algorithm
-will hash together the sender, subject, recipients, sent date, email body and
-attachment list to create the hash value. If the document is not an email, then
-the hash will be done directly on the bytes of the file. It is possible to
-configure the exact hashing algorithm used for emails, please contact the Trace
-team for details on how to do this.
+Document Hash field on each document. By Default, if the document is an email,
+the algorithm will hash together the sender, subject, recipients, sent date,
+email body and attachment list to create the hash value. If the document is not
+an email, then the hash will be done directly on the bytes of the file. It is
+possible to configure the exact hashing algorithm used for emails using the
+settings in the Configuration section:
+
+![](media/70b0ae9c6debe35956d4988dffaae892.png)
 
 When additional documents are ingested (either within the same Data Batch or
 different Data Batches), hashes will be compared to those on documents that
@@ -1052,7 +1048,8 @@ mappings).
 
 ![](media/5a4b23b008d4e39bc9bafce213515337.png)
 
-### Error Resolution Workflow and Retry
+Error Resolution Workflow and Retry
+-----------------------------------
 
 By default the batch will be automatically retried internally (up to 3 times) if
 the data batch import was not completed. You can get the error details by
@@ -1070,7 +1067,8 @@ console UI buttons) to help with state resolution
 
     ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
 
-### Automatic Discovery of Monitored Individuals
+Automatic Discovery of Monitored Individuals
+--------------------------------------------
 
 For Data Source that are not shipped with Trace natived, application allows for
 automatic discovery of monitored individuals based on EmailFrom, EmailTo,
@@ -1124,44 +1122,31 @@ Alerts and Notifications
 
 By default Reporting task will send out the system health report to the
 configured instance email address every 24 hours. The defaults can be overridden
-in the Reporting task Settings. See below sample configuration for example.
+under Task Configuration on the Reporting task page. See below sample
+configuration for example.
 
-![](media/9c6571d2920b5d1307bf3bae358f4f22.png)
+![](media/23b1404cbe20203f82f17154a8685bf1.png)
 
-Sample Notification Configurations (on Reporting task)
+-   **Recipients:** List of emails to send the report to, separated by
+    semi-colons (;) (the token \<\<EMAIL_TO_INSTANCE_SETTING\>\> will be
+    replaced with the configured email address in Instance Setting: “EmailTo”
+    under “kCura.Notification” section)
 
-```json
-{
-  "Reports": [
-    {
-      "Name": "SystemHealthAlerts",
-      "Recipients": "misha.kogan@relativity.com;nikita.solilov@relativity.com;jordan.domash@relativity.com",
-      "IncludeDetails": true,
-      "FrequencyInMinutes": "60",
-      "EmailFrom": "tracealerts@relativity.com"
-    }
-  ]
-}
-```
-
--   **Name:** Do not change
-
--   **Recipients:** List of emails to send the report to (default: configured
-    email address in Instance Setting: “EmailTo” under “kCura.Notification”
-    section
-
--   **IncludeDetails:** Flag to determine if you want to see the details in the
+-   **Include Details:** Flag to determine if you want to see the details in the
     email report (default: false)
 
--   **FrequencyInMinutes:** How often should an email report be sent out
+-   **Frequency In Minutes:** How often should an email report be sent out
     (default: 24hrs)
 
--   **EmailFrom:** Emails to send the report from (default: configured email
-    address in Instance Setting: “EmailFrom” under “kCura.Notification” section
+-   **Email From:** Email address to send the report from (the token
+    \<\<EMAIL_FROM_INSTANCE_SETTING\>\> will be replaced with the configured
+    email address in Instance Setting: “EmailTo” under “kCura.Notification”
+    section)
 
 **NOTE:** It is required to fill in the kCura.Notification instance settings
-with details about functioning email delivery system in order to receive
-important notifications and alerts from Relativity and Trace.
+SMTPUserName, SMTPPassword, SMTPServer, SMTPPort and SMTPSSLisRequired with
+details of a functioning email delivery system in order to receive important
+notifications and alerts from Relativity and Trace.
 
 ![](media/f1d0a0d1fda68815093c96764927b0df.png)
 
@@ -1187,11 +1172,22 @@ generate substantial load to default SQL configuration EDDSLogging database.
 Don’t forget to adjust the levels once low level information is no longer
 needed.
 
+Built-In Self-Test (BIST)
+=========================
+
+Built-In Self-Test (BIST) is a separate Trace Task that can be enabled in
+certain workspaces. By default, BIST does a basic “happy path” test of the
+majority of Trace functionality to make sure Trace is functioning properly. For
+more details including instructions on how to enable BIST in a workspace, please
+refer to the separate “Relativity Trace Smoke Test” document, which describes
+all of the different tests users can run to ensure that Relativity and Trace
+have been set up and configured properly.
+
 Reporting
 =========
 
 Trace:Reports tab serves as a place for reporting capabilities. We will be
-adding more report to this section in the future.
+adding more reports to this section in the future.
 
 Trace Terms Report
 ------------------
@@ -1219,18 +1215,19 @@ Usability Considerations
 
 -   Every Data Source has capability to be “reset”. Once a data source is reset,
     Trace will pull all available data again, beginning with the Start Date
-    defined on the data source. **Depending on import profile settings, this
-    could duplicate data in the Workspace.**
+    defined on the data source (if the Start Date is relevant to the data source
+    type). **Depending on import profile settings, this could duplicate data in
+    the Workspace.**
 
 -   Task processes (Indexing, Term Searching, Rule Evaluation, etc) run
     asynchronously from each other. It may take several task cycles (based on
-    configured ”Run Intervals” for the end-to-end workflow to complete fully.
+    configured ”Run Intervals”) for the end-to-end workflow to complete fully.
 
--   Deleting the Rule does not delete any of the corresponding Relativity
+-   Deleting a Trace Rule does not delete any of the corresponding Relativity
     infrastructure and objects that were created (i.e. dtSearch Index, Saved
     Searches, Batch Sets). 
 
--   Global dtSearch index “Trace Search Index” (created by Trace application
+-   The global dtSearch index “Trace Search Index” (created by Trace application
     during installation) is supported for ad-hoc searching and will be
     incrementally built as part of Indexing task. No other dtSearch indexes will
     incrementally build automatically.
@@ -1319,10 +1316,17 @@ Glossary
     complete tasks
 
 -   **Data Source:** setup and settings needed for a particular data source
-    (e.g. Bloomberg, Office 365, Lync, etc.…)
+    (e.g. Microsoft Exchange, Bloomberg, Office 365, Lync, etc.…)
 
 -   **Data Batch:** a set of data (typically a load file) that is generated by a
     data processor as part of the Proactive Ingestion Framework
+
+-   **Data Transformation:** an operation that can be performed on a Data Batch
+    during ingestion that alters the ingested documents in some way
+    (Deduplication or Replace)
+
+-   **Monitored Individual:** a person of interest whose data is being ingested
+    into Trace for monitoring
 
 -   **Rule:** a preconfigured set of triggers that run on a regular basis and
     kick off actions
@@ -1335,7 +1339,7 @@ Glossary
 Appendix A: Trace Object Architecture
 =====================================
 
-![](media/4ceae18f4565f57cd8b0b34cafe28fa1.png)
+![](media/c961c7a2692a2b4f30a91566d902a2f6.png)
 
 Appendix B: Trace Document Extraction Fields
 ============================================
@@ -1489,5 +1493,3 @@ your library, reach out to trace\@relativity.com
 **NOTE:** You can edit the Integration Point Profile settings at any time,
 however existing completed Data Batches will not automatically re-import the
 data with new settings/mappings.
-
-END OF DOCUMENTATION
