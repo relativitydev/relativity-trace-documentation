@@ -59,6 +59,8 @@ Release Notes
 |-------------------|------------------|-----------------------------|
 | 11.2.9.2          | 15 July 2019     | \> 9.6.202.10               |
 
+**Features**
+
 -   BIST auto-run automation
 
 -   In production, you can dedicate a workspace for continuous integration
