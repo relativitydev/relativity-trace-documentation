@@ -1,6 +1,5 @@
----
-title: Relativity / Trace Troubleshooting Guide
----
+Relativity Trace Troubleshooting Guide
+================================
 
 *Note: most issues below are purely Relativity issues and must be resolved
 before running Trace*
