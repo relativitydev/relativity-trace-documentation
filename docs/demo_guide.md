@@ -15,7 +15,7 @@ Relativity Trace Demo Guide
 
 ### Demo Environment and Login Information
 
-Reach out to trace@relativity.com 
+Reach out to trace@relativity.com  
 
 Relativity Trace: An Overview of Relativity for Compliance
 ----------------------------------------------------------
