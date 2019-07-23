@@ -85,13 +85,13 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
 ![C:\\Users\\mkogan\\AppData\\Local\\Temp\\SNAGHTML62399624.PNG](media/e0c6e9c767be9be77cafb3db4eebef9b.png)
 
-1.  Click into the **Trace:Rules** tab to see sample rules in the workspace.
+2.  Click into the **Trace:Rules** tab to see sample rules in the workspace.
     Rules are how you define the type of content that is relevant to you. The
     **Market Abuse** rule has been pre-created for you along with a few others.
 
 ![](media/cbcdbe80b994aff6e31fad731db5362e.png)
 
-1.  Click into the **Market Abuse** rule and see the options that make up this
+3.  Click into the **Market Abuse** rule and see the options that make up this
     rule:
 
 -   **Searchable Set:** A Saved Search that the rule runs against
@@ -110,7 +110,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
 ![C:\\Users\\nsolilov\\AppData\\Local\\Temp\\SNAGHTML48bfbfcf.PNG](media/0c099bc9669ce508b9a1110a66cd15ca.png)
 
-1.  Click the **Enable Rule** console button under **Automation** section:
+4.  Click the **Enable Rule** console button under **Automation** section:
 
 -   The rule is now **Enabled**
 
@@ -148,7 +148,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
 ![](media/e0b725fd32e467f47cf879fa55a0a7b1.png)
 
-1.  Wait for Data Batches with data to start showing up – refresh the page
+2.  Wait for Data Batches with data to start showing up – refresh the page
     several times, until you start seeing Data Batches on the bottom (it may
     take several minutes for first data batch to be fully created). You can see
     how much data each Data Batch retrieved and corresponding statuses. Once you
@@ -168,7 +168,7 @@ As time goes on, more batches with data will be created and ingested:
 
 ![C:\\Users\\mkogan\\AppData\\Local\\Temp\\SNAGHTML6353d0a1.PNG](media/38c5bd780c5ada1f3042f8ac7052d37d.png)
 
-1.  Click on **Documents** tab:
+2.  Click on **Documents** tab:
 
     1.  Data is proactively being retrieved, extracted and ingested
 
@@ -177,7 +177,7 @@ As time goes on, more batches with data will be created and ingested:
 
         ![](media/69cbd4e87b452afd74276bba27660db4.png)
 
-2.  Explore Dashboards
+3.  Explore Dashboards
 
 ![](media/56a2973ce72db92e5bbb474fe8e7c216.png)
 
@@ -194,7 +194,7 @@ File type breakdown of ingested documents:
 
 ![](media/2915c8515dde4765959049040c23c5ef.png)
 
-1.  Review matched documents
+4.  Review matched documents
 
     1.  Click on “Market Abuse” on the Rules widget
 
