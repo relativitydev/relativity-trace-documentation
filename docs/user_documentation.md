@@ -48,9 +48,9 @@ Relativity Trace User Documentation
   * [Usability Considerations](#usability-considerations)
   * [Infrastructure and Environment Considerations](#infrastructure-and-environment-considerations)
 - [Glossary](#glossary)
-- [Appendix A: Trace Object Architecture](#appendix-a--trace-object-architecture)
-- [Appendix B: Trace Document Extraction Fields](#appendix-b--trace-document-extraction-fields)
-- [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c--create-email-fields-map-integration-point-profile)
+- [Appendix A: Trace Object Architecture](#appendix-a:-trace-object-architecture)
+- [Appendix B: Trace Document Extraction Fields](#appendix-b:-trace-document-extraction-fields)
+- [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c:-create-email-fields-map-integration-point-profile)
 
 Release Notes
 ================================
@@ -207,7 +207,7 @@ Setting up Relativity Trace
 ===========================
 
 1.  [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm)
-    the `Trace_\<version\>.rap` from Application Library tab to all workspaces
+    the `Trace_<version>.rap` from Application Library tab to all workspaces
     where needed
 
 2.  Validate application install in the workspace with Trace application
@@ -248,21 +248,21 @@ Setting up Relativity Trace
 
         ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
 
-    3.  Click “Request Trace License” and send an email with the contents of the
-        request to <trace@relativity.com>
+    3.  Click `Request Trace License` and send an email with the contents of the
+        request to `trace@relativity.com`
 
         ![](media/741facee0911140b7082894fe5a42c7a.png)
 
         > **WARNING:** Once license expires, all Trace processes stop working in all configured workspaces.
 
-6.  In the workspace, navigate to the Trace:Setup tab and set the “Run Option”
-    to “Continuous”
+6.  In the workspace, navigate to the Trace:Setup tab and set the `Run Option`
+    to `Continuous`
 
     > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build
     a dtSearch index for this workspace for all documents present. Only change this
     setting to "Continuous" when appropriate agent infrastructure is configured and
     disk space available to build a corresponding dtSearch Index. Please reach out
-    to <trace@relativity.com> for support on installing Trace into workspaces with
+    to `trace@relativity.com` for support on installing Trace into workspaces with
     existing data.
 
 Trace Document Flow Overview
@@ -352,7 +352,7 @@ applying appropriate aggregations and dashboards on these fields:
 
 ![](media/233f58be6430edea9858817e9d1aa6d9.png)
 
-**NOTE:** Rule evaluation (including tagging documents to the Rule) is executed
+> **NOTE:** Rule evaluation (including tagging documents to the Rule) is executed
 by the Rule Evaluation task and is outside of the core Trace Document Flow.
 
 Error Resolution Workflow and Retry
@@ -389,7 +389,7 @@ documents as they are ingested into the workspace.
 1 - Creating a Rule
 -------------------
 
-Create a new [rule](#_Glossary) by clicking “New Rule” on the Trace:Rules tab
+Create a new [rule](#_Glossary) by clicking `New Rule` on the Trace:Rules tab
 
 ![](media/522199d75935e3ad2efeaa04996d9b3e.png)
 
@@ -484,13 +484,13 @@ Term and its status with regards to execution
 
 ![](media/5b46e7806548749e50586196d43aa468.png)
 
-**NOTE:** The Term “Name” (actual text being searched) **cannot** be modified
+> **NOTE:** The Term “Name” (actual text being searched) **cannot** be modified
 after it is created. You must remove and add a new term object to change the
 search string. You **can** modify the highlight color and term category of an
 existing term.
 
-**NOTE: The** Term “Name” (actual text being searched) is limited to 450
-characters. Please reach out <trace@relativity.com> if your use-case requires
+> **NOTE: The** Term “Name” (actual text being searched) is limited to 450
+characters. Please reach out `trace@relativity.com` if your use-case requires
 higher limits for your terms.
 
 ### Highlighting
@@ -558,13 +558,13 @@ Any data that is within the data retention policy (from the System Created On
 date/time) will not be deleted even if the document is included in the
 Searchable Set / Search Term
 
-**NOTE:** By default, the Data Archive Action will delete 1,000 documents per
+> **NOTE:** By default, the Data Archive Action will delete 1,000 documents per
 Run Interval. To adjust configurations so documents can be deleted more
-frequently, reach out to <trace@relativity.com>
+frequently, reach out to `trace@relativity.com`
 
 ### Advanced Action Type
 
-**WARNING:** Advanced Action type can execute potentially harmful Relativity
+> **WARNING:** Advanced Action type can execute potentially harmful Relativity
 Scripts. Apply rigorous testing and impact assessment prior to deploying any
 custom script in production or enabling it to run continuously via Trace
 automation. For more information about Relativity Scripts in general, see the
@@ -590,7 +590,7 @@ one yourself.
     Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm)
     documentation pages.
 
-**NOTE:** Currently all Relativity Scripts that can be associated with Trace
+> **NOTE:** Currently all Relativity Scripts that can be associated with Trace
 actions require a Saved Search as one of the script inputs (Trace automatically
 populates that field during Rule Evaluation with Rule specific saved search).
 
@@ -649,22 +649,22 @@ You can specify Trace Replacement Tokens in any configuration field for any
 Alert Action Type. These tokens will be replaced with information relevant to
 the specific document, rule and/or alert:
 
-*\<\<TRACE_RULE_VIEW_LINK_TOKEN\>\>* - view link to Trace Rule in Relativity
+`<<TRACE_RULE_VIEW_LINK_TOKEN>>` - view link to Trace Rule in Relativity
 that generated the alert
 
-*\<\<TRACE_DOCUMENT_VIEW_LINK_TOKEN\>\>* - view link to Document matched by the
+`<<TRACE_DOCUMENT_VIEW_LINK_TOKEN>>` - view link to Document matched by the
 alert
 
-*\<\<TRACE_DOCUMENT_IDENTIFIER_TOKEN\>\>* - Relativity document identifier
+`<<TRACE_DOCUMENT_IDENTIFIER_TOKEN>>` - Relativity document identifier
 (Control Number)
 
-*\<\<TRACE_DOCUMENT_ARTIFACT_ID_TOKEN\>\>* - ArtifactID of the document matched
+`<<TRACE_DOCUMENT_ARTIFACT_ID_TOKEN>>` - ArtifactID of the document matched
 by the alert
 
-*\<\<TRACE_RULE_NAME_TOKEN\>\>* - Name of the Trace Rule that generated the
+`<<TRACE_RULE_NAME_TOKEN>>` - Name of the Trace Rule that generated the
 alert
 
-*\<\<TRACE_WORKSPACE_ID_TOKEN\>\>* - Relativity Workspace ID (ArtifactID) of the
+`<<TRACE_WORKSPACE_ID_TOKEN>>` - Relativity Workspace ID (ArtifactID) of the
 workspace that generated the alert
 
 #### Email Action Type
@@ -1472,18 +1472,18 @@ supported fields. There are four major categories for fields:
 Appendix C: Create Email Fields Map Integration Point Profile
 =============================================================
 
-**NOTE:** Make sure the Integration Points application is installed in this
+> **NOTE:** Make sure the Integration Points application is installed in this
 Workspace before proceeding.
 
-**NOTE:** Load File Templates are generated by Trace Agent **ONLY** in
+> **NOTE:** Load File Templates are generated by Trace Agent **ONLY** in
 workspaces that are enabled for “Continuous” run option in “Setup” tab.
 
-**NOTE:** Trace uses default Relativity fields for email and attachment data
-that ship with *Create & Map Field Catalog – Full* (v0.0.1.5+). You can install
+> **NOTE:** Trace uses default Relativity fields for email and attachment data
+that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). You can install
 it to the target workspace like any other application which will bring in all
 the needed fields with standardized names that are easily auto-mapped via “Map
 Fields” integration point profile feature. If you don’t see this application in
-your library, reach out to trace\@relativity.com
+your library, reach out to `trace@relativity.com`
 
 ![](media/045f66f33011aa62ff7d00b2e05274c2.png)
 
@@ -1538,6 +1538,6 @@ your library, reach out to trace\@relativity.com
 
     5.  Press “Save”
 
-**NOTE:** You can edit the Integration Point Profile settings at any time,
+> **NOTE:** You can edit the Integration Point Profile settings at any time,
 however existing completed Data Batches will not automatically re-import the
 data with new settings/mappings.
