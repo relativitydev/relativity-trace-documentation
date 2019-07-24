@@ -11,7 +11,7 @@ Relativity Trace User Documentation
   * [Error Resolution Workflow and Retry](#error-resolution-workflow-and-retry)
 - [Trace Rules Engine Overview](#trace-rules-engine-overview)
   * [1 - Creating a Rule](#1---creating-a-rule)
-  * [2 – Customizing and Running a Rule](#2---customizing-and-running-a-rule)
+  * [2 - Customizing and Running a Rule](#2---customizing-and-running-a-rule)
   * [3 - Validating Results](#3---validating-results)
   * [Terms](#terms)
     + [Creating Terms](#creating-terms)
@@ -420,7 +420,7 @@ The Rule Creation form contains the following fields:
 
         > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search.
 
-2 – Customizing and Running a Rule
+2 - Customizing and Running a Rule
 -----------------------------------
 
 After you create a Rule, use the Rule definition page to Enable and Customize
