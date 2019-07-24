@@ -48,9 +48,9 @@ Relativity Trace User Documentation
   * [Usability Considerations](#usability-considerations)
   * [Infrastructure and Environment Considerations](#infrastructure-and-environment-considerations)
 - [Glossary](#glossary)
-- [Appendix A: Trace Object Architecture](#appendix-a:-trace-object-architecture)
-- [Appendix B: Trace Document Extraction Fields](#appendix-b:-trace-document-extraction-fields)
-- [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c:-create-email-fields-map-integration-point-profile)
+- [Appendix A: Trace Object Architecture](#appendix-a-trace-object-architecture)
+- [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields)
+- [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c-create-email-fields-map-integration-point-profile)
 
 Release Notes
 ================================
