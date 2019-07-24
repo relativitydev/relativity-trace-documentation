@@ -1479,11 +1479,13 @@ Workspace before proceeding.
 workspaces that are enabled for “Continuous” run option in “Setup” tab.
 
 > **NOTE:** Trace uses default Relativity fields for email and attachment data
-that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). You can install
+that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). **Trace recommends
+to use this application, however it is totally optional and one can choose to create custom
+fields or re-use fields from an existing template.** You can install
 it to the target workspace like any other application which will bring in all
 the needed fields with standardized names that are easily auto-mapped via “Map
 Fields” integration point profile feature. If you don’t see this application in
-your library, reach out to `trace@relativity.com`
+your library, reach out to `trace@relativity.com`.
 
 ![](media/045f66f33011aa62ff7d00b2e05274c2.png)
 
