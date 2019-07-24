@@ -207,7 +207,7 @@ Setting up Relativity Trace
 ===========================
 
 1.  [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm)
-    the Trace_\<version\>.rap from Application Library tab to all workspaces
+    the `Trace_\<version\>.rap` from Application Library tab to all workspaces
     where needed
 
 2.  Validate application install in the workspace with Trace application
@@ -217,26 +217,25 @@ Setting up Relativity Trace
 
 3.  Create Trace agent
 
-    1.  Agent Type = “Trace Agent”
+    1.  Agent Type = `Trace Agent`
 
-    2.  Number of Agents = “1” (**Note: creating multiple Trace Agents in a
-        Relativity instance is not supported and will cause failures and/or
-        unpredictable behavior)**
+    2.  Number of Agents = `1` 
+        > **NOTE:** creating multiple Trace Agents in a Relativity instance is not supported and will cause failures and/or unpredictable behavior
 
     3.  Agent Server = Select the agent server you would like the agent deployed
         on (see “Infrastructure and Environment Considerations” section for
         optimal performance)
 
-    4.  Run Interval = “60”
+    4.  Run Interval = `60`
 
-    5.  Logging level of event details = “Log all messages”
+    5.  Logging level of event details = `Log all messages`
 
 4.  Please review the
     [Considerations](#infrastructure-and-environment-considerations) for system
     impact information. By default system processes (Tasks) are scheduled to run
     every 5 minutes (configurable per workspace).
 
-    1.  Please reach out to <trace@relativity.com> for additional information
+    1.  Please reach out to `trace@relativity.com` for additional information
 
 5.  Configure Trace License
 
@@ -254,18 +253,17 @@ Setting up Relativity Trace
 
         ![](media/741facee0911140b7082894fe5a42c7a.png)
 
->   **WARNING:** Once license expires, all Trace processes stop working in all
->   configured workspaces.
+        > **WARNING:** Once license expires, all Trace processes stop working in all configured workspaces.
 
-1.  In the workspace, navigate to the Trace:Setup tab and set the “Run Option”
+6.  In the workspace, navigate to the Trace:Setup tab and set the “Run Option”
     to “Continuous”
 
-**WARNING:** Changing the “Run Option” to “Continuous” will automatically build
-a dtSearch index for this workspace for all documents present. Only change this
-setting to "Continuous" when appropriate agent infrastructure is configured and
-disk space available to build a corresponding dtSearch Index. Please reach out
-to <trace@relativity.com> for support on installing Trace into workspaces with
-existing data.
+    > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build
+    a dtSearch index for this workspace for all documents present. Only change this
+    setting to "Continuous" when appropriate agent infrastructure is configured and
+    disk space available to build a corresponding dtSearch Index. Please reach out
+    to <trace@relativity.com> for support on installing Trace into workspaces with
+    existing data.
 
 Trace Document Flow Overview
 ============================
@@ -420,8 +418,7 @@ The Rule Creation form contains the following fields:
 
     -   **Webhook:** makes a generic API call hosted within Relativity
 
--   **NOTE:** Batching action has been deprecated. You can still create a Batch
-    Set manually from any saved search.
+        > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search.
 
 2 – Customizing and Running a Rule
 -----------------------------------
@@ -437,7 +434,7 @@ buttons:
 -   **Enable Rule:** enabling the rule allows agents to run rule on an ongoing
     basis
 
-**NOTE:** A Rule will only execute when it is enabled.
+    > **NOTE:** A Rule will only execute when it is enabled.
 
 In addition, Rules use Terms as part of additional filtering available to
 identify your documents of interest. You can create new or link existing Terms
