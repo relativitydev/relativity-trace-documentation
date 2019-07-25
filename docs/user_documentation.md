@@ -538,7 +538,7 @@ ArtifactIDs for your convenience.
 
 ### Data Archive Action Type
 
-**WARNING:** The Data Archive Action will permanently delete all documents that
+> **WARNING:** The Data Archive Action will permanently delete all documents that
 match the Rule conditions and are outside the Data Retention window.
 
 The Data Archive Action Type follows the same Trace Rules Engine paradigm with
@@ -561,6 +561,12 @@ Searchable Set / Search Term
 > **NOTE:** By default, the Data Archive Action will delete 1,000 documents per
 Run Interval. To adjust configurations so documents can be deleted more
 frequently, reach out to `trace@relativity.com`
+
+**Action Configuration**
+
+`Document Delete Batch Size` - controls number of documents to delete at once
+
+`Delete Documents Older Than Hours` - controls age of a document (based on creation of document in Relativity) to delete
 
 ### Advanced Action Type
 
