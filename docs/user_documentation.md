@@ -865,7 +865,7 @@ emails from a Microsoft Exchange instance (Office 365 or On Premises) into
 Relativity. The Microsoft Exchange Data Source is executed by the Data Retrieval
 task (seen on the Setup tab). Note, this Data Source only pulls emails at this
 time, if you need to retrieve other object types from Microsoft Exchange please
-reach out to <trace@relativity.com>.
+reach out to `trace@relativity.com`
 
 **Setup**
 
@@ -941,7 +941,7 @@ reach out to <trace@relativity.com>.
 
 ![](media/85e99ebffc8ada7ae4c69a61cb873213.png)
 
-1.  Click “New” if the monitored individual is not already defined on another
+1.  Click `New` if the monitored individual is not already defined on another
     Data Source, or “Link” if the user has already been monitored in the past
 
 2.  Microsoft Exchange Data Source will only pull data for linked Monitored
@@ -960,10 +960,11 @@ and their metadata. Container attachment file types (zips and similar archives)
 are automatically extracted into individual documents – e.g. zip with 10 word
 (.docx) documents = 11 Relativity documents. In addition, images from email
 content and each individual document are automatically expanded into separate
-Relativity documents. **Note: the Microsoft Exchange data source only retrieves
-emails. It does not retrieve other exchange metadata at this time.**
+Relativity documents. 
+> **NOTE:** the Microsoft Exchange data source only retrieves
+emails. It does not retrieve other exchange metadata at this time.
 
-Please, refer to **Appendix B** for field descriptions.
+Please, refer to [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields) for field descriptions.
 
 ### Relativity Native Data Extraction Data Source
 
