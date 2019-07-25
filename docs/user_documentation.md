@@ -418,7 +418,7 @@ The Rule Creation form contains the following fields:
 
     -   **Webhook:** makes a generic API call hosted within Relativity
 
-        > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search.
+    - > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search and set it to `auto-run`.
 
 2 - Customizing and Running a Rule
 -----------------------------------
