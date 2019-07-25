@@ -633,14 +633,14 @@ For reference:
 -   “Trace Hour Of Day”, and “Trace Day Of Week” are SQL Column names of
     corresponding Relativity Fields
 
-**NOTE:** Trace will automatically create a Saved Search that includes a
+> **NOTE:** Trace will automatically create a Saved Search that includes a
 combination of your chosen Saved Search (from the Rule) AND your Term conditions
 and use that as the input for the script.
 
 **Step 3**: To execute your script, attach this Action to a Rule and enable it
 (as you would with any Rule).
 
-**NOTE:** Advanced actions will run on a schedule, continuously. For scripts
+> **NOTE:** Advanced actions will run on a schedule, continuously. For scripts
 that have the potential to use significant resources, we recommend designing the
 script to be aware of what has already been acted on.
 
@@ -721,7 +721,7 @@ Slack Web Hook Id – unique ID of the registered incoming webhook
 Document Link / Document Text – metadata and link to alerted documents in
 Relativity
 
-**NOTE:** You must register a webhook to specific channel in Slack that will be
+> **NOTE:** You must register a webhook to specific channel in Slack that will be
 allowed to post messages from Trace. Once registered, enter the ID of the
 registration into “Slack Web Hook Id” field. For more information visit:
 <https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack>
@@ -752,9 +752,9 @@ combination with Base Api Url)
 Document Link / Document Text – metadata and link to alerted documents in
 Relativity
 
-**NOTE:** POST is the only supported HTTP verb for Webhook
+> **NOTE:** POST is the only supported HTTP verb for Webhook
 
-**NOTE:** Authentication is inherited from the Agent Server that is hosting the
+> **NOTE:** Authentication is inherited from the Agent Server that is hosting the
 Trace agent. The access_token is retrieved from
 ClaimsPrincipal.Current.Identities
 
