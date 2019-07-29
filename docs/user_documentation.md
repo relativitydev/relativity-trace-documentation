@@ -1302,52 +1302,17 @@ Usability Considerations
 Infrastructure and Environment Considerations
 ---------------------------------------------
 
-| **Tasks:**                       | **Ingestion**                                                                          | **Running Rules**                                                                                                                                                                                   |                                                          |                                                                      |
+| **Tasks:**                       | **Ingestion**                                                                          | **Ingestion**      |    **Running Rules**                                                      |   **Running Rules**                                                                   |
 |----------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------|
-|                                  | **Ingestion, Ingestion Status, and Data Retrieval**                                    | **Indexing**                                                                                                                                                                                        | **Term Searching**                                       | **Rule Evaluation**                                                  |
+|                                  | **`Ingestion`, `Ingestion Status`, and `Data Retrieval`**                                    | **`Indexing`**                                                                                                                                                                                        | **`Term Searching`**                                       | **`Rule Evaluation`**                                                  |
 | Summary                          | Powers the Proactive Ingestion Framework                                               | Incrementally builds Trace Search Index and Temporary Search Indexes with batches of documents Optionally: Incrementally builds and runs Analytics Jobs (Conceptual, Classification and Structured) | Searches and tags Terms in workspace on an ongoing basis | Rule will run and tag all matching documents and perform actions     |
-| Task Operations                  | *Ingestion Task*                                                                       | *Indexing Task*                                                                                                                                                                                     | *Term Searching Task*                                    | *Rule Evaluation Task*                                               |
-| Recommended Run Interval         | 60 seconds                                                                             | 300 seconds                                                                                                                                                                                         | 300 seconds                                              | 300 seconds                                                          |
-| Considerations and System Impact | Speed of ingestion is determined by number of Integration Points Agents (max of 4)     | Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)                                                                                     |                                                          | Very complex/nested underlying Saved Searches can affect performance |
-| Recommended Settings             | **Important**: Reach out to `trace@relativity.com` to adjust the Task “Settings” field |                                                                                                                                                                                                     |                                                          |                                                                      |
+| Task Operations                  | *`Ingestion Task`*<br>-Looks for batches that need to be imported and kicks off import<br>-Creates RIP job per batch<br>*`Ingestion Status Task`*<br>-Updates Data Batch status<br>*`Data Retrieval Task`*<br>-Pulls data for enabled Data Sources executed by Trace Agent                                                                      | *`Indexing Task`*<br>-Kicks off dtSearch incremental build<br>-Kicks off temporary (internal) dtSearch index builds for Term evaluation<br>-Kicks off Analytics Jobs (if configured)<br>**NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global dtSearch and Analytics Indexes are built every 60 minutes by default.                                                                                                                                                                                    | *`Term Searching Task`*<br>-Runs (searches and tags) Terms in the workspace<br>**NOTE:** Each Term Searching run interval will search up to 5 available document batches (default 10,000 documents per batch). These settings are configurable on Term Searching task.                                    | *`Rule Evaluation Task`*<br>-Evaluates each rule in the workspaces and triggers configured actions                                              |
+| Recommended Run Interval         | `60` seconds                                                                             | `300` seconds                                                                                                                                                                                         | `300` seconds                                              | `300` seconds                                                          |
+| Considerations and System Impact | -Speed of ingestion is determined by number of Integration Points Agents (max of 4)     | -Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)<br>-Every incremental build makes the old build obsolete - cleaned up by Case Manager nightly                                                                                  |                                                          | -Very complex/nested underlying Saved Searches can affect performance<br>-Saved Searches that return many documents can affect performance<br>-Many rules being evaluated often can put pressure on SQL server |
 
--   Looks for batches that need to be imported and kicks off import
+> **IMPORTANT**: Reach out to `trace@relativity.com` to adjust the Task `Settings` field 
 
--   Creates RIP job per batch
-
-*Ingestion Status Task*
-
--   Updates Data Batch status
-
-*Data Retrieval Task*
-
--   Pulls data for enabled Data Sources executed by Trace Agent
-
--   Kicks off dtSearch incremental build
-
--   Kicks off temporary (internal) dtSearch index builds for Term evaluation
-
--   Kicks off Analytics Jobs (if configured)
-
-> **NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global
-dtSearch and Analytics Indexes are built every 60 minutes by default.
-
--   Runs (searches and tags) Terms in the workspace
-
-NOTE: Each Term Searching run interval will search up to 5 available document
-batches (default 10,000 documents per batch). These settings are configurable on
-Term Searching task.
-
--   Evaluates each rule in the workspaces and triggers configured actions
-
--   Every incremental build makes the old build obsolete - cleaned up by Case
-    Manager nightly
-
--   Saved Searches that return many documents can affect performance
-
--   Many rules being evaluated often can put pressure on SQL server
-
-The Recommended Run Interval for the **Reporting Task** is 300 seconds.
+> The Recommended Run Interval for the **`Reporting Task`** is 300 seconds.
 
 System Recommendations for *current application version* when there is a **large
 active ongoing project:**
