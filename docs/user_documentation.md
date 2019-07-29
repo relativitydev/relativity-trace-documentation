@@ -1310,7 +1310,7 @@ Infrastructure and Environment Considerations
 | Task Operations                  | *Ingestion Task*                                                                       | *Indexing Task*                                                                                                                                                                                     | *Term Searching Task*                                    | *Rule Evaluation Task*                                               |
 | Recommended Run Interval         | 60 seconds                                                                             | 300 seconds                                                                                                                                                                                         | 300 seconds                                              | 300 seconds                                                          |
 | Considerations and System Impact | Speed of ingestion is determined by number of Integration Points Agents (max of 4)     | Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)                                                                                     |                                                          | Very complex/nested underlying Saved Searches can affect performance |
-| Recommended Settings             | **Important**: Reach out to <trace@relativity.com> to adjust the Task “Settings” field |                                                                                                                                                                                                     |                                                          |                                                                      |
+| Recommended Settings             | **Important**: Reach out to `trace@relativity.com` to adjust the Task “Settings” field |                                                                                                                                                                                                     |                                                          |                                                                      |
 
 -   Looks for batches that need to be imported and kicks off import
 
@@ -1330,7 +1330,7 @@ Infrastructure and Environment Considerations
 
 -   Kicks off Analytics Jobs (if configured)
 
-NOTE: Run Interval controls frequency of temp indexes creation ONLY. Global
+> **NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global
 dtSearch and Analytics Indexes are built every 60 minutes by default.
 
 -   Runs (searches and tags) Terms in the workspace
