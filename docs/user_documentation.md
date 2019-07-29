@@ -763,11 +763,10 @@ ClaimsPrincipal.Current.Identities
 Several useful SQL RelativityScripts are shipped by default with Trace
 application.
 
-| **Script Name**   | **Description**                                                                                                | **Inputs and Outputs**                                                                                                                                                                                                                                                                                    |
-|-------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Trace Date Parser | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | INPUT: Timezone INPUT: Saved Search to execute on (passed from Rule)                                                                                                                                                                                                                                      |
-|                   |                                                                                                                | OUTPUT: TraceHourOfDay Field Name OUTPUT: TraceDayOfWeek Field Name The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the “Timezone” Input.                                                                     |
-
+| **Script Name**   | **Description**                                                                                                | **Inputs and Outputs**                                                                                                                                                                                                                    |
+|-------------------|----------------------------------------------------------------------------------------------------------------|-------|
+| Trace Date Parser | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | **INPUT:** Timezone<br>**INPUT:** Saved Search to execute on (passed from Rule)<br>**OUTPUT:** TraceHourOfDay Field Name<br>**OUTPUT:** TraceDayOfWeek Field Name <br><br>The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the “Timezone” Input.|
+ 
 Trace Proactive Ingestion Framework
 ===================================
 
