@@ -122,7 +122,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
     ![](media/eae00fa728b99218930da021e4f58a6c.png)
 
-2.  Click on the **Office 365 Demo** data source to see how it is configured
+2.  Click on the **Office 365 Exchange** data source to see how it is configured
 
     -   **Data Source Type**: You can choose which type of data you want to ingest.
     This instance has been setup with a few basic types. Trace can support 40+
