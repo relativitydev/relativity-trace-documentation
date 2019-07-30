@@ -15,7 +15,7 @@ Relativity Trace Demo Guide
 
 ### Demo Environment and Login Information
 
-Reach out to trace@relativity.com  
+Reach out to `trace@relativity.com`
 
 Relativity Trace: An Overview of Relativity for Compliance
 ----------------------------------------------------------
@@ -94,27 +94,27 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 3.  Click into the **Market Abuse** rule and see the options that make up this
     rule:
 
--   **Searchable Set:** A Saved Search that the rule runs against
+    -   **Searchable Set:** A Saved Search that the rule runs against
 
--   **Associated Actions:** A set of actions to take on matched documents (this
+    -   **Associated Actions:** A set of actions to take on matched documents (this
     rule will Tag and Batch out to reviewers)
 
--   **Terms**: Allows you to link Trace Terms to refine your document filter
+    -   **Terms**: Allows you to link Trace Terms to refine your document filter
     criteria with an e-discovery grade searching engine (dtSearch)
 
--   **Customize Batch Set:** Opens the Batch Set that that was automatically
+    -   **Customize Batch Set:** Opens the Batch Set that that was automatically
     created and allows you to customize the batch set (only available if Default
     Batch action was set as an Associated Action at rule creation)
 
--   The rule is currently **Disabled**
+    -   The rule is currently **Disabled**
 
 ![C:\\Users\\nsolilov\\AppData\\Local\\Temp\\SNAGHTML48bfbfcf.PNG](media/0c099bc9669ce508b9a1110a66cd15ca.png)
 
 4.  Click the **Enable Rule** console button under **Automation** section:
 
--   The rule is now **Enabled**
+    -   The rule is now **Enabled**
 
--   As data is ingested, this rule will be automatically applied to all incoming
+    -   As data is ingested, this rule will be automatically applied to all incoming
     documents
 
 ![C:\\Users\\nsolilov\\AppData\\Local\\Temp\\SNAGHTML48c067b7.PNG](media/9121eef9fa793b0003021602cefabbe2.png)
@@ -128,27 +128,27 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
 2.  Click on the **Office 365 Demo** data source to see how it is configured
 
--   **Data Source Type**: You can choose which type of data you want to ingest.
+    -   **Data Source Type**: You can choose which type of data you want to ingest.
     This instance has been setup with a few basic types. Trace can support 40+
     different Data Source Types
 
--   **Integration Point Profile:** Used for Field Mapping and other ingestion
+    -   **Integration Point Profile:** Used for Field Mapping and other ingestion
     options
 
--   **Username / Password:** secure way to enter authentication information for
+    -   **Username / Password:** secure way to enter authentication information for
     various Data Sources
 
--   **Trace Monitored Individuals:** lets you select which people to monitor
+    -   **Trace Monitored Individuals:** lets you select which people to monitor
 
--   The Data Source is currently **Disabled**
+    -   The Data Source is currently **Disabled**
 
 ![](media/0b80dfed320b157afa02f114b3fbd7c1.png)
 
-1.  Click **Enable Data Source** on the right hand side
+3.  Click **Enable Data Source** on the right hand side
 
 ![](media/e0b725fd32e467f47cf879fa55a0a7b1.png)
 
-2.  Wait for Data Batches with data to start showing up – refresh the page
+4.  Wait for Data Batches with data to start showing up – refresh the page
     several times, until you start seeing Data Batches on the bottom (it may
     take several minutes for first data batch to be fully created). You can see
     how much data each Data Batch retrieved and corresponding statuses. Once you
@@ -247,45 +247,45 @@ DEMO B: Running an Archive Rule
 
 ![](media/7447e3bc70364408753f69f4f619207b.png)
 
-1.  Let’s check out our “Non-alerted Documents” Saved Search. Go to **Saved
+2.  Let’s check out our “Non-alerted Documents” Saved Search. Go to **Saved
     Search** browser in the **Documents** tab and select the “**Non-alerted
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
 
 ![](media/eac385448f2a333626219dbd74f113c8.png)
 
-1.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
+3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
     Rule**.
 
 ![](media/406ada4e092e1e343bce785bebec7e9c.png)
 
-1.  You’ll notice that the **Delete Rule** follows a similar format to the prior
+4.  You’ll notice that the **Delete Rule** follows a similar format to the prior
     demo. The rule runs on the “Non-alerted Documents” Saved Search and has the
     “Default Data Archive” action associated with it. This action will delete
     all documents in the Saved Search (outside of the set retention policy) once
     the rule is enabled. This will enable you to have an **automated retention
     policy** in Relativity.
 
-2.  Now let’s enable the rule so Trace can start enforcing your Data Archive
+5.  Now let’s enable the rule so Trace can start enforcing your Data Archive
     policy. Go to the **Trace:Rules** tab again and click on the “**Delete
     Rule**”
 
 ![](media/406ada4e092e1e343bce785bebec7e9c.png)
 
-1.  Click on **Enable Rule** in console button under **Automation** section
+6.  Click on **Enable Rule** in console button under **Automation** section
 
 ![](media/603645b32fe247cfb851e292c7786beb.png)
 
-1.  Go back to the Saved Search Browser in the Documents tab and select the
+7.  Go back to the Saved Search Browser in the Documents tab and select the
     “Documents to Delete” Saved Search. Within a few minutes and you’ll start to
     see documents getting deleted from this workspace.
 
 ![](media/8c040117f5bbed702213148a2aaa0873.png)
 
-1.  Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
+8.  Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
 
 ![C:\\Users\\mkogan\\AppData\\Local\\Temp\\SNAGHTML6368c2a1.PNG](media/59aecb6c0a0e49227506ca5d22afac87.png)
 
-Let us know what you think! Reach out to <trace@relativity.com> with any
+Let us know what you think! Reach out to `trace@relativity.com` with any
 feedback. Thanks!
