@@ -241,14 +241,13 @@ DEMO B: Running an Archive Rule
 
 1.  Go into the **Trace Demo** workspace
 
-![](media/7447e3bc70364408753f69f4f619207b.png)
-
 2.  Let’s check out our “Non-alerted Documents” Saved Search. Go to **Saved
     Search** browser in the **Documents** tab and select the “**Non-alerted
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
 
 ![](media/eac385448f2a333626219dbd74f113c8.png)
+> **NOTE:** Count on non-alerted documents might vary
 
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
@@ -262,6 +261,8 @@ DEMO B: Running an Archive Rule
     all documents in the Saved Search (outside of the set retention policy) once
     the rule is enabled. This will enable you to have an **automated retention
     policy** in Relativity.
+    > **NOTE:** For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be
+    delete as soon as the rule runs
 
 5.  Now let’s enable the rule so Trace can start enforcing your Data Archive
     policy. Go to the **Trace:Rules** tab again and click on the “**Delete
