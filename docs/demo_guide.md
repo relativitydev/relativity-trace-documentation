@@ -245,15 +245,13 @@ DEMO B: Running an Archive Rule
     Search** browser in the **Documents** tab and select the “**Non-alerted
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
-
-![](media/eac385448f2a333626219dbd74f113c8.png)
-> **NOTE:** Count on non-alerted documents might vary
+    ![](media/eac385448f2a333626219dbd74f113c8.png)
+    > **NOTE:** Count on non-alerted documents might vary
 
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
     Rule**.
-
-![](media/406ada4e092e1e343bce785bebec7e9c.png)
+    ![](media/406ada4e092e1e343bce785bebec7e9c.png)
 
 4.  You’ll notice that the **Delete Rule** follows a similar format to the prior
     demo. The rule runs on the “Non-alerted Documents” Saved Search and has the
