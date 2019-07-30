@@ -165,15 +165,15 @@ As time goes on, more batches with data will be created and ingested:
 3.  Explore Dashboards
     ![](media/56a2973ce72db92e5bbb474fe8e7c216.png)
 
-Once all the data is ingested and analyzed about 7.6% of ingested documents have
-matched the rules:
-![](media/b263a7470437bb562c35e35c0fc113ed.png)
+    1. Once all the data is ingested and analyzed about 7.6% of ingested documents have
+    matched the rules:
+    ![](media/b263a7470437bb562c35e35c0fc113ed.png)
 
-All of the Rules that matched:
-![](media/87545672cde91318af976d0f7705cc9a.png)
+    2. All of the Rules that matched:
+    <br>![](media/87545672cde91318af976d0f7705cc9a.png)
 
-File type breakdown of ingested documents:
-![](media/2915c8515dde4765959049040c23c5ef.png)
+    3. File type breakdown of ingested documents:
+    ![](media/2915c8515dde4765959049040c23c5ef.png)
 
 4.  Review matched documents
 
