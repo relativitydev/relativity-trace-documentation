@@ -82,14 +82,12 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 ### Section 1: Rules Overview
 
 1.  Go into the **Trace Demo** workspace
-
-![C:\\Users\\mkogan\\AppData\\Local\\Temp\\SNAGHTML62399624.PNG](media/e0c6e9c767be9be77cafb3db4eebef9b.png)
+    ![](media/e0c6e9c767be9be77cafb3db4eebef9b.png)
 
 2.  Click into the **Trace:Rules** tab to see sample rules in the workspace.
     Rules are how you define the type of content that is relevant to you. The
     **Market Abuse** rule has been pre-created for you along with a few others.
-
-![](media/cbcdbe80b994aff6e31fad731db5362e.png)
+    ![](media/cbcdbe80b994aff6e31fad731db5362e.png)
 
 3.  Click into the **Market Abuse** rule and see the options that make up this
     rule:
@@ -103,8 +101,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     criteria with an e-discovery grade searching engine (dtSearch)
 
     -   The rule is currently **Disabled**
-
-![C:\\Users\\nsolilov\\AppData\\Local\\Temp\\SNAGHTML48bfbfcf.PNG](media/0c099bc9669ce508b9a1110a66cd15ca.png)
+    ![](media/0c099bc9669ce508b9a1110a66cd15ca.png)
 
 4.  Click the **Enable Rule** console button under **Trace Rule Management** section:
 
@@ -112,14 +109,12 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
     -   As data is ingested, this rule will be automatically applied to all incoming
     documents
-
-![C:\\Users\\nsolilov\\AppData\\Local\\Temp\\SNAGHTML48c067b7.PNG](media/9121eef9fa793b0003021602cefabbe2.png)
+    ![](media/9121eef9fa793b0003021602cefabbe2.png)
 
 ### Section 2: Importing Data and Running Rules
 
 1.  Now let’s test our rules by adding live stream of data into the workspace
     with Office 365 Data Source. Go to the **Trace:Data Sources** tab
-
     ![](media/eae00fa728b99218930da021e4f58a6c.png)
 
 2.  Click on the **Office 365 Exchange** data source to see how it is configured
@@ -137,12 +132,10 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     -   **Trace Monitored Individuals:** lets you select which people to monitor
 
     -   The Data Source is currently **Disabled**
-
-![](media/0b80dfed320b157afa02f114b3fbd7c1.png)
+    ![](media/0b80dfed320b157afa02f114b3fbd7c1.png)
 
 3.  Click **Enable Data Source** on the right hand side
-
-![](media/e0b725fd32e467f47cf879fa55a0a7b1.png)
+    ![](media/e0b725fd32e467f47cf879fa55a0a7b1.png)
 
 4.  Wait for Data Batches with data to start showing up – refresh the page
     several times, until you start seeing Data Batches on the bottom (it may
@@ -150,19 +143,16 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     how much data each Data Batch retrieved and corresponding statuses. Once you
     have a few Data Batches in “Completed” state the rest of the Trace workflow
     automatically triggers.
-
-![](media/888c38c3f153691242bd9fb200911bd4.png)
+    ![](media/888c38c3f153691242bd9fb200911bd4.png)
 
 As time goes on, more batches with data will be created and ingested:
-
 ![](media/c3ef4b4a771fbfd3d7b25c7dc5ccf4dc.png)
 
 ### Section 3: Viewing Results
 
 1.  Go to the **Review Batches** tab. This shows all Review Batches that were
     auto-generated from the enabled rules
-
-![C:\\Users\\mkogan\\AppData\\Local\\Temp\\SNAGHTML6353d0a1.PNG](media/38c5bd780c5ada1f3042f8ac7052d37d.png)
+    ![](media/38c5bd780c5ada1f3042f8ac7052d37d.png)
 
 2.  Click on **Documents** tab:
 
@@ -170,45 +160,35 @@ As time goes on, more batches with data will be created and ingested:
 
     2.  “**Trace Search Index**” is built automatically -\> for your ad-hoc
         searching
-
-        ![](media/69cbd4e87b452afd74276bba27660db4.png)
+    ![](media/69cbd4e87b452afd74276bba27660db4.png)
 
 3.  Explore Dashboards
-
-![](media/56a2973ce72db92e5bbb474fe8e7c216.png)
+    ![](media/56a2973ce72db92e5bbb474fe8e7c216.png)
 
 Once all the data is ingested and analyzed about 7.6% of ingested documents have
 matched the rules:
-
 ![](media/b263a7470437bb562c35e35c0fc113ed.png)
 
 All of the Rules that matched:
-
 ![](media/87545672cde91318af976d0f7705cc9a.png)
 
 File type breakdown of ingested documents:
-
 ![](media/2915c8515dde4765959049040c23c5ef.png)
 
 4.  Review matched documents
 
     1.  Click on “Market Abuse” on the Rules widget
-
-        ![](media/7675cfedd1484500512efe27c13ee17f.png)
+    ![](media/7675cfedd1484500512efe27c13ee17f.png)
 
     2.  Click on “Revenue Sharing” on the Terms widget
-
-        ![](media/7284f63897ecd8c4c1d154be240a2039.png)
+    ![](media/7284f63897ecd8c4c1d154be240a2039.png)
 
     3.  Click on one of the documents in the list:
-
-        ![](media/57778d5767b262da54b15eff0d505ff5.png)
+    ![](media/57778d5767b262da54b15eff0d505ff5.png)
 
     4.  Explore document details:
-
-![](media/42528d221727ff6d48bb9e844bfb0ffb.png)
-
-![](media/c8e3e14b0d67dccba13753f24496b38a.png)
+    ![](media/42528d221727ff6d48bb9e844bfb0ffb.png)
+    ![](media/c8e3e14b0d67dccba13753f24496b38a.png)
 
 1.  Matched terms are automatically highlighted in the document
 
@@ -233,7 +213,7 @@ Thanks for completing Demo A! Quick recap, here’s what we did:
 5.  Reviewed a matched document in the viewer with extracted data, related
     documents and highlighted terms
 
-Let us know what you think! Reach out to <trace@relativity.com> with any
+Let us know what you think! Reach out to `trace@relativity.com` with any
 feedback. Thanks!
 
 DEMO B: Running an Archive Rule
@@ -265,22 +245,18 @@ DEMO B: Running an Archive Rule
 5.  Now let’s enable the rule so Trace can start enforcing your Data Archive
     policy. Go to the **Trace:Rules** tab again and click on the “**Delete
     Rule**”
-
-![](media/406ada4e092e1e343bce785bebec7e9c.png)
+    ![](media/406ada4e092e1e343bce785bebec7e9c.png)
 
 6.  Click on **Enable Rule** in console button under **Automation** section
-
-![](media/603645b32fe247cfb851e292c7786beb.png)
+    ![](media/603645b32fe247cfb851e292c7786beb.png)
 
 7.  Go back to the Saved Search Browser in the Documents tab and select the
     “Documents to Delete” Saved Search. Within a few minutes and you’ll start to
     see documents getting deleted from this workspace.
-
-![](media/8c040117f5bbed702213148a2aaa0873.png)
+    ![](media/8c040117f5bbed702213148a2aaa0873.png)
 
 8.  Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
-
-![C:\\Users\\mkogan\\AppData\\Local\\Temp\\SNAGHTML6368c2a1.PNG](media/59aecb6c0a0e49227506ca5d22afac87.png)
+    ![](media/59aecb6c0a0e49227506ca5d22afac87.png)
 
 Let us know what you think! Reach out to `trace@relativity.com` with any
 feedback. Thanks!
