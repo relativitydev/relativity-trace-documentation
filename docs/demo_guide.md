@@ -102,10 +102,6 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     -   **Terms**: Allows you to link Trace Terms to refine your document filter
     criteria with an e-discovery grade searching engine (dtSearch)
 
-    -   **Customize Batch Set:** Opens the Batch Set that that was automatically
-    created and allows you to customize the batch set (only available if Default
-    Batch action was set as an Associated Action at rule creation)
-
     -   The rule is currently **Disabled**
 
 ![C:\\Users\\nsolilov\\AppData\\Local\\Temp\\SNAGHTML48bfbfcf.PNG](media/0c099bc9669ce508b9a1110a66cd15ca.png)
