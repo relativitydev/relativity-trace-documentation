@@ -106,7 +106,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
 ![C:\\Users\\nsolilov\\AppData\\Local\\Temp\\SNAGHTML48bfbfcf.PNG](media/0c099bc9669ce508b9a1110a66cd15ca.png)
 
-4.  Click the **Enable Rule** console button under **Automation** section:
+4.  Click the **Enable Rule** console button under **Trace Rule Management** section:
 
     -   The rule is now **Enabled**
 
