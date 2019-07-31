@@ -1262,6 +1262,7 @@ Considerations
 Usability Considerations
 ------------------------
 
+
 -   Once a document is associated with a Rule, it will never be disassociated
     unless there are document updates to extracted text or metadata. Manual
     Trace Document Retry (mass operation) procedure will also reset the
@@ -1299,7 +1300,7 @@ Usability Considerations
         Identification). In order to enable this functionality, manually perform
         Full Analysis
 
-Infrastructure and Environment Considerations
+Standard Infrastructure and Environment Considerations
 ---------------------------------------------
 
 | **Tasks:**                       | **Ingestion**                                                                          | **Ingestion**      |    **Running Rules**                                                      |   **Running Rules**                                                                   |
@@ -1314,14 +1315,17 @@ Infrastructure and Environment Considerations
 
 > The Recommended Run Interval for the **`Reporting Task`** is 300 seconds.
 
-System Recommendations for *current application version* when there is a **large
-active ongoing project:**
+Large Infrastructure and Environment Considerations
+---------------------------------------------
+
 
 | Recommendation                                                             | Explanation                                                                                                                                                                                                                | Additional Notes                                                                                    |
 |----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | Separate dedicated infrastructure for Web, Agent, SQL server and Fileshare | Trace relies on Relativity infrastructure. In cases of shared resources (Agent Servers, Fileshares, SQL queues) it is recommended to dedicate separate infrastructure to limit effect on other workspaces within instance. | It is recommended to include these as a separate Resource Pool if deploying in existing environment |
 | Limit Trace Task “Run Intervals” \>=5 minutes (300 seconds)                | Each Task generates audits, SQL queries executions, creates tables, etc. and can put unnecessary pressure on the system when run too frequently                                                                            | End-to-end workflow will require multiple Run Intervals for the cycle to complete                   |
 | Limit maximum number of Rules: 50 per workspace, 500 per instance          | The design of Rule Evaluation Task limits concurrent execution of multiple rules. This effect is compounded by running multiple workspaces with Rules concurrently.                                                        | Future iterations will remove this limitation                                                       |
+| Update dtSearch sub-index size to be 500k-1M (advanced option)             | Default sub-index size is 250k docs, when you have more than 10 sub-indexes searches can become slow
+| Ensure audit partitioning is setup or you use Data Grid                    | Audits are generated frequently, outside of RelOne, they are stored in SQL which at scale creates very large tables.  It's best practice to set up table partitioning for your audits, or to deploy Data Grid solution
 
 Glossary
 ========
