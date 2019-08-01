@@ -46,7 +46,8 @@ Relativity Trace User Documentation
   * [Trace Terms Report](#trace-terms-report)
 - [Considerations](#considerations)
   * [Usability Considerations](#usability-considerations)
-  * [Infrastructure and Environment Considerations](#infrastructure-and-environment-considerations)
+  * [General Infrastructure and Environment Considerations](#general-infrastructure-and-environment-considerations)
+  * [Large Workspaces Infrastructure and Environment Considerations](#large-workspaces-infrastructure-and-Environment-considerations)
 - [Glossary](#glossary)
 - [Appendix A: Trace Object Architecture](#appendix-a-trace-object-architecture)
 - [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields)
@@ -215,20 +216,21 @@ Setting up Relativity Trace
 
     ![](media/cada62f5fd9156449b21a32c2a9e34f2.png)
 
-3.  Create Trace agent
+3. Create Trace agent
 
-    1.  Agent Type = `Trace Agent`
+   1.  Agent Type = `Trace Agent`
 
-    2.  Number of Agents = `1` 
-        > **NOTE:** creating multiple Trace Agents in a Relativity instance is not supported and will cause failures and/or unpredictable behavior
+   2.  Number of Agents = `1` 
+       
+   > **NOTE:** creating multiple Trace Agents in a Relativity instance is not supported and will cause failures and/or unpredictable behavior
+   
+   3.  Agent Server = Select the agent server you would like the agent deployed
+       on (see “Infrastructure and Environment Considerations” section for
+       optimal performance)
 
-    3.  Agent Server = Select the agent server you would like the agent deployed
-        on (see “Infrastructure and Environment Considerations” section for
-        optimal performance)
+   4.  Run Interval = `60`
 
-    4.  Run Interval = `60`
-
-    5.  Logging level of event details = `Log all messages`
+   5.  Logging level of event details = `Log all messages`
 
 4.  Please review the
     [Considerations](#infrastructure-and-environment-considerations) for system
@@ -766,7 +768,7 @@ application.
 | **Script Name**   | **Description**                                                                                                | **Inputs and Outputs**                                                                                                                                                                                                                    |
 |-------------------|----------------------------------------------------------------------------------------------------------------|-------|
 | Trace Date Parser | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | **INPUT:** Timezone<br>**INPUT:** Saved Search to execute on (passed from Rule)<br>**OUTPUT:** TraceHourOfDay Field Name<br>**OUTPUT:** TraceDayOfWeek Field Name <br><br>The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the “Timezone” Input.|
- 
+
 Trace Proactive Ingestion Framework
 ===================================
 
@@ -1262,6 +1264,7 @@ Considerations
 Usability Considerations
 ------------------------
 
+
 -   Once a document is associated with a Rule, it will never be disassociated
     unless there are document updates to extracted text or metadata. Manual
     Trace Document Retry (mass operation) procedure will also reset the
@@ -1299,7 +1302,7 @@ Usability Considerations
         Identification). In order to enable this functionality, manually perform
         Full Analysis
 
-Infrastructure and Environment Considerations
+General Infrastructure and Environment Considerations
 ---------------------------------------------
 
 | **Tasks:**                       | **Ingestion**                                                                          | **Ingestion**      |    **Running Rules**                                                      |   **Running Rules**                                                                   |
@@ -1314,15 +1317,19 @@ Infrastructure and Environment Considerations
 
 > The Recommended Run Interval for the **`Reporting Task`** is 300 seconds.
 
-System Recommendations for *current application version* when there is a **large
-active ongoing project:**
+Large Workspaces Infrastructure and Environment Considerations
+---------------------------------------------
 
-| Recommendation                                                             | Explanation                                                                                                                                                                                                                | Additional Notes                                                                                    |
-|----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| Separate dedicated infrastructure for Web, Agent, SQL server and Fileshare | Trace relies on Relativity infrastructure. In cases of shared resources (Agent Servers, Fileshares, SQL queues) it is recommended to dedicate separate infrastructure to limit effect on other workspaces within instance. | It is recommended to include these as a separate Resource Pool if deploying in existing environment |
-| Limit Trace Task “Run Intervals” \>=5 minutes (300 seconds)                | Each Task generates audits, SQL queries executions, creates tables, etc. and can put unnecessary pressure on the system when run too frequently                                                                            | End-to-end workflow will require multiple Run Intervals for the cycle to complete                   |
-| Limit maximum number of Rules: 50 per workspace, 500 per instance          | The design of Rule Evaluation Task limits concurrent execution of multiple rules. This effect is compounded by running multiple workspaces with Rules concurrently.                                                        | Future iterations will remove this limitation                                                       |
+> Use these additional recommendations to tune your environment for workspaces housing more than `10 Million` documents.
 
+
+| Recommendation                                               | Explanation                                                  | Additional Notes                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Separate dedicated infrastructure for `Web`, `Agent`, `SQL server` and Fileshare | Trace relies on Relativity infrastructure. In cases of shared resources (`Agent Servers`, `Fileshares`, `SQL queues`) it is recommended to dedicate separate infrastructure to limit effect on other workspaces within instance. | It is recommended to include these as a separate Resource Pool if deploying in existing environment |
+| Limit Trace Task `Run Intervals` \>=`5 minutes` (300 seconds) | Each Task generates audits, SQL queries executions, creates tables, etc. and can put unnecessary pressure on the system when run too frequently | End-to-end workflow will require multiple Run Intervals for the cycle to complete |
+| Limit maximum number of Rules: `50` per workspace, `500` per instance | The design of Rule Evaluation Task limits concurrent execution of multiple rules. This effect is compounded by running multiple workspaces with Rules concurrently. | Future iterations will remove this limitation                |
+| Update dtSearch sub-index size to be `500K` OR `1M` (advanced option) | Default sub-index size is `250K` docs, when you have more than `10` sub-indexes searches can become slow because of the number of sub-indexes | General rule is to keep number of sub-indexes under `10` total |
+| Ensure audit partitioning is setup or you use [Data Grid for Audit](https://help.relativity.com/RelativityOne/Content/Relativity/Data_Grid/Data_Grid_for_Audit.htm) | Audits are generated frequently, outside of RelOne, they are stored in SQL which at scale creates very large tables.  It's best practice to set up table partitioning for your audits, or to deploy Data Grid solution<br>![1564672221173](media/1564672221173.png)<br>![1564672354757](media/1564672354757.png) |                                                              |
 Glossary
 ========
 
