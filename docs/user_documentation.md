@@ -47,7 +47,7 @@ Relativity Trace User Documentation
 - [Considerations](#considerations)
   * [Usability Considerations](#usability-considerations)
   * [General Infrastructure and Environment Considerations](#general-infrastructure-and-environment-considerations)
-  * [Large Workspaces Infrastructure and Environment Considerations](#large-workspaces-infrastructure-and-Environment-considerations)
+  * [Large Workspaces Infrastructure and Environment Considerations](#large-workspaces-infrastructure-and-environment-considerations)
 - [Glossary](#glossary)
 - [Appendix A: Trace Object Architecture](#appendix-a-trace-object-architecture)
 - [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields)
