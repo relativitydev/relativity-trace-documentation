@@ -1330,6 +1330,7 @@ Large Workspaces Infrastructure and Environment Considerations
 | Limit maximum number of Rules: `50` per workspace, `500` per instance | The design of Rule Evaluation Task limits concurrent execution of multiple rules. This effect is compounded by running multiple workspaces with Rules concurrently. | Future iterations will remove this limitation                |
 | Update dtSearch sub-index size to be `500K` OR `1M` (advanced option) | Default sub-index size is `250K` docs, when you have more than `10` sub-indexes searches can become slow because of the number of sub-indexes | General rule is to keep number of sub-indexes under `10` total |
 | Ensure audit partitioning is setup or you use [Data Grid for Audit](https://help.relativity.com/RelativityOne/Content/Relativity/Data_Grid/Data_Grid_for_Audit.htm) | Audits are generated frequently, outside of RelOne, they are stored in SQL which at scale creates very large tables.  It's best practice to set up table partitioning for your audits, or to deploy Data Grid solution<br>![1564672221173](media/1564672221173.png)<br>![1564672354757](media/1564672354757.png) |                                                              |
+
 Glossary
 ========
 
