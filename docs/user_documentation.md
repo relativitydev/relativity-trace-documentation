@@ -129,15 +129,8 @@ inquiries: typically reactive and transactional workflows. Relativity Trace is
 an application built on the Relativity platform for proactive compliance and
 surveillance workflows.
 
-Relativity Trace is an [ADS Deployable
-Application](https://platform.relativity.com/9.5/Content/Building_Relativity_applications/Building_Relativity_applications.htm)
-containing
-[RDOs](https://platform.relativity.com/9.5/Content/Managing_Relativity_dynamic_objects/RDO_9.5/Relativity_objects.htm),
-Custom
-[Agents](https://help.relativity.com/9.5/Content/System_Guides/Agents_Guide/Agents.htm),
-[Event
-Handlers](https://help.relativity.com/9.5/Content/Relativity/Event_Handler_Express/Relativity_Event_Handler_Express.htm)
-and other relevant infrastructure.
+Relativity Trace is an [ADS Deployable Application](https://platform.relativity.com/9.5/Content/Building_Relativity_applications/Building_Relativity_applications.htm) containing [RDOs](https://platform.relativity.com/9.5/Content/Managing_Relativity_dynamic_objects/RDO_9.5/Relativity_objects.htm), Custom [Agents](https://help.relativity.com/9.5/Content/System_Guides/Agents_Guide/Agents.htm),
+[Event Handlers](https://help.relativity.com/9.5/Content/Relativity/Event_Handler_Express/Relativity_Event_Handler_Express.htm) and other relevant infrastructure.
 
 Prerequisites
 =============
@@ -157,12 +150,10 @@ addition, Relativity Trace utilizes the following components for its processes:
 
 -   Auto Batch Manager
 
--   Integration Points Agent (need to install [Relativity Integration
-    Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
+-   Integration Points Agent (need to install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
     first)
 
--   Integration Points Manager (need to install [Relativity Integration
-    Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
+-   Integration Points Manager (need to install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
     first)
 
 If you plan to use Analytics functionality, please also make sure the following
@@ -180,18 +171,15 @@ agents are set up:
 
 -   Active Learning Worker
 
--   Structured Analytics Manager (need to install [Relativity
-    Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
+-   Structured Analytics Manager (need to install [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
     first)
 
--   Structured Analytics Worker (need to install [Relativity
-    Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
+-   Structured Analytics Worker (need to install [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
     first)
 
 ### Applications
 
--   [Relativity Integration
-    Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
+-   [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
 
     1.  Used by Trace Data Sources
 
@@ -258,7 +246,7 @@ Setting up Relativity Trace
 
         > **WARNING:** Once license expires, all Trace processes stop working in all configured workspaces.
 
-6.  In the workspace, navigate to the Trace:Setup tab and set the `Run Option`
+6.  In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option`
     to `Continuous`
 
     > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build
@@ -308,7 +296,7 @@ status of documents is reflected on a few key fields on the Document object
                 documents
 
     3.  “Searching Errored” – reflects documents that have not successfully gone
-        through Term Searching.  
+        through Term Searching. 
         Potential causes:
 
         1.  Broken infrastructure
@@ -369,7 +357,7 @@ retry from the Document List and click the item in the dropdown and click “Ok�
 on the pop-up. If your browser settings prevent pop-ups please enable them for
 Relativity URLs.
 
-> **WARNING:** The retry process can be very resource-intensive. Trace is
+**WARNING:** The retry process can be very resource-intensive. Trace is
 optimized for ongoing and forward-looking use cases where documents are only
 searched once upon ingestion. Triggering a retry will treat affected documents
 as if they were brand new to Trace, clearing all previous Rule and Term
@@ -463,8 +451,7 @@ documents.
 
 You can create Terms in multiple ways:
 
-1.  Via [Remote Desktop Client
-    (RDC)](https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm)
+1.  Via [Remote Desktop Client ( RDC )](https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm)
     load file. This method is ideal if you are adding a lot of terms at once.
 
 2.  From Terms tab by clicking “New Term” and adding each Term individually.
@@ -578,8 +565,7 @@ Scripts. Apply rigorous testing and impact assessment prior to deploying any
 custom script in production or enabling it to run continuously via Trace
 automation. For more information about Relativity Scripts in general, see the
 [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and
-[Scripts
-Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm)
+[Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm)
 documentation pages.
 
 The Advanced Action Type executes a Relativity Script automatically on a
@@ -594,10 +580,7 @@ one yourself.
     Search”
 
 -   For more information about Relativity Script feature in general, see the
-    [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm)
-    and [Scripts
-    Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm)
-    documentation pages.
+    [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm)    documentation pages.
 
 > **NOTE:** Currently all Relativity Scripts that can be associated with Trace
 actions require a Saved Search as one of the script inputs (Trace automatically
@@ -686,42 +669,41 @@ be sure they are configured properly.
 
 ![](media/fb23c341f2d2b27248d50d6180c4a201.png)
 
-Configuration
+**Configuration**
 
-Email Settings – Body Template: HTML body of the email (good place to use
+`Email Settings` – Body Template: HTML body of the email (good place to use
 tokens)
 
-Email Settings – Subject Template: subject of the email (good place to use
+`Email Settings` – Subject Template: subject of the email (good place to use
 tokens)
 
-Email Settings – Recipients: recipients of the email (supports to/cc/bcc)
+`Email Settings` – Recipients: recipients of the email (supports to/cc/bcc)
 
-Email Settings – From Address: Sender of the email
+`Email Settings` – From Address: Sender of the email
 
-Document Link / Document Text – allows to specify custom metadata about alerted
+`Document Link` / `Document Text` – allows to specify custom metadata about alerted
 documents including custom text and link to document in Relativity
 
-Sample Email generated by Trace
-
+> Sample Email generated by Trace
 ![](media/1de78345e5e05d118e47e14bdabbe7e5.png)
 
 #### Slack Action Type
 
 ![](media/0ac2a1861d1669e683f07a75768fc13e.png)
 
-Configuration
+**Configuration**
 
-Channel – Slack channel to use for alert
+`Channel` – Slack channel to use for alert
 
-Message Template – text of the alert (good place to use tokens)
+`Message Template` – text of the alert (good place to use tokens)
 
-User Name – sender of the Slack message
+`User Name` – sender of the Slack message
 
-Slack Base Url – what URL to use for Slack alert
+`Slack Base Url` – what URL to use for Slack alert
 
-Slack Web Hook Id – unique ID of the registered incoming webhook
+`Slack Web Hook Id` – unique ID of the registered incoming webhook
 
-Document Link / Document Text – metadata and link to alerted documents in
+`Document Link` / `Document Text` – metadata and link to alerted documents in
 Relativity
 
 > **NOTE:** You must register a webhook to specific channel in Slack that will be
@@ -729,8 +711,7 @@ allowed to post messages from Trace. Once registered, enter the ID of the
 registration into “Slack Web Hook Id” field. For more information visit:
 <https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack>
 
-Sample Slack message generated by Trace
-
+> Sample Slack message generated by Trace
 ![](media/cd2e4f2e817bf98137c500a0dffb5bab.png)
 
 #### Webhook Action Type (Preview)
@@ -742,17 +723,17 @@ documents.
 
 ![](media/4efb7e0f6f2fc5514e4b29efbf2c32d1.png)
 
-Configuration
+**Configuration**
 
-Json Payload – custom JSON string containing the payload of the API call (good
+`Json Payload` – custom JSON string containing the payload of the API call (good
 place to use tokens)
 
-Web Hook Base Api Url – URL of the Relativity instance hosting the API
+`Web Hook Base Api Url` – URL of the Relativity instance hosting the API
 
-Web Hook Api Function – relative path of API method to execute (used in
+`Web Hook Api Function` – relative path of API method to execute (used in
 combination with Base Api Url)
 
-Document Link / Document Text – metadata and link to alerted documents in
+`Document Link` / `Document Text` – metadata and link to alerted documents in
 Relativity
 
 > **NOTE:** POST is the only supported HTTP verb for Webhook
@@ -766,9 +747,9 @@ ClaimsPrincipal.Current.Identities
 Several useful SQL RelativityScripts are shipped by default with Trace
 application.
 
-| **Script Name**   | **Description**                                                                                                | **Inputs and Outputs**                                                                                                                                                                                                                    |
-|-------------------|----------------------------------------------------------------------------------------------------------------|-------|
-| Trace Date Parser | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | **INPUT:** Timezone<br>**INPUT:** Saved Search to execute on (passed from Rule)<br>**OUTPUT:** TraceHourOfDay Field Name<br>**OUTPUT:** TraceDayOfWeek Field Name <br><br>The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the “Timezone” Input.|
+| **Script Name**   | **Description**                                              | **Inputs and Outputs**                                       |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Trace Date Parser | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | **INPUT:** Timezone<br>**INPUT:** Saved Search to execute on (passed from Rule)<br>**OUTPUT:** TraceHourOfDay Field Name<br>**OUTPUT:** TraceDayOfWeek Field Name <br><br>The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the `Timezone` Input. |
 
 Trace Proactive Ingestion Framework
 ===================================
@@ -1197,14 +1178,13 @@ configuration for example.
 
 -   **Email From:** Email address to send the report from (the token
     \<\<EMAIL_FROM_INSTANCE_SETTING\>\> will be replaced with the configured
-    email address in Instance Setting: “EmailTo” under “kCura.Notification”
+    email address in Instance Setting: `EmailTo` under `kCura.Notification`
     section)
 
-**NOTE:** It is required to fill in the kCura.Notification instance settings
+> **NOTE:** It is required to fill in the kCura.Notification instance settings
 SMTPUserName, SMTPPassword, SMTPServer, SMTPPort and SMTPSSLisRequired with
 details of a functioning email delivery system in order to receive important
 notifications and alerts from Relativity and Trace.
-
 ![](media/f1d0a0d1fda68815093c96764927b0df.png)
 
 Errors and Logging
@@ -1217,14 +1197,11 @@ order to adjust the logging level use “Update Trace Log Level” option. In or
 to collect and display logging data use “Trace Logs” option. You can export the
 logs to a csv file with a mass operation “Export to File” at the bottom of the
 list.
-
 ![](media/8373e739309804e21560cad5d48100e8.png)
-
 ![](media/9c4b600add345fd8c2200544796ac735.png)
-
 ![](media/187cb16f17210c7e4105f4df34955731.png)
 
-**CAUTION:** Verbose levels (information/debug) of Logging framework can
+> **CAUTION:** Verbose levels (information/debug) of Logging framework can
 generate substantial load to default SQL configuration EDDSLogging database.
 Don’t forget to adjust the levels once low level information is no longer
 needed.
@@ -1243,21 +1220,15 @@ have been set up and configured properly.
 Reporting
 =========
 
-Trace:Reports tab serves as a place for reporting capabilities. We will be
+`Trace`->`Reports` tab serves as a place for reporting capabilities. We will be
 adding more reports to this section in the future.
 
 Trace Terms Report
 ------------------
-
-­­
-
 ![](media/316284f452e265e8db7521909b4c00b0.png)
 
-This report provides distinct counts on how many documents matched per Rule per
-Term. In other words, you can quickly see current state of your Rules and
-associated terms.
-
-**Note:** The report only works on Document date fields.
+This report provides distinct counts on how many documents matched per Rule per Term. In other words, you can quickly see current state of your Rules and associated terms.
+> **NOTE:** The report only works on Document date fields.
 
 Considerations
 ==============
@@ -1316,12 +1287,12 @@ General Infrastructure and Environment Considerations
 
 > **IMPORTANT**: Reach out to `trace@relativity.com` to adjust the Task `Settings` field 
 
-> The Recommended Run Interval for the **`Reporting Task`** is 300 seconds.
+> **NOTE:** The Recommended Run Interval for the **`Reporting Task`** is 300 seconds.
 
 Large Workspaces Infrastructure and Environment Considerations
 ---------------------------------------------
 
-> Use these additional recommendations to tune your environment for workspaces housing more than `10 Million` documents.
+> **NOTE:** Use these additional recommendations to tune your environment for workspaces housing more than `10 Million` documents.
 
 
 | Recommendation                                               | Explanation                                                  | Additional Notes                                             |
@@ -1488,15 +1459,15 @@ your library, reach out to `trace@relativity.com`.
 
    1.  Fill in preferred Workspace Destination Folder
 
-   2.  Import Source: Select the Load File Template in the “LoadFileTemplates”
+   2.  Import Source: Select the Load File Template in the `LoadFileTemplates`
        Folder that matches the Data Source type that will use this Integration
        Point Profile (example: Microsoft Exchange data source):
 
        ![](media/f13604a6dda3fdda62e890f80b332b1e.png)
 
-   3.  Change the Newline character to (ASCII: 010)
+   3.  Change the Newline character to (`ASCII: 010`)
 
-   4.  Keep all other settings as default and press “Next”
+   4.  Keep all other settings as default and press `Next`
 
 5. On Page 3, map all the fields you need from the Load File Template to your
    Workspace fields and configure Settings.
@@ -1504,22 +1475,21 @@ your library, reach out to `trace@relativity.com`.
    1.  Click the `Map Fields` button to map all fields in your Workspace that
        have identical names to fields from the Load File Template
 
-   2.  Next, double-click Control Number in the Source (far left) list and then
-       double-click Control Number in the Destination (far right) list to map
-       the Control Number field.
-
-   3.  Map any other unmapped fields in the Source list to the appropriate
+   2.  Next, double-click `Control Number` in the Source (far left) list and then
+       double-click Control Number (or custom Identifier Field) in the Destination (far right) list to map the Control Number field.
+   
+3.  Map any other unmapped fields in the Source list to the appropriate
        field in the Destination list. It is not required to map every field.
        For any missing fields in your Workspace, create them in the Workspace
-       Administration: Fields Tab. See Appendix B: Load File Fields for Emails
-       and Attachments for a list and associated definition for all Trace
+       Administration: Fields Tab. See [Appendix B: Load File Fields for Emails
+       and Attachments](#appendix-b-trace-document-extraction-fields) for a list and associated definition for all Trace
        fields.
-
-   4.  At the bottom, configure Settings to match the screenshot below
-
-       ![](media/2fb725ce41fc7828621e86298ecd03c4.png)
-
-   5.  Press “Save”
+   
+4.  At the bottom, configure Settings to match the screenshot below
+   
+    ![](media/2fb725ce41fc7828621e86298ecd03c4.png)
+   
+5.  Press “Save”
 
 > **NOTE:** You can edit the Integration Point Profile settings at any time,
 however existing completed Data Batches will not automatically re-import the
