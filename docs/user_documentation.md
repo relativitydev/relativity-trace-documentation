@@ -366,7 +366,7 @@ retry from the Document List and click the item in the dropdown and click â€œOkâ
 on the pop-up. If your browser settings prevent pop-ups please enable them for
 Relativity URLs.
 
-**WARNING:** The retry process can be very resource-intensive. Trace is
+> **WARNING:** The retry process can be very resource-intensive. Trace is
 optimized for ongoing and forward-looking use cases where documents are only
 searched once upon ingestion. Triggering a retry will treat affected documents
 as if they were brand new to Trace, clearing all previous Rule and Term
