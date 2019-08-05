@@ -1050,13 +1050,13 @@ console UI buttons) to help with state resolution
 Automatic Discovery of Monitored Individuals
 --------------------------------------------
 
-For Data Source that are not shipped with Trace natived, application allows for
+For Data Source that are not shipped with Trace natively, application allows for
 automatic discovery of monitored individuals based on EmailFrom, EmailTo,
 EmailCC and EmailBCC fields.
 
 ![](media/c09f85d2cbb0db2283737f16623d1048.png)
 
-Please, contact <trace@relativity.com> in order to enable this feature.
+Please, contact `trace@relativity.com` in order to enable this feature.
 
 Setup
 =====
@@ -1125,8 +1125,8 @@ configuration for example.
     email address in Instance Setting: `EmailTo` under `kCura.Notification`
     section)
 
-> **NOTE:** It is required to fill in the kCura.Notification instance settings
-SMTPUserName, SMTPPassword, SMTPServer, SMTPPort and SMTPSSLisRequired with
+> **NOTE:** It is required to fill in the `kCura.Notification` instance settings
+`SMTPUserName`, `SMTPPassword`, `SMTPServer`, `SMTPPort` and `SMTPSSLisRequired` with
 details of a functioning email delivery system in order to receive important
 notifications and alerts from Relativity and Trace.
 ![](media/f1d0a0d1fda68815093c96764927b0df.png)
