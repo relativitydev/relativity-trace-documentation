@@ -796,7 +796,7 @@ reach out to `trace@relativity.com`
 
 **Step 1: Create Integration Point Profile**
 
->   Refer to **Appendix C**
+>   Refer to **[Appendix C](#appendix-c-create-email-fields-map-integration-point-profile)**
 
 **Step 2: Adjust Office 365 permissions**
 
@@ -941,8 +941,8 @@ Extracted text and metadata for submitted Native files and all children
 documents expanded from containers/archives. Please, refer to **Appending B**
 for field descriptions.
 
-**Warning:** Containers with many children documents (and nested containers)
-could produce significant number of expanded items in Relativity.
+>  **WARNING:** Containers with many children documents (and nested containers)
+> could produce significant number of expanded items in Relativity.
 
 Monitored Individuals
 ---------------------
@@ -1425,10 +1425,9 @@ your library, reach out to `trace@relativity.com`.
 3.  Map any other unmapped fields in the Source list to the appropriate
        field in the Destination list. It is not required to map every field.
        For any missing fields in your Workspace, create them in the Workspace
-       Administration: Fields Tab. See [Appendix B: Load File Fields for Emails
-       and Attachments](#appendix-b-trace-document-extraction-fields) for a list and associated definition for all Trace
+       Administration: Fields Tab. See [Appendix B: Load File Fields for Emails and Attachments](#appendix-b-trace-document-extraction-fields) for a list and associated definition for all Trace
        fields.
-   
+    
 4.  At the bottom, configure Settings to match the screenshot below
    
     ![](media/2fb725ce41fc7828621e86298ecd03c4.png)
