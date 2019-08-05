@@ -1,13 +1,14 @@
 Relativity Trace Release Notes
 ================================
+- [11.2.9.2 (15 July 2019)](#11292-15-july-2019)
+- [11.2.6.1 (17 June 2019)](#11261-17-june-2019)
+- [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-[TOC]
+# 11.2.9.2 (15 July 2019)
 
-# Release Notes
+**Relativity Compatability**
 
-| **Trace Version** | **Release Date** | **Relativity Compatibility** |
-| ----------------- | ---------------- | ---------------------------- |
-| 11.2.9.2          | 15 July 2019     | \> 9.6.202.10                |
+- \> 9.6.202.10
 
 **Features**
 
@@ -57,3 +58,50 @@ Relativity Trace Release Notes
   default workspace fileshare base folder. You must adjust the Source Path
   settings for each impacted data source to be a relative folder path within
   the default file share configured for the workspace.
+
+# 11.2.6.1 (17 June 2019)
+
+> **DEPRECATION NOTE:** This version of Trace is **not supported** after `17 August 2019`
+
+**Relativity Compatability**
+
+- \> 9.6.202.10
+
+**Features**
+
+- Ability to overwrite GUID for Group Identifier field - some instances have
+  non-standard Group Identifier field
+
+**Enhancements**
+
+- BIST now includes testing for email message with large number of email
+  addresses (more than what OI can support at the moment)
+
+**Defect Fixes**
+
+- Data Extraction will include full email header information. Large header
+  information was previous truncated due to OI bug
+  
+  -  > NOTE: Relativity Viewer will still display truncated header
+    information, however relativity fields (EmailTo, EmailFrom,
+    EmailCC, EmailBCC will have full non-truncated data)
+- App Installation now will fail properly if expected Group Identifier fields is
+  not present in the workspace
+
+**Deprecated**
+
+- Microsoft Office 365 data source (based on GraphAPI) is deprecated, use
+  Microsoft Exchange data source instead
+
+**Upgrade Considerations**
+
+- In order to enable BIST functionality on a workspace you will need to enable
+  it via *TraceWorkspaceSettings* instance setting
+- Data Sources that requires source folder now required to be within the
+  default workspace fileshare base folder. You must adjust the Source Path
+  settings for each impacted data source to be a relative folder path within
+  the default file share configured for the workspace.
+
+# 11.2.4.4 (10 June 2019) - DEPRECATED
+
+> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
