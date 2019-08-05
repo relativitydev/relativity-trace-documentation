@@ -1076,6 +1076,8 @@ Tasks are ongoing background processes that are triggered by agents and run on
 the agent servers. They each have Run Intervals and configurations can be
 adjusted at a workspace level.
 
+Each task is designed to be auto-recoverable and self-healing. For example, if there are temporary network connection issues that prevet `Data Retrieval` task from retrieving data, Trace will keep trying until network issues are resoved. No manual intevention is needed.
+
 -   **Indexing:** Responsible for indexing data needed for searching
 
 -   **Ingestion:** Responsible for triggering import of the Data Batches into
