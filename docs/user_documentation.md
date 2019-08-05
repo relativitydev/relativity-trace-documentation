@@ -957,12 +957,12 @@ by Relativity Trace. Generally a Relativity Trace license will specify a number
 of Monitored Individuals available and the number of data sources they can be
 used on.
 
-**NOTE:** The only field on Monitored Individual currently used in application
-logic is Identifier. All other fields are simply for display purposes. Each
-Monitored Individual must have a unique value in the Identifier field. Typically
-the Identifier is the employee’s email address. Identifier is **case-sensitive**
-(e.g. <Test@test.com> and <test@test.com> are treated as two different email
-addresses / identifiers)
+>  **NOTE:** The only field on Monitored Individual currently used in application
+> logic is `Identifier` field. All other fields are simply for display purposes. Each
+> Monitored Individual must have a unique value in the Identifier field. Typically
+> the Identifier is the employee’s email address. Identifier is **case-sensitive**
+> (e.g. `Test@test.com` and `test@test.com` are treated as two different email
+> addresses / identifiers)
 
 Data Transformations
 --------------------
