@@ -1,6 +1,6 @@
 # Relativity Trace Documentation
 
-Version: Latest (9.6.202.10)
+Version: Upcoming (Trace Release 101)
 
 Relativity Trace User and Technical documentation
 
