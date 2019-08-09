@@ -941,8 +941,10 @@ Extracted text and metadata for submitted Native files and all children
 documents expanded from containers/archives. Please, refer to **Appending B**
 for field descriptions.
 
->  **WARNING:** Containers with many children documents (and nested containers)
-> could produce significant number of expanded items in Relativity.
+
+> **NOTE:** By default re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents if they are already in Relativity workspace. You can use [Deduplication](#deduplication-data-transformation) data transformation to only bring in new documents into the system.
+
+>  **WARNING:** Containers with many children documents (and nested containers) could produce significant number of expanded items in Relativity.
 
 Monitored Individuals
 ---------------------
