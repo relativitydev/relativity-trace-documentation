@@ -942,7 +942,7 @@ documents expanded from containers/archives. Please, refer to **Appending B**
 for field descriptions.
 
 
-> **NOTE:** By default re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents if they are already in Relativity workspace. You can use [Deduplication](#deduplication-data-transformation) data transformation to only bring in new documents into the system.
+> **NOTE:** By default re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents (old children will be dropped off the family group) if they are already in Relativity workspace. You can use [Deduplication](#deduplication-data-transformation) data transformation to only bring in new documents into the system.
 
 >  **WARNING:** Containers with many children documents (and nested containers) could produce significant number of expanded items in Relativity.
 
