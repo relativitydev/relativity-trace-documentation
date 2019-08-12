@@ -1,5 +1,22 @@
 # Relativity Trace Proactive Ingestion Framework Documentation
 
+- [Overview](#overview)
+- [Glossary](#glossary)
+- [Prerequisites: Load File and Integration Point Profile](#prerequisites--load-file-and-integration-point-profile)
+- [Data Batch Overview](#data-batch-overview)
+- [API Usage](#api-usage)
+- [Data Batch creation (Quick Start)](#data-batch-creation--quick-start-)
+  * [Data Batch Statuses](#data-batch-statuses)
+  * [Create Data Batch](#create-data-batch)
+  * [Update Data Batch](#update-data-batch)
+- [Workflow Recommendations](#workflow-recommendations)
+  * [Security](#security)
+  * [Load File Specifications](#load-file-specifications)
+    + [Text Fields](#text-fields)
+  * [Field Mappings stored in Relativity Integration Point Profile](#field-mappings-stored-in-relativity-integration-point-profile)
+  * [Data Batches](#data-batches)
+  * [Error Handling](#error-handling)
+
 Overview
 ========
 
@@ -358,26 +375,23 @@ Field Mappings stored in Relativity Integration Point Profile
 The following fields **must** be part of the Load File and must be mapped to
 appropriate Relativity fields:
 
-1.  *Trace Monitored Individuals* – list of monitored people associated with
+1.  `Trace Monitored Individuals` – list of monitored people associated with
     each record
-
-2.  *Trace Data Batch* – name of the batch
-
-3.  *Trace Has Errors* – true/false. True, if particular document has errors
+2.  `Trace Data Batch` – name of the batch
+3.  `Trace Has Errors` – true/false. True, if particular document has errors
     (e.g. audio file too big to transcribe, etc…)
-
-4.  *Trace Error Details* – details of the individual item’s error (stack trace,
+4.  `Trace Error Details` – details of the individual item’s error (stack trace,
     retry information, etc)
-
-5.  *Trace Checkout* – must be set to empty string. This ensures Trace can
+5.  `Trace Checkout` – must be set to empty string. This ensures Trace can
     restart indexing and term searching for particular item in case of changes
     to an existing document (overlay scenario)
-
-6.  *Trace Rules* – must be set to empty string. This ensures that any Rule tags
+6.  `Trace Rules` – must be set to empty string. This ensures that any Rule tags
     are cleared.
-
-7.  *Trace Terms* - must be set to empty string. This ensures that any Term tags
+7.  `Trace Terms` - must be set to empty string. This ensures that any Term tags
     are cleared.
+8.  `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
+9.  `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
+10.  `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
 
 ![](media/7beaeffb89e2aef4285696f44c7ff423.png)
 
