@@ -375,23 +375,32 @@ Field Mappings stored in Relativity Integration Point Profile
 The following fields **must** be part of the Load File and must be mapped to
 appropriate Relativity fields:
 
-1.  `Trace Monitored Individuals` – list of monitored people associated with
+**Required (absolute musts):**
+
+1.  `Object Type Identifier` - this is usually called a `Control Number`
+2.  `Trace Monitored Individuals` – list of monitored people associated with
     each record
-2.  `Trace Data Batch` – name of the batch
-3.  `Trace Has Errors` – true/false. True, if particular document has errors
-    (e.g. audio file too big to transcribe, etc…)
-4.  `Trace Error Details` – details of the individual item’s error (stack trace,
-    retry information, etc)
-5.  `Trace Checkout` – must be set to empty string. This ensures Trace can
-    restart indexing and term searching for particular item in case of changes
-    to an existing document (overlay scenario)
-6.  `Trace Rules` – must be set to empty string. This ensures that any Rule tags
-    are cleared.
-7.  `Trace Terms` - must be set to empty string. This ensures that any Term tags
-    are cleared.
-8.  `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
-9.  `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
-10.  `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
+3.  `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
+4.  `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
+5.  `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
+
+**Recommended:**
+
+1. `Trace Data Batch` – name of the batch
+2. `Trace Has Errors` – true/false. True, if particular document has errors
+   (e.g. audio file too big to transcribe, etc…)
+3. `Trace Error Details` – details of the individual item’s error (stack trace,
+   retry information, etc)
+4. `Trace Checkout` – must be set to empty string. This ensures Trace can
+   restart indexing and term searching for particular item in case of changes
+   to an existing document (overlay scenario)
+5. `Trace Rules` – must be set to empty string. This ensures that any Rule tags
+   are cleared.
+6. `Trace Rule Terms` – must be set to empty string. This ensures that any Rule Terms tags
+   are cleared.
+7. `Trace Terms` - must be set to empty string. This ensures that any Term tags
+   are cleared.
+8. `Trace Record Origin Identifier` - this should be an id of a record from it's data origin system. Once included, Trace will track this value across all Trace actions on a particular record. This helps to reconstruct audit trail for a particular record.
 
 ![](media/7beaeffb89e2aef4285696f44c7ff423.png)
 
