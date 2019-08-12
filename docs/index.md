@@ -9,3 +9,5 @@ Relativity Trace Documentation
 
 [Relativity Trace Demo Guide](https://relativitydev.github.io/relativity-trace-documentation/demo_guide)
 
+[Relativity Trace Proactive Ingestion Framework Documentation](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
+
