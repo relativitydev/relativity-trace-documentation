@@ -41,7 +41,7 @@ Relativity Trace User Documentation
   * [Tasks](#tasks)
   * [Alerts and Notifications](#alerts-and-notifications)
   * [Errors and Logging](#errors-and-logging)
-- [Built-In Self-Test (BIST)](#built-in-self-test--bist-)
+- [Built-In Self-Test (BIST)](#built-in-self-test-bist)
 - [Reporting](#reporting)
   * [Trace Terms Report](#trace-terms-report)
 - [Considerations](#considerations)
