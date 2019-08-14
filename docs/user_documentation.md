@@ -57,9 +57,9 @@ Relativity Trace User Documentation
 Release Notes
 ================================
 
-| **Trace Version** | **Release Date** |**Relativity Compatibility** |
-|-------------------|------------------|-----------------------------|
-| 11.2.9.2          | 15 July 2019     | \> 9.6.202.10               |
+| **Trace Version** | **Release Date** | **Relativity Compatibility** |
+| ----------------- | ---------------- | ---------------------------- |
+| 11.2.10.1         | 12 August 2019   | \> 9.6.202.10                |
 
 More informaion is avaiable in [Relativity Trace Release Notes](https://relativitydev.github.io/relativity-trace-documentation/release_notes)
 
