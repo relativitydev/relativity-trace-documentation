@@ -8,7 +8,7 @@ Relativity Trace Release Notes
 
 **Relativity Compatability**
 
-- \> 9.6.202.10
+- \> 9.7.202.10
 
 **Features**
 
