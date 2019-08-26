@@ -816,8 +816,8 @@ reach out to `trace@relativity.com`
     ![](media/aff48bb585413bf91fa03d1649933aab.png)
     
 5.  (Optional) Adjust password expiration permission for the account used for Trace
-
-   - https://docs.microsoft.com/en-us/office365/admin/add-users/set-password-to-never-expire?view=o365-worldwide#set-the-password-expiration-policy-for-individual-users
+   
+	1.  https://docs.microsoft.com/en-us/office365/admin/add-users/set-password-to-never-expire?view=o365-worldwide#set-the-password-expiration-policy-for-individual-users
 
 **Step 3: Create a Microsoft Exchange Data Source**
 
