@@ -5,14 +5,15 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 
 This page contains the following information:
 
-- [Pricing parameters](#pricing-parameters)
+- [Pricing parameters for Trace](#pricing-parameters-for-trace)
 - [Workspace limitations](#workspace-limitations)
-- [Use Integration Points to push data into review workspace](#use-integration-points-to-push-data-into-review-workspace)
+- [Pricing to add eDiscovery](#pricing-to-add-ediscovery)
 
 
 
-Pricing parameters
-==================
+
+Pricing parameters for Trace
+============================
 
 Clients buy packages of Monitored Individuals
 Each subscription includes a fixed amount of Trace GBs and Relativity Users
@@ -41,8 +42,8 @@ Workspace Limitations
 
 
 
-Use Integration Points to push data into review workspace
-=========================================================
+Pricing to add eDiscovery
+=========================
 
 
 
