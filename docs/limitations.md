@@ -1,5 +1,14 @@
-Relativity Trace Demo Guide
+Relativity Trace Workspace
 ===========================
+
+When Relativity Trace is installed into a workspace, that workspace is equipped with Relativity functionality you need to monitor 
+
+limited in its functionality 
+
+because you don't need all the other stuff
+
+application converts the workspace into a more streamlined version for performing early case assessment on processed data. This limited workspace is equipped with Relativity functionality you need for early case assessment while providing more cost-effective pricing for storing data that may not be actively used in a case.
+
   * [Demo Environment and Login Information](#demo-environment-and-login-information)
   * [Relativity Trace: An Overview of Relativity for Compliance](#relativity-trace--an-overview-of-relativity-for-compliance)
   * [Goals of the Demo](#goals-of-the-demo)
