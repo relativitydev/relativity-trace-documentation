@@ -1,11 +1,16 @@
 Relativity Trace Workspace
 ===========================
 
-When Relativity Trace is installed into a workspace, that workspace is equipped with Relativity functionality you need to monitor 
+When Relativity Trace is installed into a workspace, that workspace is limited in Relativity functionality to provide for a streamlined approach to monitor all forms of communication (audio, email, and chat plus their attachments). This allows for a more cost-effective pricing for Trace by providing only the funciatoinly you need for proactive compliance, monitoring, and surveillance.
 
-limited in its functionality 
+eliminating the need to bill for 
 
-because you don't need all the other stuff
+and blah other Rleativity fucntaionlt that may not be actively used in matters involving proactive compliance, monitoring, and surveillance.
+
+BLH that may not be actively used in a 
+
+
+Trace’s is a Compliance product on top of Relativity used to monitor all forms of communication (audio, email, and chat plus their attachments) with an extensible engine that gets better at filtering out false positives over time. Trace can monitor and pull data from 40+ data origins. In addition, Trace can automatically extract text and meta-data from monitored content, 900+ file types are supported.
 
 application converts the workspace into a more streamlined version for performing early case assessment on processed data. This limited workspace is equipped with Relativity functionality you need for early case assessment while providing more cost-effective pricing for storing data that may not be actively used in a case.
 
