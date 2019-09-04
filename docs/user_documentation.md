@@ -1083,7 +1083,8 @@ adjusted at a workspace level.
 
 Each task is designed to be auto-recoverable and self-healing. For example, if there are temporary network connection issues that prevent `Data Retrieval` task from retrieving data, Trace will keep trying until network issues are resolved. No manual intevention is needed.
 
--   **Indexing:** Responsible for indexing data needed for searching
+-   **Data Retrieval:** Responsible for pulling data for Data Sources and
+    creation of Data Batches
 
 -   **Ingestion:** Responsible for triggering import of the Data Batches into
     Relativity (part of Proactive Ingestion Framework). Any Data Transformations
@@ -1092,14 +1093,13 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 -   **Ingestion Status:** Responsible for updating statuses of the Data Batches
     (part of Proactive Ingestion Framework)
 
--   **Rule Evaluation:** Responsible for evaluating configured Rules within the
-    workspace
+-   **Indexing:** Responsible for indexing data needed for searching
 
 -   **Term Searching:** Responsible for executing searching of the Terms for
     Rule evaluations
 
--   **Data Retrieval:** Responsible for pulling data for Data Sources and
-    creation of Data Batches
+-   **Rule Evaluation:** Responsible for evaluating configured Rules within the
+    workspace
 
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
