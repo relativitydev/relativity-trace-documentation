@@ -3,7 +3,7 @@ Relativity Trace Workspace
 
 When Relativity Trace is installed into a workspace, that workspace is limited in Relativity functionality to provide for a streamlined approach to monitor all forms of communication (audio, email, and chat plus their attachments). This allows for a more cost-effective pricing for Trace by providing only the functionality you need for proactive compliance monitoring and surveillance.
 
-This page contains the following information:
+`This page contains the following information:`
 
 - [Usage limitations](#usage-limitations)
 - Pushing data to another workspace when you need to review
