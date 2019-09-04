@@ -5,13 +5,16 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 
 This page contains the following information:
 
-Usage limitations
+* [Usage limitations](#usage-limitations)
 Pushing data to another workspace when you need to review
 
 
 
 ![](media/limitations_chart.png)
 
+
+Usage Limitations
+=================
 
 application converts the workspace into a more streamlined version for performing early case assessment on processed data. This limited workspace is equipped with Relativity functionality you need for early case assessment while providing more cost-effective pricing for storing data that may not be actively used in a case.
 
