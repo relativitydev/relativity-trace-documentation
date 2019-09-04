@@ -5,8 +5,8 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 
 This page contains the following information:
 
-* [Usage limitations](#usage-limitations)
-Pushing data to another workspace when you need to review
+- [Usage limitations](#usage-limitations)
+- Pushing data to another workspace when you need to review
 
 
 
