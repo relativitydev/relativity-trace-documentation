@@ -6,8 +6,8 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 This page contains the following information:
 
 - [Pricing parameters](#pricing-parameters)
-- [Workspace limitations](#Workspace-limitations)
-- [Use Integration Points to push data into review workspace](#Use-Integration-Points-to-push-data-into-review-workspace)
+- [Workspace limitations](#workspace-limitations)
+- [Use Integration Points to push data into review workspace](#use-integration-points-to-push-data-into-review-workspace)
 
 
 
