@@ -12,22 +12,21 @@ This page contains the following information:
 
 
 
-
 Pricing parameters for Trace
 ============================
 
-Clients buy packages of Monitored Individuals. Each subscription includes a fixed amount of Trace GBs and Relativity Users
+Clients buy packages of Monitored Individuals (MI). Each subscription includes a fixed amount of Trace GBs and Relativity Users.
 
 There are 2 SKUs:
 * 30 Day Retention (includes 3 Trace GBs per MI)
 * 365 Day Retention (includes 40 GBs per MI)
 
-We do not enforce any retention policy; the customer can configure retention policies themselves based on whatever they want. 
-We only cap the data volumes in the software
+Relativity does not enforce any retention policy; the customer can configure retention policies themselves based on any factors. 
+Relativity only caps the data volumes in the software.
 
-The Trace GBs are separate: you cannot use an existing Relativity/RelativityOne subscription.
+The Trace GBs are separate: customers cannot use an existing Relativity/RelativityOne subscription.
 
-Relativity Users are fungible across eDiscovery and Trace.
+Relativity Users are fungible across eDiscovery and Trace workspaces.
 
 There is no on-prem SKU; customers would buy the 30 Day Retention SKU and not use the included GBs.
 
@@ -64,15 +63,15 @@ Using the Trace workspace allows you to focus on the alerts generated from the M
 Pricing to add eDiscovery
 =========================
 
-Too add eDiscovery, customer must buy a package of eDiscovery GBs at standard prices. Customer can add additional users at eDiscovery rates.
+Too add eDiscovery, a customer must buy a package of eDiscovery GBs at standard prices. Customer can add additional users at eDiscovery rates.
 
-Example
-Customer has existing license of 1000 Trace MIs with a 30 day retention (includes 3 Trace TBs and 50 Relativity Users)
-Customer licenses 5 TBs for eDiscovery at eDiscovery rates
-Customer now has:
-1000 MIs
-5 RelativityOne TBs for RelativityOne Workspaces
-3 Trace TBs for Trace Workspaces
-50 Relativity Users 
+Example:
+* Customer has existing license of 1000 Trace MIs with a 30 day retention (includes 3 Trace TBs and 50 Relativity Users)
+* Customer licenses 5 TBs for eDiscovery at eDiscovery rates
+* Customer now has:
+  * 1000 MIs
+  * 5 RelativityOne TBs for RelativityOne Workspaces
+  * 3 Trace TBs for Trace Workspaces
+  * 50 Relativity Users 
 
 
