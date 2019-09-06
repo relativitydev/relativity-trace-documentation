@@ -7,6 +7,7 @@ This page contains the following information:
 
 - [Pricing parameters for Trace](#pricing-parameters-for-trace)
 - [Workspace limitations](#workspace-limitations)
+- [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
 - [Pricing to add eDiscovery](#pricing-to-add-ediscovery)
 
 
@@ -36,14 +37,30 @@ There is no on-prem SKU; customers would buy the 30 Day Retention SKU and not us
 Workspace Limitations
 =====================
 
+Trace SKUs do not include eDiscovery functionality (Invariant, Processing, Productions, non-Trace ingestion).
+
 ![](media/limitations_chart.png)
 
 
 
+Basic Trace workspace usage workflow
+====================================
+Using the repository workspace allows you to focus on your data set, cut through noise, gain insights sooner, and reduce your overall costs.
 
 
 Pricing to add eDiscovery
 =========================
+
+Too add eDiscovery, customer must buy a package of eDiscovery GBs at standard prices. Customer can add additional users at eDiscovery rates.
+
+Example
+Customer has existing license of 1000 Trace MIs with a 30 day retention (includes 3 Trace TBs and 50 Relativity Users)
+Customer licenses 5 TBs for eDiscovery at eDiscovery rates
+Customer now has:
+1000 MIs
+5 RelativityOne TBs for RelativityOne Workspaces
+3 Trace TBs for Trace Workspaces
+50 Relativity Users 
 
 
 
