@@ -63,7 +63,7 @@ Using the Trace workspace allows you to focus on the alerts generated from the M
 Pricing to add eDiscovery
 =========================
 
-Too add eDiscovery, a customer must buy a package of eDiscovery GBs at standard prices. Customer can add additional users at eDiscovery rates.
+If you need to shift from compliance monitoring into eDiscovery, you can add eDiscovery to your Trace bundle. Too add eDiscovery, a customer must buy a package of eDiscovery GBs at standard prices. Customer can add additional users at eDiscovery rates.
 
 Example:
 * Customer has existing license of 1000 Trace MIs with a 30 day retention (includes 3 Trace TBs and 50 Relativity Users)
