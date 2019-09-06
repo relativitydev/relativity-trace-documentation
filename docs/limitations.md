@@ -55,7 +55,7 @@ Trace SKUs do not include eDiscovery functionality:
 
 Basic Trace workspace usage workflow
 ====================================
-Using the Trace workspace allows you to focus on the alerts generated from the Monitored Individuals in your data sources.
+Using the Trace workspace allows you to focus on the alerts generated from the Monitored Individuals in your data sources. After Trace ingests data from Monitored Individuals and pushes alerts to the Document object, reviewers can begin reviewing the alerts for true and false positives. You can then leverage Relativity Analytics to conduct a prioritized review process and 
 
 
 
