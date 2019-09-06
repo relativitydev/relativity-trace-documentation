@@ -6,7 +6,7 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 This page contains the following information:
 
 - [Pricing parameters for Trace](#pricing-parameters-for-trace)
-- [Workspace limitations](#workspace-limitations)
+- [Workspace capabilities and limitations](#workspace-capabilities-and-limitations)
 - [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
 - [Pricing to add eDiscovery](#pricing-to-add-ediscovery)
 
@@ -34,10 +34,24 @@ There is no on-prem SKU; customers would buy the 30 Day Retention SKU and not us
 
 
 
-Workspace Limitations
-=====================
+Workspace Capabilities and Limitations
+======================================
 
-Trace SKUs do not include eDiscovery functionality (Invariant, Processing, Productions, non-Trace ingestion).
+Trace SKUs include the following functionanlity:
+* Trace-based Ingestion
+* Analytics 
+  1. Conceptual index
+  2. Active Learning
+  3. Structured Analytics
+* Platform + Review
+
+Trace SKUs do not include eDiscovery functionality:
+* Non-Trace Ingestion
+* Invariant
+* Processing
+* Productions
+
+
 
 ![](media/limitations_chart.png)
 
