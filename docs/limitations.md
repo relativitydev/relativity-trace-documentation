@@ -32,7 +32,7 @@ There is no on-prem SKU; customers would buy the 30 Day Retention SKU and not us
 
 
 
-Workspace Capabilities and Limitations
+Workspace capabilities and limitations
 ======================================
 
 Trace SKUs include the following functionality:
