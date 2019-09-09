@@ -22,19 +22,24 @@ Trace SKUs include the following functionality:
   3. Structured Analytics
 * Platform + Review
 
-Trace SKUs do not include eDiscovery functionality:
-* Non-Trace Ingestion
-* Invariant
-* Processing
-* Productions
 
-![](media/limitations_chart.png)
+
+![](media/trace_workspace_capabilities.png)
 
 
 
 Workspace limitations
 =====================
 
+
+Trace SKUs do not include eDiscovery functionality:
+* Non-Trace Ingestion
+* Invariant
+* Processing
+* Productions
+
+
+![](media/trace_workspace_limitations.png)
 
 
 Basic Trace workspace usage workflow
