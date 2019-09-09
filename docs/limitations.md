@@ -5,35 +5,17 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 
 This page contains the following information:
 
-- [Pricing parameters for Trace](#pricing-parameters-for-trace)
-- [Workspace capabilities and limitations](#workspace-capabilities-and-limitations)
+- [Workspace capabilities](#workspace-capabilities)
+- [Workspace limitations](#workspace-limitations)
 - [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
 - [Pricing to add eDiscovery](#pricing-to-add-ediscovery)
 
 
 
-Pricing parameters for Trace
-============================
-
-Clients buy packages of Monitored Individuals (MI). Each subscription includes a fixed amount of Trace GBs and Relativity Users.
-
-There are 2 SKUs:
-* 30 Day Retention (includes 3 Trace GBs per MI)
-* 365 Day Retention (includes 40 GBs per MI)
-
-Relativity does not enforce any retention policy; the customer can configure retention policies themselves based on any factors. 
-Relativity only caps the data volumes in the software.
-
-The Trace GBs are separate: customers cannot use an existing Relativity/RelativityOne subscription.
-
-Relativity Users are fungible across eDiscovery and Trace workspaces.
-
-There is no on-prem SKU; customers would buy the 30 Day Retention SKU and not use the included GBs.
 
 
-
-Workspace capabilities and limitations
-======================================
+Workspace capabilities
+======================
 
 Trace SKUs include the following functionality:
 * Trace-based Ingestion
@@ -50,6 +32,11 @@ Trace SKUs do not include eDiscovery functionality:
 * Productions
 
 ![](media/limitations_chart.png)
+
+
+
+Workspace limitations
+=====================
 
 
 
