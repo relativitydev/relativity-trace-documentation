@@ -5,16 +5,17 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 
 This page contains the following information:
 
-- [Workspace capabilities](#workspace-capabilities)
-- [Workspace restrictions](#workspace-restrictions)
+- [Trace workspace capabilities](#trace-workspace-capabilities)
+- [Traace workspace restrictions](#trace-workspace-restrictions)
 - [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
 
 
 
-Workspace capabilities
-======================
+Trace workspace capabilities
+============================
 
-Trace SKUs include the following functionality:
+The following functionalities can be enabled in a Trace workspace:
+
 * Trace-based Ingestion
 * Analytics 
   1. Conceptual index
@@ -27,11 +28,10 @@ Trace SKUs include the following functionality:
 ![](media/trace_workspace_capabilities.png)
 
 
+Trace workspace restrictions
+============================
 
-Workspace restrictions
-=====================
-
-Trace SKUs do not include eDiscovery functionality:
+The following functionalities are restricted from being enabled in a Trace workspace:
 
 * Non-Trace Ingestion
 * Invariant
@@ -47,10 +47,7 @@ Trace SKUs do not include eDiscovery functionality:
 ![](media/trace_workspace_restrictions.png)
 
 
-Client is responsible for hiding restricted features from its users. Client cannot 
-
-
-Restricted Features include, but are not limited to, Relativity’s full stack eDiscovery product, Relativity Legal Hold, Relativity Collect and any reduced data count features. Any access to, use of, or attempt to enable, any Restricted Feature will be considered a violation of this Agreement and Relativity may charge Client its then applicable standard fees for the Restricted Feature, without prejudice to any of Relativity’s other remedies under this Agreement. If Client desires to access or use any Restricted Feature, the parties must sign and deliver a formal written amendment or new license agreement with mutually agreed upon applicable provisions and fees…
+Client cannot download applications that would enable any restricted features, or enable data to be moved to a respository workspace or cold storage. Client is responsible for hiding restricted features from its users.
 
 
 Basic Trace workspace usage workflow
