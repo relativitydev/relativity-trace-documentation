@@ -14,7 +14,7 @@ This page contains the following information:
 Trace workspace capabilities
 ============================
 
-The following functionalities can be enabled in a Trace workspace:
+The following functionalities can be used in a Trace workspace:
 
 * Trace-based Ingestion
 * Analytics 
@@ -31,7 +31,7 @@ The following functionalities can be enabled in a Trace workspace:
 Trace workspace restrictions
 ============================
 
-The following functionalities are restricted from being enabled in a Trace workspace:
+The following functionalities are restricted from use in a Trace workspace:
 
 * Non-Trace Ingestion
 * Invariant
