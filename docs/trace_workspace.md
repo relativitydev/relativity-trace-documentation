@@ -6,7 +6,7 @@ When Relativity Trace is installed into a workspace, that workspace is limited i
 This page contains the following information:
 
 - [Trace workspace capabilities](#trace-workspace-capabilities)
-- [Traace workspace restrictions](#trace-workspace-restrictions)
+- [Trace workspace restrictions](#trace-workspace-restrictions)
 - [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
 
 
@@ -17,11 +17,11 @@ Trace workspace capabilities
 The following functionalities can be used in a Trace workspace:
 
 * [Trace-based Ingestion](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
-* Analytics 
-  1. Conceptual index
-  2. Active Learning
-  3. Structured Analytics
-* Platform + Review
+* [Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Analytics.htm)
+  1. [Conceptual index](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Analytics_indexes.htm)
+  2. [Active Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Active_Learning/Active_Learning.htm)
+  3. [Structured Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
+* [Platform + Review](https://help.relativity.com/RelativityOne/Content/Site_Resources/Review.htm)
 
 
 
@@ -35,10 +35,10 @@ The following functionalities are restricted from use in a Trace workspace:
 
 * Non-Trace Ingestion
 * Invariant
-* Processing
-* Productions
-* Sample-Based Learning
-* Legal Hold
+* [Processing](https://help.relativity.com/RelativityOne/Content/Relativity/Processing/Processing_in_Relativity.htm)
+* [Productions](https://help.relativity.com/RelativityOne/Content/Site_Resources/Production.htm)
+* [Sample-Based Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Assisted_Review/Assisted_Review_Workflow.htm)
+* [Legal Hold](https://help.relativity.com/RelativityOne/Content/Relativity_Legal_Hold/Relativity_Legal_Hold.htm)
 * Relativity Collect
 * Reduced data count features
 
