@@ -31,12 +31,13 @@ Trace SKUs include the following functionality:
 Workspace restrictions
 =====================
 
-
 Trace SKUs do not include eDiscovery functionality:
+
 * Non-Trace Ingestion
 * Invariant
 * Processing
 * Productions
+* Sample-Based Learning
 * Legal Hold
 * Relativity Collect
 * Reduced data count features
@@ -46,7 +47,7 @@ Trace SKUs do not include eDiscovery functionality:
 ![](media/trace_workspace_restrictions.png)
 
 
-Client is responsible for hiding restricted features from its users.
+Client is responsible for hiding restricted features from its users. Client cannot 
 
 
 Restricted Features include, but are not limited to, Relativity’s full stack eDiscovery product, Relativity Legal Hold, Relativity Collect and any reduced data count features. Any access to, use of, or attempt to enable, any Restricted Feature will be considered a violation of this Agreement and Relativity may charge Client its then applicable standard fees for the Restricted Feature, without prejudice to any of Relativity’s other remedies under this Agreement. If Client desires to access or use any Restricted Feature, the parties must sign and deliver a formal written amendment or new license agreement with mutually agreed upon applicable provisions and fees…
