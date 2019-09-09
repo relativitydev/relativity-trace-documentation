@@ -43,7 +43,7 @@ The following functionalities are restricted from use in a Trace workspace:
 * [Productions](https://help.relativity.com/RelativityOne/Content/Site_Resources/Production.htm)
   * [Imaging](https://help.relativity.com/RelativityOne/Content/Relativity/Imaging/Imaging.htm)
   * [Redaction](https://help.relativity.com/RelativityOne/Content/Site_Resources/Supporting_applications_R1.htm#Redactions)
-* [OCR](https://help.relativity.com/RelativityOne/Content/Relativity/OCR/OCR.htm)
+  * [OCR](https://help.relativity.com/RelativityOne/Content/Relativity/OCR/OCR.htm)
 * [Legal Hold](https://help.relativity.com/RelativityOne/Content/Relativity_Legal_Hold/Relativity_Legal_Hold.htm)
 * Relativity Collect
 * Reduced data count features
