@@ -16,7 +16,7 @@ Trace workspace capabilities
 
 The following functionalities can be used in a Trace workspace:
 
-* Trace-based Ingestion
+* [Trace-based Ingestion](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
 * Analytics 
   1. Conceptual index
   2. Active Learning
