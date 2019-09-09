@@ -34,14 +34,19 @@ Trace workspace restrictions
 The following functionalities are restricted from use in a Trace workspace:
 
 * Non-Trace Ingestion
-* Invariant
+* Relativity Desktop Client
+* Relativity Integration Points (except within Trace application)
+* ECA
 * [Processing](https://help.relativity.com/RelativityOne/Content/Relativity/Processing/Processing_in_Relativity.htm)
-* [Productions](https://help.relativity.com/RelativityOne/Content/Site_Resources/Production.htm)
+* Invariant
 * [Sample-Based Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Assisted_Review/Assisted_Review_Workflow.htm)
+* [Productions](https://help.relativity.com/RelativityOne/Content/Site_Resources/Production.htm)
+* Imaging
+* Redaction
+* OCR
 * [Legal Hold](https://help.relativity.com/RelativityOne/Content/Relativity_Legal_Hold/Relativity_Legal_Hold.htm)
 * Relativity Collect
 * Reduced data count features
-
 
 
 ![](media/trace_workspace_restrictions.png)
