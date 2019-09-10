@@ -1,7 +1,7 @@
 Relativity Trace Workspace
 ===========================
 
-When Relativity Trace is installed into a workspace, that workspace is limited in Relativity functionality to provide for a streamlined approach to monitor all forms of communication (audio, email, and chat plus their attachments). This allows for a more cost-effective pricing for Trace by providing only the functionality you need for proactive compliance monitoring and surveillance.
+When Relativity Trace is installed into a workspace, that workspace is limited in Relativity features to provide for a streamlined approach to monitor all forms of communication (audio, email, and chat plus their attachments). This allows for a more cost-effective pricing for Trace by providing only the features you need for proactive compliance monitoring and surveillance.
 
 This page contains the following information:
 
@@ -14,7 +14,7 @@ This page contains the following information:
 Trace workspace capabilities
 ============================
 
-The following functionalities can be used in a Trace workspace:
+The following Relativity features can be used in a Trace workspace:
 
 * [Trace-based Ingestion](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
 * [Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Analytics.htm)
@@ -23,7 +23,6 @@ The following functionalities can be used in a Trace workspace:
   3. [Structured Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
 * [Platform + Review](https://help.relativity.com/RelativityOne/Content/Site_Resources/Review.htm)
 * Export
-  * [Relativity Desktop Client](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm)
   * [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm)
 
 
@@ -33,7 +32,7 @@ The following functionalities can be used in a Trace workspace:
 Trace workspace restrictions
 ============================
 
-The following functionalities are restricted from use in a Trace workspace:
+The following Relativity features are restricted from use in a Trace workspace:
 
 * Non-Trace Ingestion to Document Object
   * [Relativity Desktop Client](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm)
@@ -48,8 +47,8 @@ The following functionalities are restricted from use in a Trace workspace:
   * [OCR](https://help.relativity.com/RelativityOne/Content/Relativity/OCR/OCR.htm)
 * [Legal Hold](https://help.relativity.com/RelativityOne/Content/Relativity_Legal_Hold/Relativity_Legal_Hold.htm)
 * Relativity Collect
-* Repository Workspace
-* Cold Storage
+* [Repository Workspace](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_document_repository.htm)
+* [Cold Storage](https://help.relativity.com/RelativityOne/Content/Relativity/Workspaces/Workspaces.htm?%20storage#Cold)
 
 
 ![](media/trace_workspace_restrictions.png)
@@ -61,6 +60,8 @@ Client cannot download applications that would enable any restricted features, o
 Basic Trace workspace usage workflow
 ====================================
 Using the Trace workspace allows you to focus on the alerts generated from the Monitored Individuals in your data sources. After Trace ingests data from Monitored Individuals and pushes alerts to the Document object, reviewers can begin reviewing the alerts for true and false positives. You can then leverage Active Learning to conduct a prioritized review process of the alerts. You can also use the other tools in the Analytics suite to more quickly drill down to the true alerts.
+
+If you need to use any restricted Relativity features, you can export the data 
 
 
 
