@@ -61,7 +61,7 @@ Basic Trace workspace usage workflow
 ====================================
 Using the Trace workspace allows you to focus on the alerts generated from the Monitored Individuals in your data sources. After Trace ingests data from Monitored Individuals and pushes alerts to the Document object, reviewers can begin reviewing the alerts for true and false positives. You can then leverage Active Learning to conduct a prioritized review process of the alerts. You can also use the other tools in the Analytics suite to more quickly drill down to the true alerts.
 
-If you need to use any restricted Relativity features, you can export the data 
+If you need to use any restricted Relativity features, you can export the data to a fully functional workspace using [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm) (RIP).
 
 
 
