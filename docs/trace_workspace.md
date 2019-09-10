@@ -9,7 +9,7 @@ This page contains the following information:
 - [Trace workspace restrictions](#trace-workspace-restrictions)
 - [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
 
-
+  
 
 Trace workspace capabilities
 ============================
@@ -46,7 +46,8 @@ The following functionalities are restricted from use in a Trace workspace:
   * [OCR](https://help.relativity.com/RelativityOne/Content/Relativity/OCR/OCR.htm)
 * [Legal Hold](https://help.relativity.com/RelativityOne/Content/Relativity_Legal_Hold/Relativity_Legal_Hold.htm)
 * Relativity Collect
-* Reduced data count features
+* Repository Workspace
+* Cold Storage
 
 
 ![](media/trace_workspace_restrictions.png)
