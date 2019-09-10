@@ -18,9 +18,9 @@ The following Relativity features can be used in a Trace workspace:
 
 * [Trace-based Ingestion](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
 * [Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Analytics.htm)
-  1. [Conceptual index](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Analytics_indexes.htm)
-  2. [Active Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Active_Learning/Active_Learning.htm)
-  3. [Structured Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
+  * [Conceptual index](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Analytics_indexes.htm)
+  * [Active Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Active_Learning/Active_Learning.htm)
+  * [Structured Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
 * [Platform + Review](https://help.relativity.com/RelativityOne/Content/Site_Resources/Review.htm)
 * Export
   * [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm) (RIP)
