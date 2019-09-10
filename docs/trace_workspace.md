@@ -52,7 +52,7 @@ The following Relativity features are restricted from use in a Trace workspace:
 
 Client cannot download applications that would enable any restricted features, or enable data to be moved to a respository workspace or cold storage. Client is responsible for hiding restricted features from its users.
 
-`NOTE: If you need to use any restricted Relativity features, you can export the data to a fully functional workspace using [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm).`
+`**NOTE: If you need to use any restricted Relativity features, you can export the data to a fully functional workspace using [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm).**`
 
 ![](media/trace_workspace_restrictions.png)
 
