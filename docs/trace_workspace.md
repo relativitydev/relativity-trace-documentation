@@ -9,7 +9,7 @@ This page contains the following information:
 - [Trace workspace restrictions](#trace-workspace-restrictions)
 - [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
 
-  
+
 
 Trace workspace capabilities
 ============================
@@ -22,6 +22,9 @@ The following functionalities can be used in a Trace workspace:
   2. [Active Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Active_Learning/Active_Learning.htm)
   3. [Structured Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
 * [Platform + Review](https://help.relativity.com/RelativityOne/Content/Site_Resources/Review.htm)
+* Export
+ * [Relativity Desktop Client](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm)
+ * [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm)
 
 
 
@@ -33,7 +36,7 @@ Trace workspace restrictions
 
 The following functionalities are restricted from use in a Trace workspace:
 
-* Non-Trace Ingestion
+* Non-Trace Ingestion to Document Object
   * [Relativity Desktop Client](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm)
   * [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm) (except within Trace application)
 * [ECA](https://help.relativity.com/RelativityOne/Content/Relativity/ECA_and_Investigation/ECA_and_Investigation.htm)
