@@ -609,7 +609,7 @@ SMTPPassword, SMTPServer, SMTPPort and SMTPSSLisRequired settings from the
 kCura.Notification Section of Instance Settings to send your email messages, so
 be sure they are configured properly.
 
-![](media/fb23c341f2d2b27248d50d6180c4a201.png)
+![](media/user_documentation_EmailAction.png)
 
 **Configuration**
 
