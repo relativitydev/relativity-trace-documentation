@@ -24,6 +24,7 @@ The following Relativity features can be used in a Trace workspace:
 * [Platform + Review](https://help.relativity.com/RelativityOne/Content/Site_Resources/Review.htm)
 * Export
   * [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm) (RIP)
+  * [ARM](https://help.relativity.com/RelativityOne/Content/ARM/ARM_Overview.htm) (Archive Restore Move)
 
 
 ![](media/trace_workspace_capabilities.png)

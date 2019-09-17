@@ -1,11 +1,25 @@
 Relativity Trace Release Notes
 ================================
-- [11.2.10.1 (12 August 2019)](#112101-12-august-2019)
-- [11.2.9.2 (15 July 2019)](#11292-15-july-2019)
-- [11.2.6.1 (17 June 2019)](#11261-17-june-2019)
+- [11.2.11.1 (13 September 2019)](#112111-13-september-2019)
+- [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
+- [11.2.9.2 (15 July 2019) - DEPRECATED](#11292-15-july-2019---deprecated)
+- [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 11.2.10.1 (12 August 2019)
+# 11.2.11.1 (13 September 2019)
+
+**Relativity Compatibility**
+
+- \> 9.6.202.10
+
+**Defect Fixes**
+
+- Fixed an issue where Email action was automatically adding trace@relativity.com to recipient list
+
+
+# 11.2.10.1 (12 August 2019) - DEPRECATED
+
+> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
 **Relativity Compatibility**
 
@@ -15,9 +29,9 @@ Relativity Trace Release Notes
 
 - Fixed an issue where under certain failures of Data Retrieval task, Globanet based data sources would delete retrieved data without extracting it
 
-# 11.2.9.2 (15 July 2019)
+# 11.2.9.2 (15 July 2019) - DEPRECATED
 
-> **DEPRECATION NOTE:** This version of Trace is **not supported** after `15 September 2019`
+> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
 **Relativity Compatibility**
 
@@ -72,9 +86,9 @@ Relativity Trace Release Notes
   settings for each impacted data source to be a relative folder path within
   the default file share configured for the workspace.
 
-# 11.2.6.1 (17 June 2019)
+# 11.2.6.1 (17 June 2019) - DEPRECATED
 
-> **DEPRECATION NOTE:** This version of Trace is **not supported** after `17 August 2019`
+> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
 **Relativity Compatibility**
 
