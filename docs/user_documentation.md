@@ -619,7 +619,7 @@ tokens)
 `Email Settings – Subject Template`: subject of the email (good place to use
 tokens)
 
-`Email Settings – Recipients`: recipients of the email (supports to/cc/bcc, example: ```["to:test@test.com","to:test1@test.com"]```)
+`Email Settings – Recipients`: recipients of the email (supports to/cc/bcc, example: ```[to:test1@test.com,cc:test2@test.com,bcc:test3@test.com]```)
 
 `Email Settings – From Address`: Sender of the email
 
