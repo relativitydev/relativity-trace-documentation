@@ -613,15 +613,15 @@ be sure they are configured properly.
 
 **Configuration**
 
-`Email Settings` – Body Template: HTML body of the email (good place to use
+`Email Settings – Body Template`: HTML body of the email (good place to use
 tokens)
 
-`Email Settings` – Subject Template: subject of the email (good place to use
+`Email Settings – Subject Template`: subject of the email (good place to use
 tokens)
 
-`Email Settings` – Recipients: recipients of the email (supports to/cc/bcc)
+`Email Settings – Recipients`: recipients of the email (supports to/cc/bcc, example: `["to:test@test.com", "to:test1@test.com"]`)
 
-`Email Settings` – From Address: Sender of the email
+`Email Settings – From Address`: Sender of the email
 
 `Document Link` / `Document Text` – allows for custom text and includes document identifier, link to document in Relativity
 
