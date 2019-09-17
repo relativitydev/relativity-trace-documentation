@@ -7,7 +7,10 @@ Relativity Trace Documentation
 
 [Relativity Trace Troubleshooting Guide](https://relativitydev.github.io/relativity-trace-documentation/troubleshooting_guide)
 
+[Relativity Trace Workspace Capabilities and Restrictions](https://relativitydev.github.io/relativity-trace-documentation/trace_workspace)
+
 [Relativity Trace Demo Guide](https://relativitydev.github.io/relativity-trace-documentation/demo_guide)
 
 [Relativity Trace Proactive Ingestion Framework Documentation](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
+
 
