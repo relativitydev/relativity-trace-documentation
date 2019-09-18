@@ -621,7 +621,7 @@ be sure they are configured properly.
 
 `Email Settings – Recipients`: Recipients of the email. Supports to/cc/bcc, example (include square brackets): 
 
-```[to:test1@test.com,cc:test2@test.com,bcc:test3@test.com]```
+```[to:email1@test.com,cc:email2@test.com,bcc:email3@test.com]```
 
 `Email Settings – From Address`: Sender of the email
 
