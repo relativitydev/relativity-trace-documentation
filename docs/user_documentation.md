@@ -621,7 +621,8 @@ For any of the following settings, you can insert custom text and Replacement To
 
 `Email Settings – Subject Template`: Subject of the email
 
-`Email Settings – Recipients`: Recipients of the email. Supports to/cc/bcc, example: ```[to:test1@test.com,cc:test2@test.com,bcc:test3@test.com]```
+`Email Settings – Recipients`: Recipients of the email. Supports to/cc/bcc, example: 
+   ```[to:test1@test.com,cc:test2@test.com,bcc:test3@test.com]```
 
 `Email Settings – From Address`: Sender of the email
 
