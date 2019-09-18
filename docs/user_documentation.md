@@ -676,8 +676,7 @@ documents.
 
 **Configuration**
 
-`Json Payload` – custom JSON string containing the payload of the API call (good
-place to use tokens)
+`Json Payload` – Custom JSON string containing the payload of the API call. Can insert Replacement Tokens.
 
 `Web Hook Base Api Url` – URL of the Relativity instance hosting the API
 
