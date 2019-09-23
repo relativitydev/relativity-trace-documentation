@@ -24,7 +24,8 @@ Follow this guide: https://docs.microsoft.com/en-us/contribute/#quick-edits-to-e
 ### More Involved Edits
 
 1. Download [https://typora.io](https://typora.io/)
+
 2. Open it and then `File` -> `Preferences`
-  - Update Image Settings according to below
-  - ![1569276912350](docs/media/1569276912350.png)
-  - ^ this will allow for copying and pasting of images **directly** into Typora
+3. Update Image Settings according to below
+4. ![1569276912350](docs/media/1569276912350.png)
+5. ^ this will allow for copying and pasting of images **directly** into Typora
