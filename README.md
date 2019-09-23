@@ -26,5 +26,5 @@ Follow this guide: https://docs.microsoft.com/en-us/contribute/#quick-edits-to-e
 - [ ] Download [https://typora.io](https://typora.io/)
 - [ ] Open it and then `File` -> `Preferences`
   - [ ] Update Image Settings according to below
-  - [ ] ![1569276912350](C:\Users\mkogan\Documents\GitHub\relativity-trace-documentation\media\README\1569276912350.png)
+  - [ ] ![1569276912350](media\README\1569276912350.png)
   - [ ] ^ this will allow for copying and pasting of images **directly** into Typora
