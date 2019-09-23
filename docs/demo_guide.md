@@ -24,7 +24,7 @@ Relativity today is primarily used for e-discovery, investigations and
 regulatory inquiries: typically reactive and transactional workflows.  Trace is
 built for **proactive compliance and surveillance workflows**.
 
-Trace’s is a Compliance product on top of Relativity used to **monitor all forms
+Trace is a Compliance product on top of Relativity used to **monitor all forms
 of communication** (audio, email, and chat plus their attachments) with an
 extensible engine that gets better at filtering out false positives over time.
 Trace can monitor and pull data from **40+ data origins**. In addition, Trace
