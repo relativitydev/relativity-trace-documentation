@@ -1232,7 +1232,9 @@ Usability Considerations
         Identification). In order to enable this functionality, manually perform
         Full Analysis.
 	
-        + For Language Identification, ensure that the saved search's condition "Primary language = is not set"
+        + For Language Identification, ensure that the saved search's condition "Primary language = is not set". This will ensure that only net new documents are flagged for analysis.
+	
+	![](media/user_documentation_LanguageID_SavedSearch.png)
 
 General Infrastructure and Environment Considerations
 ---------------------------------------------
