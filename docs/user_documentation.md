@@ -1232,7 +1232,7 @@ Usability Considerations
         Identification). In order to enable this functionality, manually perform
         Full Analysis.
 	
-    + test
+        + ABCD
 
 General Infrastructure and Environment Considerations
 ---------------------------------------------
