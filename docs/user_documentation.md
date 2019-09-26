@@ -1232,7 +1232,7 @@ Usability Considerations
         Identification). In order to enable this functionality, manually perform
         Full Analysis.
 	
-        + ABCD
+        + For Language Identification, ensure that the saved search's condition "Primary language = is not set"
 
 General Infrastructure and Environment Considerations
 ---------------------------------------------
