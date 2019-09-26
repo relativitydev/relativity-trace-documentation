@@ -1230,7 +1230,9 @@ Usability Considerations
     -   If enabled, “Trace Structured Analytics Set” will run on incremental
         data performing specified job options (by default: Language
         Identification). In order to enable this functionality, manually perform
-        Full Analysis
+        Full Analysis.
+	
+	- test
 
 General Infrastructure and Environment Considerations
 ---------------------------------------------
