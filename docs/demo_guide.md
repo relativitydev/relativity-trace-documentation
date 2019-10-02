@@ -6,7 +6,7 @@ Relativity Trace Demo Guide
     + [Demo A](#demo-a)
     + [Demo B](#demo-b)
     + [Workspace overview](#workspace-overview)
-- [DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)](#demo-a-enabling-office-365-data-source-and-auto--tagging-documents-(alerts))
+- [DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)](#demo-a:-enabling-office-365-data-source-and-auto--tagging-documents-(alerts))
     + [Section 1: Rules Overview](#section-1--rules-overview)
     + [Section 2: Importing Data and Running Rules](#section-2--importing-data-and-running-rules)
     + [Section 3: Viewing Results](#section-3--viewing-results)
