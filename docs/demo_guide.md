@@ -11,7 +11,7 @@ Relativity Trace Demo Guide
     + [Section 2: Importing Data and Running Rules](#section-2--importing-data-and-running-rules)
     + [Section 3: Viewing Results](#section-3--viewing-results)
     + [Section 4: Recap](#section-4--recap)
-- [DEMO B: Running an Archive Rule](#demo-b--running-an-archive-rule)
+- [DEMO B: Running an Archive Rule](#demo-b-running-an-archive-rule)
 
 ### Demo Environment and Login Information
 
