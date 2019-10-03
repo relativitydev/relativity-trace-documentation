@@ -1230,7 +1230,11 @@ Usability Considerations
     -   If enabled, “Trace Structured Analytics Set” will run on incremental
         data performing specified job options (by default: Language
         Identification). In order to enable this functionality, manually perform
-        Full Analysis
+        Full Analysis.
+	
+        + When [setting up Language Identification](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure the saved search's condition to `Primary languag` = `is not set`. This will ensure that only newly ingested documents are flagged for analysis.
+	
+	![](media/user_documentation_LanguageID_SavedSearch.png)
 
 General Infrastructure and Environment Considerations
 ---------------------------------------------
