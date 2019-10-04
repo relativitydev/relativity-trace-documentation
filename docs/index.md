@@ -15,3 +15,5 @@ Relativity Trace Documentation
 
 [Relativity Trace Automated Tests (BIST)](https://relativitydev.github.io/relativity-trace-documentation/bist_smoke_tests)
 
+[Relativity Trace Data Source User Guide](https://relativitydev.github.io/relativity-trace-documentation/trace_connectors_user_guide)
+
