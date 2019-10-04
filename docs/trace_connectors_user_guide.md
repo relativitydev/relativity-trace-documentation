@@ -113,7 +113,7 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if
        1.  Report Level = Generate Summary Report Only
        2.  MISC = Leave Checkbox checked for `Delete reported and ...`
        3.  MUST specify `EMAIL REPORT SETTINGS` and send test email
-       4.  ![1570208945951](C:\Users\mkogan\Documents\GitHub\relativity-trace-documentation\docs\media\trace_connectors_user_guide\1570208945951.png)
+       4.  ![1570208945951](media/trace_connectors_user_guide/1570208945951.png)
    6.  Configure `LOGGING` section
        1.  File log folder = `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs`
        2.  File Log Priority = `Error`
@@ -121,7 +121,7 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if
    7.  Configure `ALERTING` section
        1.  MUST configure Email Alert Settings
        2.  Send Test Email
-       3.  ![1570209109659](C:\Users\mkogan\Documents\GitHub\relativity-trace-documentation\docs\media\trace_connectors_user_guide\1570209109659.png)
+       3.  ![1570209109659](media/trace_connectors_user_guide/1570209109659.png)
    8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if you don't have access to this guide.
    9.  Configure `Importer Schedule` to run at a desirable frequency (daily is the most common frequency)
    
