@@ -158,13 +158,6 @@ In order to ensure that data source runs **every X minutes** run the following s
 
     ![](media/6003e916fdb6aa9903fd97201f9b9659.png)
 
-    1. Script needed: 
-       
-       ```javascript
-   $("div.schedule_table").find("td").click()
-      ```
-   
-   
-    ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
-   
-    1.  At this point Importer will be set to run every x minutes
+    1. Script needed:  `$("div.schedule_table").find("td").click()`
+    2. ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
+    3. At this point Importer will be set to run every x minutes
