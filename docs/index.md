@@ -13,4 +13,5 @@ Relativity Trace Documentation
 
 [Relativity Trace Proactive Ingestion Framework Documentation](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
 
+[Relativity Trace Automated Tests (BIST)](https://relativitydev.github.io/relativity-trace-documentation/bist_smoke_tests)
 

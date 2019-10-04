@@ -1,4 +1,4 @@
-# Trace Automated Tests (BIST)
+# Relativity Trace Automated Tests (BIST)
 
 * [How to run **BIST**](#how-to-run---bist--)
 * [Tests](#tests)
