@@ -51,7 +51,7 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if
 
 ### Data Flow Overview
 
-![1570206388354](C:\Users\mkogan\Documents\GitHub\relativity-trace-documentation\docs\media\trace_connectors_user_guide\1570206388354.png)
+![1570206388354](media/trace_connectors_user_guide/1570206388354.png)
 
 1. Globanet needs access to the following file `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config\monitored_individuals.csv`
 2. Globanet pulls data from a data origin
