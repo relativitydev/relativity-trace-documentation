@@ -109,7 +109,6 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if
    4.  Configure `LOG ON ACCOUNT` section
        1.  Best practice is to specify computer administrator's username and password
        2.  ![1570208778641](media/trace_connectors_user_guide/1570208778641.png)
-       3.  ![1570210784092](media/trace_connectors_user_guide/1570210784092.png)
    5.  Configure `REPORTING` section
        1.  Report Level = Generate Summary Report Only
        2.  MISC = Leave Checkbox checked for `Delete reported and ...`
