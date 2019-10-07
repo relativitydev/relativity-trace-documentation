@@ -40,6 +40,7 @@ Relativity Trace Release Notes
 **Features**
 
 - BIST auto-run automation
+- One more line
 - In production, you can dedicate a workspace for continuous integration
   testing and enable automatic execution of tests ensuring the infrastructure
   is in good shape
