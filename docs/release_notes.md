@@ -1,5 +1,6 @@
 Relativity Trace Release Notes
 ================================
+- [XX.X.XX.XX (~ October 2019)](#TBD)
 - [11.2.11.1 (13 September 2019)](#112111-13-september-2019)
 - [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
 - [11.2.9.2 (15 July 2019) - DEPRECATED](#11292-15-july-2019---deprecated)
