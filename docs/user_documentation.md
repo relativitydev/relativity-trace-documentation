@@ -147,56 +147,61 @@ Setting up Relativity Trace
 
     ![](media/cada62f5fd9156449b21a32c2a9e34f2.png)
 
-3. Create Trace agent
+3. Create Trace agents
 
-   1.  Agent Type = `Trace Agent`
+   > **NOTE:** Trace agents are Resource Pool aware.  You are able to dedicate only one `Trace Manager Agent` per resource pool (associated with single workspace) and unlimited number `Trace Worker Agent`
 
-   2.  Number of Agents = `1` 
-       
-   > **NOTE:** creating multiple Trace Agents in a Relativity instance is not supported and will cause failures and/or unpredictable behavior
-   
-   3.  Agent Server = Select the agent server you would like the agent deployed
-       on (see “Infrastructure and Environment Considerations” section for
-       optimal performance)
+   1.  Trace Manager Agent
+       1.  Agent Type = `Trace Manager Agent`
+       2.  Number of Agents = `1` 
+       3.  Agent Server = Select the agent server you would like the agent deployed
+           on (see “Infrastructure and Environment Considerations” section for
+           optimal performance)
+       4.  Run Interval = `60`
+       5.  Logging level of event details = `Log all messages`
+   2.  Trace Worker Agent
+       1. Agent Type = `Trace Worker Agent`
+       2. Number of Agents = `Unlimited`
+       3. Agent Server = Select the agent server you would like the agent deployed
+          on (see “Infrastructure and Environment Considerations” section for
+          optimal performance)
+       4. Run Interval = `60`
+       5. Logging level of event details = `Log all messages`
 
-   4.  Run Interval = `60`
+4. Please review the
+   [Considerations](#infrastructure-and-environment-considerations) for system
+   impact information. By default system processes (Tasks) are scheduled to run
+   every 5 minutes (configurable per workspace).
 
-   5.  Logging level of event details = `Log all messages`
+   1.  Please reach out to `trace@relativity.com` for additional information
 
-4.  Please review the
-    [Considerations](#infrastructure-and-environment-considerations) for system
-    impact information. By default system processes (Tasks) are scheduled to run
-    every 5 minutes (configurable per workspace).
+5. Configure Trace License
 
-    1.  Please reach out to `trace@relativity.com` for additional information
+   1.  At first install time, a default trial license is installed that is
+       re-used for all workspaces in the Relativity instance (it’s valid 30
+       days from installation date)
 
-5.  Configure Trace License
+   2.  You can request a new license via “Manage Trace License” link on Setup
+       tab
 
-    1.  At first install time, a default trial license is installed that is
-        re-used for all workspaces in the Relativity instance (it’s valid 30
-        days from installation date)
+       ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
 
-    2.  You can request a new license via “Manage Trace License” link on Setup
-        tab
+   3.  Click `Request Trace License` and send an email with the contents of the
+       request to `trace@relativity.com`
 
-        ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
+       ![](media/741facee0911140b7082894fe5a42c7a.png)
 
-    3.  Click `Request Trace License` and send an email with the contents of the
-        request to `trace@relativity.com`
+       > **WARNING:** Once license expires, all Trace processes stop working in all configured workspaces.
 
-        ![](media/741facee0911140b7082894fe5a42c7a.png)
+6. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option`
+   to `Continuous`
 
-        > **WARNING:** Once license expires, all Trace processes stop working in all configured workspaces.
-
-6.  In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option`
-    to `Continuous`
-
-    > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build
-    a dtSearch index for this workspace for all documents present. Only change this
-    setting to "Continuous" when appropriate agent infrastructure is configured and
-    disk space available to build a corresponding dtSearch Index. Please reach out
-    to `trace@relativity.com` for support on installing Trace into workspaces with
-    existing data.
+   > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build
+   a dtSearch index for this workspace for all documents present. Only change this
+   setting to "Continuous" when appropriate agent infrastructure is configured and
+   disk space available to build a corresponding dtSearch Index. Please reach out
+   to `trace@relativity.com` for support on installing Trace into workspaces with
+   existing data.
 
 Trace Document Flow Overview
 ============================
