@@ -14,7 +14,7 @@ Relativity Trace Release Notes
 
 **Defect Fixes**
 
-- Fixed  an issue where Email action was automatically adding trace@relativity.com to recipient list
+- Fixed an issue where Email action was automatically adding trace@relativity.com to recipient list
 
 
 # 11.2.10.1 (12 August 2019) - DEPRECATED
