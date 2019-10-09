@@ -173,7 +173,7 @@ Setting up Relativity Trace
    impact information. By default system processes (Tasks) are scheduled to run
    every 5 minutes (configurable per workspace).
 
-   1.  Please reach out to `trace@relativity.com` for additional information
+   1.  Please reach out to `support@relativity.com` for additional information
 
 5. Configure Trace License
 
@@ -187,7 +187,7 @@ Setting up Relativity Trace
        ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
 
    3.  Click `Request Trace License` and send an email with the contents of the
-       request to `trace@relativity.com`
+       request to `support@relativity.com`
 
        ![](media/741facee0911140b7082894fe5a42c7a.png)
 
@@ -200,7 +200,7 @@ Setting up Relativity Trace
    a dtSearch index for this workspace for all documents present. Only change this
    setting to "Continuous" when appropriate agent infrastructure is configured and
    disk space available to build a corresponding dtSearch Index. Please reach out
-   to `trace@relativity.com` for support on installing Trace into workspaces with
+   to `support@relativity.com` for support on installing Trace into workspaces with
    existing data.
 
 Trace Document Flow Overview
@@ -427,7 +427,7 @@ search string. You **can** modify the highlight color and term category of an
 existing term.
 
 > **NOTE: The** Term “Name” (actual text being searched) is limited to 450
-characters. Please reach out `trace@relativity.com` if your use-case requires
+characters. Please reach out `support@relativity.com` if your use-case requires
 higher limits for your terms.
 
 ### Highlighting
@@ -497,7 +497,7 @@ Searchable Set / Search Term
 
 > **NOTE:** By default, the Data Archive Action will delete 1,000 documents per
 Run Interval. To adjust configurations so documents can be deleted more
-frequently, reach out to `trace@relativity.com`
+frequently, reach out to `support@relativity.com`
 
 **Action Configuration**
 
@@ -737,7 +737,7 @@ The key benefits of the Proactive Ingestion Framework include:
 -   Performance monitoring of entire data ingestion pipeline (bottleneck
     identification, SLA metrics, proactive alerting)
 
-Reach out to <trace@relativity.com> for help integrating with the Proactive
+Reach out to <support@relativity.com> for help integrating with the Proactive
 Ingestion Framework
 
 Data Sources
@@ -804,7 +804,7 @@ emails from a Microsoft Exchange instance (Office 365 or On Premises) into
 Relativity. The Microsoft Exchange Data Source is executed by the Data Retrieval
 task (seen on the Setup tab). Note, this Data Source only pulls emails at this
 time, if you need to retrieve other object types from Microsoft Exchange please
-reach out to `trace@relativity.com`
+reach out to `support@relativity.com`
 
 **Setup**
 
@@ -1075,7 +1075,7 @@ EmailCC and EmailBCC fields.
 
 ![](media/c09f85d2cbb0db2283737f16623d1048.png)
 
-Please, contact `trace@relativity.com` in order to enable this feature.
+Please, contact `support@relativity.com` in order to enable this feature.
 
 Setup
 =====
@@ -1252,7 +1252,7 @@ General Infrastructure and Environment Considerations
 | Recommended Run Interval         | `60` seconds                                                                             | `300` seconds                                                                                                                                                                                         | `300` seconds                                              | `300` seconds                                                          |
 | Considerations and System Impact | -Speed of ingestion is determined by number of Integration Points Agents (max of 4)     | -Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)<br>-Every incremental build makes the old build obsolete - cleaned up by Case Manager nightly                                                                                  |                                                          | -Very complex/nested underlying Saved Searches can affect performance<br>-Saved Searches that return many documents can affect performance<br>-Many rules being evaluated often can put pressure on SQL server |
 
-> **IMPORTANT**: Reach out to `trace@relativity.com` to adjust the Task `Settings` field 
+> **IMPORTANT**: Reach out to `support@relativity.com` to adjust the Task `Settings` field 
 
 > **NOTE:** The Recommended Run Interval for the **`Reporting Task`** is 300 seconds.
 
@@ -1403,7 +1403,7 @@ fields or re-use fields from an existing template.** You can install
 it to the target workspace like any other application which will bring in all
 the needed fields with standardized names that are easily auto-mapped via “Map
 Fields” integration point profile feature. If you don’t see this application in
-your library, reach out to `trace@relativity.com`.
+your library, reach out to `support@relativity.com`.
 ![](media/045f66f33011aa62ff7d00b2e05274c2.png)
 
 ## Setup Integration Point Profile
