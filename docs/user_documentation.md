@@ -182,7 +182,7 @@ Setting up Relativity Trace
         ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
 
     3.  Click `Request Trace License` and send an email with the contents of the
-        request to `trace@relativity.com`
+        request to `support@relativity.com`
 
         ![](media/741facee0911140b7082894fe5a42c7a.png)
 
