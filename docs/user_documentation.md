@@ -1,5 +1,4 @@
 Relativity Trace User Documentation
-================================
 
 - [Release Notes](#release-notes)
 - [Introduction to Relativity Trace](#introduction-to-relativity-trace)
@@ -25,7 +24,7 @@ Relativity Trace User Documentation
       - [Email Action Type](#email-action-type)
       - [Slack Action Type](#slack-action-type)
       - [Webhook Action Type (Preview)](#webhook-action-type--preview-)
-    + [Custom RelativityScripts](#custom-relativityscripts)
+    + [Custom Relativity Scripts](#custom-relativityscripts)
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
   * [Data Sources](#data-sources)
     + [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
@@ -61,7 +60,7 @@ Release Notes
 | ----------------- | ---------------- 	| ---------------------------- |
 | 11.2.11.1         | 13 September 2019	| \> 9.6.202.10                |
 
-More informaion is avaiable in [Relativity Trace Release Notes](https://relativitydev.github.io/relativity-trace-documentation/release_notes)
+More information is available in [Relativity Trace Release Notes](https://relativitydev.github.io/relativity-trace-documentation/release_notes)
 
 Introduction to Relativity Trace
 ================================
@@ -77,7 +76,7 @@ Relativity Trace is an [ADS Deployable Application](https://platform.relativity.
 Prerequisites
 =============
 
-Ensure the default Relativity infrastructure has been setup and operational. In
+Ensure the default Relativity infrastructure has been set up and is fully operational. In
 addition, Relativity Trace utilizes the following components for its processes:
 
 ### Agents
@@ -129,11 +128,9 @@ agents are set up:
         [page](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm)
         for details on how to install Integration Points
 
--   [Relativity
-    Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
-
+-   [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
     1.  Used by Trace after ingestion to perform Structured Analytics workflows
-        (language identification, repeated content identification, etc)
+    (language identification, repeated content identification, etc)
 
 Setting up Relativity Trace
 ===========================
@@ -149,7 +146,7 @@ Setting up Relativity Trace
 
 3. Create Trace agents
 
-   > **NOTE:** Trace agents are Resource Pool aware.  You are able to dedicate only one `Trace Manager Agent` per resource pool (associated with single workspace) and unlimited number `Trace Worker Agent`
+   > **NOTE:** Trace agents are Resource Pool aware.  You are able to dedicate only one `Trace Manager Agent` per resource pool (associated with single workspace) and unlimited number of `Trace Worker Agents`
 
    1.  Trace Manager Agent
        1.  Agent Type = `Trace Manager Agent`
@@ -175,7 +172,9 @@ Setting up Relativity Trace
 
    1.  Please reach out to `support@relativity.com` for additional information
 
-5. Configure Trace License
+5. On the Agents tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as Updating (this is necessary because the manager agent makes modifications to workspaces and creates RDO instances after application install that are needed in the next steps) ![1571073733941](media/user_documentation/1571073733941.png)
+
+6. Configure Trace License
 
    1.  At first install time, a default trial license is installed that is
        re-used for all workspaces in the Relativity instance (it’s valid 30
@@ -193,7 +192,7 @@ Setting up Relativity Trace
 
        > **WARNING:** Once license expires, all Trace processes stop working in all configured workspaces.
 
-6. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option`
+7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option`
    to `Continuous`
 
    > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build
@@ -245,26 +244,25 @@ status of documents is reflected on a few key fields on the Document object
     3.  “Searching Errored” – reflects documents that have not successfully gone
         through Term Searching. 
         Potential causes:
-
-        1.  Broken infrastructure
-
-            1.  Disabled agents
-
-            2.  Stopped services (agent manager, service host)
-
-        2.  Permanently broken/invalid Term syntax are present
-
-        3.  Actions:
-
-            1.  Check Setup tab for statuses of agents
-
-            2.  Check Terms tab for detailed errors on each failed term
-
-            3.  Check Trace logs (via Manage Logs console button)
-
-            4.  Perform Trace Document Retry mass-operation on affected
+1.  Broken infrastructure
+        
+    1.  Disabled agents
+        
+    2.  Stopped services (agent manager, service host)
+        
+2.  Permanently broken/invalid Term syntax are present
+        
+3.  Actions:
+        
+    1.  Check Setup tab for statuses of agents
+        
+    2.  Check Terms tab for detailed errors on each failed term
+        
+    3.  Check Trace logs (via Manage Logs console button)
+        
+    4.  Perform Trace Document Retry mass-operation on affected
                 documents
-
+    
 3.  **Trace Document Terms** – MultiObject field tracking which Terms have
     matched a document
 
@@ -298,11 +296,11 @@ Error Resolution Workflow and Retry
 
 If you wish to re-submit existing documents through the Trace Data Flow, you can
 accomplish this via Document mass operation “Trace Document Retry”. The mass
-operation resets the following fields: “Trace Checkout”, “Document Term”,
-“Rules” and “Trace Document Status”. Simply check the documents that you wish to
-retry from the Document List and click the item in the dropdown and click “Ok”
-on the pop-up. If your browser settings prevent pop-ups please enable them for
-Relativity URLs.
+operation resets the following fields: “Trace Checkout”, “Trace Terms”, "Trace Rule Terms",
+“Trace Rules”, "Trace Workflow Rules" and “Trace Document Status”. Simply check the
+documents that you wish to retry from the Document List and click the item in the
+dropdown and click “Ok” on the pop-up. If your browser settings prevent pop-ups please
+enable them for Relativity URLs.
 
 **WARNING:** The retry process can be very resource-intensive. Trace is
 optimized for ongoing and forward-looking use cases where documents are only
@@ -329,11 +327,16 @@ documents as they are ingested into the workspace.
 
 Create a new [rule](#_Glossary) by clicking `New Rule` on the Trace:Rules tab
 
-![](media/522199d75935e3ad2efeaa04996d9b3e.png)
+![1571081144550](media/user_documentation/1571081144550.png)
 
 The Rule Creation form contains the following fields:
 
--   **Name:** the name of the rule
+-   **Rule Name:** the name of the rule
+
+- **Rule Type:** classification of the purpose of the rule
+
+  -   **Alert:** a rule that is designed to alert on responsive documents. Documents matching rules of this type are tagged in the Trace Rules field.
+  -   **Workflow:** a rule that is designed to operate on every document in the workspace and take some action (run a script, move to the correct folder, etc) but not to alert on responsive documents. Documents matching rules of this type are tagged in the Trace Workflow Rules field.
 
 -   **Searchable Set:** the document set searched when the Rule runs. Make sure
     this set contains all documents that should be considered by Trace Rules.
@@ -341,22 +344,21 @@ The Rule Creation form contains the following fields:
 -   **Associated Actions:** actions are what happen when a rule matches a
     document. Currently supported Action Types are:
 
-    -   **Tagging**: tags documents with the associated rule (happens
-        automatically as part of Rule Evaluation)
-
     -   **Data Archiving**: triggers deletion of specified documents after the
         configured retention policy
 
     -   **Advanced:** execute customer provided Relativity Script
-
-    -   **Email:** generates an email with metadata about alerted documents
-
-    -   **Slack:** generates a Slack message with metadata about alerted
+    
+-   **Email:** generates an email with metadata about alerted documents
+    
+-   **Slack:** generates a Slack message with metadata about alerted
         documents
 
     -   **Webhook:** makes a generic API call hosted within Relativity
-
-    - > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search and set it to `auto-run`.
+    
+- > **NOTE:** The Tagging action type has been deprecated. Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed)
+    
+- > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search and set it to `auto-run`.
 
 2 - Customizing and Running a Rule
 -----------------------------------
@@ -364,7 +366,7 @@ The Rule Creation form contains the following fields:
 After you create a Rule, use the Rule definition page to Enable and Customize
 the rule.
 
-![](media/6e7d06679e0a81cffe0e7fa6dce59e19.png)
+![1571079859530](media/user_documentation/1571079859530.png)
 
 The Trace Rule Management Console on the right-hand side has the following
 buttons:
@@ -385,7 +387,7 @@ associated with the Rule during evaluation.
 After Rule executes, documents matching the Rule will be associated to the Rule
 itself.
 
-![](media/e047e56bcd841f5be91185937a746721.png)
+![1571081067899](media/user_documentation/1571081067899.png)
 
 Terms
 -----
@@ -454,22 +456,23 @@ Actions
 -------
 
 As part of installation, Action Types are created. Currently supported action
-types are: Tag, Data Archive, Advanced, Email, Slack, and Webhook and Move To
+types are: Data Archive, Advanced, Email, Slack, and Webhook and Move To
 Folder. For each Action Type there is a Default Action created. You can also
-customize and configure your own Actions.
+customize the Default Actions and also create and configure your own Actions.
 
 ### Move To Folder Action Type
 
 Move To Folder action works on documents that match Rule criteria. Upon
-execution of the action, the documents will be moved to specified document
+execution of the action, the documents will be moved to the specified destination
 folder, inheriting folder permissions. This action can be used to effectively
-secure the documents to specific set of users/groups. This can also be used to
-drive regional review workflow in conjunction with alerting actions.
+secure documents to specific set of users/groups by routing them to folders with
+different permission sets. This Action Type can also be used to drive regional review
+workflows in conjunction with alerting actions.
 
 You can configure the action by specifying the ArtifactID of the destination
-folder where the documents are to be moved. Additional Information section
+folder where the documents are to be moved. The Additional Information section
 automatically populates the list of available folders and their corresponding
-ArtifactIDs for your convenience.
+Artifact IDs for your convenience.
 
 ![](media/4ea5493c6871466e5ab385ec5c08f8ff.png)
 
@@ -489,21 +492,18 @@ one added condition:
 
     -   Term Searching (optional)
 
-    -   *SPECIFIC TO ARCHIVE*: Workspace Data Retention policy
+    -   *SPECIFIC TO ARCHIVE*: `Delete Documents Older Than Hours` setting
 
-Any data that is within the data retention policy (from the System Created On
-date/time) will not be deleted even if the document is included in the
+Any document that is newer than the specified number of hours (based on System
+Created On date/time) will not be deleted even if the document is included in the
 Searchable Set / Search Term
-
-> **NOTE:** By default, the Data Archive Action will delete 1,000 documents per
-Run Interval. To adjust configurations so documents can be deleted more
-frequently, reach out to `support@relativity.com`
 
 **Action Configuration**
 
 `Document Delete Batch Size` - controls number of documents to delete at once
 
-`Delete Documents Older Than Hours` - controls age of a document (based on creation of document in Relativity) to delete
+`Delete Documents Older Than Hours` - controls age of a document (based on System
+Created On date/time) to delete
 
 ### Advanced Action Type
 
@@ -511,9 +511,7 @@ frequently, reach out to `support@relativity.com`
 Scripts. Apply rigorous testing and impact assessment prior to deploying any
 custom script in production or enabling it to run continuously via Trace
 automation. For more information about Relativity Scripts in general, see the
-[Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and
-[Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm)
-documentation pages.
+[Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm) documentation pages.
 
 The Advanced Action Type executes a Relativity Script automatically on a
 recurring basis per the Rule Evaluation task configuration (schedule).
@@ -527,11 +525,11 @@ one yourself.
     Search”
 
 -   For more information about Relativity Script feature in general, see the
-    [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm)    documentation pages.
+    [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm) documentation pages.
 
 > **NOTE:** Currently all Relativity Scripts that can be associated with Trace
 actions require a Saved Search as one of the script inputs (Trace automatically
-populates that field during Rule Evaluation with Rule specific saved search).
+populates that field during Rule Evaluation with an execution specific saved search).
 
 ![](media/b993eb14ebd4e458fc490b9bcb321405.png)
 
@@ -566,16 +564,15 @@ For reference:
 -   “Trace Hour Of Day”, and “Trace Day Of Week” are SQL Column names of
     corresponding Relativity Fields
 
-> **NOTE:** Trace will automatically create a Saved Search that includes a
-combination of your chosen Saved Search (from the Rule) AND your Term conditions
-and use that as the input for the script.
+> **NOTE:** Trace will automatically create a Saved Search that returns the net-new documents
+from your chosen Saved Search (from the Rule) AND your Term conditions and use that as 
+the input for the script.
 
 **Step 3**: To execute your script, attach this Action to a Rule and enable it
 (as you would with any Rule).
 
-> **NOTE:** Advanced actions will run on a schedule, continuously. For scripts
-that have the potential to use significant resources, we recommend designing the
-script to be aware of what has already been acted on.
+> **NOTE:** Advanced actions will run on a schedule, continuously. Please consider the resource
+usage of your scripts!
 
 ### Alert Action Types
 
@@ -698,9 +695,9 @@ combination with Base Api Url)
 Trace agent. The access_token is retrieved from
 ClaimsPrincipal.Current.Identities.
 
-### Custom RelativityScripts
+### Custom Relativity Scripts
 
-Several useful SQL RelativityScripts are shipped by default with Trace
+Several useful SQL Relativity Scripts are shipped by default with Trace
 application.
 
 | **Script Name**   | **Description**                                              | **Inputs and Outputs**                                       |
@@ -712,8 +709,7 @@ Trace Proactive Ingestion Framework
 
 The Proactive Ingestion Framework allows Administrators to automatically and
 continually ingest data into Relativity from various Data Sources. The framework
-is built on top of [Relativity Integration
-Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
+is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
 
 The key benefits of the Proactive Ingestion Framework include:
 
@@ -722,7 +718,7 @@ The key benefits of the Proactive Ingestion Framework include:
 
 -   Data can be autonomously and continuously ingested
 
--   Data can be pushed from a 3PrdP party data processor in a generic format
+-   Data can be pushed from a 3rd party data processor in a generic format
 
 -   Data is broken into batches improving stability and throughput
 
@@ -1069,7 +1065,7 @@ console UI buttons) to help with state resolution
 Automatic Discovery of Monitored Individuals
 --------------------------------------------
 
-For Data Source that are not shipped with Trace natively, application allows for
+For Data Sources that are not shipped with Trace natively, the application allows for
 automatic discovery of monitored individuals based on EmailFrom, EmailTo,
 EmailCC and EmailBCC fields.
 
@@ -1081,12 +1077,16 @@ Setup
 =====
 
 The Setup tab aggregates the most important information about configuration,
-health and overall status of Trace for a workspace. It shows active tasks and
-their configuration, and a snapshot of instance infrastructure that’s relevant
-to Trace. In addition, you can manage Logging and License configuration and run
-a built-in self-test (BIST) to verify basic flow.
+health and overall status of Trace for a workspace. It shows the currently installed version,
+ active tasks and their configuration, and a snapshot of instance infrastructure that’s relevant
+to Trace. In addition, you can manage Logging and License configuration and run a built-in 
+self-test (BIST) to verify basic flow.
 
-![](media/2d9b873159c7cb58a289edacc331d37d.png)
+![1571087647200](media/user_documentation/1571087647200.png)
+
+If an update to a new version of Trace is in progress, the Setup page will show a large red bar indicating an Update is in progress:
+
+![1571088232926](media/user_documentation/1571088232926.png)
 
 Tasks 
 ------
@@ -1095,33 +1095,27 @@ Tasks are ongoing background processes that are triggered by agents and run on
 the agent servers. They each have Run Intervals and configurations can be
 adjusted at a workspace level.
 
-Each task is designed to be auto-recoverable and self-healing. For example, if there are temporary network connection issues that prevent `Data Retrieval` task from retrieving data, Trace will keep trying until network issues are resolved. No manual intevention is needed.
+Each task is designed to be auto-recoverable and self-healing. For example, if there are temporary network connection issues that prevent `Data Retrieval` task from retrieving data, Trace will keep trying until network issues are resolved. No manual intervention is needed.
 
--   **Data Retrieval:** Responsible for pulling data for Data Sources and
-    creation of Data Batches
-
+-   **Data Retrieval:** Responsible for pulling data for Data Sources
 -   **Ingestion:** Responsible for triggering import of the Data Batches into
     Relativity (part of Proactive Ingestion Framework). Any Data Transformations
     configured for the corresponding Data Source will also be performed.
-
 -   **Ingestion Status:** Responsible for updating statuses of the Data Batches
     (part of Proactive Ingestion Framework)
-
 -   **Indexing:** Responsible for indexing data needed for searching
-
 -   **Term Searching:** Responsible for executing searching of the Terms for
     Rule evaluations
-
 -   **Rule Evaluation:** Responsible for evaluating configured Rules within the
     workspace
-
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
+-   **Data Enrichment:** Responsible for extracting nested files (attachments, contents of zip files) and generating extracted text
 
 Alerts and Notifications
 ------------------------
 
-By default Reporting task will send out the system health report to the
+By default the Reporting task will send out the system health report to the
 configured instance email address every 24 hours. The defaults can be overridden
 under Task Configuration on the Reporting task page. See below sample
 configuration for example.
@@ -1237,7 +1231,7 @@ Usability Considerations
         Identification). In order to enable this functionality, manually perform
         Full Analysis.
 	
-        + When [setting up Language Identification](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure the saved search's condition to `Primary languag` = `is not set`. This will ensure that only newly ingested documents are flagged for analysis.
+        + When [setting up Language Identification](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure the saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested documents are flagged for analysis.
 	
 	![](media/user_documentation_LanguageID_SavedSearch.png)
 
