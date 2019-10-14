@@ -41,7 +41,7 @@ It is recommended to run **BIST** on a new workspace or on a test workspace as
     1.  Navigate to Library Application (Admin), locate Trace and install it
         into Test Workspace
 
-    2.  Ensure that Trace Agent and all dependent Agents are enabled and working
+    2.  Ensure that Trace Agent and all dependent Agents are enabled and working 
 
     3.  Within the workspace, navigate to Trace → Setup and set Run Option →
         Continuous
