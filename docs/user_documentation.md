@@ -131,6 +131,12 @@ agents are set up:
 -   [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
     1.  Used by Trace after ingestion to perform Structured Analytics workflows
     (language identification, repeated content identification, etc)
+    
+### BIST ( Built-in self-test ) Workspace
+
+1.  Create new Relativty Workspace dedicated to BIST
+
+2.  Follow steps in [Relativity Trace Automated Tests (BIST)](https://relativitydev.github.io/relativity-trace-documentation/bist_smoke_tests)
 
 Setting up Relativity Trace
 ===========================
