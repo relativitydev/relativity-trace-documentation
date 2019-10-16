@@ -58,7 +58,7 @@ Release Notes
 
 | **Trace Version** | **Release Date** 	| **Relativity Compatibility** |
 | ----------------- | ---------------- 	| ---------------------------- |
-| 11.2.11.1         | 13 September 2019	| \> 9.6.202.10                |
+| 12.0.4.2         | 16 October 2019	| \> 9.6.202.10                |
 
 More information is available in [Relativity Trace Release Notes](https://relativitydev.github.io/relativity-trace-documentation/release_notes)
 
@@ -142,14 +142,14 @@ Setting up Relativity Trace
 ===========================
 
 1.  [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm)
-    the `Trace_<version>.rap` from Application Library tab to all workspaces
+    the `Trace_<version>.rap` from Application Library (admin) tab to all workspaces
     where needed
 
-2.  Validate application install in the workspace with Trace application
-    installed
+2.  Wait until application Status switches to `Installed` in the target workspaces
+    
 
-    ![](media/cada62f5fd9156449b21a32c2a9e34f2.png)
-
+![](media/cada62f5fd9156449b21a32c2a9e34f2.png)
+    
 3. Create Trace agents
 
    > **NOTE:** Trace agents are Resource Pool aware.  You are able to dedicate only one `Trace Manager Agent` per resource pool (associated with single workspace) and unlimited number of `Trace Worker Agents`
@@ -178,7 +178,8 @@ Setting up Relativity Trace
 
    1.  Please reach out to `support@relativity.com` for additional information
 
-5. On the Agents tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as Updating (this is necessary because the manager agent makes modifications to workspaces and creates RDO instances after application install that are needed in the next steps) ![1571073733941](media/user_documentation/1571073733941.png)
+5. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](media/user_documentation/1571073733941.png)
+> **NOTE:** On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer. 
 
 6. Configure Trace License
 
@@ -186,7 +187,7 @@ Setting up Relativity Trace
        re-used for all workspaces in the Relativity instance (it’s valid 30
        days from installation date)
 
-   2.  You can request a new license via “Manage Trace License” link on Setup
+   2.  You can request a new license via `Manage Trace License` link on Setup
        tab
 
        ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
@@ -196,7 +197,7 @@ Setting up Relativity Trace
 
        ![](media/741facee0911140b7082894fe5a42c7a.png)
 
-       > **WARNING:** Once license expires, all Trace processes stop working in all configured workspaces.
+       > **WARNING:** Once license expires, all Trace processes stop working in **all** configured workspaces.
 
 7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option`
    to `Continuous`
@@ -212,7 +213,7 @@ Trace Document Flow Overview
 ============================
 
 Trace has a three-step process that all new documents go through. This status is
-tracked in the “Trace Document Status” field.
+tracked in the `Trace Document Status` field.
 
 |             | **Step 1**                                                                      | **Step 2**                                    | **Step 3**                                                            |
 |-------------|---------------------------------------------------------------------------------|-----------------------------------------------|-----------------------------------------------------------------------|
@@ -224,70 +225,50 @@ status of documents is reflected on a few key fields on the Document object
 
 1.  **Trace Checkout** – Fixed-length Text field responsible for checking out
     each document for the Trace Data Flow
-
 2.  **Trace Document Status** – Single choice field responsible for reflecting
     overall progress of the document through the Trace Data Flow
 
-    1.  Standard choices are “1 – New”, “2 – Indexed”, and “3 – Term Searched”
+    1.  Standard choices are `1 – New`, `2 – Indexed`, and `3 – Term Searched`
         reflecting the statuses above
 
-    2.  “Indexing Errored” – reflects documents that have not successfully gone
+    2.  `Indexing Errored` status reflects documents that have not successfully gone
         through Indexing. Potential causes:
-
-        1.  Broken infrastructure (Agents, Service Host)
-
-        2.  Documents could not be updated with new status due to SQL outage
-
-        3.  Actions:
-
-            1.  Check Setup tab for statuses of agents
-
-            2.  Check Trace logs (via Manage Logs console button)
-
-            3.  Perform Trace Document Retry mass-operation on affected
-                documents
-
-    3.  “Searching Errored” – reflects documents that have not successfully gone
-        through Term Searching. 
-        Potential causes:
-1.  Broken infrastructure
+1.  Broken infrastructure (Agents, Service Host issues)
         
-    1.  Disabled agents
-        
-    2.  Stopped services (agent manager, service host)
-        
-2.  Permanently broken/invalid Term syntax are present
+2.  Documents could not be updated with new status due to SQL outage
         
 3.  Actions:
         
     1.  Check Setup tab for statuses of agents
         
-    2.  Check Terms tab for detailed errors on each failed term
+    2.  Check Trace logs (via `Manage Logs` console button)
         
-    3.  Check Trace logs (via Manage Logs console button)
+    3.  Perform `Trace Document Retry` mass-operation on affected documents
         
-    4.  Perform Trace Document Retry mass-operation on affected
-                documents
-    
+    3.  `Searching Errored` status reflects documents that have not successfully gone
+    through Term Searching stage. Potential causes:
+        1.  Broken infrastructure (Agents, Service Host issues)
+        2.  Permanently broken/invalid Term (dtSearch) syntax are present
+        3.  Actions:
+            1.  Check Setup tab for statuses of agents
+        
+            2.  Check Terms tab for detailed errors on each failed term
+        
+            3.  Check Trace logs (via `Manage Logs` console button)
+        
+            4.  Perform `Trace Document Retry` mass-operation on affected documents
 3.  **Trace Document Terms** – MultiObject field tracking which Terms have
     matched a document
-
 4.  **Trace Document Rule Terms** – MultiObject field tracking Rule specific
     Terms (terms that are associated with any rule) that have matched a document
-
 5.  **Trace Has Errors** – Boolean (yes/no) field indicating if the document has
     any errors related to ingestion, extraction
-
 6.  **Trace Error Details** – Long Text field capturing the error details if a
     document has encountered any errors
-
 7.  **Trace Data Transformations** – MultiObject field tracking what data
     transformations have been applied to the document as part of ingestion
-    (note, currently only data transformations of type Replace are attached to
-    documents)
-
-8.  **Trace Monitored Individuals –** MultiObject field tracking the people that
-    are associated with the document (Monitored Individuals)
+8.  **Trace Monitored Individuals –** MultiObject field tracking which Monitored Individuals are associated with each document 
+9.  **Trace Rules –** MultiObject field tracking which rule matched which document
 
 You can get a quick understanding of the status of your system and documents by
 applying appropriate aggregations and dashboards on these fields:
@@ -301,11 +282,11 @@ Error Resolution Workflow and Retry
 -----------------------------------
 
 If you wish to re-submit existing documents through the Trace Data Flow, you can
-accomplish this via Document mass operation “Trace Document Retry”. The mass
-operation resets the following fields: “Trace Checkout”, “Trace Terms”, "Trace Rule Terms",
-“Trace Rules”, "Trace Workflow Rules" and “Trace Document Status”. Simply check the
+accomplish this via Document mass operation `Trace Document Retry`. The mass
+operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace Rule Terms`,
+`Trace Rules`, `Trace Workflow Rules` and `Trace Document Status`. Simply check the
 documents that you wish to retry from the Document List and click the item in the
-dropdown and click “Ok” on the pop-up. If your browser settings prevent pop-ups please
+dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please
 enable them for Relativity URLs.
 
 **WARNING:** The retry process can be very resource-intensive. Trace is
@@ -363,7 +344,7 @@ The Rule Creation form contains the following fields:
     -   **Webhook:** makes a generic API call hosted within Relativity
     
 - > **NOTE:** The Tagging action type has been deprecated. Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed)
-    
+  
 - > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search and set it to `auto-run`.
 
 2 - Customizing and Running a Rule
@@ -377,7 +358,7 @@ the rule.
 The Trace Rule Management Console on the right-hand side has the following
 buttons:
 
--   **Enable Rule:** enabling the rule allows agents to run rule on an ongoing
+-   **Enable Rule:** enabling the rule allows Trace Manager agent to run rule on an ongoing
     basis
 
     > **NOTE:** A Rule will only execute when it is enabled.
@@ -418,10 +399,9 @@ You can create Terms in multiple ways:
 Term definition contains 3 fields:
 
 -   **Term:** searching string (unique identifier)
-
 -   **Term Category:** optional group name to organize terms
-
--   **Relativity highlight color:** specifies highlighting configuration in the
+-   **Score:** optional field to populate term weight to indicate importance
+-   **Relativity highlight color:** optional highlighting configuration in the
     Relativity viewer (see [highlighting](#highlighting) section)
 
 In addition, you can see and modify Term Categories and Rules associated with
@@ -440,9 +420,9 @@ higher limits for your terms.
 
 ### Highlighting
 
-By default, Trace creates a “Trace Persistent Highlight Set” that is populated
-with **all** terms present in the workspace. In addition, the “Trace Rules
-Persistent Highlight Set” captures only terms currently associated with any
+By default, Trace creates a `Trace Persistent Highlight Set` that is populated
+with **all** terms present in the workspace. In addition, the `Trace Rules
+Persistent Highlight Set` captures only terms currently associated with any
 Rule. You can have many terms you want to use for highlighting purposes only,
 and not necessarily as part of matching any specific Rule. You can adjust the
 order in which they are displayed in the viewer.
@@ -1040,10 +1020,10 @@ Data batch is a unit of ingestion work for Trace. It corresponds to a load file
 on disk that needs to be imported with specific settings and field mappings. It
 is a central tracking object for how the data was generated, normalized and
 aggregated into load file. It provides status of the overall import process and
-allows for deep audit history trail from “source” to Relativity.
+allows for deep audit history trail from native data source to Relativity.
 
-Once a batch enters Ingestion process (when status is set to: “Ready For
-Import”) Ingestion task will create an integration point from the configured
+Once a batch enters Ingestion process (when status is set to: `Ready For
+Import`) Ingestion task will create an integration point from the configured
 Data Source profile (this information includes import settings and field
 mappings).
 
@@ -1054,16 +1034,16 @@ Error Resolution Workflow and Retry
 
 By default the batch will be automatically retried internally (up to 3 times) if
 the data batch import was not completed. You can get the error details by
-looking at “Error Details” of a specific batch with “Has Errors” set to yes. You
-can manually mark the batch as “Abandoned” to indicate that it was manually
-resolved or “Retry” it.
+looking at `Error Details` of a specific batch with `Has Errors` set to yes. You
+can manually mark the batch as `Abandoned` to indicate that it was manually
+resolved or retry it.
 
 Data Batch objects have associated Mass Operations (and corresponding Data Batch
 console UI buttons) to help with state resolution
 
-1.  Retry – submit the batch to be retried by Trace
+1.  `Trace Data Batch Retry` – submit the batch to be retried by Trace
 
-2.  Abandon – indicates the batch has been manually resolved and should not be
+2.  `Trace Data Batch Abandon` – update the batch to indeicate that it has been manually resolved and should not be
     treated as errored.
 
     ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
@@ -1103,20 +1083,29 @@ adjusted at a workspace level.
 
 Each task is designed to be auto-recoverable and self-healing. For example, if there are temporary network connection issues that prevent `Data Retrieval` task from retrieving data, Trace will keep trying until network issues are resolved. No manual intervention is needed.
 
--   **Data Retrieval:** Responsible for pulling data for Data Sources
+- **Data Retrieval:** Responsible for pulling data for Data Sources
+
 -   **Ingestion:** Responsible for triggering import of the Data Batches into
     Relativity (part of Proactive Ingestion Framework). Any Data Transformations
     configured for the corresponding Data Source will also be performed.
+    
 -   **Ingestion Status:** Responsible for updating statuses of the Data Batches
     (part of Proactive Ingestion Framework)
--   **Indexing:** Responsible for indexing data needed for searching
+    
+- **Indexing:** Responsible for indexing data needed for searching
+
 -   **Term Searching:** Responsible for executing searching of the Terms for
     Rule evaluations
+    
 -   **Rule Evaluation:** Responsible for evaluating configured Rules within the
     workspace
+    
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
--   **Data Enrichment:** Responsible for extracting nested files (attachments, contents of zip files) and generating extracted text
+    
+- **Data Enrichment:** Responsible for extracting nested files (attachments, contents of zip files), generating extracted text and preparing the loadfile that is ready for import process
+
+  > **NOTE:** Data Enrichment task queues up work via SQL based ServiceBus.  Actual enrichment work is performed by `Trace Worker Agent`
 
 Alerts and Notifications
 ------------------------
@@ -1202,10 +1191,10 @@ Usability Considerations
 
 -   Once a document is associated with a Rule, it will never be disassociated
     unless there are document updates to extracted text or metadata. Manual
-    Trace Document Retry (mass operation) procedure will also reset the
+    `Trace Document Retry` (mass operation) procedure will also reset the
     associations automatically.
 
--   Every Data Source has capability to be “reset”. Once a data source is reset,
+-   Every Data Source has capability to be `Reset` via console buttons. Once a data source is reset,
     Trace will pull all available data again, beginning with the Start Date
     defined on the data source (if the Start Date is relevant to the data source
     type). **Depending on import profile settings, this could duplicate data in
@@ -1213,13 +1202,13 @@ Usability Considerations
 
 -   Task processes (Indexing, Term Searching, Rule Evaluation, etc) run
     asynchronously from each other. It may take several task cycles (based on
-    configured ”Run Intervals”) for the end-to-end workflow to complete fully.
+    configured `Run Interval`) for the end-to-end workflow to complete fully.
 
 -   Deleting a Trace Rule does not delete any of the corresponding Relativity
     infrastructure and objects that were created (i.e. dtSearch Index, Saved
     Searches, Batch Sets). 
 
--   The global dtSearch index “Trace Search Index” (created by Trace application
+-   The global dtSearch index `Trace Search Index` (created by Trace application
     during installation) is supported for ad-hoc searching and will be
     incrementally built as part of Indexing task. No other dtSearch indexes will
     incrementally build automatically.
@@ -1227,18 +1216,17 @@ Usability Considerations
 -   If Analytics Server is present, active and configured for the Relativity
     instance:
 
-    -   If enabled, both “Trace Conceptual Analytics Index” and “Trace
-        Classification Analytics Index” will incrementally build automatically.
+    -   If enabled, both `Trace Conceptual Analytics Index` and `Trace
+        Classification Analytics Index` will incrementally build automatically.
         In order to enable this functionality, manually perform Full Build on
         each index.
 
-    -   If enabled, “Trace Structured Analytics Set” will run on incremental
+    -   If enabled, `Trace Structured Analytics Set` will run on incremental
         data performing specified job options (by default: Language
         Identification). In order to enable this functionality, manually perform
         Full Analysis.
-	
-        + When [setting up Language Identification](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure the saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested documents are flagged for analysis.
-	
+	+ When [setting up Language Identification](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure the saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested documents are flagged for analysis.
+    
 	![](media/user_documentation_LanguageID_SavedSearch.png)
 
 General Infrastructure and Environment Considerations
@@ -1246,11 +1234,11 @@ General Infrastructure and Environment Considerations
 
 | **Tasks:**                       | **Ingestion**                                                                          | **Ingestion**      |    **Running Rules**                                                      |   **Running Rules**                                                                   |
 |----------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------|
-|                                  | **`Ingestion`, `Ingestion Status`, and `Data Retrieval`**                                    | **`Indexing`**                                                                                                                                                                                        | **`Term Searching`**                                       | **`Rule Evaluation`**                                                  |
+|                                  | **`Ingestion`, `Ingestion Status`, `Data Enrichment` and `Data Retrieval`**           | **`Indexing`**                                                                                                                                                                                        | **`Term Searching`**                                       | **`Rule Evaluation`**                                                  |
 | Summary                          | Powers the Proactive Ingestion Framework                                               | Incrementally builds Trace Search Index and Temporary Search Indexes with batches of documents Optionally: Incrementally builds and runs Analytics Jobs (Conceptual, Classification and Structured) | Searches and tags Terms in workspace on an ongoing basis | Rule will run and tag all matching documents and perform actions     |
-| Task Operations                  | *`Ingestion Task`*<br>-Looks for batches that need to be imported and kicks off import<br>-Creates RIP job per batch<br>*`Ingestion Status Task`*<br>-Updates Data Batch status<br>*`Data Retrieval Task`*<br>-Pulls data for enabled Data Sources executed by Trace Agent                                                                      | *`Indexing Task`*<br>-Kicks off dtSearch incremental build<br>-Kicks off temporary (internal) dtSearch index builds for Term evaluation<br>-Kicks off Analytics Jobs (if configured)<br>**NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global dtSearch and Analytics Indexes are built every 60 minutes by default.                                                                                                                                                                                    | *`Term Searching Task`*<br>-Runs (searches and tags) Terms in the workspace<br>**NOTE:** Each Term Searching run interval will search up to 5 available document batches (default 10,000 documents per batch). These settings are configurable on Term Searching task.                                    | *`Rule Evaluation Task`*<br>-Evaluates each rule in the workspaces and triggers configured actions                                              |
+| Task Operations                  | *`Ingestion Task`*<br>-Looks for batches that need to be imported and kicks off import<br>-Creates RIP job per batch<br>*`Ingestion Status Task`*<br>-Updates Data Batch status<br>*`Data Retrieval Task`*<br>-Pulls data for enabled Data Sources executed by `Trace Manager Agent`<br><br> `Data Enrichment Task` extracts/expands/enriches source native document and prepares import load file (executed by `Trace Worker Agent`) | *`Indexing Task`*<br>-Kicks off dtSearch incremental build<br>-Kicks off temporary (internal) dtSearch index builds for Term evaluation<br>-Kicks off Analytics Jobs (if configured)<br>**NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global dtSearch and Analytics Indexes are built every 60 minutes by default.                                                                                                                                                                                    | *`Term Searching Task`*<br>-Runs (searches and tags) Terms in the workspace<br>**NOTE:** Each Term Searching run interval will search up to 5 available document batches (default 10,000 documents per batch). These settings are configurable on Term Searching task.                                    | *`Rule Evaluation Task`*<br>-Evaluates each rule in the workspaces and triggers configured actions                                              |
 | Recommended Run Interval         | `60` seconds                                                                             | `300` seconds                                                                                                                                                                                         | `300` seconds                                              | `300` seconds                                                          |
-| Considerations and System Impact | -Speed of ingestion is determined by number of Integration Points Agents (max of 4)     | -Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)<br>-Every incremental build makes the old build obsolete - cleaned up by Case Manager nightly                                                                                  |                                                          | -Very complex/nested underlying Saved Searches can affect performance<br>-Saved Searches that return many documents can affect performance<br>-Many rules being evaluated often can put pressure on SQL server |
+| Considerations and System Impact | -Speed of ingestion is determined by number of Integration Points Agents (max of 4 per instance) | -Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)<br>-Every incremental build makes the old build obsolete - cleaned up by Case Manager nightly                                                                                  |                                                          | -Very complex/nested underlying Saved Searches can affect performance<br>-Saved Searches that return many documents can affect performance<br>-Many rules being evaluated often can put pressure on SQL server |
 
 > **IMPORTANT**: Reach out to `support@relativity.com` to adjust the Task `Settings` field 
 
