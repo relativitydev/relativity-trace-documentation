@@ -47,7 +47,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 ### Installation Steps
 
-Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if you don't have access to this guide.
+Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
 
 ### Data Flow Overview
 
@@ -122,7 +122,7 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if
        1.  MUST configure Email Alert Settings
        2.  Send Test Email
        3.  ![1570209109659](media/trace_connectors_user_guide/1570209109659.png)
-   8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to trace@relativity.com if you don't have access to this guide.
+   8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
    9.  Configure `Importer Schedule` to run at a desirable frequency (daily is the most common frequency)
    
    

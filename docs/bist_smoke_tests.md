@@ -41,7 +41,7 @@ It is recommended to run **BIST** on a new workspace or on a test workspace as
     1.  Navigate to Library Application (Admin), locate Trace and install it
         into Test Workspace
 
-    2.  Ensure that Trace Agent and all dependent Agents are enabled and working
+    2.  Ensure that Trace Agent and all dependent Agents are enabled and working 
 
     3.  Within the workspace, navigate to Trace → Setup and set Run Option →
         Continuous
@@ -68,7 +68,7 @@ It is recommended to run **BIST** on a new workspace or on a test workspace as
 
         4.  Generate test data emails with attachments
 
-        5.  Extract and Ingest 143 documents with various file types, language
+        5.  Extract and Ingest 144 documents with various file types, language
             contents across 2 data batches
 
 4.  Create Terms **[AUTOMATED]**
@@ -132,7 +132,7 @@ It is recommended to run **BIST** on a new workspace or on a test workspace as
 
 - Trace BIST Data Source Generated Batches: `2`
 
-- Total Documents in Trace BIST folder: `142`
+- Total Documents in Trace BIST folder: `143`
 
 - Total Deleted Documents: `1`
 
