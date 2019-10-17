@@ -226,8 +226,9 @@ DEMO B: Running an Archive Rule
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
     ![](media/eac385448f2a333626219dbd74f113c8.png)
-    > **NOTE:** Count on non-alerted documents might vary
-
+    
+> **NOTE:** Count on non-alerted documents might vary
+    
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
     Rule**.
