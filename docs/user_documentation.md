@@ -178,7 +178,7 @@ Setting up Relativity Trace
 
    1.  Please reach out to `support@relativity.com` for additional information
 
-5. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](media/user_documentation/1571073733941.png)
+5. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](./media/user_documentation/1571073733941.png)
 > **NOTE:** On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer. 
 
 6. Configure Trace License
