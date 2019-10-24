@@ -87,35 +87,36 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 2.  Click into the **Trace:Rules** tab to see sample rules in the workspace.
     Rules are how you define the type of content that is relevant to you. The
     **Market Abuse** rule has been pre-created for you along with a few others.
-    ![](media/cbcdbe80b994aff6e31fad731db5362e.png)
+    
+![](media/demo_guide/Section1.2-1571771958433.png)
+    
+3. Click into the **Market Abuse** rule and see the options that make up this
+   rule:
 
-3.  Click into the **Market Abuse** rule and see the options that make up this
-    rule:
+   -   **Searchable Set:** A Saved Search that the rule runs against
 
-    -   **Searchable Set:** A Saved Search that the rule runs against
+   -   **Associated Actions:** A set of actions to take on matched documents (this
+   rule will move the matched documents to a separate folder)
 
-    -   **Associated Actions:** A set of actions to take on matched documents (this
-    rule will Tag and Batch out to reviewers)
+   -   **Terms**: Allows you to link Trace Terms to refine your document filter
+   criteria with an e-discovery grade searching engine (dtSearch)
 
-    -   **Terms**: Allows you to link Trace Terms to refine your document filter
-    criteria with an e-discovery grade searching engine (dtSearch)
+   -   The rule is currently **Disabled**
+   ![](media/demo_guide/Section1.3.png)
 
-    -   The rule is currently **Disabled**
-    ![](media/0c099bc9669ce508b9a1110a66cd15ca.png)
+4. Click the **Enable Rule** console button under **Trace Rule Management** section:
 
-4.  Click the **Enable Rule** console button under **Trace Rule Management** section:
+   -   The rule is now **Enabled**
 
-    -   The rule is now **Enabled**
-
-    -   As data is ingested, this rule will be automatically applied to all incoming
-    documents
-    ![](media/9121eef9fa793b0003021602cefabbe2.png)
+   -   As data is ingested, this rule will be automatically applied to all incoming
+   documents
+   ![](media/demo_guide/Section1.4.png)
 
 ### Section 2: Importing Data and Running Rules
 
 1.  Now let’s test our rules by adding live stream of data into the workspace
     with Office 365 Data Source. Go to the **Trace:Data Sources** tab
-    ![](media/eae00fa728b99218930da021e4f58a6c.png)
+    ![](media/demo_guide/Section2.1.png)
 
 2.  Click on the **Office 365 Exchange** data source to see how it is configured
 
@@ -132,69 +133,68 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     -   **Trace Monitored Individuals:** lets you select which people to monitor
 
     -   The Data Source is currently **Disabled**
-    ![](media/0b80dfed320b157afa02f114b3fbd7c1.png)
+    ![](media/demo_guide/Section2.2.png)
 
 3.  Click **Enable Data Source** on the right hand side
-    ![](media/e0b725fd32e467f47cf879fa55a0a7b1.png)
+    ![](media/demo_guide/Section2.2a.png)
 
-4.  Wait for Data Batches with data to start showing up – refresh the page
-    several times, until you start seeing Data Batches on the bottom (it may
-    take several minutes for first data batch to be fully created). You can see
-    how much data each Data Batch retrieved and corresponding statuses. Once you
-    have a few Data Batches in “Completed” state the rest of the Trace workflow
-    automatically triggers.
-    ![](media/888c38c3f153691242bd9fb200911bd4.png)
+4.  Data will begin to get pulled from the exchange server for each of the defined Monitored Individuals. Refreshing the page will show data batches as they are pulled from the data source and processed (it may take several minutes for first data batch to be fully created). You can see how much data each Data Batch retrieved and corresponding statuses. Once you have a few Data Batches in “Completed” state the rest of the Trace workflow automatically triggers.
+    
+    ![](media/demo_guide/Section2.4.png)
 
 As time goes on, more batches with data will be created and ingested:
 ![](media/c3ef4b4a771fbfd3d7b25c7dc5ccf4dc.png)
 
 ### Section 3: Viewing Results
 
-1.  Go to the **Review Batches** tab. This shows all Review Batches that were
-    auto-generated from the enabled rules
-    ![](media/38c5bd780c5ada1f3042f8ac7052d37d.png)
+1. Click on **Documents** tab:
 
-2.  Click on **Documents** tab:
+   1. Data is proactively being retrieved, extracted and ingested
 
-    1.  Data is proactively being retrieved, extracted and ingested
+   2. For this demo, all ingested documents are routed to the **Ingestion Folder**
 
-    2.  “**Trace Search Index**” is built automatically -\> for your ad-hoc
-        searching
-    ![](media/69cbd4e87b452afd74276bba27660db4.png)
+      ![1571775679888](media/demo_guide/1571775679888.png)
+
+   3. Documents matched to the **Market Abuse** rule will have the **Default Move To Folder** action execute. The matched documents will appear under the **Alerted Documents** folder.
+
+      ![1571775810589](media/demo_guide/1571775810589.png)
+
+   4. Navigate to the **Trace Demo** root folder. You will find the “**Trace Search Index**” is built automatically for your ad-hoc searching.
+      ![](media/69cbd4e87b452afd74276bba27660db4.png)
 
 3.  Explore Dashboards
-    ![](media/56a2973ce72db92e5bbb474fe8e7c216.png)
+    ![](media/demo_guide/Section3.3.png)
 
-    1. Once all the data is ingested and analyzed about 7.6% of ingested documents have
-    matched the rules:
-    ![](media/b263a7470437bb562c35e35c0fc113ed.png)
+    1. Once all the data is ingested and analyzed about 8.5% of ingested documents have
+      matched the rules:
+      ![](media/demo_guide/Section3.3i.PNG)
 
-    2. All of the Rules that matched:
-    <br>![](media/87545672cde91318af976d0f7705cc9a.png)
+      **(blank)** denotes the number of documents where no Rules were matched.
+    
+2. All of the Rules that matched:
+      <br>![](media/demo_guide/Section3.4i.PNG)
+    
+3. File type breakdown of ingested documents:
+      ![](media/demo_guide/Section3.3iii.PNG)
+    
+3. Review matched documents
 
-    3. File type breakdown of ingested documents:
-    ![](media/2915c8515dde4765959049040c23c5ef.png)
+   1.  Click on “Market Abuse” bar on the Rules widget
+   ![1571776936298](media/demo_guide/1571776936298.png)
+   2.  Click on “Revenue Sharing” on the Terms widget
+   ![1571777044365](media/demo_guide/1571777044365.png)
+   3.  Click on the top document in the list:
+   ![1571777162502](media/demo_guide/1571777162502.png)
+   4.  Explore document details:
+   ![1571777552542](media/demo_guide/1571777552542.png)
+   ![1571777717924](media/demo_guide/1571777717924.png)
 
-4.  Review matched documents
+   - Matched terms are automatically highlighted in the document
 
-    1.  Click on “Market Abuse” on the Rules widget
-    ![](media/7675cfedd1484500512efe27c13ee17f.png)
+   - Document text and meta-data was automatically extracted
 
-    2.  Click on “Revenue Sharing” on the Terms widget
-    ![](media/7284f63897ecd8c4c1d154be240a2039.png)
+   - Related documents are displayed in the “Family” section
 
-    3.  Click on one of the documents in the list:
-    ![](media/57778d5767b262da54b15eff0d505ff5.png)
-
-    4.  Explore document details:
-    ![](media/42528d221727ff6d48bb9e844bfb0ffb.png)
-    ![](media/c8e3e14b0d67dccba13753f24496b38a.png)
-
-1.  Matched terms are automatically highlighted in the document
-
-2.  Document text and meta-data was automatically extracted
-
-3.  Related documents are displayed in the “Family” section
 
 ### Section 4: Recap
 
@@ -203,12 +203,12 @@ Thanks for completing Demo A! Quick recap, here’s what we did:
 1.  Enabled **Market Abuse** rule for continuous evaluation
 
 2.  Viewed rules that are based on Saved Searches and Trace Terms that have
-    Tagging and Batching as associated actions
+    an associated action of moving the document to another folder.
 
 3.  Enabled ingestion of documents, proactively from live Office 365 instance
 
 4.  Validated that the documents were ingested into the workspace, automatically
-    indexed, searched, tagged and batched out for review
+    indexed, searched, tagged and moved
 
 5.  Reviewed a matched document in the viewer with extracted data, related
     documents and highlighted terms
@@ -225,13 +225,14 @@ DEMO B: Running an Archive Rule
     Search** browser in the **Documents** tab and select the “**Non-alerted
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
-    ![](media/eac385448f2a333626219dbd74f113c8.png)
-    > **NOTE:** Count on non-alerted documents might vary
-
+    ![1571779546803](media/demo_guide/1571779546803.png)
+    
+> **NOTE:** Count on non-alerted documents might vary
+    
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
     Rule**.
-    ![](media/406ada4e092e1e343bce785bebec7e9c.png)
+    ![1571779609579](media/demo_guide/1571779609579.png)
 
 4.  You’ll notice that the **Delete Rule** follows a similar format to the prior
     demo. The rule runs on the “Non-alerted Documents” Saved Search and has the
@@ -239,24 +240,26 @@ DEMO B: Running an Archive Rule
     all documents in the Saved Search (outside of the set retention policy) once
     the rule is enabled. This will enable you to have an **automated retention
     policy** in Relativity.
+    
     > **NOTE:** For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be
-    delete as soon as the rule runs
-
+delete as soon as the rule runs
+    
 5.  Now let’s enable the rule so Trace can start enforcing your Data Archive
     policy. Go to the **Trace:Rules** tab again and click on the “**Delete
     Rule**”
-    ![](media/406ada4e092e1e343bce785bebec7e9c.png)
+    ![1571779615711](media/demo_guide/1571779615711.png)
 
-6.  Click on **Enable Rule** in console button under **Automation** section
-    ![](media/603645b32fe247cfb851e292c7786beb.png)
+6.  Click on **Enable Rule** in console button under **Trace Rule Management** section
+    ![1571779666116](media/demo_guide/1571779666116.png)
 
 7.  Go back to the Saved Search Browser in the Documents tab and select the
-    “Documents to Delete” Saved Search. Within a few minutes and you’ll start to
+    “Non-alerted Documents” Saved Search. Within a few minutes you’ll start to
     see documents getting deleted from this workspace.
-    ![](media/8c040117f5bbed702213148a2aaa0873.png)
+    
+![1571779733791](media/demo_guide/1571779733791.png)
+    
+8. Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
+   ![1571779820919](media/demo_guide/1571779820919.png)
 
-8.  Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
-    ![](media/59aecb6c0a0e49227506ca5d22afac87.png)
-
-Let us know what you think! Reach out to `trace@relativity.com` with any
+Let us know what you think! Reach out to `support@relativity.com` with any
 feedback. Thanks!
