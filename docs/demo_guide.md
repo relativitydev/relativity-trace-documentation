@@ -261,5 +261,5 @@ delete as soon as the rule runs
 8. Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
    ![1571779820919](media/demo_guide/1571779820919.png)
 
-Let us know what you think! Reach out to `trace@relativity.com` with any
+Let us know what you think! Reach out to `support@relativity.com` with any
 feedback. Thanks!
