@@ -1,13 +1,13 @@
 # Relativity Trace Release Notes
 
-- [12.0.4.2 (16 October 2019)](#12042-16-october-2019)
-- [11.2.11.1 (13 September 2019 - DEPRECATED)](#112111-13-september-2019---deprecated)
+- [12.0.5.2 (24 October 2019)](#12052-24-october-2019)
+- [11.2.11.1 (13 September 2019) - DEPRECATED](#112111-13-september-2019---deprecated)
 - [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
 - [11.2.9.2 (15 July 2019) - DEPRECATED](#11292-15-july-2019---deprecated)
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.0.4.2 (16 October 2019)
+# 12.0.5.2 (24 October 2019)
 
 **Relativity Compatibility**
 
@@ -48,9 +48,9 @@
 
 **Upgrade Considerations**
 
-- This is a major version change of Relativity Trace.
+- This is a **major** version change of Relativity Trace.
 
-# 11.2.11.1 (13 September 2019 - DEPRECATED)
+# 11.2.11.1 (13 September 2019) - DEPRECATED
 
 > **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
