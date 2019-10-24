@@ -88,6 +88,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     Rules are how you define the type of content that is relevant to you. The
     **Market Abuse** rule has been pre-created for you along with a few others.
     
+
 ![](media/demo_guide/Section1.2-1571771958433.png)
     
 3. Click into the **Market Abuse** rule and see the options that make up this
@@ -166,8 +167,8 @@ As time goes on, more batches with data will be created and ingested:
     ![](media/demo_guide/Section3.3.png)
 
     1. Once all the data is ingested and analyzed about 8.5% of ingested documents have
-      matched the rules:
-      ![](media/demo_guide/Section3.3i.PNG)
+        matched the rules:
+        ![](media/demo_guide/Section3.3i.PNG)
 
       **(blank)** denotes the number of documents where no Rules were matched.
     
@@ -226,9 +227,8 @@ DEMO B: Running an Archive Rule
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
     ![1571779546803](media/demo_guide/1571779546803.png)
-    
 > **NOTE:** Count on non-alerted documents might vary
-    
+
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
     Rule**.
@@ -241,25 +241,31 @@ DEMO B: Running an Archive Rule
     the rule is enabled. This will enable you to have an **automated retention
     policy** in Relativity.
     
-    > **NOTE:** For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be
-delete as soon as the rule runs
-    
-5.  Now let’s enable the rule so Trace can start enforcing your Data Archive
-    policy. Go to the **Trace:Rules** tab again and click on the “**Delete
-    Rule**”
-    ![1571779615711](media/demo_guide/1571779615711.png)
+5. Now let’s enable the rule so Trace can start enforcing your Data Archive
+   policy. Go to the **Trace:Rules** tab again and click on the “**Delete
+   Rule**”
+   ![1571779615711](media/demo_guide/1571779615711.png)
 
-6.  Click on **Enable Rule** in console button under **Trace Rule Management** section
-    ![1571779666116](media/demo_guide/1571779666116.png)
+6. In the **Associated Actions** section, click into **Default Data Archive**
 
-7.  Go back to the Saved Search Browser in the Documents tab and select the
-    “Non-alerted Documents” Saved Search. Within a few minutes you’ll start to
-    see documents getting deleted from this workspace.
-    
+   ![1571957547875](media/demo_guide/1571957547875.png)
+
+7.  Click **Edit** to edit the Action and set **Delete Documents Older Than Hours** to **0**. This sets the retention policy to 0 hours for demo purposes.  Then click **Save and Back** to return to the rule page.
+
+    ![1571957665913](media/demo_guide/1571957665913.png)
+
+8. Click on **Enable Rule** in console button under **Trace Rule Management** section
+   ![1571779666116](media/demo_guide/1571779666116.png)
+
+9. Go back to the Saved Search Browser in the Documents tab and select the
+   “Non-alerted Documents” Saved Search. Within a few minutes you’ll start to
+   see documents getting deleted from this workspace.
+
+
 ![1571779733791](media/demo_guide/1571779733791.png)
     
 8. Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
    ![1571779820919](media/demo_guide/1571779820919.png)
 
-Let us know what you think! Reach out to `support@relativity.com` with any
+Let us know what you think! Reach out to `trace@relativity.com` with any
 feedback. Thanks!
