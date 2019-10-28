@@ -1,6 +1,5 @@
 # Relativity Trace Documentation
 ## General Information
-Version: Latest (11.2.11.1)
 
 Relativity Trace User and Technical documentation
 
