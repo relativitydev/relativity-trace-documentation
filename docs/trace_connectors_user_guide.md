@@ -38,12 +38,14 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
    5. SQL Server 2012 or later
 
       1. >  **NOTE:** We recommend to take daily backups and keep them for 1 week
+      
+      2. >  **NOTE:** We recommend to shrink database daily in order not to run out of disk space
 
-3.  Network Requirements
+3. Network Requirements
 
-    1.  Server with Globanet needs to have access to Relativity's Fileshare
-        1.  If Globanet does not have direct access to Relativity's Fileshare, site-to-site VPN OR SFTP sync can be setup. See Data Flow Overview below for more details
-        2.  Server with Globanet only needs access to specific folders on Relativity Fileshare. Details are documents in Data Flow Overview section below.
+   1.  Server with Globanet needs to have access to Relativity's Fileshare
+       1.  If Globanet does not have direct access to Relativity's Fileshare, site-to-site VPN OR SFTP sync can be setup. See Data Flow Overview below for more details
+       2.  Server with Globanet only needs access to specific folders on Relativity Fileshare. Details are documents in Data Flow Overview section below.
 
 ### Installation Steps
 
