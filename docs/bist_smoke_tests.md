@@ -30,6 +30,9 @@ tests after that. 
 
 ![](media/BIST_TraceWorkspaceSettings.png)
 
+      - Return to Setup tab in your BIST workspace
+      - You should now be able to lick on the Built-in self-test link in the console
+
 -   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
 
 ![](media/bff924ad11b5aea52e5ef3da32250f08.png)
