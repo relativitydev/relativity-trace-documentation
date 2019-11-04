@@ -202,8 +202,9 @@ Content-Type: application/json; charset=utf-8
 Host: REPLACE_WITH_RELATIVITY_ROOT
 Content-Length: 252
 Expect: 100-continue
+
 {
-  "Name": "Office365Email_20180511200815UTC-20180511210839UTC",
+  "Name": "Test Data Batch",
   "Status": {
     "Guids": [
       "29D19E38-8096-4A63-9496-F6E02D40FBFF"
@@ -239,7 +240,7 @@ Below **sample requests** will update a Data Batch associated with Load File
 
 ```json
 PUT
-https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017899 HTTP/1.1
+https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017877 HTTP/1.1
 X-CSRF-Header:
 Authorization: Basic
 ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
@@ -248,6 +249,7 @@ Content-Type: application/json; charset=utf-8
 Host: 192.168.137.138
 Content-Length: 252
 Expect: 100-continue
+
 {
   "Status": {
     "Guids": [
@@ -261,11 +263,13 @@ Expect: 100-continue
     "Artifact ID": 1003663
   },
   "Artifact Type Name": "Data Batch",
-  "Artifact ID": 1017899
+  "Artifact ID": 1017877
 }
 ```
 
-`1017899` – workspace ID
+`1017899` – Workspace ID
+
+`1017877` - Artifact ID of `Test Data Batch` create in the previous section
 
 `ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded username:password
 
