@@ -194,8 +194,7 @@ Below **sample request** will create a Data Batch associated with Load File
 `DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat`
 
 ```json
-POST https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch
-HTTP/1.1
+POST https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch HTTP/1.1
 X-CSRF-Header:
 Authorization: Basic ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
 X-Kepler-Version: 2.0
@@ -240,8 +239,7 @@ Below **sample requests** will update a Data Batch associated with Load File
 
 ```json
 PUT
-https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017899
-HTTP/1.1
+https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017899 HTTP/1.1
 X-CSRF-Header:
 Authorization: Basic
 ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
