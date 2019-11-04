@@ -124,36 +124,28 @@ The below screenshot shows a sample Data Batch RDO in Relativity:
 
 When a Data Source creates a Data Batch, several fields must be filled out:
 
-1.  Status
+1. Status
 
-    1.  *ReadyForImport* signals Trace to start ingesting the data
+   1.  `ReadyForImport` signals Trace to start ingesting the data
+   1.  All needed configuration is written on the Data Batch
+       
+   2.  Load File has been successfully copied to Relativity Fileshare
+       
+   2.  `Created`, `RetrievedFromSource` and `Normalized` can be used to track data flow in Relativity for reconciliation purposes by the Data Source
+       
+   3.  `Importing`, `Completed` and `CompletedWithErrors` statuses are populated by Trace automatically for ingestion tracking purposes
 
-        1.  *All needed configuration is written on the Data Batch*
+   4.  For each Status, Data Source can specify document count and time stamp (optional)
 
-        2.  *Load File has been successfully copied to Relativity Fileshare*
-
-    2.  *Created*, *RetrievedFromSource* and *Normalized* can be used to track
-        data flow in Relativity for reconciliation purposes by the Data Source
-
-    3.  *Importing*, *Completed* and *CompletedWithErrors* statuses are
-        populated by Trace automatically for ingestion tracking purposes
-
-2.  For each Status, Data Source can specify document count and time stamp
-    (optional)
-
-    ![](media/4a1b9ec9b71e8a2e1d07c4e901f2e867.png)
+   ![](media/4a1b9ec9b71e8a2e1d07c4e901f2e867.png)
 
 3.  Data Source
 
     1.  Specify Data Source of the Data Batch
-
-![](media/db43a876e56f862c4b2587b563f8e83a.png)
-
-1.  Load File Path
-
-    1.  Specify path to the relativity location of the load file
-
-![](media/8770cf000865b61b94dc24002b7d49e5.png)
+        1.  ![](media/db43a876e56f862c4b2587b563f8e83a.png)
+    2.  Load File Path
+        1.  Specify path to the relativity location of the load file
+            1.  ![](media/8770cf000865b61b94dc24002b7d49e5.png)
 
 API Usage
 =========
@@ -164,12 +156,12 @@ Working with TPI involves several steps in a base workflow:
 
 2.  Create Data Batch RDO in Relativity
 
-    1.  Status set to *ReadyforImport*
+    1.  Status set to `ReadyforImport`
 
     2.  Data Source Selected to *Office 365 Email*
 
     3.  Load File Path filled
-        *DataTransfer\\\\Import\\\\Office365Emails\\\\20180511200815UTC-20180511210839UTC\\\\loadfile.dat*
+        `DataTransfer\Import\Office365Emails\20180511200815UTC-20180511210839UTC\loadfile.dat`
 
 On next Ingestion task check-in Trace will automatically ingest the data by
 creating an Integration Point and will validate the import was successful.
@@ -177,40 +169,31 @@ creating an Integration Point and will validate the import was successful.
 Data Batch creation (Quick Start)
 =================================
 
-Since Data Batch is an RDO, standard Relativity API can be used to manage it.
-Sample below shows how to create Data Batches with Relativity REST (generic
-API). One can prototype with Relativity REST without having to write any code.
-We recommend tools such as [Fiddler](https://www.telerik.com/fiddler) to
-prototype sample calls ahead of creating full solutions in code.
+Since Data Batch is an RDO, standard Relativity API can be used to manage it. Sample below shows how to create Data Batches with Relativity REST (generic API). One can prototype with Relativity REST without  having to write any code. We recommend tools such as [Fiddler](https://www.telerik.com/fiddler) to prototype sample calls ahead of creating full solutions in code.
 
 Data Batch Statuses
 -------------------
 
 Below status identifiers are needed to set a Data Batch to a particular stage of
-processing. The identifiers are the same across all versions of Relativity and
-Trace application.
+processing. The identifiers are the same across all versions of Relativity and Trace application.
 
--   29D19E38-8096-4A63-9496-F6E02D40FBFF - GUID identifier for *Created* status
+-   `29D19E38-8096-4A63-9496-F6E02D40FBFF` - GUID identifier for `Created` status
 
--   5932D23F-697B-4950-AE55-1E38AFDD4D2C - GUID identifier for
-    *RetrievedFromSource* status
-
--   B4680628-67EE-47F7-813C-51DEA69CB19A - GUID identifier for *Normalized*
-    status
-
--   32452D3D-35D2-4FF5-92E6-1DD01D755482 – GUID identifier for *ReadyForImport*
-    status
-
--   68FCCFB2-6CE4-442C-A402-26A76E37A961 – GUID identifier for *Abandoned
-    status*
+-   `5932D23F-697B-4950-AE55-1E38AFDD4D2C` - GUID identifier for `RetrievedFromSource` status
+    
+-   `B4680628-67EE-47F7-813C-51DEA69CB19A` - GUID identifier for `Normalized` status
+    
+-   `32452D3D-35D2-4FF5-92E6-1DD01D755482` – GUID identifier for `ReadyForImport` status
+    
+-   `68FCCFB2-6CE4-442C-A402-26A76E37A961` – GUID identifier for `Abandoned` status
 
 Create Data Batch
 -----------------
 
 Below **sample request** will create a Data Batch associated with Load File
-*DataTransfer\\Import\\Office365Email\\20180511200815UTC-20180511210839UTC\\loadfile.dat*
+`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat`
 
-```
+```json
 POST https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch
 HTTP/1.1
 X-CSRF-Header:
@@ -221,34 +204,31 @@ Host: REPLACE_WITH_RELATIVITY_ROOT
 Content-Length: 252
 Expect: 100-continue
 {
-"Name": "Office365Email_20180511200815UTC-20180511210839UTC",
-"Status": {
-"Guids": [
-"29D19E38-8096-4A63-9496-F6E02D40FBFF"
-],
-"Artifact Type Name": "Choice"
-},
-"Load File Path": "Data Batch",
-"Data Source": {
-"Artifact ID": 3453563
-},
-"Parent Artifact": {
-"Artifact ID": 1003663
-},
-"Artifact Type Name": "Data Batch"
+  "Name": "Office365Email_20180511200815UTC-20180511210839UTC",
+  "Status": {
+    "Guids": [
+      "29D19E38-8096-4A63-9496-F6E02D40FBFF"
+    ],
+    "Artifact Type Name": "Choice"
+  },
+  "Load File Path": "Data Batch",
+  "Data Source": {
+    "Artifact ID": 3453563
+  },
+  "Parent Artifact": {
+    "Artifact ID": 1003663
+  },
+  "Artifact Type Name": "Data Batch"
 }
 ```
 
 `1017899` – workspace ID
 
-`ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded username:password
+`ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded *username:password* format
 
-DataTransfer\\\\\\\\Import\\\\\\\\Office365Email\\\\\\\\20180511200815UTC-20180511210839UTC\\\\\\\\loadfile.dat
-- load file location
+`29D19E38-8096-4A63-9496-F6E02D40FBFF` – GUID identifier for `Created` status
 
-29D19E38-8096-4A63-9496-F6E02D40FBFF – GUID identifier for *Created* status
-
-Above request can be executed using Fiddler, for example:
+Above request must be executed using Fiddler, for example:
 
 ![](media/94b9bc1537ab80a8592c157df514b711.png)
 
@@ -256,75 +236,50 @@ Update Data Batch
 -----------------
 
 Below **sample requests** will update a Data Batch associated with Load File
-*DataTransfer\\Import\\Office365Email
-\\20180511200815UTC-20180511210839UTC\\loadfile.dat* to *ReadyForImport* status
+`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat` to `ReadyForImport` status
 
->   **PUT**
->   https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017899
->   HTTP/1.1
+```json
+PUT
+https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017899
+HTTP/1.1
+X-CSRF-Header:
+Authorization: Basic
+ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
+X-Kepler-Version: 2.0
+Content-Type: application/json; charset=utf-8
+Host: 192.168.137.138
+Content-Length: 252
+Expect: 100-continue
+{
+  "Status": {
+    "Guids": [
+      "32452D3D-35D2-4FF5-92E6-1DD01D755482"
+    ],
+    "Artifact Type Name": "Choice"
+  },
+  "DocumentCount_LoadFileGenerated": "500",
+  "Timestamp_LoadFileGenerated": "3\/27\/2018 4:15:13 PM",
+  "Parent Artifact": {
+    "Artifact ID": 1003663
+  },
+  "Artifact Type Name": "Data Batch",
+  "Artifact ID": 1017899
+}
+```
 
->   X-CSRF-Header:
+`1017899` – workspace ID
 
->   Authorization: Basic
->   ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
+`ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded username:password
 
->   X-Kepler-Version: 2.0
+`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat` - load file location
 
->   Content-Type: application/json; charset=utf-8
+`32452D3D-35D2-4FF5-92E6-1DD01D755482` – GUID identifier for `ReadyForImport` status
 
->   Host: 192.168.137.138
-
->   Content-Length: 252
-
->   Expect: 100-continue
-
->   {
-
->   "Status": {
-
->   "Guids": [
-
->   "32452D3D-35D2-4FF5-92E6-1DD01D755482"
-
->   ],
-
->   "Artifact Type Name": "Choice"
-
->   },
-
->   "DocumentCount_LoadFileGenerated": "500",
-
->   "Timestamp_LoadFileGenerated": "3\\/27\\/2018 4:15:13 PM",
-
->   "Parent Artifact": {
-
->   "Artifact ID": 1003663
-
->   },
-
->   "Artifact Type Name": "Data Batch",
-
->   "Artifact ID": 1017899
-
->   }
-
-1017899 – workspace ID
-
-ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ= - base64 encoded
-username:password
-
-DataTransfer\\\\\\\\Import\\\\\\\\Office365Email\\\\\\\\20180511200815UTC-20180511210839UTC\\\\\\\\loadfile.dat
-- load file location
-
-32452D3D-35D2-4FF5-92E6-1DD01D755482 – GUID identifier for *ReadyForImport*
-status
-
-Above request can be executed using Fiddler, for example:
+Above request must be executed using Fiddler, for example:
 
 ![](media/94b9bc1537ab80a8592c157df514b711.png)
 
-After Data Batch is created or updated, it can be monitored in Relativity UI (or
-programmatically via identifier returned from Create API request)
+After Data Batch is created or updated, it can be monitored in Relativity UI (or programmatically via identifier returned from Create API request)
 
 ![](media/409d8a386254a37e507eebd8042cf8cb.png)
 
@@ -361,25 +316,19 @@ Recommended approach to generate **Load Files (.dat)** with the following specs:
 
 ### Text Fields
 
-All text fields in the load file must avoid special characters mentioned above.
-They are reserved as delimiters and will produce non-ingestible data. Those
-characters must be explicitly replaced. **Recommended approach is to replace
-Column (ASCII 020) and Quote (ASCII 254) characters with a space.** C\# sample
-below illustrates one way to replace special characters:
+All text fields in the load file must avoid special characters mentioned above. They are reserved as delimiters and will produce non-ingestible data. Those characters must be explicitly replaced. **Recommended approach is to replace Column (ASCII 020) and Quote (ASCII 254) characters with a space.** C\# sample below illustrates one way to replace special characters:
 
 ![](media/1a153ec4bda6645da5bbf95a89d8679a.png)
 
 Field Mappings stored in Relativity Integration Point Profile
 -------------------------------------------------------------
 
-The following fields **must** be part of the Load File and must be mapped to
-appropriate Relativity fields:
+The following fields **must** be part of the Load File and must be mapped to appropriate Relativity fields:
 
 **Required (absolute musts):**
 
 1.  `Object Type Identifier` - this is usually called a `Control Number`
-2.  `Trace Monitored Individuals` – list of monitored people associated with
-    each record
+2.  `Trace Monitored Individuals` – list of monitored people associated with each record
 3.  `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
 4.  `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
 5.  `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
@@ -407,35 +356,25 @@ appropriate Relativity fields:
 Data Batches
 ------------
 
-Recommended workflow for Data Batch creation (*Created -\> RetrievedFromSource*
--\> *Normalized-\> ReadyForImport*):
+Recommended workflow for Data Batch creation ( `Created` -\> `RetrievedFromSource` -\> `Normalized` -\> `ReadyForImport` ):
 
-1.  Create Data Batch with Status *Created* before starting data retrieval
-    process
+1.  Create Data Batch with Status `Created` before starting data retrieval process
+    
+2.  Update Data Batch status to `RetrievedFromSource` when data is retrieved
 
-2.  Update Data Batch status to *RetrievedFromSource* when data is retrieved
+3.  If data needs to be enriched or transformed, update Data Batch status to `Normalized`
+    
+4.  Once Load File is created, update Data Batch status to `ReadyForImport`. Include Import Configuration details. At this point Trace will pick it up and ingest the data into Relativity.
 
-3.  If data needs to be enriched or transformed, update Data Batch status to
-    *Normalized*
-
-4.  Once Load File is created, update Data Batch status to *ReadyForImport.*
-    Include Import Configuration details. At this point Trace will pick it up
-    and ingest the data into Relativity.
-
-At any stage, you can use Metadata field on the Data Batch to capture
-information regarding the batch of documents as you go through the process
+At any stage, you can use Metadata field on the Data Batch to capture information regarding the batch of documents as you go through the process.
 
 Error Handling
 --------------
 
 1.  For item-level errors, always populate the following two fields
 
-    1.  *Trace Has Errors* – true/false. True, if particular document has errors
-        (e.g. audio file too big to transcribe, etc…)
-
-    2.  *Trace Error Details* – details of the individual item’s error (stack
-        trace, retry information, etc)
-
-2.  For batch-level error (e.g. connection failure to retrieve the data,
-    etc...), update status of *Created* batch to *Abandoned* and populate batch
-    *Error Details* with appropriate error.
+    1.  `Trace Has Errors` – true/false. True, if particular document has errors (e.g. audio file too big to transcribe, etc…)
+        
+2.  `Trace Error Details` – details of the individual item’s error (stack trace, retry information, etc)
+    
+2.  For batch-level error (e.g. connection failure to retrieve the data, etc...), update status of `Created` batch to `Abandoned` and populate batch `Error Details` with appropriate error.
