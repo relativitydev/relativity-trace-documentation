@@ -21,6 +21,8 @@ tests after that. 
 -   Navigate to -\> Trace -\> Setup
 -   Click Edit, and set Run Option = Continuous
 
+![](media/BIST_RunOptionContinuous.png)
+
 -   Next, click Built-in self-test (**BIST**) link in the console
 
 ![](media/de731dd917844e3c4429763b8f7b6624.png)
