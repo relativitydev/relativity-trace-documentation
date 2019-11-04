@@ -28,6 +28,8 @@ tests after that. 
       - Change IsBISTEnabled from false to true
       - Click Save
 
+![](media/BIST_TraceWorkspaceSettings.png)
+
 -   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
 
 ![](media/bff924ad11b5aea52e5ef3da32250f08.png)
