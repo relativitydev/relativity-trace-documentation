@@ -15,7 +15,7 @@ tests after that. 
 
 ## How to Run **BIST**
 
-> **NOTE:** BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates documents/rules/terms that do not get removed.
+> **NOTE:** BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates test documents/rules/terms that do not get removed.
 
 -   First, you must set the Trace Configuration Run Option to Continuous
 -   Navigate to -\> Trace -\> Setup
