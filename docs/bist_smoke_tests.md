@@ -22,7 +22,11 @@ tests after that. 
 ![](media/de731dd917844e3c4429763b8f7b6624.png)
 
 -   If the Built-in self-test link does not appear, follow these steps:
-      - test indent
+      - Navigate to Instance Settings
+      - Under "Name", filter for TraceWorkspaceSettings, and edit this setting
+      - Change WorkspaceID from 0 to the ArtifactID value of your BIST workspace
+      - Change IsBISTEnabled from false to true
+      - Click Save
 
 -   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
 
