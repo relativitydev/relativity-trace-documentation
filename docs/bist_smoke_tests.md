@@ -23,11 +23,11 @@ tests after that. 
 
 ![](media/BIST_RunOptionContinuous.png)
 
--   Next, click Built-in self-test (**BIST**) link in the console
+-   Next, click "Built-in self-test (**BIST**)" link in the console
 
 ![](media/de731dd917844e3c4429763b8f7b6624.png)
 
--   If the Built-in self-test link does not appear, follow these steps:
+-   If the "Built-in self-test (**BIST**)" link does not appear, follow these steps:
       - Navigate to Instance Settings
       - Under "Name", filter for TraceWorkspaceSettings, and edit this setting
       - Change WorkspaceID from 0 to the ArtifactID value of your BIST workspace
@@ -37,7 +37,7 @@ tests after that. 
 ![](media/BIST_TraceWorkspaceSettings.png)
 
 -    Return to Setup tab in your BIST workspace
-      - You should now be able to lick on the Built-in self-test link in the console
+      - You should now be able to lick on the "Built-in self-test (**BIST**)" link in the console
 
 -   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
 
