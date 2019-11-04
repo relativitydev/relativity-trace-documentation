@@ -18,9 +18,13 @@ tests after that. 
 It is recommended to run **BIST** on a new workspace or on a test workspace as
 **BIST** creates documents/rules/terms that do not get removed.
 
--   Navigate to -\> Trace -\> Setup and click Built-in self-test (**BIST**) link
+-   Navigate to -\> Trace -\> Setup and click Built-in self-test (**BIST**) link in the console.
 
 ![](media/de731dd917844e3c4429763b8f7b6624.png)
+
+-   If the Built-in self-test link does not appear, follow these steps:
+-- fjfjfj
+-- fjfjfjfj
 
 -   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
 
