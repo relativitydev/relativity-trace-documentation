@@ -11,20 +11,18 @@ Relativity and Trace have been set up and configured properly. Steps marked with
 approach is to run **BIST** first and then perform remaining manual
 tests after that. 
 
-> **NOTE:** BIST must be ran on a separate, dedicated non-production workspace.
+
 
 ## How to Run **BIST**
 
-It is recommended to run **BIST** on a new workspace or on a test workspace as
-**BIST** creates documents/rules/terms that do not get removed.
+> **NOTE:** BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates documents/rules/terms that do not get removed.
 
 -   Navigate to -\> Trace -\> Setup and click Built-in self-test (**BIST**) link in the console.
 
 ![](media/de731dd917844e3c4429763b8f7b6624.png)
 
 -   If the Built-in self-test link does not appear, follow these steps:
--- fjfjfj
--- fjfjfjfj
+      - test indent
 
 -   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
 
