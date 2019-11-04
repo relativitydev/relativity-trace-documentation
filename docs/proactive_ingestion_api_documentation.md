@@ -20,9 +20,7 @@
 Overview
 ========
 
-The Trace Proactive Ingestion Framework allows Administrators and Data Sources
-to automatically and continuously ingest data into Relativity. The framework is
-built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
+The Trace Proactive Ingestion Framework allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
 
 The key benefits of the Proactive Ingestion Framework include:
 
@@ -44,11 +42,7 @@ The key benefits of the Proactive Ingestion Framework include:
 -   Performance monitoring of entire data ingestion pipeline (bottleneck
     identification, SLA metrics, proactive alerting)
 
-It is designed to work with Load Files as an intermediate step between Source
-and Relativity ingestion. Consumer of the IPI needs to produce a Load File and
-make an REST call to Relativity telling it the location of the Load File along
-with other ingestion configurations. After that, Trace will take the Load File
-and automatically import it using the provided configurations.
+It is designed to work with Load Files as an intermediate step between Source and Relativity ingestion. Consumer of the IPI needs to produce a Load File and make an REST call to Relativity telling it the location of the Load File along with other ingestion configurations. After that, Trace will take the Load File and automatically import it using the provided configurations.
 
 Glossary
 ========
@@ -59,16 +53,12 @@ Glossary
 -   **Load File:** Delimited data file on disk, usually CSV or DAT but can be
     anything with proper delimiters
 
--   **Integration Point:** System that executes data ingestion into Relativity,
-    operated by Trace. Trace creates one integration point per Data Batch and
-    monitors its status along with any retries and validation
-
--   **Data Source:** Any external system that works with Trace API. It is
-    responsible for generating Load Files and creation of Data Batches
-
--   **Data Source Type:** Defines inputs to a particular data source. Data
-    Source Type can be mapped to multiple Data Sources
-
+-   **Integration Point:** System that executes data ingestion into Relativity, operated by Trace. Trace creates one integration point per Data Batch and monitors its status along with any retries and validation
+    
+-   **Data Source:** Any external system that works with Trace API. It is responsible for generating Load Files and creation of Data Batches
+    
+-   **Data Source Type:** Defines inputs to a particular data source. Data Source Type can be mapped to multiple Data Sources
+    
 -   **IPI:** Trace Proactive Ingestion
 
 Prerequisites: Load File and Integration Point Profile
@@ -115,8 +105,7 @@ Prerequisites: Load File and Integration Point Profile
 Data Batch Overview
 ===================
 
-Data Batch is a unit of work in IPI, it has all the needed configuration and
-status information to ingest data and monitor ingestion progress.
+Data Batch is a unit of work in IPI, it has all the needed configuration and  status information to ingest data and monitor ingestion progress.
 
 The below screenshot shows a sample Data Batch RDO in Relativity:
 
@@ -127,10 +116,10 @@ When a Data Source creates a Data Batch, several fields must be filled out:
 1. Status
 
    1.  `ReadyForImport` signals Trace to start ingesting the data
-   1.  All needed configuration is written on the Data Batch
-       
-   2.  Load File has been successfully copied to Relativity Fileshare
-       
+       1.  All needed configuration is written on the Data Batch
+           
+       2.  Load File has been successfully copied to Relativity Fileshare
+   
    2.  `Created`, `RetrievedFromSource` and `Normalized` can be used to track data flow in Relativity for reconciliation purposes by the Data Source
        
    3.  `Importing`, `Completed` and `CompletedWithErrors` statuses are populated by Trace automatically for ingestion tracking purposes
@@ -163,8 +152,7 @@ Working with TPI involves several steps in a base workflow:
     3.  Load File Path filled
         `DataTransfer\Import\Office365Emails\20180511200815UTC-20180511210839UTC\loadfile.dat`
 
-On next Ingestion task check-in Trace will automatically ingest the data by
-creating an Integration Point and will validate the import was successful.
+On next Ingestion task check-in Trace will automatically ingest the data by creating an Integration Point and will validate the import was successful.
 
 Data Batch creation (Quick Start)
 =================================
@@ -376,7 +364,7 @@ Error Handling
 1.  For item-level errors, always populate the following two fields
 
     1.  `Trace Has Errors` – true/false. True, if particular document has errors (e.g. audio file too big to transcribe, etc…)
-        
+    
 2.  `Trace Error Details` – details of the individual item’s error (stack trace, retry information, etc)
     
 2.  For batch-level error (e.g. connection failure to retrieve the data, etc...), update status of `Created` batch to `Abandoned` and populate batch `Error Details` with appropriate error.
