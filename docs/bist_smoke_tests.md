@@ -1,6 +1,6 @@
 # Relativity Trace Automated Tests (BIST)
 
-* [How to run **BIST**](#how-to-run---bist--)
+* [How to Run **BIST**](#how-to-run---bist--)
 * [Manual Tests](#manual-tests)
   + [Pre-requisites](#pre-requisites)
   + [Test Verification **[AUTOMATED]**](#test-verification----automated---)
@@ -13,7 +13,7 @@ tests after that. 
 
 > **NOTE:** BIST must be ran on a separate, dedicated non-production workspace.
 
-## How to run **BIST**
+## How to Run **BIST**
 
 It is recommended to run **BIST** on a new workspace or on a test workspace as
 **BIST** creates documents/rules/terms that do not get removed.
