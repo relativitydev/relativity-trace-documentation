@@ -3,7 +3,7 @@
 * [How to Run **BIST**](#how-to-run---bist--)
 * [Manual Tests](#manual-tests)
   + [Pre-requisites](#pre-requisites)
-  + [Test Verification **[AUTOMATED]**](#test-verification-automated-)
+  + [Test Verification **[AUTOMATED]**](#test-verification-automated)
 
 Trace BIST (Built-in self test) contains automated tasks that perform basic smoke tests to ensure that
 Relativity and Trace have been set up and configured properly. You only need to enable BIST, and let it 
