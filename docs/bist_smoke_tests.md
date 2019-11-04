@@ -17,7 +17,7 @@ tests after that. 
 
 > **NOTE:** BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates test documents/rules/terms that do not get removed.
 
--   First, you must set the Trace Configuration Run Option to Continuous
+-   First, you must set the Trace Configuration "Run Option" to Continuous
 -   Navigate to -\> Trace -\> Setup
 -   Click Edit, and set Run Option = Continuous
 
