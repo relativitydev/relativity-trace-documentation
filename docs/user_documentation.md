@@ -795,6 +795,8 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
         Password fields. Autodiscover is typically a suitable option and works
         for Office 365 and many on premises solutions but it is not guaranteed
         to work.
+	
+	If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx
 
     2.  *Exchange Settings - Version* allows you to specify the version of your
         exchange server. For Office 365, the default is the correct choice. For
