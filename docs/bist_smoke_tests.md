@@ -1,6 +1,6 @@
 # Relativity Trace Automated Tests (BIST)
 
-* [How to Run **BIST**](#how-to-run)
+* [How to Run **BIST**](#how-to-runbist)
 * [Manual Tests](#manual-tests)
   + [Pre-requisites](#pre-requisites)
   + [Test Verification **[AUTOMATED]**](#test-verification-automated)
