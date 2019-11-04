@@ -1,7 +1,7 @@
 # Relativity Trace Automated Tests (BIST)
 
 * [How to run **BIST**](#how-to-run---bist--)
-* [Tests](#tests)
+* [Manual Tests](#manual-tests)
   + [Pre-requisites](#pre-requisites)
   + [Test Verification **[AUTOMATED]**](#test-verification----automated---)
 
@@ -30,7 +30,7 @@ It is recommended to run **BIST** on a new workspace or on a test workspace as
 
 ![](media/3365ee39624ff425c6b6d0c74ddf92c9.png)
 
-## Tests
+## Manual Tests
 
 ### Pre-requisites
 
