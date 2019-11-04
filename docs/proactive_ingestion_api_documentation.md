@@ -283,10 +283,7 @@ Workflow Recommendations
 Security
 --------
 
-In order to work with IPI in a secure manner, create a new user with limited
-permissions: enable access only to Relativity objects that are needed: Data
-Batch, Data Source and particular fields (*Trace Has Errors* and *Trace Error
-Details*) on a Document object.
+In order to work with IPI in a secure manner, create a new user with limited permissions: enable access only to Relativity objects that are needed: Data Batch, Data Source and particular fields ( `Trace Has Errors` and `Trace Error Details` ) on a Document object.
 
 Load File Specifications
 ------------------------
