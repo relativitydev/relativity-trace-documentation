@@ -1095,7 +1095,7 @@ Usability Considerations
     
   + ![](media/user_documentation_LanguageID_SavedSearch.png)
     
-      + > **NOTE**: After `Trace Structured Analytics` was triggered to perform `Full Analysis`, Trace will automatically trigger `Full Analysis` on schedule ( that's why it is important to configure `Primary language` = `is not set` condition ) based on `Trace` -> `Indexing` task -> `Globanl Sas Build Frequency In Minutes` setting (see below)![image-20191105162739654](media/user_documentation/image-20191105162739654.png)
+      + > **NOTE**: After `Trace Structured Analytics` was triggered to perform `Full Analysis`, Trace will automatically trigger `Full Analysis` on schedule ( that's why it is important to configure `Primary language` = `is not set` condition ) based on `Trace` -> `Indexing` task -> `Global Sas Build Frequency In Minutes` setting (see below)![image-20191105162739654](media/user_documentation/image-20191105162739654.png)
     
 
 General Infrastructure and Environment Considerations
