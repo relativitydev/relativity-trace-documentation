@@ -205,10 +205,10 @@ Trace Document Flow Overview
 
 Trace has a three-step process that all new documents go through. This status is tracked in the `Trace Document Status` field.
 
-|             | **Step 1**                                                                      | **Step 2**                                    | **Step 3**                                                            |
-|-------------|---------------------------------------------------------------------------------|-----------------------------------------------|-----------------------------------------------------------------------|
-| **Status:** | **NEW**                                                                         | **INDEXED**                                   | **TERM SEARCHED**                                                     |
-| Overview:   | Documents that are brand new and are part of *Trace All Documents* saved search | Documents that have been successfully indexed | Documents that have been successfully searched by Term Searching task |
+|             | **Step 1**                                                   | **Step 2**                                    | **Step 3**                                                   |
+| ----------- | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------------------ |
+| **Status:** | **NEW**                                                      | **INDEXED**                                   | **TERM SEARCHED**                                            |
+| Overview:   | Documents that are brand new and are part of `Trace All  Documents` saved search | Documents that have been successfully indexed | Documents that have been successfully searched by Term Searching task |
 
 As documents flow into Relativity workspace and through Trace workflow the
 status of documents is reflected on a few key fields on the Document object
@@ -217,45 +217,41 @@ status of documents is reflected on a few key fields on the Document object
     each document for the Trace Data Flow
 2.  **Trace Document Status** – Single choice field responsible for reflecting
     overall progress of the document through the Trace Data Flow
-1.  Standard choices are `1 – New`, `2 – Indexed`, and `3 – Term Searched` reflecting the statuses above
-        
-    2.  `Indexing Errored` status reflects documents that have not successfully gone
-    through Indexing. Potential causes:
-1.  **Broken infrastructure** (Agents, Service Host issues)
-    
-2.  Documents could not be updated with **new status** due to SQL outage
-    
-3.  **Actions**
-    1.  Check Setup tab for statuses of agents
-        
-    2.  Check Trace logs (via `Manage Logs` console button)
-        
-    3.  Perform `Trace Document Retry` mass-operation on affected documents
-        
-    3.  `Searching Errored` status reflects documents that have not successfully gone
-    through Term Searching stage. Potential causes:
-        1.  Broken infrastructure (Agents, Service Host issues)
-        2.  Permanently broken/invalid Term (dtSearch) syntax are present
-        3.  Actions:
-            1.  Check Setup tab for statuses of agents
-        
-            2.  Check Terms tab for detailed errors on each failed term
-        
-            3.  Check Trace logs (via `Manage Logs` console button)
-        
-            4.  Perform `Trace Document Retry` mass-operation on affected documents
-3.  **Trace Document Terms** – MultiObject field tracking which Terms have
+3.  Standard choices are `1 – New`, `2 – Indexed`, and `3 – Term Searched` reflecting the statuses above
+4.  `Indexing Errored` status reflects documents that have not successfully gone through Indexing. Potential causes:
+    1.  **Broken infrastructure** (Agents, Service Host issues)
+    2.  Documents could not be updated with **new status** due to SQL outage
+    3.  **Actions**
+        1.  Check Setup tab for statuses of agents
+            
+        2.  Check Trace logs (via `Manage Logs` console button)
+            
+        3.  Perform `Trace Document Retry` mass-operation on affected documents
+            
+        3.  `Searching Errored` status reflects documents that have not successfully gone
+        through Term Searching stage. Potential causes:
+            1.  Broken infrastructure (Agents, Service Host issues)
+            2.  Permanently broken/invalid Term (dtSearch) syntax are present
+            3.  Actions:
+                1.  Check Setup tab for statuses of agents
+            
+                2.  Check Terms tab for detailed errors on each failed term
+            
+                3.  Check Trace logs (via `Manage Logs` console button)
+            
+                4.  Perform `Trace Document Retry` mass-operation on affected documents
+5.  **Trace Document Terms** – MultiObject field tracking which Terms have
     matched a document
-4.  **Trace Document Rule Terms** – MultiObject field tracking Rule specific
+6.  **Trace Document Rule Terms** – MultiObject field tracking Rule specific
     Terms (terms that are associated with any rule) that have matched a document
-5.  **Trace Has Errors** – Boolean (yes/no) field indicating if the document has
+7.  **Trace Has Errors** – Boolean (yes/no) field indicating if the document has
     any errors related to ingestion, extraction
-6.  **Trace Error Details** – Long Text field capturing the error details if a
+8.  **Trace Error Details** – Long Text field capturing the error details if a
     document has encountered any errors
-7.  **Trace Data Transformations** – MultiObject field tracking what data
+9.  **Trace Data Transformations** – MultiObject field tracking what data
     transformations have been applied to the document as part of ingestion
-8.  **Trace Monitored Individuals –** MultiObject field tracking which Monitored Individuals are associated with each document 
-9.  **Trace Rules –** MultiObject field tracking which rule matched which document
+10.  **Trace Monitored Individuals –** MultiObject field tracking which Monitored Individuals are associated with each document 
+11.  **Trace Rules –** MultiObject field tracking which rule matched which document
 
 You can get a quick understanding of the status of your system and documents by
 applying appropriate aggregations and dashboards on these fields:
@@ -846,15 +842,16 @@ imported and *Trace Data Enrichment Needed* field is set to *Yes:*
 
 **Setup:**
 
-1.  Integration Points Profile
+1. Integration Points Profile
 
-    1.  Please, re-use profile creation steps documented for Microsoft Exchange
-        above OR re-use existing “Microsoft Office 365 Profile” profile. Ensure
-        import option is set to Append/Overlay.
+   1.  Please, re-use profile creation steps documented for Microsoft Exchange
+       above OR re-use existing “Microsoft Office 365 Profile” profile. 
+       
+       1. > **IMPORTANT:** Ensure import option is set to Append/Overlay.
 
 2.  Create Relativity Native Data Extraction Data Source
 
-    1.  Go to the Trace:Data Sources tab and Click the “New Data Source” button
+    1.  Go to the `Trace` -> `Data Sources` tab and Click the “New Data Source” button
 
     2.  Set the Name = for example, “Native Data Extraction”
 
@@ -1089,15 +1086,17 @@ Usability Considerations
     
 -   The global dtSearch index `Trace Search Index` (created by Trace application during installation) is supported for ad-hoc searching and will be incrementally built as part of Indexing task. No other dtSearch indexes will incrementally build automatically.
     
--   If Analytics Server is present, active and configured for the Relativity
-    instance:
-
-    -   If enabled, both `Trace Conceptual Analytics Index` and `Trace Classification Analytics Index` will incrementally build automatically. In order to enable this functionality, manually perform Full Build on each index.
+-   If Analytics Server is present, active and configured for the Relativity instance:
+    
+-   If enabled, both `Trace Conceptual Analytics Index` and `Trace Classification Analytics Index` will incrementally build automatically. In order to enable this functionality, manually perform Full Build on each index.
         
     -   If enabled, `Trace Structured Analytics Set` will run on incremental data performing specified job options (by default: Language Identification). In order to enable this functionality, manually perform Full Analysis.
-    + When [setting up Language Identification](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure the saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested documents are flagged for analysis.
-
-    ![](media/user_documentation_LanguageID_SavedSearch.png)
+    + When [setting up **Language Identification**](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure `Trace Structured Analytics Set`'s  saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested  documents are flagged for analysis.
+    
+  + ![](media/user_documentation_LanguageID_SavedSearch.png)
+    
+      + > **NOTE**: After `Trace Structured Analytics` was triggered to perform `Full Analysis`, Trace will automatically trigger `Full Analysis` on schedule ( that's why it is important to configure `Primary language` = `is not set` condition ) based on `Trace` -> `Indexing` task -> `Globanl Sas Build Frequency In Minutes` setting (see below)![image-20191105162739654](media/user_documentation/image-20191105162739654.png)
+    
 
 General Infrastructure and Environment Considerations
 ---------------------------------------------
