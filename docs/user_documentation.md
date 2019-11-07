@@ -921,7 +921,7 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 
 Data Transformations of type *Deduplication* prevent a Data Source from importing a document if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
 
-Deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
+For Trace native [Data Sources](#data-sources),  deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
 
 ![](media/70b0ae9c6debe35956d4988dffaae892.png)
 
@@ -1096,7 +1096,7 @@ Usability Considerations
   + ![](media/user_documentation_LanguageID_SavedSearch.png)
     
       + > **NOTE**: After `Trace Structured Analytics` was triggered to perform `Full Analysis`, Trace will automatically trigger `Full Analysis` on schedule ( that's why it is important to configure `Primary language` = `is not set` condition ) based on `Trace` -> `Indexing` task -> `Global Sas Build Frequency In Minutes` setting (see below)![image-20191105162739654](media/user_documentation/image-20191105162739654.png)
-    
+  
 
 General Infrastructure and Environment Considerations
 ---------------------------------------------
