@@ -314,11 +314,19 @@ The following fields **must** be part of the Load File and must be mapped to app
 
 **Required (absolute musts):**
 
-1.  `Object Type Identifier` - this is usually called a `Control Number`
-2.  `Trace Monitored Individuals` – list of monitored people associated with each record
-3.  `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
-4.  `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
-5.  `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
+1. `Object Type Identifier` - this is usually called a `Control Number`
+
+2. `Trace Monitored Individuals` – list of monitored people associated with each record
+
+3. `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
+
+   1. > **IMPORTANT:** column name in the load file must be called `Trace Document Hash`
+
+4. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
+
+5. `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
+
+   1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
 **Recommended:**
 
