@@ -1,26 +1,44 @@
 # Relativity Trace Automated Tests (BIST)
 
-* [How to run **BIST**](#how-to-run---bist--)
-* [Tests](#tests)
+* [How to Run **BIST**](#how-to-runbist)
+* [Manual Tests](#manual-tests)
   + [Pre-requisites](#pre-requisites)
-  + [Test Verification **[AUTOMATED]**](#test-verification----automated---)
+  + [Test Verification **[AUTOMATED]**](#test-verification-automated)
 
-This document describes steps needed to perform basic smoke tests to ensure that
-Relativity and Trace have been set up and configured properly. Steps marked with
-**[AUTOMATED]** are already part of Built-in self-test (**BIST**). Recommended
-approach is to run **BIST** first and then perform remaining ad-hoc (manual)
-tests after that. 
+Trace BIST (Built-in self test) contains automated tasks that perform basic smoke tests to ensure that
+Relativity and Trace have been set up and configured properly. You only need to enable BIST, and let it 
+run on its own.
 
-> **NOTE:** BIST must be ran on a separate, dedicated non-production workspace.
+Manual Tests are recommended but not required to be run. Steps marked with
+**[AUTOMATED]** in the Manual Tests section are already part of Built-in self-test (**BIST**). If you decide
+to run Manual Tests, it is recommended that you run **BIST** first.
 
-## How to run **BIST**
 
-It is recommended to run **BIST** on a new workspace or on a test workspace as
-**BIST** creates documents/rules/terms that do not get removed.
+## How to Run **BIST**
 
--   Navigate to -\> Trace -\> Setup and click Built-in self-test (**BIST**) link
+> **NOTE:** BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates test documents/rules/terms that do not get removed.
+
+-   First, you must set the Trace Configuration "Run Option" to Continuous
+-   Navigate to -\> Trace -\> Setup
+-   Click Edit, and set Run Option = Continuous
+
+![](media/BIST_RunOptionContinuous.png)
+
+-   Next, click "Built-in self-test (**BIST**)" link in the console
 
 ![](media/de731dd917844e3c4429763b8f7b6624.png)
+
+-   If the "Built-in self-test (**BIST**)" link does not appear, follow these steps:
+      - Navigate to Instance Settings
+      - Under "Name", filter for TraceWorkspaceSettings, and edit this setting
+      - Change WorkspaceID from 0 to the ArtifactID value of your BIST workspace
+      - Change IsBISTEnabled from false to true
+      - Click Save
+
+![](media/BIST_TraceWorkspaceSettings.png)
+
+-    Return to Setup tab in your BIST workspace
+      - You should now be able to lick on the "Built-in self-test (**BIST**)" link in the console
 
 -   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
 
@@ -30,7 +48,7 @@ It is recommended to run **BIST** on a new workspace or on a test workspace as
 
 ![](media/3365ee39624ff425c6b6d0c74ddf92c9.png)
 
-## Tests
+## Manual Tests
 
 ### Pre-requisites
 
