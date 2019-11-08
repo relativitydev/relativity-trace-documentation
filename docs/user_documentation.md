@@ -1090,8 +1090,8 @@ Usability Considerations
     
 -   If enabled, both `Trace Conceptual Analytics Index` and `Trace Classification Analytics Index` will incrementally build automatically. In order to enable this functionality, manually perform Full Build on each index.
         
-    -   If enabled, `Trace Structured Analytics Set` will run on incremental data performing specified job options (by default: Language Identification). In order to enable this functionality, manually perform Full Analysis.
-    + When [setting up **Language Identification**](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure `Trace Structured Analytics Set`'s  saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested  documents are flagged for analysis.
+    -   If enabled, `Trace Structured Analytics Set` will run configured jobs with full build option (Default job: Language Identification). In order to enable this functionality, manually perform Full Analysis.
+    + When [setting up **Language Identification**](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure `Trace Structured Analytics Set`'s  saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested  documents are flagged for full build analysis.  Do not combine other jobs on the same Structured Analytics Set.  Trace Structured Analytics Set currently only supports Language Identification.  Email Threading and Textual Near Dupe identification jobs require substantial resources on Analytics server.  Please contact support@relativity.com for more information.
     
   + ![](media/user_documentation_LanguageID_SavedSearch.png)
     
