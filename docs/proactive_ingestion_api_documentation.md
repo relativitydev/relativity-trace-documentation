@@ -206,6 +206,7 @@ Expect: 100-continue
   "Parent Artifact": {
     "Artifact ID": 1003663
   },
+  "RetryCount": 0,
   "Artifact Type Name": "Data Batch"
 }
 ```
