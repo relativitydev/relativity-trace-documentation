@@ -737,6 +737,8 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 **Step 2: Adjust Office 365 permissions**
 
+>   **NOTE:** Settings for On Premises exchange are very similiar to Office 365
+
 1.  Log into the Office 365 Admin Center
 
 2.  Adjust Administration Exchange settings:
@@ -792,7 +794,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
         for Office 365 and many on premises solutions but it is not guaranteed
         to work.
 	
-	If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx
+	If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx ( OR https://YOUR_EXCHANGE_SERVER_URL/EWS/Exchange.asmx)
 
     2.  *Exchange Settings - Version* allows you to specify the version of your
         exchange server. For Office 365, the default is the correct choice. For
