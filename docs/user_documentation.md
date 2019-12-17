@@ -959,11 +959,23 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 Automatic Discovery of Monitored Individuals
 --------------------------------------------
 
-For Data Sources that are not shipped with Trace natively, the application allows for automatic discovery of monitored individuals based on `EmailFrom`, `EmailTo`, `EmailCC` and `EmailBCC` fields.
+Data Sources can optionally tag monitored individuals based off of document meta. Monitored individuals are recognized by identifier and all secondary identifiers. Automatic Discovery respects the case of identifiers by default. However, if Discover Monitored Individuals Ignores Case is set to true, identifiers are matched regardless of case.
 
-![](media/c09f85d2cbb0db2283737f16623d1048.png)
+>  **NOTE:** Email identifiers always ignore case in domain names. Email username matching respects the Discover Monitored Individuals Ignores Case setting.
+>
+>  For example, John.DOE@URL.COM  will match always John.DOE@url.com, but only match john.doe@url.com if Discover Monitored Individuals Ignores Case is set to true
 
-Please, contact `support@relativity.com` in order to enable this feature.
+The precise metadata fields used for discovering monitored individuals depends on the type of dat source.
+
+![image-20191217151807534](media/user_documentation/image-20191217151807534.png)
+
+### Globanet Data Sources
+
+Globanet data sources use the `X-UserMailbox` header only. Only one monitored individual can be associated per Globanet file.
+
+### Other Data Sources
+
+All other data sources discover monitored individuals based on `EmailFrom`, `EmailTo`, `EmailCC`, and `EmailBCC` fields. Any monitored individual with an identifier matching any of these fields will be associated with the document.
 
 Setup
 =====
