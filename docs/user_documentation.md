@@ -217,29 +217,33 @@ status of documents is reflected on a few key fields on the Document object
     each document for the Trace Data Flow
 2.  **Trace Document Status** – Single choice field responsible for reflecting
     overall progress of the document through the Trace Data Flow
-3.  Standard choices are `1 – New`, `2 – Indexed`, and `3 – Term Searched` reflecting the statuses above
-4.  `Indexing Errored` status reflects documents that have not successfully gone through Indexing. Potential causes:
-    1.  **Broken infrastructure** (Agents, Service Host issues)
-    2.  Documents could not be updated with **new status** due to SQL outage
-    3.  **Actions**
-        1.  Check Setup tab for statuses of agents
-            
-        2.  Check Trace logs (via `Manage Logs` console button)
-            
-        3.  Perform `Trace Document Retry` mass-operation on affected documents
-            
-        3.  `Searching Errored` status reflects documents that have not successfully gone
-        through Term Searching stage. Potential causes:
-            1.  Broken infrastructure (Agents, Service Host issues)
-            2.  Permanently broken/invalid Term (dtSearch) syntax are present
-            3.  Actions:
-                1.  Check Setup tab for statuses of agents
-            
-                2.  Check Terms tab for detailed errors on each failed term
-            
-                3.  Check Trace logs (via `Manage Logs` console button)
-            
-                4.  Perform `Trace Document Retry` mass-operation on affected documents
+    - Standard choices are `1 – New`, `2 – Indexed`, and `3 – Term Searched` reflecting the statuses above
+    
+    - `Indexing Errored` status reflects documents that have not successfully gone through Indexing. 
+    
+      - Potential causes
+        1. Broken infrastructure (Agents, Service Host issues)
+        2. Documents could not be update with `New` status due to SQL outage
+    
+      - Actions
+        1. Check Setup tab for statuses of agents
+        2. Check Trace logs (via `Manage Logs` console button)
+        3. Perform `Trace Document Retry` mass-operation on affected documents
+    
+    - `Searching Errored` status reflects documents that have not successfully gone
+      through Term Searching stage.
+    
+      - Potential causes
+        1. Broken infrastructure (Agents, Service Host issues)
+        2. Permanently broken/invalid Term (dtSearch) syntaxes are present
+    
+      - Actions:
+        1. Check Setup tab for statuses of agents
+        2. Check Terms tab for detailed errors on each failed term
+    
+        3. Check Trace logs (via `Manage Logs` console button)
+    
+        4. Perform `Trace Document Retry` mass-operation on affected documents
 5.  **Trace Document Terms** – MultiObject field tracking which Terms have
     matched a document
 6.  **Trace Document Rule Terms** – MultiObject field tracking Rule specific
