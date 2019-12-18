@@ -53,7 +53,7 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
 1.  Create a new Test Workspace
 
-2.  Install Trace application
+2.  Install the Trace application
 
     1.  Navigate to Library Application (Admin), locate Trace and install it
         into Test Workspace
@@ -65,11 +65,11 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
 3.  Data Setup
 
-    1.  Online Data Setup: Office 365 [Follow steps in Documentation]
+    1.  Online Data Setup: Office 365 [Follow steps in [User Documentation](user_documentation.md#microsoft-exchange-data-source)]
 
-        1.  Enable data source
+        1.  Enable the data source
 
-        2.  Ensure documents are pulled through
+        2.  Ensure documents correctly processed throughout the pipeline
 
     2.  Offline Data Setup: Sample Data Source **[AUTOMATED]**
 
@@ -143,7 +143,7 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
         4.  Enable rule
 
-### Test Verification **[AUTOMATED]**
+### Test Verification [AUTOMATED]
 
 **Final expected state of the documents in workspace:**
 
@@ -172,6 +172,6 @@ to run Manual Tests, it is recommended that you run **BIST** first.
     ![](media/df8d7d265f3eb5ff3cc04bd60c5e4369.png)
 
 3.  Trace Document Retry mass-operations work (re-submits documents through
-    Trace flow):
+    Trace flow, but does not re-trigger import):
 
 ![](media/c618f2acac67b761cec5c75a03932eec.png)
