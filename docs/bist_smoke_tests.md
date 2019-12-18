@@ -38,15 +38,14 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 ![](media/BIST_TraceWorkspaceSettings.png)
 
 -    Return to Setup tab in your BIST workspace
-      - You should now be able to lick on the "Built-in self-test (**BIST**)" link in the console
+      - You should now be able to click on the "Built-in self-test (**BIST**)" link in the console
+-   Click Edit on Built-In Self Test (BIST) Task Type, set Enabled to Yes and click Save
 
--   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
+![image-20191218145522629](media/bist_smoke_tests/image-20191218145514143.png)
 
-![](media/bff924ad11b5aea52e5ef3da32250f08.png)
+> **NOTE:** Once test completes Last Execution Status field will update to "Completed. Succeeded - Trace Test GoldenFlow Test." and the task will auto-disable itself.
 
-> **NOTE:** Once test completes Last Execution Status field will update to "Completed. Details: Smoke Test Succeeded!" and task will auto-disable itself
-
-![](media/3365ee39624ff425c6b6d0c74ddf92c9.png)
+![image-20191218145951065](media/bist_smoke_tests/image-20191218145951065.png)
 
 ## Manual Tests
 
