@@ -951,19 +951,19 @@ Once a batch begins the Ingestion process (when status is set to: `Ready For Imp
 
 ![](media/5a4b23b008d4e39bc9bafce213515337.png)
 
-Error Resolution Workflow and Retry
------------------------------------
+### Data Batch Retry and Error Resolution Workflow
 
-By default the batch will be automatically retried internally (up to 3 times) if the data batch import was not completed. You can get the error details by looking at `Error Details` of a specific batch with `Has Errors` set to yes. You can manually mark the batch as `Abandoned` to indicate that it was manually resolved or retry it.
+By default, Data Batches that do not complete will be automatically retried internally up to 3 times. Data Batches that fail more than 3 times will set `Has Errors` to true and populate the `Error Details` field with the details of the specific error encountered.
 
 Data Batch objects have associated Mass Operations (and corresponding Data Batch console UI buttons) to help with state resolution
 
-1.  `Trace Data Batch Retry` – submit the batch to be retried by Trace
+1. `Trace Data Batch Retry` – submit the batch to be retried by Trace. This reverts the Data Batch to the `RetrievedFromSource` and Trace will once again attempt to move it through import to `Completed`.
 
-2.  `Trace Data Batch Abandon` – update the batch to indicate that it has been manually resolved and should not be
-    treated as errored.
+   > **Warning:** `Trace Data Batch Retry` will create duplicates of documents that were imported on previous attempts if deduplication is not enabled on the Data Source.
 
-    ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
+2. `Trace Data Batch Abandon` – update the batch to indicate that it has been manually resolved and should not be treated as errored.
+
+   ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
 
 Automatic Discovery of Monitored Individuals
 --------------------------------------------
