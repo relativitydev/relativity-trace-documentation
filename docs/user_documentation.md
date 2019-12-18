@@ -808,15 +808,15 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 10. Link / Create New Monitored Individuals (same page after clicking Save)
 
-![](media/85e99ebffc8ada7ae4c69a61cb873213.png)
+    ![](media/85e99ebffc8ada7ae4c69a61cb873213.png)
 
-1.  Click `New` if the monitored individual is not already defined on another
+    1.  Click `New` if the monitored individual is not already defined on another
     Data Source, or “Link” if the user has already been monitored in the past
 
-2.  Microsoft Exchange Data Source will only pull data for linked Monitored
+    2.  Microsoft Exchange Data Source will only pull data for linked Monitored
     Individuals (by identifier field: email address)
 
-3.  Once everything is set up, click the Enable Data Source button on the upper
+    3.  Once everything is set up, click the Enable Data Source button on the upper
     right to begin pulling data
 
 **Content**
