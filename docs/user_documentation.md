@@ -316,19 +316,15 @@ The Rule Creation form contains the following fields:
 
     -   **Data Archiving**: triggers deletion of specified documents after the
         configured retention policy
-
     -   **Advanced:** execute customer provided Relativity Script
-    
--   **Email:** generates an email with metadata about alerted documents
-    
--   **Slack:** generates a Slack message with metadata about alerted
-        documents
-
+    -   **Email:** generates an email with metadata about alerted documents
     -   **Webhook:** makes a generic API call hosted within Relativity
-    
-- > **NOTE:** The Tagging action type has been deprecated. Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed)
-  
-- > **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search and set it to `auto-run`.
+    -   **Slack:** generates a Slack message with metadata about alerted
+            documents
+    -   **Move To Folder:** Move matched documents to a specific folder
+> **NOTE:** The Tagging action type has been deprecated. Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed)
+
+> **NOTE:** Batching action has been deprecated. You can still create a Batch Set manually from any saved search and set it to `auto-run`.
 
 2 - Customizing and Running a Rule
 -----------------------------------
@@ -341,15 +337,12 @@ the rule.
 The Trace Rule Management Console on the right-hand side has the following
 buttons:
 
--   **Enable Rule:** enabling the rule allows Trace Manager agent to run rule on an ongoing
+-   **Enable Rule:** enabling the rule allows Trace Manager agent to run the rule on an ongoing
     basis
 
     > **NOTE:** A Rule will only execute when it is enabled.
 
-In addition, Rules use Terms as part of additional filtering available to
-identify your documents of interest. You can create new or link existing Terms
-directly from Rule layout. Terms created this way will automatically be
-associated with the Rule during evaluation.
+In addition, Rules use Terms as part of additional filtering available to identify your documents of interest. You can create new or link existing Terms directly from Rule layout. Terms created this way will automatically be associated with the Rule during evaluation.
 
 3 - Validating Results
 ----------------------
