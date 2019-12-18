@@ -264,7 +264,7 @@ applying appropriate aggregations and dashboards on these fields:
 
 > **NOTE:** Rule evaluation (including tagging documents to the Rule) is executed by the Rule Evaluation task and is outside of the core Trace Document Flow.
 
-Error Resolution Workflow and Retry
+Trace Document Retry and Error Resolution Workflow
 -----------------------------------
 
 If you wish to re-submit existing documents through the Trace Data Flow, you can
@@ -274,6 +274,8 @@ operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace R
 documents that you wish to retry from the Document List and click the item in the
 dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please
 enable them for Relativity URLs.
+
+> **Note:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
 
 >  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term
 > associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
