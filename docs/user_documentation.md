@@ -932,6 +932,15 @@ For Trace native [Data Sources](#data-sources),  deduplication is driven by a SH
 When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document
 will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
 
+#### Required Fields for deduplication
+
+Deduplication of a Data Source requires that the following Relativity fields be mapped in the Data Source's associated Integration Point Profile.
+
+1. Trace Document Hash
+2. Group Identifier
+
+
+
 Data Batches
 ------------
 
