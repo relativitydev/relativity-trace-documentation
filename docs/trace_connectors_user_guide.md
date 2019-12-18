@@ -110,12 +110,12 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com 
        
    4.  Configure `LOG ON ACCOUNT` section
        1.  Best practice is to specify computer administrator's username and password
-       2.  ![1570208778641](media/trace_connectors_user_guide/1570208778641.png)
+           ![1570208778641](media/trace_connectors_user_guide/1570208778641.png)
    5.  Configure `REPORTING` section
        1.  Report Level = Generate Summary Report Only
        2.  MISC = Leave Checkbox checked for `Delete reported and ...`
        3.  MUST specify `EMAIL REPORT SETTINGS` and send test email
-       4.  ![1570208945951](media/trace_connectors_user_guide/1570208945951.png)
+           ![1570208945951](media/trace_connectors_user_guide/1570208945951.png)
    6.  Configure `LOGGING` section
        1.  File log folder = `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs`
        2.  File Log Priority = `Error`
@@ -123,7 +123,7 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com 
    7.  Configure `ALERTING` section
        1.  MUST configure Email Alert Settings
        2.  Send Test Email
-       3.  ![1570209109659](media/trace_connectors_user_guide/1570209109659.png)
+           ![1570209109659](media/trace_connectors_user_guide/1570209109659.png)
    8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
    9.  Configure `Importer Schedule` to run at a desirable frequency (daily is the most common frequency)
    
@@ -161,5 +161,5 @@ In order to ensure that data source runs **every X minutes** run the following s
     ![](media/6003e916fdb6aa9903fd97201f9b9659.png)
 
     1. Script needed:  `$("div.schedule_table").find("td").click()`
-    2. ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
-    3. At this point Importer will be set to run every x minutes
+       ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
+    2. At this point the Importer will be set to run every x minutes
