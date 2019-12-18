@@ -736,7 +736,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 **Step 2: Adjust Office 365 permissions**
 
->   **NOTE:** Settings for On Premises exchange are very similiar to Office 365
+>   **NOTE:** Settings for On Premises exchange are very similar to Office 365
 
 1.  Log into the Office 365 Admin Center
 
@@ -756,7 +756,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 5. (Optional) Adjust password expiration permission for the account used for Trace
 
-   1.  https://docs.microsoft.com/en-us/office365/admin/add-users/set-password-to-never-expire?view=o365-worldwide#set-the-password-expiration-policy-for-individual-users
+     https://docs.microsoft.com/en-us/office365/admin/add-users/set-password-to-never-expire?view=o365-worldwide#set-the-password-expiration-policy-for-individual-users
 
 **Step 3: Create a Microsoft Exchange Data Source**
 
@@ -882,7 +882,7 @@ imported and *Trace Data Enrichment Needed* field is set to *Yes:*
 **Content**
 
 Extracted text and metadata for submitted Native files and all children
-documents expanded from containers/archives. Please, refer to **Appending B**
+documents expanded from containers/archives. Please, refer to [Appendix B](#appendix-b-trace-document-extraction-fields)
 for field descriptions.
 
 
@@ -944,10 +944,10 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 Data Batches
 ------------
 
-Data batch is a unit of ingestion work for Trace. It corresponds to a load file on disk that needs to be imported with specific settings and field mappings. It is a central tracking object for how the data was generated, normalized and aggregated into load file. It provides status of the overall import process and
-allows for deep audit history trail from native data source to Relativity.
+Data batch is a unit of ingestion work for Trace. It corresponds to a load file on disk that needs to be imported with specific settings and field mappings. It is a central tracking object for how the data was generated, normalized and aggregated into a load file. It provides status of the overall import process and
+allows for a deep audit history trail from native data source to Relativity.
 
-Once a batch enters Ingestion process (when status is set to: `Ready For Import`) Ingestion task will create an integration point from the configured Data Source profile (this information includes import settings and field mappings).
+Once a batch begins the Ingestion process (when status is set to: `Ready For Import`), the Ingestion task will create an integration point from the Data Source's configured Integration Point Profile (this information includes import settings and field mappings).
 
 ![](media/5a4b23b008d4e39bc9bafce213515337.png)
 
@@ -960,7 +960,7 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
 1.  `Trace Data Batch Retry` – submit the batch to be retried by Trace
 
-2.  `Trace Data Batch Abandon` – update the batch to indeicate that it has been manually resolved and should not be
+2.  `Trace Data Batch Abandon` – update the batch to indicate that it has been manually resolved and should not be
     treated as errored.
 
     ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
