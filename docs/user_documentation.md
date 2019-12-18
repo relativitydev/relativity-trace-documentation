@@ -751,11 +751,12 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 4.  Ensure the account you use to authenticate with includes “Application
     Impersonation”, “Legal Hold”, “Mailbox Import Export” and “Mailbox Search”
     roles:
-    ![](media/aff48bb585413bf91fa03d1649933aab.png)
-    
-5.  (Optional) Adjust password expiration permission for the account used for Trace
    
-	1.  https://docs.microsoft.com/en-us/office365/admin/add-users/set-password-to-never-expire?view=o365-worldwide#set-the-password-expiration-policy-for-individual-users
+   ![](media/aff48bb585413bf91fa03d1649933aab.png)
+
+5. (Optional) Adjust password expiration permission for the account used for Trace
+
+   1.  https://docs.microsoft.com/en-us/office365/admin/add-users/set-password-to-never-expire?view=o365-worldwide#set-the-password-expiration-policy-for-individual-users
 
 **Step 3: Create a Microsoft Exchange Data Source**
 
