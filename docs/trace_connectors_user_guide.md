@@ -163,3 +163,10 @@ In order to ensure that data source runs **every X minutes** run the following s
     1. Script needed:  `$("div.schedule_table").find("td").click()`
     2. ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
     3. At this point Importer will be set to run every x minutes
+    
+## Appendix C: High Availability Setup for Globanet's Merge1
+
+It is possible to setup Merge1 in HA mode. Recommended approach is to setup secondary Merge1 server that runs the same version of the Merge1 and installed in the same path as the production. You also need to have the same folder structure for all connectors (Import, quarantine, log folders). 
+
+Once that is done, the secondary Merge1 should be connected to the same Merge1 DB as the primary Merge1 server. If for any reason the production server goes down, you just need to run the services on the second Merge1. Please note that no service should be started on the secondary Merge1 if the production is running. 
+For the DB, you can take backups on a daily basis or apply any other standard SQL Server  HA scenarios that you wish.
