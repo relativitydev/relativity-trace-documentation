@@ -8,6 +8,7 @@
     + [Generic steps that apply to all data sources](#generic-steps-that-apply-to-all-data-sources)
   * [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a--bloomberg--ice-chat--thomson-reuters--symphony)
   * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
+  * [Appendix C: High Availability Setup for Globanet's Merge1](#high-availability-setup-for-globanets-merge1)
 
 For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to deploy an additional software / hardware: Trace "Shipper" powered by Globanet’s Merge1 product – this product is integrated into Trace.
 
