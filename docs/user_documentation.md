@@ -19,7 +19,7 @@
 	- [Actions](#actions)
 		- [Move To Folder Action Type](#move-to-folder-action-type)
 		- [Data Archive Action Type](#data-archive-action-type)
-		- [Advanced Action Type](#advanced-action-type)data
+		- [Advanced Action Type](#advanced-action-type)
 		- [Alert Action Types](#alert-action-types)
 		- [Replacement Tokens](#replacement-tokens)
 			- [Email Action Type](#email-action-type)
@@ -1101,6 +1101,42 @@ list.
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
 
+# Analytics Automation
+
+Relativity Trace is capable of automating builds of Conceptual Analytics Indexes, Classification Analytics Indexes, and Structured Analytics Sets. Note that the Analytics application must be installed into the workspace before analytics automation can be used.
+
+### Conceptual and Classification Analytics
+
+Relativity Trace will create the Trace Conceptual Analytics Index and the Trace Classification Analytics Index after install or upgrade of the Trace application if the Analytics application is installed in the workspace. By default, these indexes will not build automatically. To begin automation of an index, first perform a Full Build manually through the Relativity UI. Subsequently, Relativity Trace will automate incremental builds of the index based on the value of the `Global Analytics Build Frequency In Minutes` setting defined on the Indexing Task. To disable automatic builds of the Trace Conceptual and Classification indexes, set the value of the `Global Analytics Build Frequency In Minutes` setting to `-1`.
+
+### Structured Analytics Sets
+
+Relativity Trace can trigger automatic builds of any Structured Analytics Set defined in the workspace. It is possible to configure automation of multiple Structured Analytics Sets at the same time with different settings for build frequency, population scope and analysis scope.
+
+1. Create the Structured Analytics Set(s) that will be automated and run Full Builds on them.
+
+2. Edit the Indexing Task from the Setup page. Under Task Settings, the `Sas Automation Configuration Json` field should automatically populate with a JSON node for every Structured Analytics Set defined in the workspace: ![image-20191223171511007](media/user_documentation/image-20191223171511007.png)
+
+3. For each Structured Analytics Set that should be automated, perform the following steps:
+
+   1. Find the Structured Analytics Set by looking for its name in the `SasName` field
+
+   2. In the same JSON node (wrapped with {}), change the `Enabled` property to `true`
+
+   3. Change the `BuildFrequencyInMinutes` property to the appropriate build frequency in minutes 
+
+      > **NOTE:** this is the most frequently the Structured Analytics Set will be built, if a build takes longer than the interval then the next build will start when the previous one ends. Be careful not to build more frequently than needed as every build consumes resources on the Analytics server!
+
+   4. Change the `PopulateAll` property to `true` if the underlying index should be repopulated with all relevant documents before each build (`true` for a full build, `false` for an incremental build)
+
+      > **NOTE:** Setting `PopulateAll` to `true` can cause builds to take much longer and consume a lot more resources on the Analytics server!
+
+   5. Change the `AnalyzeAll` property to `true` if the entire index should be analyzed in each build (`true` for a full build, `false` for an incremental build)
+
+      > **NOTE:** Setting `AnalyzeAll` to `true` can cause builds to take much longer and consume a lot more resources on the Analytics server!
+
+4. Click Save and the Trace Manager Agent will automate for every Structured Analytics set with Enabled = true.
+
 Built-In Self-Test (BIST)
 =========================
 
@@ -1125,38 +1161,20 @@ Usability Considerations
 ------------------------
 
 
--   Once a document is associated with a Rule, it will never be disassociated unless there are document updates to extracted text or metadata. The`Trace Document Retry` (mass operation) procedure will also reset the associations automatically.
-    
+-   Once a document is associated with a Rule, it will never be disassociated unless there are document updates to extracted text or metadata. The `Trace Document Retry` (mass operation) procedure will also reset the associations automatically.
 -   Every Data Source has capability to be `Reset` via console buttons. Once a data source is reset,
     Trace will pull all available data again, beginning with the Start Date defined on the data source (if the Start Date is relevant to the data source type). **Depending on import profile settings, this could duplicate data in the Workspace.**
-    
 -   Task processes (Indexing, Term Searching, Rule Evaluation, etc) run asynchronously from each other. It may take several task cycles (based on configured `Run Interval`) for the end-to-end workflow to complete fully.
-    
 -   Deleting a Trace Rule does not delete any of the corresponding Relativity infrastructure and objects that were created (i.e. dtSearch Index, Saved Searches, Batch Sets). 
-    
 -   The global dtSearch index `Trace Search Index` (created by Trace application during installation) is supported for ad-hoc searching and will be incrementally built as part of Indexing task. No other dtSearch indexes will incrementally build automatically.
-    
--   If Analytics Server is present, active and configured for the Relativity instance: TODO: rework this completely
-    
-    
-    -   If enabled, both `Trace Conceptual Analytics Index` and `Trace Classification Analytics Index` will incrementally build automatically. In order to enable this functionality, manually perform Full Build on each index.
-    -   If enabled, `Trace Structured Analytics Set` will run configured jobs with full build option (Default job: Language Identification). In order to enable this functionality, manually perform Full Analysis.
-    
-    + When [setting up **Language Identification**](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Running_structured_data_analytics.htm#Creating_a_structured_analytics_set), for the document set, configure `Trace Structured Analytics Set`'s  saved search's condition to `Primary language` = `is not set`. This will ensure that only newly ingested  documents are flagged for full build analysis.  Do not combine other jobs on the same Structured Analytics Set.  Trace Structured Analytics Set currently only supports Language Identification.  Email Threading and Textual Near Dupe identification jobs require substantial resources on Analytics server.  Please contact support@relativity.com for more information.
-    
-        ![](media/user_documentation_LanguageID_SavedSearch.png)
-    
-         > **NOTE**: After `Trace Structured Analytics` was triggered to perform `Full Analysis`, Trace will automatically trigger `Full Analysis` on schedule ( that's why it is important to configure `Primary language` = `is not set` condition ) based on `Trace` -> `Indexing` task -> `Global Sas Build Frequency In Minutes` setting (see below)![image-20191105162739654](media/user_documentation/image-20191105162739654.png)
-    
 
-General Infrastructure and Environment Considerations
----------------------------------------------
+## 	General Infrastructure and Environment Considerations
 
 | **Tasks:**                       | **Ingestion**                                                                          | **Ingestion**      |    **Running Rules**                                                      |   **Running Rules**                                                                   |
 |----------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------|
-|                                  | **`Ingestion`, `Ingestion Status`, `Data Enrichment` and `Data Retrieval`**           | **`Indexing`**                                                                                                                                                                                        | **`Term Searching`**                                       | **`Rule Evaluation`**                                                  |
+|                                  | **`Ingestion`, `Data Validation`, `Data Enrichment` and `Data Retrieval`** | **`Indexing`**                                                                                                                                                                                        | **`Term Searching`**                                       | **`Rule Evaluation`**                                                  |
 | Summary                          | Powers the Proactive Ingestion Framework                                               | Incrementally builds Trace Search Index and Temporary Search Indexes with batches of documents Optionally: Incrementally builds and runs Analytics Jobs (Conceptual, Classification and Structured) | Searches and tags Terms in workspace on an ongoing basis | Rule will run and tag all matching documents and perform actions     |
-| Task Operations                  | *`Ingestion Task`*<br>-Looks for batches that need to be imported and kicks off import<br>-Creates RIP job per batch<br>*`Ingestion Status Task`*<br>-Updates Data Batch status<br>*`Data Retrieval Task`*<br>-Pulls data for enabled Data Sources executed by `Trace Manager Agent`<br><br> `Data Enrichment Task` extracts/expands/enriches source native document and prepares import load file (executed by `Trace Worker Agent`) | *`Indexing Task`*<br>-Kicks off dtSearch incremental build<br>-Kicks off temporary (internal) dtSearch index builds for Term evaluation<br>-Kicks off Analytics Jobs (if configured)<br>**NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global dtSearch and Analytics Indexes are built every 60 minutes by default.                                                                                                                                                                                   | *`Term Searching Task`*<br>-Runs (searches and tags) Terms in the workspace<br>**NOTE:** Each Term Searching run interval will search up to 5 available document batches (default 10,000 documents per batch). These settings are configurable on Term Searching task.                                    | *`Rule Evaluation Task`*<br>-Evaluates each rule in the workspaces and triggers configured actions                                              |
+| Task Operations                  | *`Ingestion Task`*<br>-Looks for batches that need to be imported and kicks off import<br>-Creates RIP job per batch<br>*`Data Validation Task`*<br>-Updates Data Batch status<br>*`Data Retrieval Task`*<br>-Pulls data for enabled Data Sources executed by `Trace Manager Agent`<br><br> `Data Enrichment Task` extracts/expands/enriches source native document and prepares import load file (executed by `Trace Worker Agent`) | *`Indexing Task`*<br>-Kicks off dtSearch incremental build<br>-Kicks off temporary (internal) dtSearch index builds for Term evaluation<br>-Kicks off Analytics Jobs (if configured)<br>**NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global dtSearch and Analytics Indexes are built every 60 minutes by default.                                                                                                                                                                                   | *`Term Searching Task`*<br>-Runs (searches and tags) Terms in the workspace<br>**NOTE:** Each Term Searching run interval will search up to 5 available document batches (default 10,000 documents per batch). These settings are configurable on Term Searching task.                                    | *`Rule Evaluation Task`*<br>-Evaluates each rule in the workspaces and triggers configured actions                                              |
 | Recommended Run Interval         | `60` seconds                                                                             | `300` seconds                                                                                                                                                                                         | `300` seconds                                              | `300` seconds                                                          |
 | Considerations and System Impact | -Speed of ingestion is determined by number of Integration Points Agents (max of 4 per instance) | -Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)<br>-Every incremental build makes the old build obsolete - cleaned up by Case Manager nightly                                                                                  |                                                          | -Very complex/nested underlying Saved Searches can affect performance<br>-Saved Searches that return many documents can affect performance<br>-Many rules being evaluated often can put pressure on SQL server |
 
