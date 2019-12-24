@@ -8,6 +8,7 @@
     + [Generic steps that apply to all data sources](#generic-steps-that-apply-to-all-data-sources)
   * [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a--bloomberg--ice-chat--thomson-reuters--symphony)
   * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
+  * [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanets-merge1)
 
 For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to deploy an additional software / hardware: Trace "Shipper" powered by Globanet’s Merge1 product – this product is integrated into Trace.
 
@@ -161,5 +162,12 @@ In order to ensure that data source runs **every X minutes** run the following s
     ![](media/6003e916fdb6aa9903fd97201f9b9659.png)
 
     1. Script needed:  `$("div.schedule_table").find("td").click()`
-       ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
-    2. At this point the Importer will be set to run every x minutes
+    2. ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
+    3. At this point Importer will be set to run every x minutes
+    
+## Appendix C: High Availability Setup for Globanet's Merge1
+
+It is possible to setup Merge1 in HA mode. Recommended approach is to setup secondary Merge1 server that runs the same version of the Merge1 and installed in the same path as the production. You also need to have the same folder structure for all connectors (Import, quarantine, log folders). 
+
+Once that is done, the secondary Merge1 should be connected to the same Merge1 DB as the primary Merge1 server. If for any reason the production server goes down, you just need to run the services on the second Merge1. Please note that no service should be started on the secondary Merge1 if the production is running. 
+For the DB, you can take backups on a daily basis or apply any other standard SQL Server  HA scenarios that you wish.
