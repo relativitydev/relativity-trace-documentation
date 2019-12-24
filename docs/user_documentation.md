@@ -8,7 +8,9 @@
 	- [BIST ( Built-in self-test ) Workspace](#bist--built-in-self-test--workspace)
 - [Setting up Relativity Trace](#setting-up-relativity-trace)
 - [Trace Document Flow Overview](#trace-document-flow-overview)
-	- [Error Resolution Workflow and Retry](#error-resolution-workflow-and-retry)
+	- [Trace Document Fields](#trace-document-fields)
+	- [Dashboard Widgets](#dashboard-widgets)
+	- [Trace Document Retry and Error Resolution Workflow](#trace-document-retry-and-error-resolution-workflow)
 - [Trace Rules Engine Overview](#trace-rules-engine-overview)
 	- [1 - Creating a Rule](#1---creating-a-rule)
 	- [2 - Customizing and Running a Rule](#2---customizing-and-running-a-rule)
@@ -36,13 +38,20 @@
 	- [Data Transformations](#data-transformations)
 		- [Replace Data Transformation](#replace-data-transformation)
 		- [Deduplication Data Transformation](#deduplication-data-transformation)
+		  - [Required Fields for Deduplication](#required-fields-for-deduplication)
 	- [Data Batches](#data-batches)
-	- [Error Resolution Workflow and Retry](#error-resolution-workflow-and-retry-1)
-	- [Automatic Discovery of Monitored Individuals](#automatic-discovery-of-monitored-individuals)
+	  - [Data Batch Retry and Error Resolution Workflow](#data-batch-retry-and-error-resolution-workflow)
+	- [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
+	  - [Monitored Individual Discovery On Globanet Data Sources](#monitored-individual-discovery-on-globanet-data-sources)
+	  - [Monitored Individual Discovery On Other Data Sources](#monitored-individual-discovery-on-other-data-sources)
+	  - [Supported File Formats](#supported-file-formats)
 - [Setup](#setup)
 	- [Tasks](#tasks)
 	- [Alerts and Notifications](#alerts-and-notifications)
 	- [Errors and Logging](#errors-and-logging)
+- [Analytics Automation](#analytics-automation)
+  - [Conceptual and Classification Analytics](#conceptual-and-classification-analytics)
+  - [Structured Analytics Sets](#structured-analytics-sets)
 - [Built-In Self-Test (BIST)](#built-in-self-test-bist)
 - [Reporting](#reporting)
 	- [Trace Terms Report](#trace-terms-report)
@@ -951,14 +960,12 @@ For Trace native [Data Sources](#data-sources),  deduplication is driven by a SH
 When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document
 will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
 
-#### Required Fields for deduplication
+#### Required Fields for Deduplication
 
 Deduplication of a Data Source requires that the following Relativity fields be mapped in the Data Source's associated Integration Point Profile.
 
 1. Trace Document Hash
 2. Group Identifier
-
-
 
 Data Batches
 ------------
@@ -1114,6 +1121,8 @@ Relativity Trace will create the Trace Conceptual Analytics Index and the Trace 
 Relativity Trace can trigger automatic builds of any Structured Analytics Set defined in the workspace. It is possible to configure automation of multiple Structured Analytics Sets at the same time with different settings for build frequency, population scope and analysis scope.
 
 1. Create the Structured Analytics Set(s) that will be automated and run Full Builds on them.
+
+   > For recommendations on how to configure each of the different types of Structured Analytics Sets including Saved Search details, how frequently to run, and what kind of builds to automate, please contact support@relativity.com
 
 2. Edit the Indexing Task from the Setup page. Under Task Settings, the `Sas Automation Configuration Json` field should automatically populate with a JSON node for every Structured Analytics Set defined in the workspace: ![image-20191223171511007](media/user_documentation/image-20191223171511007.png)
 
