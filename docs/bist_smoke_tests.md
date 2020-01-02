@@ -38,15 +38,14 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 ![](media/BIST_TraceWorkspaceSettings.png)
 
 -    Return to Setup tab in your BIST workspace
-      - You should now be able to lick on the "Built-in self-test (**BIST**)" link in the console
+      - You should now be able to click on the "Built-in self-test (**BIST**)" link in the console
+-   Click Edit on Built-In Self Test (BIST) Task Type, set Enabled to Yes and click Save
 
--   Click Edit on Sandbox Task Type, set Enabled to Yes and click Save
+![image-20191218145522629](media/bist_smoke_tests/image-20191218145514143.png)
 
-![](media/bff924ad11b5aea52e5ef3da32250f08.png)
+> **NOTE:** Once test completes Last Execution Status field will update to "Completed. Succeeded - Trace Test GoldenFlow Test." and the task will auto-disable itself.
 
-> **NOTE:** Once test completes Last Execution Status field will update to "Completed. Details: Smoke Test Succeeded!" and task will auto-disable itself
-
-![](media/3365ee39624ff425c6b6d0c74ddf92c9.png)
+![image-20191218145951065](media/bist_smoke_tests/image-20191218145951065.png)
 
 ## Manual Tests
 
@@ -54,7 +53,7 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
 1.  Create a new Test Workspace
 
-2.  Install Trace application
+2.  Install the Trace application
 
     1.  Navigate to Library Application (Admin), locate Trace and install it
         into Test Workspace
@@ -66,11 +65,11 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
 3.  Data Setup
 
-    1.  Online Data Setup: Office 365 [Follow steps in Documentation]
+    1.  Online Data Setup: Office 365 [Follow steps in [User Documentation](user_documentation.md#microsoft-exchange-data-source)]
 
-        1.  Enable data source
+        1.  Enable the data source
 
-        2.  Ensure documents are pulled through
+        2.  Ensure documents correctly processed throughout the pipeline
 
     2.  Offline Data Setup: Sample Data Source **[AUTOMATED]**
 
@@ -144,7 +143,7 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
         4.  Enable rule
 
-### Test Verification **[AUTOMATED]**
+### Test Verification [AUTOMATED]
 
 **Final expected state of the documents in workspace:**
 
@@ -173,6 +172,6 @@ to run Manual Tests, it is recommended that you run **BIST** first.
     ![](media/df8d7d265f3eb5ff3cc04bd60c5e4369.png)
 
 3.  Trace Document Retry mass-operations work (re-submits documents through
-    Trace flow):
+    Trace flow, but does not re-trigger import):
 
 ![](media/c618f2acac67b761cec5c75a03932eec.png)
