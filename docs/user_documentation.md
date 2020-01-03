@@ -1003,7 +1003,7 @@ Some Data Sources combine data from several places into a single import flow. In
 
 ### Monitored Individual Discovery On Globanet Data Sources
 
-Globanet Data Sources only look for Monitored Individuals in the `X-UserMailbox` header of an email. This header is provided by Globanet and typically contains exactly one Monitored Individual.
+Globanet's EWS Data Source only looks for Monitored Individuals in the `X-UserMailbox` header of an email. This header is provided by Globanet and typically contains exactly one Monitored Individual.
 
 ### Monitored Individual Discovery On Other Data Sources
 
