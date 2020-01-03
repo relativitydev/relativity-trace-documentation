@@ -25,7 +25,7 @@
 **Enhancements**
 
 - Can now configure Documents tab to display the Data Source associated with every document
-- Globanet data sources now read monitored individual from custom email header
+- Globanet's EWS data source now read monitored individual from custom email header
 - Monitored Individual Discovery can now ignore the casing of the email addresses in question
 - Data Batches now show a Completed With Errors status if there are document-level errors in the Data Batch
 - Implemented TraceRecordOriginIdentifier to allow document reconciliation for more data sources
