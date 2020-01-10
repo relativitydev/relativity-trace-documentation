@@ -136,7 +136,7 @@ agents are set up:
     
 ### BIST ( Built-in self-test ) Workspace
 
-1.  Create new Relativity Workspace dedicated to BIST
+1.  Create new Relativity Workspace dedicated to BIST. Workspace must be named `Trace BIST Automation [DO NOT MODIFY]`
 
 2.  Follow steps in [Relativity Trace Automated Tests (BIST)](https://relativitydev.github.io/relativity-trace-documentation/bist_smoke_tests)
 
