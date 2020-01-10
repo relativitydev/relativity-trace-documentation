@@ -59,6 +59,7 @@
 	- [Usability Considerations](#usability-considerations)
 	- [General Infrastructure and Environment Considerations](#general-infrastructure-and-environment-considerations)
 	- [Large Workspaces Infrastructure and Environment Considerations](#large-workspaces-infrastructure-and-environment-considerations)
+	- [License and Billing Data](#license-and-billing-data)
 - [Glossary](#glossary)
 - [Appendix A: Trace Object Architecture](#appendix-a-trace-object-architecture)
 - [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields)
@@ -136,7 +137,7 @@ agents are set up:
     
 ### BIST ( Built-in self-test ) Workspace
 
-1.  Create new Relativity Workspace dedicated to BIST
+1.  Create new Relativity Workspace dedicated to BIST. Workspace must be named `Trace BIST Automation [DO NOT MODIFY]`
 
 2.  Follow steps in [Relativity Trace Automated Tests (BIST)](https://relativitydev.github.io/relativity-trace-documentation/bist_smoke_tests)
 
@@ -1199,6 +1200,10 @@ Large Workspaces Infrastructure and Environment Considerations
 | Limit maximum number of Rules: `50` per workspace, `500` per instance | The design of Rule Evaluation Task limits concurrent execution of multiple rules. This effect is compounded by running multiple workspaces with Rules concurrently. | Future iterations will remove this limitation                |
 | Update dtSearch sub-index size to be `500K` OR `1M` (Advanced Settings) | Default sub-index size is `250K` docs, when you have more than `10` sub-indexes searches can become slow because of the number of sub-indexes<br>![1564672221173](media/1564672221173.png)<br><br>![1564672354757](media/1564672354757.png) | General rule is to keep number of sub-indexes under `10` total |
 | Ensure [Data Grid for Audit](https://help.relativity.com/RelativityOne/Content/Relativity/Data_Grid/Data_Grid_for_Audit.htm) is setup OR use [Database Partitioning for Archiving Audit Records](https://community.relativity.com/s/contentdocument/06950000002JezyAAC) | Audits are generated frequently, outside of RelativityOne, they are stored in SQL which at scale creates very large tables.  It's best practice to set up table partitioning for your audits, or to deploy Data Grid solution | Data Grid for Audit is used natively in RelativityOne        |
+
+## License and Billing Data 
+
+Trace requires a valid license to operate. An invalid or expired license will cause Trace to enter a locked state wherein no tasks will be executed. In addition, each Trace license contains information on how billing data will be collected. Billing data is by default reported daily. Failure to report billing data for 7 days or more will also result in Trace entering a locked state.
 
 Glossary
 ========
