@@ -32,6 +32,27 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
    2. Internet Information Services 7.0 or higher
 
+      1. Make sure the following **components** are installed
+         1. **Web Server**
+            1. Common HTTP Features
+               1. Default Document
+               2. Static Content
+            2. Security
+               1. Basic Authentication
+               2. Request Filtering
+               3. Windows Authentication
+            3. Application Development
+               1. All .NET Extensibility Components
+               2. All ASP.NET Components
+               3. SAPI Extensions
+               4. ISAPI Filters
+         2. **Web Management Tools**
+            1. IIS Management Console
+            2. IIS 6 Management Compatibility
+               1. IIS Metabase and IIS 6 configuration compatibility
+            3. IIS Management Scripts and Tools
+            4. IIS Management Service
+
    3. .NET Framework 3.5 & 4.7.2
 
    4. Microsoft Visual C++ 2017 (x64) Redistributable
@@ -39,7 +60,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
    5. SQL Server 2012 or later
 
       1. >  **NOTE:** We recommend to take daily backups and keep them for 1 week
-      
+
       2. >  **NOTE:** We recommend to shrink database daily in order not to run out of disk space
 
 3. Network Requirements

@@ -745,6 +745,10 @@ The following are fields on the Data Source Object:
 The Microsoft Exchange Data Source enables Relativity to automatically pull emails from a Microsoft Exchange instance (Office 365 or On Premises) into Relativity. The Microsoft Exchange Data Source is executed by the Data Retrieval task (seen on the Setup tab). Note, this Data Source only pulls emails at this
 time, if you need to retrieve other object types from Microsoft Exchange please reach out to `support@relativity.com`
 
+**Data Flow Overview**
+
+![image-20200120151709677](media/user_documentation/image-20200120151709677.png)
+
 **Setup**
 
 **Step 1: Create Integration Point Profile**
