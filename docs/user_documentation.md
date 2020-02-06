@@ -20,7 +20,7 @@
 		- [Highlighting](#highlighting)
 	- [Actions](#actions)
 		- [Move To Folder Action Type](#move-to-folder-action-type)
-		- [Data Archive Action Type](#data-archive-action-type)
+		- [Data Disposal Action Type](#data-disposal-action-type)
 		- [Advanced Action Type](#advanced-action-type)
 		- [Alert Action Types](#alert-action-types)
 		- [Replacement Tokens](#replacement-tokens)
@@ -331,7 +331,7 @@ The Rule Creation form contains the following fields:
 -   **Associated Actions:** actions are what happen when a rule matches a
     document. Currently supported Action Types are:
 
-    -   **Data Archiving**: triggers deletion of specified documents after the
+    -   **Data Disposal**: triggers deletion of specified documents after the
         configured retention policy
     -   **Advanced:** execute customer provided Relativity Script
     -   **Email:** generates an email with metadata about alerted documents
@@ -427,7 +427,7 @@ In addition, you can override default highlight configuration (magenta backgroun
 Actions
 -------
 
-As part of installation, Action Types are created. Currently supported action types are: Data Archive, Advanced, Email, Slack, and Webhook and Move To Folder. For each Action Type there is a Default Action created. You can also customize the Default Actions and also create and configure your own Actions.
+As part of installation, Action Types are created. Currently supported action types are: Move To Folder, Data Disposal, Advanced, Email, Slack, and Webhook. For each Action Type there is a Default Action created. You can customize the Default Actions or create and configure your own Actions.
 
 ### Move To Folder Action Type
 
@@ -438,14 +438,20 @@ You can configure the action by specifying the ArtifactID of the destination fol
 
 ![](media/4ea5493c6871466e5ab385ec5c08f8ff.png)
 
-### Data Archive Action Type
+### Data Disposal Action Type
 
-> **WARNING:** The Data Archive Action will permanently delete all documents that match the Rule conditions and are outside the Data Retention window.
+> **WARNING:** The Data Disposal Action will permanently delete all documents that match the Rule conditions and are outside the Data Retention window.
+>
+> Data Disposal will only delete files located in valid Data Batch folders. Documents not ingested by Trace will not be deleted
+>
+> If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted
+>
+> Documents which were imported as part of a Data Batch which is in the `CompletedWithErrors` state will not be deleted
 
-The Data Archive Action Type follows the same Trace Rules Engine paradigm with
+The Data Disposal Action Type follows the same Trace Rules Engine paradigm with
 one added condition:
 
--   You attach the Data Archive action to a Rule
+-   You attach the Data Disposal action to a Rule
 
 -   The rule executes the actions on documents that match the Rule conditions
 
@@ -453,18 +459,33 @@ one added condition:
 
     -   Term Searching (optional)
 
-    -   *SPECIFIC TO ARCHIVE*: `Delete Documents Older Than Hours` setting
+    -   *SPECIFIC TO DISPOSAL*: `Delete Documents Older Than Hours` setting
 
 Any document that is newer than the specified number of hours (based on System
 Created On date/time) will not be deleted even if the document is included in the
-Searchable Set / Search Term
+Searchable Set / Search Term.
+
+This action is used to:
+1. Clear out old documents from the Trace workspace
+2. Free disk space by deleting **ALL** disposed Document files from the File Share
 
 **Action Configuration**
 
 `Document Delete Batch Size` - controls number of documents to delete at once
+> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance
+
+`Files On Disk Document Delete Page Size` - controls the number of Relativity Documents to process file deletion for at a time
 
 `Delete Documents Older Than Hours` - controls age of a document (based on System
 Created On date/time) to delete
+
+**Saved Search Recommendations for Data Disposal**
+
+Because of the risk of data loss. You should carefully configure the Searchable Set used for Data Disposal. The following are recommended minimum filtering parameters
+
+-   Trace Has Errors is False
+-   A field marking the document as Responsive is False
+-   A field marking the document as Reviewed is True
 
 ### Advanced Action Type
 
@@ -535,12 +556,12 @@ the input for the script.
 > **NOTE:** Advanced actions will run on a schedule, continuously. Please consider the resource
 usage of your scripts!
 
-### Alert Action Types
+### Alert Action Types (Email, Slack, and Webhook)
 
 Trace supports the following modes of notification: Email, Slack, and Webhook.
 These actions can be used as part of any rule.
 
-### Replacement Tokens
+#### Replacement Tokens
 
 You can specify Trace Replacement Tokens in most configuration fields for the
 Alert Action Types. These tokens will be replaced with information relevant to
