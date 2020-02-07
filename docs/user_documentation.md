@@ -446,7 +446,7 @@ You can configure the action by specifying the ArtifactID of the destination fol
 >
 > If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted
 >
-> Documents which were imported as part of a Data Batch which is in the `CompletedWithErrors` state will not be deleted
+> _Only_ documents which were imported as part of a Data Batch which is in the `Completed` state will be deleted
 
 The Data Disposal Action Type follows the same Trace Rules Engine paradigm with
 one added condition:
@@ -483,8 +483,8 @@ Created On date/time) to delete
 
 Because of the risk of data loss. You should carefully configure the Searchable Set used for Data Disposal. The following are recommended minimum filtering parameters
 
--   Trace Has Errors is False
--   A field marking the document as Responsive is False
+-   `Trace Has Errors` field is False
+-   The `Alert` field is not set (is empty)
 -   A field marking the document as Reviewed is True
 
 ### Advanced Action Type
