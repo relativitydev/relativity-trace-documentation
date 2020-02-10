@@ -122,6 +122,18 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com 
    2.  If `Monitored User` option is NOT available, configure `Filter` and use `Dynamic` -\> `CSV` option to point it to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config\monitored_individuals.csv`
        
        ![](media/43d295fa5746c8e030f2dcbcd580c3fc.png)
+       1. Go to Edit filters
+       2. Add new Mail filter
+       3. From Filter type select Dynamic option
+       4. Select CSV option and type path to CSV file. Please be sure that CSV has no headers and contains only two columns: SMTP address in the first column and the username in the second (example@exampe.com, username).
+       5. Go to importer settings
+       6. Under the filtering section check Enable Filtering checkbox
+       7. Check Process all filters checkbox
+       8. Select Match any option
+       9. From the first Target dropdown menu select your default target
+       10. From Filter dropdown menu select created Mail filter
+       11. From the second Target dropdown menu select the target where your monitored users' messages will be imported
+       12. Hit the + button and save settings
 
    3.  Configure Target to point to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop`
        

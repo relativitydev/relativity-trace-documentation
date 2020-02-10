@@ -323,29 +323,29 @@ The following fields **must** be part of the Load File and must be mapped to app
 
    1. > **IMPORTANT:** column name in the load file must be called `Trace Document Hash`
 
-4. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
+4. `Trace Has Errors` – true/false. True, if particular document has errors
+   (e.g. audio file too big to transcribe, etc…)
+5. `Trace Error Details` – details of the individual item’s error (stack trace,
+   retry information, etc)
+6. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
 
-5. `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
+7. `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
 
    1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
 **Recommended:**
 
 1. `Trace Data Batch` – name of the batch
-2. `Trace Has Errors` – true/false. True, if particular document has errors
-   (e.g. audio file too big to transcribe, etc…)
-3. `Trace Error Details` – details of the individual item’s error (stack trace,
-   retry information, etc)
-4. `Trace Checkout` – must be set to empty string. This ensures Trace can
+2. `Trace Checkout` – must be set to empty string. This ensures Trace can
    restart indexing and term searching for particular item in case of changes
    to an existing document (overlay scenario)
-5. `Trace Rules` – must be set to empty string. This ensures that any Rule tags
+3. `Trace Rules` – must be set to empty string. This ensures that any Rule tags
    are cleared.
-6. `Trace Rule Terms` – must be set to empty string. This ensures that any Rule Terms tags
+4. `Trace Rule Terms` – must be set to empty string. This ensures that any Rule Terms tags
    are cleared.
-7. `Trace Terms` - must be set to empty string. This ensures that any Term tags
+5. `Trace Terms` - must be set to empty string. This ensures that any Term tags
    are cleared.
-8. `Trace Record Origin Identifier` - this should be an id of a record from it's data origin system. Once included, Trace will track this value across all Trace actions on a particular record. This helps to reconstruct audit trail for a particular record.
+6. `Trace Record Origin Identifier` - this should be an id of a record from it's data origin system. Once included, Trace will track this value across all Trace actions on a particular record. This helps to reconstruct audit trail for a particular record.
 
 ![](media/7beaeffb89e2aef4285696f44c7ff423.png)
 
