@@ -994,7 +994,7 @@ Data Batches
 Data batch is a unit of ingestion work for Trace. It corresponds to a load file on disk that needs to be imported with specific settings and field mappings. It is a central tracking object for how the data was generated, normalized and aggregated into a load file. It provides status of the overall import process and
 allows for a deep audit history trail from native data source to Relativity.
 
-Once a batch begins the Ingestion process (when status is set to: `Ready For Import`), the Ingestion task will create an integration point from the Data Source's configured Integration Point Profile (this information includes import settings and field mappings).
+Once a batch begins the Ingestion process (when status is set to: `ReadyForImport`), the Ingestion task will create an integration point from the Data Source's configured Integration Point Profile (this information includes import settings and field mappings).
 
 ![](media/5a4b23b008d4e39bc9bafce213515337.png)
 
@@ -1002,7 +1002,7 @@ Once a batch begins the Ingestion process (when status is set to: `Ready For Imp
 
 By default, Data Batches that do not complete will be automatically retried up to 3 times. Data Batches that fail all retries will set `Has Errors` to true, populate the `Error Details` field with the details of the specific error encountered, and be given a status of `CompletedWithErrors`.
 
-> **NOTE:** If a Data Batch completes successfully but has errors at the document level (for example, if a document is password protected and the correct password was not found in the Password Bank of the Data Source), the Data Batch will be marked `CompletedWithErrors` but there will not be an automatic retry
+> **NOTE:** If a Data Batch completes successfully but has errors at the document level (for example, if a document is password protected and the correct password was not found in the Password Bank of the Data Source), the Data Batch will be marked `CompletedWithDocumentLevelErrors` and there will not be an automatic retry
 
 Data Batch objects have associated Mass Operations (and corresponding Data Batch console UI buttons) to help with state resolution
 
@@ -1014,7 +1014,11 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
    ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
 
-> **NOTE: ** If a Data Batch sits in a status other than Completed, CompletedWithErrors, or Abandoned for longer than 24 hours (timeout configurable with the `Data Batch Timeout In Hours` setting on the Data Validation Task), it will automatically be marked as CompletedWithErrors (if the Data Batch has files and could be retried) or Abandoned (if the Data Batch does not have any files). This functionality helps ensure that temporary system issues do not lead to Data Batches being stuck indefinitely containing documents that never make it into the workspace.
+> **NOTE: ** If a Data Batch sits in a status other than `Completed`, `CompletedWithErrors`, `CompletedWithDocumentLevelErrors`, or `Abandoned` for longer than 24 hours (timeout configurable with the `Data Batch Timeout In Hours` setting on the Data Validation Task), it will automatically be marked as:
+> * `CompletedWithErrors` if the Data Batch has files and could be retried
+> * `Abandoned` if the Data Batch does not have any files. 
+>
+> This functionality helps ensure that temporary system issues do not lead to Data Batches being stuck indefinitely containing documents that never make it into the workspace.
 
 Discovery of Monitored Individuals
 --------------------------------------------
