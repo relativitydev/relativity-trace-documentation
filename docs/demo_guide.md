@@ -11,7 +11,7 @@ Relativity Trace Demo Guide
     + [Section 2: Importing Data and Running Rules](#section-2--importing-data-and-running-rules)
     + [Section 3: Viewing Results](#section-3--viewing-results)
     + [Section 4: Recap](#section-4--recap)
-- [DEMO B: Running an Archive Rule](#demo-b-running-an-archive-rule)
+- [DEMO B: Running a Disposal Rule](#demo-b-running-a-disposal-rule)
 
 ### Demo Environment and Login Information
 
@@ -41,7 +41,7 @@ Goals of the Demo
     meta-data from Office 365 emails and attachments.
 
 -   Show overall data flow from ingestion, indexing, searching, tagging
-    (reviewing) and ultimately data archival.
+    (reviewing) and ultimately data disposal.
 
 -   Introduction of the Trace Rules Engine – a way to define what type of
     information gets flagged upon ingestion and auto-batched out to a reviewer.
@@ -67,7 +67,7 @@ This demo has 4 simple steps:
 
 ### Demo B
 
-In this demo we will be enabling an archiving rule that is based on Data Archive
+In this demo we will be enabling a disposal rule that is based on Data Disposal
 action to automatically delete data outside of a configured data retention
 policy.
 
@@ -88,6 +88,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     Rules are how you define the type of content that is relevant to you. The
     **Market Abuse** rule has been pre-created for you along with a few others.
     
+
 ![](media/demo_guide/Section1.2-1571771958433.png)
     
 3. Click into the **Market Abuse** rule and see the options that make up this
@@ -166,8 +167,8 @@ As time goes on, more batches with data will be created and ingested:
     ![](media/demo_guide/Section3.3.png)
 
     1. Once all the data is ingested and analyzed about 8.5% of ingested documents have
-      matched the rules:
-      ![](media/demo_guide/Section3.3i.PNG)
+        matched the rules:
+        ![](media/demo_guide/Section3.3i.PNG)
 
       **(blank)** denotes the number of documents where no Rules were matched.
     
@@ -216,7 +217,7 @@ Thanks for completing Demo A! Quick recap, here’s what we did:
 Let us know what you think! Reach out to `trace@relativity.com` with any
 feedback. Thanks!
 
-DEMO B: Running an Archive Rule
+DEMO B: Running a Disposal Rule
 ===============================
 
 1.  Go into the **Trace Demo** workspace
@@ -228,7 +229,7 @@ DEMO B: Running an Archive Rule
     ![1571779546803](media/demo_guide/1571779546803.png)
     
 > **NOTE:** Count on non-alerted documents might vary
-    
+
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
     Rule**.
@@ -236,15 +237,15 @@ DEMO B: Running an Archive Rule
 
 4.  You’ll notice that the **Delete Rule** follows a similar format to the prior
     demo. The rule runs on the “Non-alerted Documents” Saved Search and has the
-    “Default Data Archive” action associated with it. This action will delete
-    all documents in the Saved Search (outside of the set retention policy) once
-    the rule is enabled. This will enable you to have an **automated retention
+    “Default Data Disposal” action associated with it. Once enabled, This action will delete
+all documents in the Saved Search that were created before the set retention length. This will enable you to have an **automated retention
     policy** in Relativity.
     
-    > **NOTE:** For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be
-delete as soon as the rule runs
+    > **NOTE:** For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be delete as soon as the rule runs
+    >
+    > For Saved Search recommendations, see [Data Disposal Action Type in User Documentation](user_documentation.md#data-disposal-action-type)
     
-5.  Now let’s enable the rule so Trace can start enforcing your Data Archive
+5.  Now let’s enable the rule so Trace can start enforcing your Data Disposal
     policy. Go to the **Trace:Rules** tab again and click on the “**Delete
     Rule**”
     ![1571779615711](media/demo_guide/1571779615711.png)
@@ -256,6 +257,7 @@ delete as soon as the rule runs
     “Non-alerted Documents” Saved Search. Within a few minutes you’ll start to
     see documents getting deleted from this workspace.
     
+
 ![1571779733791](media/demo_guide/1571779733791.png)
     
 8. Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
