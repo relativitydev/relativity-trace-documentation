@@ -896,19 +896,14 @@ imported and *Trace Data Enrichment Needed* field is set to *Yes:*
 3.  Fill out Data Source Specific Fields and click Save
 
     1.  Password Bank can be adjusted to specify known passwords to attempt
-        while encountering protected native files. Multiple passwords can be separated by the pipe character, |. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
+        while encountering protected native files. Multiple passwords can be separated by the pipe character, |.
 
-        > **Example Password Bank:** passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||
+        > **Example Password Bank:** passw0rd|Trace1234!
         >
         > Yields the following passwords:
         >
         > * passw0rd
         > * Tracer1234!
-        > * aaa
-        > * bb
-        > * cccc|dd|eee|
-        > * ff|
-        > * ggg||hhh||
         
     2. The rest of the fields are automatically pre-filled out with needed
        values
