@@ -122,7 +122,7 @@ When a Data Source creates a Data Batch, several fields must be filled out:
    
    2.  `Created`, `RetrievedFromSource` and `Normalized` can be used to track data flow in Relativity for reconciliation purposes by the Data Source
        
-   3.  `Importing`, `Completed` and `CompletedWithErrors` statuses are populated by Trace automatically for ingestion tracking purposes
+   3.  `Importing`, `Completed`, `CompletedWithErrors`, and `CompletedWithDocumentLevelErrors` statuses are populated by Trace automatically for ingestion tracking purposes
 
    4.  For each Status, Data Source can specify document count and time stamp (optional)
 
