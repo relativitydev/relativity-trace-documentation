@@ -86,9 +86,9 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 4. Globanet pushes the data to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop` folder
 5. Globanet pushes any logs to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs` folder
 
-### Setting up Data Sources
+## Setting up Data Sources
 
-## Steps generic to setting up all Data Sources
+### Steps generic to setting up all Data Sources
 
 1.  You must first create an Integration Point Profile if you have not already done so. The Integration Point Profile is used to map fields in the Globanet Data Source load file to the workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://github.com/relativitydev/relativity-trace-documentation/docs/media/trace_connectors_user_guide/IntegrationPointProfile.pdf).
 
@@ -102,7 +102,7 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 
 5.  Enable the Data Source. To do so, go to the Data Source in view mode. Click on the blue icon "Enable Data Source" in the console on the right hand side.
 
-## Steps specific to setting up Globanet Sources
+### Steps specific to setting up Globanet Sources
 
 1.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
     
