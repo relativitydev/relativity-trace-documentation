@@ -1,4 +1,6 @@
-# Relativity Trace Data Source User Guide
+# Relativity Trace Data Source User Guide - Globanet
+
+**For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software. This software is called Globanet Merge1. You will also need to install additional hardware.**
 
   * [Installation](#installation)
     + [Pre-requisites](#pre-requisites)
@@ -10,7 +12,6 @@
   * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
   * [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanets-merge1)
 
-**NOTE: For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software. This software is called Globanet Merge1. You will also need to install additional hardware.**
 
 
 ## Installation of Globanet
@@ -70,7 +71,7 @@
        1.  If Globanet does not have direct access to Relativity's Fileshare, site-to-site VPN OR SFTP sync can be setup. See Data Flow Overview below for more details
        2.  Server with Globanet only needs access to specific folders on Relativity Fileshare. Details are documents in Data Flow Overview section below.
 
-### Installation Steps
+### Installation Steps for Globanet
 
 Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-trace-documentation/docs/media/trace_connectors_user_guide/Merge1-6.20.0131.257.pdf) for instructions on how to install Globanet. Contact support@relativity.com if you need assitance with installing Globanet.
 
@@ -85,9 +86,15 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 4. Globanet pushes the data to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop` folder
 5. Globanet pushes any logs to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs` folder
 
-## Setting up Data Sources
+## Setting up Globanet Data Sources
 
-1.  Create a new Data Source in Relativity Trace. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
+1.  You must first create an Integration Point Profile. The Integration Point Profile is used to map fields in the Globanet Data Source load file to the workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](fff).
+
+
+
+Create a new Data Source in Relativity Trace. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
+
+**NOTE: If you do not see the Data Source Type that you need to associate with this Data Source, please contact trace@relativity.com. A Trace Specialist will need to set up the Data Source Type with you.**
 
 2.  Create Monitored Individuals in Relativity Trace. Go to the Monitored Individuals tab, then click on "New Monitored Individual" to create a new record. You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
 
