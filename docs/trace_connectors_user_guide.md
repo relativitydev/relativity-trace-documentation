@@ -7,7 +7,6 @@
     + [Installation Steps](#installation-steps)
     + [Data Flow Overview](#data-flow-overview)
   * [Setting up Data Sources](#setting-up-globanet-datas-sources)
-    + [Generic steps that apply to all data sources](#generic-steps-that-apply-to-all-data-sources)
   * [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a--bloomberg--ice-chat--thomson-reuters--symphony)
   * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
   * [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanets-merge1)
@@ -73,7 +72,7 @@
 
 ### Installation Steps for Globanet
 
-Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-trace-documentation/docs/media/trace_connectors_user_guide/Merge1-6.20.0131.257.pdf) for instructions on how to install Globanet. Contact support@relativity.com if you need assitance with installing Globanet.
+Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Globanet. Contact support@relativity.com if you need assitance with installing Globanet.
 
 
 ### Globanet Data Flow Overview 
