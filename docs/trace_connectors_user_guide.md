@@ -101,6 +101,7 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 5.  Enable the Data Source. To do so, go to the Data Source in view mode. Click on the blue icon "Enable Data Source" in the console on the right hand side.
 
     A.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
+    
     B.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generated in the following Relativty folder:
         `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config`
         
