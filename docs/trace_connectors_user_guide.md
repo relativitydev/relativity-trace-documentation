@@ -1,4 +1,4 @@
-# Relativity Trace Data Source User Guide - Globanet
+# Relativity Trace Data Source User Guide
 
 **For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software. This software is called Globanet Merge1. You will also need to install additional hardware.**
 
@@ -6,7 +6,7 @@
     + [Pre-requisites](#pre-requisites)
     + [Installation Steps](#installation-steps)
     + [Data Flow Overview](#data-flow-overview)
-  * [Setting up different data sources](#setting-up-different-data-sources)
+  * [Setting up Data Sources](#setting-up-globanet-datas-sources)
     + [Generic steps that apply to all data sources](#generic-steps-that-apply-to-all-data-sources)
   * [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a--bloomberg--ice-chat--thomson-reuters--symphony)
   * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
@@ -86,7 +86,9 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 4. Globanet pushes the data to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop` folder
 5. Globanet pushes any logs to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs` folder
 
-## Setting up Globanet Data Sources
+### Setting up Data Sources
+
+## Steps generic to setting up all Data Sources
 
 1.  You must first create an Integration Point Profile if you have not already done so. The Integration Point Profile is used to map fields in the Globanet Data Source load file to the workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://github.com/relativitydev/relativity-trace-documentation/docs/media/trace_connectors_user_guide/IntegrationPointProfile.pdf).
 
@@ -100,28 +102,30 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 
 5.  Enable the Data Source. To do so, go to the Data Source in view mode. Click on the blue icon "Enable Data Source" in the console on the right hand side.
 
-    A.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
+## Steps specific to setting up Globanet Sources
+
+1.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
     
-    B.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generated in the following Relativty folder:
+2.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generated in the following Relativty folder:
         `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config`
         
         ![](media/4deb6400be9c82fad0f5c4e056eaefbe.png)
             
     
-6. Create a `Drop` folder for where Globanet will be delivering data.
+3. Create a `Drop` folder for where Globanet will be delivering data.
 
-   1.  `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop`
+   A.  `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop`
 
        ![](media/6e92489f333c6b3145e6e48e0f24da98.png)
 
-5.  Create `Logs` folder for where Globanet will be delivering logs: `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs`
+4.  Create `Logs` folder for where Globanet will be delivering logs: `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs`
 
-6. Edit Data Source and update Source Folder Path field to the relative location of the `Drop` folder:
+5. Edit Data Source and update Source Folder Path field to the relative location of the `Drop` folder:
    `DataTransfer\\Import\\Globanet_Data\\{DATA_SOURCE_ARTIFACT_ID}\\Drop`
 
    ![](media/ea1adf994a5122ec6c8a047b06422dab.png)
 
-7. Configure a corresponding “Importer” in Globanet
+6. Configure a corresponding “Importer” in Globanet
 
    1.  Configure monitored individuals to point to
        `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config\monitored_individuals.csv`
