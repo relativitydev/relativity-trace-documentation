@@ -94,7 +94,7 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 
 2.  Create a new Data Source in Relativity Trace for the data source type (for example, ICE Chats) that you want to start pulling data from. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
 
-**NOTE: When setting up the Data Source, if you do not see the Data Source Type that you need to associate with this Data Source, please contact trace@relativity.com. For example, if you are attempting to configure a Data Source for ICE Chats, and you do not see a Data Source Type = ICE Chats, contact trace@relativity.com. A Trace Specialist will need to set up the Data Source Type with you.**
+> **NOTE:** When setting up the Data Source, if you do not see the Data Source Type that you need to associate with this Data Source, please contact trace@relativity.com. For example, if you are attempting to configure a Data Source for ICE Chats, and you do not see a Data Source Type = ICE Chats, contact trace@relativity.com. A Trace Specialist will need to set up the Data Source Type with you.
 
 3.  Create Monitored Individuals in Relativity Trace. Go to the Monitored Individuals tab, then click on "New Monitored Individual" to create a new record. You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
 
@@ -106,10 +106,10 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 
 1.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
     
-2.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generated in the following Relativty folder:
-        `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config`
+2.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generated in the following Relativty folder: `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config`
         
         ![](media/4deb6400be9c82fad0f5c4e056eaefbe.png)
+        ![1570206388354](media/trace_connectors_user_guide/1570206388354.png)
             
     
 3. Create a `Drop` folder for where Globanet will be delivering data.
