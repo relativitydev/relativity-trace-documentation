@@ -106,10 +106,9 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 
 1.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
     
-2.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generated in the following Relativty folder: `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config`
-        
-        ![](media/4deb6400be9c82fad0f5c4e056eaefbe.png)
-        ![1570206388354](media/trace_connectors_user_guide/1570206388354.png)
+2.  Before proceeding to the next step, **WAIT** until monitored_individuals.csv is generated in the following Relativty folder: {FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config
+![](media/4deb6400be9c82fad0f5c4e056eaefbe.png)
+![1570206388354](media/trace_connectors_user_guide/1570206388354.png)
             
     
 3. Create a `Drop` folder for where Globanet will be delivering data.
