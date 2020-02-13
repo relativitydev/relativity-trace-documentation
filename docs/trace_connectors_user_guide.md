@@ -85,13 +85,13 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 4. Globanet pushes the data to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop` folder
 5. Globanet pushes any logs to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs` folder
 
-## Setting up different data sources
+## Setting up Data Sources
 
-### Generic steps that apply to all data sources
+1.  Create a new Data Source in Relativity Trace. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
 
-1.  Create a new Data Source in Relativity in Relativity Trace. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. 
+2.  Create Monitored Individuals in Relativity Trace. Go to the Monitored Individuals tab, then click on "New Monitored Individual" to create a new record. You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
 
-2.  Create Monitored Individuals and associate them with a Data Source
+3.  Link the desired Monitored Individuals to the Data Source. To do so, go to the Data Source in view mode. Scroll down to link Monitored Individuals.
 
 3.  Enable Data Source Relativity Trace
 
