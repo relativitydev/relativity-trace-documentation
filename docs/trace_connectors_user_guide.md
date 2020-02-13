@@ -72,12 +72,10 @@
 
 ### Installation Steps
 
-Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
-
-Link: [Merge 1 User Guide](https://github.com/relativitydev/relativity-trace-documentation/docs/media/trace_connectors_user_guide/Merge1-6.20.0131.257.pdf)
+Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-trace-documentation/docs/media/trace_connectors_user_guide/Merge1-6.20.0131.257.pdf) for instructions on how to install Globanet. Contact support@relativity.com if you need assitance with installing Globanet.
 
 
-### Data Flow Overview
+### Globanet Data Flow Overview 
 
 ![1570206388354](media/trace_connectors_user_guide/1570206388354.png)
 
