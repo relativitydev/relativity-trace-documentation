@@ -10,9 +10,10 @@
   * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
   * [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanets-merge1)
 
-For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to deploy an additional software / hardware: Trace "Shipper" powered by Globanet’s Merge1 product – this product is integrated into Trace.
+**NOTE: For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software. This software is called Globanet Merge1. You will also need to install additional hardware.**
 
-## Installation
+
+## Installation of Globanet
 
 ### Pre-requisites
 
@@ -87,7 +88,7 @@ Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com 
 
 ### Generic steps that apply to all data sources
 
-1.  Configure Data Source Object in Relativity
+1.  Create a new Data Source in Relativity in Relativity Trace. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. 
 
 2.  Create Monitored Individuals and associate them with a Data Source
 
