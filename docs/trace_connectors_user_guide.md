@@ -90,7 +90,7 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 
 1.  You must first create an Integration Point Profile if you have not already done so. The Integration Point Profile is used to map fields in the Globanet Data Source load file to the workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://github.com/relativitydev/relativity-trace-documentation/docs/media/trace_connectors_user_guide/IntegrationPointProfile.pdf).
 
-2.  Create a new Data Source in Relativity Trace for the data source type that (for example, ICE Chats) that you want to start pulling data from. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
+2.  Create a new Data Source in Relativity Trace for the data source type (for example, ICE Chats) that you want to start pulling data from. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
 
 **NOTE: When setting up the Data Source, if you do not see the Data Source Type that you need to associate with this Data Source, please contact trace@relativity.com. For example, if you are attempting to configure a Data Source for ICE Chats, and you do not see a Data Source Type = ICE Chats, contact trace@relativity.com. A Trace Specialist will need to set up the Data Source Type with you.**
 
@@ -100,14 +100,14 @@ Refer to the [Merge 1 User Guide](https://github.com/relativitydev/relativity-tr
 
 5.  Enable the Data Source. To do so, go to the Data Source in view mode. Click on the blue icon "Enable Data Source" in the console on the right hand side.
 
-    1.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine out who to pull data from for this Data Source.
-    2.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generate in the following Relativty folder:
+    A.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
+    B.  Before proceeding to the next step, **WAIT** until `monitored_individuals.csv` is generated in the following Relativty folder:
         `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config`
         
         ![](media/4deb6400be9c82fad0f5c4e056eaefbe.png)
             
     
-4. Create a `Drop` folder for where Globanet will be delivering data
+6. Create a `Drop` folder for where Globanet will be delivering data.
 
    1.  `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop`
 
