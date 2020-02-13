@@ -6,7 +6,7 @@
     + [Pre-requisites](#pre-requisites)
     + [Installation Steps](#installation-steps)
     + [Data Flow Overview](#data-flow-overview)
-  * [Setting up Data Sources](#setting-up-globanet-datas-sources)
+  * [Setting up Data Sources](#setting-up-datas-sources)
   * [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a--bloomberg--ice-chat--thomson-reuters--symphony)
   * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
   * [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanets-merge1)
