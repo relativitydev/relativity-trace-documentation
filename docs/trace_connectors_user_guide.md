@@ -74,6 +74,8 @@
 
 Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
 
+Link: [Merge 1 User Guide](https://github.com/relativitydev/relativity-trace-documentation/edit/atien23-patch-1/docs/trace_connectors_user_guide.md)
+
 ### Data Flow Overview
 
 ![1570206388354](media/trace_connectors_user_guide/1570206388354.png)
