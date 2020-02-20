@@ -91,7 +91,7 @@ Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20G
 
 1.  You must first create an Integration Point Profile if you have not already done so for the data source type you're attempting to connect to. The Integration Point Profile is used to map fields in a Data Source's load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-map-integration-point-profile) for detailed instructions.
    
-> **NOTE:** You will only need to set up at most two Integration Point Profiles. One for Globanet Data Sources, and one for the O365 Email Data Source.
+   > **NOTE:** You will only need to set up at most two Integration Point Profiles. One for Globanet Data Sources, and one for the O365 Email Data Source.
    
 2. Create a new Data Source in Relativity Trace for the data source type (for example, ICE Chats) that you want to start pulling data from. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
 
