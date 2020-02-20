@@ -90,11 +90,9 @@ Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20G
 ### Steps generic to setting up all Data Sources
 
 1.  You must first create an Integration Point Profile if you have not already done so for the data source type you're attempting to connect to. The Integration Point Profile is used to map fields in a Data Source's load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-map-integration-point-profile) for detailed instructions.
-
 > **NOTE:** You will only need to set up at most two Integration Point Profiles. One for Globanet Data Sources, and one for the O365 Email Data Source.
 
 2.  Create a new Data Source in Relativity Trace for the data source type (for example, ICE Chats) that you want to start pulling data from. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
-
 > **NOTE:** When setting up the Data Source, if you do not see the Data Source Type that you need to associate with this Data Source, please contact trace@relativity.com. For example, if you are attempting to configure a Data Source for ICE Chats, and you do not see a Data Source Type = ICE Chats, contact trace@relativity.com. A Trace Specialist will need to set up the Data Source Type with you.
 
 3.  Create Monitored Individuals in Relativity Trace. Go to the Monitored Individuals tab, then click on "New Monitored Individual" to create a new record. You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
