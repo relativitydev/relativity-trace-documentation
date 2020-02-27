@@ -1,6 +1,6 @@
 # Relativity Trace Release Notes
 
-- [12.0.7.46 (21 February 2020)](#120746-21-february-2020)
+- [12.0.8.2 (24 February 2020)](#12082-24-february-2020)
 - [12.0.5.2 (24 October 2019) - DEPRECATED](#12052-24-october-2019---deprecated)
 - [11.2.11.1 (13 September 2019) - DEPRECATED](#112111-13-september-2019---deprecated)
 - [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
@@ -8,7 +8,7 @@
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.0.7.46 (21 February 2020)
+# 12.0.8.2 (24 February 2020)
 
 **Relativity Compatibility**
 
@@ -55,6 +55,7 @@
 - Fixed an issue where Data Transformations field gets populated with extra delimiters in the load file after replacement transformations
 - Fixed an issue where an incorrect popup warning would show when saving a Rule with no Associated Actions
 - Fixed a rare issue where files could be copied incorrectly when generating Data Batches
+- Fixed an issue where Deduplication would fail if it was necessary to remove more than 1000 duplicate documents from a single data batch
 - Fix issue where Relativity Scripts used with Advanced Action Type require unused parameters
 - Fix issue with failing Data Batches that were created via API
 - Workspaces must be configured for Globanet before Globanet data sources can be used
