@@ -1,4 +1,4 @@
-# Relativity Trace User Documentation
+Relativity Trace User Documentation
 
 - [Release Notes](#release-notes)
 - [Introduction to Relativity Trace](#introduction-to-relativity-trace)
@@ -55,6 +55,7 @@
 - [Built-In Self-Test (BIST)](#built-in-self-test-bist)
 - [Reporting](#reporting)
 	- [Trace Terms Report](#trace-terms-report)
+- [Trace and Azure Information Protection](#trace-and-azure-information-protection)
 - [Considerations](#considerations)
 	- [Usability Considerations](#usability-considerations)
 	- [General Infrastructure and Environment Considerations](#general-infrastructure-and-environment-considerations)
@@ -71,7 +72,7 @@ Release Notes
 
 | Trace Version | Release Date     | Relativity Compatibility |
 | ------------- | ---------------- | ------------------------ |
-| 12.0.6.6      | 19 December 2019 | > 9.6.202.10             |
+| 12.0.8.2      | 24 February 2020 | > 9.6.202.10             |
 
 More information is available in [Relativity Trace Release Notes](https://relativitydev.github.io/relativity-trace-documentation/release_notes)
 
@@ -127,9 +128,9 @@ agents are set up:
 
 -   [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
 
-    1.  Used by Trace Data Sources
-
-    2.  See this [page](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm) for details on how to install Integration Points
+    1.  Relativity Integration Points is a required application for Relativity Trace and should be installed in all Trace workspaces BEFORE installing Trace
+2.  Used by Trace Data Sources
+    3.  See this [page](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm) for details on how to install Integration Points
     
 -   [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
     1.  Used by Trace after ingestion to perform Structured Analytics workflows
@@ -144,12 +145,14 @@ agents are set up:
 Setting up Relativity Trace
 ===========================
 
-1.  [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm) the `Trace_<version>.rap` from the Application Library tab in the Admin case to all workspaces
-    that will run Trace 
+1.  Install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?) in all the workspaces that will Run Trace.
     
-    > **NOTE**: Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended
-    
-2. Wait until application Status switches to `Installed` in the target workspaces
+2. [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm) the `Trace_<version>.rap` from the Application Library tab in the Admin case to all workspaces
+   that will run Trace 
+
+   > **NOTE**: Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended. Always install Trace from the Application Library.
+
+3. Wait until application Status switches to `Installed` in the target workspaces
 
 
 ![](media/cada62f5fd9156449b21a32c2a9e34f2.png)
@@ -174,11 +177,27 @@ Setting up Relativity Trace
           optimal performance)
        4. Run Interval = `60`
        5. Logging level of event details = `Log all messages`
+   3.  Integration Points Manager Agent
+       1. Agent Type = `Integration Points Manager`
+       2. Number of Agents = `1`
+       3. Agent Server = Select the agent server you would like the agent deployed
+          on (see “Infrastructure and Environment Considerations” section for
+          optimal performance)
+       4. Run Interval = `60`
+       5. Logging level of event details = `Log critical errors only`
+   4.  Integration Points Agent
+       1. Agent Type = `Integration Points Agent`
+       2. Number of Agents = `up to 4` (start with 1 and add more if data batches get backed up)
+       3. Agent Server = Select the agent server you would like the agent deployed
+          on (see “Infrastructure and Environment Considerations” section for
+          optimal performance)
+       4. Run Interval = `60`
+       5. Logging level of event details = `Log critical errors only`
 
 4. Please review the [Considerations](#infrastructure-and-environment-considerations) for system impact information. By default system processes (Tasks) are scheduled to run every 5 minutes (configurable per workspace).
-   
+
    > Please reach out to `support@relativity.com` for additional information
-   
+
 5. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](./media/user_documentation/1571073733941.png)
 > **NOTE:** On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer. 
 
@@ -270,9 +289,10 @@ status of documents is reflected on a few key fields on the Document object
 10.  **Trace Monitored Individuals –** Multi-Object field tracking which Monitored Individuals are associated with each document 
 11.  **Trace Rules –** Multi-Object field tracking which Rules of type Alert matched a document
 10.  **Trace Workflow Rules –** Multi-Object field tracking which Rules of type Workflow matched a document
-11.  **Trace Record Origin Identifier -** Contains an identifier (varies by Data Source) that can be used to reconcile Trace documents with their origin
-12.  **Trace Data Batch -** Tracking object that shows when and how the document was brought into the Workspace
-13.  **Trace Data Batch::Data Source -** System generated field that can be used to show the Data Source that created each document. If desired, edit this field to Allow Pivot and Allow Group By and place a Widget on the Documents dashboard to see how many documents are generated by each Data Source.
+11.  **Trace Matching Rules (INTERNAL)** - Multi-Object field used by the Rules engine to snapshot documents that match the Saved Search and Term conditions for each rule execution. Please do not edit or use this field for any other purpose as the data within it is cleared and updated frequently.
+12.  **Trace Record Origin Identifier -** Contains an identifier (varies by Data Source) that can be used to reconcile Trace documents with their origin
+13.  **Trace Data Batch -** Tracking object that shows when and how the document was brought into the Workspace
+14.  **Trace Data Batch::Data Source -** System generated field that can be used to show the Data Source that created each document. If desired, edit this field to Allow Pivot and Allow Group By and place a Widget on the Documents dashboard to see how many documents are generated by each Data Source.
 
 ### Dashboard Widgets
 
@@ -293,6 +313,8 @@ dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups 
 enable them for Relativity URLs.
 
 > **Note:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
+
+> **Note:**" Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
 
 >  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term
 > associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
@@ -346,20 +368,21 @@ The Rule Creation form contains the following fields:
 2 - Customizing and Running a Rule
 -----------------------------------
 
-After you create a Rule, use the Rule definition page to Enable and Customize
-the rule.
+After you create a Rule, use the Rule definition page to associate Terms and Enable/Disable the rule.
 
 ![1571079859530](media/user_documentation/1571079859530.png)
 
-The Trace Rule Management Console on the right-hand side has the following
-buttons:
+##### Terms
 
--   **Enable Rule:** enabling the rule allows Trace Manager agent to run the rule on an ongoing
-    basis
+Associating Terms with a Rule causes it to only target documents that contain one or more of the associated terms in their extracted text. To associate Terms with a Rule, use the New or Link buttons on the Rule Layout. Please see the Terms section below for more information on creating Terms.
 
-    > **NOTE:** A Rule will only execute when it is enabled.
+##### Enable / Disable
 
-In addition, Rules use Terms as part of additional filtering available to identify your documents of interest. You can create new or link existing Terms directly from Rule layout. Terms created this way will automatically be associated with the Rule during evaluation.
+Clicking the Enable Rule console button on the right of the layout causes the Trace Manager Agent to run the rule on an ongoing basis. Clicking Disable Rule will stop future execution of the Rule.
+
+> **NOTE:** A Rule will only execute when it is enabled. If a Rule is disabled while running, it will still finish its current execution.
+
+
 
 3 - Validating Results
 ----------------------
@@ -427,26 +450,26 @@ In addition, you can override default highlight configuration (magenta backgroun
 Actions
 -------
 
-As part of installation, Action Types are created. Currently supported action types are: Move To Folder, Data Disposal, Advanced, Email, Slack, and Webhook. For each Action Type there is a Default Action created. You can customize the Default Actions or create and configure your own Actions.
+As part of installation, Action Types are created. Currently supported action types are: Move To Folder, Data Disposal, Advanced, Email, Slack, and Webhook. For each Action Type there is a Default Action created. You can customize the Default Actions, but it is recommended that you create and configure your own Actions.
 
 ### Move To Folder Action Type
 
 Move To Folder action works on documents that match Rule criteria. Upon execution of the action, the documents will be moved to the specified destination folder, inheriting folder permissions. This action can be used to effectively secure documents to specific set of users/groups by routing them to folders with
-different permission sets. This Action Type can also be used to drive regional review workflows in conjunction with alerting actions.
+different permission sets. This Action Type can also be used to drive regional review workflows in conjunction with alerting actions. Finally, it can be used to filter documents by moving only the relevant documents to a different folder targeted by additional rules.
 
-You can configure the action by specifying the ArtifactID of the destination folder where the documents are to be moved. The Additional Information section automatically populates the list of available folders and their corresponding Artifact IDs for your convenience.
+You can configure the action by specifying the Artifact ID of the destination folder where the documents are to be moved. The Additional Information section automatically populates the list of available folders and their corresponding Artifact IDs for your convenience.
 
 ![](media/4ea5493c6871466e5ab385ec5c08f8ff.png)
 
 ### Data Disposal Action Type
 
-> **WARNING:** The Data Disposal Action will permanently delete all documents that match the Rule conditions and are outside the Data Retention window.
+> **WARNING:** The Data Disposal Action will permanently delete all documents that match the Rule conditions if they are outside the Data Retention window.
 >
-> Data Disposal will only delete files located in valid Data Batch folders. Documents not ingested by Trace will not be deleted
+> Data Disposal will only delete files located in valid Data Batch folders. Documents not ingested by Trace will not be deleted.
 >
-> If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted
+> If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted.
 >
-> _Only_ documents which were imported as part of a Data Batch which is in the `Completed` state will be deleted
+> _Only_ documents which were imported as part of a Data Batch which is in the `Completed` state will be deleted.
 
 The Data Disposal Action Type follows the same Trace Rules Engine paradigm with
 one added condition:
@@ -461,8 +484,8 @@ one added condition:
 
     -   *SPECIFIC TO DISPOSAL*: `Delete Documents Older Than Hours` setting
 
-Any document that is newer than the specified number of hours (based on System
-Created On date/time) will not be deleted even if the document is included in the
+Any document that is newer than the specified number of hours (based on the System
+Created On field) will not be deleted even if the document is included in the
 Searchable Set / Search Term.
 
 This action is used to:
@@ -825,28 +848,27 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
-
-    ![](media/63dbaf42485943e3216cac7737e429a5.png)
-
-    1.  *Exchange Settings – Url* gives you the chance to specify the exact URL
+<img src="media/user_documentation/image-20200226224716411.png" alt="image-20200226224716411" style="zoom:50%;" />
+    
+1.  *Exchange Settings – Url* gives you the chance to specify the exact URL
         used when connecting to your exchange server. If this field is left
         blank, Microsoft’s Autodiscover technology will be used to populate the
         field with a URL based on the credentials provided in the Username and
         Password fields. Autodiscover is typically a suitable option and works
         for Office 365 and many on premises solutions but it is not guaranteed
         to work.
-	
-	If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx ( OR https://YOUR_EXCHANGE_SERVER_URL/EWS/Exchange.asmx)
-
-    2.  *Exchange Settings - Version* allows you to specify the version of your
-        exchange server. For Office 365, the default is the correct choice. For
-        on premises servers, provide the correct version. It needs to be an
-        exact match to one of the options, filling it out incorrectly will
-        provide a list of all of the options available in the error message at
-        the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
-        Exchange2010_SP2, Exchange2013, Exchange2013_SP1
-
-9.  Click “Save”
+        
+	    If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx ( OR https://YOUR_EXCHANGE_SERVER_URL/EWS/Exchange.asmx)
+	    
+2. *Exchange Settings - Version* allows you to specify the version of your
+       exchange server. For Office 365, the default is the correct choice. For
+       on premises servers, provide the correct version. It needs to be an
+       exact match to one of the options, filling it out incorrectly will
+       provide a list of all of the options available in the error message at
+       the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
+       Exchange2010_SP2, Exchange2013, Exchange2013_SP1
+    
+9. Click “Save”
 
 10. Link / Create New Monitored Individuals (same page after clicking Save)
 
@@ -993,6 +1015,12 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 1. Trace Document Hash
 2. Group Identifier
 
+### Group Identifier Truncation for External Data Sources
+
+Group Identifier is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for Group Identifier be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as Trace Has Errors and the Trace Error Details field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.
+
+> **NOTE:** Group Identifier Truncation occurs for EXTERNAL DATA SOURCES ONLY. External data sources have a Provider on their Data Source Type that is not equal to Trace or Globanet. For additional information, please contact support@relativity.com.
+
 Data Batches
 ------------
 
@@ -1000,6 +1028,8 @@ Data batch is a unit of ingestion work for Trace. It corresponds to a load file 
 allows for a deep audit history trail from native data source to Relativity.
 
 Once a batch begins the Ingestion process (when status is set to: `ReadyForImport`), the Ingestion task will create an integration point from the Data Source's configured Integration Point Profile (this information includes import settings and field mappings).
+
+> **NOTE:** Trace will only create Integration Points in each workspace up to the number specified in the `Max Simultaneous Import Jobs` setting on the Ingestion Task (default 25). Once that number of Integration Point jobs are created, additional data batches will stay in the `ReadyForImport` status and no additional Integration Point jobs will be created until enough jobs finish to bring the total back under the specified maximum.
 
 ![](media/5a4b23b008d4e39bc9bafce213515337.png)
 
@@ -1081,14 +1111,16 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
     Rule evaluations
     
 -   **Rule Evaluation:** Responsible for evaluating configured Rules within the
-    workspace
+    workspace 
+    
+    > **NOTE:** The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the Trace Worker Agent. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.`
     
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
     
 - **Data Enrichment:** Responsible for extracting nested files (attachments, contents of zip files), generating extracted text and preparing the load file that is ready for import process
 
-  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase enrichment capacity. For more information, contact support@relativity.com.
+  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
 
 Alerts and Notifications
 ------------------------
@@ -1191,7 +1223,68 @@ Trace Terms Report
 ![](media/316284f452e265e8db7521909b4c00b0.png)
 
 The Trace Terms Report provides distinct counts on how many documents matched per Rule per Term. In other words, you can quickly see current state of your Rules and associated terms.
-> **NOTE:** The report only works on Document date fields.
+
+- **Document Date Field** - the date field used to determine if a document is in the specified date range for the report
+- **Date Begin** - the beginning of the date range (at 12:00AM in the Time Zone used by the selected Date Field) to use for documents in the report
+- **Date End** - the ending of the date range (until 11:59PM in the Time Zone used by the selected Date Field) to use for documents in the report
+
+# Trace and Azure Information Protection
+
+Trace Data Sources can be configured to decrypt documents that are protected by Azure Information Protection. The Azure Information Protection Instance must have specific configuration applied in order for Trace to decrypt and read AIP protected documents. 
+
+This configuration requires the following access / permissions:
+
+- Administrative access to the Azure Information Protection Instance
+- Access to the Azure Portal with permissions to create Application Registrations
+
+## Configuring Azure Information Protection Instance
+
+#### Enable Unified Labeling
+
+It is required that the Azure Information Protection Instance being used is backed by the unified labeling platform. To see if your instance is backed by the unified labeling platform or to migrate your label to the unified labeling platform, follow these instructions:  https://docs.microsoft.com/en-us/azure/information-protection/configure-policy-migrate-labels 
+
+#### Configure Super User
+
+In order for Trace to be able to read AIP protected documents, the Trace Data Source username and password must be the username and password associated with a Super User in your AIP Service. You can enable Super Users and set permissions by following this guide :  https://docs.microsoft.com/en-us/azure/information-protection/configure-super-users.
+
+#### Add an Application Registration for Super User
+
+In order for Trace to interact with the Azure Information Protection API, you will need to create an Application Registration in the Azure Active Directory instance associated with your AIP instance. 
+
+You can create and Application Registration using the Azure portal and following these instructions :  https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal.
+
+The following parameters must be set while creating an application registration:
+
+- **Name** : This is the name of your app registration and can be anything. Trace does not rely on the name to identify the app registration.
+- **Account Type** : This should be set to "Accounts in this organizational directory only". This setting requires that the Super User configured is in this Azure Active Directory instance.
+- **Redirect URI** : This should be set to "Public client". You can leave the Redirect URI as the default recommended value.
+
+After creating the App Registration, you will need to add permissions to the registration so that it can consume the AIP API. Under the "API Permissions" tab, add the following permissions by clicking "Add a Permission" :
+
+- Azure Rights Management Services
+  - Add Delegated permissions and make sure the "user_impersonation" box is checked.
+  - Click "Add Permissions"
+- Microsoft Information Protection Sync Service
+  - Add Delegated permissions and make sure the "UnifiedPolicy.User.Read" box is checked under the "UnifiedPolicy" tab.
+  - Click "Add Permissions"
+
+After adding the API permissions, click "Grant admin consent" on the API permissions page.
+
+## Configuring Trace for Azure Information Protection
+
+After finishing the configuration of the Azure Information Protection instance, you're ready to start configuring Trace for consuming AIP protected data. AIP is configured at the Data Source level. Each Data Source with AIP protected documents will need to have the following properties populated:
+
+- **Username**: The username for the Super User of the AIP instance.
+
+  > **NOTE:** For the Exchange Data Source Type, this username is also used to access the O365 mailbox, so the Super User configured must also have permissions to access the mailboxes being monitored
+
+- **Password**: The password for the Super User of the AIP instance.
+
+- **AIP Application Id**: This is the application ID of the app registration that was set up in the previous section. To find the application ID, go to the App Registration in the Azure portal and find the application ID labeled **Application (client) ID**.
+
+- **AIP Tenant Id**: This is the Directory ID of the App Registration that was set up in the previous section. To find the tenant ID, go to the App Registration in the Azure portal and find the tenant ID labeled **Directory (tenant) ID**
+
+  > **NOTE:** AIP will be enabled on the Data Source only if AIP Application Id *and* AIP Tenant Id are populated (not empty) on the Data Source settings. 
 
 Considerations
 ==============
@@ -1203,7 +1296,7 @@ Usability Considerations
 -   Once a document is associated with a Rule, it will never be disassociated unless there are document updates to extracted text or metadata. The `Trace Document Retry` (mass operation) procedure will also reset the associations automatically.
 -   Every Data Source has capability to be `Reset` via console buttons. Once a data source is reset,
     Trace will pull all available data again, beginning with the Start Date defined on the data source (if the Start Date is relevant to the data source type). **Depending on import profile settings, this could duplicate data in the Workspace.**
--   Task processes (Indexing, Term Searching, Rule Evaluation, etc) run asynchronously from each other. It may take several task cycles (based on configured `Run Interval`) for the end-to-end workflow to complete fully.
+-   Task processes (Indexing, Term Searching, Rule Evaluation, etc) run simultaneously (in parallel). It may take several task cycles (based on configured `Run Interval` for each task) for the end-to-end workflow to complete fully.
 -   Deleting a Trace Rule does not delete any of the corresponding Relativity infrastructure and objects that were created (i.e. dtSearch Index, Saved Searches, Batch Sets). 
 -   The global dtSearch index `Trace Search Index` (created by Trace application during installation) is supported for ad-hoc searching and will be incrementally built as part of Indexing task. No other dtSearch indexes will incrementally build automatically.
 
@@ -1213,11 +1306,9 @@ Usability Considerations
 |----------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------|
 |                                  | **`Ingestion`, `Data Validation`, `Data Enrichment` and `Data Retrieval`** | **`Indexing`**                                                                                                                                                                                        | **`Term Searching`**                                       | **`Rule Evaluation`**                                                  |
 | Summary                          | Powers the Proactive Ingestion Framework                                               | Incrementally builds Trace Search Index and Temporary Search Indexes with batches of documents Optionally: Incrementally builds and runs Analytics Jobs (Conceptual, Classification and Structured) | Searches and tags Terms in workspace on an ongoing basis | Rule will run and tag all matching documents and perform actions     |
-| Task Operations                  | *`Ingestion Task`*<br>-Looks for batches that need to be imported and kicks off import<br>-Creates RIP job per batch<br>*`Data Validation Task`*<br>-Updates Data Batch status<br>*`Data Retrieval Task`*<br>-Pulls data for enabled Data Sources executed by `Trace Manager Agent`<br><br> `Data Enrichment Task` extracts/expands/enriches source native document and prepares import load file (executed by `Trace Worker Agent`) | *`Indexing Task`*<br>-Kicks off dtSearch incremental build<br>-Kicks off temporary (internal) dtSearch index builds for Term evaluation<br>-Kicks off Analytics Jobs (if configured)<br>**NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global dtSearch and Analytics Indexes are built every 60 minutes by default.                                                                                                                                                                                   | *`Term Searching Task`*<br>-Runs (searches and tags) Terms in the workspace<br>**NOTE:** Each Term Searching run interval will search up to 5 available document batches (default 10,000 documents per batch). These settings are configurable on Term Searching task.                                    | *`Rule Evaluation Task`*<br>-Evaluates each rule in the workspaces and triggers configured actions                                              |
+| Task Operations                  | *`Ingestion Task`*<br>-Looks for batches that need to be imported and kicks off import<br>-Creates RIP job per batch<br>*`Data Validation Task`*<br>-Updates Data Batch status<br>*`Data Retrieval Task`*<br>-Pulls data for enabled Data Sources <br> `Data Enrichment Task`<br>-extracts/expands/enriches source native document and prepares import load file (executed by `Trace Worker Agent`) | *`Indexing Task`*<br>-Kicks off dtSearch incremental build<br>-Kicks off temporary (internal) dtSearch index builds for Term evaluation<br>-Kicks off Analytics Jobs (if configured)<br>**NOTE:** Run Interval controls frequency of temp indexes creation ONLY. Global dtSearch and Analytics Indexes are built every 60 minutes by default.                                                                                                                                                                                   | *`Term Searching Task`*<br>-Runs (searches and tags) Terms in the workspace<br>**NOTE:** Each Term Searching run interval will search up to 5 available document batches (default 10,000 documents per batch). These settings are configurable on Term Searching task.                                    | *`Rule Evaluation Task`*<br>-Evaluates each rule in the workspaces and triggers configured actions                                              |
 | Recommended Run Interval         | `60` seconds                                                                             | `300` seconds                                                                                                                                                                                         | `300` seconds                                              | `300` seconds                                                          |
 | Considerations and System Impact | -Speed of ingestion is determined by number of Integration Points Agents (max of 4 per instance) | -Ongoing index builds use shared instance queue, agents and Fileshare across multiple workspaces (resource pool)<br>-Every incremental build makes the old build obsolete - cleaned up by Case Manager nightly                                                                                  |                                                          | -Very complex/nested underlying Saved Searches can affect performance<br>-Saved Searches that return many documents can affect performance<br>-Many rules being evaluated often can put pressure on SQL server |
-
-> **IMPORTANT**: Reach out to `support@relativity.com` to adjust the Task `Settings` field 
 
 > **NOTE:** The Recommended Run Interval for the **`Reporting Task`** is 300 seconds.
 
@@ -1290,69 +1381,69 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 
 -   `Calculated` – fields that are calculated dynamically by Trace
 
-| **Trace Field Category**  | **Relativity Field**          | **Field Type**    | **Field Description**                                                                                                                                                                                                   |
-|---------------------------|-------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Email Only                | Attachment List               | Long Text         | Attachment file names of all child items in a family group, delimited by semicolon, only present on parent items.                                                                                                       |
-| Email Only                | BCC                           | Long Text         | The name(s) (when available) and email address(es) of the Blind Carbon Copy recipient(s) of an email message.                                                                                                           |
-| Email Only                | Can Forward                   | Yes/No            | The indicator whether the mail message can be forwarded.                                                                                                                                                                |
-| Email Only                | CC                            | Long Text         | The name(s) (when available) and email address(es) of the Carbon Copy recipient(s) of an email message.                                                                                                                 |
-| Email Only                | Conversation Index            | Long Text         | Email thread created by the email system. This is a 44-character string of numbers and letters that is created in the initial email and has 10 characters added for each reply or forward of an email.                  |
-| Email Only                | Conversation                  | Long Text         | Normalized subject of email messages. This is the subject line of the email after removing the RE and FW that are added by the system when emails are forwarded or replied to.                                          |
-| Email Only                | Creator Email Entry ID        | Long Text         | The unique Identifier of creator an email in an email store                                                                                                                                                             |
-| Email Only                | Delivery Receipt Requested    | Yes/No            | The yes/no indicator of whether a delivery receipt was requested for an e-mail.                                                                                                                                         |
-| Email Only                | Email Categories              | Long Text         | Category(ies) assigned to an email message.                                                                                                                                                                             |
-| Email Only                | Email Created Date/Time       | Date              | The date and time at which an email was created.                                                                                                                                                                        |
-| Email Only                | Email Format                  | Single Choice     | The indicator of whether an email is HTML, Rich Text, or Plain Text.                                                                                                                                                    |
-| Email Only                | Email In Reply To ID          | Long Text         | The internal metadata value within an email for the reply to ID.                                                                                                                                                        |
-| Email Only                | Email Last Modified Date/Time | Date              | Date and time that the email message last modified.                                                                                                                                                                     |
-| Email Only                | Email Sensitivity             | Single Choice     | The indicator set on an email to denote the email's level of privacy.                                                                                                                                                   |
-| Email Only                | From Address                  | Long Text         | The e-mail address for the messaging user represented by the sender.                                                                                                                                                    |
-| Email Only                | From                          | Fixed-Length Text | The name (when available) and email address of the sender of an email message.                                                                                                                                          |
-| Email Only                | From                          | Date              | Date and time that the email message was sent (according to original time zones).                                                                                                                                       |
-| Email Only                | Importance                    | Single Choice     | Notation created for email messages to note a higher level of importance than other email messages added by the email originator.                                                                                       |
-| Email Only                | Last Modifier Email Entry ID  | Long Text         | The unique Identifier of last modifier of an email in an mail store                                                                                                                                                     |
-| Email Only                | Message Class                 | Single Choice     | A single choice field that can be one of: Email, Edoc, or Attach.                                                                                                                                                       |
-| Email Only                | Message ID                    | Fixed-Length Text | The message number created by an email application and extracted from the email's metadata.                                                                                                                             |
-| Email Only                | Priority                      | Single Choice     | The priority of the email message.                                                                                                                                                                                      |
-| Email Only                | Read Receipt Requested        | Yes/No            | The yes/no indicator of whether a read receipt was requested for an e-mail.                                                                                                                                             |
-| Email Only                | Received By Email Entry ID    | Long Text         | The unique Identifier of an email in an mail store                                                                                                                                                                      |
-| Email Only                | Received Date/Time            | Date              | Date and time that the email message was received (according to original time zones).                                                                                                                                   |
-| Email Only                | Sender Email Entry ID         | Long Text         | The unique Identifier of an email in an mail store                                                                                                                                                                      |
-| Email Only                | Subject                       | Long Text         | Subject of the email message.                                                                                                                                                                                           |
-| Email Only                | To                            | Long Text         | The name(s) (when available) and email address(es) of the recipient(s) of an email message.                                                                                                                             |
-| Email and Document        | Author                        | Fixed-Length Text | Original composer of document or sender of email message.                                                                                                                                                               |
-| Email and Document        | Created Date/Time             | Date              | Date and time from the Date Created property extracted from the original file or email message.                                                                                                                         |
-| Email and Document        | Extracted Text                | Long Text         | Complete text extracted from content of electronic files or OCR data field. This field holds the hidden comments of MS Office files.                                                                                    |
-| Document Only             | Comments                      | Long Text         | Comments extracted from the metadata of the native file.                                                                                                                                                                |
-| Document Only             | Company                       | Fixed-Length Text | The internal value entered for the company associated with a Microsoft Office document.                                                                                                                                 |
-| Document Only             | Document Subject              | Long Text         | Subject of the document extracted from the properties of the native file.                                                                                                                                               |
-| Document Only             | Document Title                | Long Text         | The title of a non-email document. This is blank if there is no value available.                                                                                                                                        |
-| Document Only             | Keywords                      | Long Text         | The internal value entered for keywords associated with a Microsoft Office document.                                                                                                                                    |
-| Document Only             | Last Printed Date/Time        | Date              | Date and time that the document was last printed.                                                                                                                                                                       |
-| Document Only             | Last Saved By                 | Fixed-Length Text | The internal value indicating the last user to save a document.                                                                                                                                                         |
-| Document Only             | Last Saved Date/Time          | Date              | The internal value entered for the date and time at which a document was last saved.                                                                                                                                    |
-| Calculated                | Container ID                  | Fixed-Length Text | Unique identifier of the container file in which the document originated. This is used to identify or group files that came from the same container.                                                                    |
-| Calculated                | Container Name                | Fixed-Length Text | Name of the container file in which the document originated.                                                                                                                                                            |
-| Calculated                | Control Number                | Fixed-Length Text | The identifier of the document.                                                                                                                                                                                         |
-| Calculated                | Email Has Attachments         | Yes/No            | The yes/no indicator of whether an email has children (attachments).                                                                                                                                                    |
-| Calculated                | Email Store Name              | Fixed-Length Text | Any email, contact, appointment, etc. that is extracted from an email container (PST, OST, NSF, MBOX, etc) will have this field populated with the name of that email container.                                        |
-| Calculated                | Extracted Text Size in KB     | Decimal           | Indicates the size of the extracted text field in kilobytes                                                                                                                                                             |
-| Calculated                | Family Group                  | Fixed-Length Text | Group the file belongs to (used to identify the group if attachment fields are not used). Formerly "Group Identifier"                                                                                                   |
-| Calculated                | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file                                                                                            |
-| Calculated                | File Name                     | Fixed-Length Text | The original name of the file                                                                                                                                                                                           |
-| Calculated                | File Size                     | Decimal           | Generally a decimal number indicating the size in bytes of a file.                                                                                                                                                      |
-| Calculated                | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System                                                                                                                                               |
-| Calculated                | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.                                                                                                                                                               |
-| Calculated                | Number of Attachments         | Decimal           | Number of files attached to a parent document.                                                                                                                                                                          |
-| Calculated                | Other Metadata                | Long Text         | Metadata extracted during processing for additional fields beyond the list of processing fields available for mapping                                                                                                   |
-| Calculated                | Parent Document ID            | Fixed-Length Text | Document ID of the parent document. This field is only available on child items.                                                                                                                                        |
-| Calculated                | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
-| Calculated                | Recipient Count               | Decimal           | The total count of recipients in an email which includes the To, CC, and BCC fields                                                                                                                                     |
-| Calculated                | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document                                                                                                                                                             |
-| Calculated                | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document                                                                                                                        |
-| Calculated                | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion                                                                                                                                                           |
-| Calculated                | Trace Has Errors              | Yes/No            | Indicates if any errors occurred during extraction/expansion                                                                                                                                                            |
-| Calculated                | Trace Monitored Individuals   | Multiple Object   | Monitored individuals associated with Data Source (used for retrieval and billing)                                                                                                                                      |
+| **Trace Field Category** | **Relativity Field**          | **Field Type**    | **Field Description**                                        |
+| ------------------------ | ----------------------------- | ----------------- | ------------------------------------------------------------ |
+| Email Only               | Attachment List               | Long Text         | Attachment file names of all child items in a family group, delimited by semicolon, only present on parent items. |
+| Email Only               | BCC                           | Long Text         | The name(s) (when available) and email address(es) of the Blind Carbon Copy recipient(s) of an email message. |
+| Email Only               | Can Forward                   | Yes/No            | The indicator whether the mail message can be forwarded.     |
+| Email Only               | CC                            | Long Text         | The name(s) (when available) and email address(es) of the Carbon Copy recipient(s) of an email message. |
+| Email Only               | Conversation Index            | Long Text         | Email thread created by the email system. This is a 44-character string of numbers and letters that is created in the initial email and has 10 characters added for each reply or forward of an email. |
+| Email Only               | Conversation                  | Long Text         | Normalized subject of email messages. This is the subject line of the email after removing the RE and FW that are added by the system when emails are forwarded or replied to. |
+| Email Only               | Creator Email Entry ID        | Long Text         | The unique Identifier of creator an email in an email store  |
+| Email Only               | Delivery Receipt Requested    | Yes/No            | The yes/no indicator of whether a delivery receipt was requested for an e-mail. |
+| Email Only               | Email Categories              | Long Text         | Category(ies) assigned to an email message.                  |
+| Email Only               | Email Created Date/Time       | Date              | The date and time at which an email was created (converted to UTC). |
+| Email Only               | Email Format                  | Single Choice     | The indicator of whether an email is HTML, Rich Text, or Plain Text. |
+| Email Only               | Email In Reply To ID          | Long Text         | The internal metadata value within an email for the reply to ID. |
+| Email Only               | Email Last Modified Date/Time | Date              | Date and time that the email message last modified (converted to UTC). |
+| Email Only               | Email Sensitivity             | Single Choice     | The indicator set on an email to denote the email's level of privacy. |
+| Email Only               | From Address                  | Long Text         | The e-mail address for the messaging user represented by the sender. |
+| Email Only               | From                          | Fixed-Length Text | The name (when available) and email address of the sender of an email message. |
+| Email Only               | From                          | Date              | Date and time that the email message was sent (converted to UTC). |
+| Email Only               | Importance                    | Single Choice     | Notation created for email messages to note a higher level of importance than other email messages added by the email originator. |
+| Email Only               | Last Modifier Email Entry ID  | Long Text         | The unique Identifier of last modifier of an email in an mail store |
+| Email Only               | Message Class                 | Single Choice     | A single choice field that can be one of: Email, Edoc, or Attach. |
+| Email Only               | Message ID                    | Fixed-Length Text | The message number created by an email application and extracted from the email's metadata. |
+| Email Only               | Priority                      | Single Choice     | The priority of the email message.                           |
+| Email Only               | Read Receipt Requested        | Yes/No            | The yes/no indicator of whether a read receipt was requested for an e-mail. |
+| Email Only               | Received By Email Entry ID    | Long Text         | The unique Identifier of an email in an mail store           |
+| Email Only               | Received Date/Time            | Date              | Date and time that the email message was received (converted to UTC). |
+| Email Only               | Sender Email Entry ID         | Long Text         | The unique Identifier of an email in an mail store           |
+| Email Only               | Subject                       | Long Text         | Subject of the email message.                                |
+| Email Only               | To                            | Long Text         | The name(s) (when available) and email address(es) of the recipient(s) of an email message. |
+| Email and Document       | Author                        | Fixed-Length Text | Original composer of document or sender of email message.    |
+| Email and Document       | Created Date/Time             | Date              | Date and time from the Date Created property extracted from the original file or email message (UTC). |
+| Email and Document       | Extracted Text                | Long Text         | Complete text extracted from content of electronic files or OCR data field. This field holds the hidden comments of MS Office files. |
+| Document Only            | Comments                      | Long Text         | Comments extracted from the metadata of the native file.     |
+| Document Only            | Company                       | Fixed-Length Text | The internal value entered for the company associated with a Microsoft Office document. |
+| Document Only            | Document Subject              | Long Text         | Subject of the document extracted from the properties of the native file. |
+| Document Only            | Document Title                | Long Text         | The title of a non-email document. This is blank if there is no value available. |
+| Document Only            | Keywords                      | Long Text         | The internal value entered for keywords associated with a Microsoft Office document. |
+| Document Only            | Last Printed Date/Time        | Date              | Date and time that the document was last printed.            |
+| Document Only            | Last Saved By                 | Fixed-Length Text | The internal value indicating the last user to save a document. |
+| Document Only            | Last Saved Date/Time          | Date              | The internal value entered for the date and time at which a document was last saved. |
+| Calculated               | Container ID                  | Fixed-Length Text | Unique identifier of the container file in which the document originated. This is used to identify or group files that came from the same container. |
+| Calculated               | Container Name                | Fixed-Length Text | Name of the container file in which the document originated. |
+| Calculated               | Control Number                | Fixed-Length Text | The identifier of the document.                              |
+| Calculated               | Email Has Attachments         | Yes/No            | The yes/no indicator of whether an email has children (attachments). |
+| Calculated               | Email Store Name              | Fixed-Length Text | Any email, contact, appointment, etc. that is extracted from an email container (PST, OST, NSF, MBOX, etc) will have this field populated with the name of that email container. |
+| Calculated               | Extracted Text Size in KB     | Decimal           | Indicates the size of the extracted text field in kilobytes  |
+| Calculated               | Family Group                  | Fixed-Length Text | Group the file belongs to (used to identify the group if attachment fields are not used). Formerly "Group Identifier" |
+| Calculated               | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file |
+| Calculated               | File Name                     | Fixed-Length Text | The original name of the file                                |
+| Calculated               | File Size                     | Decimal           | Generally a decimal number indicating the size in bytes of a file. |
+| Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
+| Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
+| Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |
+| Calculated               | Other Metadata                | Long Text         | Metadata extracted during processing for additional fields beyond the list of processing fields available for mapping |
+| Calculated               | Parent Document ID            | Fixed-Length Text | Document ID (Control Number) of the parent document. Empty for top level (original native) documents. For multiple levels of descendants, this field will always be populated with the Document ID (Control Number) of the top level (original native) document for every descendant document. |
+| Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
+| Calculated               | Recipient Count               | Decimal           | The total count of recipients in an email which includes the To, CC, and BCC fields |
+| Calculated               | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document  |
+| Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document |
+| Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |
+| Calculated               | Trace Has Errors              | Yes/No            | Indicates if any errors occurred during extraction/expansion |
+| Calculated               | Trace Monitored Individuals   | Multiple Object   | Monitored individuals associated with Data Source (used for retrieval and billing) |
 
 Appendix C: Create Email Fields Map Integration Point Profile
 =============================================================
@@ -1363,7 +1454,7 @@ Workspace before proceeding.
 > **NOTE:** Load File Templates are generated by Trace Agent **ONLY** in
 workspaces that are enabled for “Continuous” run option in “Setup” tab. Ensure `Data Retrieval` task runs **at least once before configuring** Integration Point Profile
 
-> **NOTE:** Trace uses default Relativity fields for email and attachment data that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). **Trace recommends to use this application, however it is totally optional and one can choose to create custom fields or re-use fields from an existing template.** You can install it to the target workspace like any other application which will bring in all
+> **NOTE:** Trace uses default Relativity fields for email and attachment data that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). **Trace recommends use of this application, however it is totally optional and one can choose to create custom fields or re-use fields from an existing template.** You can install it to the target workspace like any other application which will bring in all
 the needed fields with standardized names that are easily auto-mapped via “Map
 Fields” integration point profile feature. If you don’t see this application in
 your library, reach out to `support@relativity.com`.
