@@ -1,4 +1,4 @@
-Relativity Trace User Documentation
+# Relativity Trace User Documentation
 
 - [Release Notes](#release-notes)
 - [Introduction to Relativity Trace](#introduction-to-relativity-trace)
