@@ -2,10 +2,10 @@
 
 - [Overview](#overview)
 - [Glossary](#glossary)
-- [Prerequisites: Load File and Integration Point Profile](#prerequisites--load-file-and-integration-point-profile)
+- [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
 - [Data Batch Overview](#data-batch-overview)
 - [API Usage](#api-usage)
-- [Data Batch creation (Quick Start)](#data-batch-creation--quick-start-)
+- [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
   * [Data Batch Statuses](#data-batch-statuses)
   * [Create Data Batch](#create-data-batch)
   * [Update Data Batch](#update-data-batch)
@@ -122,7 +122,7 @@ When a Data Source creates a Data Batch, several fields must be filled out:
    
    2.  `Created`, `RetrievedFromSource` and `Normalized` can be used to track data flow in Relativity for reconciliation purposes by the Data Source
        
-   3.  `Importing`, `Completed` and `CompletedWithErrors` statuses are populated by Trace automatically for ingestion tracking purposes
+   3.  `Importing`, `Completed`, `CompletedWithErrors`, and `CompletedWithDocumentLevelErrors` statuses are populated by Trace automatically for ingestion tracking purposes
 
    4.  For each Status, Data Source can specify document count and time stamp (optional)
 
@@ -199,7 +199,7 @@ Expect: 100-continue
     ],
     "Artifact Type Name": "Choice"
   },
-  "Load File Path": "Data Batch",
+  "Load File Path": "DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat",
   "Data Source": {
     "Artifact ID": 3453563
   },

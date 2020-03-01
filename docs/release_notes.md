@@ -1,13 +1,80 @@
 # Relativity Trace Release Notes
 
-- [12.0.5.2 (24 October 2019)](#12052-24-october-2019---deprecated)
+- [12.0.8.2 (24 February 2020)](#12082-24-february-2020)
+- [12.0.5.2 (24 October 2019) - DEPRECATED](#12052-24-october-2019---deprecated)
 - [11.2.11.1 (13 September 2019) - DEPRECATED](#112111-13-september-2019---deprecated)
 - [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
 - [11.2.9.2 (15 July 2019) - DEPRECATED](#11292-15-july-2019---deprecated)
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.0.5.2 (24 October 2019)
+# 12.0.8.2 (24 February 2020)
+
+**Relativity Compatibility**
+
+- \> 9.6.202.10
+
+**Features**
+
+- Azure Information Protection support (PREVIEW)
+- Trace now supports automated builds for multiple Structured Analytics Sets at the same time in the same workspace
+- Monitored Individuals can now be defined with a list of Secondary Identifiers that will also map to the Monitored Individual
+- Monitored Individual Auto-Discovery is now available for Relativity Short Message Format (RSMF) documents
+- Improved billing flow for customers that cannot support Telemetry
+- Relativity Trace now supports RabbitMQ and Azure Service Bus messaging infrastructure
+
+**Enhancements**
+
+- Trace now removes all but the most relevant email headers from extracted text
+- Data Batches now show a CompletedWithDocumentLevelErrors status if there are document-level errors in the Data Batch
+- Renamed Data Archive action to Data Disposal and drastically improved its scalability and reliability
+- Trace Term Report now works with System date fields and shows only fields that will work with the report
+- Improved parsing of international dates in email headers in many formats
+- Trace will now provide a unique value for the Group Identifier field in external data sources if the value given is too long
+- The Terms list on the Rule layout is now sorted by Error Status and Name
+- Trace Document Retry is no longer supported if Run Option is not set to Continuous
+- Can now configure Documents tab to display the Data Source associated with every document
+- Globanet data sources now read monitored individual from custom email header
+- Monitored Individual Discovery can now ignore the casing of the email addresses in question
+- Data Batches now show a Completed With Errors status if there are document-level errors in the Data Batch
+- Implemented TraceRecordOriginIdentifier to allow document reconciliation for more data sources
+- Errors on Rule Evaluation task now show the associated rule name
+- Custom data batches no longer require specific column names in load file
+- Audit messages resulting from actions taken by a user in the Relativity Trace UI now reflect the users ID
+
+**Defect Fixes**
+
+- Fixed an issue where Parent Document ID field was not populated with Control Number of parent document
+- Restructured how Trace creates Relativity Integration Points to support latest Relativity One release
+- Trace is now more careful about creating too many Integration Points in scenarios where the Integration Point Workers are backed up
+- Fixed an issue where Trace Logs and Update Trace Log Level scripts would fail in certain Workspaces (Incorrect Syntax error)
+- Fixed some billing issues with Instance Name and Data Source Type
+- Fixed an issue where Monitored Individuals could not be edited
+- Fixed an issue where a malformed TraceWorkspaceSettings instance setting would cause errors across the application
+- Fixed an issue where certain characters were not supported in Password Bank
+- Fixed an issue where Data Transformations field gets populated with extra delimiters in the load file after replacement transformations
+- Fixed an issue where an incorrect popup warning would show when saving a Rule with no Associated Actions
+- Fixed a rare issue where files could be copied incorrectly when generating Data Batches
+- Fixed an issue where Deduplication would fail if it was necessary to remove more than 1000 duplicate documents from a single data batch
+- Fix issue where Relativity Scripts used with Advanced Action Type require unused parameters
+- Fix issue with failing Data Batches that were created via API
+- Workspaces must be configured for Globanet before Globanet data sources can be used
+- Data Batches are now marked Abandoned or Completed With Errors (depending on whether data is present) if they spend more than the configured time sitting in a non-completed status
+- Fix issue where Trace Manager Agent crashes when experiencing temporary connectivity issues with Secret Store
+- Fix issue where TraceWorkspaceSettings instance setting could not be edited
+- Fix issue where Agent Statuses were reported incorrectly on Setup page in Relativity Instances with multiple resource pools
+- Fix issue where Data Batch retry did not work properly if Data Transformations were used on the Data Source
+- Fix issue where Trace Manager Agent could crash if a Trace task timed out in the right conditions
+
+**Deprecated**
+
+- N/A
+
+**Upgrade Considerations**
+
+- None, if upgrading from a currently supported release
+
+# 12.0.5.2 (24 October 2019) - DEPRECATED
 
 **Relativity Compatibility**
 
