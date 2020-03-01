@@ -1,6 +1,6 @@
 # Relativity Trace Data Source User Guide
 
-**For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software. This software is called Globanet Merge1. You will also need to install additional hardware.**
+For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software. This software is called Globanet Merge1. You will also need to install additional hardware.
 
   * [Installation](#installation)
     + [Pre-requisites](#pre-requisites)
@@ -176,15 +176,11 @@ Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20G
 
 ## Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony
 
-All of these Data Sources work similar via scheduled drops of data to an FTP.
-Globanet picks it up from SFTP and delivers it to Trace.
+All of these Data Sources work similar via scheduled drops of data to an FTP. Globanet picks it up from SFTP and delivers it to Trace.
 
-See sample data flow below and refer to *Merge1 6.0 User Guide.pdf* for more
-details
+See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for more details
 
-![](media/4970cdb34b8897593b99d9caa5e0eed5.png)
-
-
+![image-20200225144257108](media/trace_connectors_user_guide/image-20200225144257108.png)
 
 ## Appendix B: Importer Schedule Helper
 
