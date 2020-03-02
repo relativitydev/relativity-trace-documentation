@@ -858,8 +858,9 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
         for Office 365 and many on premises solutions but it is not guaranteed
         to work.
         
+	
 	    If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx ( OR https://YOUR_EXCHANGE_SERVER_URL/EWS/Exchange.asmx)
-	    
+	
 2. *Exchange Settings - Version* allows you to specify the version of your
        exchange server. For Office 365, the default is the correct choice. For
        on premises servers, provide the correct version. It needs to be an
@@ -867,7 +868,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
        provide a list of all of the options available in the error message at
        the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
        Exchange2010_SP2, Exchange2013, Exchange2013_SP1
-    
+   
 9. Click “Save”
 
 10. Link / Create New Monitored Individuals (same page after clicking Save)
@@ -997,6 +998,8 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 
 ![](media/5c3b02bf2c121e73f3a3916db799b306.png)
 
+> **NOTE:** Replacement of the Extracted Text (application of replace data transformation) happens on a new copy of the Extracted Text (referenced as *<original_file_name>.replaced.txt*).  Newly generated Extracted Text is referenced in a separate loadfile (`loadfile.replaced.dat`).  In addition, if original loadfile.dat contains a column named `Extracted Text Size in KB` , ONLY then `Extracted Text Size in KB` field is re-generated with updated length.  **Previously generated/supplied data for `Extracted Text Size in KB` is overwritten in this case.**
+
 ### Deduplication Data Transformation
 
 Data Transformations of type *Deduplication* prevent a Data Source from importing a document if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
@@ -1017,9 +1020,9 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 
 ### Group Identifier Truncation for External Data Sources
 
-Group Identifier is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for Group Identifier be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as Trace Has Errors and the Trace Error Details field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.
+`Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
 
-> **NOTE:** Group Identifier Truncation occurs for EXTERNAL DATA SOURCES ONLY. External data sources have a Provider on their Data Source Type that is not equal to Trace or Globanet. For additional information, please contact support@relativity.com.
+> **NOTE:** `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External data sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. For additional information, please contact support@relativity.com.
 
 Data Batches
 ------------
@@ -1431,7 +1434,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Family Group                  | Fixed-Length Text | Group the file belongs to (used to identify the group if attachment fields are not used). Formerly "Group Identifier" |
 | Calculated               | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file |
 | Calculated               | File Name                     | Fixed-Length Text | The original name of the file                                |
-| Calculated               | File Size                     | Decimal           | Generally a decimal number indicating the size in bytes of a file. |
+| DEPRECATED / DO NOT USE  | ~~File Size~~                 | Decimal           | This field is automatically provided by Relativity on import. **DO NOT MAP** this field in integration point profile. This field will be removed from Trace Document Extraction Field in the future release of Trace |
 | Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
 | Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
 | Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |
