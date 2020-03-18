@@ -325,11 +325,15 @@ The following fields **must** be part of the Load File and must be mapped to app
 
 4. `Trace Has Errors` – true/false. True, if particular document has errors
    (e.g. audio file too big to transcribe, etc…)
+   
 5. `Trace Error Details` – details of the individual item’s error (stack trace,
    retry information, etc)
+   
 6. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
 
-7. `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
+7. `Relativity Attachment ID` - must be set to empty string  and mapped to `Relativity Attachment ID` field in Relativity. This field is needed for RSMF content.
+
+8. `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
 
    1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
