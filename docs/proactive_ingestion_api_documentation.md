@@ -333,7 +333,7 @@ The following fields **must** be part of the Load File and must be mapped to app
 
 7. `Relativity Attachment ID` - must be set to empty string  and mapped to `Relativity Attachment ID` field in Relativity. This field is needed for RSMF content.
 
-8. `Group Identifier` - this cannot be empty and must have a new unique value for every row in the loadfile
+8. `Group Identifier` - cannot be empty. Must have a unique value for every unique native file (ideally a new Guid, should not be a value from a different column). Extracted children of a native file should have the same Group Identifier as the native file.
 
    1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
