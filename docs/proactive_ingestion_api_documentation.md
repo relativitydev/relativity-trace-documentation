@@ -333,7 +333,7 @@ The following fields **must** be part of the Load File and must be mapped to app
 
 7. `Relativity Attachment ID` - must be set to empty string  and mapped to `Relativity Attachment ID` field in Relativity. This field is needed for RSMF content.
 
-8. `Group Identifier` - this must be mapped to a field that is responsible for grouping multiple items together (e.x. email thread id that groups all emails on the email chain together)
+8. `Group Identifier` - this cannot be empty and must have a new unique value for every row in the loadfile
 
    1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
