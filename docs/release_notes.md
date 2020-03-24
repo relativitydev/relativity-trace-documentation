@@ -245,3 +245,5 @@
 # 11.2.4.4 (10 June 2019) - DEPRECATED
 
 > **DEPRECATION NOTE:** This version of Trace is **no longer supported**
+>
+> Deprecated
