@@ -108,9 +108,9 @@ Ensure the default Relativity infrastructure has been set up and is fully operat
 If you plan to use `Analytics` functionality, please also make sure the following
 agents are set up:
 
--   Content Analyst Index Manager
+-   Relativity Analytics Index Manager
 
--   Content Analyst Cluster Manager
+-   Relativity Analytics Cluster Manager
 
 -   Analytics Categorization Manager
 
