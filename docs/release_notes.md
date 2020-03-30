@@ -1,6 +1,7 @@
 # Relativity Trace Release Notes
 
-- [12.0.8.2 (24 February 2020)](#12082-24-february-2020)
+- [12.1.0 (30 March 2020)](#1210-30-march-2020)
+- [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
 - [12.0.5.2 (24 October 2019) - DEPRECATED](#12052-24-october-2019---deprecated)
 - [11.2.11.1 (13 September 2019) - DEPRECATED](#112111-13-september-2019---deprecated)
 - [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
@@ -8,7 +9,43 @@
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.0.8.2 (24 February 2020)
+# 12.1.0 (30 March 2020)
+
+**Relativity Compatibility**
+
+- \> 9.6.202.10
+
+**Features**
+
+- Trace Shipper completes the Globanet connector use case as a way to move files from customer network servers to RelativityOne file share (BETA)
+- Added the ability to link a Term to a Rule on the Term layout page
+
+**Enhancements**
+
+- Added support for parsing rare date formats from email headers and PDF files
+- Improved error messaging when a configured Monitored Individual has no mailbox or the mailbox is inaccessible
+- Improved error messaging when an index build fails
+
+**Defect Fixes**
+
+- Relativity Native Data Source no longer overwrites the Trace Document Hash values provided during ingestion by external data sources
+- Rules no longer execute in parallel to alleviate SQL database contention and inconsistent execution order
+- Fixed an issue where data batches could not always be retried if deduplication had been performed on them
+- Fixed an issue for non-US customers where automated analytics index builds were not always kicked off at the correct times
+- Improved the data disposal action to be more thorough about removing files from the file share in error scenarios
+- Fixed an issue where documents could not be tagged with monitored individuals by deduplication if more than 1000 monitored individuals were being tagged at once
+- Fixed an issue where the file size field was erroneously being populated with the extracted text size
+
+**Deprecated**
+
+- The "Term Category" object type is no longer associated with or used by the Trace application (schema for the object type and all data will remain in existing Trace workspaces, nothing will be deleted)
+- Removed support for the undocumented File Share data source type
+
+**Upgrade Considerations**
+
+- Update an existing Term view or create a new one if you would like to display the now orphaned "Term Category" field
+
+# 12.0.8.2 (24 February 2020) - DEPRECATED
 
 **Relativity Compatibility**
 
