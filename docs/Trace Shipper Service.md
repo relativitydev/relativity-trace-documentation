@@ -1,24 +1,31 @@
 # Trace Shipper Service
 
-The Trace Shipper Service is a Windows service released by Trace that monitors a folder on the local network and ships files that appear in the folder to a predetermined file share location within a Relativity Workspace. The files are then deleted from the folder once they have been transmitted to Relativity successfully. 
+The Trace Shipper Service is a Windows service released by Trace that delivers data from on-premise client network to Relativity Trace enabled workspace.  The service monitors configured source folders on the local network and ships files that appear in the source folder to a predetermined file share location within a Relativity workspace that is associated with the data sources. The files are continuously deleted from the source folder once they have been transmitted to Relativity successfully. 
+
+### Overview
+
+![TraceShipperOverview](S:\SourceCode\relativity-trace-documentation\docs\media\TraceShipperOverview.png)
+
 
 ### Prerequisites Before Installing
 
-- Have a Windows machine to run the Trace Shipper Service
-- Know what folder(s) on your local network need their files shipped to a Relativity Instance
-- Have a user to run the service as that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
-- Know the destination Relativity Instance(s), Workspace(s) and folder(s) on the fileshare(s) where the files should be shipped
-- Have a Relativity username and password for each destination that can be used to authenticate against a Relativity API and write files to the fileshare
-- Request the TraceShipperService.zip file by submitting a ticket to support@relativity.com
+- Identify/provision a Windows OS machine to run the Trace Shipper Service
+> **NOTE:** This should be the same machine as Globanet appliance VM
+- Identify what source folder(s) on your local network need their files shipped to a Relativity
+> **NOTE:** Windows service must have read/write/modify permission on the folders
+- Create/identify a Windows OS user to run the service as that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
+- Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
+- Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
+- Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
 
 ### Installation Steps
 
-1. Extract TraceShipperService.zip to a folder called TraceShipperService somewhere on the machine that will be running the service. Make sure that the files are directly under the TraceShipperService directory with no extra nested folders.
-2. Run a command prompt AS ADMINISTRATOR, navigate to the TraceShipperService folder in the command prompt, and run TraceShipperService.exe /i
-3. Go to Services on the machine and verify that the service was installed (Trace Shipper Service)
-4. From the Services window, right click on the Trace Shipper Service and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
-5. In the TraceShipperService folder, edit the TraceShipperService.exe.config file. 
-   1. In the <trace.shipper> section, copy the default <add> node so that there are as many nodes as folders that need to ship files (if there is just one folder, no need to copy, we will edit the example)
+1. Extract `TraceShipperService_vx.zip` to a folder called `Trace Shipper Service` on the machine that will be running the service. Make sure that the files are directly under the `Trace Shipper Service` directory with no extra nested folders.
+2. Run a command prompt AS ADMINISTRATOR, navigate to the `Trace Shipper Service` folder in the command prompt, and run `TraceShipperService.exe /i`
+3. Go to Services on the machine and verify that the service was installed (`Trace Shipper Service`)
+4. From the Services window, right click on the `Trace Shipper Service` and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
+5. In the `Trace Shipper Service` folder, edit the `TraceShipperService.exe.config` file. 
+   1. In the `<trace.shipper>` section, copy the default <add> node so that there are as many nodes as folders that need to ship files (if there is just one folder, no need to copy, we will edit the example)
    2. For each folder that needs to ship, edit each attribute in the <add> node to be correct
       1. **localDirectoryPath** - the locally accessible path of the folder that needs to ship files (note the user running the service must have access)
       2. **remoteRelativityPath** - the path relative to the workspace fileshare root of the destination workspace where all files should be stored
@@ -30,13 +37,16 @@ The Trace Shipper Service is a Windows service released by Trace that monitors a
       8. **relativityPassword** - the password used to connect to Relativity to upload files (note, it is recommended to secure the TraceShipperService folder as a way to reduce risk of exposing these credentials)
       9. **relativityUrl** - the url of the Relativity Instance where the files will be shipped
       10. **workspaceId** - the workspace ID of the workspace where the files will be shipped
-6. From the Services window, Start the Trace Shipper Service. If all configuration is correct, files should start departing the local folders and showing up on the Relativity fileshare as configured.
+6. From the Services window, Start the `Trace Shipper Service`. If all configuration is correct, files should start departing the local source folders and showing up on the Relativity fileshare as configured.
 7. If the Service fails to start, look at the Application Event Logs (Event Viewer > Windows Logs > Application) to see any errors.
-8. If the Service starts but does not ship files, look at the log file (as configured in the logFilePath setting) to see what messages are logged.
-9. Finally, once everything is running well, use Windows permissions to secure the Trace Shipper Service folder and the configured logs folder to only users that should be able to access the sensitive information contained within (Relativity credentials, file paths, etc.).
+8. If the Service starts but does not ship files, look at the log files (as configured in the logFilePath setting) to see what messages are logged.
+9. Finally, once everything is running well, use Windows permissions to secure the `Trace Shipper Service` folder and the configured logs folder to only users that should be able to access the sensitive information contained within (Relativity credentials, file paths, etc.).
+
+### Starting/Stopping Service
+The service can be managed directly from Services window (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
 
 ### Uninstall Steps
 
 1. Run a command prompt AS ADMINISTRATOR
-2. Navigate to the TraceShipperService folder in the command prompt
-3. Run TraceShipperService.exe /u
+2. Navigate to the `Trace Shipper Service` folder in the command prompt
+3. Run `TraceShipperService.exe /u`
