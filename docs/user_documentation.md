@@ -781,8 +781,7 @@ The following are fields on the Data Source Object:
 -   **Enable/Disable Data Source (Console Button):** Enables (or disables) data
     retrieval for particular data source
 
--   **Reset Data Source (Console Button):** Resets data source to its original
-    state, so data can start coming in from specified Start Date
+-   **Reset Data Source (Console Button):** Disables and resets data source to retrieve data from specified Start Date (Depending on import profile settings, enabling this data source after a reset could duplicate data in the Workspace)
 
 ### Microsoft Exchange Data Source
 
