@@ -1,4 +1,4 @@
-# Trace Shipper Service
+# Relativity Trace Shipper Service Documentation
 
 The Trace Shipper Service is a Windows service released by Trace that delivers data from on-premise client network to Relativity Trace enabled workspace.  The service monitors configured source folders on the local network and ships files that appear in the source folder to a predetermined file share location within a Relativity workspace that is associated with the data sources. The files are continuously deleted from the source folder once they have been transmitted to Relativity successfully. 
 
