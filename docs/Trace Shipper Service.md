@@ -4,7 +4,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 
 ### Overview
 
-![TraceShipperOverview](S:\SourceCode\relativity-trace-documentation\docs\media\TraceShipperOverview.png)
+![TraceShipperOverview](media/TraceShipperOverview.png)
 
 
 ### Prerequisites Before Installing
