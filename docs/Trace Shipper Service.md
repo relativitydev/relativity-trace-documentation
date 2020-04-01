@@ -1,6 +1,6 @@
-# Relativity Trace Shipper Service Documentation
+# Trace Shipper Service Documentation
 
-The Trace Shipper Service is a Windows service released by Trace that delivers data from on-premise client network to Relativity Trace enabled workspace.  The service monitors configured source folders on the local network and ships files that appear in the source folder to a predetermined file share location within a Relativity workspace that is associated with the data sources. The files are continuously deleted from the source folder once they have been transmitted to Relativity successfully. 
+The Trace Shipper Service is a Windows service released by Trace that delivers data from the client network to a remote Relativity Trace workspace. The service monitors configured source folders on the local network and ships files that appear in the source folders to predetermined file share locations within a Relativity workspace that are associated with Trace Data Sources. The files are deleted from the source folder once they have been transmitted to Relativity successfully. 
 
 ### Overview
 
@@ -9,18 +9,18 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 
 ### Prerequisites Before Installing
 
-- Identify/provision a Windows OS machine to run the Trace Shipper Service
+- Identify/provision a Windows machine to run the Trace Shipper Service
 > **NOTE:** This should be the same machine as Globanet appliance VM
 - Identify what source folder(s) on your local network need their files shipped to a Relativity
 > **NOTE:** Windows service must have read/write/modify permission on the folders
-- Create/identify a Windows OS user to run the service as that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
+- Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
 - Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
 - Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
 
 ### Installation Steps
 
-1. Extract `TraceShipperService_vx.zip` to a folder called `Trace Shipper Service` on the machine that will be running the service. Make sure that the files are directly under the `Trace Shipper Service` directory with no extra nested folders.
+1. Extract `TraceShipperService_(version).zip` to a folder called `Trace Shipper Service` on the machine that will be running the service. Make sure that the files are directly under the `Trace Shipper Service` directory with no extra nested folders.
 2. Run a command prompt AS ADMINISTRATOR, navigate to the `Trace Shipper Service` folder in the command prompt, and run `TraceShipperService.exe /i`
 3. Go to Services on the machine and verify that the service was installed (`Trace Shipper Service`)
 4. From the Services window, right click on the `Trace Shipper Service` and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
@@ -43,7 +43,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 9. Finally, once everything is running well, use Windows permissions to secure the `Trace Shipper Service` folder and the configured logs folder to only users that should be able to access the sensitive information contained within (Relativity credentials, file paths, etc.).
 
 ### Starting/Stopping Service
-The service can be managed directly from Services window (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
+The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
 
 ### Uninstall Steps
 

@@ -17,7 +17,7 @@
 
 **Features**
 
-- Trace Shipper completes the Globanet connector use case as a way to move files from customer network servers to RelativityOne file share (BETA)
+- Trace Shipper completes the Globanet connector use case as a way to move files from customer network servers to RelativityOne file shares (BETA)
 - Added the ability to link a Term to a Rule on the Term layout page
 
 **Enhancements**
