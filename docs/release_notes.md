@@ -1,6 +1,6 @@
 # Relativity Trace Release Notes
 
-- [12.1.0 (30 March 2020)](#1210-30-march-2020)
+- [12.1.0.13 (30 March 2020)](#1210-30-march-2020)
 - [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
 - [12.0.5.2 (24 October 2019) - DEPRECATED](#12052-24-october-2019---deprecated)
 - [11.2.11.1 (13 September 2019) - DEPRECATED](#112111-13-september-2019---deprecated)
@@ -9,7 +9,7 @@
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.1.0 (30 March 2020)
+# 12.1.0.13 (30 March 2020)
 
 **Relativity Compatibility**
 
@@ -17,7 +17,7 @@
 
 **Features**
 
-- Trace Shipper completes the Globanet connector use case as a way to move files from customer network servers to RelativityOne file shares (BETA)
+- Trace Shipper completes the Globanet connector use case as a way to move files from customer network servers to RelativityOne file share (BETA)
 - Added the ability to link a Term to a Rule on the Term layout page
 
 **Enhancements**
