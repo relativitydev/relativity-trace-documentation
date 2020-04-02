@@ -108,9 +108,9 @@ Ensure the default Relativity infrastructure has been set up and is fully operat
 If you plan to use `Analytics` functionality, please also make sure the following
 agents are set up:
 
--   Content Analyst Index Manager
+-   Relativity Analytics Index Manager
 
--   Content Analyst Cluster Manager
+-   Relativity Analytics Cluster Manager
 
 -   Analytics Categorization Manager
 
@@ -781,8 +781,7 @@ The following are fields on the Data Source Object:
 -   **Enable/Disable Data Source (Console Button):** Enables (or disables) data
     retrieval for particular data source
 
--   **Reset Data Source (Console Button):** Resets data source to its original
-    state, so data can start coming in from specified Start Date
+-   **Reset Data Source (Console Button):** Disables and resets data source to retrieve data from specified Start Date (Depending on import profile settings, enabling this data source after a reset could duplicate data in the Workspace)
 
 ### Microsoft Exchange Data Source
 
@@ -1434,7 +1433,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Family Group                  | Fixed-Length Text | Group the file belongs to (used to identify the group if attachment fields are not used). Formerly "Group Identifier" |
 | Calculated               | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file |
 | Calculated               | File Name                     | Fixed-Length Text | The original name of the file                                |
-| DEPRECATED / DO NOT USE  | ~~File Size~~                 | Decimal           | This field is automatically provided by Relativity on import. **DO NOT MAP** this field in integration point profile. This field will be removed from Trace Document Extraction Field in the future release of Trace |
+| Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in integration point profile. A value for this field is automatically calculated by Relativity on import.                                                                                             |
 | Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
 | Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
 | Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |

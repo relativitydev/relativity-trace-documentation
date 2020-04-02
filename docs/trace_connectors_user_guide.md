@@ -85,6 +85,9 @@ Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20G
 4. Globanet pushes the data to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop` folder
 5. Globanet pushes any logs to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs` folder
 
+## Setting up Trace Shipper Service
+If a direct or VPN option for data delivery is not available you can configure the Trace Shipper Service to send data to your Relativity Trace workspace.  Refer to the [Trace Shipper Service Documentation](Trace Shipper Service.md) for instructions on how to install and configure the Trace Shipper Service. Contact support@relativity.com if you need assistance.
+
 ## Setting up Data Sources
 
 ### Steps generic to setting up all Data Sources
