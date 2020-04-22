@@ -32,6 +32,7 @@
 		- [Custom Relativity Scripts](#custom-relativity-scripts)
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
 	- [Data Sources](#data-sources)
+        - [Data Source Specific Settings](#data-source-specific-settings)
 		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
 		- [Relativity Native Data Extraction Data Source](#relativity-native-data-extraction-data-source)
 	- [Monitored Individuals](#monitored-individuals)
@@ -783,6 +784,45 @@ The following are fields on the Data Source Object:
 
 -   **Reset Data Source (Console Button):** Disables and resets data source to retrieve data from specified Start Date (Depending on import profile settings, enabling this data source after a reset could duplicate data in the Workspace)
 
+### Data Source Specific Settings
+
+This section contains additional settings which are not associated with specific
+Relativity Fields. The settings described here are common across all Data Source
+Types. Type-specific settings are documented under their respected Data Source 
+sections.
+
+-   **Password Bank** Used to specify known passwords to attempt
+    while encountering protected native files. Multiple passwords 
+    can be separated by the pipe character, |. Passwords containing
+    the pipe character are supported through escaping the pipe character
+    with a second pipe. Pipes are always escaped left to right.
+
+    > **Example Password Bank:** passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||
+    >
+    > Yields the following passwords:
+    >
+    > * passw0rd
+    > * Tracer1234!
+    > * aaa
+    > * bb
+    > * cccc|dd|eee|
+    > * ff|
+    > * ggg||hhh||
+
+- **Extraction Thread Count:** The number of documents to extract in parallel.
+
+- **Enrich Documents:** Whether or not to extrace metadata and children from original documents. Valid values: true/false
+
+- **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
+
+- **Discover Monitored Individuals Ignores Case:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
+
+- **Last Error Retention In Hours:** The length of time to persist any message in the `Last Error` field.
+
+- **Aip Application Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection) 
+
+- **Aip Tenant Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection)
+
 ### Microsoft Exchange Data Source
 
 The Microsoft Exchange Data Source enables Relativity to automatically pull emails from a Microsoft Exchange instance (Office 365 or On Premises) into Relativity. The Microsoft Exchange Data Source is executed by the Data Retrieval task (seen on the Setup tab). Note, this Data Source only pulls emails at this
@@ -904,8 +944,9 @@ Please, refer to [Appendix B: Trace Document Extraction Fields](#appendix-b-trac
 This Data Source allows for automatic text extraction/expansion of previously
 ingested documents with natives in Relativity. This data source will
 automatically extract text, metadata and any children documents from
-containers/archives for all documents in workspace that have Native file
-imported and *Trace Data Enrichment Needed* field is set to *Yes:*
+containers/archives for all documents in the workspace with *Trace Data
+Enrichment Needed* field set to *Yes* and where Trace is able to locate the Native
+file on disk:
 
 ![](media/055bc4b791f13c0bdcb07bed1d907b91.png)
 
@@ -936,25 +977,10 @@ imported and *Trace Data Enrichment Needed* field is set to *Yes:*
 
     8.  You have the option to leave the Data Source as Enabled or Disabled
 
-3.  Fill out Data Source Specific Fields and click Save
-
-    1.  Password Bank can be adjusted to specify known passwords to attempt
-        while encountering protected native files. Multiple passwords can be separated by the pipe character, |. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
-
-        > **Example Password Bank:** passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||
-        >
-        > Yields the following passwords:
-        >
-        > * passw0rd
-        > * Tracer1234!
-        > * aaa
-        > * bb
-        > * cccc|dd|eee|
-        > * ff|
-        > * ggg||hhh||
-        
-    2. The rest of the fields are automatically pre-filled out with needed
-       values
+3.  Fill out [Data Source Specific Settings](#data-source-specific-settings) and click Save
+    
+    -   **Batch Size:** The maximum number of Original Native files 
+        to group into a single Data Batch
 
 **Content**
 
@@ -963,9 +989,13 @@ documents expanded from containers/archives. Please, refer to [Appendix B](#appe
 for field descriptions.
 
 
-> **NOTE:** By default re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents (old children will be dropped off the family group) if they are already in Relativity workspace. You can use [Deduplication](#deduplication-data-transformation) data transformation to only bring in new documents into the system.
+> **WARNING:** Re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents (old children will be dropped off the family group) if they already exist in the workspace.
 
 >  **WARNING:** Containers with many children documents (and nested containers) could produce significant number of expanded items in Relativity.
+
+**Limitations**
+
+Relativity Native Data Extraction Data Source do not support [Deduplication](#deduplication-data-transformation). Deduplication transformations must be unlinked before the Data Source can be enabled.
 
 Monitored Individuals
 ---------------------
