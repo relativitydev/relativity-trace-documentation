@@ -32,7 +32,8 @@
 		- [Custom Relativity Scripts](#custom-relativity-scripts)
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
 	- [Data Sources](#data-sources)
-        - [Data Source Specific Settings](#data-source-specific-settings)
+		- [Data Source Specific Settings](#data-source-specific-settings)
+		- [Data Source Auto-Disable](#data-source-auto-disable)
 		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
 		- [Relativity Native Data Extraction Data Source](#relativity-native-data-extraction-data-source)
 	- [Monitored Individuals](#monitored-individuals)
@@ -811,7 +812,7 @@ sections.
 
 - **Extraction Thread Count:** The number of documents to extract in parallel.
 
-- **Enrich Documents:** Whether or not to extrace metadata and children from original documents. Valid values: true/false
+- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: true/false
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
 
@@ -822,6 +823,15 @@ sections.
 - **Aip Application Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection) 
 
 - **Aip Tenant Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection)
+
+### Data Source Auto-Disable
+
+Trace will automatically disable data sources that are identified as unhealthy or have critical configuration errors that will require intervention by the user. Trace will automatically disable a data source for the following reasons:
+
+- Data source has not had any successful data batches in a configured amount of time (default 24 hours)
+- Globanet data source is enabled without enabling Globanet at the workspace level
+
+Auto-disabled data sources will have their Disabled Reason field populated to show that it was disabled by the system. The data source will also have error details outlining the failures that caused the system to disable it. 
 
 ### Microsoft Exchange Data Source
 
