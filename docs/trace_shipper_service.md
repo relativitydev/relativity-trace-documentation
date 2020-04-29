@@ -36,9 +36,9 @@ Transfer API (TAPI) is the underlying method of data delivery to RelativityOne. 
 
 ### Ports and Firewall settings
 For Aspera data transfer protocol the following ports are used:
-Allow outbound connections to the server on the TCP port 33001, 9092.
-Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
-Allow outbount connections to the server on HTTPS (443)
+1. Allow outbound connections to the server on the TCP port 33001, 9092.
+2. Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
+3. Allow outbount connections to the server on HTTPS (443)
 
 For details on the IP ranges for your specific RelativityOne instance please contact support@relativity.com
 
