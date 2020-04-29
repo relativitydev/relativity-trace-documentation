@@ -14,7 +14,7 @@
 
 **Relativity Compatibility**
 
-- <u>**≥ 10.3.287.3**</u>
+- **≥ 10.3.287.3**
 
 **Features**
 
