@@ -6,6 +6,16 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 
 ![TraceShipperOverview](media/TraceShipperOverview.png)
 
+### Trace Data Shipper Advantages
+1. Fully managed Windows service with Trace specific semantics and configuration
+   1. Integration with IT policies managing Windows reporting/alerting
+   2. Robust mechanism for retrying in case of data transfer failures
+   3. Integration of Data Source configuration from Relativity side
+2. No need for VPN setup
+   1. Faster onboarding of clients
+   2. Fewer dependent components in data transfer
+3. Fast data transfer rates
+4. Secure (data encrypted in flight)
 
 ### Prerequisites Before Installing
 
@@ -16,7 +26,22 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 - Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
 - Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
+> **NOTE:** To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
 - Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
+
+### Data Transfer Protocols
+Transfer API (TAPI) is the underlying method of data delivery to RelativityOne.  TAPI supports multiple protocols of data transfer including:
+1. Direct - only available on-premise
+2. Aspera (FASP protocol) - default for RelativityOne
+
+### Ports and Firewall settings
+For Aspera data transfer protocol the following ports are used:
+1. Allow outbound connections to the server on the TCP port 33001, 9092.
+2. Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
+3. Allow outbount connections to the server on HTTPS (443)
+
+For details on the IP ranges for your specific RelativityOne instance please contact support@relativity.com
+
 
 ### Installation Steps
 
@@ -29,6 +54,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
    2. For each folder that needs to ship, edit each attribute in the <add> node to be correct
       1. **localDirectoryPath** - the locally accessible path of the folder that needs to ship files (note the user running the service must have access)
       2. **remoteRelativityPath** - the path relative to the workspace fileshare root of the destination workspace where all files should be stored
+      3. **retrieveConfigurationIntervalInMinutes** -- the interval between Data Source configuration pulls from Relativity. Values less than or equal to 0 turns off this feature. Defaults to 0 (off). This setting is used to synchronize, for example, monitored individuals from Relativity One to a local Globanet instance. For further customization of Data Source configuration pulling, contact support@relativity.com.
       3. **cacheLengthInMinutes** - how long a file is ignored by monitoring before Trace Shipper Service attempts to send it to Relativity again (provides a buffer for long transfer times and surges in volume as well as automatic retries of failed transfers)
       4. **logLevel** - the minimum message level to include in the log file (Verbose/Debug/Information/Warning/Error/Fatal), increase if log files are too large, decrease when troubleshooting
       5. **logFilePath** - a local file path **ACCESSIBLE TO THE SERVICE USER** where the log files for the application should be stored (note, the log files roll automatically every 100MB, so there will be more than one file, it is best to make a folder) (note 2, it recommended to use a different log file path for each configured local folder to make the logs easier to read)
