@@ -4,7 +4,8 @@
 - [Glossary](#glossary)
 - [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
 - [Data Batch Overview](#data-batch-overview)
-- [API Usage](#api-usage)
+- [Trace REST API Usage](#trace-rest-api-usage)
+- [Ingestion API Usage](#ingestion-api-usage)
 - [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
   * [Data Batch Statuses](#data-batch-statuses)
   * [Create Data Batch](#create-data-batch)
@@ -136,7 +137,261 @@ When a Data Source creates a Data Batch, several fields must be filled out:
         1.  Specify path to the relativity location of the load file
             1.  ![](media/8770cf000865b61b94dc24002b7d49e5.png)
 
-API Usage
+
+Trace REST API Usage
+=========
+Sample .NET console app code to connect to Relativity instance and retrieve (Read/Query) information about configured Trace components using no internal dependencies
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using Newtonsoft.Json.Linq;
+
+
+namespace TraceREST
+{
+	public class Program
+	{
+		static void Main(string[] args)
+		{
+			//Initialize the HttpClient.
+			HttpClient client = new HttpClient();
+			client.BaseAddress = new Uri("https://<REPLACEME>.relativity.one");
+
+			//Add the Accept header.
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+			//Generate a value for the Authorization header based on a specified
+			//user name and password.
+			string authorizationHeaderValue = GenerateBasicAuthorizationParameter("<REPLACEME>", "<REPLACEME>");
+
+			//Set the required headers for Relativity.Rest.
+			client.DefaultRequestHeaders.Add("X-CSRF-Header", string.Empty);
+			client.DefaultRequestHeaders.Add("Authorization", authorizationHeaderValue);
+
+			Console.WriteLine($"Connecting to {client.BaseAddress}...");
+
+			//Read the Workspace collection.
+			string workspaceCollectionString = GetWorkspaceCollectionAsString(client);
+
+			List<WorkspaceDto> workspaces =  ParseWorkspacesFromWorkspaceCollectionString(workspaceCollectionString);
+
+			foreach (var workspace in workspaces)
+			{
+				var dataSources = GetTraceDataSourcesForWorkspace(client, workspace.WorkspaceID);
+				if (dataSources.Any())
+				{
+					//Skipping any workspace without data sources
+					Console.WriteLine(workspace.ToString());
+					foreach (var dataSourceDto in dataSources)
+					{
+						Console.WriteLine($"\t{dataSourceDto}");
+					}
+				}
+			}
+
+			Console.ReadLine();
+		}
+
+		static string GenerateBasicAuthorizationParameter(string username, string password)
+		{
+			string unencodedUsernameAndPassword = string.Format("{0}:{1}", username, password);
+			byte[] unencodedBytes = ASCIIEncoding.ASCII.GetBytes(unencodedUsernameAndPassword);
+			string base64UsernameAndPassword = System.Convert.ToBase64String(unencodedBytes);
+
+			return string.Format("Basic {0}", base64UsernameAndPassword);
+		}
+
+		static string GetWorkspaceCollectionAsString(HttpClient client)
+		{
+			string url = "Relativity.Rest/Relativity/Workspace";
+			HttpResponseMessage response = client.GetAsync(url).Result;
+
+			if (response.IsSuccessStatusCode)
+			{
+				return response.Content.ReadAsStringAsync().Result;
+			}
+
+			Console.WriteLine("The collection GET for Workspace failed.");
+			return null;
+		}
+
+		static List<WorkspaceDto> ParseWorkspacesFromWorkspaceCollectionString(string workspaceCollection)
+		{
+			if (string.IsNullOrEmpty(workspaceCollection))
+			{
+				Console.WriteLine("Could not parse Workspace collection string because it was null or empty.");
+				return null;
+			}
+
+			var workspaces = new List<WorkspaceDto>();
+
+			//Turn the workspace collection string into a JObject and obtain the Results JArray.
+			JObject jWorkspaceResult = JObject.Parse(workspaceCollection);
+			JArray jWorkspaces = (jWorkspaceResult["Results"] as JArray);
+
+			//If the array of Workspaces contained data, attempt to parse the ArtifactID of the first Workspace.
+			if (jWorkspaces != null && jWorkspaces.Any())
+			{
+				foreach (var jWorkspace in jWorkspaces)
+				{
+					int? workspaceArtifactId = (int?)jWorkspace["Artifact ID"];
+					string workspaceName = (string)jWorkspace["Relativity Text Identifier"];
+					workspaces.Add(new WorkspaceDto()
+					{
+						WorkspaceID = workspaceArtifactId ?? 0,
+						WorkspaceName = workspaceName
+					});
+				}
+			}
+			return workspaces;
+		}
+
+
+		private static DataSourceDto GetTraceDataSourceDetails(HttpClient client, int workspaceArtifactID, int dataSourceArtifactID)
+		{
+			var dataSourceDetails = new DataSourceDto();
+
+			string url = string.Format("Relativity.Rest/Workspace/{0}/Data%20Source/QueryResult?pagesize=1000", workspaceArtifactID);
+
+			//TODO: Adjust the fields to only the ones you need, for now get all
+			string queryPayload = @"{
+     ""condition"":"" 'Artifact ID' > 1000000"",
+     ""fields"":[""*""]
+}";
+
+			StringContent content = new StringContent(queryPayload);
+			content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+			HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+			if (response.IsSuccessStatusCode)
+			{
+				//Read the Documents collection, and parse out the Results JArray.
+				string dataSourcesJSON = response.Content.ReadAsStringAsync().Result;
+
+				JObject jDataSourceObjects = JObject.Parse(dataSourcesJSON);
+				JArray jDataSourceArray = (jDataSourceObjects["Results"] as JArray);
+
+				//If the array of Documents contained data, obtain the __Location of the first Document.
+				if (jDataSourceArray != null && jDataSourceArray.Any())
+				{
+					foreach (var jDataSource in jDataSourceArray)
+					{
+						string dataSourceName = (string)jDataSource["Relativity Text Identifier"];
+						bool dataSourceEnabled = (bool)jDataSource["Enabled"];
+
+						List<MonitoredIndividualDto> dataSourceMIs = new List<MonitoredIndividualDto>();
+
+						//process MonitoredIndividuals
+						JArray jdataSourceMonitoredIndividuals = (jDataSource["Trace Monitored Individuals"] as JArray);
+						if (jdataSourceMonitoredIndividuals != null && jdataSourceMonitoredIndividuals.Any())
+						{
+							foreach (var jMI in jdataSourceMonitoredIndividuals)
+							{
+								int? miArtifactID = (int?)jMI["Artifact ID"];
+								string miName = (string)jMI["Relativity Text Identifier"];
+
+								dataSourceMIs.Add(new MonitoredIndividualDto()
+								{
+									MonitoredIndividualArtifactID = miArtifactID ?? 0,
+									MonitoredIndividualName = miName
+								});
+							}
+						}
+
+						dataSourceDetails = new DataSourceDto()
+						{
+							WorkspceID = workspaceArtifactID,
+							DataSourceID = dataSourceArtifactID,
+							DataSourceName = dataSourceName,
+							Enabled = dataSourceEnabled,
+							MonitoredIndividuals = dataSourceMIs
+						};
+					}
+				}
+			}
+			else
+			{
+				Console.WriteLine($"\t Could not get data source details for ({dataSourceArtifactID})");
+			}
+
+			return dataSourceDetails;
+		}
+
+		private static List<DataSourceDto> GetTraceDataSourcesForWorkspace(HttpClient client, int workspaceArtifactID)
+		{
+			var dataSourceDtos = new List<DataSourceDto>();
+
+			string url = string.Format("Relativity.Rest/Workspace/{0}/Data%20Source", workspaceArtifactID);
+
+			HttpResponseMessage response = client.GetAsync(url).Result;
+			if (response.IsSuccessStatusCode)
+			{
+				//Read the Documents collection, and parse out the Results JArray.
+				string dataSourcesJSON = response.Content.ReadAsStringAsync().Result;
+
+				JObject jDataSourceObjects = JObject.Parse(dataSourcesJSON);
+				JArray jDataSourceArray = (jDataSourceObjects["Results"] as JArray);
+
+				//If the array of Documents contained data, obtain the __Location of the first Document.
+				if (jDataSourceArray != null && jDataSourceArray.Any())
+				{
+					foreach (var jDataSource in jDataSourceArray)
+					{
+						int? dataSourceArtifactID = (int?)jDataSource["Artifact ID"];
+						var dataSourceDetails = GetTraceDataSourceDetails(client, workspaceArtifactID, dataSourceArtifactID ?? 0);
+						dataSourceDtos.Add(dataSourceDetails);
+					}
+				}
+			}
+			else
+			{
+				Console.WriteLine($"\tNo Trace Data Sources found for workspace {workspaceArtifactID}");
+			}
+			return dataSourceDtos;
+		}
+	}
+
+	#region DTOs
+	public class DataSourceDto
+	{
+		public int WorkspceID { get; set; }
+		public int DataSourceID { get; set; }
+		public string DataSourceName { get; set; }
+		public bool Enabled { get; set; }
+		public List<MonitoredIndividualDto> MonitoredIndividuals { get; set; }
+
+
+		public override string ToString()
+		{
+			return $"Data Source: {DataSourceName}({DataSourceID})\n\tEnabled:{Enabled}\n\tMonitored Individuals Count:{MonitoredIndividuals.Count}";
+		}
+	}
+	public class MonitoredIndividualDto
+	{
+		public int MonitoredIndividualArtifactID { get; set; }
+		public string MonitoredIndividualName { get; set; }
+	}
+	public class WorkspaceDto
+	{
+		public int WorkspaceID { get; set; }
+		public string WorkspaceName { get; set; }
+
+		public override string ToString()
+		{
+			return $"Workspce Name: {WorkspaceName}({WorkspaceID})";
+		}
+	}
+	#endregion
+}
+
+```
+
+Ingestion API Usage
 =========
 
 Working with TPI involves several steps in a base workflow:
