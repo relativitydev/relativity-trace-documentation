@@ -4,7 +4,7 @@
 - [Glossary](#glossary)
 - [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
 - [Data Batch Overview](#data-batch-overview)
-- [Relativity REST API Usage for Trace Components](#relativity-REST-API-Usage-for-Trace-Components)
+- [Relativity REST API Usage for Trace Components](#relativity-rest-api-usage-for-trace-components)
 - [Ingestion API Usage](#ingestion-api-usage)
 - [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
   * [Data Batch Statuses](#data-batch-statuses)
@@ -15,11 +15,12 @@
   * [Load File Specifications](#load-file-specifications)
     + [Text Fields](#text-fields)
   * [Field Mappings stored in Relativity Integration Point Profile](#field-mappings-stored-in-relativity-integration-point-profile)
+    + [Required (absolute musts)](#required--absolute-musts-)
+    + [Recommended](#recommended)
   * [Data Batches](#data-batches)
   * [Error Handling](#error-handling)
 
-Overview
-========
+# Overview
 
 The Trace Proactive Ingestion Framework allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
 
@@ -45,8 +46,7 @@ The key benefits of the Proactive Ingestion Framework include:
 
 It is designed to work with Load Files as an intermediate step between Source and Relativity ingestion. Consumer of the IPI needs to produce a Load File and make an REST call to Relativity telling it the location of the Load File along with other ingestion configurations. After that, Trace will take the Load File and automatically import it using the provided configurations.
 
-Glossary
-========
+# Glossary
 
 -   **Data Batch:** RDO that contains all needed information about Load File and
     its ingestion status
@@ -62,8 +62,7 @@ Glossary
     
 -   **IPI:** Trace Proactive Ingestion
 
-Prerequisites: Load File and Integration Point Profile
-======================================================
+# Prerequisites: Load File and Integration Point Profile
 
 1.  Install “Trace” application
 
@@ -103,8 +102,7 @@ Prerequisites: Load File and Integration Point Profile
     4.  Enabled: used to signal stop or start of the data source ingestion from
         external source
 
-Data Batch Overview
-===================
+# Data Batch Overview
 
 Data Batch is a unit of work in IPI, it has all the needed configuration and  status information to ingest data and monitor ingestion progress.
 
@@ -138,8 +136,8 @@ When a Data Source creates a Data Batch, several fields must be filled out:
             1.  ![](media/8770cf000865b61b94dc24002b7d49e5.png)
 
 
-Relativity REST API Usage for Trace Components
-=========
+# Relativity REST API Usage for Trace Components
+
 Sample .NET console app code to connect to Relativity instance and retrieve (Read/Query) information about configured Trace components using no internal dependencies.
 
 Sample below shows how to interact with the following Trace Components ( all of them as standard Relativity Objects - please, refer to this [documentation](https://platform.relativity.com/RelativityOne/Content/REST_API/REST_API.htm) for full reference ):
@@ -147,7 +145,7 @@ Sample below shows how to interact with the following Trace Components ( all of 
 - Data Source
 - Monitored Individual
 
-```C#
+```CSharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -396,8 +394,7 @@ namespace TraceREST
 
 ```
 
-Ingestion API Usage
-=========
+# Ingestion API Usage
 
 Working with TPI involves several steps in a base workflow:
 
@@ -414,13 +411,11 @@ Working with TPI involves several steps in a base workflow:
 
 On next Ingestion task check-in Trace will automatically ingest the data by creating an Integration Point and will validate the import was successful.
 
-Data Batch creation (Quick Start)
-=================================
+# Data Batch creation (Quick Start)
 
 Since Data Batch is an RDO, standard Relativity API can be used to manage it. Sample below shows how to create Data Batches with Relativity REST (generic API). One can prototype with Relativity REST without  having to write any code. We recommend tools such as [Fiddler](https://www.telerik.com/fiddler) to prototype sample calls ahead of creating full solutions in code.
 
-Data Batch Statuses
--------------------
+## Data Batch Statuses
 
 Below status identifiers are needed to set a Data Batch to a particular stage of
 processing. The identifiers are the same across all versions of Relativity and Trace application.
@@ -435,8 +430,7 @@ processing. The identifiers are the same across all versions of Relativity and T
     
 -   `68FCCFB2-6CE4-442C-A402-26A76E37A961` – GUID identifier for `Abandoned` status
 
-Create Data Batch
------------------
+## Create Data Batch
 
 Below **sample request** will create a Data Batch associated with Load File
 `DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat`
@@ -481,8 +475,7 @@ Above request must be executed using Fiddler, for example:
 
 ![](media/94b9bc1537ab80a8592c157df514b711.png)
 
-Update Data Batch
------------------
+## Update Data Batch
 
 Below **sample requests** will update a Data Batch associated with Load File
 `DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat` to `ReadyForImport` status
@@ -538,16 +531,13 @@ After Data Batch is created or updated, it can be monitored in Relativity UI (or
 
 ![](media/7c0804895ff95708ca6a5553e44277cf.png)
 
-Workflow Recommendations
-========================
+# Workflow Recommendations
 
-Security
---------
+## Security
 
 In order to work with IPI in a secure manner, create a new user with limited permissions: enable access only to Relativity objects that are needed: Data Batch, Data Source and particular fields ( `Trace Has Errors` and `Trace Error Details` ) on a Document object.
 
-Load File Specifications
-------------------------
+## Load File Specifications
 
 Full list of specifications:
 <https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Importing/Load_file_specifications.htm>
@@ -568,12 +558,11 @@ All text fields in the load file must avoid special characters mentioned above. 
 
 ![](media/1a153ec4bda6645da5bbf95a89d8679a.png)
 
-Field Mappings stored in Relativity Integration Point Profile
--------------------------------------------------------------
+## Field Mappings stored in Relativity Integration Point Profile
 
 The following fields **must** be part of the Load File and must be mapped to appropriate Relativity fields:
 
-**Required (absolute musts):**
+### Required (absolute musts)
 
 1. `Object Type Identifier` - this is usually called a `Control Number`
 
@@ -597,7 +586,7 @@ The following fields **must** be part of the Load File and must be mapped to app
 
    1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
-**Recommended:**
+### Recommended
 
 1. `Trace Data Batch` – name of the batch
 2. `Trace Checkout` – must be set to empty string. This ensures Trace can
@@ -613,8 +602,7 @@ The following fields **must** be part of the Load File and must be mapped to app
 
 ![](media/7beaeffb89e2aef4285696f44c7ff423.png)
 
-Data Batches
-------------
+## Data Batches
 
 Recommended workflow for Data Batch creation ( `Created` -\> `RetrievedFromSource` -\> `Normalized` -\> `ReadyForImport` ):
 
@@ -628,8 +616,7 @@ Recommended workflow for Data Batch creation ( `Created` -\> `RetrievedFromSourc
 
 At any stage, you can use Metadata field on the Data Batch to capture information regarding the batch of documents as you go through the process.
 
-Error Handling
---------------
+## Error Handling
 
 1.  For item-level errors, always populate the following two fields
 
