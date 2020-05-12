@@ -15,7 +15,7 @@
   * [Load File Specifications](#load-file-specifications)
     + [Text Fields](#text-fields)
   * [Field Mappings stored in Relativity Integration Point Profile](#field-mappings-stored-in-relativity-integration-point-profile)
-    + [Required (absolute musts)](#required--absolute-musts-)
+    + [Required (absolute musts)](#required-absolute-musts)
     + [Recommended](#recommended)
   * [Data Batches](#data-batches)
   * [Error Handling](#error-handling)
