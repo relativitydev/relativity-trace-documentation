@@ -4,7 +4,7 @@
 - [Glossary](#glossary)
 - [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
 - [Data Batch Overview](#data-batch-overview)
-- [Trace REST API Usage](#trace-rest-api-usage)
+- [Relativity REST API Usage for Trace Components](#relativity-REST-API-Usage-for-Trace-Components)
 - [Ingestion API Usage](#ingestion-api-usage)
 - [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
   * [Data Batch Statuses](#data-batch-statuses)
@@ -138,9 +138,14 @@ When a Data Source creates a Data Batch, several fields must be filled out:
             1.  ![](media/8770cf000865b61b94dc24002b7d49e5.png)
 
 
-Trace REST API Usage
+Relativity REST API Usage for Trace Components
 =========
-Sample .NET console app code to connect to Relativity instance and retrieve (Read/Query) information about configured Trace components using no internal dependencies
+Sample .NET console app code to connect to Relativity instance and retrieve (Read/Query) information about configured Trace components using no internal dependencies.
+
+Sample below shows how to interact with the following Trace Components ( all of them as standard Relativity Objects - please, refer to this [documentation](https://platform.relativity.com/RelativityOne/Content/REST_API/REST_API.htm) for full reference ):
+
+- Data Source
+- Monitored Individual
 
 ```C#
 using System;
