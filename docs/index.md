@@ -6,7 +6,7 @@
   
 ## Data Ingestion
   1. [Relativity Trace Data Source User Guide](https://relativitydev.github.io/relativity-trace-documentation/trace_connectors_user_guide)
-  2. [Relativity Trace Proactive Ingestion Framework Documentation](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
+  2. [Relativity Trace API](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
   3. [Relativity Trace Shipper Service Documentation](https://relativitydev.github.io/relativity-trace-documentation/trace_shipper_service)
  
 ## Support

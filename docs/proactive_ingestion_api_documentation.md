@@ -1,27 +1,42 @@
-# Relativity Trace Proactive Ingestion Framework Documentation
+# Relativity Trace API
 
 - [Overview](#overview)
-- [Glossary](#glossary)
-- [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
-- [Data Batch Overview](#data-batch-overview)
-- [Relativity REST API Usage for Trace Components](#relativity-REST-API-Usage-for-Trace-Components)
-- [Ingestion API Usage](#ingestion-api-usage)
-- [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
-  * [Data Batch Statuses](#data-batch-statuses)
-  * [Create Data Batch](#create-data-batch)
-  * [Update Data Batch](#update-data-batch)
-- [Workflow Recommendations](#workflow-recommendations)
-  * [Security](#security)
-  * [Load File Specifications](#load-file-specifications)
-    + [Text Fields](#text-fields)
-  * [Field Mappings stored in Relativity Integration Point Profile](#field-mappings-stored-in-relativity-integration-point-profile)
-  * [Data Batches](#data-batches)
-  * [Error Handling](#error-handling)
+- [Ingest Data From Custom Data Sources](#ingest-data-from-custom-data-sources)
+  * [Glossary](#glossary)
+  * [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
+  * [Data Batch Overview](#data-batch-overview)
+  * [Ingestion API Usage](#ingestion-api-usage)
+  * [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
+    + [Data Batch Statuses](#data-batch-statuses)
+    + [Create Data Batch](#create-data-batch)
+    + [Update Data Batch](#update-data-batch)
+  * [Workflow Recommendations](#workflow-recommendations)
+    + [Security](#security)
+    + [Load File Specifications](#load-file-specifications)
+      - [Text Fields](#text-fields)
+    + [Field Mappings stored in Relativity Integration Point Profile](#field-mappings-stored-in-relativity-integration-point-profile)
+      - [Required (absolute musts)](#required--absolute-musts)
+      - [Recommended](#recommended)
+    + [Data Batches](#data-batches)
+    + [Error Handling](#error-handling)
+- [Ingest Monitored Individuals Information](#ingest-monitored-individuals-information)
 
-Overview
-========
+# Overview
 
-The Trace Proactive Ingestion Framework allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
+Relativity Trace API is based and fully dependent on [Relativity Dynamic Objects](https://help.relativity.com/RelativityOne/Content/Managing_Relativity_dynamic_objects/RDO_11.0/Relativity_objects.htm) (RDOs). Relativity Trace does not have any custom APIs outside of RDOs. Please, refer to [Relativity API Documentation](https://platform.relativity.com/RelativityOne/Content/REST_API/REST_reference/Dynamic_objects.htm) on specifics on how  to interact with RDOs.
+
+This documents provides specifications on how one can interact with RDOs specific to Trace.
+
+There are two key ingredients that Trace needs in order to work:
+
+1. Actual Data from a Data Source
+2. Information about Monitored Individuals
+
+This documents provides information on how to build custom integration for both use cases.
+
+# Ingest Data From Custom Data Sources
+
+The Trace Proactive Ingestion system (that powers Trace) allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
 
 The key benefits of the Proactive Ingestion Framework include:
 
@@ -45,8 +60,7 @@ The key benefits of the Proactive Ingestion Framework include:
 
 It is designed to work with Load Files as an intermediate step between Source and Relativity ingestion. Consumer of the IPI needs to produce a Load File and make an REST call to Relativity telling it the location of the Load File along with other ingestion configurations. After that, Trace will take the Load File and automatically import it using the provided configurations.
 
-Glossary
-========
+## Glossary
 
 -   **Data Batch:** RDO that contains all needed information about Load File and
     its ingestion status
@@ -62,8 +76,7 @@ Glossary
     
 -   **IPI:** Trace Proactive Ingestion
 
-Prerequisites: Load File and Integration Point Profile
-======================================================
+## Prerequisites: Load File and Integration Point Profile
 
 1.  Install “Trace” application
 
@@ -103,8 +116,7 @@ Prerequisites: Load File and Integration Point Profile
     4.  Enabled: used to signal stop or start of the data source ingestion from
         external source
 
-Data Batch Overview
-===================
+## Data Batch Overview
 
 Data Batch is a unit of work in IPI, it has all the needed configuration and  status information to ingest data and monitor ingestion progress.
 
@@ -138,16 +150,252 @@ When a Data Source creates a Data Batch, several fields must be filled out:
             1.  ![](media/8770cf000865b61b94dc24002b7d49e5.png)
 
 
-Relativity REST API Usage for Trace Components
-=========
-Sample .NET console app code to connect to Relativity instance and retrieve (Read/Query) information about configured Trace components using no internal dependencies.
+## Ingestion API Usage
 
-Sample below shows how to interact with the following Trace Components ( all of them as standard Relativity Objects - please, refer to this [documentation](https://platform.relativity.com/RelativityOne/Content/REST_API/REST_API.htm) for full reference ):
+Working with TPI involves several steps in a base workflow:
 
-- Data Source
-- Monitored Individual
+1.  Create Load File with data in a Fileshare accessible by Relativity
 
-```C#
+2.  Create Data Batch RDO in Relativity
+
+    1.  Status set to `ReadyforImport`
+
+    2.  Data Source Selected to *Office 365 Email*
+
+    3.  Load File Path filled
+        `DataTransfer\Import\Office365Emails\20180511200815UTC-20180511210839UTC\loadfile.dat`
+
+On next Ingestion task check-in Trace will automatically ingest the data by creating an Integration Point and will validate the import was successful.
+
+## Data Batch creation (Quick Start)
+
+Since Data Batch is an RDO, standard Relativity API can be used to manage it. Sample below shows how to create Data Batches with Relativity REST (generic API). One can prototype with Relativity REST without  having to write any code. We recommend tools such as [Fiddler](https://www.telerik.com/fiddler) to prototype sample calls ahead of creating full solutions in code.
+
+### Data Batch Statuses
+
+Below status identifiers are needed to set a Data Batch to a particular stage of
+processing. The identifiers are the same across all versions of Relativity and Trace application.
+
+-   `29D19E38-8096-4A63-9496-F6E02D40FBFF` - GUID identifier for `Created` status
+
+-   `5932D23F-697B-4950-AE55-1E38AFDD4D2C` - GUID identifier for `RetrievedFromSource` status
+    
+-   `B4680628-67EE-47F7-813C-51DEA69CB19A` - GUID identifier for `Normalized` status
+    
+-   `32452D3D-35D2-4FF5-92E6-1DD01D755482` – GUID identifier for `ReadyForImport` status
+    
+-   `68FCCFB2-6CE4-442C-A402-26A76E37A961` – GUID identifier for `Abandoned` status
+
+### Create Data Batch
+
+Below **sample request** will create a Data Batch associated with Load File
+`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat`
+
+```json
+POST https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch HTTP/1.1
+X-CSRF-Header:
+Authorization: Basic ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
+X-Kepler-Version: 2.0
+Content-Type: application/json; charset=utf-8
+Host: REPLACE_WITH_RELATIVITY_ROOT
+Content-Length: 252
+Expect: 100-continue
+
+{
+  "Name": "Test Data Batch",
+  "Status": {
+    "Guids": [
+      "29D19E38-8096-4A63-9496-F6E02D40FBFF"
+    ],
+    "Artifact Type Name": "Choice"
+  },
+  "Load File Path": "DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat",
+  "Data Source": {
+    "Artifact ID": 3453563
+  },
+  "Parent Artifact": {
+    "Artifact ID": 1003663
+  },
+  "RetryCount": 0,
+  "Artifact Type Name": "Data Batch"
+}
+```
+
+`1017899` – workspace ID
+
+`ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded *username:password* format
+
+`29D19E38-8096-4A63-9496-F6E02D40FBFF` – GUID identifier for `Created` status
+
+Above request must be executed using Fiddler, for example:
+
+![](media/94b9bc1537ab80a8592c157df514b711.png)
+
+### Update Data Batch
+
+Below **sample requests** will update a Data Batch associated with Load File
+`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat` to `ReadyForImport` status
+
+```json
+PUT
+https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017877 HTTP/1.1
+X-CSRF-Header:
+Authorization: Basic
+ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
+X-Kepler-Version: 2.0
+Content-Type: application/json; charset=utf-8
+Host: REPLACE_WITH_RELATIVITY_ROOT
+Content-Length: 252
+Expect: 100-continue
+
+{
+  "Status": {
+    "Guids": [
+      "32452D3D-35D2-4FF5-92E6-1DD01D755482"
+    ],
+    "Artifact Type Name": "Choice"
+  },
+  "DocumentCount_LoadFileGenerated": "500",
+  "Timestamp_LoadFileGenerated": "3\/27\/2018 4:15:13 PM",
+  "Parent Artifact": {
+    "Artifact ID": 1003663
+  },
+  "Artifact Type Name": "Data Batch",
+  "Artifact ID": 1017877
+}
+```
+
+`1017899` – Workspace ID
+
+`1017877` - Artifact ID of `Test Data Batch` create in the previous section
+
+`ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded username:password
+
+`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat` - load file location
+
+`32452D3D-35D2-4FF5-92E6-1DD01D755482` – GUID identifier for `ReadyForImport` status
+
+Above request must be executed using Fiddler, for example:
+
+![](media/94b9bc1537ab80a8592c157df514b711.png)
+
+After Data Batch is created or updated, it can be monitored in Relativity UI (or programmatically via identifier returned from Create API request)
+
+![](media/409d8a386254a37e507eebd8042cf8cb.png)
+
+![](media/661127765a65e979f55dd2574b10c603.png)
+
+![](media/7c0804895ff95708ca6a5553e44277cf.png)
+
+## Workflow Recommendations
+
+### Security
+
+In order to work with IPI in a secure manner, create a new user with limited permissions: enable access only to Relativity objects that are needed: Data Batch, Data Source and particular fields ( `Trace Has Errors` and `Trace Error Details` ) on a Document object.
+
+### Load File Specifications
+
+Full list of specifications:
+<https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Importing/Load_file_specifications.htm>
+
+Recommended approach to generate **Load Files (.dat)** with the following specs:
+
+| Value        | Character | ASCII Number | Notes                                    |
+|--------------|-----------|--------------|------------------------------------------|
+| Column       |           | 020          | Must replace this character in your data |
+| Quote        | þ         | 254          | Must replace this character in your data |
+| Newline      |           | 013 + 010    | Carriage Return + Line Feed Character    |
+| Multi-Value  | ;         | 059          |                                          |
+| Nested Value | \\        | 092          |                                          |
+
+#### Text Fields
+
+All text fields in the load file must avoid special characters mentioned above. They are reserved as delimiters and will produce non-ingestible data. Those characters must be explicitly replaced. **Recommended approach is to replace Column (ASCII 020) and Quote (ASCII 254) characters with a space.** C\# sample below illustrates one way to replace special characters:
+
+![](media/1a153ec4bda6645da5bbf95a89d8679a.png)
+
+### Field Mappings stored in Relativity Integration Point Profile
+
+The following fields **must** be part of the Load File and must be mapped to appropriate Relativity fields:
+
+#### Required (absolute musts)
+
+1. `Object Type Identifier` - this is usually called a `Control Number`
+
+2. `Trace Monitored Individuals` – list of monitored people associated with each record
+
+3. `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
+
+   1. > **IMPORTANT:** column name in the load file must be called `Trace Document Hash`
+
+4. `Trace Has Errors` – true/false. True, if particular document has errors
+   (e.g. audio file too big to transcribe, etc…)
+   
+5. `Trace Error Details` – details of the individual item’s error (stack trace,
+   retry information, etc)
+   
+6. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
+
+7. `Relativity Attachment ID` - must be set to empty string  and mapped to `Relativity Attachment ID` field in Relativity. This field is needed for RSMF content.
+
+8. `Group Identifier` - cannot be empty. This field is used to group a parent native file and its children (e.g. an email and its attachments). Every parent native file must have a unique value. Extracted children should have the same value as its parent native file. It is suggested that a unique GUID is used for this value, and that it is different from the values used in other columns.
+
+   1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
+
+#### Recommended
+
+1. `Trace Data Batch` – name of the batch
+2. `Trace Checkout` – must be set to empty string. This ensures Trace can
+   restart indexing and term searching for particular item in case of changes
+   to an existing document (overlay scenario)
+3. `Trace Rules` – must be set to empty string. This ensures that any Rule tags
+   are cleared.
+4. `Trace Rule Terms` – must be set to empty string. This ensures that any Rule Terms tags
+   are cleared.
+5. `Trace Terms` - must be set to empty string. This ensures that any Term tags
+   are cleared.
+6. `Trace Record Origin Identifier` - this should be an id of a record from it's data origin system. Once included, Trace will track this value across all Trace actions on a particular record. This helps to reconstruct audit trail for a particular record.
+
+![](media/7beaeffb89e2aef4285696f44c7ff423.png)
+
+### Data Batches
+
+Recommended workflow for Data Batch creation ( `Created` -\> `RetrievedFromSource` -\> `Normalized` -\> `ReadyForImport` ):
+
+1.  Create Data Batch with Status `Created` before starting data retrieval process
+    
+2.  Update Data Batch status to `RetrievedFromSource` when data is retrieved
+
+3.  If data needs to be enriched or transformed, update Data Batch status to `Normalized`
+    
+4.  Once Load File is created, update Data Batch status to `ReadyForImport`. Include Import Configuration details. At this point Trace will pick it up and ingest the data into Relativity.
+
+At any stage, you can use Metadata field on the Data Batch to capture information regarding the batch of documents as you go through the process.
+
+### Error Handling
+
+1.  For item-level errors, always populate the following two fields
+
+    1.  `Trace Has Errors` – true/false. True, if particular document has errors (e.g. audio file too big to transcribe, etc…)
+    
+2.  `Trace Error Details` – details of the individual item’s error (stack trace, retry information, etc)
+    
+2.  For batch-level error (e.g. connection failure to retrieve the data, etc...), update status of `Created` batch to `Abandoned` and populate batch `Error Details` with appropriate error.
+
+# Ingest Monitored Individuals Information
+
+You may want to automatically ingest and synchronize  [Monitored Individuals](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#monitored-individuals) Information into Trace from your existing system such as Active Directory.
+
+Below diagram shows what is needed in order to synchronize Monitored Individuals information from Active Directory with Trace.
+
+![image-20200517203352102](media/proactive_ingestion_api_documentation/image-20200517203352102.png)
+
+Sample .NET console app code below demonstrates:
+
+- Authentication to Relativity REST API
+- Ready / query of Trace-specific RDOs
+
+```CSharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -395,246 +643,3 @@ namespace TraceREST
 }
 
 ```
-
-Ingestion API Usage
-=========
-
-Working with TPI involves several steps in a base workflow:
-
-1.  Create Load File with data in a Fileshare accessible by Relativity
-
-2.  Create Data Batch RDO in Relativity
-
-    1.  Status set to `ReadyforImport`
-
-    2.  Data Source Selected to *Office 365 Email*
-
-    3.  Load File Path filled
-        `DataTransfer\Import\Office365Emails\20180511200815UTC-20180511210839UTC\loadfile.dat`
-
-On next Ingestion task check-in Trace will automatically ingest the data by creating an Integration Point and will validate the import was successful.
-
-Data Batch creation (Quick Start)
-=================================
-
-Since Data Batch is an RDO, standard Relativity API can be used to manage it. Sample below shows how to create Data Batches with Relativity REST (generic API). One can prototype with Relativity REST without  having to write any code. We recommend tools such as [Fiddler](https://www.telerik.com/fiddler) to prototype sample calls ahead of creating full solutions in code.
-
-Data Batch Statuses
--------------------
-
-Below status identifiers are needed to set a Data Batch to a particular stage of
-processing. The identifiers are the same across all versions of Relativity and Trace application.
-
--   `29D19E38-8096-4A63-9496-F6E02D40FBFF` - GUID identifier for `Created` status
-
--   `5932D23F-697B-4950-AE55-1E38AFDD4D2C` - GUID identifier for `RetrievedFromSource` status
-    
--   `B4680628-67EE-47F7-813C-51DEA69CB19A` - GUID identifier for `Normalized` status
-    
--   `32452D3D-35D2-4FF5-92E6-1DD01D755482` – GUID identifier for `ReadyForImport` status
-    
--   `68FCCFB2-6CE4-442C-A402-26A76E37A961` – GUID identifier for `Abandoned` status
-
-Create Data Batch
------------------
-
-Below **sample request** will create a Data Batch associated with Load File
-`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat`
-
-```json
-POST https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch HTTP/1.1
-X-CSRF-Header:
-Authorization: Basic ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
-X-Kepler-Version: 2.0
-Content-Type: application/json; charset=utf-8
-Host: REPLACE_WITH_RELATIVITY_ROOT
-Content-Length: 252
-Expect: 100-continue
-
-{
-  "Name": "Test Data Batch",
-  "Status": {
-    "Guids": [
-      "29D19E38-8096-4A63-9496-F6E02D40FBFF"
-    ],
-    "Artifact Type Name": "Choice"
-  },
-  "Load File Path": "DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat",
-  "Data Source": {
-    "Artifact ID": 3453563
-  },
-  "Parent Artifact": {
-    "Artifact ID": 1003663
-  },
-  "RetryCount": 0,
-  "Artifact Type Name": "Data Batch"
-}
-```
-
-`1017899` – workspace ID
-
-`ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded *username:password* format
-
-`29D19E38-8096-4A63-9496-F6E02D40FBFF` – GUID identifier for `Created` status
-
-Above request must be executed using Fiddler, for example:
-
-![](media/94b9bc1537ab80a8592c157df514b711.png)
-
-Update Data Batch
------------------
-
-Below **sample requests** will update a Data Batch associated with Load File
-`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat` to `ReadyForImport` status
-
-```json
-PUT
-https://REPLACE_WITH_RELATIVITY_ROOT/Relativity.REST/api/Relativity.REST/workspace/1017899/Data%20Batch/1017877 HTTP/1.1
-X-CSRF-Header:
-Authorization: Basic
-ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=
-X-Kepler-Version: 2.0
-Content-Type: application/json; charset=utf-8
-Host: REPLACE_WITH_RELATIVITY_ROOT
-Content-Length: 252
-Expect: 100-continue
-
-{
-  "Status": {
-    "Guids": [
-      "32452D3D-35D2-4FF5-92E6-1DD01D755482"
-    ],
-    "Artifact Type Name": "Choice"
-  },
-  "DocumentCount_LoadFileGenerated": "500",
-  "Timestamp_LoadFileGenerated": "3\/27\/2018 4:15:13 PM",
-  "Parent Artifact": {
-    "Artifact ID": 1003663
-  },
-  "Artifact Type Name": "Data Batch",
-  "Artifact ID": 1017877
-}
-```
-
-`1017899` – Workspace ID
-
-`1017877` - Artifact ID of `Test Data Batch` create in the previous section
-
-`ZGVtby51c2VyQHJlbGF0aXZpdHkuY29tOmRlbW9Vc2VyUGFzc3dvcmQ=` - base64 encoded username:password
-
-`DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat` - load file location
-
-`32452D3D-35D2-4FF5-92E6-1DD01D755482` – GUID identifier for `ReadyForImport` status
-
-Above request must be executed using Fiddler, for example:
-
-![](media/94b9bc1537ab80a8592c157df514b711.png)
-
-After Data Batch is created or updated, it can be monitored in Relativity UI (or programmatically via identifier returned from Create API request)
-
-![](media/409d8a386254a37e507eebd8042cf8cb.png)
-
-![](media/661127765a65e979f55dd2574b10c603.png)
-
-![](media/7c0804895ff95708ca6a5553e44277cf.png)
-
-Workflow Recommendations
-========================
-
-Security
---------
-
-In order to work with IPI in a secure manner, create a new user with limited permissions: enable access only to Relativity objects that are needed: Data Batch, Data Source and particular fields ( `Trace Has Errors` and `Trace Error Details` ) on a Document object.
-
-Load File Specifications
-------------------------
-
-Full list of specifications:
-<https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Importing/Load_file_specifications.htm>
-
-Recommended approach to generate **Load Files (.dat)** with the following specs:
-
-| Value        | Character | ASCII Number | Notes                                    |
-|--------------|-----------|--------------|------------------------------------------|
-| Column       |           | 020          | Must replace this character in your data |
-| Quote        | þ         | 254          | Must replace this character in your data |
-| Newline      |           | 013 + 010    | Carriage Return + Line Feed Character    |
-| Multi-Value  | ;         | 059          |                                          |
-| Nested Value | \\        | 092          |                                          |
-
-### Text Fields
-
-All text fields in the load file must avoid special characters mentioned above. They are reserved as delimiters and will produce non-ingestible data. Those characters must be explicitly replaced. **Recommended approach is to replace Column (ASCII 020) and Quote (ASCII 254) characters with a space.** C\# sample below illustrates one way to replace special characters:
-
-![](media/1a153ec4bda6645da5bbf95a89d8679a.png)
-
-Field Mappings stored in Relativity Integration Point Profile
--------------------------------------------------------------
-
-The following fields **must** be part of the Load File and must be mapped to appropriate Relativity fields:
-
-**Required (absolute musts):**
-
-1. `Object Type Identifier` - this is usually called a `Control Number`
-
-2. `Trace Monitored Individuals` – list of monitored people associated with each record
-
-3. `Trace Document Hash` - uniquely identifies a particular record. This will be used by Trace for [de-deduplication purposes](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#deduplication-data-transformation)
-
-   1. > **IMPORTANT:** column name in the load file must be called `Trace Document Hash`
-
-4. `Trace Has Errors` – true/false. True, if particular document has errors
-   (e.g. audio file too big to transcribe, etc…)
-   
-5. `Trace Error Details` – details of the individual item’s error (stack trace,
-   retry information, etc)
-   
-6. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
-
-7. `Relativity Attachment ID` - must be set to empty string  and mapped to `Relativity Attachment ID` field in Relativity. This field is needed for RSMF content.
-
-8. `Group Identifier` - cannot be empty. This field is used to group a parent native file and its children (e.g. an email and its attachments). Every parent native file must have a unique value. Extracted children should have the same value as its parent native file. It is suggested that a unique GUID is used for this value, and that it is different from the values used in other columns.
-
-   1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
-
-**Recommended:**
-
-1. `Trace Data Batch` – name of the batch
-2. `Trace Checkout` – must be set to empty string. This ensures Trace can
-   restart indexing and term searching for particular item in case of changes
-   to an existing document (overlay scenario)
-3. `Trace Rules` – must be set to empty string. This ensures that any Rule tags
-   are cleared.
-4. `Trace Rule Terms` – must be set to empty string. This ensures that any Rule Terms tags
-   are cleared.
-5. `Trace Terms` - must be set to empty string. This ensures that any Term tags
-   are cleared.
-6. `Trace Record Origin Identifier` - this should be an id of a record from it's data origin system. Once included, Trace will track this value across all Trace actions on a particular record. This helps to reconstruct audit trail for a particular record.
-
-![](media/7beaeffb89e2aef4285696f44c7ff423.png)
-
-Data Batches
-------------
-
-Recommended workflow for Data Batch creation ( `Created` -\> `RetrievedFromSource` -\> `Normalized` -\> `ReadyForImport` ):
-
-1.  Create Data Batch with Status `Created` before starting data retrieval process
-    
-2.  Update Data Batch status to `RetrievedFromSource` when data is retrieved
-
-3.  If data needs to be enriched or transformed, update Data Batch status to `Normalized`
-    
-4.  Once Load File is created, update Data Batch status to `ReadyForImport`. Include Import Configuration details. At this point Trace will pick it up and ingest the data into Relativity.
-
-At any stage, you can use Metadata field on the Data Batch to capture information regarding the batch of documents as you go through the process.
-
-Error Handling
---------------
-
-1.  For item-level errors, always populate the following two fields
-
-    1.  `Trace Has Errors` – true/false. True, if particular document has errors (e.g. audio file too big to transcribe, etc…)
-    
-2.  `Trace Error Details` – details of the individual item’s error (stack trace, retry information, etc)
-    
-2.  For batch-level error (e.g. connection failure to retrieve the data, etc...), update status of `Created` batch to `Abandoned` and populate batch `Error Details` with appropriate error.
