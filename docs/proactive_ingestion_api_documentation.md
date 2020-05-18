@@ -1,7 +1,7 @@
 # Relativity Trace API
 
 - [Overview](#overview)
-- [(1) Ingest Data From Custom Data Sources](#1-ingest-data-from-custom-data-sources)
+- [Ingest Data From Custom Data Sources](#ingest-data-from-custom-data-sources)
   * [Glossary](#glossary)
   * [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
   * [Data Batch Overview](#data-batch-overview)
@@ -15,11 +15,11 @@
     + [Load File Specifications](#load-file-specifications)
       - [Text Fields](#text-fields)
     + [Field Mappings stored in Relativity Integration Point Profile](#field-mappings-stored-in-relativity-integration-point-profile)
-      - [Required (absolute musts)](#required--absolute-musts-)
+      - [Required (absolute musts)](#required--absolute-musts)
       - [Recommended](#recommended)
     + [Data Batches](#data-batches)
     + [Error Handling](#error-handling)
-- [(2) Ingest Monitored Individuals Information](#2-ingest-monitored-individuals-information)
+- [Ingest Monitored Individuals Information](#ingest-monitored-individuals-information)
 
 # Overview
 
@@ -34,7 +34,7 @@ There are two key ingredients that Trace needs in order to work:
 
 This documents provides information on how to build custom integration for both use cases.
 
-# (1) Ingest Data From Custom Data Sources
+# Ingest Data From Custom Data Sources
 
 The Trace Proactive Ingestion system (that powers Trace) allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
 
@@ -382,11 +382,13 @@ At any stage, you can use Metadata field on the Data Batch to capture informatio
     
 2.  For batch-level error (e.g. connection failure to retrieve the data, etc...), update status of `Created` batch to `Abandoned` and populate batch `Error Details` with appropriate error.
 
-# (2) Ingest Monitored Individuals Information
+# Ingest Monitored Individuals Information
+
+You may want to automatically ingest and synchronize  [Monitored Individuals](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#monitored-individuals) Information into Trace from your existing system such as Active Directory.
+
+Below diagram shows what is needed in order to synchronize Monitored Individuals information from Active Directory with Trace.
 
 ![image-20200517203352102](media/proactive_ingestion_api_documentation/image-20200517203352102.png)
-
-Above diagram shows what is needed to create integration of Trace Monitored Individuals with Active Directory system.
 
 Sample .NET console app code below demonstrates:
 
