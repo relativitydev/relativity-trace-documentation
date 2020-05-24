@@ -798,17 +798,17 @@ sections.
     the pipe character are supported through escaping the pipe character
     with a second pipe. Pipes are always escaped left to right.
 
-    > **Example Password Bank:** passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||
+    > **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
     >
     > Yields the following passwords:
     >
-    > * passw0rd
-    > * Tracer1234!
-    > * aaa
-    > * bb
-    > * cccc|dd|eee|
-    > * ff|
-    > * ggg||hhh||
+    > * `passw0rd`
+    > * `Trace1234!`
+    > * `aaa`
+    > * `bb`
+    > * `cccc|dd|eee|`
+    > * `ff|`
+    > * `ggg||hhh||`
 
 - **Extraction Thread Count:** The number of documents to extract in parallel.
 
