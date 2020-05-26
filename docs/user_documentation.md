@@ -1282,46 +1282,17 @@ It is required that the Azure Information Protection Instance being used is back
 
 #### Configure Super User
 
-In order for Trace to be able to read AIP protected documents, the Trace Data Source username and password must be the username and password associated with a Super User in your AIP Service. You can enable Super Users and set permissions by following this guide :  https://docs.microsoft.com/en-us/azure/information-protection/configure-super-users.
+In order for Trace to be able to read AIP protected documents, the Trace Data Source must be associated with a Super User in your AIP Service. The Super User can be either a real user account in your directory, or a service principal associated with an Azure Application Registration (service principal). You can enable Super Users and set permissions by following this guide :  https://docs.microsoft.com/en-us/azure/information-protection/configure-super-users.
 
 #### Add an Application Registration for Super User
 
 In order for Trace to interact with the Azure Information Protection API, you will need to create an Application Registration in the Azure Active Directory instance associated with your AIP instance. 
 
-You can create and Application Registration using the Azure portal and following these instructions :  https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal.
-
-The following parameters must be set while creating an application registration:
-
-- **Name** : This is the name of your app registration and can be anything. Trace does not rely on the name to identify the app registration.
-- **Account Type** : This should be set to "Accounts in this organizational directory only". This setting requires that the Super User configured is in this Azure Active Directory instance.
-- **Redirect URI** : This should be set to "Public client". You can leave the Redirect URI as the default recommended value.
-
-After creating the App Registration, you will need to add permissions to the registration so that it can consume the AIP API. Under the "API Permissions" tab, add the following permissions by clicking "Add a Permission" :
-
-- Azure Rights Management Services
-  - Add Delegated permissions and make sure the "user_impersonation" box is checked.
-  - Click "Add Permissions"
-- Microsoft Information Protection Sync Service
-  - Add Delegated permissions and make sure the "UnifiedPolicy.User.Read" box is checked under the "UnifiedPolicy" tab.
-  - Click "Add Permissions"
-
-After adding the API permissions, click "Grant admin consent" on the API permissions page.
+Please follow the documentation in authorization.md to create an application registration for AIP.
 
 ## Configuring Trace for Azure Information Protection
 
-After finishing the configuration of the Azure Information Protection instance, you're ready to start configuring Trace for consuming AIP protected data. AIP is configured at the Data Source level. Each Data Source with AIP protected documents will need to have the following properties populated:
-
-- **Username**: The username for the Super User of the AIP instance.
-
-  > **NOTE:** For the Exchange Data Source Type, this username is also used to access the O365 mailbox, so the Super User configured must also have permissions to access the mailboxes being monitored
-
-- **Password**: The password for the Super User of the AIP instance.
-
-- **AIP Application Id**: This is the application ID of the app registration that was set up in the previous section. To find the application ID, go to the App Registration in the Azure portal and find the application ID labeled **Application (client) ID**.
-
-- **AIP Tenant Id**: This is the Directory ID of the App Registration that was set up in the previous section. To find the tenant ID, go to the App Registration in the Azure portal and find the tenant ID labeled **Directory (tenant) ID**
-
-  > **NOTE:** AIP will be enabled on the Data Source only if AIP Application Id *and* AIP Tenant Id are populated (not empty) on the Data Source settings. 
+After finishing the configuration of the Azure Information Protection instance, you're ready to start configuring Trace for consuming AIP protected data. AIP is configured at the Data Source level. Please populate the required fields listed in authorization.md for your intended authorization grant.
 
 Considerations
 ==============
