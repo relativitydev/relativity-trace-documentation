@@ -23,8 +23,8 @@ Using the Resource Owner Password Credentials Grant, Trace will use the username
 
 - Username
 - Password
-- EWS Client Id
-- EWS Tenant Id
+-  Exchange Settings - Authorization Client Id 
+-  Exchange Settings - Authorization Tenant Id 
 
 ##### OAuth 2.0 -  Client Credentials Grant
 
@@ -32,8 +32,8 @@ Using the Client Credentials Grant, Trace will act as a service principal instea
 
 ###### Required Fields on Data Source:
 
-- EWS Client Id
-- EWS Tenant Id
+- Exchange Settings - Authorization Client Id 
+- Exchange Settings - Authorization Tenant Id 
 - EWS Client Secret
 
 
@@ -55,7 +55,7 @@ Trace can authenticate against Azure Information Protection services using only 
 
 ###### Required Fields on Data Source:
 
-- AIP Client Id
+- AIP Application Id 
 - AIP Tenant Id
 - AIP Client Secret
 

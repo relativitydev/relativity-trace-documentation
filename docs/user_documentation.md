@@ -850,7 +850,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 **Step 2: Adjust Office 365 permissions**
 
->   **NOTE:** Settings for On Premises exchange are very similar to Office 365
+>   **NOTE:** Settings for On Premises exchange are very similar to Office 365. Setting user permissions only applies if you are using Basic Authentication or OAuth Resource Owner Password Credential Grant (see authorization.md for more details)
 
 1.  Log into the Office 365 Admin Center
 
@@ -884,12 +884,8 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 4.  Select Integration Point Profile created in **Step 1**
 
-5.  Set the Username = username (usually an email address) of the admin user you
-    will be using to retrieve emails (configured in Step 2)
-
-6.  Set the Password = password of the admin user you will be using to retrieve
-    emails
-
+5.  Set the required credentials depending on your authentication method (see authorization.md for more details).
+    
 7.  Set Start Date to the earliest email timestamp you would like imported (UTC
     time)
 
