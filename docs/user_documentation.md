@@ -812,7 +812,16 @@ sections.
 
 - **Extraction Thread Count:** The number of documents to extract in parallel.
 
-- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: true/false
+- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: 
+
+  -   `true`
+  -   `false`
+
+- **Embedded File Behavior:** Embedded files are defined as attachments without file names. Most commonly these are in-line images. This setting changes the extraction behavior of embedded files. Valid options are:
+
+  -   **`Import`** - Import all attachments
+  -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
+  -   **`DoNotImport`** - Do not import any embedded files.
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
 
