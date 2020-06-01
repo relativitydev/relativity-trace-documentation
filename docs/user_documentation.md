@@ -812,7 +812,18 @@ sections.
 
 - **Extraction Thread Count:** The number of documents to extract in parallel.
 
-- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: true/false
+- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: 
+
+  -   `true`
+  -   `false`
+
+- **Embedded File Behavior:** Embedded files are defined as attachments without file names. Most commonly these are in-line images. This setting changes the import behavior for embedded files. Valid options are:
+
+  -   **`Import`** - Import all embedded files (top level and child) as separate documents in Relativity Trace.
+  -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
+  -   **`DoNotImport`** - Do not import any embedded files.
+  
+>   **NOTE:** Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
 
