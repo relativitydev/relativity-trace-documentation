@@ -83,7 +83,7 @@ If using the ROPC authorization method, the application registration must be ena
 
 The API Permissions blade in the application registrations config allows you to assign permissions to API endpoints in Azure. Each permission can be added by navigating to the API permissions blade and clicking "Add a permission". This will cause a pop-up where you can navigate to the API endpoint that is needed scoped permissions can be granted.
 
-##### EWS
+##### Exchange Web Services (EWS)
 
 The API permissions required by Trace for Exchange vary depending on the authorization flow you are using.
 
@@ -106,7 +106,7 @@ To configure Client Credential authorization in Trace, your application registra
 
 This permission will require an Azure Portal admin to grant consent for your application registration to use it.
 
-##### Azure Information Protection
+##### Azure Information Protection (AIP)
 
 The API permissions required by Trace for AIP vary depending on the authorization flow you are using.
 
