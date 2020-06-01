@@ -1,6 +1,6 @@
 # Relativity Trace Release Notes
 
-- [12.2.0.13 (27 April 2020)](#123000-1-june-2020)
+- [12.3.0.3 (1 June 2020)](#12303-1-june-2020)
 - [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
 - [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
 - [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
@@ -11,7 +11,7 @@
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.3.0.00 (1 June 2020)
+# 12.3.0.3 (1 June 2020)
 
 **Relativity Compatibility**
 
@@ -37,7 +37,7 @@
 
 **Upgrade Considerations**
 
-- All Office 365 customers should migrate to use of OAuth 2.0. Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing. Review Relativity Trace Authorization documentation for OAuth 2.0 information.
+- All Office 365 customers should migrate to use of OAuth 2.0. Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing. Review [Relativity Trace Authorization](https://relativitydev.github.io/relativity-trace-documentation/authorization) documentation for OAuth 2.0 information.
 
 # 12.2.0.13 (27 April 2020) - DEPRECATED
 
