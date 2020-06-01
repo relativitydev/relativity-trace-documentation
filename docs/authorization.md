@@ -15,7 +15,7 @@ With Basic Authentication, Trace will use the username and password configured o
 - Username
 - Password
 
-   > **NOTE:** Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing.
+> **NOTE:** Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing.
 
 ##### OAuth 2.0 - Resource Owner Password Credentials Grant
 
