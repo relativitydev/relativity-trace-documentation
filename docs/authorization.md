@@ -2,7 +2,7 @@
 
 This document lists various methods of authorization with Azure services including Exchange Web Services (EWS) and Azure Information Protection (AIP).
 
-### EWS
+### Exchange Web Services (EWS)
 
 Trace offers three methods for authentication and authorization with Exchange: Basic Authentication and 2 forms of OAuth 2.0 using application registrations in Azure.
 
@@ -38,7 +38,7 @@ Using the Client Credentials Grant, Trace will act as a service principal instea
 
 
 
-### Azure Information Protection
+### Azure Information Protection (AIP)
 
 Trace can authenticate against Azure Information Protection services using only the two OAuth 2.0 authorization methods listed above. The authorization flow is identical to that of each OAuth method EWS, but the authorization token will be used against AIP services instead of Exchange. Additionally, the required fields on the data source differ.
 
