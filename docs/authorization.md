@@ -15,6 +15,8 @@ With Basic Authentication, Trace will use the username and password configured o
 - Username
 - Password
 
+   > **NOTE:** Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing.
+
 ##### OAuth 2.0 - Resource Owner Password Credentials Grant
 
 Using the Resource Owner Password Credentials Grant, Trace will use the username and password configured on the data source to authenticate against an Azure Active Directory authorization server. The authorization server will return an authorization token that Trace will use to make calls against the Exchange server. This authentication method also allows Exchange admins to scope which mailboxes Trace has access to by modifying the configured user's permissions.
