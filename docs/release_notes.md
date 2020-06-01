@@ -1,6 +1,7 @@
 # Relativity Trace Release Notes
 
-- [12.2.0.13 (27 April 2020)](#122013-27-april-2020)
+- [12.3.0.3 (1 June 2020)](#12303-1-june-2020)
+- [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
 - [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
 - [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
 - [12.0.5.2 (24 October 2019) - DEPRECATED](#12052-24-october-2019---deprecated)
@@ -10,7 +11,35 @@
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.2.0.13 (27 April 2020)
+# 12.3.0.3 (1 June 2020)
+
+**Relativity Compatibility**
+
+- **≥ 10.3.287.3**
+
+**Features**
+
+- Microsoft Exchange/O365 Data Source now supports OAuth 2.0 including support for client credential flow where Relativity Trace is registered as a service principal
+- Embedded File Behavior option on Data Sources allows customers to control extraction behavior of embedded content within communications and attachments to preventing the creation of excessive and unneeded files
+
+**Enhancements**
+
+- Data Disposal action is now supported for custom Data Sources
+- Data Batch Retry is now supported across fileshares for custom Data Sources
+- Added automatic retry of failures to decrypt AIP messages to improve reliability
+- Increased security for storing credentials on Data Sources
+
+**Defect Fixes**
+
+- Fixed issue with load file path on failed Data Batches from custom Data Sources that would prevent retry
+- Added an automatic retry of Data Batches stuck in Enriching status for more than 24 hours if they have not yet been retried
+- Trace Shipper now logs an error instead of overwriting the existing file if a file with the same name already exists in the destination folder
+
+**Upgrade Considerations**
+
+- All Office 365 customers should migrate to use of OAuth 2.0. Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing. Review [Relativity Trace Authorization](https://relativitydev.github.io/relativity-trace-documentation/authorization) documentation for OAuth 2.0 information.
+
+# 12.2.0.13 (27 April 2020) - DEPRECATED
 
 **Relativity Compatibility**
 
