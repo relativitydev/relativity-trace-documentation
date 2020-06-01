@@ -823,7 +823,7 @@ sections.
   -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
   -   **`DoNotImport`** - Do not import any embedded files.
   
-  >   **NOTE:** Both the 'Import' and 'DoNotImportFromAttachments' settings will greatly increase document volumes in Relativity Trace.
+  **NOTE:** Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
 
