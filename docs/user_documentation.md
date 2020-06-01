@@ -1149,7 +1149,7 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 -   **Rule Evaluation:** Responsible for evaluating configured Rules within the
     workspace 
     
-    > **NOTE:** The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the Trace Worker Agent. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+    > **NOTE:** The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
     
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
