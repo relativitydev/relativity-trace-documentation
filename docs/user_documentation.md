@@ -819,7 +819,7 @@ sections.
 
 - **Embedded File Behavior:** Embedded files are defined as attachments without file names. Most commonly these are in-line images. This setting changes the extraction behavior of embedded files. Valid options are:
 
-  -   **`Import`** - Import all attachments
+  -   **`Import`** - Import all embedded files (top level and child documents).
   -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
   -   **`DoNotImport`** - Do not import any embedded files.
 
