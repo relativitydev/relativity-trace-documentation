@@ -5,9 +5,10 @@
   2. [Relativity Trace Release Notes](https://relativitydev.github.io/relativity-trace-documentation/release_notes)
   
 ## Data Ingestion
-  1. [Relativity Trace Data Source User Guide](https://relativitydev.github.io/relativity-trace-documentation/trace_connectors_user_guide)
-  2. [Relativity Trace API](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
-  3. [Relativity Trace Shipper Service Documentation](https://relativitydev.github.io/relativity-trace-documentation/trace_shipper_service)
+  1. [Relativity Trace Data Source](https://relativitydev.github.io/relativity-trace-documentation/trace_connectors_user_guide)
+  2. [Relativity Trace Authorization](https://relativitydev.github.io/relativity-trace-documentation/authorization)
+  3. [Relativity Trace API](https://relativitydev.github.io/relativity-trace-documentation/proactive_ingestion_api_documentation)
+  4. [Relativity Trace Shipper Service](https://relativitydev.github.io/relativity-trace-documentation/trace_shipper_service)
  
 ## Support
   1. [Relativity Trace Troubleshooting Guide](https://relativitydev.github.io/relativity-trace-documentation/troubleshooting_guide)
