@@ -497,9 +497,8 @@ This action is used to:
 **Action Configuration**
 
 `Document Delete Batch Size` - controls number of documents to delete at once
-> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance
 
-`Files On Disk Document Delete Page Size` - controls the number of Relativity Documents to process file deletion for at a time
+> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance
 
 `Delete Documents Older Than Hours` - controls age of a document (based on System
 Created On date/time) to delete
@@ -1164,7 +1163,7 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 -   **Rule Evaluation:** Responsible for evaluating configured Rules within the
     workspace 
     
-    > **NOTE:** The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the Trace Worker Agent. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.`
+    > **NOTE:** The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
     
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
