@@ -25,6 +25,9 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 > **NOTE:** Windows service must have read/write/modify permission on the folders
 - Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
 - Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
+
+> **NOTE:** A document will fail to ship if a file with the same name already exists in the destination folder. Care should be taken to avoid duplicate file names both when initially retrieving data and when shipping multiple source folders to a single destination folder.
+
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
 > **NOTE:** To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
 - Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
@@ -35,10 +38,10 @@ Transfer API (TAPI) is the underlying method of data delivery to RelativityOne. 
 2. Aspera (FASP protocol) - default for RelativityOne
 
 ### Ports and Firewall settings
-For Aspera data transfer protocol the following ports are used:
+For the Aspera data transfer protocol, the following ports must be configured:
 1. Allow outbound connections to the server on the TCP port 33001, 9092.
 2. Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
-3. Allow outbount connections to the server on HTTPS (443)
+3. Allow outbound connections to the server on HTTPS (443)
 
 For details on the IP ranges for your specific RelativityOne instance please contact support@relativity.com
 
