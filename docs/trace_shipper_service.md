@@ -64,6 +64,7 @@ For details on the IP ranges for your specific RelativityOne instance please con
       6. **clientType** - Transfer API client type to use, current supported options are Aspera and Fileshare, contact support@relativity.com for more information
       7. **relativityUserName** - the username used to connect to Relativity to upload files (note, it is recommended to secure the TraceShipperService folder as a way to reduce risk of exposing these credentials)
       8. **relativityPassword** - the password used to connect to Relativity to upload files (note, it is recommended to secure the TraceShipperService folder as a way to reduce risk of exposing these credentials)
+   > **NOTE:** The user/password fields must comply with CDATA XML standard (XML friendly).  Special characters that break XML configuraiton are now allowed.
       9. **relativityUrl** - the url of the Relativity Instance where the files will be shipped
       10. **workspaceId** - the workspace ID of the workspace where the files will be shipped
 6. From the Services window, Start the `Trace Shipper Service`. If all configuration is correct, files should start departing the local source folders and showing up on the Relativity fileshare as configured.
