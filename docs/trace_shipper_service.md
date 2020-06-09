@@ -31,6 +31,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
 > **NOTE:** To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
 - Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
+- Download and install ROSE (Staging Explorer) and run Test Connectivity (https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection)
 
 ### Data Transfer Protocols
 Transfer API (TAPI) is the underlying method of data delivery to RelativityOne.  TAPI supports multiple protocols of data transfer including:
