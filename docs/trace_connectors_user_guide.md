@@ -1,7 +1,8 @@
 # Relativity Trace Data Source User Guide
 
-For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software. This software is called Globanet Merge1. You will also need to install additional hardware.
+For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Globanet Merge1).  You will also need to install additional hardware.
 
+  * [Trace Shipper Data Flow Overview]()
   * [Installation](#installation)
     + [Pre-requisites](#pre-requisites)
     + [Installation Steps](#installation-steps)
@@ -13,7 +14,17 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 
 
-## Installation of Globanet
+## Trace Shipper Data Flow Overview 
+
+![image-20200608131701844](media/trace_connectors_user_guide/image-20200608131701844.png)
+
+**NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software | Audio data is done by external data provider
+
+**NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
+
+
+
+## Installation of Trace Shipper
 
 ### Pre-requisites
 
@@ -64,73 +75,78 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
       2. >  **NOTE:** We recommend to shrink database daily in order not to run out of disk space
 
-3. Network Requirements
 
-   1.  Server with Globanet needs to have access to Relativity's Fileshare
-       1.  If Globanet does not have direct access to Relativity's Fileshare, site-to-site VPN OR SFTP sync can be setup. See Data Flow Overview below for more details
-       2.  Server with Globanet only needs access to specific folders on Relativity Fileshare. Details are documents in Data Flow Overview section below.
+
+
+### Setting up Trace Shipper Service
+
+Trace Shipper Service needs to be installed and configured to send data to your Relativity Trace workspace.  Refer to the 
+
+[Trace Shipper Guide]( /trace_shipper_service.md) for instructions on how to install and configure the Trace Shipper Service. Contact support@relativity.com if you need assistance.
 
 ### Installation Steps for Globanet
 
-Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Globanet. Contact support@relativity.com if you need assitance with installing Globanet.
+Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Globanet. Contact support@relativity.com if you need assistance with installation steps.
 
+### Setting up data sources
 
-### Globanet Data Flow Overview 
+In Trace enabled Relativity workspace perform the following steps:
 
-![1570206388354](media/trace_connectors_user_guide/1570206388354.png)
+> **NOTE:** When setting up the Data Source, if you do not see the Data Source Type that you are interested in please contact support@relativity.com.
 
-1. Globanet needs access to the following file `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config\monitored_individuals.csv`
-2. Globanet pulls data from a data origin
-3. Globanet processes the data and generates the output
-4. Globanet pushes the data to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop` folder
-5. Globanet pushes any logs to Relativity Fileshare's `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs` folder
+1.  Create Integration Point Profiles for each data source to specify data mappings.  The Integration Point Profile is used to map fields in a source load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-map-integration-point-profile) for detailed instructions.
+2. Create a new Data Source for each specific data source type (for example, ICE Chats) that you want to start pulling data from
+   1. Navigate to Data Source tab
+   
+   2. Click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each data source configuration field
+   
+   3. Fill out the required fields and click "Save"
+   
+   4. For Globanet data sources, re-edit the data source specifying Source Folder Path field to the relative location of the `Drop` folder:
+      `DataTransfer\\Import\\Globanet_Data\\{DATA_SOURCE_ARTIFACT_ID}\\Drop`
+   
+      ![](media/ea1adf994a5122ec6c8a047b06422dab.png)
+   
+      **NOTE:** In order to retrieve the {DATA_SOURCE_ARTIFACT_ID}, you can capture it from the browser URL once you are in the edit mode.  (Ex: in the URL of edit mode of data source, extract "ArtifactID" - https://trace.relativity.one/Relativity/Case/Mask/EditField.aspx?AppID=1979203&ArtifactID=1869789&ArtifactTypeID=1000097)
+3. Create Monitored Individuals
 
-## Setting up Trace Shipper Service
-If a direct or VPN option for data delivery is not available you can configure the Trace Shipper Service to send data to your Relativity Trace workspace.  Refer to the [Trace Shipper Service Documentation](Trace Shipper Service.md) for instructions on how to install and configure the Trace Shipper Service. Contact support@relativity.com if you need assistance.
+   1. Navigate to Monitored Individuals tab
+   2. Click on "New Monitored Individual" to create a new object
 
-## Setting up Data Sources
+   > **NOTE:** You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
 
-### Steps generic to setting up all Data Sources
+4. Link the desired Monitored Individuals to the Data Source
 
-1.  You must first create an Integration Point Profile if you have not already done so for the data source type you're attempting to connect to. The Integration Point Profile is used to map fields in a Data Source's load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-map-integration-point-profile) for detailed instructions.
-> **NOTE:** You will only need to set up at most two Integration Point Profiles. One for Globanet Data Sources, and one for the O365 Email Data Source.   
-2. Create a new Data Source in Relativity Trace for the data source type (for example, ICE Chats) that you want to start pulling data from. Go to the Data Source tab, then click on "New Data Source" in upper left hand corner. Please see [Data Source documentation](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources) for more information about each Data Source field.
-> **NOTE:** When setting up the Data Source, if you do not see the Data Source Type that you need to associate with this Data Source, please contact trace@relativity.com. For example, if you are attempting to configure a Data Source for ICE Chats, and you do not see a Data Source Type = ICE Chats, contact trace@relativity.com. A Trace Specialist will need to set up the Data Source Type with you.
-3. Create Monitored Individuals in Relativity Trace. Go to the Monitored Individuals tab, then click on "New Monitored Individual" to create a new record. You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
-4. Link the desired Monitored Individuals to the Data Source. To do so, go to the Data Source in view mode. Scroll down to link Monitored Individuals. You are now ready to begin pulling data from this Data Source for the linked Monitored Individuals.
-5. Enable the Data Source. To do so, go to the Data Source in view mode. Click on the blue icon "Enable Data Source" in the console on the right hand side.
+   1. Navigate to the Data Source object in view mode
+   2. Click "Link" under Monitored Individuals section
 
-### Steps specific to setting up Globanet Sources
+5. Enable the Data Source
 
-1.  By enabling the Data Source, Trace will now automatically generate a CSV file containing the linked Monitored Individuals. Globanet will read from this CSV file to determine who to pull data from for this Data Source.
-    
-2.  Before proceeding to the next step, **WAIT** until monitored_individuals.csv is generated in the following Relativty folder: {FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config
+   1. Navigate to the Data Source in view mode
+   2. Click on "Enable Data Source" in the console on the right hand side
 
-      ![](media/4deb6400be9c82fad0f5c4e056eaefbe.png)
+#### Steps specific to setting up Globanet data sources        
 
-    ​        
-    
-3. Create a `Drop` folder for where Globanet will be delivering data.
+1. Create a `Drop` folder for where Globanet will be delivering data.
 
    A.  `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop`
 
       ![](media/6e92489f333c6b3145e6e48e0f24da98.png)
 
-4.  Create `Logs` folder for where Globanet will be delivering logs: `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs`
+2. Create `Logs` folder for where Globanet will be delivering logs: `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs`
 
-5. Edit Data Source and update Source Folder Path field to the relative location of the `Drop` folder:
-   `DataTransfer\\Import\\Globanet_Data\\{DATA_SOURCE_ARTIFACT_ID}\\Drop`
+3. Configure Trace Shipper with specific "Drop" folder location for the data source
 
-   ![](media/ea1adf994a5122ec6c8a047b06422dab.png)
+   1. Start Trace Shipper service, on startup, a new folder will be created and "monitored_individuals.csv" file will be created with the appropriate MIs that were configured in Relativity UI : `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop\Config`
 
-6. Configure a corresponding “Importer” in Globanet
+4. Configure a corresponding “Importer” in Globanet
 
    1.  Configure monitored individuals to point to
-       `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config\monitored_individuals.csv`
+       `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop\Config\monitored_individuals.csv`
 
        ![](media/0ff2765c48e2574181833392b6b205f6.png)
 
-   2.  If `Monitored User` option is NOT available, configure `Filter` and use `Dynamic` -\> `CSV` option to point it to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Config\monitored_individuals.csv`
+   2.  If `Monitored User` option is NOT available, configure `Filter` and use `Dynamic` -\> `CSV` option to point it to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop\Config\monitored_individuals.csv`
        
        ![](media/43d295fa5746c8e030f2dcbcd580c3fc.png)
        1. Go to Edit filters
@@ -148,7 +164,7 @@ If a direct or VPN option for data delivery is not available you can configure t
 
    3.  Configure Target to point to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop`
        
-   
+
    ![](media/46158f241adc0ba59c24adb2951886a3.png)
        
    ![](media/23c4818eafb2d37846ca93226a1361e5.png)
@@ -171,8 +187,8 @@ If a direct or VPN option for data delivery is not available you can configure t
            ![1570209109659](media/trace_connectors_user_guide/1570209109659.png)
    8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
    9.  Configure `Importer Schedule` to run at a desirable frequency (daily is the most common frequency)
-   
-   
+
+
    ![](media/d90fd4dd9b1ec7d63117b9db5b669d78.png)
 
 
@@ -185,7 +201,7 @@ See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaw
 
 ![image-20200225144257108](media/trace_connectors_user_guide/image-20200225144257108.png)
 
-## Appendix B: Importer Schedule Helper
+## Appendix B: Globanet Importer Schedule Helper
 
 In order to ensure that data source runs **every X minutes** run the following steps OR manually select appropriate time slots:
 
