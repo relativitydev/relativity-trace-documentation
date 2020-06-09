@@ -18,7 +18,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 ![image-20200608131701844](media/trace_connectors_user_guide/image-20200608131701844.png)
 
-**NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software | Audio data is done by external data provider
+**NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software | Audio data is provided by external data provider
 
 **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
@@ -83,6 +83,10 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 Trace Shipper Service needs to be installed and configured to send data to your Relativity Trace workspace.  Refer to the 
 
 [Trace Shipper Guide]( /trace_shipper_service.md) for instructions on how to install and configure the Trace Shipper Service. Contact support@relativity.com if you need assistance.
+
+1. Capture the `remoteRelativePath` for each data source that you wish to process with Trace Shipper (this will be used to configure Data Source UI in Relativity - `Source Folder Path`)
+
+   **NOTE:** `remoteRelativePath` and corresponding `Source Folder Path` **MUST** be unique for each data source.
 
 ### Installation Steps for Globanet
 
