@@ -240,7 +240,7 @@ Trace has a three-step process that all new documents go through. This status is
 | **Status:** | **NEW**                                                      | **INDEXED**                                   | **TERM SEARCHED**                                            |
 | Overview:   | Documents that are brand new and are part of `Trace All  Documents` saved search | Documents that have been successfully indexed | Documents that have been successfully searched by Term Searching task |
 
-**NOTE:** Rule evaluation (including tagging documents to the Rule) is executed by the Rule Evaluation task and is outside of the core Trace Document Flow.
+> **NOTE:** Rule evaluation (including tagging documents to the Rule) is executed by the Rule Evaluation task and is outside of the core Trace Document Flow.
 
 ### Trace Document Fields
 
@@ -316,7 +316,7 @@ enable them for Relativity URLs.
 
 > **Note:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
 
-> **Note:**" Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
+> **Note:** Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
 
 >  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term
 > associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
