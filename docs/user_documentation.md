@@ -1079,7 +1079,7 @@ When using the `Communication Direction` transformation type, analysis is perfor
 
 ### Whitelist Data Transformation
 
-Data Transformations of type `Whitelist` can be used to populate the `Trace Whitelisted` field on documents with a Yes/No value that indicates whether a particular communication can be excluded from review. The `Trace Whitelisted` document field is populated based on the `Whitelist Entry` objects defined in the workspace. `Whitelist` transformations can specify the `Whitelist Categories` that should apply to the Data Source, or the `WhiteList Categories` field can be left blank in which case all `Whitelist Entry` objects in the workspace will be considered. Only one `Whitelist` Data Transformation can be applied to each `Data Source`.
+Data Transformations of type `Whitelist` can be used to populate the `Trace Whitelisted` field on documents with a Yes/No value that indicates whether a particular communication can be excluded from review. The `Trace Whitelisted` document field is populated based on the `Whitelist Entry` objects defined in the workspace. `Whitelist` transformations can specify the `Whitelist Categories` that should apply to the Data Source, or the `Whitelist Categories` field can be left blank in which case all `Whitelist Entry` objects in the workspace will be considered. Only one `Whitelist` Data Transformation can be applied to each `Data Source`.
 
 ![image-20200602160740161](media/user_documentation/image-20200602160740161.png)
 
