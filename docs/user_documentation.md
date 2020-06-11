@@ -1045,7 +1045,7 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 
 ### Deduplication Data Transformation
 
-Data Transformations of type *Deduplication* prevent a Data Source from importing a document if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
+Data Transformations of type `Deduplication` prevent a Data Source from importing a document if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
 
 For Trace native [Data Sources](#data-sources),  deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
 
@@ -1060,6 +1060,40 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 
 1. Trace Document Hash
 2. Group Identifier
+
+### Communication Direction Data Transformation
+
+Data Transformations of type `Communication Direction` can be used to populate the `Trace Communication Direction` field on documents with a communication direction value based on the `Internal Email Domain` objects in the workspace and values in the To, From, CC, and BCC fields in the load file. A specific email address is considered **internal** if the portion of the value to the right of the first `@` matches one of the defined `Internal Email Domains` (NOT case-sensitive), and **external** if it does not match any of the defined `Internal Email Domains`. Here are the possible `Trace Communication Direction` values:
+
+- **Internal** ALL of the email addresses in the From, To, CC, and BCC fields are **internal**
+- **Inbound** the From address is **external**, and ONE OR MORE of the email addresses in the To, CC, and BCC fields is **internal**
+- **Outbound** the From address is **internal**, and ONE OR MORE of the email addresses in the To, CC, and BCC fields is **external**
+- **External** ALL of the email addresses in the From, To, CC, and BCC fields are **external** (unlikely to happen unless `Internal Email Domains` change)
+- **Undefined** the From field must contain an email address with a domain and at least one of the To, CC, or BCC fields must contain an email address with a domain or the `Trace Communication Direction` is considered **Undefined** (need one domain in each direction to determine `Communication Direction`)
+
+When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
+
+> **NOTE:** the `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Communication Direction` transform.
+
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+
+### Whitelist Data Transformation
+
+Data Transformations of type `Whitelist` can be used to populate the `Trace Whitelisted` field on documents with a Yes/No value that indicates whether a particular communication can be excluded from review. The `Trace Whitelisted` document field is populated based on the `Whitelist Entry` objects defined in the workspace. `Whitelist` transformations can specify the `Whitelist Categories` that should apply to the Data Source, or the `Whitelist Categories` field can be left blank in which case all `Whitelist Entry` objects in the workspace will be considered. Only one `Whitelist` Data Transformation can be applied to each `Data Source`.
+
+![image-20200602160740161](media/user_documentation/image-20200602160740161.png)
+
+A communication is considered whitelisted if the `From ` field matches one or more of the `Whitelist Entry` objects in the `Whitelist Categories` specified on the `Whitelist` tranform.  A `Whitelist Entry` has a value in the `Name` field and an `Entry Type` of either **Domain** or **Email Address**. A `Whitelist Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
+
+![image-20200602160404981](media/user_documentation/image-20200602160404981.png)
+
+When using the `Whitelist` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Whitelisted` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
+
+> **NOTE:** the `Trace Whitelisted` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Whitelist` transform.
+
+> **NOTE:** Having too many `Whitelist Entry` objects in a workspace will increase the memory needs of the `Trace Manager Agent` when running `Whitelist` transformations. If your workspace has more than 5000 `Whitelist Entry`  objects defined, please contact `support@relativity.com` to make sure you have adequate system resources available.
+
+> **NOTE:** use of the `Whitelist` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
 ### Group Identifier Truncation for External Data Sources
 
