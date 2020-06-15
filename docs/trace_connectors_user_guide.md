@@ -75,21 +75,23 @@ To set up Trace Shipper, you will need:
 
 Each connector you set up will require a local directory to ship,  a Relativity Trace Data Source, and a remote Directory to ship to. All three of these must be unique to each connector.
 
-First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Globanet), later. 
+Perform the following steps in order to get started:
 
-> **Note:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
+1. First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Globanet), later. 
 
-> **For example:**  Say you are using Globanet to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
->
-> * C:\Globanet\Exchange
-> * C:\Globanet\ICE
+   1. > **NOTE:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
 
-Next, choose relative paths for the Relativity side of shipper. For convenience, we could make these similar to the local directories we defined above.
+   2. > **EXAMPLE:**  Say you are using Globanet to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
+      >
+      > * `C:\Globanet\Exchange`
+      > * `C:\Globanet\ICE`
 
-> **For example:** Continuing our earlier Exchange and ICE chat example, we might decide our remote relative paths are:
->
-> * Globanet\Exchange
-> * Globanet\ICE
+2. Next, choose relative paths for the Relativity side of shipper. For convenience, we could make these similar to the local directories we defined above.
+
+   1. > **For example:** Continuing our earlier Exchange and ICE chat example, we might decide our remote relative paths are:
+      >
+      > * Globanet\Exchange
+      > * Globanet\ICE
 
 ### Trace Shipper Service Configuration
 
@@ -157,9 +159,9 @@ For each Globanet `target` directory, configure a Globanet Importer in Merge 1.
       > **NOTE:** The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working and the corresponding Data Source is of Globanet provider and has Monitored Individuals.
 >
       > If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
-      
+
       ![](media/0ff2765c48e2574181833392b6b205f6.png)
-      
+
    2. If `Monitored User` option is NOT available, configure `Filter` and use `Dynamic` -\> `CSV` option to point it to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop\Config\monitored_individuals.csv`
 
       ![](media/43d295fa5746c8e030f2dcbcd580c3fc.png)
