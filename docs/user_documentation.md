@@ -1,6 +1,5 @@
 # Relativity Trace User Documentation
 
-- [Release Notes](#release-notes)
 - [Introduction to Relativity Trace](#introduction-to-relativity-trace)
 - [Prerequisites](#prerequisites)
 	- [Agents](#agents)
@@ -69,14 +68,7 @@
 - [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c-create-email-fields-map-integration-point-profile)
 	- [Setup Integration Point Profile](#setup-integration-point-profile)
 
-Release Notes
-================================
 
-| Trace Version | Release Date     | Relativity Compatibility |
-| ------------- | ---------------- | ------------------------ |
-| 12.0.8.2      | 24 February 2020 | > 9.6.202.10             |
-
-More information is available in [Relativity Trace Release Notes](https://relativitydev.github.io/relativity-trace-documentation/release_notes)
 
 Introduction to Relativity Trace
 ================================
