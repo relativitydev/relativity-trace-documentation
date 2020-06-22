@@ -40,6 +40,8 @@
 		- [Replace Data Transformation](#replace-data-transformation)
 		- [Deduplication Data Transformation](#deduplication-data-transformation)
 		  - [Required Fields for Deduplication](#required-fields-for-deduplication)
+		- [Communication Direction Data Transformation](#communication-direction-data-transformation)
+		- [Exempt List Data Transformation](#exempt-list-data-transformation)
 	- [Data Batches](#data-batches)
 	  - [Data Batch Retry and Error Resolution Workflow](#data-batch-retry-and-error-resolution-workflow)
 	- [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
