@@ -21,7 +21,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 *ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
 
-> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software | Audio data is provided by external data provider
+> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software. Audio data is provided by external data provider
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
@@ -220,7 +220,7 @@ See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaw
 
 *ref: [PlantUML Code](diagrams/trace_shipper_ice_chat_flow.txt)*
 
-> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software | Audio data is provided by external data provider
+> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software. Audio data is provided by external data provider
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
