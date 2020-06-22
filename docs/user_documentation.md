@@ -215,12 +215,8 @@ Setting up Relativity Trace
 
 7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
    
-> **WARNING:** Changing the “Run Option” to “Continuous” will automatically build
-   a dtSearch index for this workspace for all documents present. Only change this
-   setting to "Continuous" when appropriate agent infrastructure is configured and
-   disk space available to build a corresponding dtSearch Index. Please reach out
-   to `support@relativity.com` for support on installing Trace into workspaces with
-   existing data.
+   1. ![image-20200622103606164](media/user_documentation/image-20200622103606164.png)
+    > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to `support@relativity.com` for support on installing Trace into workspaces with existing data.
 
 Trace Document Flow Overview
 ============================
