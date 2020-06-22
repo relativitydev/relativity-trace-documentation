@@ -21,6 +21,8 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 ![image-20200608131701844](media/trace_connectors_user_guide/image-20200608131701844.png)
 
+*ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
+
 > **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software | Audio data is provided by external data provider
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
@@ -157,11 +159,11 @@ For each Globanet `target` directory, configure a Globanet Importer in Merge 1.
       `{localDirectoryPath}\Config\monitored_individuals.csv`
 
       > **NOTE:** The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working and the corresponding Data Source is of Globanet provider and has Monitored Individuals.
->
-      > If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
-
-      ![](media/0ff2765c48e2574181833392b6b205f6.png)
-
+      
+      > **NOTE:** If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
+      
+        ![](media/0ff2765c48e2574181833392b6b205f6.png)
+      
    2. If `Monitored User` option is NOT available, configure `Filter` and use `Dynamic` -\> `CSV` option to point it to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop\Config\monitored_individuals.csv`
 
       ![](media/43d295fa5746c8e030f2dcbcd580c3fc.png)
@@ -216,7 +218,13 @@ All of these Data Sources work similar via scheduled drops of data to an FTP. Gl
 
 See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for more details
 
-![image-20200225144257108](media/trace_connectors_user_guide/image-20200225144257108.png)
+![image-20200622093127116](media/trace_connectors_user_guide/image-20200622093127116.png)
+
+*ref: [PlantUML Code](diagrams/trace_shipper_ice_chat_flow.txt)*
+
+> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software | Audio data is provided by external data provider
+
+> **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
 ## Appendix B: Globanet Importer Schedule Helper
 
