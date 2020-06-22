@@ -2,20 +2,18 @@
 
 For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Globanet Merge1).  You will also need to install additional hardware.
 
-  * [Trace Shipper Data Flow Overview](#trace-shipper-data-flow-overview)
-  * [Installation](#installation-of-trace-shipper)
-    + [Pre-requisites](#pre-requisites)
-    + [Trace Shipper Service Configuration](#trace-shipper-service-configuration)
-    + [Installation Steps for Globanet](#installation-steps-for-globanet)
-    + [Set Up Globanet](#set-up-globanet)
-      + [Configuring Globanet Importers](#configuring-globanet-importers)
-    + [Data Flow Overview](#data-flow-overview)
-  * [Setting up Data Sources](#setting-up-data-sources)
-  * [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a--bloomberg--ice-chat--thomson-reuters--symphony)
-  * [Appendix B: Importer Schedule Helper](#appendix-b--importer-schedule-helper)
-  * [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanets-merge1)
-
-
+- [Trace Shipper Data Flow Overview](#trace-shipper-data-flow-overview)
+- [Installation of Trace Shipper](#installation-of-trace-shipper)
+  * [Pre-requisites](#pre-requisites)
+  * [Getting Started with Installation](#getting-started-with-installation)
+  * [Trace Shipper Service Configuration](#trace-shipper-service-configuration)
+  * [Setting Up Data Sources in Relativity](#setting-up-data-sources-in-relativity)
+  * [Installation Steps for Globanet](#installation-steps-for-globanet)
+  * [Set Up Globanet](#set-up-globanet)
+    + [Configuring Globanet Importers](#configuring-globanet-importers)
+- [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a-bloomberg--ice-chat-thomson-reuters--symphony)
+- [Appendix B: Globanet Importer Schedule Helper](#appendix-b-globanet-importer-schedule-helper)
+- [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanet-s-merge1)
 
 ## Trace Shipper Data Flow Overview 
 
