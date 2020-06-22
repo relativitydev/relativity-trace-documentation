@@ -1,0 +1,26 @@
+@startuml
+autonumber
+
+
+
+box "Client Controlled" #LightGreen
+    participant ICEChat
+    participant SFTP
+    participant TraceShipper
+end box
+
+box "Relativity" #LightBlue
+    participant RelativityFileShare
+    participant Trace
+	participant Workspace
+end box
+
+ICEChat -> SFTP: Encrypted Scheduled Drop (Push)
+SFTP -> TraceShipper: Secure Download (Pull)
+TraceShipper -> TraceShipper: Decrypt and Process
+RelativityFileShare -> TraceShipper: Pull MI data (Asepra/SMB*)
+TraceShipper -> RelativityFileShare: Push source data (Aspera/SMB*)
+RelativityFileShare -> Trace: Extract
+Trace -> Workspace: Transform and Ingest
+
+@enduml

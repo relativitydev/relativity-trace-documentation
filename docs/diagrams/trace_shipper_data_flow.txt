@@ -1,0 +1,23 @@
+
+@startuml
+autonumber
+
+box "Client Controlled" #LightGreen
+    participant DataSource
+    participant TraceShipper
+end box
+
+box "Relativity" #LightBlue
+    participant RelativityFileShare
+    participant Trace
+	participant Workspace
+end box
+
+DataSource -> TraceShipper: Pull
+TraceShipper -> TraceShipper: Process
+RelativityFileShare -> TraceShipper: Pull MI data (Asepra/SMB*)
+TraceShipper -> RelativityFileShare: Push source data (Aspera/SMB*)
+
+RelativityFileShare -> Trace: Extract
+Trace -> Workspace: Transform and Ingest
+@enduml
