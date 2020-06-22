@@ -1,4 +1,3 @@
-
 @startuml
 autonumber
 
@@ -13,9 +12,9 @@ box "Relativity" #LightBlue
 	participant Workspace
 end box
 
-DataSource -> TraceShipper: Pull
-TraceShipper -> TraceShipper: Process
 RelativityFileShare -> TraceShipper: Pull MI data (Asepra/SMB*)
+DataSource -> TraceShipper: Pull Data for relevant MIs
+TraceShipper -> TraceShipper: Process
 TraceShipper -> RelativityFileShare: Push source data (Aspera/SMB*)
 
 RelativityFileShare -> Trace: Extract

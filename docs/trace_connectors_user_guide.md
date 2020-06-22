@@ -17,7 +17,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 ## Trace Shipper Data Flow Overview 
 
-![image-20200608131701844](media/trace_connectors_user_guide/image-20200608131701844.png)
+![image-20200622120128506](media/trace_connectors_user_guide/image-20200622120128506.png)
 
 *ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
 
@@ -216,7 +216,7 @@ All of these Data Sources work similar via scheduled drops of data to an FTP. Gl
 
 See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for more details
 
-![image-20200622093127116](media/trace_connectors_user_guide/image-20200622093127116.png)
+![image-20200622120337061](media/trace_connectors_user_guide/image-20200622120337061.png)
 
 *ref: [PlantUML Code](diagrams/trace_shipper_ice_chat_flow.txt)*
 
