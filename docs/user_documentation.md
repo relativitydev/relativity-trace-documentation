@@ -498,6 +498,7 @@ Created On date/time) to delete
 Because of the risk of data loss. You should carefully configure the Searchable Set used for Data Disposal. The following are recommended minimum filtering parameters
 
 -   `Trace Has Errors` field is False
+-   `Trace Document Status` any of these: `3 - Term Searched`
 -   The `Alert` field is not set (is empty)
 -   A field marking the document as Reviewed is True
 
