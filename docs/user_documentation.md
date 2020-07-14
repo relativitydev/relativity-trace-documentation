@@ -34,12 +34,15 @@
 		- [Data Source Specific Settings](#data-source-specific-settings)
 		- [Data Source Auto-Disable](#data-source-auto-disable)
 		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
+		- [Zip Drop Data Source](#zip-drop-data-source)
 		- [Relativity Native Data Extraction Data Source](#relativity-native-data-extraction-data-source)
 	- [Monitored Individuals](#monitored-individuals)
 	- [Data Transformations](#data-transformations)
 		- [Replace Data Transformation](#replace-data-transformation)
 		- [Deduplication Data Transformation](#deduplication-data-transformation)
 		  - [Required Fields for Deduplication](#required-fields-for-deduplication)
+		- [Communication Direction Data Transformation](#communication-direction-data-transformation)
+		- [Exempt List Data Transformation](#exempt-list-data-transformation)
 	- [Data Batches](#data-batches)
 	  - [Data Batch Retry and Error Resolution Workflow](#data-batch-retry-and-error-resolution-workflow)
 	- [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
@@ -496,6 +499,7 @@ Created On date/time) to delete
 Because of the risk of data loss. You should carefully configure the Searchable Set used for Data Disposal. The following are recommended minimum filtering parameters
 
 -   `Trace Has Errors` field is False
+-   `Trace Document Status` any of these: `3 - Term Searched`
 -   The `Alert` field is not set (is empty)
 -   A field marking the document as Reviewed is True
 
@@ -946,6 +950,59 @@ Relativity documents.
 
 Please, refer to [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields) for field descriptions.
 
+### Zip Drop Data Source
+
+The Zip Drop Data Source Type allows Relativity Trace to import of fully formed data batches (documents, extracted text and associated metadata) in the form of ZIP files dropped into a defined Drop Folder on the Relativity workspace file share. The Zip Drop Data Source Type is particularly useful for data like audio where partners produce data in its final state (natives, extracted text and metadata) and need a simple way to get it into Relativity Trace without making any API calls. The Zip Drop Data Source Type meets this need by monitoring the drop folder and pulling every ZIP file placed there into the system as a new Data Batch. The Zip Drop Data Source Type works especially well when combined with the Trace Shipper Service, which can be used to deliver archived data batches from servers outside of the Relativity instance directly to the drop folder where they are consumed by the Zip Drop Data Source.
+
+**Configuration**
+
+![image-20200713143244403](media/user_documentation/image-20200713143244403.png)
+
+Configuration for the Zip Drop Data Source is pretty simple. There are no credentials or start date required. In fact, there are only a few things that need to be set up:
+
+- **Drop Folder Path** - Path where ZIP files will be retrieved by the data source, relative to the root of the file share for the workspace (beneath the EDDSXXXXXX folder). The Drop Folder does not need to exist when settings are saved as it will be created automatically. If the file path does not resolve to a location within the file share for the workspace, an error will be thrown.
+- **Integration Point Profile** - Integration Point Profile can be a bit tricky because the selected template load file must contain the same columns that will be in the load files in the dropped ZIP files. In order to have a valid template load file for the Integration Point Profile, open up the File Share and place a sample load file of the kind that will be inside the ZIP files in the `DataTransfer\Import\LoadFileTemplates` folder under the workspace file share root and then select the file when creating the Integration Point Profile. See Appendix C for more information on Integration Point Profiles.
+
+**ZIP File Format**
+
+The following requirements must be met by any ZIP file imported by the Zip Drop Data Source:
+
+- The name of the ZIP file is the name of the Data Batch that will be created, and should be unique
+- There must be a CSV load file at the root of the ZIP file named "loadfile.dat"
+- There should be no other files at the root of the ZIP file except for "loadfile.dat"
+- All native files should be in a folder named "OriginalNatives" at the root of the ZIP file
+- All extracted text files should be in a folder named "ExtractedData" at the root of the ZIP file
+- There should be no folders at the root of the ZIP file except for "OriginalNatives" and "ExtractedData"
+- The CSV load file "loadfile.dat" must contain columns named "Trace Monitored Individuals", "Trace Document Hash", and "Trace Data Batch" in addition to the other columns and data mappings that are required by every Relativity Trace data source
+
+> **NOTE:** files imported by the Zip Drop Data Source do not need to have the extension .ZIP
+
+**Drop Folder**
+
+The Drop Folder is the place on the file share where ZIP files full of documents and metadata should be placed. The Zip Drop Data Source will discover ZIP files, extract them to a different location, and then delete each ZIP file from the Drop Folder so that the next file can be processed. The Zip Drop Data Source attempts to extract every file in the Drop Folder, regardless of extension. Only one file is processed at a time, so the file is always moved or deleted after a single attempt to guarantee throughput. 
+
+When selecting a file to import, the Zip Drop Data Source will always start with the oldest file present in the Drop Folder. If the file name contains "_inprogress", the file will be skipped. This convention allows integration partners a failsafe way to indicate a file is still being transmitted to avoid failures where extraction is attempted before the file is fully written. The file can then be renamed when it is fully written. As an additional safety measure, the Zip Drop Data Source will obtain and release a write lock on any file before attempting to extract it. If a write lock cannot be obtained, the file will be skipped under the assumption that it is still being written.
+
+**Zip Drop Data Batches**
+
+Once a ZIP file is extracted, a Data Batch RDO is created. The name of the Data Batch RDO will be the same as the name of the ZIP file, minus the extension. If a Data Batch RDO with that name already exists, the name will be adjusted to contain the duplicate count in parentheses (eg. Data Batch (2)). The load file will be adjusted automatically so that the documents within are associated with the correct Data Batch by name.
+
+Once created, the Data Batch RDO will be given a status of ReadyForImport. Because of this, Zip Drop Data Sources do not support Data Enrichment - the load file in the ZIP must already contain all of documents, extracted text and metadata needed for the Data Batch. However, Data Transformations occur prior to import and therefore are supported for the Zip Drop Data Source.
+
+**Failure Scenarios**
+
+There are a few different unique failure scenarios for the ZIP Drop Data Source. Regardless of the scenario, every file placed in the Drop Folder will result in a Data Batch RDO and the dropped data will not be lost.
+
+The first scenario is if a file placed in the Drop Folder cannot be extracted. This is most common if the file is not actually a ZIP file. In this case, a Data Batch RDO will be created in CompletedWithErrors status with error details and the file will be moved to a FailedToExtract folder within the Drop Folder. The only way to retry a file in this scenario is to manually move it back to the Drop Folder. In the event that multiple files with the same name fail to be extracted, only the most recent file with a given name will be retained in the FailedToExtract folder, so please make sure that ZIP files containing unique data have unique names.
+
+The second scenario is that the ZIP file (or the load file it contains) does not match the requirements specified above in "Zip File Format". In this case, a Data Batch RDO will be created in CompletedWithErrors status explaining the error and the ZIP file will be extracted to the normal data batch folder location on the file share, just as if it had been a healthy data batch. The load file will exist at the load file path on the Data Batch RDO as long as it was included in the ZIP file. It is possible to retry Data Batches in this state using the Data Batch Retry console button, but the files will need to be modified in the extracted data batch folder on the file share to meet the requirements or the Data Batch will just fail again. In most cases it is better to just Abandon the Data Batch and drop a corrected ZIP file in the Drop Folder.
+
+All other Data Batch failure scenarios with the ZIP Drop Data Source occur once the ReadyForImport status is reached and are not unique to this data source type. Please reference the rest of this documentation for more details on other requirements for Data Ingestion using Relativity Trace.
+
+**Monitored Individuals CSV**
+
+Any enabled ZIP Drop Data Source will export its configured Monitored Individuals in CSV format every time the Drop Folder is checked for new files. The CSV will be located at `(Drop Folder)\Config\monitored_individuals.csv`.
+
 ### Relativity Native Data Extraction Data Source
 
 This Data Source allows for automatic text extraction/expansion of previously
@@ -1065,23 +1122,23 @@ When using the `Communication Direction` transformation type, analysis is perfor
 
 > **NOTE:** use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
-### Whitelist Data Transformation
+### Exempt List Data Transformation
 
-Data Transformations of type `Whitelist` can be used to populate the `Trace Whitelisted` field on documents with a Yes/No value that indicates whether a particular communication can be excluded from review. The `Trace Whitelisted` document field is populated based on the `Whitelist Entry` objects defined in the workspace. `Whitelist` transformations can specify the `Whitelist Categories` that should apply to the Data Source, or the `Whitelist Categories` field can be left blank in which case all `Whitelist Entry` objects in the workspace will be considered. Only one `Whitelist` Data Transformation can be applied to each `Data Source`.
+Data Transformations of type `Exempt List` can be used to populate the `Trace Exempt` field on documents with a Yes/No value that indicates whether a particular communication can be excluded from review. The `Trace Exempt` document field is populated based on the `Exempt Entry` objects defined in the workspace. `Exempt List` transformations can specify the `Exempt List Categories` that should apply to the Data Source, or the `Exempt List Categories` field can be left blank in which case all `Exempt Entry` objects in the workspace will be considered. Only one `Exempt List` Data Transformation can be applied to each `Data Source`.
 
 ![image-20200602160740161](media/user_documentation/image-20200602160740161.png)
 
-A communication is considered whitelisted if the `From ` field matches one or more of the `Whitelist Entry` objects in the `Whitelist Categories` specified on the `Whitelist` tranform.  A `Whitelist Entry` has a value in the `Name` field and an `Entry Type` of either **Domain** or **Email Address**. A `Whitelist Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
+A communication is considered exempt if the `From ` field matches one or more of the `Exempt Entry` objects in the `Exempt List Categories` specified on the `Exempt List` transform.  An `Exempt Entry` has a value in the `Name` field and an `Entry Type` of either **Domain** or **Email Address**. An `Exempt Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
 
 ![image-20200602160404981](media/user_documentation/image-20200602160404981.png)
 
-When using the `Whitelist` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Whitelisted` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
+When using the `Exempt List` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Exempt` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 
-> **NOTE:** the `Trace Whitelisted` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Whitelist` transform.
+> **NOTE:** the `Trace Exempt` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Exempt List` transform.
 
-> **NOTE:** Having too many `Whitelist Entry` objects in a workspace will increase the memory needs of the `Trace Manager Agent` when running `Whitelist` transformations. If your workspace has more than 5000 `Whitelist Entry`  objects defined, please contact `support@relativity.com` to make sure you have adequate system resources available.
+> **NOTE:** Having too many `Exempt Entry` objects in a workspace will increase the memory needs of the `Trace Manager Agent` when running `Exempt List` transformations. If your workspace has more than 5000 `Exempt Entry`  objects defined, please contact `support@relativity.com` to make sure you have adequate system resources available.
 
-> **NOTE:** use of the `Whitelist` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+> **NOTE:** use of the `Exempt List` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
 ### Group Identifier Truncation for External Data Sources
 
@@ -1339,7 +1396,7 @@ Usability Considerations
     Trace will pull all available data again, beginning with the Start Date defined on the data source (if the Start Date is relevant to the data source type). **Depending on import profile settings, this could duplicate data in the Workspace.**
 -   Task processes (Indexing, Term Searching, Rule Evaluation, etc) run simultaneously (in parallel). It may take several task cycles (based on configured `Run Interval` for each task) for the end-to-end workflow to complete fully.
 -   Deleting a Trace Rule does not delete any of the corresponding Relativity infrastructure and objects that were created (i.e. dtSearch Index, Saved Searches, Batch Sets). 
--   The global dtSearch index `Trace Search Index` (created by Trace application during installation) is supported for ad-hoc searching and will be incrementally built as part of Indexing task. No other dtSearch indexes will incrementally build automatically.
+-   The global dtSearch index `Trace Search Index` (created by Trace application during installation) is supported for ad-hoc searching and will be incrementally built as part of Indexing task. All dtSearch indexes whose name begins with `Trace`, but not `TraceTemp` will incrementally build automatically.
 
 ## 	General Infrastructure and Environment Considerations
 
@@ -1479,7 +1536,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Other Metadata                | Long Text         | Metadata extracted during processing for additional fields beyond the list of processing fields available for mapping |
 | Calculated               | Parent Document ID            | Fixed-Length Text | Document ID (Control Number) of the parent document. Empty for top level (original native) documents. For multiple levels of descendants, this field will always be populated with the Document ID (Control Number) of the top level (original native) document for every descendant document. |
 | Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
-| Calculated               | Recipient Count               | Decimal           | The total count of recipients in an email which includes the To, CC, and BCC fields |
+| Calculated               | Recipient Count               | Decimal           | The total count of unique recipients in an email across the To, CC, and BCC fields |
 | Calculated               | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document  |
 | Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document |
 | Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |

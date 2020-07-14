@@ -314,6 +314,12 @@ All text fields in the load file must avoid special characters mentioned above. 
 
 ![](media/1a153ec4bda6645da5bbf95a89d8679a.png)
 
+#### Date Fields
+
+Relativity Trace validates and normalizes all values in columns that are mapped to date fields to a standard format before ingestion. If a date value cannot be parsed, the column will be cleared, the row will be marked Trace Has Errors = true, and the original string value will be placed in the Trace Error Details field. This approach prevents invalid date strings from blocking ingestion of documents into the workspace.
+
+> **NOTE:** due to varying minimum and maximum values for dates, Relativity Trace will consider any date with a year less than 1800 or greater than 2200 to be invalid
+
 ### Field Mappings stored in Relativity Integration Point Profile
 
 The following fields **must** be part of the Load File and must be mapped to appropriate Relativity fields:
@@ -336,9 +342,11 @@ The following fields **must** be part of the Load File and must be mapped to app
    
 6. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
 
-7. `Relativity Attachment ID` - must be set to empty string  and mapped to `Relativity Attachment ID` field in Relativity. This field is needed for RSMF content.
+7. `Trace Data Batch` - column must exist but value should be empty, will be filled in with the correct Data Batch Identifier in each row before ingestion
 
-8. `Group Identifier` - cannot be empty. This field is used to group a parent native file and its children (e.g. an email and its attachments). Every parent native file must have a unique value. Extracted children should have the same value as its parent native file. It is suggested that a unique GUID is used for this value, and that it is different from the values used in other columns.
+8. `Relativity Attachment ID` - must be set to empty string  and mapped to `Relativity Attachment ID` field in Relativity. This field is needed for RSMF content.
+
+9. `Group Identifier` - cannot be empty. This field is used to group a parent native file and its children (e.g. an email and its attachments). Every parent native file must have a unique value. Extracted children should have the same value as its parent native file. It is suggested that a unique GUID is used for this value, and that it is different from the values used in other columns.
 
    1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
