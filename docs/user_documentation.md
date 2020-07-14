@@ -1536,7 +1536,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Other Metadata                | Long Text         | Metadata extracted during processing for additional fields beyond the list of processing fields available for mapping |
 | Calculated               | Parent Document ID            | Fixed-Length Text | Document ID (Control Number) of the parent document. Empty for top level (original native) documents. For multiple levels of descendants, this field will always be populated with the Document ID (Control Number) of the top level (original native) document for every descendant document. |
 | Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
-| Calculated               | Recipient Count               | Decimal           | The total count of recipients in an email which includes the To, CC, and BCC fields |
+| Calculated               | Recipient Count               | Decimal           | The total count of unique recipients in an email across the To, CC, and BCC fields |
 | Calculated               | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document  |
 | Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document |
 | Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |
