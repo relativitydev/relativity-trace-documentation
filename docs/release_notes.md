@@ -1,6 +1,7 @@
 # Relativity Trace Release Notes
 
-- [12.3.0.3 (1 June 2020)](#12303-1-june-2020)
+- [12.4.0.3 (14 July 2020)](#12403-14-july-2020)
+- [12.3.0.3 (1 June 2020) - DEPRECATED](#12303-1-june-2020--deprecated)
 - [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
 - [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
 - [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
@@ -11,7 +12,46 @@
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.3.0.3 (1 June 2020)
+# 12.4.0.3 (14 July 2020)
+
+**Relativity Compatibility**
+
+- **≥ 10.3.287.3**
+
+**Features**
+
+- Created the Communication Direction Data Transformation Type, which can be used to determine the direction of communication (Inbound, Outbound, Internal, External, Undefined) based on the Internal Domains defined in the Trace workspace
+- Created the Exempt List Data Transformation Type, which can be used to exempt messages from review if the sender is on the specified Exempt List
+- (PREVIEW) Created the new Zip Drop Data Source Type, which can be used by customers and partners to import fully formed data batches (documents and metadata) into Trace by simply placing a ZIP file in a drop folder
+- (PREVIEW) Created scripts that can be used to consolidate review outcomes across multiple fields into specific result fields
+
+**Enhancements**
+
+- All Trace usage of dtSearch has been rewritten to use modern dtSearch APIs instead of legacy references, reaping the benefit of many enhancements and bug fixes and ensuring future stability
+- Trace Data Ingestion now validates and normalizes all date values in every load file before attempting import, eliminating painful repair/retry scenarios
+- Trace Shipper Service configuration file now has placeholders for all configurable attributes
+- Improved alerting on unhealthy Data Sources for RelativityOne customers
+- Installed Version field on Setup object can now be edited to force Update logic to run in workspace
+- Improved log messages when using AIP decryption
+
+**Defect Fixes**
+
+- Fixed some issues with the Data Disposal Action Type for external data sources involving file share migration and non-standard SQL schema
+- Fixed an issue where Trace Recipient Count was incorrect for certain email messages
+- Fixed an issue where deduplication would fail when using a non-standard load file column header for Trace Monitored Individuals
+
+**Deprecated**
+
+- Copy mass action is no longer available for the Data Source RDO type
+
+**Upgrade Considerations**
+
+- In order to take advantage of the new Communication Direction and Exempt data transformations you must re-create your Integration Profile to include corresponding (new) fields to be mapped and associate this new profile with the corresponding Data Source(s)
+- All Office 365 customers should migrate to use of OAuth 2.0. Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing. Review Relativity Trace Authorization documentation "authorization.md" for OAuth 2.0 information.
+
+
+
+# 12.3.0.3 (1 June 2020) - DEPRECATED
 
 **Relativity Compatibility**
 
