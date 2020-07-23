@@ -73,22 +73,22 @@ To set up Trace Shipper, you will need:
 1. A Trace Enabled Relativity Workspace along with connection information and approved user credentials
 2. A list of connectors you will be setting up
 
-Each connector you set up will require a local directory to ship,  a Relativity Trace Data Source, and a remote Directory to ship to. All three of these must be unique to each connector.
+Each connector you set up will require a local directory to ship,  a Relativity Trace Data Source, and a remote directory to ship to. All three of these must be unique to each connector.
 
 Perform the following steps in order to get started:
 
 1. First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Globanet), later. 
 
-   1. > **NOTE:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
+      > **NOTE:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
 
-   2. > **EXAMPLE:**  Say you are using Globanet to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
+      > **EXAMPLE:**  Say you are using Globanet to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
       >
       > * `C:\Globanet\Exchange`
       > * `C:\Globanet\ICE`
 
 2. Next, choose relative paths for the Relativity side of shipper. For convenience, we could make these similar to the local directories we defined above.
 
-   1. > **For example:** Continuing our earlier Exchange and ICE chat example, we might decide our remote relative paths are:
+      > **EXAMPLE:** Continuing our earlier Exchange and ICE chat example, we might decide our remote relative paths are:
       >
       > * Globanet\Exchange
       > * Globanet\ICE
@@ -147,7 +147,9 @@ Contact support@relativity.com if you need assistance with installation steps.
 
 Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Globanet is a Globanet `target` directory, and each needs a location to store logs related to the retrieval of the data by Globanet. Create a log directory for each.
 
-> **For example:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
+In order for Support to gain access to your Globanet logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shippper-service-configuration) under `externalServiceLogLocations`. Globanet creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connecto}.log`.
+
+> **EXAMPLE:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
 
 #### Configuring Globanet Importers
 
