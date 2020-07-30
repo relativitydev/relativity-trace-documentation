@@ -730,6 +730,8 @@ Data Sources
 Data Source is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows you to define where/how you are pulling data. The Data Source references the Integration Point Profile that holds configuration on how to import data for that Data Source (field mappings). Data Batches reference
 Data Source to dynamically lookup which Integration Profile to use during import.
 
+**Warning:** Integration Point Profiles are susceptible to corruption by modification of Relativity Fields which are referenced in the Profile.  Any time a Relativity Field which is used in an Integration Point Profile is edited or deleted, it is imperative to validate the integrity of each of the related Integration Point Profiles. This can be done by editing the Profile, validating the data in each step, and saving. **Failure to do so will result in data not being imported.**
+
 <img src="media/user_documentation/ed6d268b-1439-4a66-aab2-7c8904bbd808_annotated.png" alt="Data Source View"  />
 
 ![Credentials Tab](media/user_documentation/9631ef5e-4ec9-4096-8c52-0af0377437fc_annotated.png)
@@ -1559,6 +1561,8 @@ your library, reach out to `support@relativity.com`.
 ![](media/045f66f33011aa62ff7d00b2e05274c2.png)
 
 ## Setup Integration Point Profile
+
+**Warning:** Integration Point Profiles are susceptible to corruption by modification of Relativity Fields which are referenced in the Profile.  Any time a Relativity Field which is used in an Integration Point Profile is edited or deleted, it is imperative to validate the integrity of each of the related Integration Point Profiles. This can be done by editing the Profile, validating the data in each step, and saving. **Failure to do so will result in data not being imported.**
 
 1. Go to the Integration Points: Integration Point Profile tab
 
