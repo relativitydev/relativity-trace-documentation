@@ -354,9 +354,9 @@ The Rule Creation form contains the following fields:
     -   **Slack:** generates a Slack message with metadata about alerted
             documents
     -   **Move To Folder:** Move matched documents to a specific folder
-> **NOTE:** The Tagging action type has been deprecated. Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed) on either the Trace Rules or Trace Workflow Rules field, depending on the Rule Type
+> **NOTE:** Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed) on either the Trace Rules or Trace Workflow Rules field, depending on the Rule Type
 
-> **NOTE:** The Batch action has been deprecated. You can still create a Batch Set manually from any saved search and set it to `auto-run`.
+> **NOTE:** Default actions shipped with Trace out of the box are meant as examples and are subject to being updated during application upgrades. In order to configure your rules please create a new action of specific type (you can also copy default actions as a starting point).
 
 2 - Customizing and Running a Rule
 -----------------------------------
