@@ -58,7 +58,7 @@
 
   
 
-# 12.4.0.3 (14 July 2020)
+# 12.4.0.3 (14 July 2020) - DEPRECATED
 
 **Relativity Compatibility**
 
