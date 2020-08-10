@@ -1,8 +1,8 @@
 # Relativity Trace Release Notes
 
-- [12.4.1.1 (14 August 2020)](#12403-14-august-2020)
-- [12.4.0.3 (14 July 2020)](#12403-14-july-2020)
-- [12.3.0.3 (1 June 2020) - DEPRECATED](#12303-1-june-2020--deprecated)
+- [12.4.1.2 (14 August 2020)](#12403-14-august-2020)
+- [12.4.0.3 (14 July 2020 - DEPRECATED)](#12403-14-july-2020--deprecated)
+- [12.3.0.3 (1 June 2020) - DEPRECATED)](#12303-1-june-2020--deprecated)
 - [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
 - [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
 - [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
