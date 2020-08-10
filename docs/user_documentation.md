@@ -1092,14 +1092,13 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 
 ### Deduplication Data Transformation
 
-Data Transformations of type `Deduplication` prevent a Data Source from importing a document if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
+Data Transformations of type `Deduplication` prevent a Data Source from importing an original document and its extractions if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
 
-For Trace native [Data Sources](#data-sources),  deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
+For Trace native [Data Sources](#data-sources), deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
 
 ![](media/70b0ae9c6debe35956d4988dffaae892.png)
 
-When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document
-will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
+When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes of original documents will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
 
 #### Required Fields for Deduplication
 
@@ -1107,6 +1106,7 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 
 1. Trace Document Hash
 2. Group Identifier
+3. Native File Path -- must be specified, but not necessarily mapped.
 
 ### Communication Direction Data Transformation
 
@@ -1123,6 +1123,8 @@ When using the `Communication Direction` transformation type, analysis is perfor
 > **NOTE:** the `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Communication Direction` transform.
 
 > **NOTE:** use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Integration Point Profile.
 
 ### Exempt List Data Transformation
 
@@ -1142,11 +1144,13 @@ When using the `Exempt List` transformation type, analysis is performed only on 
 
 > **NOTE:** use of the `Exempt List` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Integration Point Profile.
+
 ### Group Identifier Truncation for External Data Sources
 
 `Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
 
-> **NOTE:** `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` loadfile even if no other Data Transformations are defined on the Data Source. For additional information, please contact support@relativity.com.
+> **NOTE:** `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact support@relativity.com.
 
 Data Batches
 ------------
@@ -1531,7 +1535,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Family Group                  | Fixed-Length Text | Group the file belongs to (used to identify the group if attachment fields are not used). Formerly "Group Identifier" |
 | Calculated               | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file |
 | Calculated               | File Name                     | Fixed-Length Text | The original name of the file                                |
-| Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in integration point profile. A value for this field is automatically calculated by Relativity on import.                                                                                             |
+| Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in integration point profile. A value for this field is automatically calculated by Relativity on import. |
 | Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
 | Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
 | Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |
@@ -1540,7 +1544,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
 | Calculated               | Recipient Count               | Decimal           | The total count of unique recipients in an email across the To, CC, and BCC fields |
 | Calculated               | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document  |
-| Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document |
+| Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document. Original documents use a partial hash of metadata, while extracted documents use a binary hash. |
 | Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |
 | Calculated               | Trace Has Errors              | Yes/No            | Indicates if any errors occurred during extraction/expansion |
 | Calculated               | Trace Monitored Individuals   | Multiple Object   | Monitored individuals associated with Data Source (used for retrieval and billing) |
