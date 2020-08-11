@@ -37,7 +37,7 @@
 - Additional logging to troubleshoot failing rules with custom query options on saved search
 - Trace Document Hash field is now populated for attachments which allows for deduplication of generated alerts and review workflow
 - Improved data extraction fidelity for email like file types to propagate all available metadata
-- Trace Exchange data source now accepts exclude filters (by exchange Folder / MessageClass)
+- Trace Exchange data source now has a flag to exclude hidden MS Teams folder
 - Trace Rule Terms field on document is now populated with terms that are associated with actual rule matches only (as opposed to all matching terms for all rules)
 
 **Defect Fixes**
