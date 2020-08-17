@@ -137,7 +137,7 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
    1. Navigate to the Data Source in view mode
    2. Click on "Enable Data Source" in the console on the right hand side
 
-> **NOTE:** All Data Sources created in Relativity are serialized and saved in the config folder along with the monitored_individuals.csv file, which are retrieved by Trace Shipper.
+> **NOTE:** All Data Sources created in Relativity serialize their current state and are saved in the config folder along with the monitored_individuals.csv file, which are retrieved by Trace Shipper.
 
 ### Installation Steps for Globanet
 
