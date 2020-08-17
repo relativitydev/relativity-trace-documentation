@@ -32,6 +32,7 @@
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
 	- [Data Sources](#data-sources)
 		- [Data Source Specific Settings](#data-source-specific-settings)
+        - [Data Source State Serialization](#data-source-state-serialization)
 		- [Data Source Auto-Disable](#data-source-auto-disable)
 		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
 		- [Zip Drop Data Source](#zip-drop-data-source)
@@ -831,6 +832,29 @@ sections.
 
 - **Aip Tenant Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection)
 
+### Data Source State Serialization
+
+Globanet and Zip Drop Data sources created in Trace serialize their current state as a JSON file at regular intervals. This data is designed to be retrieved by the Trace Shipper Service to facilitate integrations with external data sources. 
+
+The serialized data source file is saved in {Source/Drop Folder}\Config\DataSourceState.json, where {Source/Drop Folder} is the configured source or drop folder for the given data source. If the data source has been deleted, the deleted field is set to True in the JSON file and the file will no longer be updated. 
+
+All fields for a data source, including Data Source Specific Fields, are saved except fields including personal/private information (such as passwords and secrets). Different fields are set to be excluded depending on the type of data source. 
+Data source state serialization currently excludes the following fields from being saved:
+
+- Username
+- Password
+- Password Bank
+- Aip Client Secret
+- Aip Application Id
+- Aip Tenant Id
+- Exchange Url
+- Exchange Authorization Client Id
+- Exchange Authorization Tenant Id
+- EWS Client Secret
+- Drop Folder Path
+
+> **NOTE:** Other data source types can serialize their state as well, if this functionality is needed please contact support@relativity.com
+
 ### Data Source Auto-Disable
 
 Trace will automatically disable data sources that are identified as unhealthy or have critical configuration errors that will require intervention by the user. Trace will automatically disable a data source for the following reasons:
@@ -1005,7 +1029,7 @@ All other Data Batch failure scenarios with the ZIP Drop Data Source occur once 
 
 **Monitored Individuals CSV**
 
-Any enabled ZIP Drop Data Source will export its configured Monitored Individuals in CSV format every time the Drop Folder is checked for new files. The CSV will be located at `(Drop Folder)\Config\monitored_individuals.csv`.
+ZIP Drop Data Source will export its configured Monitored Individuals in CSV format every time the Drop Folder is checked for new files. The CSV will be located at `(Drop Folder)\Config\monitored_individuals.csv`.
 
 ### Relativity Native Data Extraction Data Source
 
