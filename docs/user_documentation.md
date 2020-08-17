@@ -900,7 +900,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
-<img src="media/user_documentation/image-20200226224716411.png" alt="image-20200226224716411" style="zoom:50%;" />
+![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
     
 1.  *Exchange Settings – Url* gives you the chance to specify the exact URL
         used when connecting to your exchange server. If this field is left
@@ -921,9 +921,11 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
        the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
        Exchange2010_SP2, Exchange2013, Exchange2013_SP1
    
-9. Click “Save”
+10. *Exchange Settings - Exclude Microsoft Teams Chat* indicates whether Trace will ignore any Microsoft Teams chat messages being stored in a Monitored Individual's folders in Outlook as a part of O365. The default behavior is to pull data from the Teams Chat folder, but users may want to exclude these folders if Teams data is being pulled from a different data source or the data should not be pulled at all.
 
-10. Link / Create New Monitored Individuals (same page after clicking Save)
+11. Click “Save”
+
+12. Link / Create New Monitored Individuals (same page after clicking Save)
 
     ![](media/85e99ebffc8ada7ae4c69a61cb873213.png)
 
