@@ -32,6 +32,7 @@
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
 	- [Data Sources](#data-sources)
 		- [Data Source Specific Settings](#data-source-specific-settings)
+        - [Data Source Serialization](#data-source-serialization)
 		- [Data Source Auto-Disable](#data-source-auto-disable)
 		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
 		- [Zip Drop Data Source](#zip-drop-data-source)
@@ -830,6 +831,27 @@ sections.
 - **Aip Application Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection) 
 
 - **Aip Tenant Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection)
+
+### Data Source Serialization
+
+All data sources created in Relativity are set to serialize their current state as a json file in the data source config folder. The serialized data source file is saved in <Relative-Path-To-Folder>\Config\DataSourceState.json, where <Relative-Path-To-Folder> is the location of the config folder for a given data source, 
+relative to the workspace fileshare root of the current workspace. The DataSourceState.json file is updated during every run of the data retrieval task if the data source has not been deleted. If the data source has been deleted, the deleted field is set to True in the json file and the file will no longer be updated. 
+The json file is saved in the config folder along with the monitored_individuals.csv file. All fields for a data source, including Custom Fields, are saved except fields including personal/private information (such as passwords and secrets). Different fields are set to be excluded depending on the type of data source. 
+Data source state serialization currently excludes the following fields from being saved:
+
+- Username
+- Password
+- Password Bank
+- Secret
+- Workshare Fileshare Base Path
+- AIP Client Secret
+- AIP App. Id
+- AIP Tenant Id
+- Exchange Url
+- Exchange Auth. Client Id
+- Exchange Auth. Tenant Id
+- EWS Client Secret
+- Zip Drop Folder Path
 
 ### Data Source Auto-Disable
 
