@@ -834,7 +834,7 @@ sections.
 
 ### Data Source Serialization
 
-All data sources created in Relativity are set to serialize their current state as a json file in the data source config folder. The serialized data source file is saved in <Relative-Path-To-Folder>\Config\DataSourceState.json, where <Relative-Path-To-Folder> is the location of the config folder for a given data source, 
+All data sources created in Relativity are set to serialize their current state as a json file in the data source config folder. The serialized data source file is saved in {Relative-Path-To-Folder}\Config\DataSourceState.json, where {Relative-Path-To-Folder} is the location of the config folder for a given data source, 
 relative to the workspace fileshare root of the current workspace. The DataSourceState.json file is updated during every run of the data retrieval task if the data source has not been deleted. If the data source has been deleted, the deleted field is set to True in the json file and the file will no longer be updated. 
 The json file is saved in the config folder along with the monitored_individuals.csv file. All fields for a data source, including Custom Fields, are saved except fields including personal/private information (such as passwords and secrets). Different fields are set to be excluded depending on the type of data source. 
 Data source state serialization currently excludes the following fields from being saved:
