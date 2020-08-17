@@ -269,10 +269,10 @@ status of documents is reflected on a few key fields on the Document object
         3. Check Trace logs (via `Manage Logs` console button)
     
         4. Perform `Trace Document Retry` mass-operation on affected documents
-5.  **Trace Document Terms** – Multi-Object field tracking which Terms have
+5.  **Trace Terms** – Multi-Object field tracking which Terms have
     matched a document
-6.  **Trace Document Rule Terms** – Multi-Object field tracking Rule specific
-    Terms (terms that are associated with any rule) that have matched a document
+6.  **Trace Rule Terms** – Multi-Object field tracking Rule specific
+    Terms (terms that match the document that are also associated with Rules that match the document)
 7.  **Trace Has Errors** – Boolean (yes/no) field indicating if the document has
     any errors related to ingestion, extraction
 8.  **Trace Error Details** – Long Text field capturing the error details if a
