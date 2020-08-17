@@ -14,6 +14,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 - [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a-bloomberg--ice-chat-thomson-reuters--symphony)
 - [Appendix B: Globanet Importer Schedule Helper](#appendix-b-globanet-importer-schedule-helper)
 - [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanet-s-merge1)
+- [Appendix D: Sync of Config Folder](#appendix-d-sync-of-config-folder)
 
 ## Trace Shipper Data Flow Overview 
 
@@ -137,7 +138,7 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
    1. Navigate to the Data Source in view mode
    2. Click on "Enable Data Source" in the console on the right hand side
 
-> **NOTE:** All Data Sources created in Relativity serialize their current state and are saved in the config folder along with the monitored_individuals.csv file, which are retrieved by Trace Shipper.
+> **NOTE:** All Data Sources created in Relativity serialize their current state and are saved in the config folder along with the monitored_individuals.csv file, which are retrieved by Trace Shipper. See Appendix D for more information.
 
 ### Installation Steps for Globanet
 
@@ -254,3 +255,7 @@ It is possible to setup Merge1 in HA mode. Recommended approach is to setup seco
 
 Once that is done, the secondary Merge1 should be connected to the same Merge1 DB as the primary Merge1 server. If for any reason the production server goes down, you just need to run the services on the second Merge1. Please note that no service should be started on the secondary Merge1 if the production is running. 
 For the DB, you can take backups on a daily basis or apply any other standard SQL Server  HA scenarios that you wish.
+
+## Appendix D: Sync of Config Folder
+
+All configured Data Sources in the RelOne instance serialize their current state as a json file as well as save a csv file of all the linked monitored individuals. These files are saved in the config folder for each data source. Trace Shipper can retrieve all config folders which allows for a way to sync data sources and monitored individuals from local to remote instance.
