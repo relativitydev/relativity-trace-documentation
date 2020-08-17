@@ -137,6 +137,8 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
    1. Navigate to the Data Source in view mode
    2. Click on "Enable Data Source" in the console on the right hand side
 
+> **NOTE:** All Data Sources created in Relativity are serialized and saved in the config folder along with the monitored_individuals.csv file, which are retrieved by Trace Shipper.
+
 ### Installation Steps for Globanet
 
 Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Globanet. 
@@ -158,7 +160,7 @@ For each Globanet `target` directory, configure a Globanet Importer in Merge 1.
    1. Configure monitored individuals to point to
       `{localDirectoryPath}\Config\monitored_individuals.csv`
 
-      > **NOTE:** The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working and the corresponding Data Source is of Globanet provider and has Monitored Individuals.
+      > **NOTE:** The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working.
       
       > **NOTE:** If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
       

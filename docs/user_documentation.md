@@ -1003,7 +1003,7 @@ All other Data Batch failure scenarios with the ZIP Drop Data Source occur once 
 
 **Monitored Individuals CSV**
 
-Any enabled ZIP Drop Data Source will export its configured Monitored Individuals in CSV format every time the Drop Folder is checked for new files. The CSV will be located at `(Drop Folder)\Config\monitored_individuals.csv`.
+ZIP Drop Data Source will export its configured Monitored Individuals in CSV format every time the Drop Folder is checked for new files. The CSV will be located at `(Drop Folder)\Config\monitored_individuals.csv`.
 
 ### Relativity Native Data Extraction Data Source
 
