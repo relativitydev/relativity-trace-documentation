@@ -32,7 +32,7 @@
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
 	- [Data Sources](#data-sources)
 		- [Data Source Specific Settings](#data-source-specific-settings)
-        - [Data Source Serialization](#data-source-serialization)
+        - [Data Source State Serialization](#data-source-state-serialization)
 		- [Data Source Auto-Disable](#data-source-auto-disable)
 		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
 		- [Zip Drop Data Source](#zip-drop-data-source)
@@ -832,26 +832,28 @@ sections.
 
 - **Aip Tenant Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection)
 
-### Data Source Serialization
+### Data Source State Serialization
 
-All data sources created in Relativity are set to serialize their current state as a json file in the data source config folder. The serialized data source file is saved in {Relative-Path-To-Folder}\Config\DataSourceState.json, where {Relative-Path-To-Folder} is the location of the config folder for a given data source, 
-relative to the workspace fileshare root of the current workspace. The DataSourceState.json file is updated during every run of the data retrieval task if the data source has not been deleted. If the data source has been deleted, the deleted field is set to True in the json file and the file will no longer be updated. 
-The json file is saved in the config folder along with the monitored_individuals.csv file. All fields for a data source, including Custom Fields, are saved except fields including personal/private information (such as passwords and secrets). Different fields are set to be excluded depending on the type of data source. 
+Globanet and Zip Drop Data sources created in Trace serialize their current state as a JSON file at regular intervals. This data is designed to be retrieved by the Trace Shipper Service to facilitate integrations with external data sources. 
+
+The serialized data source file is saved in {Source/Drop Folder}\Config\DataSourceState.json, where {Source/Drop Folder} is the configured source or drop folder for the given data source. If the data source has been deleted, the deleted field is set to True in the JSON file and the file will no longer be updated. 
+
+All fields for a data source, including Data Source Specific Fields, are saved except fields including personal/private information (such as passwords and secrets). Different fields are set to be excluded depending on the type of data source. 
 Data source state serialization currently excludes the following fields from being saved:
 
 - Username
 - Password
 - Password Bank
-- Secret
-- Workshare Fileshare Base Path
-- AIP Client Secret
-- AIP App. Id
-- AIP Tenant Id
+- Aip Client Secret
+- Aip Application Id
+- Aip Tenant Id
 - Exchange Url
-- Exchange Auth. Client Id
-- Exchange Auth. Tenant Id
+- Exchange Authorization Client Id
+- Exchange Authorization Tenant Id
 - EWS Client Secret
-- Zip Drop Folder Path
+- Drop Folder Path
+
+> **NOTE:** Other data source types can serialize their state as well, if this functionality is needed please contact support@relativity.com
 
 ### Data Source Auto-Disable
 

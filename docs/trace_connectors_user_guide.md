@@ -18,11 +18,11 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 ## Trace Shipper Data Flow Overview 
 
-![image-20200622120128506](media/trace_connectors_user_guide/image-20200622120128506.png)
+![image-20200817164930647](media/trace_connectors_user_guide/image-20200817164930647.png)
 
 *ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
 
-> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software. Audio data is provided by external data provider
+> **NOTE:** Data Pull (2) and Process (3) are performed via Globanet Merge1 software. Audio data is provided by external data provider
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
@@ -138,7 +138,7 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
    1. Navigate to the Data Source in view mode
    2. Click on "Enable Data Source" in the console on the right hand side
 
-> **NOTE:** All Data Sources created in Relativity serialize their current state and are saved in the config folder along with the monitored_individuals.csv file, which are retrieved by Trace Shipper. See Appendix D for more information.
+> **NOTE:** All Trace Data Sources serialize their current state to a JSON file and their monitored individuals to a CSV file,  both of which can be retrieved by Trace Shipper. See Appendix D for more information.
 
 ### Installation Steps for Globanet
 
@@ -258,4 +258,4 @@ For the DB, you can take backups on a daily basis or apply any other standard SQ
 
 ## Appendix D: Sync of Config Folder
 
-All configured Data Sources in the RelOne instance serialize their current state as a json file as well as save a csv file of all the linked monitored individuals. These files are saved in the config folder for each data source. Trace Shipper can retrieve all config folders which allows for a way to sync data sources and monitored individuals from local to remote instance.
+All Data Sources in Relativity Trace serialize their current state as a JSON file at regular intervals. They also save a CSV file of all the linked monitored individuals as well. These files are saved in a Config folder in the Source or Drop folder for each data source. Trace Shipper can be configured to retrieve these Config folders, which allows for a way to sync data sources and monitored individuals from local to remote instance.
