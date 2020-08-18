@@ -150,7 +150,7 @@ Contact support@relativity.com if you need assistance with installation steps.
 
 Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Globanet is a Globanet `target` directory, and each needs a location to store logs related to the retrieval of the data by Globanet. Create a log directory for each.
 
-In order for Support to gain access to your Globanet logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shippper-service-configuration) under `externalServiceLogLocations`. Globanet creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connecto}.log`.
+In order for Support to gain access to your Globanet logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shippper-service-configuration) under `externalServiceLogLocations`. Globanet creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connector}.log`.
 
 > **EXAMPLE:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
 

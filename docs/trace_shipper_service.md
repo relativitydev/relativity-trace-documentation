@@ -90,7 +90,7 @@ For details on the IP ranges for your specific RelativityOne instance please con
 10. OPTIONALLY: Create and configure Extension Scripts
 
 ### Data Source Configuration Sync and Extension Scripts
-Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, CustomFields changes).  Please contact support@relativity.com for more details.
+Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, Data Source Specific Fields changes).  Please contact support@relativity.com for more details.
 
 ### Starting/Stopping Service
 The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
