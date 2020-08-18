@@ -32,6 +32,7 @@
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
 	- [Data Sources](#data-sources)
 		- [Data Source Specific Settings](#data-source-specific-settings)
+        - [Data Source State Serialization](#data-source-state-serialization)
 		- [Data Source Auto-Disable](#data-source-auto-disable)
 		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
 		- [Zip Drop Data Source](#zip-drop-data-source)
@@ -269,10 +270,10 @@ status of documents is reflected on a few key fields on the Document object
         3. Check Trace logs (via `Manage Logs` console button)
     
         4. Perform `Trace Document Retry` mass-operation on affected documents
-5.  **Trace Document Terms** – Multi-Object field tracking which Terms have
+5.  **Trace Terms** – Multi-Object field tracking which Terms have
     matched a document
-6.  **Trace Document Rule Terms** – Multi-Object field tracking Rule specific
-    Terms (terms that are associated with any rule) that have matched a document
+6.  **Trace Rule Terms** – Multi-Object field tracking Rule specific
+    Terms (terms that match the document that are also associated with Rules that match the document)
 7.  **Trace Has Errors** – Boolean (yes/no) field indicating if the document has
     any errors related to ingestion, extraction
 8.  **Trace Error Details** – Long Text field capturing the error details if a
@@ -730,6 +731,8 @@ Data Sources
 Data Source is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows you to define where/how you are pulling data. The Data Source references the Integration Point Profile that holds configuration on how to import data for that Data Source (field mappings). Data Batches reference
 Data Source to dynamically lookup which Integration Profile to use during import.
 
+**Warning:** Integration Point Profiles are susceptible to corruption by modification of Relativity Fields which are referenced in the Profile.  Any time a Relativity Field which is used in an Integration Point Profile is edited or deleted, it is imperative to validate the integrity of each of the related Integration Point Profiles. This can be done by editing the Profile, validating the data in each step, and saving. **Failure to do so will result in data not being imported.**
+
 <img src="media/user_documentation/ed6d268b-1439-4a66-aab2-7c8904bbd808_annotated.png" alt="Data Source View"  />
 
 ![Credentials Tab](media/user_documentation/9631ef5e-4ec9-4096-8c52-0af0377437fc_annotated.png)
@@ -829,6 +832,29 @@ sections.
 
 - **Aip Tenant Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection)
 
+### Data Source State Serialization
+
+Globanet and Zip Drop Data sources created in Trace serialize their current state as a JSON file at regular intervals. This data is designed to be retrieved by the Trace Shipper Service to facilitate integrations with external data sources. 
+
+The serialized data source file is saved in {Source/Drop Folder}\Config\DataSourceState.json, where {Source/Drop Folder} is the configured source or drop folder for the given data source. If the data source has been deleted, the deleted field is set to True in the JSON file and the file will no longer be updated. 
+
+All fields for a data source, including Data Source Specific Fields, are saved except fields including personal/private information (such as passwords and secrets). Different fields are set to be excluded depending on the type of data source. 
+Data source state serialization currently excludes the following fields from being saved:
+
+- Username
+- Password
+- Password Bank
+- Aip Client Secret
+- Aip Application Id
+- Aip Tenant Id
+- Exchange Url
+- Exchange Authorization Client Id
+- Exchange Authorization Tenant Id
+- EWS Client Secret
+- Drop Folder Path
+
+> **NOTE:** Other data source types can serialize their state as well, if this functionality is needed please contact support@relativity.com
+
 ### Data Source Auto-Disable
 
 Trace will automatically disable data sources that are identified as unhealthy or have critical configuration errors that will require intervention by the user. Trace will automatically disable a data source for the following reasons:
@@ -898,7 +924,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
-<img src="media/user_documentation/image-20200226224716411.png" alt="image-20200226224716411" style="zoom:50%;" />
+![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
     
 1.  *Exchange Settings – Url* gives you the chance to specify the exact URL
         used when connecting to your exchange server. If this field is left
@@ -919,9 +945,11 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
        the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
        Exchange2010_SP2, Exchange2013, Exchange2013_SP1
    
-9. Click “Save”
+10. *Exchange Settings - Exclude Microsoft Teams Chat* indicates whether Trace will ignore any Microsoft Teams chat messages being stored in a Monitored Individual's folders in Outlook as a part of O365. The default behavior is to pull data from the Teams Chat folder, but users may want to exclude these folders if Teams data is being pulled from a different data source or the data should not be pulled at all.
 
-10. Link / Create New Monitored Individuals (same page after clicking Save)
+11. Click “Save”
+
+12. Link / Create New Monitored Individuals (same page after clicking Save)
 
     ![](media/85e99ebffc8ada7ae4c69a61cb873213.png)
 
@@ -1001,7 +1029,7 @@ All other Data Batch failure scenarios with the ZIP Drop Data Source occur once 
 
 **Monitored Individuals CSV**
 
-Any enabled ZIP Drop Data Source will export its configured Monitored Individuals in CSV format every time the Drop Folder is checked for new files. The CSV will be located at `(Drop Folder)\Config\monitored_individuals.csv`.
+ZIP Drop Data Source will export its configured Monitored Individuals in CSV format every time the Drop Folder is checked for new files. The CSV will be located at `(Drop Folder)\Config\monitored_individuals.csv`.
 
 ### Relativity Native Data Extraction Data Source
 
@@ -1090,14 +1118,13 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 
 ### Deduplication Data Transformation
 
-Data Transformations of type `Deduplication` prevent a Data Source from importing a document if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
+Data Transformations of type `Deduplication` prevent a Data Source from importing an original document and its extractions if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
 
-For Trace native [Data Sources](#data-sources),  deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
+For Trace native [Data Sources](#data-sources), deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
 
 ![](media/70b0ae9c6debe35956d4988dffaae892.png)
 
-When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document
-will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
+When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes of original documents will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
 
 #### Required Fields for Deduplication
 
@@ -1105,6 +1132,7 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 
 1. Trace Document Hash
 2. Group Identifier
+3. Native File Path -- must be specified, but not necessarily mapped.
 
 ### Communication Direction Data Transformation
 
@@ -1121,6 +1149,8 @@ When using the `Communication Direction` transformation type, analysis is perfor
 > **NOTE:** the `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Communication Direction` transform.
 
 > **NOTE:** use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Integration Point Profile.
 
 ### Exempt List Data Transformation
 
@@ -1140,11 +1170,13 @@ When using the `Exempt List` transformation type, analysis is performed only on 
 
 > **NOTE:** use of the `Exempt List` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Integration Point Profile.
+
 ### Group Identifier Truncation for External Data Sources
 
 `Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
 
-> **NOTE:** `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` loadfile even if no other Data Transformations are defined on the Data Source. For additional information, please contact support@relativity.com.
+> **NOTE:** `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact support@relativity.com.
 
 Data Batches
 ------------
@@ -1529,7 +1561,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Family Group                  | Fixed-Length Text | Group the file belongs to (used to identify the group if attachment fields are not used). Formerly "Group Identifier" |
 | Calculated               | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file |
 | Calculated               | File Name                     | Fixed-Length Text | The original name of the file                                |
-| Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in integration point profile. A value for this field is automatically calculated by Relativity on import.                                                                                             |
+| Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in integration point profile. A value for this field is automatically calculated by Relativity on import. |
 | Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
 | Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
 | Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |
@@ -1538,7 +1570,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
 | Calculated               | Recipient Count               | Decimal           | The total count of unique recipients in an email across the To, CC, and BCC fields |
 | Calculated               | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document  |
-| Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document |
+| Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document. Original documents use a partial hash of metadata, while extracted documents use a binary hash. |
 | Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |
 | Calculated               | Trace Has Errors              | Yes/No            | Indicates if any errors occurred during extraction/expansion |
 | Calculated               | Trace Monitored Individuals   | Multiple Object   | Monitored individuals associated with Data Source (used for retrieval and billing) |
@@ -1559,6 +1591,8 @@ your library, reach out to `support@relativity.com`.
 ![](media/045f66f33011aa62ff7d00b2e05274c2.png)
 
 ## Setup Integration Point Profile
+
+**Warning:** Integration Point Profiles are susceptible to corruption by modification of Relativity Fields which are referenced in the Profile.  Any time a Relativity Field which is used in an Integration Point Profile is edited or deleted, it is imperative to validate the integrity of each of the related Integration Point Profiles. This can be done by editing the Profile, validating the data in each step, and saving. **Failure to do so will result in data not being imported.**
 
 1. Go to the Integration Points: Integration Point Profile tab
 

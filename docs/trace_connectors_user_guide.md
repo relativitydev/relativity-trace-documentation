@@ -14,14 +14,15 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 - [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a-bloomberg--ice-chat-thomson-reuters--symphony)
 - [Appendix B: Globanet Importer Schedule Helper](#appendix-b-globanet-importer-schedule-helper)
 - [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanet-s-merge1)
+- [Appendix D: Sync of Config Folder](#appendix-d-sync-of-config-folder)
 
 ## Trace Shipper Data Flow Overview 
 
-![image-20200622120128506](media/trace_connectors_user_guide/image-20200622120128506.png)
+![image-20200817164930647](media/trace_connectors_user_guide/image-20200817164930647.png)
 
 *ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
 
-> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software. Audio data is provided by external data provider
+> **NOTE:** Data Pull (2) and Process (3) are performed via Globanet Merge1 software. Audio data is provided by external data provider
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
@@ -73,22 +74,22 @@ To set up Trace Shipper, you will need:
 1. A Trace Enabled Relativity Workspace along with connection information and approved user credentials
 2. A list of connectors you will be setting up
 
-Each connector you set up will require a local directory to ship,  a Relativity Trace Data Source, and a remote Directory to ship to. All three of these must be unique to each connector.
+Each connector you set up will require a local directory to ship,  a Relativity Trace Data Source, and a remote directory to ship to. All three of these must be unique to each connector.
 
 Perform the following steps in order to get started:
 
 1. First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Globanet), later. 
 
-   1. > **NOTE:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
+      > **NOTE:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
 
-   2. > **EXAMPLE:**  Say you are using Globanet to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
+      > **EXAMPLE:**  Say you are using Globanet to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
       >
       > * `C:\Globanet\Exchange`
       > * `C:\Globanet\ICE`
 
 2. Next, choose relative paths for the Relativity side of shipper. For convenience, we could make these similar to the local directories we defined above.
 
-   1. > **For example:** Continuing our earlier Exchange and ICE chat example, we might decide our remote relative paths are:
+      > **EXAMPLE:** Continuing our earlier Exchange and ICE chat example, we might decide our remote relative paths are:
       >
       > * Globanet\Exchange
       > * Globanet\ICE
@@ -137,6 +138,8 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
    1. Navigate to the Data Source in view mode
    2. Click on "Enable Data Source" in the console on the right hand side
 
+> **NOTE:** All Trace Data Sources serialize their current state to a JSON file and their monitored individuals to a CSV file,  both of which can be retrieved by Trace Shipper. See Appendix D for more information.
+
 ### Installation Steps for Globanet
 
 Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Globanet. 
@@ -147,7 +150,9 @@ Contact support@relativity.com if you need assistance with installation steps.
 
 Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Globanet is a Globanet `target` directory, and each needs a location to store logs related to the retrieval of the data by Globanet. Create a log directory for each.
 
-> **For example:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
+In order for Support to gain access to your Globanet logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shippper-service-configuration) under `externalServiceLogLocations`. Globanet creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connector}.log`.
+
+> **EXAMPLE:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
 
 #### Configuring Globanet Importers
 
@@ -156,7 +161,7 @@ For each Globanet `target` directory, configure a Globanet Importer in Merge 1.
    1. Configure monitored individuals to point to
       `{localDirectoryPath}\Config\monitored_individuals.csv`
 
-      > **NOTE:** The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working and the corresponding Data Source is of Globanet provider and has Monitored Individuals.
+      > **NOTE:** The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working.
       
       > **NOTE:** If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
       
@@ -250,3 +255,7 @@ It is possible to setup Merge1 in HA mode. Recommended approach is to setup seco
 
 Once that is done, the secondary Merge1 should be connected to the same Merge1 DB as the primary Merge1 server. If for any reason the production server goes down, you just need to run the services on the second Merge1. Please note that no service should be started on the secondary Merge1 if the production is running. 
 For the DB, you can take backups on a daily basis or apply any other standard SQL Server  HA scenarios that you wish.
+
+## Appendix D: Sync of Config Folder
+
+All Data Sources in Relativity Trace serialize their current state as a JSON file at regular intervals. They also save a CSV file of all the linked monitored individuals as well. These files are saved in a Config folder in the Source or Drop folder for each data source. Trace Shipper can be configured to retrieve these Config folders, which allows for a way to sync data sources and monitored individuals from local to remote instance.

@@ -1,7 +1,8 @@
 # Relativity Trace Release Notes
 
-- [12.4.0.3 (14 July 2020)](#12403-14-july-2020)
-- [12.3.0.3 (1 June 2020) - DEPRECATED](#12303-1-june-2020--deprecated)
+- [12.5.0.6 (17 August 2020)](#12506-17-august-2020)
+- [12.4.1.1 (14 July 2020 - DEPRECATED)](#12411-14-july-2020--deprecated)
+- [12.3.0.3 (1 June 2020) - DEPRECATED)](#12303-1-june-2020--deprecated)
 - [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
 - [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
 - [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
@@ -12,7 +13,52 @@
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.4.0.3 (14 July 2020)
+# 12.5.0.6 (17 August 2020)
+
+**Relativity Compatibility**
+
+- **≥ 10.3.287.3**
+
+**Features**
+
+- Relativity Trace is now compatible with Aero UI (RelativityOne only)
+
+**Enhancements**
+
+- Enhanced Setup validation with clear messages for what's not configured for Trace
+- Removed superfluous Monitored Individual fields that were causing conflicts after deployments
+- Trace Shipper service
+  - Now consumes local 3rd party data provider logs and makes them available in Relativity for troubleshooting
+  - Improved re-queueing for items that were not previously available in source folder
+  - Improved data delivery with efficient batching strategy
+  - Graceful shutdown of the service of in-flight transfer jobs
+  - Internal queue depth reporting appropriate logging
+  - Propagation of data source configuration from Relativity to Trace Shipper (Enabled/Disabled/etc) to be consumed by data provider
+- Additional logging to troubleshoot failing rules with custom query options on saved search
+- Trace Document Hash field is now populated for attachments which allows for deduplication of generated alerts and review workflow
+- Improved data extraction fidelity for email like file types to propagate all available metadata
+- Trace Exchange data source now has a flag to exclude hidden MS Teams folder
+- Trace Rule Terms field on document is now populated with terms that are associated with actual rule matches only (as opposed to all matching terms for all rules)
+
+**Defect Fixes**
+
+- BIST no longer breaks when deployed to workspaces with reserved names
+- Correctly propagating Password Protected flag across all known file types
+- In certain extreme failure modes, data validation task now correctly identifies and fails data batches with silent failures in import job (RIP)
+- Renamed fields in Relativity that are associated with RIP profiles are now correctly identified as problematic with an appropriate error message
+- Resolved handling of dtSearch temp indexes with document retry workflow
+
+**Deprecated**
+
+- Removed confusing Associate (link) Document to Rule button in the Rules tab UI
+
+**Upgrade Considerations**
+
+- If a rename of an ingested field is done in Relativity (**ex:** Email From -> From), **all** RIP profiles referencing that field **MUST** be updated to reference the new field name.
+
+  
+
+# 12.4.1.1 (14 July 2020) - DEPRECATED
 
 **Relativity Compatibility**
 

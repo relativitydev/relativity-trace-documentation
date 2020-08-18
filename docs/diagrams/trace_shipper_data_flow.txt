@@ -12,7 +12,7 @@ box "Relativity" #LightBlue
 	participant Workspace
 end box
 
-RelativityFileShare -> TraceShipper: Pull MI data (Asepra/SMB*)
+RelativityFileShare -> TraceShipper: Pull MI and Data Source state data (Aspera/SMB*)
 DataSource -> TraceShipper: Pull Data for relevant MIs
 TraceShipper -> TraceShipper: Process
 TraceShipper -> RelativityFileShare: Push source data (Aspera/SMB*)
