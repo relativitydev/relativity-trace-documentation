@@ -614,7 +614,8 @@ You can configure the Email action to send out an email about specific document 
 
 ```[to:email1@test.com,cc:email2@test.com,bcc:email3@test.com]```
 
-`Email Settings – From Address`: Sender of the email
+`Email Settings – From Address`: Sender of the email 
+> **NOTE:** If using RelativityOne, email from field MUST end on `@relativity.one`
 
 `Document Link` - By default contains a link to the alerted document. Can insert custom text and Replacement Tokens.
 
