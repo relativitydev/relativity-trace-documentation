@@ -1559,7 +1559,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Email Has Attachments         | Yes/No            | The yes/no indicator of whether an email has children (attachments). |
 | Calculated               | Email Store Name              | Fixed-Length Text | Any email, contact, appointment, etc. that is extracted from an email container (PST, OST, NSF, MBOX, etc) will have this field populated with the name of that email container. |
 | Calculated               | Extracted Text Size in KB     | Decimal           | Indicates the size of the extracted text field in kilobytes  |
-| Calculated               | Family Group                  | Fixed-Length Text | Group the file belongs to (used to identify the group if attachment fields are not used). Formerly "Group Identifier" |
+| Calculated               | Group Identifier                  | Fixed-Length Text | Family Group the file belongs to (used to identify the group if attachment fields are not used). |
 | Calculated               | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file |
 | Calculated               | File Name                     | Fixed-Length Text | The original name of the file                                |
 | Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in integration point profile. A value for this field is automatically calculated by Relativity on import. |
@@ -1575,6 +1575,8 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |
 | Calculated               | Trace Has Errors              | Yes/No            | Indicates if any errors occurred during extraction/expansion |
 | Calculated               | Trace Monitored Individuals   | Multiple Object   | Monitored individuals associated with Data Source (used for retrieval and billing) |
+| Calculated               | Trace Exempt              | Yes/No            | Indicates exempt list data transormation classification |
+| Calculated               | Trace Communication Direction           | Fixed-Length Text | Indicates communication direction data transformation classification (Internal | Inbound | Outbound | External | Undefined) |
 
 Appendix C: Create Email Fields Map Integration Point Profile
 =============================================================
