@@ -1430,6 +1430,7 @@ Usability Considerations
 -   Task processes (Indexing, Term Searching, Rule Evaluation, etc) run simultaneously (in parallel). It may take several task cycles (based on configured `Run Interval` for each task) for the end-to-end workflow to complete fully.
 -   Deleting a Trace Rule does not delete any of the corresponding Relativity infrastructure and objects that were created (i.e. dtSearch Index, Saved Searches, Batch Sets). 
 -   The global dtSearch index `Trace Search Index` (created by Trace application during installation) is supported for ad-hoc searching and will be incrementally built as part of Indexing task. All dtSearch indexes whose name begins with `Trace`, but not `TraceTemp` will incrementally build automatically.
+      > **NOTE:** `Trace Search Index` settings are propagated to all of Term Searching in Trace.  The index MUST be named exactly `Trace Search Index` in order to apply the settings correctly (noise words, alphabet, etc)!
 
 ## 	General Infrastructure and Environment Considerations
 
