@@ -1435,7 +1435,7 @@ Usability Considerations
 
 - The global dtSearch index `Trace Search Index` (created by Trace application during installation) is supported for ad-hoc searching and will be incrementally built as part of Indexing task. All dtSearch indexes whose name begins with `Trace`, but not `TraceTemp` will incrementally build automatically.
 
-      > **NOTE:** `Trace Search Index` settings are propagated to all of Term Searching in Trace.  The index MUST be named exactly `Trace Search Index` in order to apply the settings correctly (noise words, alphabet, etc)!
+> **NOTE:** `Trace Search Index` settings are propagated to all of Term Searching in Trace.  The index MUST be named exactly `Trace Search Index` in order to apply the settings correctly (noise words, alphabet, etc)!
 
 ## 	General Infrastructure and Environment Considerations
 
