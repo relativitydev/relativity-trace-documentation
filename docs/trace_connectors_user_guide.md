@@ -110,7 +110,7 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
 
 > **NOTE:** When setting up the Data Source, if you do not see the Data Source Type that you are interested in please contact support@relativity.com.
 
-1. Create Integration Point Profiles for each data source to specify data mappings.  The Integration Point Profile is used to map fields in a source load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Integration Point Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-map-integration-point-profile) for detailed instructions.
+1. Create Ingestion Profiles for each data source to specify data mappings.  The Ingestion Profile is used to map fields in a source load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Ingestion Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-data-mappings-and-ingestion-profile) for detailed instructions.
 
 2. Create a new Data Source for each specific data source type (for example, Exchange, ICE Chats) that you want to start pulling data from
 

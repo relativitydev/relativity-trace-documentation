@@ -119,22 +119,23 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
     with Office 365 Data Source. Go to the **Trace:Data Sources** tab
     ![](media/demo_guide/Section2.1.png)
 
-2.  Click on the **Office 365 Exchange** data source to see how it is configured
+2. Click on the **Office 365 Exchange** data source to see how it is configured
 
-    -   **Data Source Type**: You can choose which type of data you want to ingest.
-    This instance has been setup with a few basic types. Trace can support 40+
-    different Data Source Types
+   -   **Data Source Type**: You can choose which type of data you want to ingest.
+   This instance has been setup with a few basic types. Trace can support 40+
+   different Data Source Types
 
-    -   **Integration Point Profile:** Used for Field Mapping and other ingestion
-    options
+   - **Ingestion Profile:** Used for mapping loadfile columns to fields in Relativity and other loadfile specific configuration.
 
-    -   **Username / Password:** secure way to enter authentication information for
-    various Data Sources
+     ![image-20201001154812502](media\demo_guide\image-20201001154812502.png)
 
-    -   **Trace Monitored Individuals:** lets you select which people to monitor
+   - **Username / Password:** secure way to enter authentication information for various Data Sources (on the Credentials tab of the Data Source Layout)
 
-    -   The Data Source is currently **Disabled**
-    ![](media/demo_guide/Section2.2.png)
+     ![image-20201001154932635](media\demo_guide\image-20201001154932635.png)
+
+   - **Trace Monitored Individuals:** lets you select which people to monitor
+
+   -   The Data Source is currently **Disabled**
 
 3.  Click **Enable Data Source** on the right hand side
     ![](media/demo_guide/Section2.2a.png)

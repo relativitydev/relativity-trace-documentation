@@ -30,26 +30,27 @@
 			- [Webhook Action Type (Preview)](#webhook-action-type-preview)
 		- [Custom Relativity Scripts](#custom-relativity-scripts)
 - [Trace Proactive Ingestion Framework](#trace-proactive-ingestion-framework)
-	- [Data Sources](#data-sources)
-		- [Data Source Specific Settings](#data-source-specific-settings)
+  - [Data Sources](#data-sources)
+    - [Data Source Specific Settings](#data-source-specific-settings)
         - [Data Source State Serialization](#data-source-state-serialization)
-		- [Data Source Auto-Disable](#data-source-auto-disable)
-		- [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
-		- [Zip Drop Data Source](#zip-drop-data-source)
-		- [Relativity Native Data Extraction Data Source](#relativity-native-data-extraction-data-source)
-	- [Monitored Individuals](#monitored-individuals)
-	- [Data Transformations](#data-transformations)
-		- [Replace Data Transformation](#replace-data-transformation)
-		- [Deduplication Data Transformation](#deduplication-data-transformation)
-		  - [Required Fields for Deduplication](#required-fields-for-deduplication)
-		- [Communication Direction Data Transformation](#communication-direction-data-transformation)
-		- [Exempt List Data Transformation](#exempt-list-data-transformation)
-	- [Data Batches](#data-batches)
-	  - [Data Batch Retry and Error Resolution Workflow](#data-batch-retry-and-error-resolution-workflow)
-	- [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
-	  - [Monitored Individual Discovery On Globanet Data Sources](#monitored-individual-discovery-on-globanet-data-sources)
-	  - [Monitored Individual Discovery On Other Data Sources](#monitored-individual-discovery-on-other-data-sources)
-	  - [Supported File Formats](#supported-file-formats)
+    - [Data Source Auto-Disable](#data-source-auto-disable)
+    - [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
+    - [Zip Drop Data Source](#zip-drop-data-source)
+  - [Ingestion Profiles](#Ingestion-Profiles)
+    - [Data Mappings](#data-mappings)
+  - [Monitored Individuals](#monitored-individuals)
+  - [Data Transformations](#data-transformations)
+  	- [Replace Data Transformation](#replace-data-transformation)
+  	- [Deduplication Data Transformation](#deduplication-data-transformation)
+  	  - [Required Fields for Deduplication](#required-fields-for-deduplication)
+  	- [Communication Direction Data Transformation](#communication-direction-data-transformation)
+  	- [Exempt List Data Transformation](#exempt-list-data-transformation)
+  - [Data Batches](#data-batches)
+    - [Data Batch Retry and Error Resolution Workflow](#data-batch-retry-and-error-resolution-workflow)
+  - [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
+    - [Monitored Individual Discovery On Globanet Data Sources](#monitored-individual-discovery-on-globanet-data-sources)
+    - [Monitored Individual Discovery On Other Data Sources](#monitored-individual-discovery-on-other-data-sources)
+    - [Supported File Formats](#supported-file-formats)
 - [Setup](#setup)
 	- [Tasks](#tasks)
 	- [Alerts and Notifications](#alerts-and-notifications)
@@ -69,8 +70,8 @@
 - [Glossary](#glossary)
 - [Appendix A: Trace Object Architecture](#appendix-a-trace-object-architecture)
 - [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields)
-- [Appendix C: Create Email Fields Map Integration Point Profile](#appendix-c-create-email-fields-map-integration-point-profile)
-	- [Setup Integration Point Profile](#setup-integration-point-profile)
+- [Appendix C: Create Email Fields Data Mappings and Ingestion Profile](#appendix-c-create-email-fields-data-mappings-and-ingestion-profile)
+	- [Setup Ingestion Profile](#setup-ingestion-profile)
 
 
 
@@ -729,12 +730,12 @@ Ingestion Framework
 Data Sources
 ------------
 
-Data Source is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows you to define where/how you are pulling data. The Data Source references the Integration Point Profile that holds configuration on how to import data for that Data Source (field mappings). Data Batches reference
-Data Source to dynamically lookup which Integration Profile to use during import.
+Data Source is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows you to define where/how you are pulling data. The Data Source references the Ingestion Profile that holds configuration on how to import data for that Data Source (data mappings). Data Batches reference
+Data Source to dynamically lookup which Ingestion Profile to use during import.
 
-**Warning:** Integration Point Profiles are susceptible to corruption by modification of Relativity Fields which are referenced in the Profile.  Any time a Relativity Field which is used in an Integration Point Profile is edited or deleted, it is imperative to validate the integrity of each of the related Integration Point Profiles. This can be done by editing the Profile, validating the data in each step, and saving. **Failure to do so will result in data not being imported.**
+**Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
 
-<img src="media/user_documentation/ed6d268b-1439-4a66-aab2-7c8904bbd808_annotated.png" alt="Data Source View"  />
+![](media\user_documentation\ed6d268b-1439-4a66-aab2-7c8904bbd808_annotated.png)
 
 ![Credentials Tab](media/user_documentation/9631ef5e-4ec9-4096-8c52-0af0377437fc_annotated.png)
 
@@ -744,7 +745,7 @@ Data sources are broken up in several sections:
    * **Name:** The name of Data Source
    * **Data Source Type:** Type of the data source
 
-   * **Integration Point Profile:** Integration Point Profile used to load data
+   * **Ingestion Profile:** Ingestion Profile used to load data
      from this Data Source
 
    * **Start Date:** Date from which data will be pulled/pushed into Relativity
@@ -762,6 +763,7 @@ Data sources are broken up in several sections:
      it happened recently (based on Last Error Retention in Hours setting under
      Data Source Specific Fields)
 2. **Credentials:** this tab is used to securely input and store credential information. This includes username and password as well as OAuth client secrets, should they be used. Not all Data Sources require credential information.
+    
     * **Username:** Optional field used for authentication of a data source.
     
     * **Password:** Optional field used for authentication of a data source.
@@ -876,9 +878,9 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 **Setup**
 
-**Step 1: Create Integration Point Profile**
+**Step 1: Create Ingestion Profile**
 
->   Refer to **[Appendix C](#appendix-c-create-email-fields-map-integration-point-profile)**
+>   Refer to **[Appendix C](#appendix-c-create-email-fields-data-mappings-and-ingestion-profile)**
 
 **Step 2: Adjust Office 365 permissions**
 
@@ -914,7 +916,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
     ![](media/45f8a402b934539e3a94ed74d11081b3.png)
 
-4.  Select Integration Point Profile created in **Step 1**
+4.  Select Ingestion Profile created in Step 1
 
 5.  Set the required credentials depending on your authentication method (see authorization.md for more details).
     
@@ -990,7 +992,7 @@ The Zip Drop Data Source Type allows Relativity Trace to import of fully formed 
 Configuration for the Zip Drop Data Source is pretty simple. There are no credentials or start date required. In fact, there are only a few things that need to be set up:
 
 - **Drop Folder Path** - Path where ZIP files will be retrieved by the data source, relative to the root of the file share for the workspace (beneath the EDDSXXXXXX folder). The Drop Folder does not need to exist when settings are saved as it will be created automatically. If the file path does not resolve to a location within the file share for the workspace, an error will be thrown.
-- **Integration Point Profile** - Integration Point Profile can be a bit tricky because the selected template load file must contain the same columns that will be in the load files in the dropped ZIP files. In order to have a valid template load file for the Integration Point Profile, open up the File Share and place a sample load file of the kind that will be inside the ZIP files in the `DataTransfer\Import\LoadFileTemplates` folder under the workspace file share root and then select the file when creating the Integration Point Profile. See Appendix C for more information on Integration Point Profiles.
+- **Ingestion Profile** - See Appendix C for more information on Ingestion Profiles.
 
 **ZIP File Format**
 
@@ -1058,7 +1060,7 @@ file on disk:
 
     2.  Set the Name = for example, “Native Data Extraction”
 
-    3.  Select Integration Point Profile created in Step 1
+    3.  Select Ingestion Profile created in Step 1
 
     4.  Select Data Source Type: “Relativity Native Data Extraction”
 
@@ -1089,6 +1091,74 @@ for field descriptions.
 **Limitations**
 
 Relativity Native Data Extraction Data Source do not support [Deduplication](#deduplication-data-transformation). Deduplication transformations must be unlinked before the Data Source can be enabled.
+
+## Ingestion Profiles
+
+Ingestion profiles are a store for configuration needed for going from a loadfile to a document in Relativity. Most fields have a default value that will not need to be changed except for advanced use cases.
+
+##### Ingestion Profile Fields
+
+`Name` - The name of the ingestion profile. 
+
+`Workspace Destination Folder` - The folder in the workspace to which documents will be imported.
+
+`Data Mappings` - A list of data mappings used for mapping columns in the loadfile to fields in Relativity.
+
+`Overwrite Behavior` - describes how importing documents with the same identifier should be handled
+
+​	**Append Only** - only add documents with no identifier collisions to the workspace
+
+​	**Overlay Only** - only update documents with identifier collisions
+
+​	**Append/Overlay** - Adds documents without collisions and updates the ones with collisions
+
+`FieldOverlayBehavior` - This field only applies if either Overlay Only or Append/Overlay are selected for overwrite behavior. This field describes how specific fields are updated when a collision occurs.
+
+​	**Merge Values** - Merges values for all multi-choice and multi-object fields with corresponding choices/values in the workspace
+
+​	**Replace Values** - Replaces all values for all multi-choice and multi-object fields with corresponding choices/values in the workspace
+
+​	**Use Field Settings** - Merges or replaces multi-choice and multi-object fields with corresponding choices/values in the workspace based on the settings on the field
+
+`Native File Path Location` - A data mapping containing the name of the column in the loadfile that specifies the native file path. The selected data mapping MUST be in the data mappings list on the Ingestion Profile
+
+`Column Containing File Location` - A data mapping containing the name of the column in the loadfile that contains a text file location. The imported field on the document will display the contents of the text file instead of the file path. This field is optional.
+
+`Encoding for Undetectable Files` - Encoding for the text file specified in the Column Containing File Location. 
+
+`Loadfile Encoding` - The encoding for the loadfile that will be used with this ingestion profile
+
+`Column` - The ascii character that will be used as a column delimiter in the loadfile
+
+`Quote` - The ascii character that will be used as a quote delimiter in the loadfile
+
+`Multivalue` - The ascii character used to delimit choices in a given column
+
+`Nested Value` - The ascii character used to delimit different levels of a multi-choice hierarchy
+
+### Data Mappings
+
+Data mappings are a link between a column in a loadfile and a field in Relativity. 
+
+##### Data Mapping Fields
+
+`Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
+
+`Relativity Field` - The field in Relativity that will have it's value populated
+
+`Type` - Data mapping type indicates if there is anything special about the data mapping. 
+
+​	**None** - Standard data mappings will have this type. A source field and Relativity field are both required for this type.
+
+​	**Native File Path** - This indicates that the source field column in the loadfile contains the native file path. This field does not require a destination Relativity field. Only one data mapping of this type can exist on an ingestion profile. The single data mapping of this type must also be selected on ingestion profile's 'Native File Path Location' field. 
+
+​	**Identifier** - This indicates that the destination Relativity field is the document identifier for the workspace. A source field and Relativity field are both required for this type. Only one data mapping of this type can exist on an ingestion profile.
+
+
+
+#### Adding Encoding Choices
+
+By default, Trace only ships with two encodings (UTF-8 and Windows-1252). More encoding choices can be added for the Ingestion Profile single choice fields `Loadfile Encoding` and `Encoding for Undetectable Files`. The name of the encoding choice you wish to add must be able to be parsed as a valid encoding. See [here](https://docs.microsoft.com/en-us/dotnet/api/system.text.encoding?view=netframework-4.6.2#list-of-encodings) for a list of supported encodings. When choosing from the supported encoding list, you must use the `Name` of the encoding as the choice name (e.g. IBM037, **not** IBM EBCDIC). Encoding support is validated when saving the Ingestion Profile with the specific encoding choice selected.
 
 Monitored Individuals
 ---------------------
@@ -1129,7 +1199,7 @@ When additional documents are ingested (either within the same Data Batch or dif
 
 #### Required Fields for Deduplication
 
-Deduplication of a Data Source requires that the following Relativity fields be mapped in the Data Source's associated Integration Point Profile.
+Deduplication of a Data Source requires that the following Relativity fields be mapped in the Data Source's associated Ingestion Profile.
 
 1. Trace Document Hash
 2. Group Identifier
@@ -1147,11 +1217,11 @@ Data Transformations of type `Communication Direction` can be used to populate t
 
 When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 
-> **NOTE:** the `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Communication Direction` transform.
+> **NOTE:** the `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
 
 > **NOTE:** use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
-> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Integration Point Profile.
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Ingestion Profile.
 
 ### Exempt List Data Transformation
 
@@ -1165,13 +1235,13 @@ A communication is considered exempt if the `From ` field matches one or more of
 
 When using the `Exempt List` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Exempt` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 
-> **NOTE:** the `Trace Exempt` field will not be populated on documents unless it is mapped in the Integration Point Profile associated with the Data Source containing the `Exempt List` transform.
+> **NOTE:** the `Trace Exempt` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Exempt List` transform.
 
 > **NOTE:** Having too many `Exempt Entry` objects in a workspace will increase the memory needs of the `Trace Manager Agent` when running `Exempt List` transformations. If your workspace has more than 5000 `Exempt Entry`  objects defined, please contact `support@relativity.com` to make sure you have adequate system resources available.
 
 > **NOTE:** use of the `Exempt List` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
-> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Integration Point Profile.
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Ingestion Profile.
 
 ### Group Identifier Truncation for External Data Sources
 
@@ -1185,7 +1255,7 @@ Data Batches
 Data batch is a unit of ingestion work for Trace. It corresponds to a load file on disk that needs to be imported with specific settings and field mappings. It is a central tracking object for how the data was generated, normalized and aggregated into a load file. It provides status of the overall import process and
 allows for a deep audit history trail from native data source to Relativity.
 
-Once a batch begins the Ingestion process (when status is set to: `ReadyForImport`), the Ingestion task will create an integration point from the Data Source's configured Integration Point Profile (this information includes import settings and field mappings).
+Once a batch begins the Ingestion process (when status is set to: `ReadyForImport`), the Ingestion task will create an integration point from the Data Source's configured Ingestion Profile (this information includes import settings and data mappings).
 
 > **NOTE:** Trace will only create Integration Points in each workspace up to the number specified in the `Max Simultaneous Import Jobs` setting on the Ingestion Task (default 25). Once that number of Integration Point jobs are created, additional data batches will stay in the `ReadyForImport` status and no additional Integration Point jobs will be created until enough jobs finish to bring the total back under the specified maximum.
 
@@ -1568,7 +1638,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Group Identifier                  | Fixed-Length Text | Family Group the file belongs to (used to identify the group if attachment fields are not used). |
 | Calculated               | File Extension                | Fixed-Length Text | The extension of the file, as assigned by the processing engine after it reads the header information from the original file |
 | Calculated               | File Name                     | Fixed-Length Text | The original name of the file                                |
-| Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in integration point profile. A value for this field is automatically calculated by Relativity on import. |
+| Calculated               | File Size                     | Decimal           | **DO NOT MAP** this field in ingestion profile. A value for this field is automatically calculated by Relativity on import. |
 | Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
 | Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
 | Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |
@@ -1581,75 +1651,39 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |
 | Calculated               | Trace Has Errors              | Yes/No            | Indicates if any errors occurred during extraction/expansion |
 | Calculated               | Trace Monitored Individuals   | Multiple Object   | Monitored individuals associated with Data Source (used for retrieval and billing) |
-| Calculated               | Trace Exempt              | Yes/No            | Indicates exempt list data transormation classification |
-| Calculated               | Trace Communication Direction           | Fixed-Length Text | Indicates communication direction data transformation classification (Internal | Inbound | Outbound | External | Undefined) |
+| Calculated               | Trace Exempt              | Yes/No            | Indicates exempt list data transformation classification |
+| Calculated               | Trace Communication Direction           | Fixed-Length Text | Indicates communication direction data transformation classification (Internal |
 
-Appendix C: Create Email Fields Map Integration Point Profile
+Appendix C: Create Email Fields Data Mappings and Ingestion Profile
 =============================================================
 
 > **NOTE:** Make sure the Integration Points application is installed in this
 Workspace before proceeding.
 
-> **NOTE:** Load File Templates are generated by Trace Agent **ONLY** in
-workspaces that are enabled for “Continuous” run option in “Setup” tab. Ensure `Data Retrieval` task runs **at least once before configuring** Integration Point Profile
-
 > **NOTE:** Trace uses default Relativity fields for email and attachment data that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). **Trace recommends use of this application, however it is totally optional and one can choose to create custom fields or re-use fields from an existing template.** You can install it to the target workspace like any other application which will bring in all
-the needed fields with standardized names that are easily auto-mapped via “Map
-Fields” integration point profile feature. If you don’t see this application in
+the needed fields with standardized names. If you don’t see this application in
 your library, reach out to `support@relativity.com`.
 ![](media/045f66f33011aa62ff7d00b2e05274c2.png)
 
-## Setup Integration Point Profile
+## Setup Ingestion Profile
 
-**Warning:** Integration Point Profiles are susceptible to corruption by modification of Relativity Fields which are referenced in the Profile.  Any time a Relativity Field which is used in an Integration Point Profile is edited or deleted, it is imperative to validate the integrity of each of the related Integration Point Profiles. This can be done by editing the Profile, validating the data in each step, and saving. **Failure to do so will result in data not being imported.**
+**Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
 
-1. Go to the Integration Points: Integration Point Profile tab
+1. Go to the Trace: Ingestion Profile tab
+2. Click “New Ingestion Profile”
+3. Enter a name for the Profile “Email Fields Map Profile”
+4. Fill in preferred Workspace Destination Folder
+5. Most advanced settings can be left as their default values
+   1. Column Containing File Location - Create or select a data mapping with Source Field Identifier "Extracted Text" mapped to a long text Relativity Field and a type of "None"
+   2. Native File Path Location - Create or select a data mapping with Source Field Identifier "Native File Path" and type of "Native File Path". This data mapping is not required to have a destination field in Relativity, but may have one if you so choose.
+6. Click "Save"
+7. On the layout for your new Ingestion Profile, add/link required Data Mappings
+   1.  Add/Link a data mapping of type Identifier (the Relativity Field will likely be Control Number)
+   2. Add/Link a data mapping of type Native File Path (the same data mapping you set in the 'Advanced Settings' section)
+   3. If you specified a data mapping for Column Containing File Location, make sure to add it to the list of data mappings as well.
+   4. Add/Link data mappings for any other unmapped fields in the loadfile to the appropriate. It is not required to map every field.
+         For any missing fields in your Workspace, create them in the Workspace
+         Administration: Fields Tab. See [Appendix B: Load File Fields for Emails and Attachments](#appendix-b-trace-document-extraction-fields) for a list and associated definition for all Trace
+         fields.
 
-2. Click “New Integration Point Profile”
-
-3. On Page 1 (Setup):
-
-   1.  Enter a name for the Profile “Email Fields Map Profile”
-
-   2.  Type = “Import”
-
-   3.  Source = “Load File”
-
-   4.  Keep all other settings as Default and click “Next”
-
-4. On Page 2 (Connect to Source):
-
-   1.  Fill in preferred Workspace Destination Folder
-
-   2.  Import Source: Select the Load File Template in the `LoadFileTemplates`
-       Folder that matches the Data Source type that will use this Integration
-       Point Profile (example: Microsoft Exchange data source):
-
-       ![](media/f13604a6dda3fdda62e890f80b332b1e.png)
-
-   3.  Change the Newline character to (`ASCII: 010`)
-
-   4.  Keep all other settings as default and press `Next`
-
-5. On Page 3, map all the fields you need from the Load File Template to your
-   Workspace fields and configure Settings.
-
-   1.  Click the `Map Fields` button to map all fields in your Workspace that
-       have identical names to fields from the Load File Template
-
-   2.  Next, double-click `Control Number` in the Source (far left) list and then
-       double-click Control Number (or custom Identifier Field) in the Destination (far right) list to map the Control Number field.
-   
-3.  Map any other unmapped fields in the Source list to the appropriate
-       field in the Destination list. It is not required to map every field.
-       For any missing fields in your Workspace, create them in the Workspace
-       Administration: Fields Tab. See [Appendix B: Load File Fields for Emails and Attachments](#appendix-b-trace-document-extraction-fields) for a list and associated definition for all Trace
-       fields.
-    
-4.  At the bottom, configure Settings to match the screenshot below
-   
-    ![](media/2fb725ce41fc7828621e86298ecd03c4.png)
-   
-5.  Press “Save”
-
-> **NOTE:** You can edit the Integration Point Profile settings at any time, however existing completed Data Batches will not automatically re-import the data with new settings/mappings.
+> **NOTE:** You can edit the Ingestion Profile settings at any time, however existing completed Data Batches will not automatically re-import the data with new settings/mappings.
