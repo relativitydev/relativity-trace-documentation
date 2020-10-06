@@ -1,19 +1,59 @@
 # Relativity Trace Release Notes
 
-- [12.5.0.6 (17 August 2020)](#12506-17-august-2020)
+- [13.0.0.8 (5 October 2020)](#13008-5-october-2020)
+
+- [12.5.0.6 (17 August 2020) - DEPRECATED](#12506-17-august-2020--deprecated)
+
 - [12.4.1.1 (14 July 2020 - DEPRECATED)](#12411-14-july-2020--deprecated)
+
 - [12.3.0.3 (1 June 2020) - DEPRECATED)](#12303-1-june-2020--deprecated)
+
 - [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
+
 - [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
+
 - [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
+
 - [12.0.5.2 (24 October 2019) - DEPRECATED](#12052-24-october-2019---deprecated)
+
 - [11.2.11.1 (13 September 2019) - DEPRECATED](#112111-13-september-2019---deprecated)
+
 - [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
+
 - [11.2.9.2 (15 July 2019) - DEPRECATED](#11292-15-july-2019---deprecated)
+
 - [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
+
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
-# 12.5.0.6 (17 August 2020)
+  
+
+# 13.0.0.8 (5 October 2020)
+
+**Relativity Compatibility**
+
+- **≥ 10.3.287.3**
+
+**Features**
+
+- Introducing new Trace Ingestion Profiles to simplify the setup of Data Sources and increase the resiliency of automated data ingestion
+
+**Enhancements**
+
+- SQL views are now created for choice tables (ZCodeArtifact) and can be used when creating Relativity Scripts
+- Improved handling of an edge case where Data Batch load files are missing (occasionally observed when swapping out file shares)
+
+**Defect Fixes**
+
+- Fixed an intermittent issue where “term hits” would be added to the *Trace Terms* field, but not the *Trace Rule Terms* field. This defect didn’t impact the alerting of a communication but would reduce the transparency of why an alert was generated
+
+**Upgrade Considerations**
+
+- On upgrade, new Ingestion Profiles will be created from your existing Relativity Integration Point Profiles and linked to your Data Sources
+
+  
+
+# 12.5.0.6 (17 August 2020) - DEPRECATED
 
 **Relativity Compatibility**
 

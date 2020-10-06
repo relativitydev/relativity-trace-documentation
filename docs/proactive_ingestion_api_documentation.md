@@ -3,7 +3,7 @@
 - [Overview](#overview)
 - [Ingest Data From Custom Data Sources](#ingest-data-from-custom-data-sources)
   * [Glossary](#glossary)
-  * [Prerequisites: Load File and Integration Point Profile](#prerequisites-load-file-and-integration-point-profile)
+  * [Prerequisites: Load File and Ingestion Profile](#prerequisites-load-file-and-ingestion-profile)
   * [Data Batch Overview](#data-batch-overview)
   * [Ingestion API Usage](#ingestion-api-usage)
   * [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
@@ -14,7 +14,7 @@
     + [Security](#security)
     + [Load File Specifications](#load-file-specifications)
       - [Text Fields](#text-fields)
-    + [Field Mappings stored in Relativity Integration Point Profile](#field-mappings-stored-in-relativity-integration-point-profile)
+    + [Data Mappings stored on Ingestion Profile](#data-mappings-stored-on-ingestion-profile)
       - [Required (absolute musts)](#required--absolute-musts)
       - [Recommended](#recommended)
     + [Data Batches](#data-batches)
@@ -76,45 +76,27 @@ It is designed to work with Load Files as an intermediate step between Source an
     
 -   **IPI:** Trace Proactive Ingestion
 
-## Prerequisites: Load File and Integration Point Profile
+## Prerequisites: Load File and Ingestion Profile
 
 1.  Install “Trace” application
 
 2.  Install “Integration Points” application
 
-3.  Generate sample Load File with all the needed fields
+3. Create Ingestion Profile and adjust advanced settings (encoding, native file path field, etc;)
 
-4.  Create Integration Point profile
+   ![image-20201001155601069](media\proactive_ingestion_api_documentation\image-20201001155601069.png)
 
-    1.  Type: Import
+4.  Save Ingestion Profile
 
-    2.  Source: Load File
+5.  Link/Create Data Mappings
 
-    3.  Reference sample load file location
+    ![image-20201001155837229](media\proactive_ingestion_api_documentation\image-20201001155837229.png)
 
-    4.  Map Load File fields to Relativity fields
+    ​	`Source Field Identifier`: Name of the column in the loadfile
 
-    5.  Adjust other settings (encoding, native file path field, etc.)
+    ​	`Relativity Field`: The field to which the value in the loadfile will be written
 
->   See the below screenshots to create an Integration Points Profile:
-
-![](media/e24572c72556487f6e2f628f1299a60f.png)
-
-![](media/a04bf444c81840c63e8506ddf9c4375d.png)
-
-![](media/f49ffa92f4f23a13a8d2dbae9a21b2a8.png)
-
-1.  Create Trace Data Source
-
-    1.  Name: Data Source name that will be reference by Data Batches
-
-    2.  Integration Point Profile Name: name of profile created in step 4
-
-    3.  Username / Password: not required. Can be used to store credentials via
-        Secret Store
-
-    4.  Enabled: used to signal stop or start of the data source ingestion from
-        external source
+    ​	`Type`: The data mapping type. See [User Documentation](user_documentation.md#data-mappings)
 
 ## Data Batch Overview
 
@@ -320,13 +302,13 @@ Relativity Trace validates and normalizes all values in columns that are mapped 
 
 > **NOTE:** due to varying minimum and maximum values for dates, Relativity Trace will consider any date with a year less than 1800 or greater than 2200 to be invalid
 
-### Field Mappings stored in Relativity Integration Point Profile
+### Data Mappings stored on Ingestion Profile
 
-The following fields **must** be part of the Load File and must be mapped to appropriate Relativity fields:
+The following fields **must** be part of the Load File and must be mapped to appropriate Relativity fields via Data Mappings on the Ingestion Profile:
 
 #### Required (absolute musts)
 
-1. `Object Type Identifier` - this is usually called a `Control Number`
+1. Object Type Identifier - this is usually called `Control Number` but is whichever field is the identifier for the Document Object in Relativity
 
 2. `Trace Monitored Individuals` – list of monitored people associated with each record
 
@@ -335,10 +317,10 @@ The following fields **must** be part of the Load File and must be mapped to app
    1. > **IMPORTANT:** column name in the load file must be called `Trace Document Hash`
 
 4. `Trace Has Errors` – true/false. True, if particular document has errors
-   (e.g. audio file too big to transcribe, etc…)
+   (e.g. audio file too big to transcribe, etc;)
    
 5. `Trace Error Details` – details of the individual item’s error (stack trace,
-   retry information, etc)
+   retry information, etc;)
    
 6. `Trace Data Transformations` - must be set to empty string. This ensures that any Data Transformations tags are cleared.
 
@@ -364,7 +346,7 @@ The following fields **must** be part of the Load File and must be mapped to app
    are cleared.
 6. `Trace Record Origin Identifier` - this should be an id of a record from it's data origin system. Once included, Trace will track this value across all Trace actions on a particular record. This helps to reconstruct audit trail for a particular record.
 
-![](media/7beaeffb89e2aef4285696f44c7ff423.png)
+![image-20201001160637958](media\proactive_ingestion_api_documentation\image-20201001160637958.png)
 
 ### Data Batches
 
