@@ -1208,6 +1208,7 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 1. Trace Document Hash
 2. Group Identifier
 3. Native File Path -- must be specified, but not necessarily mapped.
+   
    > **Note:** Because of this requirement, Deduplication is incompatible with [Ingestion Profiles](#Ingestion-Profiles) where Import Natives is set to no.
 
 ### Communication Direction Data Transformation
@@ -1234,7 +1235,21 @@ Data Transformations of type `Exempt List` can be used to populate the `Trace Ex
 
 ![image-20200602160740161](media/user_documentation/image-20200602160740161.png)
 
-A communication is considered exempt if the `From ` field matches one or more of the `Exempt Entry` objects in the `Exempt List Categories` specified on the `Exempt List` transform.  An `Exempt Entry` has a value in the `Name` field and an `Entry Type` of either **Domain** or **Email Address**. An `Exempt Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
+A communication is considered exempt if the `From ` field matches one or more of the `Exempt Entry` objects in the `Exempt List Categories` specified on the `Exempt List` transform.  An `Exempt Entry` has a value in the `Name` field and an `Entry Type` of **Username** (the part before the `@`) **Domain** (the part after the `@`) or the entire **Email Address**. Regardless of the `Entry Type`, all entries are matched **case insensitive** . An `Exempt Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
+
+> **EXAMPLES:** Consider the email address `John.Doe@Trace.com`
+>
+> * The **Username** is `John.Doe`
+> * The **Email** is `John.Doe@Trace.com`
+> * The **Domain** is Trace.com
+>
+> Each of the following `Exempt Entry` objects would match this email address
+>
+> * `john.doe` of type Username
+> * `john.doe@trace.com` of type Email
+> * `trace.com` of type Domain
+>
+> Notice case is ignored in all three examples.
 
 ![image-20200602160404981](media/user_documentation/image-20200602160404981.png)
 
