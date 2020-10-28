@@ -733,7 +733,7 @@ Data Sources
 Data Source is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows you to define where/how you are pulling data. The Data Source references the Ingestion Profile that holds configuration on how to import data for that Data Source (data mappings). Data Batches reference
 Data Source to dynamically lookup which Ingestion Profile to use during import.
 
-**Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
+> **Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
 
 ![](media\user_documentation\ed6d268b-1439-4a66-aab2-7c8904bbd808_annotated.png)
 
@@ -763,7 +763,7 @@ Data sources are broken up in several sections:
      it happened recently (based on Last Error Retention in Hours setting under
      Data Source Specific Fields)
 2. **Credentials:** this tab is used to securely input and store credential information. This includes username and password as well as OAuth client secrets, should they be used. Not all Data Sources require credential information.
-    
+   
     * **Username:** Optional field used for authentication of a data source.
     
     * **Password:** Optional field used for authentication of a data source.
@@ -1122,6 +1122,10 @@ Ingestion profiles are a store for configuration needed for going from a loadfil
 
 `Native File Path Location` - A data mapping containing the name of the column in the loadfile that specifies the native file path. The selected data mapping MUST be in the data mappings list on the Ingestion Profile
 
+`Import Natives` - A yes/no field specifying whether or not Natives should be linked to any documents imported with the Ingestion Profile. If Yes, `Native File Path Location` is required to be linked to a data mapping of type NativeFilePath. If No, `Native File Path` MUST be unlinked. 
+
+> **Note:** Importing Native files is required for [Deduplication](#deduplication-data-transformation), [Communication Direction](#communication-direction-data-transformation), and [Exempt List](#exempt-list-data-transformation) Data Transformations
+
 `Column Containing File Location` - A data mapping containing the name of the column in the loadfile that contains a text file location. The imported field on the document will display the contents of the text file instead of the file path. This field is optional.
 
 `Encoding for Undetectable Files` - Encoding for the text file specified in the Column Containing File Location. 
@@ -1150,7 +1154,7 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 ​	**None** - Standard data mappings will have this type. A source field and Relativity field are both required for this type.
 
-​	**Native File Path** - This indicates that the source field column in the loadfile contains the native file path. This field does not require a destination Relativity field. Only one data mapping of this type can exist on an ingestion profile. The single data mapping of this type must also be selected on ingestion profile's 'Native File Path Location' field. 
+​	**Native File Path** - This indicates that the source field column in the loadfile contains the native file path. This field does not require a destination Relativity field. Only one data mapping of this type can exist on an ingestion profile. The single data mapping of this type must also be selected on ingestion profile's `Native File Path Location` field. 
 
 ​	**Identifier** - This indicates that the destination Relativity field is the document identifier for the workspace. A source field and Relativity field are both required for this type. Only one data mapping of this type can exist on an ingestion profile.
 
@@ -1204,6 +1208,8 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 1. Trace Document Hash
 2. Group Identifier
 3. Native File Path -- must be specified, but not necessarily mapped.
+   
+   > **Note:** Because of this requirement, Deduplication is incompatible with [Ingestion Profiles](#Ingestion-Profiles) where Import Natives is set to no.
 
 ### Communication Direction Data Transformation
 
@@ -1221,7 +1227,7 @@ When using the `Communication Direction` transformation type, analysis is perfor
 
 > **NOTE:** use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
-> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Ingestion Profile.
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Communication Direction is incompatible with Ingestion Profiles where Import Natives is set to no.
 
 ### Exempt List Data Transformation
 
@@ -1229,7 +1235,21 @@ Data Transformations of type `Exempt List` can be used to populate the `Trace Ex
 
 ![image-20200602160740161](media/user_documentation/image-20200602160740161.png)
 
-A communication is considered exempt if the `From ` field matches one or more of the `Exempt Entry` objects in the `Exempt List Categories` specified on the `Exempt List` transform.  An `Exempt Entry` has a value in the `Name` field and an `Entry Type` of either **Domain** or **Email Address**. An `Exempt Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
+A communication is considered exempt if the `From ` field matches one or more of the `Exempt Entry` objects in the `Exempt List Categories` specified on the `Exempt List` transform.  An `Exempt Entry` has a value in the `Name` field and an `Entry Type` of **Username** (the part before the `@`) **Domain** (the part after the `@`) or the entire **Email Address**. Regardless of the `Entry Type`, all entries are matched **case insensitive** . An `Exempt Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
+
+> **EXAMPLES:** Consider the email address `John.Doe@Trace.com`
+>
+> * The **Username** is `John.Doe`
+> * The **Email** is `John.Doe@Trace.com`
+> * The **Domain** is Trace.com
+>
+> Each of the following `Exempt Entry` objects would match this email address
+>
+> * `john.doe` of type Username
+> * `john.doe@trace.com` of type Email
+> * `trace.com` of type Domain
+>
+> Notice case is ignored in all three examples.
 
 ![image-20200602160404981](media/user_documentation/image-20200602160404981.png)
 
@@ -1241,7 +1261,7 @@ When using the `Exempt List` transformation type, analysis is performed only on 
 
 > **NOTE:** use of the `Exempt List` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
 
-> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's Ingestion Profile.
+> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Exempt List is incompatible with Ingestion Profiles where Import Natives is set to no.
 
 ### Group Identifier Truncation for External Data Sources
 
