@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [13.0.0.8 (5 October 2020)](#13008-5-october-2020)
+- [13.1.0.1 (2 November 2020)](#13101-2-november-2020)
+
+- [13.0.0.8 (5 October 2020 - DEPRECATED)](#13008-5-october-2020--deprecated)
 
 - [12.5.0.6 (17 August 2020) - DEPRECATED](#12506-17-august-2020--deprecated)
 
@@ -28,7 +30,38 @@
 
   
 
-# 13.0.0.8 (5 October 2020)
+# 13.1.0.1 (2 November 2020)
+
+**Relativity Compatibility**
+
+- **≥ 10.3.287.3**
+
+**Features**
+
+- You can now identify when a document was first linked to an Alert Rule using the “Trace Alerted On” field
+- The Exempt List Data Transform Type can now identify “Usernames” (content to the left of the @ symbol in an email address), making it easier to exclude generic “noreply”, “newsletter”, or “support” email addresses from alerting and review
+
+**Enhancements**
+
+- Global Dt Search Index build errors are now reported on the Trace Indexing Task to increase awareness of impactful failures
+- Noise words are now omitted by default when creating a new dtSearch Index
+- The ability to “Not Import Natives” has been added to Trace Ingestion Profiles
+
+**Defect Fixes**
+
+- Improved error handling when a Data Batched is retried and the linked Data Source has been deleted
+
+- Fixed issue where an invalid Zip Drop Data Batch would be set to “Completed” on Retry when it should have been “CompletedWithErrors”
+
+- Fixed issue where you could manually unlink documents from Trace Rule Terms, Trace Terms, and Monitored Individuals. Note that Audit would catch any of these actions
+
+- Fixed issue where Exempt List entries of the “Email Address” Type considered character case when matching communication From values
+
+- Copy and Replace mass operations have been removed from Rules, Terms, Monitored Individuals, Actions, and Data Batches to prevent creating objects with the same name or accidental linking between objects that are not related
+
+  
+
+# 13.0.0.8 (5 October 2020) - DEPRECATED
 
 **Relativity Compatibility**
 
@@ -309,7 +342,7 @@
 - All actions associated with any rule now operate on net new data that is reflected on dedicated saved search
   - RelativityScript (advanced) action now operates on the same saved search, yielding incremental data only
 - Conceptual and Classification index automation now takes into account any in-progress activities that lock the index resulting in better robustness
-- dtSearch indexes will now perform Full Build automatically (no user interaction) on newly created indexes that are subject to automation
+- dtSearch indexes will now perform Full Build automatically (no manual interaction) on newly created indexes that are subject to automation
 - Data Transformation failures on set of docs (in data batch) now reports detailed per document failures and allows for partial import of successful transformations
 - Application installation time is now significantly faster, per workspace upgrade logic now is done by the Trace Manager agent
 - BIST testing coverage is now expanded to include:
