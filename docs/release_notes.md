@@ -2,13 +2,13 @@
 
 - [13.1.0.1 (2 November 2020)](#13101-2-november-2020)
 
-- [13.0.0.8 (5 October 2020 - DEPRECATED)](#13008-5-october-2020--deprecated)
+- [13.0.0.8 (5 October 2020 - DEPRECATED)](#13008-5-october-2020---deprecated)
 
-- [12.5.0.6 (17 August 2020) - DEPRECATED](#12506-17-august-2020--deprecated)
+- [12.5.0.6 (17 August 2020) - DEPRECATED](#12506-17-august-2020---deprecated)
 
-- [12.4.1.1 (14 July 2020 - DEPRECATED)](#12411-14-july-2020--deprecated)
+- [12.4.1.1 (14 July 2020 - DEPRECATED)](#12411-14-july-2020---deprecated)
 
-- [12.3.0.3 (1 June 2020) - DEPRECATED)](#12303-1-june-2020--deprecated)
+- [12.3.0.3 (1 June 2020) - DEPRECATED)](#12303-1-june-2020---deprecated)
 
 - [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
 
