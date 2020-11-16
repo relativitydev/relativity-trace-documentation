@@ -33,10 +33,16 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 - Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
 - Download and install ROSE (Staging Explorer) and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection))
 
+- (Only for web protocol) Assign required permissions to Relativity user
+   1. Go to Instance Details/Manage permissions.
+   2. Go to Admin Operations and select a group the user belongs to.
+   3. Check "Data Transfer Operations" permission.
+
 ### Data Transfer Protocols
 Transfer API (TAPI) is the underlying method of data delivery to RelativityOne.  TAPI supports multiple protocols of data transfer including:
 1. Direct - only available on-premise
 2. Aspera (FASP protocol) - default for RelativityOne
+3. Web - available on-premise and RelativityOne
 
 ### Ports and Firewall settings
 For the Aspera data transfer protocol, the following ports must be configured:
@@ -70,7 +76,7 @@ For details on the IP ranges for your specific RelativityOne instance please con
    | logFilePath                            | yes      | string           | A local file path **ACCESSIBLE TO THE SERVICE USER** where the log files for the application should be stored. The log files roll automatically every 100MB, so there will be more than one file, it is best to dedicate a folder to these Trace Shipper logs. Each configured local folder requires a unique `logFilePath` |
    | logUploadIntervalInMinutes             | no       | number           | How frequently Trace Shipper Service pushes its log files to the Relativity workspace fileshare, contact support@relativity.com for more information before changing this setting.<br />*Default: 10* |
    | externalServiceLogLocations            | no       | array of objects | An array of External Service Log Locations to push to the Relativity workspace fileshare. See below for definition of each object<br />*Default: [] (empty)* |
-   | clientType                             | no       | string           | Transfer API client type to use, current supported options are Aspera and Fileshare, contact support@relativity.com for more information<br />*Default: Aspera* |
+   | clientType                             | no       | string           | Transfer API client type to use, current supported options are Aspera, Fileshare and Web, contact support@relativity.com for more information<br />*Default: Aspera* |
    | relativityUserName                     | yes      | string           | The username used to connect to Relativity to upload files. **It is recommended to secure the TraceShipperService folder as a way to reduce risk of exposing these credentials.** |
    | relativityPassword                     | yes      | string           | The password used to connect to Relativity to upload files. **It is recommended to secure the TraceShipperService folder as a way to reduce risk of exposing these credentials.** |
    | relativityUrl                          | yes      | string           | The URL of the Relativity Instance where the files will be shipped. |
