@@ -1296,7 +1296,9 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
 2. `Trace Data Batch Abandon` – update the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
 
-3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. All the files that were not imported from the Data Batch will be deleted from file share. Finalizing a Data Batch deletes files from the Fileshare (excluding files associated with Documents in Relativity). After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken.
+3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. All files that were not imported from the Data Batch will be deleted to free up space on the file share.
+ 
+    > **Warning:** Finalizing a Data Batch deletes files from the Fileshare (excluding files associated with Documents in Relativity). After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken.
 
    ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
 
