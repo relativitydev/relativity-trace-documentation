@@ -1296,9 +1296,15 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
 2. `Trace Data Batch Abandon` – update the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
 
-3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. All files that were not imported from the Data Batch will be deleted to free up space on the file share.
+3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. All files that were not imported from the Data Batch and are not load files will be deleted to free up space on the file share.
  
-    > **Warning:** Finalizing a Data Batch deletes files from the Fileshare (excluding files associated with Documents in Relativity). After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken.
+    > **Warning:** Finalizing a Data Batch deletes files from the Fileshare (excluding files associated with Documents in Relativity and load files). After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken. 
+    >
+    > Only Data Batches that are Completed, CompletedWithDocumentLeverlErrors, and Abandoned can undergo Finalization. Data Batches that were already Finalized or Pending Finalization can be selected to be retried for Finalzaition.
+    >
+    > Finalizing is not a requried step in Trace workflow and should be used only when a Data Batch is no longer being used or required and to free up memory on disk.
+    >
+    > **NOTE**: The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
 
    ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
 
