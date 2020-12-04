@@ -1370,8 +1370,8 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
     email
     
 - **Data Enrichment:** Responsible for extracting nested files (attachments, contents of zip files), generating extracted text and preparing the load file that is ready for import process
-
   > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+  > **NOTE:** Embedded content that refers to external URL links do not get extracted 
 
 Alerts and Notifications
 ------------------------
