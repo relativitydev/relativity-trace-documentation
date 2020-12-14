@@ -1159,7 +1159,15 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 ​	**Identifier** - This indicates that the destination Relativity field is the document identifier for the workspace. A source field and Relativity field are both required for this type. Only one data mapping of this type can exist on an ingestion profile.
 
+**Read From Other Metadata Column** - If this field is checked, this data mapping will not read from the load file column with the same name as the source field name. Instead, it will read from the "Other Metadata" field, if it exists, and search for a key with the same name as the source field name. If a matching key is found, then the value associated with the key will be imported into the destination Relativity Field.
 
+> **Note:** The "Other Metadata" field is populated by Trace during extraction. It consists of a JSON list of key value pairs. 
+>
+> `[{Key: "This should match source field name", Value: "This value will be read into Relativity"}]`
+>
+> **Note:** Unlike standard data mappings that read directly from the load file, it is possible that the "Other Metadata" field JSON will not contain the key specified by Source Field Name. In this case, Trace will not error, it will import an empty value.
+>
+> **Note:** Contents of the "Other Metadata" field will change from file to file, especially between different file types. To understand possible headers and other metadata that can be pulled from this field, create a standard Data Mapping to import the contents of the "Other Metadata" field. You can then decide which metadata keys you would like to pull by adding a Data Mapping with 'Read From Other Metadata Column' checked.
 
 #### Adding Encoding Choices
 
