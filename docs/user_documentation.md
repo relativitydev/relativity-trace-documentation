@@ -36,7 +36,7 @@
     - [Data Source Auto-Disable](#data-source-auto-disable)
     - [Microsoft Exchange Data Source](#microsoft-exchange-data-source)
     - [Zip Drop Data Source](#zip-drop-data-source)
-  - [Ingestion Profiles](#Ingestion-Profiles)
+  - [Ingestion Profiles](#ingestion-profiles)
     - [Data Mappings](#data-mappings)
   - [Monitored Individuals](#monitored-individuals)
   - [Data Transformations](#data-transformations)
