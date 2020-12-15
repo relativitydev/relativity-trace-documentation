@@ -1298,16 +1298,14 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
 3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. Finalization deletes files associated with a Data Batch from the Fileshare, excluding files linked to Documents in Relativity and load files. Finalization frees up space on the current Fileshare.
  
-    > **Warning:** After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken. 
+    > **WARNING:** After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken. 
     >
-    > Only Data Batches that are Completed or CompletedWithDocumentLeverlErrors can undergo Finalization. Data Batches that were already Finalized or Pending Finalization can be selected to be retried for Finalization.
-    >
-    > Finalizing is not a requried step in Trace workflow and should be used only when a Data Batch is no longer being used or required and to free up memory on disk.
+    > **NOTE**: Only Data Batches that are Completed or CompletedWithDocumentLeverlErrors can undergo Finalization. Data Batches that were already Finalized or Pending Finalization can be selected to be retried for Finalization.
+    > 
+    > **NOTE**: Finalizing a Data Batch will only delete files from the current in use Fileshare when its corresponding data batch folder exists.
     >
     > **NOTE**: The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
-    > 
-    > Finalizing a Data Batch will only delete files from the current Fileshare when its corresponding data batch folder exists.
-
+    
    ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
 
 > **NOTE: ** If a Data Batch sits in a status other than `Completed`, `CompletedWithErrors`, `CompletedWithDocumentLevelErrors`, or `Abandoned` for longer than 24 hours (timeout configurable with the `Data Batch Timeout In Hours` setting on the Data Validation Task), it will automatically be:
