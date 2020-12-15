@@ -1149,7 +1149,8 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 `Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
 
-> **Note:** The Source Field Name is case sensitive when matching with a column in the loadfile. 
+> **Note:** The Source Field Name is case sensitive when matching with a column in the loadfile.
+>  
 
 `Relativity Field` - The field in Relativity that will have it's value populated
 
