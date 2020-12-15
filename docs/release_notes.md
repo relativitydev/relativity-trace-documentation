@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [13.1.0.2 (2 November 2020)](#13102-2-november-2020)
+- [13.2.0.3 (15 December 2020)](#13203-15-december-2020)
+
+- [13.1.0.2 (2 November 2020 - DEPRECATED)](#13102-2-november-2020---deprecated)
 
 - [13.0.0.8 (5 October 2020 - DEPRECATED)](#13008-5-october-2020---deprecated)
 
@@ -30,7 +32,35 @@
 
   
 
-# 13.1.0.2 (2 November 2020)
+# 13.2.0.3 (15 December 2020)
+
+**Relativity Compatibility**
+
+- **≥ 10.3.287.3**
+
+**Features**
+
+- When viewing a Rule, you can now click on the associated Saved Search to navigate directly to it.
+- You can now ingest any email header metadata directly into Trace by simply adding a new Data Mapping to your Ingestion Profile.
+- Trace Shipper now supports Web transfer protocol, as an on-premises and RelativityOne alternative to Direct or Aspera transfer.
+
+**Enhancements**
+
+- Admins can now Finalize a Data Batch to delete excess files on the Fileshare, reducing the infrastructure footprint and the frequency at which new Fileshares must be added.
+
+**Defect Fixes**
+
+- Fixed issue where the Password Protected field had a value of “Decrypted” even though the document remained encrypted because a matching password did not exist on the Data Source.
+
+- Fixed issue where Exempt List Entries that had a username in all capital letters (e.g. USERNAME@domain.com) would not match communication From values that were exact matches or matches with different character cases.
+
+- The ability to manually create a Data Batch has been removed from the UI.
+
+- Fixed issue with loading dependencies in Shipper that was logging misleading error messages.
+
+  
+
+# 13.1.0.2 (2 November 2020) - DEPRECATED
 
 **Relativity Compatibility**
 
