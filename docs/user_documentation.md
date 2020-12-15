@@ -53,7 +53,7 @@
     - [Supported File Formats](#supported-file-formats)
 - [Setup](#setup)
 	- [Tasks](#tasks)
-	- [Alerts and Notifications](#alerts-and-notifications)
+	- [System Health Reporting](#system-health-reporting)
 	- [Errors and Logging](#errors-and-logging)
 - [Analytics Automation](#analytics-automation)
   - [Conceptual and Classification Analytics](#conceptual-and-classification-analytics)
@@ -308,9 +308,11 @@ documents that you wish to retry from the Document List and click the item in th
 dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please
 enable them for Relativity URLs.
 
-> **Note:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
+> **NOTE:** Trace Document Retry will not move documents between Folders, remove Analytics or Script results, or remove review decisions. These steps should be taken manually prior to performing Trace Document Retry if necessary for workflows.
 
-> **Note:** Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
+> **NOTE:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
+
+> **NOTE:** Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
 
 >  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term
 > associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
@@ -1149,6 +1151,9 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 `Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
 
+> **Note:** The Source Field Name is case sensitive when matching with a column in the loadfile.
+>  
+
 `Relativity Field` - The field in Relativity that will have it's value populated
 
 `Type` - Data mapping type indicates if there is anything special about the data mapping. 
@@ -1159,7 +1164,15 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 ​	**Identifier** - This indicates that the destination Relativity field is the document identifier for the workspace. A source field and Relativity field are both required for this type. Only one data mapping of this type can exist on an ingestion profile.
 
+**Read From Other Metadata Column** - If this field is checked, this data mapping will not read from the load file column with the same name as the source field name. Instead, it will read from the "Other Metadata" field, if it exists, and search for a key with the same name as the source field name. If a matching key is found, then the value associated with the key will be imported into the destination Relativity Field.
 
+> **Note:** The "Other Metadata" field is populated by Trace during extraction. It consists of a JSON list of key value pairs. 
+>
+> `[{Key: "This should match source field name", Value: "This value will be read into Relativity"}]`
+>
+> **Note:** Unlike standard data mappings that read directly from the load file, it is possible that the "Other Metadata" field JSON will not contain the key specified by Source Field Name. In this case, Trace will not error, it will import an empty value.
+>
+> **Note:** Contents of the "Other Metadata" field will change from file to file, especially between different file types. To understand possible headers and other metadata that can be pulled from this field, create a standard Data Mapping to import the contents of the "Other Metadata" field. You can then decide which metadata keys you would like to pull by adding a Data Mapping with 'Read From Other Metadata Column' checked.
 
 #### Adding Encoding Choices
 
@@ -1290,12 +1303,22 @@ By default, Data Batches that fail to import will be automatically retried up to
 
 Data Batch objects have associated Mass Operations (and corresponding Data Batch console UI buttons) to help with state resolution
 
-1. `Trace Data Batch Retry` – submit the Data Batch to be retried by Trace. This is a full retry that reverts the Data Batch to the `RetrievedFromSource` status and Trace will once again attempt to ingest the data.
+1. `Trace Data Batch Retry` – submits the Data Batch to be retried by Trace. This is a full retry that reverts the Data Batch to the `RetrievedFromSource` status and Trace will once again attempt to ingest the data.
 
    > **Warning:** `Trace Data Batch Retry` will create duplicates of documents that were imported on previous attempts if deduplication is not enabled on the Data Source.
 
-2. `Trace Data Batch Abandon` – update the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
+2. `Trace Data Batch Abandon` – updates the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
 
+3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. Finalization deletes files associated with a Data Batch from the Fileshare, excluding files linked to Documents in Relativity and load files. Finalization frees up space on the current Fileshare.
+ 
+    > **WARNING:** After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken. 
+    >
+    > **NOTE**: Only Data Batches that are Completed or CompletedWithDocumentLeverlErrors can undergo Finalization. Data Batches that were already Finalized or Pending Finalization can be selected to be retried for Finalization.
+    > 
+    > **NOTE**: Finalizing a Data Batch will only delete files from the current in use Fileshare when its corresponding data batch folder exists.
+    >
+    > **NOTE**: The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+    
    ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
 
 > **NOTE: ** If a Data Batch sits in a status other than `Completed`, `CompletedWithErrors`, `CompletedWithDocumentLevelErrors`, or `Abandoned` for longer than 24 hours (timeout configurable with the `Data Batch Timeout In Hours` setting on the Data Validation Task), it will automatically be:
@@ -1372,13 +1395,10 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 - **Data Enrichment:** Responsible for extracting and enriching nested files (attachments, contents of zip files), generating extracted text, metadata and preparing the load file that is ready for import process.  For security reasons, embedded content that refers to external URL links do not get extracted.
   > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com. 
 
-Alerts and Notifications
+System Health Reporting
 ------------------------
 
-By default the Reporting task will send out the system health report to the
-configured instance email address every 24 hours. The defaults can be overridden
-under Task Configuration on the Reporting task page. See below sample
-configuration for example.
+The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.
 
 ![](media/23b1404cbe20203f82f17154a8685bf1.png)
 
@@ -1419,6 +1439,7 @@ list.
 ![](media/187cb16f17210c7e4105f4df34955731.png)
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
+
 
 # Analytics Automation
 
@@ -1662,7 +1683,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
 | Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
 | Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |
-| Calculated               | Other Metadata                | Long Text         | Metadata extracted during processing for additional fields beyond the list of processing fields available for mapping |
+| Calculated               | Other Metadata                | Long Text         | Additional metadata extracted during processing beyond the list of standard fields available for mapping. See the "Read From Other Metadata Column" setting on Data Mappings to import values from Other Metdata to a field in Relativity. |
 | Calculated               | Parent Document ID            | Fixed-Length Text | Document ID (Control Number) of the parent document. Empty for top level (original native) documents. For multiple levels of descendants, this field will always be populated with the Document ID (Control Number) of the top level (original native) document for every descendant document. |
 | Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
 | Calculated               | Recipient Count               | Decimal           | The total count of unique recipients in an email across the To, CC, and BCC fields |
