@@ -53,7 +53,7 @@
     - [Supported File Formats](#supported-file-formats)
 - [Setup](#setup)
 	- [Tasks](#tasks)
-	- [Alerts and Notifications](#alerts-and-notifications)
+	- [System Health Reporting](#system-health-reporting)
 	- [Errors and Logging](#errors-and-logging)
 - [Analytics Automation](#analytics-automation)
   - [Conceptual and Classification Analytics](#conceptual-and-classification-analytics)
@@ -1381,13 +1381,10 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 
   > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
 
-Alerts and Notifications
+System Health Reporting
 ------------------------
 
-By default the Reporting task will send out the system health report to the
-configured instance email address every 24 hours. The defaults can be overridden
-under Task Configuration on the Reporting task page. See below sample
-configuration for example.
+The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.
 
 ![](media/23b1404cbe20203f82f17154a8685bf1.png)
 
