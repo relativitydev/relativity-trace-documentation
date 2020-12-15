@@ -1431,6 +1431,7 @@ list.
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
 
+
 # Analytics Automation
 
 Relativity Trace is capable of automating builds of Conceptual Analytics Indexes, Classification Analytics Indexes, and Structured Analytics Sets. Note that the Analytics application must be installed into the workspace before analytics automation can be used.
