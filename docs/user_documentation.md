@@ -53,7 +53,7 @@
     - [Supported File Formats](#supported-file-formats)
 - [Setup](#setup)
 	- [Tasks](#tasks)
-	- [Alerts and Notifications](#alerts-and-notifications)
+	- [System Health Reporting](#system-health-reporting)
 	- [Errors and Logging](#errors-and-logging)
 - [Analytics Automation](#analytics-automation)
   - [Conceptual and Classification Analytics](#conceptual-and-classification-analytics)
@@ -308,9 +308,11 @@ documents that you wish to retry from the Document List and click the item in th
 dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please
 enable them for Relativity URLs.
 
-> **Note:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
+> **NOTE:** Trace Document Retry will not move documents between Folders, remove Analytics or Script results, or remove review decisions. These steps should be taken manually prior to performing Trace Document Retry if necessary for workflows.
 
-> **Note:** Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
+> **NOTE:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
+
+> **NOTE:** Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
 
 >  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term
 > associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
@@ -1149,6 +1151,9 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 `Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
 
+> **Note:** The Source Field Name is case sensitive when matching with a column in the loadfile.
+>  
+
 `Relativity Field` - The field in Relativity that will have it's value populated
 
 `Type` - Data mapping type indicates if there is anything special about the data mapping. 
@@ -1391,13 +1396,10 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 
   > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
 
-Alerts and Notifications
+System Health Reporting
 ------------------------
 
-By default the Reporting task will send out the system health report to the
-configured instance email address every 24 hours. The defaults can be overridden
-under Task Configuration on the Reporting task page. See below sample
-configuration for example.
+The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.
 
 ![](media/23b1404cbe20203f82f17154a8685bf1.png)
 
@@ -1438,6 +1440,7 @@ list.
 ![](media/187cb16f17210c7e4105f4df34955731.png)
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
+
 
 # Analytics Automation
 
