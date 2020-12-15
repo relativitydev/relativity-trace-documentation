@@ -1159,7 +1159,15 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 ​	**Identifier** - This indicates that the destination Relativity field is the document identifier for the workspace. A source field and Relativity field are both required for this type. Only one data mapping of this type can exist on an ingestion profile.
 
+**Read From Other Metadata Column** - If this field is checked, this data mapping will not read from the load file column with the same name as the source field name. Instead, it will read from the "Other Metadata" field, if it exists, and search for a key with the same name as the source field name. If a matching key is found, then the value associated with the key will be imported into the destination Relativity Field.
 
+> **Note:** The "Other Metadata" field is populated by Trace during extraction. It consists of a JSON list of key value pairs. 
+>
+> `[{Key: "This should match source field name", Value: "This value will be read into Relativity"}]`
+>
+> **Note:** Unlike standard data mappings that read directly from the load file, it is possible that the "Other Metadata" field JSON will not contain the key specified by Source Field Name. In this case, Trace will not error, it will import an empty value.
+>
+> **Note:** Contents of the "Other Metadata" field will change from file to file, especially between different file types. To understand possible headers and other metadata that can be pulled from this field, create a standard Data Mapping to import the contents of the "Other Metadata" field. You can then decide which metadata keys you would like to pull by adding a Data Mapping with 'Read From Other Metadata Column' checked.
 
 #### Adding Encoding Choices
 
@@ -1663,7 +1671,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | File Type                     | Fixed-Length Text | Description that represents the file type to the Windows Operating System |
 | Calculated               | Native File                   | Long Text         | The path to a copy of a file for loading into Relativity.    |
 | Calculated               | Number of Attachments         | Decimal           | Number of files attached to a parent document.               |
-| Calculated               | Other Metadata                | Long Text         | Metadata extracted during processing for additional fields beyond the list of processing fields available for mapping |
+| Calculated               | Other Metadata                | Long Text         | Additional metadata extracted during processing beyond the list of standard fields available for mapping. See the "Read From Other Metadata Column" setting on Data Mappings to import values from Other Metdata to a field in Relativity. |
 | Calculated               | Parent Document ID            | Fixed-Length Text | Document ID (Control Number) of the parent document. Empty for top level (original native) documents. For multiple levels of descendants, this field will always be populated with the Document ID (Control Number) of the top level (original native) document for every descendant document. |
 | Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
 | Calculated               | Recipient Count               | Decimal           | The total count of unique recipients in an email across the To, CC, and BCC fields |
