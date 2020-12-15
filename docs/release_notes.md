@@ -51,11 +51,8 @@
 **Defect Fixes**
 
 - Fixed issue where the Password Protected field had a value of “Decrypted” even though the document remained encrypted because a matching password did not exist on the Data Source.
-
 - Fixed issue where Exempt List Entries that had a username in all capital letters (e.g. USERNAME@domain.com) would not match communication From values that were exact matches or matches with different character cases.
-
 - The ability to manually create a Data Batch has been removed from the UI.
-
 - Fixed issue with loading dependencies in Shipper that was logging misleading error messages.
 
   
@@ -80,13 +77,9 @@
 **Defect Fixes**
 
 - Improved error handling when a Data Batched is retried and the linked Data Source has been deleted
-
 - Fixed issue where an invalid Zip Drop Data Batch would be set to “Completed” on Retry when it should have been “CompletedWithErrors”
-
 - Fixed issue where you could manually unlink documents from Trace Rule Terms, Trace Terms, and Monitored Individuals. Note that Audit would catch any of these actions
-
 - Fixed issue where Exempt List entries of the “Email Address” Type considered character case when matching communication From values
-
 - Copy and Replace mass operations have been removed from Rules, Terms, Monitored Individuals, Actions, and Data Batches to prevent creating objects with the same name or accidental linking between objects that are not related
 
   
