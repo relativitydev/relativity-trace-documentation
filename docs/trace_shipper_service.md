@@ -34,7 +34,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 - Download and install ROSE (Staging Explorer) and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection))
 
 - (Only for Web protocol) Request the Relativity Transfer API Services application (Relativity.TransferApi.Services.rap) by submitting a ticket to support@relativity.com. [Install](https://help.relativity.com/10.3/Content/Relativity/Applications/Installing_applications.htm#Installi3) the Relativity Transfer API Services application to the Application Library.
->**NOTE:*** Do not install the Relativity Transfer API Services application to any workspace. By installing it to the Application Library, the services are available for consumption.
+>**NOTE:** Do not install the Relativity Transfer API Services application to any workspaces. By installing the application to the Application Library, the services are available for consumption.
 
 - (Only for Web protocol) Assign required permissions to Relativity user
    1. Go to Instance Details/Manage permissions.
