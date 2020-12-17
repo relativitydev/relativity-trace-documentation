@@ -1254,13 +1254,13 @@ A communication is considered exempt if the `From ` field matches one or more of
 > **EXAMPLES:** Consider the email address `John.Doe@Trace.com`
 >
 > * The **Username** is `John.Doe`
-> * The **Email** is `John.Doe@Trace.com`
+> * The **Email Address** is `John.Doe@Trace.com`
 > * The **Domain** is Trace.com
 >
 > Each of the following `Exempt Entry` objects would match this email address
 >
 > * `john.doe` of type Username
-> * `john.doe@trace.com` of type Email
+> * `john.doe@trace.com` of type Email Address
 > * `trace.com` of type Domain
 >
 > Notice case is ignored in all three examples.
