@@ -467,7 +467,7 @@ You can configure the action by specifying the Artifact ID of the destination fo
 >
 > If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted.
 >
-> _Only_ documents which were imported as part of a Data Batch which is in the `Completed` state will be deleted.
+> _Only_ documents which were imported as part of a Data Batch which is in the `Completed` or `CompletedWithDocumentLevelErrors` state will be deleted.
 
 The Data Disposal Action Type follows the same Trace Rules Engine paradigm with
 one added condition:
