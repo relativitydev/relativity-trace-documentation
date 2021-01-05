@@ -494,7 +494,7 @@ This action is used to:
 
 `Document Delete Batch Size` - controls number of documents to delete at once
 
-> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance
+> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance.  Increasing this setting will only take affect if Rule Evaluation task setting (Max Documents Per Execution) is same or higher value.
 
 `Delete Documents Older Than Hours` - controls age of a document (based on System
 Created On date/time) to delete
