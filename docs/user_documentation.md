@@ -170,7 +170,7 @@ Setting up Relativity Trace
        5.  Logging level of event details = `Log all messages`
    2.  Trace Worker Agent
        1. Agent Type = `Trace Worker Agent`
-       2. Number of Agents = `Unlimited`
+       2. Number of Agents = `No more than 2x #of CPU cores per agent servers (Ex. 4 CPU agent server should host no more than 2 Trace Worker agents`
        3. Agent Server = Select the agent server you would like the agent deployed
           on (see “Infrastructure and Environment Considerations” section for
           optimal performance)
