@@ -85,7 +85,7 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
         4.  Generate test data emails with attachments
 
-        5.  Extract and Ingest 144 documents with various file types, language
+        5.  Extract and Ingest 148 documents with various file types, language
             contents across 2 data batches
 
 4.  Create Terms **[AUTOMATED]**
@@ -106,9 +106,13 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
 6.  Create Saved Searches **[AUTOMATED]**
 
-    ![](media/6d0cd301b1ccf52ca71ced8b85e611b8.png)
+    ![](media/707823C7-1856-4831-9564-D06D105DDEA9.PNG)
+    
+7. Update Rule Evaluation task
+  
+    ![](media/E1EE69E1-42DA-45FA-8E97-BD7407012B21.png)
 
-7.  Create Rules **[AUTOMATED]**
+8.  Create Rules **[AUTOMATED]**
 
     ![](media/408104f8f017cda4fa136c47acfe8038.png)
 
@@ -149,17 +153,20 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
 - Trace BIST Data Source Generated Batches: `2`
 
-- Total Documents in Trace BIST folder: `143`
+- Total Documents in Trace BIST folder: `147`
 
 - Total Deleted Documents: `1`
 
 - Total Documents Matching Basic Rule: `6`
 
-- Document Status: `3 - Term Searched`
+- Document Status: 
+    - `3 - Term Searched` - 2
+    - `5 - Ready for Rule Analysis` - 143
+    - `6 - Alert Rules Complete` - 2
+    
+- Documents fields (Trace Hour Of The Day \| Trace Day Of Week): `populated` for all documents with `5 - Ready for Rule Analysis` and `6 - Alert Rules Complete` status
 
-- Documents fields (Trace Hour Of The Day \| Trace Day Of Week): `populated`
-
-![](media/a81e3661b864ceccb66f8842afdca832.png)
+![](media/0AA3E43F-2873-4D49-BAB0-7E6566B9E50D.PNG)
 
 **Additional Verification:**
 
