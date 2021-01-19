@@ -45,7 +45,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 Transfer API (TAPI) is the underlying method of data delivery to RelativityOne.  TAPI supports multiple protocols of data transfer including:
 1. Direct - only available on-premise
 2. Aspera (FASP protocol) - default for RelativityOne
-3. Web - available on-premise and RelativityOne
+3. Web - available on-premise
 
 ### Ports and Firewall settings
 For the Aspera data transfer protocol, the following ports must be configured:
