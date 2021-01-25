@@ -51,6 +51,8 @@
     - [Monitored Individual Discovery On Globanet Data Sources](#monitored-individual-discovery-on-globanet-data-sources)
     - [Monitored Individual Discovery On Other Data Sources](#monitored-individual-discovery-on-other-data-sources)
     - [Supported File Formats](#supported-file-formats)
+  - [Excluded Files](#excluded-files)
+    - [Trace Add To Excluded Files](#trace-add-to-excluded-files)
 - [Setup](#setup)
 	- [Tasks](#tasks)
 	- [System Health Reporting](#system-health-reporting)
@@ -1351,6 +1353,14 @@ All other data sources discover Monitored Individuals based on the `FROM`, `TO`,
 ### Supported File Formats
 
 Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on .eml, .msg, and .rsmf (Relativity Short Message Format) files. Any other file format is not currently supported.
+
+Excluded Files
+--------------------------------------------
+
+Excluded Files is a feature that lets users exclude  extracted documents and files from ingestion that normally do not undergo review such as spam, repetitive, or duplicate documents if they are no longer desired. To use this feature, an Excluded FIle RDO has to be created for each individual file that you wish to exclude via the Trace Add To Excluded Files mass operation. The Excluded File RDO is an object which denotes a file that has been ingested into Trace and has been selected to no longer be ingested in the future. The RDO itself holds 2 values: Trace Document Hash and File. Once created, during ingestion, all newly ingested files that come in whose Trace Document Hash matches any one of the hashes in the Excluded Files list, it will not be ingested. Excluded File objects can only be created for unique extracted documents only. Any file that has been selected to be added to the Excluded Files list will mark Trace Is Excluded File field to TRUE for all matching documents already in the workspace.    
+
+>  **NOTE:** Only extracted documents can be used for excluding files from ingestion
+>  **NOTE:** There is a 10,000 file limit to the Exlcuded Files list. If you wish to increase this size limit, please contact Trace support
 
 Setup
 =====
