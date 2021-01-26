@@ -1373,11 +1373,11 @@ Excluded Files is a feature that lets users exclude extracted documents and file
 
 Once the documents for exclusion are selected and the mass operation is executing, a validation occurs to make sure that the selected number of documents don't put you over the 10,000 excluded files limit. Once validated, a popup modal appears prompting user to continue.
 
-![trace-add-to-excluded-files-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Validation%20Popup-1611621700815.png)
+![trace-add-to-excluded-files-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Validation%20Popup-1611680699554.png)
 
 If validation fails however, users will be shown an error popup telling them they will be exceeding their Excluded Files limit with the selected documents by a certain amount so they can reselect and choose the documents they more readily need to have excluded.
 
-![trace-add-to-excluded-files-error-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Error%20Validation%20Popup-1611623027188.png)
+![trace-add-to-excluded-files-error-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Error%20Validation%20Popup-1611680712170.png)
 
 
 
