@@ -1357,7 +1357,7 @@ Discovery of monitored individuals is based on finding the email addresses of mo
 Excluded Files
 --------------------------------------------
 
-Excluded Files is a feature that lets users exclude extracted documents and files from ingestion that normally do not undergo review such as spam, repetitive content, or duplicate documents if they are no longer desired. To use this feature, an Excluded File RDO has to be created for each individual file that you want to exclude via the Trace Add To Excluded Files mass operation. The Excluded File RDO is an object which denotes a file that has been ingested into Trace and has been selected to no longer be ingested in the future. The RDO itself holds 2 values: Trace Document Hash and File. Once created, during ingestion, all newly ingested files that come in whose Trace Document Hash matches any one of the hashes in the Excluded Files list, will not be ingested. Excluded File objects can only be created for unique extracted documents. Any file that has been selected to be added to the Excluded Files list will mark Trace Is Excluded File field to TRUE for all matching documents already in the workspace.
+Excluded Files is a feature that lets users exclude extracted documents and files from ingestion that normally do not undergo review such as spam, repetitive content, or duplicate documents if they are no longer desired. To use this feature, an Excluded File RDO has to be created for each individual file that you want to exclude via the `Trace Add To Excluded Files` mass operation. The Excluded File RDO is an object which denotes a file that has been ingested into Trace and has been selected to no longer be ingested in the future. The RDO itself holds 2 values: Trace Document Hash and File. Once created, during ingestion, all newly ingested files that come in whose Trace Document Hash matches any one of the hashes in the Excluded Files list, will not be ingested. Excluded File objects can only be created for unique extracted documents. Any file that has been selected to be added to the Excluded Files list will mark Trace Is Excluded File field to TRUE for all matching documents already in the workspace.
 
 >  **NOTE:** Only extracted documents can be used for excluding files from ingestion. However, selecting a native file will still let you perform the mass operation without excluding it.
 >
@@ -1389,7 +1389,7 @@ On success, the newly Excluded Files should appear in the Excluded Files list wh
 
 
 To view any individual Excluded File, you can click on the object and it displays the Hash value determined for that file as well as the file itself, which can either be downloaded or viewed in the Document viewer.
->  **NOTE:** Deleting an Excluded File only removes the RDO which will allow a user to ingest that document again in future ingestion, but all the documents in the workspace that had their Trace Is Excluded File field marked as True when it was first created will still be marked as True. 
+>  **NOTE:** Deleting an Excluded File only removes the RDO which will allow a user to ingest that document again in future ingestion, but all the documents in the workspace that had their Trace Is Excluded File field marked as True when it was first created because it matched its hash value, will still be marked as True. 
 
 ![excluded-file-rdo](media/user_documentation/excluded%20file%20rdo.png)
 
