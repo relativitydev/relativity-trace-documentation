@@ -1358,43 +1358,54 @@ Discovery of monitored individuals is based on finding the email addresses of mo
 Excluded Files
 --------------------------------------------
 
-Excluded Files is a feature that lets users exclude extracted documents and files from ingestion that normally do not undergo review such as spam, repetitive content, or duplicate documents if they are no longer desired. To use this feature, an Excluded File RDO has to be created for each individual file that you want to exclude via the `Trace Add To Excluded Files` mass operation. The Excluded File RDO is an object which denotes a file that has been ingested into Trace and has been selected to no longer be ingested in the future. The RDO itself holds 2 values: Trace Document Hash and File. Once created, during ingestion, all newly ingested files that come in whose Trace Document Hash matches any one of the hashes in the Excluded Files list, will not be ingested. Excluded File objects can only be created for unique extracted documents. Any file that has been selected to be added to the Excluded Files list will mark Trace Is Excluded File field to TRUE for all matching documents already in the workspace.
+Excluded Files lets users exclude specific Extracted files from being ingestion into Trace to remove excess noise and bloat in the system. The most common type of Extracted file that should be excluded are company logos or communication icons (Twitter, Facebook, etc.) that are often included in many email signatures.
 
->  **NOTE:** Only extracted documents can be used for excluding files from ingestion. However, selecting a native file will still let you perform the mass operation without excluding it.
+To use this feature, an Excluded File RDO has to be created for each individual file that you want to exclude. This can be accomplished by identifying the documents in the system that you no longer want to be ingested and use the  `Trace Add To Excluded Files` mass operation to add them as Excluded Files. Once added as `Excluded Files`, copies of that file (Trace Document Hash) will no longer be ingested after being extracted from a Native file.
+
+The `Excluded File` RDOs are identified by their Trace Document Hash and have a field for the File itself. 
+
+![excluded-file-rdo](media/user_documentation/excluded%20file%20rdo.png)
+
+
+
+Once added as an `Excluded File`, copies of that file (same Trace Document Hash) will no longer be ingested after being extracted from a Native file. When an Excluded File is not ingested, the `Trace Excluded Files` multiple object Document field on the parent document (Native) is linked to the Excluded File RDO, letting the user know that an extracted file was not ingested because it was on the Excluded File list.
+
+>  **NOTE:** Only extracted documents (Trace is Extracted = YES) can be used for excluding files from ingestion. However, selecting a native file will still let you perform the mass operation without excluding it.
 >
->  **NOTE:** There is a 10,000 file limit to the Excluded Files list. If you wish to increase this size limit, please contact support at support@relativity.com.
+>  **NOTE:** Excluded File RDO cannot be created from this tab. All Excluded Files have to be created from the Documents tab via the Trace Add To Excluded Files mass operation.
+>
+>  **NOTE:** There is a 10,000 file limit to the Excluded Files list. Trying to exceed this limit using the `Trace Add To Excluded Files` mass operation will result in an error. If you wish to increase this size limit, please contact support at support@relativity.com.
 
 ### Trace Add To Excluded Files
 
-`Trace Add To Excluded Files` mass operation can be used to select all the documents that a user wants to exclude from future ingestion. It works on relativity documents and can be selected in the Documents tab. 
+`Trace Add To Excluded Files` mass operation can be used to select all the Extracted documents that a user wants to exclude from future ingestion. It works on documents and can be selected in the Documents tab. 
 
 ![trace-add-to-excluded-files-mass-operation](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Mass%20Operation.png)
 
 
 
-Once the documents for exclusion are selected and the mass operation is executing, a validation occurs to make sure that the selected number of documents don't put you over the 10,000 excluded files limit. Once validated, a popup modal appears prompting user to continue.
+Once the mass operation has completed successfully:
 
-![trace-add-to-excluded-files-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Validation%20Popup-1611680699554.png)
-
-If validation fails however, users will be shown an error popup telling them they will be exceeding their Excluded Files limit with the selected documents by a certain amount so they can reselect and choose the documents they more readily need to have excluded.
-
-![trace-add-to-excluded-files-error-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Error%20Validation%20Popup-1611680712170.png)
-
-
-
-On success, the newly Excluded Files should appear in the Excluded Files list which can be found in the Excluded Files tab under Trace.
->  **NOTE:** Excluded File RDO cannot be created from this tab. All Excluded Files have to be created from the Documents tab via the Trace Add To Excluded Files mass operation.
+1. The newly Excluded Files will appear in the Excluded Files list within the Excluded Files tab.
+2. The documents included in the mass operation and any document in the workspace that has the same Trace Document Hash as a selected document will have the `Trace Is Excluded File` field marked as `Yes`, making it easy to queue up these documents for disposal.
 
 ![trace-excluded-files-list](media/user_documentation/Excluded%20Files%20List.png)
 
-
-
-To view any individual Excluded File, you can click on the object and it displays the Hash value determined for that file as well as the file itself, which can either be downloaded or viewed in the Document viewer.
+>  **NOTE:** Native files that are selected for the `Trace Add to Excluded Files` mass operation will NOT be added as `Excluded Files`, since the action only includes on Extracted Files.
+>
 >  **NOTE:** Deleting an Excluded File only removes the RDO which will allow a user to ingest that document again in future ingestion, but all the documents in the workspace that had their Trace Is Excluded File field marked as True when it was first created because it matched its hash value, will still be marked as True. 
 
-![excluded-file-rdo](media/user_documentation/excluded%20file%20rdo.png)
+### Identifying Files to Exclude
 
+Filter your document list to only show Extracted Files using the `Trace Is Extracted` field. Use the `Tally/Sum/Average` mass operation to identify documents that have many copies within the workspace. Select the "Tally" option within the mass operation and then select the `Trace Document Hash` field to tally on. Sort the table by Trace Document Hash's that have the most copies in the workspace. 
 
+<img src="C:\Users\peter.haller\AppData\Roaming\Typora\typora-user-images\image-20210204165507786.png" alt="image-20210204165507786" style="zoom:60%;" />
+
+Copy the Trace Document Hash values with many hits. Conduct a Document search to find documents with these hashes. Review the documents to ensure they should can be excluded from ingestion going forward.  Use the `Trace Add to Excluded Files` mass operation to add these files to the `Excluded File` list.
+
+###  Disposing of Documents that have been Added as Excluded Files
+
+When a document is added to the `Excluded Files` list using the `Trace Add to Excluded Files`, the document and any document in the workspace that have the same Trace Document Hash will get the `Trace Is Excluded File` field marked as `Yes`. These files will no longer be ingested into the workspace, but copies that already exist as Documents in the workspace won't automatically be disposed of. To remove these files you will need to set up a new Workflow Rule with Data Disposal Action that removes files where `Trace Is Excluded File` equals `Yes`.
 
 
 Setup
