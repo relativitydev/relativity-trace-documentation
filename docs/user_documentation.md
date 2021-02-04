@@ -51,6 +51,8 @@
     - [Monitored Individual Discovery On Globanet Data Sources](#monitored-individual-discovery-on-globanet-data-sources)
     - [Monitored Individual Discovery On Other Data Sources](#monitored-individual-discovery-on-other-data-sources)
     - [Supported File Formats](#supported-file-formats)
+  - [Excluded Files](#excluded-files)
+    - [Trace Add To Excluded Files](#trace-add-to-excluded-files)
 - [Setup](#setup)
 	- [Tasks](#tasks)
 	- [System Health Reporting](#system-health-reporting)
@@ -1311,7 +1313,7 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 2. `Trace Data Batch Abandon` – updates the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
 
 3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. Finalization deletes files associated with a Data Batch from the Fileshare, excluding files linked to Documents in Relativity and load files. Finalization frees up space on the current Fileshare.
- 
+
     > **WARNING:** After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken. 
     >
     > **NOTE**: Only Data Batches that are Completed or CompletedWithDocumentLeverlErrors can undergo Finalization. Data Batches that were already Finalized or Pending Finalization can be selected to be retried for Finalization.
@@ -1352,6 +1354,48 @@ All other data sources discover Monitored Individuals based on the `FROM`, `TO`,
 ### Supported File Formats
 
 Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on .eml, .msg, and .rsmf (Relativity Short Message Format) files. Any other file format is not currently supported.
+
+Excluded Files
+--------------------------------------------
+
+Excluded Files is a feature that lets users exclude extracted documents and files from ingestion that normally do not undergo review such as spam, repetitive content, or duplicate documents if they are no longer desired. To use this feature, an Excluded File RDO has to be created for each individual file that you want to exclude via the `Trace Add To Excluded Files` mass operation. The Excluded File RDO is an object which denotes a file that has been ingested into Trace and has been selected to no longer be ingested in the future. The RDO itself holds 2 values: Trace Document Hash and File. Once created, during ingestion, all newly ingested files that come in whose Trace Document Hash matches any one of the hashes in the Excluded Files list, will not be ingested. Excluded File objects can only be created for unique extracted documents. Any file that has been selected to be added to the Excluded Files list will mark Trace Is Excluded File field to TRUE for all matching documents already in the workspace.
+
+>  **NOTE:** Only extracted documents can be used for excluding files from ingestion. However, selecting a native file will still let you perform the mass operation without excluding it.
+>
+>  **NOTE:** There is a 10,000 file limit to the Excluded Files list. If you wish to increase this size limit, please contact support at support@relativity.com.
+
+### Trace Add To Excluded Files
+
+`Trace Add To Excluded Files` mass operation can be used to select all the documents that a user wants to exclude from future ingestion. It works on relativity documents and can be selected in the Documents tab. 
+
+![trace-add-to-excluded-files-mass-operation](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Mass%20Operation.png)
+
+
+
+Once the documents for exclusion are selected and the mass operation is executing, a validation occurs to make sure that the selected number of documents don't put you over the 10,000 excluded files limit. Once validated, a popup modal appears prompting user to continue.
+
+![trace-add-to-excluded-files-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Validation%20Popup-1611680699554.png)
+
+If validation fails however, users will be shown an error popup telling them they will be exceeding their Excluded Files limit with the selected documents by a certain amount so they can reselect and choose the documents they more readily need to have excluded.
+
+![trace-add-to-excluded-files-error-validation-popup](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Error%20Validation%20Popup-1611680712170.png)
+
+
+
+On success, the newly Excluded Files should appear in the Excluded Files list which can be found in the Excluded Files tab under Trace.
+>  **NOTE:** Excluded File RDO cannot be created from this tab. All Excluded Files have to be created from the Documents tab via the Trace Add To Excluded Files mass operation.
+
+![trace-excluded-files-list](media/user_documentation/Excluded%20Files%20List.png)
+
+
+
+To view any individual Excluded File, you can click on the object and it displays the Hash value determined for that file as well as the file itself, which can either be downloaded or viewed in the Document viewer.
+>  **NOTE:** Deleting an Excluded File only removes the RDO which will allow a user to ingest that document again in future ingestion, but all the documents in the workspace that had their Trace Is Excluded File field marked as True when it was first created because it matched its hash value, will still be marked as True. 
+
+![excluded-file-rdo](media/user_documentation/excluded%20file%20rdo.png)
+
+
+
 
 Setup
 =====
