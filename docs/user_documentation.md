@@ -53,6 +53,8 @@
     - [Supported File Formats](#supported-file-formats)
   - [Excluded Files](#excluded-files)
     - [Trace Add To Excluded Files](#trace-add-to-excluded-files)
+    - [Identifying Files to Exclude](#identifying-files-to-exclude)
+    - [Disposing of Documents that have been Added as Excluded Files](#disposing-of-documents-that-have-been-added-as-excluded-files)
 - [Setup](#setup)
 	- [Tasks](#tasks)
 	- [System Health Reporting](#system-health-reporting)
@@ -1399,7 +1401,7 @@ Once the mass operation has completed successfully:
 
 Filter your document list to only show Extracted Files using the `Trace Is Extracted` field. Use the `Tally/Sum/Average` mass operation to identify documents that have many copies within the workspace. Select the "Tally" option within the mass operation and then select the `Trace Document Hash` field to tally on. Sort the table by Trace Document Hash's that have the most copies in the workspace. 
 
-<img src="C:\Users\peter.haller\AppData\Roaming\Typora\typora-user-images\image-20210204165507786.png" alt="image-20210204165507786" style="zoom:60%;" />
+![trace-excluded-tally](media/user_documentation/2340983024970923840.png)
 
 Copy the Trace Document Hash values with many hits. Conduct a Document search to find documents with these hashes. Review the documents to ensure they should can be excluded from ingestion going forward.  Use the `Trace Add to Excluded Files` mass operation to add these files to the `Excluded File` list.
 
