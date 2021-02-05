@@ -174,7 +174,7 @@ Setting up Relativity Trace
        5.  Logging level of event details = `Log all messages`
    2.  Trace Worker Agent
        1. Agent Type = `Trace Worker Agent`
-       2. Number of Agents = `Unlimited`
+       2. Number of Agents = `No more than 2x #of CPU cores per agent server (Ex. 4 CPU agent server should host no more than 2 Trace Worker agents`
        3. Agent Server = Select the agent server you would like the agent deployed
           on (see “Infrastructure and Environment Considerations” section for
           optimal performance)
@@ -499,7 +499,7 @@ This action is used to:
 
 `Document Delete Batch Size` - controls number of documents to delete at once
 
-> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance
+> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance.  Increasing this setting will only take affect if Rule Evaluation task setting (Max Documents Per Execution) is same or higher value.
 
 `Delete Documents Older Than Hours` - controls age of a document (based on System
 Created On date/time) to delete
@@ -1452,9 +1452,8 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
     
-- **Data Enrichment:** Responsible for extracting nested files (attachments, contents of zip files), generating extracted text and preparing the load file that is ready for import process
-
-  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+- **Data Enrichment:** Responsible for extracting and enriching nested files (attachments, contents of zip files), generating extracted text, metadata and preparing the load file that is ready for import process.  For security reasons, embedded content that refers to external URL links do not get extracted.
+  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com. 
 
 System Health Reporting
 ------------------------
