@@ -174,7 +174,7 @@ Setting up Relativity Trace
        5.  Logging level of event details = `Log all messages`
    2.  Trace Worker Agent
        1. Agent Type = `Trace Worker Agent`
-       2. Number of Agents = `Unlimited`
+       2. Number of Agents = `No more than 2x #of CPU cores per agent server (Ex. 4 CPU agent server should host no more than 2 Trace Worker agents`
        3. Agent Server = Select the agent server you would like the agent deployed
           on (see “Infrastructure and Environment Considerations” section for
           optimal performance)
@@ -229,15 +229,16 @@ Setting up Relativity Trace
 
 Trace Document Flow Overview
 ============================
+Trace has a six-step process. All new documents go through first three steps (`1 – New`, `2 – Indexed`, `3 – Term Searched`). The next three steps (`4 – Normalized`, `5 – Ready for Rule Analysis`, `6 – Alert Rules Complete`) depend on configuration in `Rule Evaluation` task.  Status is tracked in the `Trace Document Status` field.
 
-Trace has a three-step process that all new documents go through. This status is tracked in the `Trace Document Status` field.
-
-|             | **Step 1**                                                   | **Step 2**                                    | **Step 3**                                                   |
-| ----------- | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------------------ |
-| **Status:** | **NEW**                                                      | **INDEXED**                                   | **TERM SEARCHED**                                            |
-| Overview:   | Documents that are brand new and are part of `Trace All  Documents` saved search | Documents that have been successfully indexed | Documents that have been successfully searched by Term Searching task |
-
-> **NOTE:** Rule evaluation (including tagging documents to the Rule) is executed by the Rule Evaluation task and is outside of the core Trace Document Flow.
+| Step | Status:                 | Overview:                                                    |
+| :--: | ----------------------- | ------------------------------------------------------------ |
+|  1   | NEW                     | Documents that are brand new and are part of `Trace All Documents` saved search. |
+|  2   | INDEXED                 | Documents that have been successfully indexed.               |
+|  3   | TERM SEARCHED           | Documents that have been successfully searched by Term Searching task. |
+|  4   | NORMALIZED              | Documents which are returned by `Normalized Saved Search` configured in `Rule Evaluation` task along with their family (documents are marked as `Normalized` only if whole family is in status `Term Searched`). If `Normalized Saved Search` is not configured, all trace documents, which have family term searched, are getting normalized. |
+|  5   | READY FOR RULE ANALYSIS | Documents which were in `Normalized` status before along with their family and whose parent documents do not belong to `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task. |
+|  6   | ALERT RULES COMPLETE    | Documents which are returned by `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task along with their family (documents are marked as `Alert Rules Complete` only if they were in `Normalized` status before). If ``Omit from Alert Rules Saved Search`` is not configured, none of the documents is marked with `Alert Rules Complete` status. Those documents are not tagged by Alert Rules. |
 
 ### Trace Document Fields
 
@@ -248,8 +249,9 @@ status of documents is reflected on a few key fields on the Document object
     each document for the Trace Data Flow
 2.  **Trace Document Status** – Single choice field responsible for reflecting
     overall progress of the document through the Trace Data Flow
-    - Standard choices are `1 – New`, `2 – Indexed`, and `3 – Term Searched` reflecting the statuses above
-    
+    - Standard choices are:
+    	- `1 – New`, `2 – Indexed`, and `3 – Term Searched` reflecting the statuses above
+    	- `4 – Normalized`, `5 – Ready for Rule Analysis`, and `6 – Alert Rules Complete` reflecting the statuses above, depend on configuration of `Rule Evaluation` task
     - `Indexing Errored` status reflects documents that have not successfully gone through Indexing. 
     
       - Potential causes
@@ -293,7 +295,9 @@ status of documents is reflected on a few key fields on the Document object
 13.  **Trace Record Origin Identifier -** Contains an identifier (varies by Data Source) that can be used to reconcile Trace documents with their origin
 14.  **Trace Data Batch -** Tracking object that shows when and how the document was brought into the Workspace
 15.  **Trace Data Batch::Data Source -** System generated field that can be used to show the Data Source that created each document. If desired, edit this field to Allow Pivot and Allow Group By and place a Widget on the Documents dashboard to see how many documents are generated by each Data Source.
-16.  **Trace Is Extracted** – Boolean (yes/no) field indicating if the document is a Native or was Extracted.
+16.  **Trace Is Extracted** – Boolean (yes/no) field indicating if the document is a Native or was Extracted (in Rule Evaluation it indicates if document is a parent of a family).
+17.  **Trace Omit from Alert Rules** – Boolean (yes/no) field indicating if the document is omitted from alert rules.
+18.  **Trace Document Status Updated On** – Date field that holds the UTC time when document's `Trace Document Status` field was last updated.
 
 ### Dashboard Widgets
 
@@ -308,7 +312,7 @@ Trace Document Retry and Error Resolution Workflow
 If you wish to re-submit existing documents through the Trace Data Flow, you can
 accomplish this via Document mass operation `Trace Document Retry`. The mass
 operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace Rule Terms`,
-`Trace Rules`, `Trace Alerted On`, `Trace Workflow Rules` and `Trace Document Status`. Simply check the
+`Trace Rules`, `Trace Alerted On`, `Trace Workflow Rules`, `Trace Document Status Updated On` and `Trace Document Status`. Simply check the
 documents that you wish to retry from the Document List and click the item in the
 dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please
 enable them for Relativity URLs.
@@ -499,7 +503,7 @@ This action is used to:
 
 `Document Delete Batch Size` - controls number of documents to delete at once
 
-> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance
+> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance.  Increasing this setting will only take affect if Rule Evaluation task setting (Max Documents Per Execution) is same or higher value.
 
 `Delete Documents Older Than Hours` - controls age of a document (based on System
 Created On date/time) to delete
@@ -1452,9 +1456,8 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 -   **Reporting**: Responsible for reporting on the state of the system via
     email
     
-- **Data Enrichment:** Responsible for extracting nested files (attachments, contents of zip files), generating extracted text and preparing the load file that is ready for import process
-
-  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+- **Data Enrichment:** Responsible for extracting and enriching nested files (attachments, contents of zip files), generating extracted text, metadata and preparing the load file that is ready for import process.  For security reasons, embedded content that refers to external URL links do not get extracted.
+  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com. 
 
 System Health Reporting
 ------------------------
@@ -1755,7 +1758,9 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Monitored Individuals   | Multiple Object   | Monitored individuals associated with Data Source (used for retrieval and billing) |
 | Calculated               | Trace Exempt              | Yes/No            | Indicates exempt list data transformation classification |
 | Calculated               | Trace Communication Direction           | Fixed-Length Text | Indicates communication direction data transformation classification (Internal |
-| Calculated               | Trace Is Extracted              | Yes/No            | Indicates whether a document is a Native or was Extracted |
+| Calculated               | Trace Is Extracted           | Yes/No | Indicates whether a document is a Native or was Extracted |
+| Calculated               | Trace Omit from Alert Rules          | Yes/No | Indicates if the document is omitted from alert rules |
+| Calculated               | Trace Document Status Updated On           | Date | Date field that holds the UTC time when document's `Trace Document Status` field was last updated |
 
 Appendix C: Create Email Fields Data Mappings and Ingestion Profile
 =============================================================
