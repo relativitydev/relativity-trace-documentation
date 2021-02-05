@@ -82,10 +82,9 @@
 Introduction to Relativity Trace
 ================================
 
-Relativity is primarily used for e-discovery, investigations and regulatory inquiries: typically reactive and transactional workflows. Relativity Trace is an application built on the Relativity platform for proactive compliance and surveillance workflows.
+Relativity Trace is an application built on the Relativity platform for built for proactive communication surveillance workflows.
 
-Relativity Trace is an [ADS Deployable Application](https://platform.relativity.com/9.5/Content/Building_Relativity_applications/Building_Relativity_applications.htm) containing [RDOs](https://platform.relativity.com/9.5/Content/Managing_Relativity_dynamic_objects/RDO_9.5/Relativity_objects.htm), Custom [Agents](https://help.relativity.com/9.5/Content/System_Guides/Agents_Guide/Agents.htm),
-[Event Handlers](https://help.relativity.com/9.5/Content/Relativity/Event_Handler_Express/Relativity_Event_Handler_Express.htm) and other relevant infrastructure.
+Relativity Trace is an [ADS Deployable Application](https://platform.relativity.com/9.5/Content/Building_Relativity_applications/Building_Relativity_applications.htm) containing [RDOs](https://platform.relativity.com/9.5/Content/Managing_Relativity_dynamic_objects/RDO_9.5/Relativity_objects.htm), Custom [Agents](https://help.relativity.com/9.5/Content/System_Guides/Agents_Guide/Agents.htm), [Event Handlers](https://help.relativity.com/9.5/Content/Relativity/Event_Handler_Express/Relativity_Event_Handler_Express.htm) and other relevant infrastructure.
 
 Prerequisites
 =============
@@ -108,8 +107,7 @@ Ensure the default Relativity infrastructure has been set up and is fully operat
     
 -   Integration Points Manager (need to install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?) first)
 
-If you plan to use `Analytics` functionality, please also make sure the following
-agents are set up:
+If you plan to use `Analytics` functionality, please also make sure the following agents are set up:
 
 -   Relativity Analytics Index Manager
 
@@ -129,16 +127,15 @@ agents are set up:
 
 ### Applications
 
--   [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?)
-
-    1.  Relativity Integration Points is a required application for Relativity Trace and should be installed in all Trace workspaces BEFORE installing Trace
-2.  Used by Trace Data Sources
+-   [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm)
+1.  Relativity Integration Points is a required application for Relativity Trace and should be installed in all Trace workspaces BEFORE installing Trace
+    2.  Used by Trace Data Sources
     3.  See this [page](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm) for details on how to install Integration Points
+-   [Relativity Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm#Setting_up_your_environment)
+    1.  Used by Trace after ingestion to perform Structured Analytics workflows (language identification, repeated content identification, etc)
     
--   [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm)
-    1.  Used by Trace after ingestion to perform Structured Analytics workflows
-    (language identification, repeated content identification, etc)
-    
+-   [Active Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Active_Learning/Active_Learning.htm)
+    1. Used by Trace after ingestion to analyze documents against Machine Learning models.
 ### BIST ( Built-in self-test ) Workspace
 
 1.  Create new Relativity Workspace dedicated to BIST. Workspace must be named `Trace BIST Automation [DO NOT MODIFY]`
@@ -167,36 +164,28 @@ Setting up Relativity Trace
    1.  Trace Manager Agent
        1.  Agent Type = `Trace Manager Agent`
        2.  Number of Agents = `1` 
-       3.  Agent Server = Select the agent server you would like the agent deployed
-           on (see “Infrastructure and Environment Considerations” section for
-           optimal performance)
+       3.  Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
        4.  Run Interval = `60`
        5.  Logging level of event details = `Log all messages`
    2.  Trace Worker Agent
        1. Agent Type = `Trace Worker Agent`
        2. Number of Agents = `No more than 2x #of CPU cores per agent server (Ex. 4 CPU agent server should host no more than 2 Trace Worker agents`
-       3. Agent Server = Select the agent server you would like the agent deployed
-          on (see “Infrastructure and Environment Considerations” section for
-          optimal performance)
+       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
        4. Run Interval = `60`
        5. Logging level of event details = `Log all messages`
    3.  Integration Points Manager Agent
        1. Agent Type = `Integration Points Manager`
        2. Number of Agents = `1`
-       3. Agent Server = Select the agent server you would like the agent deployed
-          on (see “Infrastructure and Environment Considerations” section for
-          optimal performance)
+       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
        4. Run Interval = `60`
        5. Logging level of event details = `Log critical errors only`
    4.  Integration Points Agent
        1. Agent Type = `Integration Points Agent`
        2. Number of Agents = `up to 4` (start with 1 and add more if data batches get backed up)
-       3. Agent Server = Select the agent server you would like the agent deployed
-          on (see “Infrastructure and Environment Considerations” section for
-          optimal performance)
+       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
        4. Run Interval = `60`
        5. Logging level of event details = `Log critical errors only`
-
+   
 4. Please review the [Considerations](#infrastructure-and-environment-considerations) for system impact information. By default system processes (Tasks) are scheduled to run every 5 minutes (configurable per workspace).
 
    > Please reach out to `support@relativity.com` for additional information
@@ -206,21 +195,17 @@ Setting up Relativity Trace
 
 6. Configure Trace License
 
-   1.  At first install time, a default trial license is installed that is
-       re-used for all workspaces in the Relativity instance (it’s valid 30
-       days from installation date)
-
-   2.  You can request a new license via `Manage Trace License` link on Setup
-       tab
-
-       ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
-
-   3.  Click `Request Trace License` and send an email with the contents of the
-       request to `support@relativity.com`
-
-       ![](media/741facee0911140b7082894fe5a42c7a.png)
-
-       > **WARNING:** Once license expires, all Trace processes stop working in **all** configured workspaces.
+   1.  At first install time, a default trial license is installed that is re-used for all workspaces in the Relativity instance (it’s valid 30 days from installation date)
+       
+   2.  You can request a new license via `Manage Trace License` link on Setup tab
+    
+   ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
+       
+3.  Click `Request Trace License` and send an email with the contents of the request to `support@relativity.com`
+       
+![](media/741facee0911140b7082894fe5a42c7a.png)
+       
+   > **WARNING:** Once license expires, all Trace processes stop working in **all** configured workspaces.
 
 7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
    
@@ -229,75 +214,64 @@ Setting up Relativity Trace
 
 Trace Document Flow Overview
 ============================
-Trace has a six-step process. All new documents go through first three steps (`1 – New`, `2 – Indexed`, `3 – Term Searched`). The next three steps (`4 – Normalized`, `5 – Ready for Rule Analysis`, `6 – Alert Rules Complete`) depend on configuration in `Rule Evaluation` task.  Status is tracked in the `Trace Document Status` field.
+Trace has a six-step Document analysis process. Status is tracked on the `Trace Document Status` field. When a document status is changed the timestamp on the `Trace Document Status Updated On` field is updated.
 
 | Step | Status:                 | Overview:                                                    |
 | :--: | ----------------------- | ------------------------------------------------------------ |
-|  1   | NEW                     | Documents that are brand new and are part of `Trace All Documents` saved search. |
+|  1   | NEW                     | Documents that are brand new to the workspace and are part of `Trace All Documents` saved search. |
 |  2   | INDEXED                 | Documents that have been successfully indexed.               |
 |  3   | TERM SEARCHED           | Documents that have been successfully searched by Term Searching task. |
-|  4   | NORMALIZED              | Documents which are returned by `Normalized Saved Search` configured in `Rule Evaluation` task along with their family (documents are marked as `Normalized` only if whole family is in status `Term Searched`). If `Normalized Saved Search` is not configured, all trace documents, which have family term searched, are getting normalized. |
-|  5   | READY FOR RULE ANALYSIS | Documents which were in `Normalized` status before along with their family and whose parent documents do not belong to `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task. |
-|  6   | ALERT RULES COMPLETE    | Documents which are returned by `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task along with their family (documents are marked as `Alert Rules Complete` only if they were in `Normalized` status before). If ``Omit from Alert Rules Saved Search`` is not configured, none of the documents is marked with `Alert Rules Complete` status. Those documents are not tagged by Alert Rules. |
+|  4   | NORMALIZED              | Documents and their family that have completed all normalization processes, as defined by the `Normalized Saved Search` field criteria configured in the `Rule Evaluation` task. <br/><br/>**NOTE:** Documents can only be moved to the `Normalized status` if they and all their family members are in the `Term Searched` status. <br/><br/>**NOTE:** If `Normalized Saved Search` is not populated, documents will move to `Normalized` once they and all their family members are in the `Term Searched` status. |
+|  5   | READY FOR RULE ANALYSIS | Documents that have been `Normalized` and don't meet the criteria of the  `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task. Both `Alert` and `Workflow` `Rules` will analyze these documents. |
+|  6   | ALERT RULES COMPLETE    | Documents which are returned by `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task along with their family. `Alert` `Rules` will NOT analyze these documents. <br/><br/>**NOTE:** If ``Omit from Alert Rules Saved Search`` is not configured, no documents will be marked with the `Alert Rules Complete` status. Only `Workflow` `Rules` will analyze these documents. |
+
+> **NOTE:** To identify documents that are stuck in the flow and no longer progressing through the statuses, it is advised that you periodically identify document in the `1 - New`, `2 - Indexed`, `3 - Term Searched` statuses with a `Trace Document Status Updated On` field older than a day.
 
 ### Trace Document Fields
 
-As documents flow into a Relativity workspace and through the Trace workflow the
-status of documents is reflected on a few key fields on the Document object
+As documents flow into a Relativity workspace and through the Trace workflow the status of documents is reflected on a few key fields on the Document object
 
-1.  **Trace Checkout** – Fixed-length Text field responsible for checking out
-    each document for the Trace Data Flow
-2.  **Trace Document Status** – Single choice field responsible for reflecting
-    overall progress of the document through the Trace Data Flow
+1.  **Trace Checkout** – Fixed-length Text field responsible for checking out each document for the Trace Data Flow
+2.  **Trace Document Status** – Single choice field responsible for reflecting overall progress of the document through the Trace Data Flow
     - Standard choices are:
     	- `1 – New`, `2 – Indexed`, and `3 – Term Searched` reflecting the statuses above
     	- `4 – Normalized`, `5 – Ready for Rule Analysis`, and `6 – Alert Rules Complete` reflecting the statuses above, depend on configuration of `Rule Evaluation` task
     - `Indexing Errored` status reflects documents that have not successfully gone through Indexing. 
-    
-      - Potential causes
+    - Potential causes
         1. Broken infrastructure (Agents, Service Host issues)
         2. Documents could not be update with `New` status due to SQL outage
-    
-      - Actions
+      
+    - Actions
         1. Check Setup tab for statuses of agents
         2. Check Trace logs (via `Manage Logs` console button)
         3. Perform `Trace Document Retry` mass-operation on affected documents
-    
-    - `Searching Errored` status reflects documents that have not successfully gone
-      through Term Searching stage.
-    
+      
+    - `Searching Errored` status reflects documents that have not successfully gone through Term Searching stage.
       - Potential causes
-        1. Broken infrastructure (Agents, Service Host issues)
+      1. Broken infrastructure (Agents, Service Host issues)
         2. Permanently broken/invalid Term (dtSearch) syntaxes are present
-    
+      
       - Actions:
-        1. Check Setup tab for statuses of agents
+      1. Check Setup tab for statuses of agents
         2. Check Terms tab for detailed errors on each failed term
-    
-        3. Check Trace logs (via `Manage Logs` console button)
-    
+      3. Check Trace logs (via `Manage Logs` console button)
         4. Perform `Trace Document Retry` mass-operation on affected documents
-5.  **Trace Terms** – Multi-Object field tracking which Terms have
-    matched a document
-6.  **Trace Rule Terms** – Multi-Object field tracking Rule specific
-    Terms (terms that match the document that are also associated with Rules that match the document)
-7.  **Trace Has Errors** – Boolean (yes/no) field indicating if the document has
-    any errors related to ingestion, extraction
-8.  **Trace Error Details** – Long Text field capturing the error details if a
-    document has encountered any errors
-9.  **Trace Data Transformations** – Multi-Object field tracking what data
-    transformations have been applied to the document as part of ingestion
-10.  **Trace Monitored Individuals –** Multi-Object field tracking which Monitored Individuals are associated with each document 
-11.  **Trace Rules –** Multi-Object field tracking which Rules of type Alert matched a document
-10.  **Trace Alerted On –** Date field that holds the time when a Document first matched an Alert rule
-11.  **Trace Workflow Rules –** Multi-Object field tracking which Rules of type Workflow matched a document
-12.  **Trace Matching Rules (INTERNAL)** - Multi-Object field used by the Rules engine to snapshot documents that match the Saved Search and Term conditions for each rule execution. Please do not edit or use this field for any other purpose as the data within it is cleared and updated frequently.
-13.  **Trace Record Origin Identifier -** Contains an identifier (varies by Data Source) that can be used to reconcile Trace documents with their origin
-14.  **Trace Data Batch -** Tracking object that shows when and how the document was brought into the Workspace
-15.  **Trace Data Batch::Data Source -** System generated field that can be used to show the Data Source that created each document. If desired, edit this field to Allow Pivot and Allow Group By and place a Widget on the Documents dashboard to see how many documents are generated by each Data Source.
-16.  **Trace Is Extracted** – Boolean (yes/no) field indicating if the document is a Native or was Extracted (in Rule Evaluation it indicates if document is a parent of a family).
-17.  **Trace Omit from Alert Rules** – Boolean (yes/no) field indicating if the document is omitted from alert rules.
-18.  **Trace Document Status Updated On** – Date field that holds the UTC time when document's `Trace Document Status` field was last updated.
+3.  **Trace Document Status Updated On** – Date field that holds the UTC time when document's `Trace Document Status` field was last updated.
+4.  **Trace Terms** – Multi-Object field tracking which Terms have matched a document
+5.  **Trace Rule Terms** – Multi-Object field tracking Rule specific Terms (terms that match the document that are also associated with Rules that match the document)
+6.  **Trace Has Errors** – Boolean (yes/no) field indicating if the document has any errors related to ingestion, extraction
+7.  **Trace Error Details** – Long Text field capturing the error details if a document has encountered any errors
+8.  **Trace Data Transformations** – Multi-Object field tracking what data transformations have been applied to the document as part of ingestion
+9.  **Trace Monitored Individuals –** Multi-Object field tracking which Monitored Individuals are associated with each document 
+10.  **Trace Rules –** Multi-Object field tracking which Rules of type Alert matched a document
+11.  **Trace Alerted On –** Date field that holds the time when a Document first matched an Alert rule
+12.  **Trace Workflow Rules –** Multi-Object field tracking which Rules of type Workflow matched a document
+13.  **Trace Matching Rules (INTERNAL)** - Multi-Object field used by the Rules engine to snapshot documents that match the Saved Search and Term conditions for each rule execution. Please do not edit or use this field for any other purpose as the data within it is cleared and updated frequently.
+14.  **Trace Record Origin Identifier -** Contains an identifier (varies by Data Source) that can be used to reconcile Trace documents with their origin
+15.  **Trace Data Batch -** Tracking object that shows when and how the document was brought into the Workspace
+16.  **Trace Data Batch::Data Source -** System generated field that can be used to show the Data Source that created each document. If desired, edit this field to Allow Pivot and Allow Group By and place a Widget on the Documents dashboard to see how many documents are generated by each Data Source.
+17.  **Trace Is Extracted** – Boolean (yes/no) field indicating if the document is a Native or was Extracted (in Rule Evaluation it indicates if document is a parent of a family member).
+18.  **Trace Omit from Alert Rules** – Boolean (yes/no) field indicating if the document is omitted from alert rules.
 
 ### Dashboard Widgets
 
@@ -309,22 +283,17 @@ applying Widgets using Trace Document Fields to the Documents dashboard:
 Trace Document Retry and Error Resolution Workflow
 -----------------------------------
 
-If you wish to re-submit existing documents through the Trace Data Flow, you can
-accomplish this via Document mass operation `Trace Document Retry`. The mass
-operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace Rule Terms`,
-`Trace Rules`, `Trace Alerted On`, `Trace Workflow Rules`, `Trace Document Status Updated On` and `Trace Document Status`. Simply check the
-documents that you wish to retry from the Document List and click the item in the
-dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please
-enable them for Relativity URLs.
+If you wish to re-submit existing documents through the Trace Data Flow, you can accomplish this via Document mass operation `Trace Document Retry`. The mass operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace Rule Terms`, `Trace Rules`, `Trace Alerted On`, `Trace Workflow Rules`, `Trace Document Status` and `Trace Document Status Updated On` . Simply check the documents that you wish to retry from the Document List and click the item in the dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please enable them for Relativity URLs.
 
 > **NOTE:** Trace Document Retry will not move documents between Folders, remove Analytics or Script results, or remove review decisions. These steps should be taken manually prior to performing Trace Document Retry if necessary for workflows.
+>
+> **NOTE:** Trace Document Retry should include all family member for a document, as all family members must be in the `Term Searched` status to move to the `Normalized` status.
 
 > **NOTE:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
 
 > **NOTE:** Trace Document Retry will only work when the "Run Option" on the Setup tab is set to `Continuous`
 
->  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term
-> associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
+>  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
 
 ![](media/b67f9b74d4a53cdd71c6d2915c81830d.png)
 
@@ -333,10 +302,7 @@ enable them for Relativity URLs.
 Trace Rules Engine Overview
 ===========================
 
-The Trace Rules Engine allows users to define data buckets with specific
-triggers and actions. These Rules are executed on periodic basis at
-pre-configured intervals, allowing users to automatically categorize and tag
-documents as they are ingested into the workspace.
+The Trace Rules Engine allows users to define data buckets with specific triggers and actions. These Rules are executed on periodic basis at pre-configured intervals, allowing users to automatically categorize and tag documents as they are ingested into the workspace.
 
 1 - Creating a Rule
 -------------------
@@ -354,19 +320,14 @@ The Rule Creation form contains the following fields:
   -   **Alert:** a rule that is designed to alert on responsive documents. Documents matching rules of this type are tagged in the Trace Rules field.
   -   **Workflow:** a rule that is designed to operate on every document in the workspace and take some action (run a script, move to the correct folder, etc) but not to alert on responsive documents. Documents matching rules of this type are tagged in the Trace Workflow Rules field.
 
--   **Searchable Set:** the document set searched when the Rule runs. Make sure
-    this set contains all documents that should be considered by Trace Rules.
-
--   **Associated Actions:** actions are what happen when a rule matches a
-    document. Currently supported Action Types are:
-
-    -   **Data Disposal**: triggers deletion of specified documents after the
-        configured retention policy
-    -   **Advanced:** execute customer provided Relativity Script
+-   **Searchable Set:** the document set searched when the Rule runs. Make sure this set contains all documents that should be considered by Trace Rules.
+    
+-   **Associated Actions:** actions are what happen when a rule matches a document. Currently supported Action Types are:
+    -   **Data Disposal**: triggers deletion of specified documents after the configured retention policy
+-   **Advanced:** execute customer provided Relativity Script
     -   **Email:** generates an email with metadata about alerted documents
     -   **Webhook:** makes a generic API call hosted within Relativity
-    -   **Slack:** generates a Slack message with metadata about alerted
-            documents
+    -   **Slack:** generates a Slack message with metadata about alerted documents
     -   **Move To Folder:** Move matched documents to a specific folder
 > **NOTE:** Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed) on either the Trace Rules or Trace Workflow Rules field, depending on the Rule Type
 
@@ -394,8 +355,7 @@ Clicking the Enable Rule console button on the right of the layout causes the Tr
 3 - Validating Results
 ----------------------
 
-After Rule executes, documents matching the Rule will be associated to the Rule
-itself.
+After Rule executes, documents matching the Rule will be associated to the Rule itself.
 
 ![1571081067899](media/user_documentation/1571081067899.png)
 
@@ -424,8 +384,7 @@ Term definition contains 3 fields:
 -   **Relativity highlight color:** optional highlighting configuration in the
     Relativity viewer (see [highlighting](#highlighting) section)
 
-In addition, you can see and modify Term Categories and Rules associated with
-Term and its status with regards to execution
+In addition, you can see and modify Term Categories and Rules associated with Term and its status with regards to execution
 
 ![](media/5b46e7806548749e50586196d43aa468.png)
 
@@ -435,12 +394,7 @@ Term and its status with regards to execution
 
 ### Highlighting
 
-By default, Trace creates a `Trace Persistent Highlight Set` that is populated
-with **all** terms present in the workspace. In addition, the `Trace Rules
-Persistent Highlight Set` captures only terms currently associated with any
-Rule. You can have many terms you want to use for highlighting purposes only,
-and not necessarily as part of matching any specific Rule. You can adjust the
-order in which they are displayed in the viewer.
+By default, Trace creates a `Trace Persistent Highlight Set` that is populated with **all** terms present in the workspace. In addition, the `Trace Rules Persistent Highlight Set` captures only terms currently associated with any Rule. You can have many terms you want to use for highlighting purposes only, and not necessarily as part of matching any specific Rule. You can adjust the order in which they are displayed in the viewer.
 
 ![](media/bde02ea5c3426235025046047f062ca8.png)
 
@@ -461,8 +415,7 @@ As part of installation, Action Types are created. Currently supported action ty
 
 ### Move To Folder Action Type
 
-Move To Folder action works on documents that match Rule criteria. Upon execution of the action, the documents will be moved to the specified destination folder, inheriting folder permissions. This action can be used to effectively secure documents to specific set of users/groups by routing them to folders with
-different permission sets. This Action Type can also be used to drive regional review workflows in conjunction with alerting actions. Finally, it can be used to filter documents by moving only the relevant documents to a different folder targeted by additional rules.
+Move To Folder action works on documents that match Rule criteria. Upon execution of the action, the documents will be moved to the specified destination folder, inheriting folder permissions. This action can be used to effectively secure documents to specific set of users/groups by routing them to folders with different permission sets. This Action Type can also be used to drive regional review workflows in conjunction with alerting actions. Finally, it can be used to filter documents by moving only the relevant documents to a different folder targeted by additional rules.
 
 You can configure the action by specifying the Artifact ID of the destination folder where the documents are to be moved. The Additional Information section automatically populates the list of available folders and their corresponding Artifact IDs for your convenience.
 
@@ -478,8 +431,7 @@ You can configure the action by specifying the Artifact ID of the destination fo
 >
 > _Only_ documents which were imported as part of a Data Batch which is in the `Completed` or `CompletedWithDocumentLevelErrors` state will be deleted.
 
-The Data Disposal Action Type follows the same Trace Rules Engine paradigm with
-one added condition:
+The Data Disposal Action Type follows the same Trace Rules Engine paradigm with one added condition:
 
 -   You attach the Data Disposal action to a Rule
 
@@ -491,9 +443,7 @@ one added condition:
 
     -   *SPECIFIC TO DISPOSAL*: `Delete Documents Older Than Hours` setting
 
-Any document that is newer than the specified number of hours (based on the System
-Created On field) will not be deleted even if the document is included in the
-Searchable Set / Search Term.
+Any document that is newer than the specified number of hours (based on the System Created On field) will not be deleted even if the document is included in the Searchable Set / Search Term.
 
 This action is used to:
 1. Clear out old documents from the Trace workspace
@@ -505,58 +455,44 @@ This action is used to:
 
 > **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance.  Increasing this setting will only take affect if Rule Evaluation task setting (Max Documents Per Execution) is same or higher value.
 
-`Delete Documents Older Than Hours` - controls age of a document (based on System
-Created On date/time) to delete
+`Delete Documents Older Than Hours` - controls age of a document (based on System Created On date/time) to delete
 
 **Saved Search Recommendations for Data Disposal**
 
 Because of the risk of data loss. You should carefully configure the Searchable Set used for Data Disposal. The following are recommended minimum filtering parameters
 
 -   `Trace Has Errors` field is False
--   `Trace Document Status` any of these: `3 - Term Searched`
+-   `Trace Document Status` any of these: `5 - Ready for Rule Analysis` OR `6 - Alert Rules Complete`
 -   The `Alert` field is not set (is empty)
 -   A field marking the document as Reviewed is True
 
 ### Advanced Action Type
 
-> **WARNING:** Advanced Action type can execute potentially harmful Relativity
-Scripts. Apply rigorous testing and impact assessment prior to deploying any
-custom script in production or enabling it to run continuously via Trace
-automation. For more information about Relativity Scripts in general, see the
-[Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm) documentation pages.
+> **WARNING:** Advanced Action type can execute potentially harmful Relativity Scripts. Apply rigorous testing and impact assessment prior to deploying any custom script in production or enabling it to run continuously via Trace automation. For more information about Relativity Scripts in general, see the [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm) documentation pages.
 
-The Advanced Action Type executes a Relativity Script automatically on a
-recurring basis per the Rule Evaluation task configuration (schedule).
+The Advanced Action Type executes a Relativity Script automatically on a recurring basis per the Rule Evaluation task configuration (schedule).
 
 To create a Rule with an Advanced action attached, follow the following steps:
 
-**Step 1**: Identify a Relativity Script you want to run automatically or create
-one yourself.
+**Step 1**: Identify a Relativity Script you want to run automatically or create one yourself.
 
--   Script must have Saved Search input parameter with *name* attribute “Saved
-    Search”
+-   Script must have Saved Search input parameter with *name* attribute “Saved Search”
+    
+-   For more information about Relativity Script feature in general, see the [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm) documentation pages.
 
--   For more information about Relativity Script feature in general, see the
-    [Scripts](https://help.relativity.com/9.6/Content/Relativity/Scripts.htm) and [Scripts Properties](https://platform.relativity.com/9.6/Content/Scripts/Script_properties/Script_properties.htm) documentation pages.
-
-> **NOTE:** Currently all Relativity Scripts that can be associated with Trace
-actions require a Saved Search as one of the script inputs (Trace automatically
-populates that field during Rule Evaluation with an execution specific saved search).
+> **NOTE:** Currently all Relativity Scripts that can be associated with Trace actions require a Saved Search as one of the script inputs (Trace automatically populates that field during Rule Evaluation with an execution specific saved search).
 
 ![](media/b993eb14ebd4e458fc490b9bcb321405.png)
 
-**Step 2**: To incorporate your script into the Rule framework, you must create
-an Action of Action Type “Advanced”.
+**Step 2**: To incorporate your script into the Rule framework, you must create an Action of Action Type “Advanced”.
 
 -   You can create new advanced actions in the Trace:Actions tab.
 
--   This custom Action will eventually be attached to a Rule, so be sure to give
-    it an easily identifiable name.
+-   This custom Action will eventually be attached to a Rule, so be sure to give it an easily identifiable name.
 
 ![](media/6ff2d4797b8a580e607a6f1b5ad4c6c1.png)
 
-Configuration of the action needs to provide all needed script inputs in the
-following format:
+Configuration of the action needs to provide all needed script inputs in the following format:
 
 ```json
 {
@@ -570,32 +506,23 @@ For reference:
 
 -   “Trace Date Parser” is the displayed script name as seen in the UI
 
--   “Destination Hour of Day Field Name”, and “Destination Day of Week Field
-    Name” are Scripts Input Names
+-   “Destination Hour of Day Field Name”, and “Destination Day of Week Field Name” are Scripts Input Names
+    
+-   “Trace Hour Of Day”, and “Trace Day Of Week” are SQL Column names of corresponding Relativity Fields
 
--   “Trace Hour Of Day”, and “Trace Day Of Week” are SQL Column names of
-    corresponding Relativity Fields
+> **NOTE:** Trace will automatically create a Saved Search that returns the net-new documents from your chosen Saved Search (from the Rule) AND your Term conditions and use that as the input for the script.
 
-> **NOTE:** Trace will automatically create a Saved Search that returns the net-new documents
-from your chosen Saved Search (from the Rule) AND your Term conditions and use that as 
-the input for the script.
+**Step 3**: To execute your script, attach this Action to a Rule and enable it (as you would with any Rule).
 
-**Step 3**: To execute your script, attach this Action to a Rule and enable it
-(as you would with any Rule).
-
-> **NOTE:** Advanced actions will run on a schedule, continuously. Please consider the resource
-usage of your scripts!
+> **NOTE:** Advanced actions will run on a schedule, continuously. Please consider the resource usage of your scripts!
 
 ### Alert Action Types (Email, Slack, and Webhook)
 
-Trace supports the following modes of notification: Email, Slack, and Webhook.
-These actions can be used as part of any rule.
+Trace supports the following modes of notification: Email, Slack, and Webhook. These actions can be used as part of any rule.
 
 #### Replacement Tokens
 
-You can specify Trace Replacement Tokens in most configuration fields for the
-Alert Action Types. These tokens will be replaced with information relevant to
-the specific document, rule and/or alert:
+You can specify Trace Replacement Tokens in most configuration fields for the Alert Action Types. These tokens will be replaced with information relevant to the specific document, rule and/or alert:
 
 `<<TRACE_RULE_VIEW_LINK_TOKEN>>` - Link to view Trace Rule in Relativity that generated the alert
 
@@ -661,9 +588,7 @@ You can configure the Email action to send out an email about specific document 
 `Document Text` – Text that appears next to the Document Link. Can insert custom text and Replacement Tokens.
 
 
-> **NOTE:** You must register a webhook to specific channel in Slack that will be
-allowed to post messages from Trace. Once registered, enter the ID of the
-registration into “Slack Web Hook Id” field. For more information visit: <https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack>
+> **NOTE:** You must register a webhook to specific channel in Slack that will be allowed to post messages from Trace. Once registered, enter the ID of the registration into “Slack Web Hook Id” field. For more information visit: <https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack>
 
 ##### Sample Slack message generated by Trace
 
@@ -671,10 +596,7 @@ registration into “Slack Web Hook Id” field. For more information visit: <ht
 
 #### Webhook Action Type (Preview)
 
-You can configure an action to make an API call to any web services hosted
-within the Relativity infrastructure. For example, you could use the Webhook
-action to call RelativityOne notification API to generate a mobile alert for the
-documents.
+You can configure an action to make an API call to any web services hosted within the Relativity infrastructure. For example, you could use the Webhook action to call RelativityOne notification API to generate a mobile alert for the documents.
 
 ![](media/4efb7e0f6f2fc5514e4b29efbf2c32d1.png)
 
@@ -684,8 +606,7 @@ documents.
 
 `Web Hook Base Api Url` – URL of the Relativity instance hosting the API
 
-`Web Hook Api Function` – relative path of API method to execute (used in
-combination with Base Api Url)
+`Web Hook Api Function` – relative path of API method to execute (used in combination with Base Api Url)
 
 `Document Link` - By default contains a link to the alerted document. Can insert custom text and Replacement Tokens.
 
@@ -694,31 +615,27 @@ combination with Base Api Url)
 
 > **NOTE:** POST is the only supported HTTP verb for Webhook.
 
-> **NOTE:** Authentication is inherited from the Agent Server that is hosting the
-Trace agent. The access_token is retrieved from
-ClaimsPrincipal.Current.Identities.
+> **NOTE:** Authentication is inherited from the Agent Server that is hosting the Trace agent. The access_token is retrieved from ClaimsPrincipal.Current.Identities.
 
 ### Custom Relativity Scripts
 
 Several useful SQL Relativity Scripts are shipped by default with Trace
 application.
 
-| **Script Name**   | **Description**                                              | **Inputs and Outputs**                                       |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Trace Date Parser | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | **INPUT:** Timezone<br>**INPUT:** Saved Search to execute on (passed from Rule)<br>**OUTPUT:** TraceHourOfDay Field Name<br>**OUTPUT:** TraceDayOfWeek Field Name <br><br>The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the `Timezone` Input. |
+| **Script Name**       | **Description**                                              | **Inputs and Outputs**                                       |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Trace Date Parser     | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | **INPUT:** Timezone<br>**INPUT:** Saved Search to execute on (passed from Rule)<br>**OUTPUT:** TraceHourOfDay Field Name<br>**OUTPUT:** TraceDayOfWeek Field Name <br><br>The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the `Timezone` Input. |
+| Trace AI Calculations | **Contact your support@relativity.com prior to using this script.**<br/>This script calculates Precision and Recall across all rank cutoffs for your Active Learning project you can better understand the accuracy and what rank cutoff you should be using in your Rules. | **INPUT:** Rank Field (This should be the CSR Rank field from the Active Learning Project)<br/>**INPUT:** Decision Field (A Yes/No field that denotes whether a document is a true positive)<br/>**OUTPUT:** A table calculating Precision and Recall for all Cutoff Ranks. |
 
 Trace Proactive Ingestion Framework
 ===================================
 
-The Proactive Ingestion Framework allows Administrators to automatically and
-continually ingest data into Relativity from various Data Sources. The framework
-is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
+The Proactive Ingestion Framework allows Administrators to automatically and continually ingest data into Relativity from various Data Sources. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
 
 The key benefits of the Proactive Ingestion Framework include:
 
--   Data reconciliation from Data Source through transcription/normalization to
-    Relativity
-
+-   Data reconciliation from Data Source through transcription/normalization to Relativity
+    
 -   Data can be autonomously and continuously ingested
 
 -   Data can be pushed from a 3rd party data processor in a generic format
@@ -730,11 +647,9 @@ The key benefits of the Proactive Ingestion Framework include:
 -   Data can be re-imported into Relativity at any point (asynchronously from
     retrieval from the Data Source)
 
--   Data can be transformed by replacing redundant / irrelevant blocks of text
-    or removing duplicate documents from consideration
-
--   Performance monitoring of entire data ingestion pipeline (bottleneck
-    identification, SLA metrics, proactive alerting)
+-   Data can be transformed by replacing redundant / irrelevant blocks of text or removing duplicate documents from consideration
+    
+-   Performance monitoring of entire data ingestion pipeline (bottleneck identification, SLA metrics, proactive alerting)
 
 Reach out to <support@relativity.com> for help integrating with the Proactive
 Ingestion Framework
@@ -757,23 +672,17 @@ Data sources are broken up in several sections:
    * **Name:** The name of Data Source
    * **Data Source Type:** Type of the data source
 
-   * **Ingestion Profile:** Ingestion Profile used to load data
-     from this Data Source
-
-   * **Start Date:** Date from which data will be pulled/pushed into Relativity
-
-   * **Last Runtime (UTC):** The timestamp when this Data Source was last
-     executed
-
+   * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
+     
+* **Start Date:** Date from which data will be pulled/pushed into Relativity
+   
+* **Last Runtime (UTC):** The timestamp when this Data Source was last executed
+     
    * **Status:** The last status message recorded by the Data Source
 
-   * **Last Error Date:** Timestamp of the last time this Data Source failed, if
-     it happened recently (based on Last Error Retention in Hours setting under
-     Data Source Specific Fields)
-
-   * **Last Error:** Error message from the last time this Data Source failed, if
-     it happened recently (based on Last Error Retention in Hours setting under
-     Data Source Specific Fields)
+   * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
+  
+   * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
 2. **Credentials:** this tab is used to securely input and store credential information. This includes username and password as well as OAuth client secrets, should they be used. Not all Data Sources require credential information.
    
     * **Username:** Optional field used for authentication of a data source.
@@ -785,8 +694,7 @@ Data sources are broken up in several sections:
     * **EWS Client Secret:** Optional field used for authentication of exchange email retrieval using OAUT.
     
       > **Note:** EWS Client Secret is used only on Microsoft Exchange type Data Sources. See [Microsoft Exchange Data Source](#microsoft-exchange-data-source) for specifics on authentication.
-3. **Trace Monitored Individuals:** Configures which monitored individual’s
-data should be retrieved from the data source. See [Monitored Individuals](#monitored-individuals) for more information.
+3. **Trace Monitored Individuals:** Configures which monitored individual’s data should be retrieved from the data source. See [Monitored Individuals](#monitored-individuals) for more information.
 4. **Data Transformations:** Determines which data transformations to apply to documents prior to ingestion into Relativity by this data source. See [Data Transformations](#data-transformations) for more information.
 5. **Data Batches:** The data batches which have been generated by this data source. See [Data Batches](#data-batches) for more information.
 6. **Data Source Specific Settings**: Different data source types have different configuration options. This section updates dynamically to allow access to these configuration options. See [Data Source Specific Settings](#data-source-specific-settings) and the documentation of your specific Data Source Type for more information.
@@ -799,21 +707,14 @@ data should be retrieved from the data source. See [Monitored Individuals](#moni
 
 ### Data Source Specific Settings
 
-This section contains additional settings which are not associated with specific
-Relativity Fields. The settings described here are common across all Data Source
-Types. Type-specific settings are documented under their respected Data Source 
-sections.
+This section contains additional settings which are not associated with specific Relativity Fields. The settings described here are common across all Data Source Types. Type-specific settings are documented under their respected Data Source sections.
 
--   **Password Bank** Used to specify known passwords to attempt
-    while encountering protected native files. Multiple passwords 
-    can be separated by the pipe character, `|`. Passwords containing
-    the pipe character are supported through escaping the pipe character
-    with a second pipe. Pipes are always escaped left to right.
-
+-   **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
+    
     > **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
     >
     > Yields the following passwords:
-    >
+>
     > * `passw0rd`
     > * `Trace1234!`
     > * `aaa`
@@ -821,7 +722,7 @@ sections.
     > * `cccc|dd|eee|`
     > * `ff|`
     > * `ggg||hhh||`
-
+    
 - **Extraction Thread Count:** The number of documents to extract in parallel.
 
 - **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: 
@@ -941,24 +842,11 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
     like more information)
 ![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
     
-1.  *Exchange Settings – Url* gives you the chance to specify the exact URL
-        used when connecting to your exchange server. If this field is left
-        blank, Microsoft’s Autodiscover technology will be used to populate the
-        field with a URL based on the credentials provided in the Username and
-        Password fields. Autodiscover is typically a suitable option and works
-        for Office 365 and many on premises solutions but it is not guaranteed
-        to work.
-        
-	
-	    If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx ( OR https://YOUR_EXCHANGE_SERVER_URL/EWS/Exchange.asmx)
-	
-2. *Exchange Settings - Version* allows you to specify the version of your
-       exchange server. For Office 365, the default is the correct choice. For
-       on premises servers, provide the correct version. It needs to be an
-       exact match to one of the options, filling it out incorrectly will
-       provide a list of all of the options available in the error message at
-       the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1,
-       Exchange2010_SP2, Exchange2013, Exchange2013_SP1
+1.  *Exchange Settings – Url* gives you the chance to specify the exact URL used when connecting to your exchange server. If this field is left blank, Microsoft’s Autodiscover technology will be used to populate the field with a URL based on the credentials provided in the Username and Password fields. Autodiscover is typically a suitable option and works for Office 365 and many on premises solutions but it is not guaranteed to work.
+    
+        If Autodiscover fails, specify this URL in the field: https://outlook.office365.com/EWS/Exchange.asmx ( OR https://YOUR_EXCHANGE_SERVER_URL/EWS/Exchange.asmx)
+    
+2. *Exchange Settings - Version* allows you to specify the version of your exchange server. For Office 365, the default is the correct choice. For on premises servers, provide the correct version. It needs to be an exact match to one of the options, filling it out incorrectly will provide a list of all of the options available in the error message at the top of the page: Exchange2007_SP1, Exchange2010, Exchange2010_SP1, Exchange2010_SP2, Exchange2013, Exchange2013_SP1
    
 10. *Exchange Settings - Exclude Microsoft Teams Chat* indicates whether Trace will ignore any Microsoft Teams chat messages being stored in a Monitored Individual's folders in Outlook as a part of O365. The default behavior is to pull data from the Teams Chat folder, but users may want to exclude these folders if Teams data is being pulled from a different data source or the data should not be pulled at all.
 
@@ -968,26 +856,15 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
     ![](media/85e99ebffc8ada7ae4c69a61cb873213.png)
 
-    1.  Click `New` if the monitored individual is not already defined on another
-    Data Source, or “Link” if the user has already been monitored in the past
-
-    2.  Microsoft Exchange Data Source will only pull data for linked Monitored
-    Individuals (by identifier field: email address)
-
-    3.  Once everything is set up, click the Enable Data Source button on the upper
-    right to begin pulling data
+    1.  Click `New` if the monitored individual is not already defined on another Data Source, or “Link” if the user has already been monitored in the past
+    
+2.  Microsoft Exchange Data Source will only pull data for linked Monitored Individuals (by identifier field: email address)
+    
+    3.  Once everything is set up, click the Enable Data Source button on the upper right to begin pulling data
 
 **Content**
 
-The Microsoft Exchange Data Source works by pulling content directly from an
-Exchange Server instance (Office 365 or On Premises) using Exchange Web Services
-(EWS). The Data Source downloads the native (.eml) email files and then extracts
-all information including email metadata, email body text, native attachments
-and their metadata. Container attachment file types (zips and similar archives)
-are automatically extracted into individual documents – e.g. zip with 10 word
-(.docx) documents = 11 Relativity documents. In addition, images from email
-content and each individual document are automatically expanded into separate
-Relativity documents. 
+The Microsoft Exchange Data Source works by pulling content directly from an Exchange Server instance (Office 365 or On Premises) using Exchange Web Services (EWS). The Data Source downloads the native (.eml) email files and then extracts all information including email metadata, email body text, native attachments and their metadata. Container attachment file types (zips and similar archives) are automatically extracted into individual documents – e.g. zip with 10 word (.docx) documents = 11 Relativity documents. In addition, images from email content and each individual document are automatically expanded into separate Relativity documents. 
 
 > **NOTE:** the Microsoft Exchange data source only retrieves emails. It does not retrieve other exchange metadata at this time.
 
@@ -1048,12 +925,7 @@ ZIP Drop Data Source will export its configured Monitored Individuals in CSV for
 
 ### Relativity Native Data Extraction Data Source
 
-This Data Source allows for automatic text extraction/expansion of previously
-ingested documents with natives in Relativity. This data source will
-automatically extract text, metadata and any children documents from
-containers/archives for all documents in the workspace with *Trace Data
-Enrichment Needed* field set to *Yes* and where Trace is able to locate the Native
-file on disk:
+This Data Source allows for automatic text extraction/expansion of previously ingested documents with natives in Relativity. This data source will automatically extract text, metadata and any children documents from containers/archives for all documents in the workspace with *Trace Data Enrichment Needed* field set to *Yes* and where Trace is able to locate the Native file on disk:
 
 ![](media/055bc4b791f13c0bdcb07bed1d907b91.png)
 
@@ -1061,11 +933,10 @@ file on disk:
 
 1. Integration Points Profile
 
-   1.  Please, re-use profile creation steps documented for Microsoft Exchange
-       above OR re-use existing “Microsoft Office 365 Profile” profile. 
+   1.  Please, re-use profile creation steps documented for Microsoft Exchange above OR re-use existing “Microsoft Office 365 Profile” profile. 
        
        > **IMPORTANT:** Ensure import option is set to Append/Overlay.
-
+   
 2.  Create Relativity Native Data Extraction Data Source
 
     1.  Go to the `Trace` -> `Data Sources` tab and Click the “New Data Source” button
@@ -1086,14 +957,11 @@ file on disk:
 
 3.  Fill out [Data Source Specific Settings](#data-source-specific-settings) and click Save
     
-    -   **Batch Size:** The maximum number of Original Native files 
-        to group into a single Data Batch
+    -   **Batch Size:** The maximum number of Original Native files to group into a single Data Batch
 
 **Content**
 
-Extracted text and metadata for submitted Native files and all children
-documents expanded from containers/archives. Please, refer to [Appendix B](#appendix-b-trace-document-extraction-fields)
-for field descriptions.
+Extracted text and metadata for submitted Native files and all children documents expanded from containers/archives. Please, refer to [Appendix B](#appendix-b-trace-document-extraction-fields) for field descriptions.
 
 
 > **WARNING:** Re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents (old children will be dropped off the family group) if they already exist in the workspace.
@@ -1190,8 +1058,7 @@ By default, Trace only ships with two encodings (UTF-8 and Windows-1252). More e
 Monitored Individuals
 ---------------------
 
-Trace Monitored Individual is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows administrators to define an individual that can be monitored by a Data Source by importing data that belongs to them. Monitored Individuals can be linked to multiple Data Sources. Each individual Data Source
-has its own logic to determine what data is retrieved based on the linked Monitored Individuals. Monitored Individuals are also used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
+Trace Monitored Individual is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows administrators to define an individual that can be monitored by a Data Source by importing data that belongs to them. Monitored Individuals can be linked to multiple Data Sources. Each individual Data Source has its own logic to determine what data is retrieved based on the linked Monitored Individuals. Monitored Individuals are also used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
 
 >  **NOTE:** The only two fields on Monitored Individual currently used in application logic are the `Identifier` and `Secondary Identifier` fields. All other fields are simply for display purposes. Each Monitored Individual must have a unique value in the Identifier field. Typically the Identifier is the employee’s email address. Identifier is **case-sensitive**, with the exception of the domain of an email address (e.g. `Test@test.com` and `test@test.com` are treated as two different email addresses / identifiers, while `test@Test.com` and `test@test.com` are treated as the same email addresses / identifiers). The Secondary Identifier field is used to list other email addresses that may be associated with this Monitored Individual. Email addresses in the Secondary Identifier field should be delimited with a semi-colon (;).
 
@@ -1200,13 +1067,11 @@ has its own logic to determine what data is retrieved based on the linked Monito
 Data Transformations
 --------------------
 
-Trace Data Transformation is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows administrators to specify a way data should be transformed while it is being imported by the data source. Currently there are two types of Trace Data Transformations, Replace and Deduplication. Trace Data
-Transformations are attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout.
+Trace Data Transformation is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows administrators to specify a way data should be transformed while it is being imported by the data source. Currently there are two types of Trace Data Transformations, Replace and Deduplication. Trace Data Transformations are attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout.
 
 ### Replace Data Transformation
 
-Data Transformations of type *Replace* allow you to strip exact blocks of text out of the Extracted Text for any documents imported by the associated Data Source. This allows for removal of things like email signatures and other frequently occurring, benign text so that they do not match Terms. A Data Source
-can be associated with multiple Data Transformations of type Replace.
+Data Transformations of type *Replace* allow you to strip exact blocks of text out of the Extracted Text for any documents imported by the associated Data Source. This allows for removal of things like email signatures and other frequently occurring, benign text so that they do not match Terms. A Data Source can be associated with multiple Data Transformations of type Replace.
 
 By Default, content will simply be replaced with nothing (empty string). This can be changed by entering Match Replacement Text in the Configuration section.
 
@@ -1295,8 +1160,7 @@ When using the `Exempt List` transformation type, analysis is performed only on 
 Data Batches
 ------------
 
-Data batch is a unit of ingestion work for Trace. It corresponds to a load file on disk that needs to be imported with specific settings and field mappings. It is a central tracking object for how the data was generated, normalized and aggregated into a load file. It provides status of the overall import process and
-allows for a deep audit history trail from native data source to Relativity.
+Data batch is a unit of ingestion work for Trace. It corresponds to a load file on disk that needs to be imported with specific settings and field mappings. It is a central tracking object for how the data was generated, normalized and aggregated into a load file. It provides status of the overall import process and allows for a deep audit history trail from native data source to Relativity.
 
 Once a batch begins the Ingestion process (when status is set to: `ReadyForImport`), the Ingestion task will create an integration point from the Data Source's configured Ingestion Profile (this information includes import settings and data mappings).
 
@@ -1314,7 +1178,7 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
 1. `Trace Data Batch Retry` – submits the Data Batch to be retried by Trace. This is a full retry that reverts the Data Batch to the `RetrievedFromSource` status and Trace will once again attempt to ingest the data.
 
-   > **Warning:** `Trace Data Batch Retry` will create duplicates of documents that were imported on previous attempts if deduplication is not enabled on the Data Source.
+   > **Warning:** `Trace Data Batch Retry` should only be run if deduplication is enabled on the Data Source. If it is not enabled on the Data Source you will need to perform a `Trace Document Retry` on all documents in that data batch.
 
 2. `Trace Data Batch Abandon` – updates the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
 
@@ -1436,27 +1300,23 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
 
 - **Data Retrieval:** Responsible for pulling data for Data Sources
 
--   **Ingestion:** Responsible for triggering import of the Data Batches into
-    Relativity (part of Proactive Ingestion Framework). Any Data Transformations
+-   **Ingestion:** Responsible for triggering import of the Data Batches into Relativity (part of Proactive Ingestion Framework). Any Data Transformations
     configured for the corresponding Data Source will be performed prior to ingestion.
     
--   **Data Validation:** Responsible for updating statuses of the Data Batches
-    (part of Proactive Ingestion Framework)
+-   **Data Validation:** Responsible for updating statuses of the Data Batches (part of Proactive Ingestion Framework)
     
 - **Indexing:** Responsible for indexing data needed for searching
 
--   **Term Searching:** Responsible for executing searching of the Terms for
-    Rule evaluations
+-   **Term Searching:** Responsible for executing searching of the Terms for Rule evaluations
     
--   **Rule Evaluation:** Responsible for evaluating configured Rules within the
-    workspace 
+-   **Rule Evaluation:** Responsible for evaluating configured Rules within the workspace 
     
     > **NOTE:** The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
     
--   **Reporting**: Responsible for reporting on the state of the system via
-    email
+-   **Reporting**: Responsible for reporting on the state of the system via email
     
 - **Data Enrichment:** Responsible for extracting and enriching nested files (attachments, contents of zip files), generating extracted text, metadata and preparing the load file that is ready for import process.  For security reasons, embedded content that refers to external URL links do not get extracted.
+  
   > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com. 
 
 System Health Reporting
@@ -1759,8 +1619,6 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Exempt              | Yes/No            | Indicates exempt list data transformation classification |
 | Calculated               | Trace Communication Direction           | Fixed-Length Text | Indicates communication direction data transformation classification (Internal |
 | Calculated               | Trace Is Extracted           | Yes/No | Indicates whether a document is a Native or was Extracted |
-| Calculated               | Trace Omit from Alert Rules          | Yes/No | Indicates if the document is omitted from alert rules |
-| Calculated               | Trace Document Status Updated On           | Date | Date field that holds the UTC time when document's `Trace Document Status` field was last updated |
 
 Appendix C: Create Email Fields Data Mappings and Ingestion Profile
 =============================================================
