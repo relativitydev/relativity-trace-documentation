@@ -198,11 +198,12 @@ Setting up Relativity Trace
    1.  At first install time, a default trial license is installed that is re-used for all workspaces in the Relativity instance (it’s valid 30 days from installation date)
        
    2.  You can request a new license via `Manage Trace License` link on Setup tab
-    
+   
    ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
-       
+   
 3.  Click `Request Trace License` and send an email with the contents of the request to `support@relativity.com`
-       
+    
+
 ![](media/741facee0911140b7082894fe5a42c7a.png)
        
    > **WARNING:** Once license expires, all Trace processes stop working in **all** configured workspaces.
@@ -225,7 +226,7 @@ Trace has a six-step Document analysis process. Status is tracked on the `Trace 
 |  5   | READY FOR RULE ANALYSIS | Documents that have been `Normalized` and don't meet the criteria of the  `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task. Both `Alert` and `Workflow` `Rules` will analyze these documents. |
 |  6   | ALERT RULES COMPLETE    | Documents which are returned by `Omit from Alert Rules Saved Search` configured in `Rule Evaluation` task along with their family. `Alert` `Rules` will NOT analyze these documents. <br/><br/>**NOTE:** If ``Omit from Alert Rules Saved Search`` is not configured, no documents will be marked with the `Alert Rules Complete` status. Only `Workflow` `Rules` will analyze these documents. |
 
-> **NOTE:** To identify documents that are stuck in the flow and no longer progressing through the statuses, it is advised that you periodically identify document in the `1 - New`, `2 - Indexed`, `3 - Term Searched` statuses with a `Trace Document Status Updated On` field older than a day.
+> **TIP:** To identify documents that are stuck in the flow and no longer progressing through the statuses, it is advised that you create a document view that shows documents with a status of  `1 - New`, `2 - Indexed`, OR `3 - Term Searched` and sort the documents in ascending order by the `Trace Document Status Updated On` field, so that documents that have been stuck in a non-terminal status for a significant period of time are identified at the top of your view.
 
 ### Trace Document Fields
 
@@ -675,13 +676,13 @@ Data sources are broken up in several sections:
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
      
 * **Start Date:** Date from which data will be pulled/pushed into Relativity
-   
+  
 * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
-     
+  
    * **Status:** The last status message recorded by the Data Source
 
    * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
-  
+    
    * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
 2. **Credentials:** this tab is used to securely input and store credential information. This includes username and password as well as OAuth client secrets, should they be used. Not all Data Sources require credential information.
    
@@ -722,7 +723,7 @@ This section contains additional settings which are not associated with specific
     > * `cccc|dd|eee|`
     > * `ff|`
     > * `ggg||hhh||`
-    
+
 - **Extraction Thread Count:** The number of documents to extract in parallel.
 
 - **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: 
