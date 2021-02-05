@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [13.2.0.3 (15 December 2020)](#13203-15-december-2020)
+- [13.3.0.18 (5 February 2021)](#133018-5-february-2021)
+
+- [13.2.0.3 (15 December 2020 - DEPRECATED)](#13203-15-december-2020---deprecated)
 
 - [13.1.0.2 (2 November 2020 - DEPRECATED)](#13102-2-november-2020---deprecated)
 
@@ -32,7 +34,33 @@
 
   
 
-# 13.2.0.3 (15 December 2020)
+# 13.3.0.18 (5 February 2021)
+
+**Compatibility**
+
+- Relativity Version: **RelativityOne ONLY**
+- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
+
+**Features**
+
+- You can now mark repetitive extracted documents, like those company logo images that are included in email signatures on every email, so they are no longer ingested into your workspace to reduce document volumes and noise in the system.
+- Ensure that custom scripts, analytics, and other pre-calculations complete prior to analyzing a document for an alert by setting “Normalization Complete” criteria.
+- Remove irrelevant content like spam, exempt communications, email blasts, and specific file types up front before running alert analysis to increase performance and reduce the complexity of your Rule saved searches.
+
+**Enhancements**
+
+- New Trace Document Status fields have been added to represent new stages of the Trace Data Flow. Status are now: 1 – New, 2 – Indexed, 3 – Term Searched, 4 – Normalized, 5 – Ready for Rule Analysis, 6 – Alert Rules Complete.
+- Know the time at which the Trace Document Status field last changed with the “Trace Document Status Updated On” field, allowing you to understand the amount of time it takes for a document to be analyzed or report on documents stuck in specific stages of analysis.
+- Now you can calculate Precision and Recall for your machine learning models ad-hoc with our Trace AI Calculations script to better understand the accuracy and select the appropriate rank cutoff based on your organization risk tolerance.
+- Active Learning projects no longer delete old rank results when documents are removed from the Classification Index, allowing you to remove document after they’ve been ranked to reduce the size of the index, increase performance, and have greater stability.
+- Know whether a document is an original file or extracted content from an original file with the Boolean “Trace Is Extracted” field. 
+
+**Defect Fixes**
+
+- Improved error handling for data batches that are wrongly created without a loadfile.
+- Fixed issue where data batch retry could not be run for custom data sources.
+
+# 13.2.0.3 (15 December 2020) - DEPRECATED
 
 **Relativity Compatibility**
 

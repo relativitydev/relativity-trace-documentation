@@ -332,6 +332,8 @@ The following fields **must** be part of the Load File and must be mapped to app
 
    1. >  **IMPORTANT:** column name in the load file must be called `Group Identifier`
 
+10. `Trace Is Extracted` - a yes/no field populated during Data Extraction denoting whether a document is a Native or was Extracted. If value not determined or provided, it will default to No.
+
 #### Recommended
 
 1. `Trace Data Batch` – name of the batch
