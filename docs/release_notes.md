@@ -1,6 +1,6 @@
 # Relativity Trace Release Notes
 
-- [13.3.0.13 (5 February 2021)](#133013-5-february-2021)
+- [13.3.0.18 (5 February 2021)](#133018-5-february-2021)
 
 - [13.2.0.3 (15 December 2020 - DEPRECATED)](#13203-15-december-2020---deprecated)
 
@@ -34,7 +34,7 @@
 
   
 
-# 13.3.0.13 (5 February 2021)
+# 13.3.0.18 (5 February 2021)
 
 **Compatibility**
 
