@@ -62,6 +62,7 @@
 - [Analytics Automation](#analytics-automation)
   - [Conceptual and Classification Analytics](#conceptual-and-classification-analytics)
   - [Structured Analytics Sets](#structured-analytics-sets)
+  - [Machine Learning](#machine-learning)
 - [Built-In Self-Test (BIST)](#built-in-self-test-bist)
 - [Reporting](#reporting)
 	- [Trace Terms Report](#trace-terms-report)
@@ -682,7 +683,7 @@ Data sources are broken up in several sections:
    * **Status:** The last status message recorded by the Data Source
 
    * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
-    
+   
    * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
 2. **Credentials:** this tab is used to securely input and store credential information. This includes username and password as well as OAuth client secrets, should they be used. Not all Data Sources require credential information.
    
@@ -1403,6 +1404,305 @@ Relativity Trace can trigger automatic builds of any Structured Analytics Set de
       > **NOTE:** Setting `AnalyzeAll` to `true` can cause builds to take much longer and consume a lot more resources on the Analytics server!
 
 4. Click Save and the Trace Manager Agent will automate for every Structured Analytics set with Enabled = true.
+
+   
+
+### Machine Learning
+
+Machine Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting. Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. There is no limit to the number of models you implement in your workspace.
+
+Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** and the **Policy Enhancement Process** to effectively implement these models within your organization. To learn more about the Trace Pre-Built Machine Learning Models reach out to support@relativity.com.
+
+
+
+> **IMPORTANT:** Each Machine Learning model should be as specific as possible. Creating a model to identify "Risk" overall will not be very accurate, because "Risk" can be hundreds of different things. Rather you'd want to create one Machine Learning model for "Sharing of Insider Information", another for "Change of Venue", and another for "Sexual Harassment". Each of these models will be more accurate because they are looking for one behavior rather than many.
+>
+> **Examples of common models:**
+>
+> 1. Remove Irrelevant Content (Spam, Newsletter, Research Reports, etc.)
+> 2. Classify Communication Types (Trade Related Communications, Sales conversations, etc.)
+> 3. Risk Identification (Insider Information, Boasting, Rumors, etc.)
+
+
+
+#### Setup up a Machine Learning Model
+
+Follow these steps to build a machine learning model:
+
+1. Create the following Document fields
+   1. A field to code documents that should act as Training document to build the model
+      1. Name = "ML [Model Purpose] Training" (eg. `ML Spam Training`)
+         1. Field Type = Single Choice
+            1. Add Choices
+               1. "Positive [Model Purpose]" (eg. `Positive Spam`)
+               2. "Negative [Model Purpose]" (eg. `Negative Spam`)
+   2. A field to confirm or deny model predictions, for running a Validation Test to understand the accuracy of the model
+      1. Name = "ML [Model Purpose] Validation" (eg. `ML Spam Validation)
+         1. Field Type = Yes/No
+         2. 'Yes' Display Value = "Positive"
+         3. 'No' Display Value = "Negative"
+2. Create the following Saved Searches
+   1. A Saved Search that includes your Training documents along with documents that don't have Machine Learning results for your Classification Index
+      1. Name = "ML [Model Purpose] Training and Unanalyzed" (eg. `ML Spam Training and Unanalyzed`)
+         1. Conditions
+            1. "ML [Model Purpose] Training" field IS SET. (eg. `ML Spam Training` IS SET)
+         2. Fields = `Extracted Text` **ONLY**
+   2. A Saved Search that includes a strategic sample of ranked documents that need to be reviewed before running a Validation Test
+      1. Name = "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation`)
+         1. This Saved Search can be created without any conditions or specific fields at this time. We will adjust it at a later point in time
+   3. A Saved Search that includes documents that have been review in preparation for running a Validation Test
+      1. Name = "ML [Model Purpose] Validation" (eg. `ML Spam Validation`)
+         1. Conditions
+            1. "ML [Model Purpose] Validation" field IS SET. (eg. `ML Spam Validation` IS SET)
+         2. Fields
+            1. Control Number
+            2. "ML [Model Purpose] Validation" field
+   4. Organize these Saved Searches within folders for easier navigation as you will be revisiting them periodically.
+
+![Machine Learning Folder Structure](media/user_documentation/image-20210219002027474.png)
+
+3. Create the following Document Layouts
+   1. Create a layout that will allow for you to code documents on your newly created fields
+      1. Name = "Machine Learning"
+         1. Add a Category on your layout for fields related to this model
+            1. Add the following fields to the category (make sure all fields are editable)
+               1. "ML [Model Purpose] Training" (eg. `ML Spam Training`)
+               2. "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation`)
+               3. "ML [Model Purpose] Validation" (eg. `ML Spam Validation`)
+4. Locate 5 documents that are Positive examples of what you want your model to identify (eg. 5 Spam documents)
+   1. Code those documents as positive on the "ML [Model Purpose] Training" field (eg. `Positive Spam` on the `ML Spam Training` field)
+5. Locate 5 documents that are Negative examples of what you don't want your model to identify (eg. 5 NOT Spam documents)
+   1. Code those documents as negative on the "ML [Model Purpose] Training" field (eg. `Negative Spam` on the `ML Spam Training` field)
+6. Create an Analytics Index
+   1. Navigate to the Analytics Indexes tab and press the "New Analytics Index" button
+   2. Name = "Trace [Model Purpose] Classification Index" (eg. `Trace Spam Classification Index`)
+   3. Index Type = Classification
+   4. Searchable Set = "ML [Model Purpose] Training and Unanalyzed" (eg. `ML Spam Training and Unanalyzed`)
+7. Navigate to the Analytics Index you just created and select the "Populate Index:Full" button on the console
+8. Once the Analytics Index is completed building create an Active Learning Project
+   1. Navigate to the Active Learning Project tab (if you can't find the tab the Active Learning application may not yet be installed in your workspace)
+   2. Select "New Active Learning Project"
+      1. Project Name = "ML [Model Purpose]" (eg. `ML Spam`)
+      2. Analytics Index (Classification) = "Trace [Model Purpose] Classification Index" (eg. `Trace Spam Classification Index`)
+      3. Review Field = "ML [Model Purpose] Training" (eg. `ML Spam Training`)
+      4. Suppress Duplicate Documents = NO
+      5. Reviewer Group = *This field doesn't matter for our workflow so select any reviewer group*
+9. Once in the Active Learning project we will calculate Machine Learning Ranks on documents for the first time
+   1. Check to make sure you 5 documents marked as "Coded ML [Model Purpose]" and 5 documents marked as "Coded Not ML [Model Purpose]" on the Active Learning dashboard
+   2. Select the "Update Ranks" button ![Update Ranks Button](media/user_documentation/image-20210219003935274.png)in the upper right corner of the Active Learning dashboard 
+   3. Add a "ML [Model Purpose] Cutoff" value of `70` *(This value doesn't actually matter as we will be deciding the Rank Cutoff within the Trace workflow)*
+   4. Select the "Update Ranks" button
+10. Remove the Active Learning Document View that gets created automatically for active Active Learning Projects
+    1. Navigate to the "Views" tab
+    2. Search for a View with the same name as your Active Learning Project (eg. `ML Spam`)
+    3. Edit the View by changing toggling off the "Visible in Dropdown" field under the Other tab
+11. Update your "ML [Model Purpose] Training and Unanalyzed" Saved Search to include unanalyzed documents (eg. `ML Spam Training and Unanalyzed`)
+    1. Add the condition <u>with an **OR** operator</u>
+       1. Machine Learning model rank field IS NOT SET (eg. `CSR - Spam Cat. Set::Category Rank` IS NOT SET)
+12. Configure Trace to automatically run Active Learning (if this has not already been enabled)
+    1. Navigate to the "Indexing" Task within the Setup tab.
+    2.  Edit the "Global Analytics Build Frequency in Minutes" field to have a value of `120`
+       1. This means your Machine Learning model will analyze new document every two hours
+
+> **WARNING:** You want to protect these training documents. Set up a workflow rule to move these into a Machine Learning folder, and ensure your Data Disposal does not touch anything in this folder.
+
+
+
+#### Viewing Results
+
+Your Machine Learning Model ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. This result can be found your Machine Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`, `CSR - Insider Information Cat. Set::Category Rank`).
+
+1. Add your Rank field to your Review coding layout
+
+![Machine Learning on Coding Layout](media/user_documentation/image-20210217165536281.png)
+
+1. Add your Rank field to your Document View
+2. Create dashboard showing the ranks across documents
+   1. Click the "Add Widget" button on the document Tab and select Pivot
+   2. Group By = Machine Learning Model rank field (eg. `CSR - Spam Cat. Set::Category Rank`)
+   3. Sort On = Machine Learning Model rank field [ASC]
+   4. Default Display Type = Line Chart
+
+![Machine Learning on Coding Layout](media/user_documentation/image-20210218233922546.png)
+
+#### Validating Model Accuracy
+
+Before using Machine Learning results to make review or alert decisions, you want to be confident that the model is accurately classifying communications based on its purpose. This requires a validation test, which should be run periodically (quarterly) to understand the accuracy and recorded each time for defensibility.
+
+##### Running a Validation Test
+
+1. Review a sample of documents based on the model classification
+
+   1. Create a `Pending Validation` saved search
+
+      1. Include documents that have a CSR Rank value
+      2. Include documents that are not included in your Training Set
+      3. Include documents where the `Validation` field is not set
+      4. Include documents that have been processed after you ran your last validation test
+      5. Include ten (10) documents for each rank number within 20 points of the top rank for the set (eg. Highest rank for any documents in the set is 82, therefor include ten documents with a rank of 82, 81, 80 ... 62.) (If a rank doesn't have 10 documents, include however many you can at that rank)
+      6. Include five (5) documents for each rank number within 20 points of the lowest rank from Step 5 above. (eg. Include five documents with a rank of 61, 60, 59 ... 41)
+      7. In total, you will have `300` documents in the saved search
+
+      > **NOTE:** Steps 5 and 6 are a pain in the ass right now.
+
+   2. Review documents in your `Pending Validation` saved search
+
+      1. Review on the `Validation` Yes/No field where good examples of the classification receive YES
+      2. As you review documents they will be removed from your `Pending Validation` saved search, as the `Validation` field will be set which is a condition in your saved search
+
+   3. Update the Validation Saved Search to only show documents that were just reviewed using date filters.
+
+2. Run the `Trace AI Calculations` Relativity Script
+
+   1. Navigate to the `Scripts` tab
+   2. Find the `Trace AI Calculations` Relativity Script
+   3. Select `Run` within the view
+   4. For `Analytics Set` select the Active Learning Project set associated with the model you are looking to validate
+   5. For `Decision Field` select the Yes/No Validation field that you reviewed documents on that associated with the model you are validating
+   6. For `Saved Search` select the Validation Saved Search associated with the model you are validating
+   7. Press the`Run` within the pop up
+
+   ![image-20210217100739224](media/user_documentation/image-20210217100739224.png)
+
+
+
+##### Interpreting Validation Test Results
+
+The `Trace AI Calculations Script` calculates Precision and Recall across all Rank Cutoff values allowing for you to understand the Machine Learning model's accuracy at different implementation ranks.
+
+###### What is Precision and Recall and Rank Cutoffs?
+
+To explain Precision and Recall, you first need to understand the four different types of document categorizations.
+
+| Document Type  | Description                                                  |
+| -------------- | ------------------------------------------------------------ |
+| True Positive  | A True Positive is a document that the model believes IS an example of what you are attempting to identify, and the model is CORRECT that it is a Positive example. |
+| True Negative  | A True Negative is a document that the model believes IS NOT an example of what you are attempting to identify, and the model is CORRECT that it is a Negative example. |
+| False Positive | A False Positive is a document that the model believes IS an example of what you are attempting to identify, and the model is WRONG as the document is actually a Negative example. |
+| False Negative | A False Negative is a document that the model believes IS NOT an example of what you are attempting to identify, and the model is WRONG as the document is actually a Positive example. |
+
+Here is a matrix that helps explain the possible document categorizations:
+
+|                                 | Is Actually POSITIVE | Is Actually NEGATIVE |
+| ------------------------------- | -------------------- | -------------------- |
+| **Model Predicted as POSITIVE** | `True Positive`      | `False Positive`     |
+| **Model Predicted as NEGATIVE** | `False Negative`     | `True Negative`      |
+
+
+
+**Precision**
+
+Precision is a statistical representation of how right your model is at predicting a document was a Positive example. A value of 100 (1.0) means that the model was right 100% of the time when it marked a document as Positive.
+
+> **Calculation:** Precision = `True Positive` / (`True Positive`+`False Positive`)
+>
+> **Example:** 0.90 (aka. 90) = 90/(90+10)
+>
+> **Explanation:** This means that your model is right 90% of the time when it believes a document is Positive
+
+
+
+**Recall**
+
+Recall is a statistical representation of how often your model misses Positive examples by thinking they are Negative. A value of 100 (1.0) means that the model was right 100% of the time when it marked a document as Negative.
+
+>  **Calculation:** Recall = `True Positive` / (`True Positive`+`False Negative`)
+>
+> **Example:** 0.75 (aka. 75) = 90/(90+30)
+>
+> **Explanation:** This means that your model is right 90% of the time when it believes a document is Positive
+
+
+
+**Rank Cutoff**
+
+Rank Cutoff is the rank used by the model to classify a document as either Positive or Negative. With a model ranking every document between 0 and 100 it could specify 90 as the rank cutoff where documents with a Rank equal to or above 90 are Positive and a Rank below 90 is Negative. Or a model could specify 70 as the rank cutoff where documents with a Rank equal to or above 70 are Positive and a Rank below 70 is Negative. Adjusting the rank cutoff  allows for you to hone the model for it's specific use case.
+
+> **Example:** 
+>
+> 1. If I'm creating a Spam model, I need to be almost 100% sure that the documents the model is identifying as Spam are actually Spam because I will remove these document from Alerting. This means I need my model to have extremely **high Precision** (98-100). In this scenario, I would set my Rank Cutoff to be extremely high (>80) so that my Precision is extremely high. By adjusting the system for high Precision, my Recall will drop. This means that there are many Spam documents in what the model thinks is not Spam. These Spam documents will still be alerted on and will show up to a reviewer as a false-positive alert. This is okay though, because we are erroring on the side of not removing content that could contain misconduct.
+> 2. If I'm creating an Insider Information model, I want to make sure I'm casting a wide net and alerting on anything that could possibly be this type of misconduct. This means I need my model to have extremely **high Recall** (90-100). In this scenario, I would set my Rank Cutoff to be low (60-80) so that my Recall is extremely high. By adjusting the system for high Recall, my Precision will drop. This means that there are many non-Insider Information documents in what the model thinks is Insider Information. These non-Insider Information documents will be alerted on and will show up to a reviewer as a false-positive alert. This is okay though, because it ensures we don't miss any type of misconduct.
+
+
+
+#### Using the Results from a Machine Learning Model
+
+##### Using Results to Advise Reviewers (<u>Less Confident</u> in Accuracy)
+
+If your Validation Test is not returning the Accuracy needed based on your organizations risk appetite or if you are uncomfortable with Machine Learning in general, this approach has little risk.  In this approach you're displaying your Machine Learning results on the Review coding pane so reviewers can use the results to make more informed decisions. If a Spam model give the reviewers document a high Rank, the review can see that and spend less time reviewing that document.
+
+1. Navigate to Document Layout that you would like to adjust and select `Build Layout`
+2. Add a `Machine Learning` Category to your layout where you can park all result fields
+3. Add your Machine Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`)
+4. Rename the field in the layout to be something easier for your reviewer to understand (eg. Spam Rank)
+
+![Machine Learning on Coding Layout](media/user_documentation/image-20210217165536281.png)
+
+
+
+##### Using Results to Generate New Alerts (<u>Confident</u> in Accuracy)
+
+In this approach you're alerting on documents that you Machine Learning results believe could contain risk. This approach will catch document that don't hit on standard lexicons.
+
+1. Create a new saved search for the misconduct you are attempting to catch (eg. Insider Information Machine Learning)
+
+   1. Set the Saved Search conditions as where Machine Learning model rank is greater than *X* (eg. `CSR - Insider Information Cat. Set::Category Rank` > `80`)
+      1. Select the appropriate Rank Cutoff based on your Validation Test
+
+2. Navigate to Rules and create a new Alert Rule (eg. Insider Information via Machine Learning)
+
+   1. Link the saved search created in Step 1 to this rule
+   2. Don't add any terms or any other criteria to the rule
+
+3. Complete the Steps in the "Using Results to Advise Reviewers" section above to ensure a reviewer can see the Machine Learning results for the model while reviewing the document.
+
+   ![Machine Learning Rule](media/user_documentation/image-20210217170551927.png)
+
+> **NOTE:** If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+
+
+
+##### Using Results to Remove Irrelevant Content (<u>Very Confident</u> in Accuracy)
+
+Once you are very confident in your Machine Learning models that identify irrelevant content, you are ready to use those results to actually remove those documents from being analyzed for alerts.
+
+1. Locate the Saved Search used for the `Omit from Alert Rules` functionality within the `Rules Evaluation` Task (See Trace Document Flow Overview section for more information)
+2. Update the Saved Search with "AND Machine Learning model rank is greater than *X*" (eg. AND `CSR - Spam Cat. Set::Category Rank` > `80`)
+   1. Select the appropriate Rank Cutoff based on your Validation Test
+
+![Omit from Alert Rules and Machine Learning](media/user_documentation/image-20210218234536087.png)
+
+
+
+##### Using Results to Create More Targeted Alerts (<u>Extremely Confident</u> in Accuracy)
+
+Once you are extremely confident in your Machine Learning models, you are ready to use those results to narrow the documents that can hit on specific alerts.
+
+1. Locate the Saved Search for your existing Metadata and Lexicon based rule that relates to the model that you created. (eg. Insider Information Rule)
+2. Update the Saved Search with "AND Machine Learning model rank is greater than *X*" (eg. AND `CSR - Insider Information Cat. Set::Category Rank` > `60`)
+   1. Start with a lower conservative Cutoff Rank within the Saved Search to be more inclusive. Over time you can raise the Cutoff Rank based on Validation Tests and the desire to further reduce false positive alerts.
+
+![Machine Learning Rules](media/user_documentation/image-20210218235348807.png)
+
+**NOTE:** If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+
+#### Improving Model Accuracy
+
+**UNDER CONSTRUCTION**
+
+
+
+> Peter Notes:
+>
+> 1. Adding good sample documents back into the model
+> 2. How do we retest then?
+> 3. Docs that get ignored from index
+> 4. Is my search Trained + Unanalyzed
+> 5. Disposal of Training document
+> 6. Alerts or all docs.
+> 7. Add to script (number of docs reviewed, percentage of population, total docs in validation, start end date, total docs at each cutoff level to tell what the value is, LOOK AT YOUR PPT)
+
+
 
 Built-In Self-Test (BIST)
 =========================
