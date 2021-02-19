@@ -682,7 +682,7 @@ Data sources are broken up in several sections:
    * **Status:** The last status message recorded by the Data Source
 
    * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
-    
+   
    * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
 2. **Credentials:** this tab is used to securely input and store credential information. This includes username and password as well as OAuth client secrets, should they be used. Not all Data Sources require credential information.
    
@@ -1171,7 +1171,7 @@ Once a batch begins the Ingestion process (when status is set to: `ReadyForImpor
 
 ### Data Batch Retry and Error Resolution Workflow
 
-By default, Data Batches that fail to import will be automatically retried up to 3 times. This automatic retry is not a full retry, but rather a retry of Importing the load file using Relativity Integration Points. Data Batches that fail all retries will set `Has Errors` to true, populate the `Error Details` field with the details of the specific error encountered, and be given a status of `CompletedWithErrors`.
+By default, Data Batches that fail will be automatically retried up to 3 times, where the 3 retries are attempted after 1 hour, 3 hours, and 6 hours, respectively. When preparing to retry, the status of the Data Batch is marked as `PendingRetry`. The retry count and the last time it was retried can be viewed on the layout as well. This automatic retry is a full retry, starting from the `RetrievedFromSource` status. Data Batches that fail all the configured retries will set `Has Errors` to true, populate the `Error Details` field with the details of the specific error encountered, and be given a status of `CompletedWithErrors`.
 
 > **NOTE:** If a Data Batch completes successfully but has errors at the document level (for example, if a document is password protected and the correct password was not found in the Password Bank of the Data Source), the Data Batch will be marked `CompletedWithDocumentLevelErrors` and there will not be an automatic retry
 
