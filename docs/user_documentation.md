@@ -1409,7 +1409,7 @@ Relativity Trace can trigger automatic builds of any Structured Analytics Set de
 
 ### Machine Learning
 
-Machine Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting. Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. There is no limit to the number of models you implement in your workspace.
+Machine Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting. Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Machine Learning models implemented within your workspace.
 
 Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** and the **Policy Enhancement Process** to effectively implement these models within your organization. To learn more about the Trace Pre-Built Machine Learning Models reach out to support@relativity.com.
 
@@ -1469,9 +1469,9 @@ Follow these steps to build a machine learning model:
                1. "ML [Model Purpose] Training" (eg. `ML Spam Training`)
                2. "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation`)
                3. "ML [Model Purpose] Validation" (eg. `ML Spam Validation`)
-4. Locate 5 documents that are Positive examples of what you want your model to identify (eg. 5 Spam documents)
+4. Identify 5 documents that are Positive examples of what you want your model to identify (eg. 5 Spam documents)
    1. Code those documents as positive on the "ML [Model Purpose] Training" field (eg. `Positive Spam` on the `ML Spam Training` field)
-5. Locate 5 documents that are Negative examples of what you don't want your model to identify (eg. 5 NOT Spam documents)
+5. Identify 5 documents that are Negative examples of what you don't want your model to identify (eg. 5 NOT Spam documents)
    1. Code those documents as negative on the "ML [Model Purpose] Training" field (eg. `Negative Spam` on the `ML Spam Training` field)
 6. Create an Analytics Index
    1. Navigate to the Analytics Indexes tab and press the "New Analytics Index" button
@@ -1696,11 +1696,13 @@ Once you are extremely confident in your Machine Learning models, you are ready 
 >
 > 1. Adding good sample documents back into the model
 > 2. How do we retest then?
-> 3. Docs that get ignored from index
-> 4. Is my search Trained + Unanalyzed
-> 5. Disposal of Training document
-> 6. Alerts or all docs.
-> 7. Add to script (number of docs reviewed, percentage of population, total docs in validation, start end date, total docs at each cutoff level to tell what the value is, LOOK AT YOUR PPT)
+> 3. Don't group different data types
+> 4. Docs that get ignored from index
+> 5. Is my search Trained + Unanalyzed
+> 6. Disposal of Training document
+> 7. Alerts or all docs.
+> 8. Diagram for the ML flow we've created
+> 9. Add to script (number of docs reviewed, percentage of population, total docs in validation, start end date, total docs at each cutoff level to tell what the value is, LOOK AT YOUR PPT)
 
 
 
