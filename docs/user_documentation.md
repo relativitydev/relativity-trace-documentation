@@ -284,11 +284,10 @@ applying Widgets using Trace Document Fields to the Documents dashboard:
 Trace Document Retry and Error Resolution Workflow
 -----------------------------------
 
-If you wish to re-submit existing documents through the Trace Data Flow, you can accomplish this via Document mass operation `Trace Document Retry`. The mass operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace Rule Terms`, `Trace Rules`, `Trace Alerted On`, `Trace Workflow Rules`, `Trace Document Status` and `Trace Document Status Updated On` . Simply check the documents that you wish to retry from the Document List and click the item in the dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please enable them for Relativity URLs.
+If you wish to re-submit existing documents through the Trace Data Flow, you can accomplish this via Document mass operation Trace Document Retry. The mass operation resets the following fields: Trace Checkout, Trace Terms, Trace Rule Terms, Trace Rules, Trace Alerted On, Trace Workflow Rules, and sets Trace Document Status to 1 - New and updates Trace Document Status Updated On . Simply check the documents that you wish to retry from the Document List and click the item in the dropdown and click Ok on the pop-up. If your browser settings prevent pop-ups please enable them for Relativity URLs. All selected documents with theirs families will be reset.
 
 > **NOTE:** Trace Document Retry will not move documents between Folders, remove Analytics or Script results, or remove review decisions. These steps should be taken manually prior to performing Trace Document Retry if necessary for workflows.
 >
-> **NOTE:** Trace Document Retry should include all family member for a document, as all family members must be in the `Term Searched` status to move to the `Normalized` status.
 
 > **NOTE:** Trace Document Retry does not re-extract metadata from the document natives. Existing data is used to re-index, and re-run term searching and rule evaluation using the current term and rule sets.
 
@@ -299,6 +298,8 @@ If you wish to re-submit existing documents through the Trace Data Flow, you can
 ![](media/b67f9b74d4a53cdd71c6d2915c81830d.png)
 
 ![](media/915f9beb5aa8a35c4a90aae5f23d548c.png)
+
+above warning message has been changed!
 
 Trace Rules Engine Overview
 ===========================
