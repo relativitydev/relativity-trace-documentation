@@ -284,7 +284,7 @@ applying Widgets using Trace Document Fields to the Documents dashboard:
 Trace Document Retry and Error Resolution Workflow
 -----------------------------------
 
-If you wish to re-submit existing documents through the Trace Data Flow, you can accomplish this via Document mass operation `Trace Document Retry`. The mass operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace Rule Terms`, `Trace Rules`, `Trace Alerted On`, `Trace Workflow Rules`, and sets `Trace Document Status` to `1 - New` and updates `Trace Document Status Updated On` . Simply check the documents that you wish to retry from the Document List and click the item in the dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please enable them for Relativity URLs. All selected documents with theirs families will be reset.
+If you wish to re-submit existing documents through the Trace Data Flow, you can accomplish this via Document mass operation `Trace Document Retry`. The mass operation resets the following fields: `Trace Checkout`, `Trace Terms`, `Trace Rule Terms`, `Trace Rules`, `Trace Alerted On`, `Trace Workflow Rules`, and sets `Trace Document Status` to `1 - New` and updates `Trace Document Status Updated On` for all selected documents and their family members. Simply check the documents that you wish to retry from the Document List and click the item in the dropdown and click `Ok` on the pop-up. If your browser settings prevent pop-ups please enable them for Relativity URLs.
 
 > **NOTE:** Trace Document Retry will not move documents between Folders, remove Analytics or Script results, or remove review decisions. These steps should be taken manually prior to performing Trace Document Retry if necessary for workflows.
 >
