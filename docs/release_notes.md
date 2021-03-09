@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [13.3.0.18 (5 February 2021)](#133018-5-february-2021)
+- [13.4.0.5 (9 March 2021)](#13405-9-march-2021)
+
+- [13.3.0.18 (5 February 2021 - DEPRECATED)](#133018-5-february-2021---deprecated)
 
 - [13.2.0.3 (15 December 2020 - DEPRECATED)](#13203-15-december-2020---deprecated)
 
@@ -34,7 +36,32 @@
 
   
 
-# 13.3.0.18 (5 February 2021)
+# 13.4.0.5 (9 March 2021)
+
+**Compatibility**
+
+- Relativity Version: **RelativityOne ONLY**
+- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
+
+**Features**
+
+- Added native “Microsoft Exchange On-Premises” data sources for Email, Calendar, and Skype data
+- Added a native “Enterprise Vault On-Premises” data source for Archive data
+
+**Enhancements**
+
+- Improved Data Batch resiliency to significantly improve completion success rate
+- Added audits for when a document receives the “1- New” Trace Document Status
+- Trace Document Retry automatically includes all family members of the document selected so families remain together through the Trace Document Flow
+- Batch sizing is now exposed within Trace Shipper for Web protocol
+
+**Defect Fixes**
+
+- Fixed an issue where documents have multiple Trace Document Statuses causing them to get stuck in the Trace Document Flow
+- Fixed an issue where Trace Document Retry failure causes operation to fall into unrecoverable state
+- Fixed an issue where “Trace AI Calculation Script” failed to calculate precision and recall when Rank values reflected multiple object fields
+
+# 13.3.0.18 (5 February 2021) - DEPRECATED
 
 **Compatibility**
 
