@@ -1441,6 +1441,9 @@ Follow these steps to build a machine learning model:
          1. Field Type = Yes/No
          2. 'Yes' Display Value = "Positive"
          3. 'No' Display Value = "Negative"
+   3. A field to mark documents that need to be manually reviewed prior to running a Validation Test
+      1. Name = "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation)
+         1. Field Type = Yes/No
 2. Create the following Saved Searches
    1. A Saved Search that includes your Training documents along with documents that don't have Machine Learning results for your Classification Index
       1. Name = "ML [Model Purpose] Training and Unanalyzed" (eg. `ML Spam Training and Unanalyzed`)
@@ -1449,7 +1452,8 @@ Follow these steps to build a machine learning model:
          2. Fields = `Extracted Text` **ONLY**
    2. A Saved Search that includes a strategic sample of ranked documents that need to be reviewed before running a Validation Test
       1. Name = "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation`)
-         1. This Saved Search can be created without any conditions or specific fields at this time. We will adjust it at a later point in time
+         1. Conditions
+            1. "ML [Model Purpose] Pending Validation" field IS "Yes". (eg. `ML Spam Training` IS "Yes")
    3. A Saved Search that includes documents that have been review in preparation for running a Validation Test
       1. Name = "ML [Model Purpose] Validation" (eg. `ML Spam Validation`)
          1. Conditions
@@ -1469,6 +1473,7 @@ Follow these steps to build a machine learning model:
                1. "ML [Model Purpose] Training" (eg. `ML Spam Training`)
                2. "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation`)
                3. "ML [Model Purpose] Validation" (eg. `ML Spam Validation`)
+            2. Adjust all fields on your layout to display as "Radio Buttons"
 4. Identify 5 documents that are Positive examples of what you want your model to identify (eg. 5 Spam documents)
    1. Code those documents as positive on the "ML [Model Purpose] Training" field (eg. `Positive Spam` on the `ML Spam Training` field)
 5. Identify 5 documents that are Negative examples of what you don't want your model to identify (eg. 5 NOT Spam documents)
@@ -1496,9 +1501,13 @@ Follow these steps to build a machine learning model:
     1. Navigate to the "Views" tab
     2. Search for a View with the same name as your Active Learning Project (eg. `ML Spam`)
     3. Edit the View by changing toggling off the "Visible in Dropdown" field under the Other tab
-11. Update your "ML [Model Purpose] Training and Unanalyzed" Saved Search to include unanalyzed documents (eg. `ML Spam Training and Unanalyzed`)
-    1. Add the condition <u>with an **OR** operator</u>
+11. Update your "ML [Model Purpose] Training and Unanalyzed" Saved Search to include unanalyzed documents after a certain date (eg. `ML Spam Training and Unanalyzed`)
+    1. Add the conditions in a logic group <u>with an **OR** operator</u>
        1. Machine Learning model rank field IS NOT SET (eg. `CSR - Spam Cat. Set::Category Rank` IS NOT SET)
+          1. OR
+       2. System Created On IS AFTER [T-7] (eg. `System Created On` IS AFTER 03/02/2021)
+          1. This will limit the number of documents analyzed that are a week old or newer
+       3. ![ML Training and Unanalyzed Saved Search Conditions](media/user_documentation/image-20191223171512394.png)
 12. Configure Trace to automatically run Active Learning (if this has not already been enabled)
     1. Navigate to the "Indexing" Task within the Setup tab.
     2.  Edit the "Global Analytics Build Frequency in Minutes" field to have a value of `120`
@@ -1543,13 +1552,11 @@ Before using Machine Learning results to make review or alert decisions, you wan
       6. Include five (5) documents for each rank number within 20 points of the lowest rank from Step 5 above. (eg. Include five documents with a rank of 61, 60, 59 ... 41)
       7. In total, you will have `300` documents in the saved search
 
-      > **NOTE:** Steps 5 and 6 are a pain in the ass right now.
-
    2. Review documents in your `Pending Validation` saved search
 
       1. Review on the `Validation` Yes/No field where good examples of the classification receive YES
-      2. As you review documents they will be removed from your `Pending Validation` saved search, as the `Validation` field will be set which is a condition in your saved search
-
+   2. As you review documents they will be removed from your `Pending Validation` saved search, as the `Validation` field will be set which is a condition in your saved search
+   
    3. Update the Validation Saved Search to only show documents that were just reviewed using date filters.
 
 2. Run the `Trace AI Calculations` Relativity Script
@@ -1688,23 +1695,34 @@ Once you are extremely confident in your Machine Learning models, you are ready 
 
 #### Improving Model Accuracy
 
-**UNDER CONSTRUCTION**
+##### Relativity Trace Pre-Built Machine Learning Models
 
+Relativity has multiple pre-built machine learning models that can jump start training and allow for you to get results directly after implementation. To utilize these pre-built machine learning models please reach out to support@relativity.com.
 
+##### Using Historic Data
 
-> Peter Notes:
->
-> 1. Adding good sample documents back into the model
-> 2. How do we retest then?
-> 3. Don't group different data types
-> 4. Docs that get ignored from index
-> 5. Is my search Trained + Unanalyzed
-> 6. Disposal of Training document
-> 7. Alerts or all docs.
-> 8. Diagram for the ML flow we've created
-> 9. Add to script (number of docs reviewed, percentage of population, total docs in validation, start end date, total docs at each cutoff level to tell what the value is, LOOK AT YOUR PPT)
+Historic data that has already been coded for the behaviors you are attempting to identify should be added to your models. 
 
+1. Locate the positive or negative examples
+2. Use the Edit Mass Operation and the Machine Learning Document Layout to code the documents on the appropriate "ML [Model Purpose] Training"  field
+3. Once coded, these documents will automatically be pulled into the associated model as training documents
 
+##### Learning from Reviewer Decisions
+
+Reviewers can code documents for specific behaviors while they are reviewing alerts.
+
+1. Create a new document field where reviewers can make decisions for machine learning models
+   1. Name = `Machine Learning Decision`
+      1. Field Type = Single Choice
+         1. Add Choices
+            1. [Model Purpose] (eg. `Spam`)
+            2. [Model Purpose] (eg. `Newsletter`)
+            3. [Model Purpose] (eg. `Collusion`)
+2. During a model training period an Administrator can locate these positive example documents and code them on the "ML [Model Purpose] Training" field so they are automatically pulled into the associated model as training documents
+
+> **NOTE:** Do not let reviewers code directly on the "ML [Model Purpose] Training" field. This will be more challenging for reviewers, cause excess documents to be added to each model, and reduce control Administrators have over the models structure, ultimately garnering poor results.
+
+> **NOTE:** If your training sets exceeds 10,000 documents please reach out to support@relativity.com for optimization steps.
 
 Built-In Self-Test (BIST)
 =========================
