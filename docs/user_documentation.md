@@ -299,8 +299,6 @@ If you wish to re-submit existing documents through the Trace Data Flow, you can
 
 ![](media/915f9beb5aa8a35c4a90aae5f23d548c.png)
 
-above warning message has been changed!
-
 Trace Rules Engine Overview
 ===========================
 
