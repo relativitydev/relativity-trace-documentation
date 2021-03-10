@@ -1423,7 +1423,7 @@ Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Mod
 
 
 
-#### Setup up a Machine Learning Model
+#### Setting up a Machine Learning Model
 
 Follow these steps to build a machine learning model:
 
