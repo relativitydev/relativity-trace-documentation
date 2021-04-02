@@ -17,6 +17,10 @@
 	- [Terms](#terms)
 		- [Creating Terms](#creating-terms)
 		- [Highlighting](#highlighting)
+	- [Rule Generator](#rule-generator)
+		- [Creating a Rule Generator](#creating-a-rule-generator)
+		- [Customizing and Running a Rule Generator](#customizing-and-running-a-rule-generator)
+		- [Rule Generator Limitations](#rule-generator-limitations)
 	- [Actions](#actions)
 		- [Move To Folder Action Type](#move-to-folder-action-type)
 		- [Data Disposal Action Type](#data-disposal-action-type)
@@ -407,6 +411,61 @@ By default, Trace creates a `Trace Persistent Highlight Set` that is populated w
 In addition, you can override default highlight configuration (magenta background and black text) by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
 
 ![](media/587ff246e9bf742376893bde0d0469ab.png)
+
+
+Rule Generator
+-----
+
+Rule Generator is tool for automatic rule generation. Each rule generator is associated with specific object type (there can be only one rule generator per one object type) and when rule generator is executed, it creates a rule and a saved search for each RDO of that object type using given search criteria. 
+
+### Creating a Rule Generator
+
+![](media/user_documentation/RuleGeneratorLayout.PNG)
+
+The Rule Generator form contains the following fields:
+
+-   **Rule Generator Name:** the name of the rule generator limited to 20 characters, should be unique, can't be modified.
+-   **Associated Object Type:** an object type associated with rule generator. For each RDO of declared object type a rule and saved search is generated, when rule generator is  				  executed. Then when rules which were created by rule generator are evaluated, documents matching the rule are also linked with The RDO for which 				   the rule was created. There should be only one rule generator per object type. Can't be modified.
+-   **Relational Field On Document:** field on Document object with multi object type (associated object: object type for which Rule Generator is created). Can't be modified.
+-   **Relational Field On Rule:** field on Rule object with multi object type (associated object: object type for which Rule Generator is created). Can't be modified.
+-   **Alert On Related Documents:** a flag which determines if rules created by rule generator will be alert or workflow type rules. Can't be modified.
+-   **Disable Generated Rules By Default:** a flag which determines if rules created by rule generator are disabled.
+-   **Disable Generated Rules After (Days):** integer field which indicates the number of days (counting from rule creation date) after which the rules created by rule 				        generator will be disabled.
+-   **Search Criteria:** required JSON field to set search parameters which will be used to create saved search. The details of the proper search criteria can be accessed via Contextual Help button on the Rule Criteria section.
+-   **Terms Field:** optional field, name of the field of the object which store terms (must be multiple object or multiple choice type field).
+
+### Customizing and Running a Rule Generator
+
+Enabled rule generators are executed by rule evaluation task. Each time the task is run: 
+1. Enabled rule generators are identified.
+
+![](media/user_documentation/RuleGeneratorEnabled.png)
+
+2. RDOs of object type associated with rule generator are identified for each enabled rule generator:
+- If RDO doesn't have rule and saved search, then saved search/rule is created for this object
+- If RDO already has rule and saved search created and nothing has changed in the RDO fields or in rule generator setup, then nothing happens
+- If RDO already has rule and saved search created and something has changed in the RDO fields or in rule generator setup, then existing rule/saved search are updated
+
+Rules created by rule generator are visible in rule generator's layout. Rules and saved searches names follow the convention [Rule Generator Name] - [RDO Name] - [RDO ArtifactId], but if name exceeds 50 characters then RDO Name gets truncated. All saved searches created for the same rule generator are stored in folder named "Dynamic Rule Generation" - [Rule Generator Name]
+
+![](media/user_documentation/RuleGeneratorRulesLayout.png)
+
+![](media/user_documentation/RuleGeneratorRules.png)
+
+![](media/user_documentation/RuleGeneratorSavedSearches.png)
+
+3. After rule generators evaluation, all enabled rules are executed. Rules created by rule generator work the same as regular rules but after the rule generator's rule is
+   matched with documents, those documents are also linked with RDO for which the rule was created.
+
+![](media/user_documentation/RuleGeneratorRDORuleAndDocuments.png)
+
+### Rule Generator Limitations
+
+1. **Enabled Rules Limit** - a setting in Rule Evaluation task which speacifies maximum number of enabled rules in the workspace. If there are more rules enabled, Rule 				     Evaluation Task errors and no rules/rule generators are executed; by default set to 100.
+2. **Disable Active Rule Generators** - a setting which prevents all enabled rule generators in workspace from executing when set to true; by default set to false.
+
+![](media/user_documentation/RuleGeneratorRuleEvaluationTaskSettings.png)
+
 
 Actions
 -------
