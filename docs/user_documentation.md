@@ -17,6 +17,11 @@
 	- [Terms](#terms)
 		- [Creating Terms](#creating-terms)
 		- [Highlighting](#highlighting)
+	- [Rule Generator](#rule-generator)
+		- [Creating a Rule Generator](#creating-a-rule-generator)
+		- [Rule Generator Search Criteria](#rule-generator-search-criteria)
+		- [Customizing and Running a Rule Generator](#customizing-and-running-a-rule-generator)
+		- [Rule Generator Limitations](#rule-generator-limitations)
 	- [Actions](#actions)
 		- [Move To Folder Action Type](#move-to-folder-action-type)
 		- [Data Disposal Action Type](#data-disposal-action-type)
@@ -407,6 +412,137 @@ By default, Trace creates a `Trace Persistent Highlight Set` that is populated w
 In addition, you can override default highlight configuration (magenta background and black text) by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
 
 ![](media/587ff246e9bf742376893bde0d0469ab.png)
+
+
+Rule Generator
+-----
+
+Rule Generator is a tool for automatic Rule generation. Each Rule Generator is associated with a specific Object Type (there can be only one Rule Generator per one Object Type) and when Rule Generator is executed, it creates a Rule and a Saved Search for each RDO of that object type using given search criteria. 
+
+### Creating a Rule Generator
+
+![](media/user_documentation/RuleGeneratorLayout.PNG)
+
+The Rule Generator form contains following fields:
+
+-   **Rule Generator Name:** the name of the rule generator limited to 20 characters, should be unique, can't be modified.
+-   **Associated Object Type:** an object type associated with rule generator. For each RDO of declared object type a rule and saved search is generated, when rule generator is  				  executed. Then when rules which were created by rule generator are evaluated, documents matching the rule are also linked with the RDO for which 				   the rule was created. There can only be one rule generator per object type and this field can't be modified after creation.
+-   **Relational Field On Document:** field on Document object with multi object type (associated object: object type for which Rule Generator is created). Can't be modified.
+-   **Relational Field On Rule:** field on Rule object with multi object type (associated object: object type for which Rule Generator is created). Can't be modified.
+-   **Alert On Related Documents:** a flag which determines if rules created by rule generator will be alert or workflow type rules. Can't be modified.
+-   **Disable Generated Rules By Default:** a flag which determines if rules created by rule generator are disabled.
+-   **Disable Generated Rules After (Days):** integer field which indicates the number of days (counting from rule creation date) after which the rules created by rule 				        generator will be disabled.
+-   **Search Criteria:** required JSON field to set search parameters which will be used to create saved search. The details of the proper search criteria can be accessed via Contextual Help button on the Rule Criteria section.
+-   **Terms Field:** optional field, name of the field of the object which store terms (must be multiple object or multiple choice type field).
+
+### Rule Generator Search Criteria
+
+Rule Generator Search Criteria field is inputed as JSON with each `{}` representing a single logic group within a saved search. Each logic group should contain a list of conditions and boolean operator `AND/OR` which joins it with the next logic group.
+
+**Parameters of logic group:**
+- `SearchConditions` - a list of search conditions which will be included in the logic group, required
+- `BooleanOperator` - a boolean operator which joins specified logic group with the next logic group `AND/OR`, required
+
+**Parameters of search condition:**
+ - `DocumentFieldName` - name of the target document field you wish to search across, required
+ - `ObjectFieldName` - name of the source associated object type field used to populate the `DocumentFieldName` when searching, required
+ - `Condition` - the logical condition between the `DocumentFieldName` and `ObjectFieldName`, required
+ - `BolleanOperator` - the operator which joins the specified condition with the next condition (`AND/OR`)
+ - `NotOperator` - specifies if condition should be negative (defaults `false` if not added), optional
+ - `DayRange` - specifies a number of days which will be added or subtracted from ObjectField date specified in condition (this works only for DATE fields when `BETWEEN `			  	condition in specified, but it won't break when added to other conditions), optional
+ - `DayRangeDirection` - connected with the `DayRange` parameter and specifies if the days should be added, subtracted, or added and subsracted from ObjectField date. Values 				for this parameter: `ForwardAndBackwards`, `Backwards`, `Forward`, the default value is `ForwardAndBackwards`; optional
+
+**Conditions for DATE fields:** `Between`, `Is`,`IsAfter`, `IsAfterOrOn`, `IsBefore`, `IsBeforeOrOn`, `IsSet`
+
+**Conditions for MULTIPLE OBJECT/MULTIPLE CHOICE fields:** `AllOfThese`, `AnyOfThese`, `IsSet`
+
+**Conditions for SINGLE OBJECT/SINGLE CHOICE fields:** `AnyOfThese`, `IsSet`
+
+**Conditions for WHOLE NUMBER/DECIMAL/CURRENCY fields:** `GreaterThan`, `LessThan`, `Is`, `IsSet`
+
+**Conditions for FIXED LENGTH/LONG TEXT fields:** `GreaterThan`, `GreaterThanOrEqualTo`, `Is`, `IsLike`, `IsSet`, `LessThan`, `LessThanOrEqualTo`, `StartsWith`, `EndsWith`
+
+**Conditions for YESNO fields:** `Is`, `IsSet`
+ 
+**Search Criteria validation rules:**
+- Search criteria should contain at least one logic group
+- Each logic group should include a `SearchConditions` list (with at least one condition in it) and a `BooleanOperator`
+- `DocumentFieldName` , `ObjectFieldName`, `Condition` and `BolleanOperator` are mandatory fields in search condition
+- `DocumentFieldName` field must be a field which exists on Document
+- `ObjectFieldName` field must be a field which exists on object type associated with rule generator
+- `DocumentFieldName` and `ObjectFieldName` fields must have the same field type
+- if `DocumentFieldName` and `ObjectFieldName` fields are single/multiple object fields, then both fields must be associated with the same object type 
+- `Condition` must be valid for field type
+
+**Example Search Criteria:**
+```json
+[
+   {
+      "SearchConditions":[
+         {
+            "DocumentFieldName":"Trace Monitored Individuals",
+            "ObjectFieldName":"Trade Monitored Individuals",
+            "Condition":"AnyOfThese",
+            "BooleanOperator":"Or",
+         },
+         {
+            "DocumentFieldName":"Trace Monitored Individuals",
+            "ObjectFieldName":"Trade Related Individuals",
+            "Condition":"AnyOfThese",
+            "BooleanOperator":"And",
+            "NotOperator":true,
+         }
+      ],
+      "BooleanOperator":"And"
+   },
+   {
+      "SearchConditions":[
+         {
+            "DocumentFieldName":"Trace Document Status Updated On",
+            "ObjectFieldName":"System Created On",
+            "Condition":"Between",
+            "BooleanOperator":"And",
+            "DayRange":14,
+            "DayRangeDirection":"Backwards"
+         }
+      ],
+      "BooleanOperator":"And"
+   }
+]
+````
+
+### Customizing and Running a Rule Generator
+
+Enabled rule generators are executed by rule evaluation task. Each time the task is run: 
+1. Enabled rule generators are identified.
+
+![](media/user_documentation/RuleGeneratorEnabled.png)
+
+2. RDOs of object type associated with rule generator are identified for each enabled rule generator:
+- If RDO doesn't have rule and saved search, then saved search/rule is created for this object
+- If RDO already has rule and saved search created and nothing has changed in the RDO fields or in rule generator setup, then nothing happens
+- If RDO already has rule and saved search created and something has changed in the RDO fields or in rule generator setup, then existing rule/saved search are updated
+
+Rules created by rule generator are visible in rule generator's layout. Rules and saved searches names follow the convention `[Rule Generator Name] - [RDO Name] - [RDO ArtifactId]`, but if name exceeds 50 characters then RDO Name gets truncated. All saved searches created for the same rule generator are stored in folder named `"Dynamic Rule Generation" - [Rule Generator Name]`
+
+![](media/user_documentation/RuleGeneratorRulesLayout.png)
+
+![](media/user_documentation/RuleGeneratorRules.png)
+
+![](media/user_documentation/RuleGeneratorSavedSearches.png)
+
+3. After rule generators evaluation, all enabled rules are executed. Rules created by rule generator work the same as regular rules but after the rule generator's rule is
+   matched with documents, those documents are also linked with RDO for which the rule was created.
+
+![](media/user_documentation/RuleGeneratorRDORuleAndDocuments.png)
+
+### Rule Generator Limitations
+
+1. `Enabled Rules Limit` - a setting in Rule Evaluation task which speacifies maximum number of enabled rules in the workspace. If there are more rules enabled, Rule 				     Evaluation Task errors and no rules/rule generators are executed; by default set to 100.
+2. `Disable Active Rule Generators` - a setting which prevents all enabled rule generators in workspace from executing when set to true; by default set to false.
+
+![](media/user_documentation/RuleGeneratorRuleEvaluationTaskSettings.png)
+
 
 Actions
 -------
