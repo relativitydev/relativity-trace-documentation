@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [13.4.0.6 (9 March 2021)](#13406-9-march-2021)
+- [14.0.0.4 (13 April 2021)](#14004-13-april-2021)
+
+- [13.4.0.6 (9 March 2021 - DEPRECATED)](#13406-9-march-2021---deprecated)
 
 - [13.3.0.18 (5 February 2021 - DEPRECATED)](#133018-5-february-2021---deprecated)
 
@@ -36,7 +38,31 @@
 
   
 
-# 13.4.0.6 (9 March 2021)
+# 14.0.0.4 (13 April 2021)
+
+**Compatibility**
+
+- Relativity Version: **RelativityOne ONLY**
+- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
+
+**Features**
+
+- Launch of **Control Room Surveillance**. Leverage Restricted Lists, Insider Lists, Gray Lists, Watchlist, and Wall Crossing Lists to automatically alert on breaches of information barriers, inappropriate sharing of material non-public information (MNPI), and violations of trading restrictions
+- Launch of **Trade Reconstruction**. Automatically link trades together with related communications to simplify the Trade Reconstruction process so you can respond to regulators faster and with more confidence
+- Automatically connect Trade or Transaction alerts within your **Trade Surveillance** or **Anti-money Laundering** systems to related communications to better understand the intent around an event that led to an alert
+- Create **dynamic Rules** based on any integrated structured data (CRM system, Time & Expense system, HR System, Excel, in-house tools, etc.) to automatically alert on communications that are related to events in other enterprise systems
+
+**Enhancements**
+
+- Improved Machine Learning Validation Test process with new statistical sampling for review population and added output metrics to enhance precision and recall understanding
+- Improved Trace Shipper Web protocol transfer speeds
+
+**Defect Fixes**
+
+- Fixed an issue with Data Batch Retry that caused the operation to fail under certain conditions
+- Fixed an issue where the “Omit from Alerts” field was not being cleared when Trace Document Retry was run
+
+# 13.4.0.6 (9 March 2021) - DEPRECATED
 
 **Compatibility**
 
