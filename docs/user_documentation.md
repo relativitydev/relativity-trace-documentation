@@ -417,7 +417,7 @@ In addition, you can override default highlight configuration (magenta backgroun
 Rule Generator
 -----
 
-Rule Generator is tool for automatic rule generation. Each rule generator is associated with specific object type (there can be only one rule generator per one object type) and when rule generator is executed, it creates a rule and a saved search for each RDO of that object type using given search criteria. 
+Rule Generator is a tool for automatic Rule generation. Each Rule Generator is associated with a specific Object Type (there can be only one Rule Generator per one Object Type) and when Rule Generator is executed, it creates a Rule and a Saved Search for each RDO of that object type using given search criteria. 
 
 ### Creating a Rule Generator
 
@@ -426,7 +426,7 @@ Rule Generator is tool for automatic rule generation. Each rule generator is ass
 The Rule Generator form contains following fields:
 
 -   **Rule Generator Name:** the name of the rule generator limited to 20 characters, should be unique, can't be modified.
--   **Associated Object Type:** an object type associated with rule generator. For each RDO of declared object type a rule and saved search is generated, when rule generator is  				  executed. Then when rules which were created by rule generator are evaluated, documents matching the rule are also linked with The RDO for which 				   the rule was created. There should be only one rule generator per object type. Can't be modified.
+-   **Associated Object Type:** an object type associated with rule generator. For each RDO of declared object type a rule and saved search is generated, when rule generator is  				  executed. Then when rules which were created by rule generator are evaluated, documents matching the rule are also linked with the RDO for which 				   the rule was created. There can only be one rule generator per object type and this field can't be modified after creation.
 -   **Relational Field On Document:** field on Document object with multi object type (associated object: object type for which Rule Generator is created). Can't be modified.
 -   **Relational Field On Rule:** field on Rule object with multi object type (associated object: object type for which Rule Generator is created). Can't be modified.
 -   **Alert On Related Documents:** a flag which determines if rules created by rule generator will be alert or workflow type rules. Can't be modified.
