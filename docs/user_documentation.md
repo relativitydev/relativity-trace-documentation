@@ -1694,29 +1694,32 @@ Before using Machine Learning results to make review or alert decisions, you wan
 
 ##### Running a Validation Test
 
+To run a Validation Test, we first need to identify a subset of analyzed documents to manually review for accuracy. We have a Relativity Script that tags these documents for review.
+
 1. Run the `Trace Machine Learning Statistical Sample` Relativity Script
-   1. Navigate to `Scripts` tab
-   2. Find the `Trace Machine Learning Statistical Sample` Relativity Script
-   3. Select `Run` within the view
-   4. For `Saved Search` select a saved search containing documents which will be used to train a model 
-      1. Include ten (10) documents for each rank number within 20 points of the top rank for the set (eg. Highest rank for any documents in the set is 82, therefore include ten (10) documents with a rank of 82, 81, 80 ... 62.) (If a rank doesn't have 10 documents, include however many you can at that rank)
-      2. Include five (5) documents for each rank number within 20 points of the lowest rank from Step 4.1 above. (eg. Include five documents with a rank of 61, 60, 59 ... 41)
-      3. In total, you will have 300 documents in the saved search
-   5. For `Analytics Set` select the Active Learning Project set associated with the model you are looking to validate
-   6. Select a Yes/No single choice field to serve as `Pending Validation Field`. This field will be marked with a value of YES when the script is executed.
-   7. Put a desired number of documents to be reviewed. A default value is set to `300` if left blank
-   8. Press the `Run` within the pop up
+   1. Create a Saved Search called "ML [Model Purpose] Validation Test Population" (eg. `ML Spam Validation Test Population`) that includes all documents analyzed between the last time you ran a validation test and today
+   2. Navigate to the `Scripts` tab
+   3. Find the `Trace Machine Learning Statistical Sample` Relativity Script
+   4. Select `Run` within the view
+   5. For the `Saved Search` select the "ML [Model Purpose] Validation Test Population" (eg. `ML Spam Validation Test Population`) saved search
+   6. For the `Analytics Set` select the Active Learning Project set associated with the model you are looking to validate
+   7. For the  `Pending Validation Field` select the appropriate "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation`)
+   8. For the `Max Number of Documents to Review (default 300)` field keep the default, or populate it with a higher number if you want greater confidence in the Precision and Recall metrics
+   9. Press the `Run` within the pop up
 
 ![image-20210413144648358](media/user_documentation/image-20210413144648358.png)
 
-2. Run the `Trace Machine Learning Validation Test` Relativity Script
-
+2. Review each document tagged by the `Trace Machine Learning Statistical Sample` for whether they are positive or negative examples of the behavior your model is attempting to identify
+   1. Navigate to the "ML [Model Purpose] Validation Test Population" (eg. `ML Spam Validation Test Population`)
+   2. Add a Search Condition to filter to only show documents where the "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation`) field is set to `YES`
+   3. Review each document for whether it is a Positive or Negative example of the behaviors in the model on the "ML [Model Purpose] Validation" (eg. `ML Spam Validation`) field
+3. Run the `Trace Machine Learning Validation Test` Relativity Script
    1. Navigate to the `Scripts` tab
    2. Find the `Trace Machine Learning Validation Test` Relativity Script
    3. Select `Run` within the view
    4. For `Analytics Set` select the Active Learning Project set associated with the model you are looking to validate
-   5. For `Decision Field` select the Yes/No Validation field that you reviewed documents on that associated with the model you are validating
-   6. For `Saved Search` select the Validation Saved Search associated with the model you are validating
+   5. For `Decision Field` select the Yes/No "ML [Model Purpose] Validation" (eg. `ML Spam Validation`) field that you reviewed documents on associated with the model you are validating
+   6. For `Saved Search` select the "ML [Model Purpose] Validation" (eg. `ML Spam Validation`) Saved Search associated with the model you are validating
    7. Press the `Run` within the pop up
 
 
@@ -1725,10 +1728,6 @@ Before using Machine Learning results to make review or alert decisions, you wan
 ##### Interpreting Validation Test Results
 
 The `Trace Machine Learning Validation Test` calculates Precision and Recall across all Rank Cutoff values allowing for you to understand the Machine Learning model's accuracy at different implementation ranks.
-=======
-   7. Press the`Run` within the pop up
-
-   ![image-20210217100739224](media/user_documentation/image-20210217100739224.png)
 
 
 ###### What is Precision and Recall and Rank Cutoffs?
