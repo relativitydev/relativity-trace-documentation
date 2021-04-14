@@ -1694,42 +1694,42 @@ Before using Machine Learning results to make review or alert decisions, you wan
 
 ##### Running a Validation Test
 
-1. Review a sample of documents based on the model classification
+1. Run the `Trace Machine Learning Statistical Sample` Relativity Script
+   1. Navigate to `Scripts` tab
+   2. Find the `Trace Machine Learning Statistical Sample` Relativity Script
+   3. Select `Run` within the view
+   4. For `Saved Search` select a saved search containing documents which will be used to train a model 
+      1. Include ten (10) documents for each rank number within 20 points of the top rank for the set (eg. Highest rank for any documents in the set is 82, therefore include ten (10) documents with a rank of 82, 81, 80 ... 62.) (If a rank doesn't have 10 documents, include however many you can at that rank)
+      2. Include five (5) documents for each rank number within 20 points of the lowest rank from Step 4.1 above. (eg. Include five documents with a rank of 61, 60, 59 ... 41)
+      3. In total, you will have 300 documents in the saved search
+   5. For `Analytics Set` select the Active Learning Project set associated with the model you are looking to validate
+   6. Select a Yes/No single choice field to serve as `Pending Validation Field`. This field will be marked with a value of YES when the script is executed.
+   7. Put a desired number of documents to be reviewed. A default value is set to `300` if left blank
+   8. Press the `Run` within the pop up
 
-   1. Create a `Pending Validation` saved search
+![image-20210413144648358](media/user_documentation/image-20210413144648358.png)
 
-      1. Include documents that have a CSR Rank value
-      2. Include documents that are not included in your Training Set
-      3. Include documents where the `Validation` field is not set
-      4. Include documents that have been processed after you ran your last validation test
-      5. Include ten (10) documents for each rank number within 20 points of the top rank for the set (eg. Highest rank for any documents in the set is 82, therefor include ten documents with a rank of 82, 81, 80 ... 62.) (If a rank doesn't have 10 documents, include however many you can at that rank)
-      6. Include five (5) documents for each rank number within 20 points of the lowest rank from Step 5 above. (eg. Include five documents with a rank of 61, 60, 59 ... 41)
-      7. In total, you will have `300` documents in the saved search
-
-   2. Review documents in your `Pending Validation` saved search
-
-      1. Review on the `Validation` Yes/No field where good examples of the classification receive YES
-   2. As you review documents they will be removed from your `Pending Validation` saved search, as the `Validation` field will be set which is a condition in your saved search
-   
-   3. Update the Validation Saved Search to only show documents that were just reviewed using date filters.
-
-2. Run the `Trace AI Calculations` Relativity Script
+2. Run the `Trace Machine Learning Validation Test` Relativity Script
 
    1. Navigate to the `Scripts` tab
-   2. Find the `Trace AI Calculations` Relativity Script
+   2. Find the `Trace Machine Learning Validation Test` Relativity Script
    3. Select `Run` within the view
    4. For `Analytics Set` select the Active Learning Project set associated with the model you are looking to validate
    5. For `Decision Field` select the Yes/No Validation field that you reviewed documents on that associated with the model you are validating
    6. For `Saved Search` select the Validation Saved Search associated with the model you are validating
+   7. Press the `Run` within the pop up
+
+
+![image-20210413143726362](media/user_documentation/image-20210413143726362.png)
+
+##### Interpreting Validation Test Results
+
+The `Trace Machine Learning Validation Test` calculates Precision and Recall across all Rank Cutoff values allowing for you to understand the Machine Learning model's accuracy at different implementation ranks.
+=======
    7. Press the`Run` within the pop up
 
    ![image-20210217100739224](media/user_documentation/image-20210217100739224.png)
 
-
-
-##### Interpreting Validation Test Results
-
-The `Trace AI Calculations Script` calculates Precision and Recall across all Rank Cutoff values allowing for you to understand the Machine Learning model's accuracy at different implementation ranks.
 
 ###### What is Precision and Recall and Rank Cutoffs?
 
