@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [14.0.0.4 (13 April 2021)](#14004-13-april-2021)
+- [14.1.0.6 (18 May 2021)](#14106-18-may-2021)
+
+- [14.0.0.4 (13 April 2021 - DEPRECATED)](#14004-13-april-2021---deprecated)
 
 - [13.4.0.6 (9 March 2021 - DEPRECATED)](#13406-9-march-2021---deprecated)
 
@@ -37,6 +39,30 @@
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
   
+
+# 14.1.0.6 (18 May 2021)
+
+**Compatibility**
+
+- Relativity Version: **RelativityOne ONLY**
+- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
+
+**Features**
+
+- Added [Proofpoint Enterprise Archive](https://www.proofpoint.com/us/products/archiving-and-compliance/enterprise-archive) as a new supported data source
+- Added [Mattermost](https://mattermost.com/) as a new supported data source
+
+**Enhancements**
+
+- Added the ability to include static search conditions in Rule Generators for improved Trade Reconstruction, Control Room, and Dynamic Rule results
+- Updated multiple Data Source, Data Batch, Exempt Entry, Rule, and Document fields to be open to “Sort/Tally”, “Group By”, and “Pivot” functionality for greater reporting capabilities
+- Removed the need to manually add and maintain a Trace License on the Setup page
+
+**Defect Fixes**
+
+- Fixed an issue where a categorization set related to an automated Active Learning project would fall into an errored state and not self-recover
+- Fixed an issue with Trace Rule auditing that could cause system slowness
+- Fixed an issue where the Rule Generators were not included in copied workspaces
 
 # 14.0.0.4 (13 April 2021)
 
