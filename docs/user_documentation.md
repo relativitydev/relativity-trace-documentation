@@ -207,8 +207,7 @@ Setting up Relativity Trace
    
    ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
    
-3.  Click `Request Trace License` and send an email with the contents of the request to `support@relativity.com`
-    
+7. Click `Request Trace License` and send an email with the contents of the request to `support@relativity.com`
 
 ![](media/741facee0911140b7082894fe5a42c7a.png)
        
@@ -399,17 +398,9 @@ In addition, you can see and modify Term Categories and Rules associated with Te
 
 ### Highlighting
 
-By default, Trace creates a `Trace Persistent Highlight Set` that is populated with **all** terms present in the workspace. In addition, the `Trace Rules Persistent Highlight Set` captures only terms currently associated with any Rule. You can have many terms you want to use for highlighting purposes only, and not necessarily as part of matching any specific Rule. You can adjust the order in which they are displayed in the viewer.
+By default, Trace creates a `Trace Rules Persistent Highlight Set` that highlights Trace Terms currently associated with any Rule. If you would like to highlight Trace Terms that are not associated with any Rule, you create additional Persistent Highlight Set as needed.
 
-![](media/bde02ea5c3426235025046047f062ca8.png)
-
-
-
-![](media/9d27aea9a85e6309995c771fc88f6ca7.png)
-
-
-
-In addition, you can override default highlight configuration (magenta background and black text) by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
+In addition, you can override default highlight color scheme (magenta background and black text) for a specific Trace Term by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
 
 ![](media/587ff246e9bf742376893bde0d0469ab.png)
 
@@ -829,7 +820,6 @@ Data sources are broken up in several sections:
    * **Data Source Type:** Type of the data source
 
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
-     
 * **Start Date:** Date from which data will be pulled/pushed into Relativity
   
 * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
@@ -891,7 +881,6 @@ This section contains additional settings which are not associated with specific
   -   **`Import`** - Import all embedded files (top level and child) as separate documents in Relativity Trace.
   -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
   -   **`DoNotImport`** - Do not import any embedded files.
-  
 >   **NOTE:** Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
@@ -996,7 +985,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
-![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
+    ![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
     
 1.  *Exchange Settings – Url* gives you the chance to specify the exact URL used when connecting to your exchange server. If this field is left blank, Microsoft’s Autodiscover technology will be used to populate the field with a URL based on the credentials provided in the Username and Password fields. Autodiscover is typically a suitable option and works for Office 365 and many on premises solutions but it is not guaranteed to work.
     
@@ -1185,7 +1174,6 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 `Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
 
 > **Note:** The Source Field Name is case sensitive when matching with a column in the loadfile.
->  
 
 `Relativity Field` - The field in Relativity that will have it's value populated
 
