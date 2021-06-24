@@ -1,26 +1,28 @@
 # Relativity Trace Release Notes
 
-- [14.1.0.6 (18 May 2021)](#14106-18-may-2021)
+- [14.2.0.5 (24 Jun 2021)](#14205-24-june-2021)
 
-- [14.0.0.4 (13 April 2021 - DEPRECATED)](#14004-13-april-2021---deprecated)
+- [14.1.0.6 (18 May 2021) - DEPRECATED](#14106-18-may-2021---deprecated)
 
-- [13.4.0.6 (9 March 2021 - DEPRECATED)](#13406-9-march-2021---deprecated)
+- [14.0.0.4 (13 April 2021) - DEPRECATED](#14004-13-april-2021---deprecated)
 
-- [13.3.0.18 (5 February 2021 - DEPRECATED)](#133018-5-february-2021---deprecated)
+- [13.4.0.6 (9 March 2021) - DEPRECATED](#13406-9-march-2021---deprecated)
 
-- [13.2.0.3 (15 December 2020 - DEPRECATED)](#13203-15-december-2020---deprecated)
+- [13.3.0.18 (5 February 2021) - DEPRECATED](#133018-5-february-2021---deprecated)
 
-- [13.1.0.2 (2 November 2020 - DEPRECATED)](#13102-2-november-2020---deprecated)
+- [13.2.0.3 (15 December 2020) - DEPRECATED](#13203-15-december-2020---deprecated)
 
-- [13.0.0.8 (5 October 2020 - DEPRECATED)](#13008-5-october-2020---deprecated)
+- [13.1.0.2 (2 November 2020) - DEPRECATED](#13102-2-november-2020---deprecated)
+
+- [13.0.0.8 (5 October 2020) - DEPRECATED](#13008-5-october-2020---deprecated)
 
 - [12.5.0.6 (17 August 2020) - DEPRECATED](#12506-17-august-2020---deprecated)
 
-- [12.4.1.1 (14 July 2020 - DEPRECATED)](#12411-14-july-2020---deprecated)
+- [12.4.1.1 (14 July 2020) - DEPRECATED](#12411-14-july-2020---deprecated)
 
-- [12.3.0.3 (1 June 2020) - DEPRECATED)](#12303-1-june-2020---deprecated)
+- [12.3.0.3 (1 June 2020) - DEPRECATED](#12303-1-june-2020---deprecated)
 
-- [12.2.0.13 (27 April 2020 - DEPRECATED)](#122013-27-april-2020---deprecated)
+- [12.2.0.13 (27 April 2020) - DEPRECATED](#122013-27-april-2020---deprecated)
 
 - [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
 
@@ -39,6 +41,35 @@
 - [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
 
   
+
+# 14.2.0.5 (24 June 2021)
+
+**Compatibility**
+
+- Relativity Version: **RelativityOne ONLY**
+- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
+
+**Features**
+
+- Added Trace Surveillance Policies in Japanese and French to identify misconduct within global organizations
+- Collect data using our new Relativity Trace native O365 (Email & Calendar) data source and no longer need 3rd party on-premises applications for O365 surveillance
+- Automatically remove confidentiality disclaimers from communications that could otherwise trigger false positive alerts
+
+**Enhancements**
+
+- Updated the generated names for dynamically created Rules to make them easier to understand
+- No longer automatically create a “Trace Persistent Highlight Set” to limit confusion with the “Trace Rules Persistent Highlight Set”
+- Introduced a “Data Transformation” Task to complete all file analysis during ingestion
+- Password protected files that cannot be decrypted no longer report as document errors, but rather report their encryption status on the Password Protected field
+- You can now use reflected document fields within the search criteria of Dynamic Rules to improve the accuracy of both Trade Reconstruction and Control Room surveillance
+- Improved the ability of Trace Shipper to self-recover when faced with authentication challenges
+- You can now delete Rule Generator objects
+
+**Defect Fixes**
+
+- Fixed an issue with the “Trace Machine Learning Statistical Sample” Script that caused it not to run successfully
+- Fixed an issue where extremely large data batches would fail after successfully importing documents
+- Fixed an issue where Scripts with certain types of input parameters would fail to run within Advanced Actions
 
 # 14.1.0.6 (18 May 2021)
 
