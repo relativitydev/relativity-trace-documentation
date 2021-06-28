@@ -481,7 +481,8 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
 
 **Parameters of search condition:**
  - `DocumentFieldName` - [Required] name of the target document field you wish to search across
- - `ObjectFieldName` - [Required] name of the source associated object type field used to populate the `DocumentFieldName` when searching
+ - `ObjectFieldName` - name of the source associated object type field used to populate the `DocumentFieldName` when searching
+ - `Value` - value used to populate `DocumentFieldName` when searching (either `ObjectFieldName` or `Value` should be provided, not both). If `DocumentFieldName` is multiple/single object/choice type field, then static value should be object/choice name
  - `Condition` - [Required] the logical condition between the `DocumentFieldName` and `ObjectFieldName` (see conditions below)
 
 | Field Type      | Conditions                                                   |
@@ -507,11 +508,13 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
 >
 > - Search criteria must contain at least one logic group
 > - Each logic group must include a `SearchConditions` list (with at least one condition in it) and a `BooleanOperator`
-> - ``DocumentFieldName` , `ObjectFieldName`, `Condition` and `BolleanOperator` are mandatory fields in a search condition
+> - `DocumentFieldName` , `ObjectFieldName` or `Value`, `Condition` and `BolleanOperator` are mandatory fields in a search condition
 > - `DocumentFieldName` field must be a field which exists on Document
 > - `ObjectFieldName` field must be a field which exists on the Object Type associated with Rule Generator
 > - `DocumentFieldName` and `ObjectFieldName` fields must have the same field type
 > - if `DocumentFieldName` and `ObjectFieldName` fields are single/multiple object fields, then both fields must be associated with the same object type
+> - `Value` value must be convertible to `DocumentFieldName` field type, i.e. if `DocumentFieldName` is date field, then valid values are `15 Apr 2021` or `04/15/2021`
+> - if `DocumentFieldName` is multiple/single object/choice field type, then `Value` should be a name of object/choice we want to search
 > - `Condition` must be valid for field type
 
 
@@ -546,7 +549,14 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
             "Condition":"Between",
             "BooleanOperator":"And",
             "DayRange":14,
-            "DayRangeDirection":"Backwards"
+            "DayRangeDirection":"Backwards",
+	    "BooleanOperator":"Or"
+         },
+	 {
+            "DocumentFieldName":"Trace Document Status Updated On",
+            "Value":"1 Jan 2021",
+            "Condition":"Is",
+            "BooleanOperator":"And",
          }
       ],
       "BooleanOperator":"And"
