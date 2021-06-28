@@ -427,17 +427,9 @@ In addition, you can see and modify Term Categories and Rules associated with Te
 
 ### Highlighting
 
-By default, Trace creates a `Trace Persistent Highlight Set` that is populated with **all** terms present in the workspace. In addition, the `Trace Rules Persistent Highlight Set` captures only terms currently associated with any Rule. You can have many terms you want to use for highlighting purposes only, and not necessarily as part of matching any specific Rule. You can adjust the order in which they are displayed in the viewer.
+By default, Trace creates a `Trace Rules Persistent Highlight Set` that highlights Trace Terms currently associated with any Rule. If you would like to highlight Trace Terms that are not associated with any Rule, you create additional Persistent Highlight Set as needed.
 
-![](media/bde02ea5c3426235025046047f062ca8.png)
-
-
-
-![](media/9d27aea9a85e6309995c771fc88f6ca7.png)
-
-
-
-In addition, you can override default highlight configuration (magenta background and black text) by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
+In addition, you can override default highlight color scheme (magenta background and black text) for a specific Trace Term by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
 
 ![](media/587ff246e9bf742376893bde0d0469ab.png)
 
