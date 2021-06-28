@@ -76,7 +76,6 @@
 	- [Usability Considerations](#usability-considerations)
 	- [General Infrastructure and Environment Considerations](#general-infrastructure-and-environment-considerations)
 	- [Large Workspaces Infrastructure and Environment Considerations](#large-workspaces-infrastructure-and-environment-considerations)
-	- [License and Billing Data](#license-and-billing-data)
 - [Glossary](#glossary)
 - [Appendix A: Trace Object Architecture](#appendix-a-trace-object-architecture)
 - [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields)
@@ -199,25 +198,11 @@ Setting up Relativity Trace
 5. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](./media/user_documentation/1571073733941.png)
 > **NOTE:** On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer. 
 
-6. Configure Trace License
+6. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
 
-   1.  At first install time, a default trial license is installed that is re-used for all workspaces in the Relativity instance (it’s valid 30 days from installation date)
-       
-   2.  You can request a new license via `Manage Trace License` link on Setup tab
-   
-   ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
-   
-3.  Click `Request Trace License` and send an email with the contents of the request to `support@relativity.com`
-    
+![image-20200622103606164](media/user_documentation/image-20200622103606164.png)
 
-![](media/741facee0911140b7082894fe5a42c7a.png)
-       
-   > **WARNING:** Once license expires, all Trace processes stop working in **all** configured workspaces.
-
-7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
-   
-   1. ![image-20200622103606164](media/user_documentation/image-20200622103606164.png)
-    > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to `support@relativity.com` for support on installing Trace into workspaces with existing data.
+ > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to `support@relativity.com` for support on installing Trace into workspaces with existing data.
 
 Trace Document Flow Overview
 ============================
@@ -829,7 +814,6 @@ Data sources are broken up in several sections:
    * **Data Source Type:** Type of the data source
 
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
-     
 * **Start Date:** Date from which data will be pulled/pushed into Relativity
   
 * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
@@ -891,7 +875,6 @@ This section contains additional settings which are not associated with specific
   -   **`Import`** - Import all embedded files (top level and child) as separate documents in Relativity Trace.
   -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
   -   **`DoNotImport`** - Do not import any embedded files.
-  
 >   **NOTE:** Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
@@ -996,7 +979,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
-![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
+    ![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
     
 1.  *Exchange Settings – Url* gives you the chance to specify the exact URL used when connecting to your exchange server. If this field is left blank, Microsoft’s Autodiscover technology will be used to populate the field with a URL based on the credentials provided in the Username and Password fields. Autodiscover is typically a suitable option and works for Office 365 and many on premises solutions but it is not guaranteed to work.
     
@@ -1185,7 +1168,6 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 `Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
 
 > **Note:** The Source Field Name is case sensitive when matching with a column in the loadfile.
->  
 
 `Relativity Field` - The field in Relativity that will have it's value populated
 
@@ -1439,7 +1421,7 @@ When a document is added to the `Excluded Files` list using the `Trace Add to Ex
 Setup
 =====
 
-The `Setup` tab aggregates the most important information about configuration, health and overall status of Trace for a workspace. It shows the currently installed version,  active tasks and their configuration, and a snapshot of instance infrastructure that’s relevant to Trace. In addition, you can manage Logging and License configuration and run a built-in self-test (`BIST`) to verify basic flow.
+The `Setup` tab aggregates the most important information about configuration, health and overall status of Trace for a workspace. It shows the currently installed version,  active tasks and their configuration, and a snapshot of instance infrastructure that’s relevant to Trace. In addition, you can manage Logging configuration and run a built-in self-test (`BIST`) to verify basic flow.
 
 ![1571087647200](media/user_documentation/1571087647200.png)
 
@@ -1971,10 +1953,6 @@ Large Workspaces Infrastructure and Environment Considerations
 | Limit maximum number of Rules: `50` per workspace, `500` per instance | The design of Rule Evaluation Task limits concurrent execution of multiple rules. This effect is compounded by running multiple workspaces with Rules concurrently. | Future iterations will remove this limitation                |
 | Update dtSearch sub-index size to be `500K` OR `1M` (Advanced Settings) | Default sub-index size is `250K` docs, when you have more than `10` sub-indexes searches can become slow because of the number of sub-indexes<br>![1564672221173](media/1564672221173.png)<br><br>![1564672354757](media/1564672354757.png) | General rule is to keep number of sub-indexes under `10` total |
 | Ensure [Data Grid for Audit](https://help.relativity.com/RelativityOne/Content/Relativity/Data_Grid/Data_Grid_for_Audit.htm) is setup OR use [Database Partitioning for Archiving Audit Records](https://community.relativity.com/s/contentdocument/06950000002JezyAAC) | Audits are generated frequently, outside of RelativityOne, they are stored in SQL which at scale creates very large tables.  It's best practice to set up table partitioning for your audits, or to deploy Data Grid solution | Data Grid for Audit is used natively in RelativityOne        |
-
-## License and Billing Data 
-
-Trace requires a valid license to operate. An invalid or expired license will cause Trace to enter a locked state wherein no tasks will be executed. In addition, each Trace license contains information on how billing data will be collected. Billing data is by default reported daily. Failure to report billing data for 7 days or more will also result in Trace entering a locked state.
 
 Glossary
 ========
