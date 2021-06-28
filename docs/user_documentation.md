@@ -1334,7 +1334,7 @@ When using the `Exempt List` transformation type, analysis is performed only on 
 
 ### AI Extracted Text Cleansing Data Transformation
 
-Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text file by using Relativity Analytics. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove specific non-authored content, such as confidentiality disclaimers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise.
+Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text file. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove specific non-authored content, such as confidentiality disclaimers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise.
 
 ![remove-confdentiality-disclaimers-settings](media/user_documentation/remove-confdentiality-disclaimers-settings.png)
 
@@ -1344,7 +1344,7 @@ When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted
 
 > **NOTE:** AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
-> **NOTE:** The long text field, `Trace Original Extracted Text`, stores the original contents of the extracted text, before any transformations occur on it, as a source for all unaltered data post OI. It can be used in place of the Extracted Text field of for any reason cleansing and removal seems to be working incorrectly.
+> **NOTE:** The long text field, `Trace Original Extracted Text`, stores the original contents of the extracted text, before any transformations occur on it, as a source for all unaltered data post Text Extraction. It can be used in place of the Extracted Text field of for any reason cleansing and removal seems to be working incorrectly.
 
 ### Group Identifier Truncation for External Data Sources
 
