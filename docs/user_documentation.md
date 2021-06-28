@@ -1367,7 +1367,7 @@ Once a batch begins the Ingestion process (when status is set to: `ReadyForImpor
 
 By default, Data Batches that fail will be automatically retried up to 3 times, where the 3 retries are attempted after 1 hour, 3 hours, and 6 hours, respectively. When preparing to retry, the status of the Data Batch is marked as `PendingRetry`. The retry count and the last time it was retried can be viewed on the layout as well. This automatic retry is a full retry, starting from the `RetrievedFromSource` status. Data Batches that fail all the configured retries will set `Has Errors` to true, populate the `Error Details` field with the details of the specific error encountered, and be given a status of `CompletedWithErrors`.
 
-> **NOTE:** If a Data Batch completes successfully but has errors at the document level (for example, if a document is password protected and the correct password was not found in the Password Bank of the Data Source), the Data Batch will be marked `CompletedWithDocumentLevelErrors` and there will not be an automatic retry
+> **NOTE:** If a Data Batch completes successfully but has errors at the document level (for example, if a date field value could not be parsed as a date), the Data Batch will be marked `CompletedWithDocumentLevelErrors` and there will not be an automatic retry
 
 Data Batch objects have associated Mass Operations (and corresponding Data Batch console UI buttons) to help with state resolution
 
