@@ -307,6 +307,8 @@ As documents flow into a Relativity workspace and through the Trace workflow the
          Cleansing was attempted but an error occurred at the document level.
       4. `Warning - Service Error`
          Cleansing failed due to an error with analytics service preventing execution.
+         
+20.  **Trace Original Extracted Text** - Long Text field which stores the original extracted text content generated during enrichment before any transforms or cleansing occurs. 
 
 ### Dashboard Widgets
 
@@ -2127,6 +2129,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Exempt              | Yes/No            | Indicates exempt list data transformation classification |
 | Calculated               | Trace Communication Direction           | Fixed-Length Text | Indicates communication direction data transformation classification (Internal |
 | Calculated               | Trace Is Extracted           | Yes/No | Indicates whether a document is a Native or was Extracted |
+| Calculated               | Trace Original Extracted Text           | Long Text | Holds the original content of extracted text file before any transforms or cleansing occur |
 | Calculated               | Trace AI Extracted Text Cleansing Status           | Single Choice | Indicates the cleansing status of a document that has undergone AI Extracted Text Cleansing |
 
 Appendix C: Create Email Fields Data Mappings and Ingestion Profile
