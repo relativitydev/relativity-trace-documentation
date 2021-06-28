@@ -439,9 +439,9 @@ In addition, you can override default highlight color scheme (magenta background
 Rule Generator
 -----
 
-Rule Generator is a tool for automatically creating Rules based on non-document RDO data. Rule Generators can create rules to link Trade RDO's to Documents to simply **Trade Reconstruction** workflows, alert on documents that breach insider lists or violate restricted lists defined by **Control Room** teams, or create **dynamic Rules** to link or alert on any communication related to integrated structured data coming from a CRM system, Time & Expense system, HR System, Excel file, or in-house tools.
+Rule Generator is a tool for automatically creating Rules based on non-document RDO data. Rule Generators can create rules to link Trade RDO's to Documents to simplify **Trade Reconstruction** workflows, alert on documents that breach insider lists or violate restricted lists defined by **Control Room** teams, or create **dynamic Rules** to link or alert on any communication related to integrated structured data coming from a CRM system, Time & Expense system, HR System, Excel file, or in-house tools.
 
-Each Rule Generator is associated with a specific Object Type and creates a Rule for each underlying ROD for that object type using given search criteria. Rule creation by a Rule Generator runs during the Rule Evaluation task.
+Each Rule Generator is associated with a specific Object Type and creates a Rule for each underlying RDO for that object type using given search criteria. Rule creation by a Rule Generator runs during the Rule Evaluation task.
 
 ### Creating a Rule Generator
 
@@ -456,11 +456,11 @@ The Rule Generator form contains following fields:
 
 -   **Relational Field On Document:** a multi object field on the **Document** object that is associated with the Object Type populated on the `Associated Object Type` field. This Document field is populated with the RDO of the declared Associated Object Type when the Rule created from that RDO hits on the document. 
 
-> **NOTE: **This field must be created manually as it changes based on the Object Type populated on the `Assocaited Object Type` field.
+> **NOTE: **This field must be created manually as it changes based on the Object Type populated on the `Associated Object Type` field.
 
 -   **Relational Field On Rule:** a multi object field on the **Rule** object that is associated with the Object Type populated on the `Associated Object Type` field. This Rule field is populated with the RDO of the declared Associated Object Type when the Rule associated with that RDO is created. 
 
-> **NOTE: **This field must be created manually as it changes based on the Object Type populated on the `Assocaited Object Type` field.
+> **NOTE: **This field must be created manually as it changes based on the Object Type populated on the `Associated Object Type` field.
 
 -   **Alert On Related Documents:** a flag which determines if the Rules that are created by the Rule Generator are of the type `Alert` or `Workflow`. Can't be modified.
 -   **Disable Generated Rules By Default:** a flag which determines if if the Rules that are created by the Rule Generator are disabled when they are created. Rule Generators that are going to create many rules or are of the type `Workflow` should be flagged as disabled by default.
@@ -502,13 +502,13 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
  - `NotOperator` - specifies if condition should be negative (defaults `false` if not added)
  - `DayRange` - specifies a number of days which will be added or subtracted from ObjectField date specified in condition (this works only for DATE fields when `BETWEEN` condition in specified, but it won't break when added to other conditions)
  - `DayRangeDirection` - connected with the `DayRange` parameter and specifies if the days should be added, subtracted, or added and subtracted from ObjectField date. Values for this parameter: `ForwardAndBackwards`, `Backwards`, `Forward`, the default value is `ForwardAndBackwards`
- - `BolleanOperator` - the operator which joins the specified condition with the next condition (`AND/OR`)>
+ - `BooleanOperator` - the operator which joins the specified condition with the next condition (`AND/OR`)
 
 > **Search Criteria Validation Rules:**
 >
 > - Search criteria must contain at least one logic group
 > - Each logic group must include a `SearchConditions` list (with at least one condition in it) and a `BooleanOperator`
-> - `DocumentFieldName` , `ObjectFieldName` or `Value`, `Condition` and `BolleanOperator` are mandatory fields in a search condition
+> - `DocumentFieldName`, `ObjectFieldName` or `Value`, `Condition` and `BooleanOperator` are mandatory fields in a search condition
 > - `DocumentFieldName` field must be a field which exists on Document
 > - `ObjectFieldName` field must be a field which exists on the Object Type associated with Rule Generator
 > - `DocumentFieldName` and `ObjectFieldName` fields must have the same field type
