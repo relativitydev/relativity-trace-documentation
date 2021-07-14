@@ -54,7 +54,7 @@
   - [Data Batches](#data-batches)
     - [Data Batch Retry and Error Resolution Workflow](#data-batch-retry-and-error-resolution-workflow)
   - [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
-    - [Monitored Individual Discovery On Globanet Data Sources](#monitored-individual-discovery-on-globanet-data-sources)
+    - [Monitored Individual Discovery On Merge1 Data Sources](#monitored-individual-discovery-on-merge1-data-sources)
     - [Monitored Individual Discovery On Other Data Sources](#monitored-individual-discovery-on-other-data-sources)
     - [Supported File Formats](#supported-file-formats)
   - [Excluded Files](#excluded-files)
@@ -962,7 +962,7 @@ Data source state serialization currently excludes the following fields from bei
 Trace will automatically disable data sources that are identified as unhealthy or have critical configuration errors that will require intervention by the user. Trace will automatically disable a data source for the following reasons:
 
 - Data source has not had any successful data batches in a configured amount of time (default 24 hours)
-- Globanet data source is enabled without enabling Globanet at the workspace level
+- Globanet data source is enabled without enabling Globanet (Merge1) at the workspace level
 
 Auto-disabled data sources will have their Disabled Reason field populated to show that it was disabled by the system. The data source will also have error details outlining the failures that caused the system to disable it. 
 
@@ -1412,9 +1412,9 @@ Some Data Sources combine data from several places into a single import flow. In
 
 ![image-20191217151807534](media/user_documentation/image-20191217151807534.png)
 
-### Monitored Individual Discovery On Globanet Data Sources
+### Monitored Individual Discovery On Merge1 Data Sources
 
-Globanet's EWS Data Source only looks for Monitored Individuals in the `X-UserMailbox` header of an email. This header is provided by Globanet and typically contains exactly one Monitored Individual.
+Merge1's EWS Data Source only looks for Monitored Individuals in the `X-UserMailbox` header of an email. This header is provided by Merge1 and typically contains exactly one Monitored Individual.
 
 ### Monitored Individual Discovery On Other Data Sources
 
