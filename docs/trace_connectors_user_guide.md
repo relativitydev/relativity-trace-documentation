@@ -1,6 +1,6 @@
 # Relativity Trace Data Source User Guide
 
-For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Globanet Merge1).  You will also need to install additional hardware.
+For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Veritas Merge1).  You will also need to install additional hardware.
 
 - [Trace Shipper Data Flow Overview](#trace-shipper-data-flow-overview)
 - [Installation of Trace Shipper](#installation-of-trace-shipper)
@@ -8,12 +8,12 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
   * [Getting Started with Installation](#getting-started-with-installation)
   * [Trace Shipper Service Configuration](#trace-shipper-service-configuration)
   * [Setting Up Data Sources in Relativity](#setting-up-data-sources-in-relativity)
-  * [Installation Steps for Globanet](#installation-steps-for-globanet)
-  * [Set Up Globanet](#set-up-globanet)
-    + [Configuring Globanet Importers](#configuring-globanet-importers)
+  * [Installation Steps for Veritas Merge1](#installation-steps-for-veritas-merge1)
+  * [Set Up Veritas Merge1](#set-up-veritas-merge1)
+    + [Configuring Veritas Merge1 Importers](#configuring-veritas-merge1-importers)
 - [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a-bloomberg--ice-chat-thomson-reuters--symphony)
-- [Appendix B: Globanet Importer Schedule Helper](#appendix-b-globanet-importer-schedule-helper)
-- [Appendix C: High Availability Setup for Globanet's Merge1](#appendix-c-high-availability-setup-for-globanet-s-merge1)
+- [Appendix B: Veritas Merge1 Importer Schedule Helper](#appendix-b-veritas-merge1-importer-schedule-helper)
+- [Appendix C: High Availability Setup for Veritas Merge1](#appendix-c-high-availability-setup-for-veritas-merge1)
 - [Appendix D: Sync of Config Folder](#appendix-d-sync-of-config-folder)
 
 ## Trace Shipper Data Flow Overview 
@@ -22,7 +22,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 *ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
 
-> **NOTE:** Data Pull (2) and Process (3) are performed via Globanet Merge1 software. Audio data is provided by external data provider
+> **NOTE:** Data Pull (2) and Process (3) are performed via Veritas Merge1 software. Audio data is provided by external data provider
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
@@ -78,11 +78,11 @@ Each connector you set up will require a local directory to ship,  a Relativity 
 
 Perform the following steps in order to get started:
 
-1. First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Globanet), later. 
+1. First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Merge1), later. 
 
       > **NOTE:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
 
-      > **EXAMPLE:**  Say you are using Globanet to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
+      > **EXAMPLE:**  Say you are using Merge1 to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
       >
       > * `C:\Globanet\Exchange`
       > * `C:\Globanet\ICE`
@@ -98,7 +98,7 @@ Perform the following steps in order to get started:
 
 Trace Shipper Service needs to be installed and configured to send data to your Relativity Trace workspace.  Refer to the [Trace Shipper Guide](trace_shipper_service.md) for instructions on how to install and configure the Trace Shipper Service. Use the directories and connection info developed in the previous section configuration values.
 
-> **NOTE:** If you are going to set up Globanet, you **must** set `retrieveConfigurationIntervalInMinutes`. The recommended interval is 5 minutes.
+> **NOTE:** If you are going to set up Merge1, you **must** set `retrieveConfigurationIntervalInMinutes`. The recommended interval is 5 minutes.
 
 Start the Shipper Service when you have finished configuration.
 
@@ -120,7 +120,7 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
 
    3. Fill out the required fields and click "Save"
 
-      > **NOTE:** For Globanet data sources, be sure to specify the `Source Folder Path` under Data Source Specific Fields. This value needs to be identical to the `remoteRelativePath` configuration setting specified during [Trace Shipper Configuration](#trace-shipper-service-configuration).
+      > **NOTE:** For Veritas Merge1 data sources, be sure to specify the `Source Folder Path` under Data Source Specific Fields. This value needs to be identical to the `remoteRelativePath` configuration setting specified during [Trace Shipper Configuration](#trace-shipper-service-configuration).
 
    4. Create Monitored Individuals
       1. Navigate to Monitored Individuals tab
@@ -140,23 +140,23 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
 
 > **NOTE:** All Trace Data Sources serialize their current state to a JSON file and their monitored individuals to a CSV file,  both of which can be retrieved by Trace Shipper. See Appendix D for more information.
 
-### Installation Steps for Globanet
+### Installation Steps for Veritas Merge1
 
-Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Globanet. 
+Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Merge1. 
 
 Contact support@relativity.com if you need assistance with installation steps.
 
-### Set Up Globanet
+### Set Up Veritas Merge1
 
-Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Globanet is a Globanet `target` directory, and each needs a location to store logs related to the retrieval of the data by Globanet. Create a log directory for each.
+Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Merge1 is a Merge1 `target` directory, and each needs a location to store logs related to the retrieval of the data by Merge1. Create a log directory for each.
 
-In order for Support to gain access to your Globanet logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shippper-service-configuration) under `externalServiceLogLocations`. Globanet creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connector}.log`.
+In order for Support to gain access to your Merge1 logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shippper-service-configuration) under `externalServiceLogLocations`. Merge1 creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connector}.log`.
 
 > **EXAMPLE:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
 
-#### Configuring Globanet Importers
+#### Configuring Veritas Merge1 Importers
 
-For each Globanet `target` directory, configure a Globanet Importer in Merge 1.
+For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
    1. Configure monitored individuals to point to
       `{localDirectoryPath}\Config\monitored_individuals.csv`
@@ -217,7 +217,7 @@ For each Globanet `target` directory, configure a Globanet Importer in Merge 1.
 
 ## Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony
 
-All of these Data Sources work similar via scheduled drops of data to an FTP. Globanet picks it up from SFTP and delivers it to Trace.
+All of these Data Sources work similar via scheduled drops of data to an FTP. Merge1 picks it up from SFTP and delivers it to Trace.
 
 See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for more details
 
@@ -225,11 +225,11 @@ See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaw
 
 *ref: [PlantUML Code](diagrams/trace_shipper_ice_chat_flow.txt)*
 
-> **NOTE:** Data Pull (1) and Process (2) are performed via Globanet Merge1 software. Audio data is provided by external data provider
+> **NOTE:** Data Pull (1) and Process (2) are performed via Veritas Merge1 software. Audio data is provided by external data provider
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
-## Appendix B: Globanet Importer Schedule Helper
+## Appendix B: Veritas Merge1 Importer Schedule Helper
 
 In order to ensure that data source runs **every X minutes** run the following steps OR manually select appropriate time slots:
 
@@ -249,7 +249,7 @@ In order to ensure that data source runs **every X minutes** run the following s
     2. ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
     3. At this point Importer will be set to run every x minutes
     
-## Appendix C: High Availability Setup for Globanet's Merge1
+## Appendix C: High Availability Setup for Veritas Merge1
 
 It is possible to setup Merge1 in HA mode. Recommended approach is to setup secondary Merge1 server that runs the same version of the Merge1 and installed in the same path as the production. You also need to have the same folder structure for all connectors (Import, quarantine, log folders). 
 
