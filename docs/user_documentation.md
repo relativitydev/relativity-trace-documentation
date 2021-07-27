@@ -54,7 +54,7 @@
   - [Data Batches](#data-batches)
     - [Data Batch Retry and Error Resolution Workflow](#data-batch-retry-and-error-resolution-workflow)
   - [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
-    - [Monitored Individual Discovery On Globanet Data Sources](#monitored-individual-discovery-on-globanet-data-sources)
+    - [Monitored Individual Discovery On Merge1 Data Sources](#monitored-individual-discovery-on-merge1-data-sources)
     - [Monitored Individual Discovery On Other Data Sources](#monitored-individual-discovery-on-other-data-sources)
     - [Supported File Formats](#supported-file-formats)
   - [Excluded Files](#excluded-files)
@@ -307,7 +307,7 @@ As documents flow into a Relativity workspace and through the Trace workflow the
          Cleansing was attempted but an error occurred at the document level.
       4. `Warning - Service Error`
          Cleansing failed due to an error with analytics service preventing execution.
-         
+    
 20.  **Trace Original Extracted Text** - Long Text field which stores the original extracted text content generated during enrichment before any transforms or cleansing occurs. 
 
 ### Dashboard Widgets
@@ -962,7 +962,7 @@ Data source state serialization currently excludes the following fields from bei
 Trace will automatically disable data sources that are identified as unhealthy or have critical configuration errors that will require intervention by the user. Trace will automatically disable a data source for the following reasons:
 
 - Data source has not had any successful data batches in a configured amount of time (default 24 hours)
-- Globanet data source is enabled without enabling Globanet at the workspace level
+- Globanet data source is enabled without enabling Globanet (Merge1) at the workspace level
 
 Auto-disabled data sources will have their Disabled Reason field populated to show that it was disabled by the system. The data source will also have error details outlining the failures that caused the system to disable it. 
 
@@ -1412,9 +1412,9 @@ Some Data Sources combine data from several places into a single import flow. In
 
 ![image-20191217151807534](media/user_documentation/image-20191217151807534.png)
 
-### Monitored Individual Discovery On Globanet Data Sources
+### Monitored Individual Discovery On Merge1 Data Sources
 
-Globanet's EWS Data Source only looks for Monitored Individuals in the `X-UserMailbox` header of an email. This header is provided by Globanet and typically contains exactly one Monitored Individual.
+Merge1's EWS Data Source only looks for Monitored Individuals in the `X-UserMailbox` header of an email. This header is provided by Merge1 and typically contains exactly one Monitored Individual.
 
 ### Monitored Individual Discovery On Other Data Sources
 
@@ -1553,18 +1553,18 @@ notifications and alerts from Relativity and Trace.
 Errors and Logging
 ------------------
 
-You can adjust the logging level to get more information about the system
-performance specific to Trace. The Default logging level is Error. The management of the
-Logging infrastructure can be adjusted via the UI console button “Manage Logs”. In
-order to adjust the logging level use the “Update Trace Log Level” option. In order
-to collect and display logging data use the “Trace Logs” option. You can export the
-logs to a csv file with a mass operation “Export to File” at the bottom of the
-list.
+You can adjust the logging level to get more information about the system performance specific to Trace. The Default logging level is Error. The management of the Logging infrastructure can be adjusted via the UI console button “Manage Logs”. In order to adjust the logging level use the “Update Trace Log Level” option. In order to collect and display logging data use the “Trace Logs” option. You can export the logs to a csv file with a mass operation “Export to File” at the bottom of the list.
 ![](media/8373e739309804e21560cad5d48100e8.png)
 ![](media/9c4b600add345fd8c2200544796ac735.png)
 ![](media/187cb16f17210c7e4105f4df34955731.png)
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
+
+## Restart Trace Agents
+
+You can restart all Trace agents via the "Restart Trace Agents" button on the console within the Setup page. This will disable then re-enable all Agents associated with the Trace application. It will not restart agents associated with other applications that are required as a part of Trace.
+
+> **CAUTION:** Restarting Trace agents will abort all threads for all workspaces. Any in progress Trace work will error. Specifically, in progress Data Batches will be marked Completed With Errors and will have to be retried. 
 
 
 # Analytics Automation
