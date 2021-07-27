@@ -1,6 +1,6 @@
 # Relativity Trace Release Notes
 
-- [14.3.0.0 (27 July 2021)](#14300-27-july-2021)
+- [14.3.0.4 (27 July 2021)](#14304-27-july-2021)
 
 - [14.2.0.5 (24 June 2021) - DEPRECATED](#14205-24-june-2021---deprecated)
 
@@ -44,7 +44,7 @@
 
   
 
-# 14.3.0.0 (27 July 2021)
+# 14.3.0.4 (27 July 2021)
 
 **Compatibility**
 
