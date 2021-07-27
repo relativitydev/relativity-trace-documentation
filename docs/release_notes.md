@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [14.2.0.5 (24 Jun 2021)](#14205-24-june-2021)
+- [14.3.0.0 (27 July 2021)](#14300-27-july-2021)
+
+- [14.2.0.5 (24 June 2021) - DEPRECATED](#14205-24-june-2021---deprecated)
 
 - [14.1.0.6 (18 May 2021) - DEPRECATED](#14106-18-may-2021---deprecated)
 
@@ -42,7 +44,30 @@
 
   
 
-# 14.2.0.5 (24 June 2021)
+# 14.3.0.0 (27 July 2021)
+
+**Compatibility**
+
+- Relativity Version: **RelativityOne ONLY**
+- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
+
+**Features**
+
+- Added Trace Surveillance Policies in Spanish and German to identify misconduct within global organizations
+- Added Trace Surveillance Policies targeting the wrongful sharing of Personally Identifiable Information (PII)
+- New Trace Data Source for Microsoft Teams that allows for surveillance of O365 Teams without a 3rd party collection application
+- Automatic removal of email headers (From, To, etc.) and email signatures that could otherwise trigger false positive alerts
+
+**Enhancements**
+
+- Improved support of Object and Choice fields in Dynamic Rules search criteria
+
+**Defect Fixes**
+
+- Fixed an issue where extra whitespace could prevent Exempt List matches
+- Fixed an intermittent issue with Active Learning that caused indexes to fall into a failure state
+
+# 14.2.0.5 (24 June 2021) - DEPRECATED
 
 **Compatibility**
 
@@ -71,7 +96,7 @@
 - Fixed an issue where extremely large data batches would fail after successfully importing documents
 - Fixed an issue where Scripts with certain types of input parameters would fail to run within Advanced Actions
 
-# 14.1.0.6 (18 May 2021)
+# 14.1.0.6 (18 May 2021) - DEPRECATED
 
 **Compatibility**
 
@@ -95,7 +120,7 @@
 - Fixed an issue with Trace Rule auditing that could cause system slowness
 - Fixed an issue where the Rule Generators were not included in copied workspaces
 
-# 14.0.0.4 (13 April 2021)
+# 14.0.0.4 (13 April 2021) - DEPRECATED
 
 **Compatibility**
 
