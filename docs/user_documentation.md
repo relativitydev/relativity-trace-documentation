@@ -1338,11 +1338,13 @@ When using the `Exempt List` transformation type, analysis is performed only on 
 
 ### AI Extracted Text Cleansing Data Transformation
 
-Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text file. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove specific non-authored content, such as confidentiality disclaimers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise.
+Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text file. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove specific non-authored content, such as confidentiality disclaimers, email signatures, and email headers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise. Each type of removal can be configured individually, allowing configurability when deciding which type of content to be cleansed.
+
+> **NOTE:** If Remove Email Headers is turned on, then cleansing will always be executed if there are was no service or document errors, since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
 
 ![remove-confdentiality-disclaimers-settings](media/user_documentation/remove-confdentiality-disclaimers-settings.png)
 
-When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted Text Cleansing Status` document field will get populated with a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred.
+When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted Text Cleansing Status` and `Trace AI Extracted Text Cleansing Error Details` document fields will get populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred. In an error occurred, it will be stored in the `Trace AI Extracted Text Cleansing Error Details` document field.
 
 ![cleansing-status-outcome](media/user_documentation/cleansing-status-outcome.png)
 
