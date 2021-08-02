@@ -1346,7 +1346,7 @@ Data Transformations of type `AI Extracted Text Cleansing` can be used to identi
 
 When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted Text Cleansing Status` and `Trace AI Extracted Text Cleansing Error Details` document fields will get populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred. In an error occurred, it will be stored in the `Trace AI Extracted Text Cleansing Error Details` document field.
 
-![cleansing-status-outcome](media/user_documentation/cleansing-status-outcome.png)
+![cleansing-status-outcome](media/user_documentation/cleansing-status-and-error-outcome.png)
 
 > **NOTE:** AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
