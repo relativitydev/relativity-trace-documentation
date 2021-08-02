@@ -298,6 +298,7 @@ As documents flow into a Relativity workspace and through the Trace workflow the
 18. **Trace Omit from Alert Rules** – Boolean (yes/no) field indicating if the document is omitted from alert rules.
 
 19. **Trace AI Extracted Text Cleansing Status** - Single choice field which indicates the outcome for AI Extracted Text Cleansing outcome.
+    
     - There are 4 possible choices:
       1. `Success - No Extracted Text Cleansed`
          A document has undergone cleansing, but none of the configured non-authored content was identified for removal.
@@ -308,7 +309,9 @@ As documents flow into a Relativity workspace and through the Trace workflow the
       4. `Warning - Service Error`
          Cleansing failed due to an error with analytics service preventing execution.
     
-20.  **Trace Original Extracted Text** - Long Text field which stores the original extracted text content generated during enrichment before any transforms or cleansing occurs. 
+20. **Trace AI Extracted Text Cleansing Error Details** - Long Text field that holds any error details that may have occurred during AI Extracted Text Cleansing. It will be empty if no errors occurred.
+
+21. **Trace Original Extracted Text** - Long Text field which stores the original extracted text content generated during enrichment before any transforms or cleansing occurs. 
 
 ### Dashboard Widgets
 
@@ -2143,6 +2146,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Is Extracted           | Yes/No | Indicates whether a document is a Native or was Extracted |
 | Calculated               | Trace Original Extracted Text           | Long Text | Holds the original content of extracted text file before any transforms or cleansing occur |
 | Calculated               | Trace AI Extracted Text Cleansing Status           | Single Choice | Indicates the cleansing status of a document that has undergone AI Extracted Text Cleansing |
+| Calculated               | Trace AI Extracted Text Cleansing Error Details | Long Text | Holds any error details that may have occurred during AI Extracted Text Cleansing |
 
 Appendix C: Create Email Fields Data Mappings and Ingestion Profile
 =============================================================
