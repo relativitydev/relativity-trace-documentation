@@ -77,7 +77,6 @@
 	- [Usability Considerations](#usability-considerations)
 	- [General Infrastructure and Environment Considerations](#general-infrastructure-and-environment-considerations)
 	- [Large Workspaces Infrastructure and Environment Considerations](#large-workspaces-infrastructure-and-environment-considerations)
-	- [License and Billing Data](#license-and-billing-data)
 - [Glossary](#glossary)
 - [Appendix A: Trace Object Architecture](#appendix-a-trace-object-architecture)
 - [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields)
@@ -200,24 +199,11 @@ Setting up Relativity Trace
 5. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](./media/user_documentation/1571073733941.png)
 > **NOTE:** On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer. 
 
-6. Configure Trace License
+6. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
 
-   1.  At first install time, a default trial license is installed that is re-used for all workspaces in the Relativity instance (it’s valid 30 days from installation date)
-       
-   2.  You can request a new license via `Manage Trace License` link on Setup tab
-   
-   ![](media/6d24d75c1ed9d35efdc8f0d8e1f9f777.png)
-   
-7. Click `Request Trace License` and send an email with the contents of the request to `support@relativity.com`
+![image-20200622103606164](media/user_documentation/image-20200622103606164.png)
 
-![](media/741facee0911140b7082894fe5a42c7a.png)
-       
-   > **WARNING:** Once license expires, all Trace processes stop working in **all** configured workspaces.
-
-7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
-   
-   1. ![image-20200622103606164](media/user_documentation/image-20200622103606164.png)
-    > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to `support@relativity.com` for support on installing Trace into workspaces with existing data.
+ > **WARNING:** Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to `support@relativity.com` for support on installing Trace into workspaces with existing data.
 
 Trace Document Flow Overview
 ============================
@@ -1482,7 +1468,7 @@ When a document is added to the `Excluded Files` list using the `Trace Add to Ex
 Setup
 =====
 
-The `Setup` tab aggregates the most important information about configuration, health and overall status of Trace for a workspace. It shows the currently installed version,  active tasks and their configuration, and a snapshot of instance infrastructure that’s relevant to Trace. In addition, you can manage Logging and License configuration and run a built-in self-test (`BIST`) to verify basic flow.
+The `Setup` tab aggregates the most important information about configuration, health and overall status of Trace for a workspace. It shows the currently installed version,  active tasks and their configuration, and a snapshot of instance infrastructure that’s relevant to Trace. In addition, you can manage Logging configuration and run a built-in self-test (`BIST`) to verify basic flow.
 
 ![1571087647200](media/user_documentation/1571087647200.png)
 
@@ -2017,10 +2003,6 @@ Large Workspaces Infrastructure and Environment Considerations
 | Limit maximum number of Rules: `50` per workspace, `500` per instance | The design of Rule Evaluation Task limits concurrent execution of multiple rules. This effect is compounded by running multiple workspaces with Rules concurrently. | Future iterations will remove this limitation                |
 | Update dtSearch sub-index size to be `500K` OR `1M` (Advanced Settings) | Default sub-index size is `250K` docs, when you have more than `10` sub-indexes searches can become slow because of the number of sub-indexes<br>![1564672221173](media/1564672221173.png)<br><br>![1564672354757](media/1564672354757.png) | General rule is to keep number of sub-indexes under `10` total |
 | Ensure [Data Grid for Audit](https://help.relativity.com/RelativityOne/Content/Relativity/Data_Grid/Data_Grid_for_Audit.htm) is setup OR use [Database Partitioning for Archiving Audit Records](https://community.relativity.com/s/contentdocument/06950000002JezyAAC) | Audits are generated frequently, outside of RelativityOne, they are stored in SQL which at scale creates very large tables.  It's best practice to set up table partitioning for your audits, or to deploy Data Grid solution | Data Grid for Audit is used natively in RelativityOne        |
-
-## License and Billing Data 
-
-Trace requires a valid license to operate. An invalid or expired license will cause Trace to enter a locked state wherein no tasks will be executed. In addition, each Trace license contains information on how billing data will be collected. Billing data is by default reported daily. Failure to report billing data for 7 days or more will also result in Trace entering a locked state.
 
 Glossary
 ========
