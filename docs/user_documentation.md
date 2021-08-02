@@ -495,9 +495,10 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
 > - Search criteria must contain at least one logic group
 > - Each logic group must include a `SearchConditions` list (with at least one condition in it) and a `BooleanOperator`
 > - `DocumentFieldName`, `ObjectFieldName` or `Value`, `Condition` and `BooleanOperator` are mandatory fields in a search condition
-> - `DocumentFieldName` field must be a field which exists on Document
+> - `DocumentFieldName` field must be a field which exists on Document and can be a reflected field, e.g. Trace Monitored Individuals::First Name
 > - `ObjectFieldName` field must be a field which exists on the Object Type associated with Rule Generator
-> - `DocumentFieldName` and `ObjectFieldName` fields must have the same field type
+> - `DocumentFieldName` and `ObjectFieldName` fields must have the same field type, with one exception:
+>   - `DocumentFieldName` fields with the field type single choice, multiple choice, single object, or multiple object can be compared to `ObjectFieldName` fields with the fixed-length text field type
 > - if `DocumentFieldName` and `ObjectFieldName` fields are single/multiple object fields, then both fields must be associated with the same object type
 > - `Value` value must be convertible to `DocumentFieldName` field type, i.e. if `DocumentFieldName` is date field, then valid values are `15 Apr 2021` or `04/15/2021`
 > - if `DocumentFieldName` is multiple/single object/choice field type, then `Value` should be a name of object/choice we want to search
