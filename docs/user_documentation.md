@@ -284,6 +284,7 @@ As documents flow into a Relativity workspace and through the Trace workflow the
 18. **Trace Omit from Alert Rules** – Boolean (yes/no) field indicating if the document is omitted from alert rules.
 
 19. **Trace AI Extracted Text Cleansing Status** - Single choice field which indicates the outcome for AI Extracted Text Cleansing outcome.
+    
     - There are 4 possible choices:
       1. `Success - No Extracted Text Cleansed`
          A document has undergone cleansing, but none of the configured non-authored content was identified for removal.
@@ -294,7 +295,9 @@ As documents flow into a Relativity workspace and through the Trace workflow the
       4. `Warning - Service Error`
          Cleansing failed due to an error with analytics service preventing execution.
     
-20.  **Trace Original Extracted Text** - Long Text field which stores the original extracted text content generated during enrichment before any transforms or cleansing occurs. 
+20. **Trace AI Extracted Text Cleansing Error Details** - Long Text field that holds any error details that may have occurred during AI Extracted Text Cleansing. It will be empty if no errors occurred.
+
+21. **Trace Original Extracted Text** - Long Text field which stores the original extracted text content generated during enrichment before any transforms or cleansing occurs. 
 
 ### Dashboard Widgets
 
@@ -1328,17 +1331,19 @@ When using the `Exempt List` transformation type, analysis is performed only on 
 
 ### AI Extracted Text Cleansing Data Transformation
 
-Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text file. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove specific non-authored content, such as confidentiality disclaimers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise.
+Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text of a document. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove confidentiality disclaimers, email signatures, and email headers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise.
+
+> **NOTE:** When `Remove Email Headers` is enabled, cleansing will always act on the document since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
 
 ![remove-confdentiality-disclaimers-settings](media/user_documentation/remove-confdentiality-disclaimers-settings.png)
 
-When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted Text Cleansing Status` document field will get populated with a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred.
+When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted Text Cleansing Status` and `Trace AI Extracted Text Cleansing Error Details` document fields will be populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred. If an error occurred, information regarding the error will be populated on the `Trace AI Extracted Text Cleansing Error Details` document field.
 
-![cleansing-status-outcome](media/user_documentation/cleansing-status-outcome.png)
+![cleansing-status-outcome](media/user_documentation/cleansing-status-and-error-outcome.png)
 
 > **NOTE:** AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
-> **NOTE:** The long text field, `Trace Original Extracted Text`, stores the original contents of the extracted text, before any transformations occur on it, as a source for all unaltered data post Text Extraction. It can be used in place of the Extracted Text field of for any reason cleansing and removal seems to be working incorrectly.
+> **NOTE:** The long text field, `Trace Original Extracted Text`, stores the original contents of the extracted text prior to any data transformations, acting as a source for unaltered data after Text Extraction. It can be used in place of the Extracted Text field or used to verify results of cleansing.
 
 ### Group Identifier Truncation for External Data Sources
 
@@ -2127,6 +2132,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Is Extracted           | Yes/No | Indicates whether a document is a Native or was Extracted |
 | Calculated               | Trace Original Extracted Text           | Long Text | Holds the original content of extracted text file before any transforms or cleansing occur |
 | Calculated               | Trace AI Extracted Text Cleansing Status           | Single Choice | Indicates the cleansing status of a document that has undergone AI Extracted Text Cleansing |
+| Calculated               | Trace AI Extracted Text Cleansing Error Details | Long Text | Holds any error details that may have occurred during AI Extracted Text Cleansing |
 
 Appendix C: Create Email Fields Data Mappings and Ingestion Profile
 =============================================================
