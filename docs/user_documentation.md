@@ -466,8 +466,10 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
 - `BooleanOperator` - [Required] a boolean operator which joins specified logic group with the next logic group `AND/OR`
 
 **Parameters of search condition:**
+
  - `DocumentFieldName` - [Required] name of the target document field you wish to search across
  - `ObjectFieldName` - name of the source associated object type field used to populate the `DocumentFieldName` when searching
+ - `Optional` - when set to `true`, it makes this search condition optional, meaning that if the `ObjectFieldName` field doesn't have a value, it will skip over this search condition in the created Saved Search and continue to make a Rule for that particular object. If this value is not set (defaults to `false`) or set to `false`, this search condition is not optional, and if the `ObjectFieldName` field doesn't have a value, it will fail to create a Rule for that particular Object (`true`,`false`) 
  - `Value` - value used to populate `DocumentFieldName` when searching (either `ObjectFieldName` or `Value` should be provided, not both). If `DocumentFieldName` is multiple/single object/choice type field, then static value should be object/choice name
  - `Condition` - [Required] the logical condition between the `DocumentFieldName` and `ObjectFieldName` (see conditions below)
 
@@ -499,6 +501,7 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
 > - `ObjectFieldName` field must be a field which exists on the Object Type associated with Rule Generator
 > - `DocumentFieldName` and `ObjectFieldName` fields must have the same field type
 > - if `DocumentFieldName` and `ObjectFieldName` fields are single/multiple object fields, then both fields must be associated with the same object type
+> - Saved Searches created by Rule Generators MUST have at least one condition, so if the `Optional` flag results in no search conditions being added, it will not create the Saved Search or Rule for that object
 > - `Value` value must be convertible to `DocumentFieldName` field type, i.e. if `DocumentFieldName` is date field, then valid values are `15 Apr 2021` or `04/15/2021`
 > - if `DocumentFieldName` is multiple/single object/choice field type, then `Value` should be a name of object/choice we want to search
 > - `Condition` must be valid for field type
