@@ -22,6 +22,9 @@
 		- [Rule Generator Search Criteria](#rule-generator-search-criteria)
 		- [Customizing and Running a Rule Generator](#customizing-and-running-a-rule-generator)
 		- [Rule Generator Limitations](#rule-generator-limitations)
+	- [Trade Reconstruction][#trade-reconstruction]
+	  - [Setting Up Trade Reconstruction][#setting-up-trade-reconstruction]
+	  - [Running Trade Reconstruction][#running-trade-reconstruction]
 	- [Actions](#actions)
 		- [Move To Folder Action Type](#move-to-folder-action-type)
 		- [Data Disposal Action Type](#data-disposal-action-type)
@@ -588,6 +591,55 @@ Rules created by a Rule Generator are visible in Rule Generator's layout. Rules 
 
 ![](media/user_documentation/RuleGeneratorRuleEvaluationTaskSettings.png)
 
+
+
+
+
+## Trade Reconstruction
+
+Trade Reconstruction is a tool responsible for connecting Trades to their related Communications. Each Trade Object has a connected Trade Reconstruction Configuration, which is the configuration that the Trade Reconstruction Task will use to connect Trades to their related Communications. The Trade Reconstruction Configuration Object has a search criteria field and a terms field, similar to the Rule Generator.
+
+### Setting Up Trade Reconstruction
+
+Trade Reconstruction requires each Trade to be connected to a Trade Reconstruction Configuration. Trade Reconstruction Configurations can be created under the `Trade Reconstruction Configurations` tab.
+
+![](media/user_documentation/TradeReconstructionConfigurationLayout.PNG)
+
+The Trade Reconstruction Configuration form contains following fields:
+
+- **Trade Reconstruction Configuration Name:** the name of the Trade Reconstruction Configuration
+- **Search Criteria:** required JSON field to create the search parameters for the Saved Search created and linked to the Trade. The details of the proper search criteria can be accessed via Contextual Help button on the Configuration section. Please see the Rule Generator Search Criteria section (above) for more details.
+
+Next, create your Trade Object. Trades can be created under the `Trades` Tab
+
+![](C:\Users\jaime.becker\Desktop\trace\documentation\relativity-trace-documentation\docs\media\user_documentation\TradeLayout.PNG)
+
+The Trade form contains the following fields:
+
+- **Identifier:** the name of the Trade
+- **Reconstruction Status:** the un-editable status during the Trade Reconstruction process. If this field is empty, that means no action has been taken on the Trade thus far. This field can be in the following statuses:
+  - `Pending` - this Trade is pending Reconstruction and waiting tor the Trade Reconstruction task to begin reconstructing this Trade
+  - `InProgress` - the Trade Reconstruction task is currently in the process of reconstructing this trade
+  - `Complete` - this Trade has been Reconstructed
+  - `Errored` - this Trade has failed to be Reconstructed. You can see the `Error Details` field for more details on why this Trade failed.
+- **Error Details:** un-editable field that reports information on why the Trade may have failed during Reconstruction
+- **Perform Reconstruction:** yes/no field that allows you to begin the Trade Reconstruction process.
+  - If `Yes` is selected, it will change the `Reconstruction Status` to `Pending` and the `Perform Reconstruction` field back to `No` 
+- **Reconstruction Configuration:** field to select the `Trade Reconstruction Configuration` you would like to use to reconstruct this Trade
+
+### Running Trade Reconstruction
+
+The following steps are to successfully run Trade Reconstruction on a Trade:
+
+1. Create a Trade Reconstruction Configuration (see Setting Up Trade Reconstruction for more details)
+
+2. Create a Trade (see Setting Up Trade Reconstruction for more details)
+
+3. On your Trade, select `Yes` on the `Perform Reconstruction` field
+
+4. Wait for the `Reconstruction Status` on your Trade object to be `Complete`
+
+   
 
 Actions
 -------
