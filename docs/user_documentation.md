@@ -854,7 +854,8 @@ Data sources are broken up in several sections:
    * **Data Source Type:** Type of the data source
 
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
-* **Start Date:** Date from which data will be pulled/pushed into Relativity
+   * **Start Date:** Date from which data will be pulled/pushed into Relativity
+   * **End Date:** Optional date to which data will be pulled/pushed into Relativity.
   
 * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
   
@@ -881,7 +882,7 @@ Data sources are broken up in several sections:
 7. **Console**
    
     - **Enable/Disable Data Source:** Enables (or disables) data retrieval for a particular data source.
-    - **Reset Data Source:** Disables *and* resets data source to retrieve data from the specified Start Date. 
+    - **Reset Data Source:** Disables *and* resets data source to retrieve data from the specified Start Date.
     
       > **Note:** Depending on Import settings, enabling a reset Data Source could duplicate data in the Workspace.
 
@@ -1015,7 +1016,10 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 7.  Set Start Date to the earliest email timestamp you would like imported (UTC
     time)
 
-8.  Under Data Source Specific Fields, set Exchange Settings - Url and Exchange
+8.  Optionally set End Date to the latest email timestamp you would like imported (UTC
+    time)
+
+9.  Under Data Source Specific Fields, set Exchange Settings - Url and Exchange
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
@@ -1132,7 +1136,9 @@ This Data Source allows for automatic text extraction/expansion of previously in
 
     7.  Ignore Start Date field
 
-    8.  You have the option to leave the Data Source as Enabled or Disabled
+    8.  Ignore End Date field
+
+    9.  You have the option to leave the Data Source as Enabled or Disabled
 
 3.  Fill out [Data Source Specific Settings](#data-source-specific-settings) and click Save
     
@@ -1977,7 +1983,7 @@ Usability Considerations
 - Once a document is associated with a Rule, it will never be disassociated unless there are document updates to extracted text or metadata. The `Trace Document Retry` (mass operation) procedure will also reset the associations automatically.
 
 -   Every Data Source has capability to be `Reset` via console buttons. Once a data source is reset,
-    Trace will pull all available data again, beginning with the Start Date defined on the data source (if the Start Date is relevant to the data source type). **Depending on import profile settings, this could duplicate data in the Workspace.**
+    Trace will pull all available data again, beginning with the Start Date defined on the data source (if the Start Date is relevant to the data source type), until the End Date (if the End Date is relevant to the data source and was specified). **Depending on import profile settings, this could duplicate data in the Workspace.**
     
 - Task processes (Indexing, Term Searching, Rule Evaluation, etc) run simultaneously (in parallel). It may take several task cycles (based on configured `Run Interval` for each task) for the end-to-end workflow to complete fully.
 
