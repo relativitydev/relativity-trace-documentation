@@ -1,6 +1,8 @@
 # Relativity Trace Release Notes
 
-- [14.3.0.4 (27 July 2021)](#14304-27-july-2021)
+- [14.4.1.2 (31 August 2021)](#14412-31-august-2021)
+
+- [14.3.0.4 (27 July 2021) - DEPRECATED](#14304-27-july-2021---deprecated)
 
 - [14.2.0.5 (24 June 2021) - DEPRECATED](#14205-24-june-2021---deprecated)
 
@@ -45,6 +47,32 @@
   
 
 # 14.3.0.4 (27 July 2021)
+
+**Compatibility**
+
+- Relativity Version: **RelativityOne ONLY**
+- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
+
+**Features**
+
+- Automatic email thread deduplication removes old emails from new replies or forwards to reduce duplicative alerting 
+- Added Trace Surveillance Policies in Russian and Italian to identify misconduct within global organizations
+- Added Trace Surveillance Policies for Social Trading platforms to monitor users attempting to manipulate the markets, breach code of conduct policies, and other types of risks
+
+**Enhancements**
+
+- Introduced dedicated “Trade” and “Trade Reconstruction Configuration” object types for performing Trade Reconstruction
+- Pivot and Group By the “Trace Document Status Updated On” field for added reporting capabilities within dashboard widgets
+- Added the ability to pull data for a specific date range on cloud-to-cloud Data Sources
+- Improved resiliency of cloud-to-cloud Data Sources with improved retry
+
+**Defect Fixes**
+
+- Fixed a rare issue where a Data Batch would get stuck in the non-terminal Retrieval status rather than move to CompletedWithErrors
+- Fixed a rare issue where Data Batches in the non-terminal Retrieval status would wrongfully move to Abandoned
+- Fixed a performance issue in Data Retrieval for the O365 Data Source 
+
+# 14.3.0.4 (27 July 2021) - DEPRECATED
 
 **Compatibility**
 
