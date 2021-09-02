@@ -2,3 +2,9 @@ title: "Remote theme example"
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "dark"
 search_enabled: false
+
+# Enable or disable the site search
+search_enabled: true
+
+# Set the search token separator for hyphenated-word search:
+search_tokenizer_separator: /[\s/]+/
