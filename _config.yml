@@ -1,7 +1,6 @@
-title: "Remote theme example"
+title: "Documentation Example Using Just the Docs"
 remote_theme: pmarsceill/just-the-docs
-color_scheme: "dark"
-search_enabled: false
+color_scheme: "nil"
 
 # Enable or disable the site search
 search_enabled: true
