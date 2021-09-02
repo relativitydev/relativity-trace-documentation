@@ -2,3 +2,6 @@ title: "Trace Documentation"
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "dark"
 search_enabled: false
+
+# Set a path/url to a logo that will be displayed instead of the title
+logo: "https://help.relativity.com/css/images/user-documentation.png"
