@@ -3,7 +3,7 @@ remote_theme: pmarsceill/just-the-docs
 color_scheme: "nil"
 
 # Set a path/url to a logo that will be displayed instead of the title
-logo: "https://help.relativity.com/css/images/user-documentation.png"
+logo: "https://relativity.com/relativity/images/logos/relativity/relativity-trace-logo.svg"
 
 # Enable or disable the site search
 # Supports true (default) or false
