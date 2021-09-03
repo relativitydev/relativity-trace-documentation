@@ -89,15 +89,15 @@ Setting up Relativity Trace
     
 2. [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm) the `Trace_<version>.rap` from the Application Library tab in the Admin case to all workspaces
    that will run Trace 
+
 Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended. Always install Trace from the Application Library.
 {: .warn }
 
 3. Wait until application Status switches to `Installed` in the target workspaces
 
-
 ![](media/cada62f5fd9156449b21a32c2a9e34f2.png)
     
-3. Create Trace agents
+4. Create Trace agents
 
    > **NOTE:** Trace agents are Resource Pool aware.  A single resource pool supports only one `Trace Manager Agent` and an unlimited number of `Trace Worker Agents`
 
@@ -126,14 +126,14 @@ Using the Relativity Applications tab from within a workspace to install Trace i
        4. Run Interval = `60`
        5. Logging level of event details = `Log critical errors only`
    
-4. Please review the [Considerations](#infrastructure-and-environment-considerations) for system impact information. By default system processes (Tasks) are scheduled to run every 5 minutes (configurable per workspace).
+5. Please review the [Considerations](#infrastructure-and-environment-considerations) for system impact information. By default system processes (Tasks) are scheduled to run every 5 minutes (configurable per workspace).
 
    > Please reach out to `support@relativity.com` for additional information
 
-5. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](./media/user_documentation/1571073733941.png)
+6. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](./media/user_documentation/1571073733941.png)
 > **NOTE:** On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer. 
 
-6. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
+7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
 
 ![image-20200622103606164](media/user_documentation/image-20200622103606164.png)
 
