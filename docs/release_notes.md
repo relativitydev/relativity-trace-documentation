@@ -1,3 +1,9 @@
+---
+title: Relativity Trace Release Notes
+parent: Overview
+nav_order: 2
+---
+
 # Relativity Trace Release Notes
 
 - [14.4.1.2 (31 August 2021)](#14412-31-august-2021)
