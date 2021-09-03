@@ -96,7 +96,8 @@ Setting up Relativity Trace
     
 4. Create Trace agents
 
-   > **NOTE:** Trace agents are Resource Pool aware.  A single resource pool supports only one `Trace Manager Agent` and an unlimited number of `Trace Worker Agents`
+   > Trace agents are Resource Pool aware.  A single resource pool supports only one `Trace Manager Agent` and an unlimited number of `Trace Worker Agents`
+ {: .warn }
 
    1.  Trace Manager Agent
        1.  Agent Type = `Trace Manager Agent`
