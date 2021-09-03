@@ -19,7 +19,7 @@ Best Info ever
 
 ---
 
-{: .note }
+{: .warning }
 Testing notes, warnings, etc...
 
 Introduction to Relativity Trace
