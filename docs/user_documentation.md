@@ -19,6 +19,9 @@ Best Info ever
 
 ---
 
+{: .note }
+Testing notes, warnings, etc...
+
 Introduction to Relativity Trace
 ================================
 
