@@ -90,7 +90,8 @@ Setting up Relativity Trace
 2. [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm) the `Trace_<version>.rap` from the Application Library tab in the Admin case to all workspaces
    that will run Trace 
 
-   > **NOTE**: Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended. Always install Trace from the Application Library.
+Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended. Always install Trace from the Application Library.
+{: .warn }
 
 3. Wait until application Status switches to `Installed` in the target workspaces
 
