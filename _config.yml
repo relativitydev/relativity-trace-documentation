@@ -38,3 +38,8 @@ search:
 #
 # Supports true (default) or false
 heading_anchors: true
+
+callouts:
+  warning:
+    title: Warning
+    color: red
