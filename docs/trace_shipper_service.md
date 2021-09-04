@@ -1,12 +1,32 @@
+---
+layout: default
+title: Trace Shipper Service Documentation
+parent: Data Ingestion
+nav_order: 4
+---
+
 # Trace Shipper Service Documentation
+{: .no_toc }
+
+
+Description here...
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+# Overview
 
 The Trace Shipper Service is a Windows service released by Trace that delivers data from the client network to a remote Relativity Trace workspace. The service monitors configured source folders on the local network and ships files that appear in the source folders to predetermined file share locations within a Relativity workspace that are associated with Trace Data Sources. The files are deleted from the source folder once they have been transmitted to Relativity successfully. 
 
-### Overview
-
 ![TraceShipperOverview](media/TraceShipperOverview.png)
 
-### Trace Data Shipper Advantages
+# Trace Data Shipper Advantages
 1. Fully managed Windows service with Trace specific semantics and configuration
    1. Integration with IT policies managing Windows reporting/alerting
    2. Robust mechanism for retrying in case of data transfer failures
@@ -17,7 +37,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 3. Fast data transfer rates
 4. Secure (data encrypted in flight)
 
-### Prerequisites Before Installing
+# Prerequisites Before Installing
 
 - Identify/provision a Windows machine to run the Trace Shipper Service
 > **NOTE:** This should be the same machine as the Veritas Merge1 appliance VM
@@ -41,13 +61,13 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
    2. Go to Admin Operations and select a group the user belongs to.
    3. Check "Data Transfer Operations" permission.
 
-### Data Transfer Protocols
+## Data Transfer Protocols
 Transfer API (TAPI) is the underlying method of data delivery to RelativityOne.  TAPI supports multiple protocols of data transfer including:
 1. Direct - only available on-premise
 2. Aspera (FASP protocol) - default for RelativityOne
 3. Web - available on-premise
 
-### Ports and Firewall settings
+## Ports and Firewall settings
 For the Aspera data transfer protocol, the following ports must be configured:
 1. Allow outbound connections to the server on the TCP port 33001.
 2. Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
@@ -56,7 +76,7 @@ For the Aspera data transfer protocol, the following ports must be configured:
 For details on the IP ranges for your specific RelativityOne instance please contact support@relativity.com
 
 
-### Installation Steps
+# Installation Steps
 
 1. Extract `TraceShipperService_(version).zip` to a folder called `Trace Shipper Service` on the machine that will be running the service. Make sure that the files are directly under the `Trace Shipper Service` directory with no extra nested folders.
 2. Run a command prompt AS ADMINISTRATOR, navigate to the `Trace Shipper Service` folder in the command prompt, and run `TraceShipperService.exe /i`
@@ -106,13 +126,13 @@ For details on the IP ranges for your specific RelativityOne instance please con
 10. Finally, once everything is running, use Windows permissions to secure the `Trace Shipper Service` folder and the configured logs folder to only users that should be able to access the sensitive information contained within (Relativity credentials, file paths, etc.).
 11. (Optional) Create and configure Extension Scripts
 
-### Data Source Configuration Sync and Extension Scripts
+# Data Source Configuration Sync and Extension Scripts
 Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, Data Source Specific Fields changes).  Please contact support@relativity.com for more details.
 
-### Starting/Stopping Service
+# Starting/Stopping Service
 The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
 
-### Uninstall Steps
+# Uninstall Steps
 
 1. Run a command prompt AS ADMINISTRATOR
 2. Navigate to the `Trace Shipper Service` folder in the command prompt
