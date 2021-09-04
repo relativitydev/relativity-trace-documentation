@@ -1,7 +1,27 @@
-Relativity Trace Troubleshooting Guide
-================================
+layout: default
+title: Relativity Trace Troubleshooting Guide
+parent: Support
+nav_order: 1
+---
 
-*Note: most issues below are purely Relativity issues and must be resolved
+# RRelativity Trace Troubleshooting Guide
+{: .no_toc }
+
+
+Description here...
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+# Relativity Trace Troubleshooting Guide
+
+   > **Note**: most issues below are purely Relativity issues and must be resolved
 before running Trace*
 
 | Issue ID | Issue Symptoms                                               | Resolution                                                   | Notes                                                        |
