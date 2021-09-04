@@ -1,3 +1,4 @@
+---
 layout: default
 title: Relativity Trace Troubleshooting Guide
 parent: Support
