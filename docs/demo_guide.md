@@ -1,21 +1,28 @@
-Relativity Trace Demo Guide
-===========================
-  * [Demo Environment and Login Information](#demo-environment-and-login-information)
-  * [Relativity Trace: An Overview of Relativity for Compliance](#relativity-trace--an-overview-of-relativity-for-compliance)
-  * [Goals of the Demo](#goals-of-the-demo)
-    + [Demo A](#demo-a)
-    + [Demo B](#demo-b)
-    + [Workspace overview](#workspace-overview)
-- [DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)](#demo-a-enabling-office-365-data-source-and-auto-tagging-documents-alerts)
-    + [Section 1: Rules Overview](#section-1--rules-overview)
-    + [Section 2: Importing Data and Running Rules](#section-2--importing-data-and-running-rules)
-    + [Section 3: Viewing Results](#section-3--viewing-results)
-    + [Section 4: Recap](#section-4--recap)
-- [DEMO B: Running a Disposal Rule](#demo-b-running-a-disposal-rule)
+---
+layout: default
+title: Relativity Trace Demo Guide
+parent: Support
+nav_order: 4
+---
 
-### Demo Environment and Login Information
+# Relativity Trace Demo Guide
+{: .no_toc }
 
-Reach out to `trace@relativity.com`
+
+Description here...
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+# Demo Environment and Login Information
+
+Reach out to `support@relativity.com`
 
 Relativity Trace: An Overview of Relativity for Compliance
 ----------------------------------------------------------
@@ -49,7 +56,7 @@ Goals of the Demo
 -   Familiarize you with broad Trace capabilities in a **sample compliance
     workflow**.
 
-### Demo A 
+## Demo A 
 
 In this demo we will be monitoring for “Market Abuse” conversations and
 automatically flag those documents as they propagate though Trace flow.
@@ -65,21 +72,20 @@ This demo has 4 simple steps:
 
 4.  Viewing the results of the Trace Rules Engine (tagged documents)
 
-### Demo B
+## Demo B
 
 In this demo we will be enabling a disposal rule that is based on Data Disposal
 action to automatically delete data outside of a configured data retention
 policy.
 
-### Workspace overview 
+## Workspace overview 
 
 -   **Trace Demo**: Workspace with multiple pre-created rules and Office 365
     Data Source.
 
-DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
-===========================================================================
+# DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 
-### Section 1: Rules Overview
+## Section 1: Rules Overview
 
 1.  Go into the **Trace Demo** workspace
     ![](media/e0c6e9c767be9be77cafb3db4eebef9b.png)
@@ -113,7 +119,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
    documents
    ![](media/demo_guide/Section1.4.png)
 
-### Section 2: Importing Data and Running Rules
+## Section 2: Importing Data and Running Rules
 
 1.  Now let’s test our rules by adding live stream of data into the workspace
     with Office 365 Data Source. Go to the **Trace:Data Sources** tab
@@ -147,7 +153,7 @@ DEMO A: Enabling Office 365 Data Source and auto-tagging documents (alerts)
 As time goes on, more batches with data will be created and ingested:
 ![](media/c3ef4b4a771fbfd3d7b25c7dc5ccf4dc.png)
 
-### Section 3: Viewing Results
+## Section 3: Viewing Results
 
 1. Click on **Documents** tab:
 
@@ -198,7 +204,7 @@ As time goes on, more batches with data will be created and ingested:
    - Related documents are displayed in the “Family” section
 
 
-### Section 4: Recap
+## Section 4: Recap
 
 Thanks for completing Demo A! Quick recap, here’s what we did:
 
@@ -218,8 +224,7 @@ Thanks for completing Demo A! Quick recap, here’s what we did:
 Let us know what you think! Reach out to `trace@relativity.com` with any
 feedback. Thanks!
 
-DEMO B: Running a Disposal Rule
-===============================
+# DEMO B: Running a Disposal Rule
 
 1.  Go into the **Trace Demo** workspace
 
