@@ -1,18 +1,30 @@
-Relativity Trace Workspace
-===========================
+---
+layout: default
+title: Relativity Trace Workspace
+parent: Support
+nav_order: 3
+---
+
+# Relativity Trace Workspace
+{: .no_toc }
+
+
+Description here...
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+# Overview
 
 When [Relativity Trace](https://relativitydev.github.io/relativity-trace-documentation/user_documentation) is installed into a workspace, that workspace is limited in Relativity features to provide for a streamlined approach to monitor all forms of communication (audio, email, and chat plus their attachments). This allows for a more cost-effective pricing for Trace by providing only the features you need for proactive compliance monitoring and surveillance.
 
-This page contains the following information:
-
-- [Trace workspace capabilities](#trace-workspace-capabilities)
-- [Trace workspace restrictions](#trace-workspace-restrictions)
-- [Basic Trace workspace usage workflow](#basic-trace-workspace-usage-workflow)
-
-
-
-Trace workspace capabilities
-============================
+# Trace workspace capabilities
 
 The following Relativity features can be used in a Trace workspace:
 
@@ -30,8 +42,7 @@ The following Relativity features can be used in a Trace workspace:
 ![](media/trace_workspace_capabilities.png)
 
 
-Trace workspace restrictions
-============================
+# Trace workspace restrictions
 
 The following Relativity features are restricted from use in a Trace workspace:
 
@@ -58,8 +69,8 @@ Client cannot download applications that would enable any restricted features, o
 ![](media/trace_workspace_restrictions.png)
 
 
-Basic Trace workspace usage workflow
-====================================
+# Basic Trace workspace usage workflow
+
 Using the Trace workspace allows you to focus on the alerts generated from the [Monitored Individuals](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#monitored-individuals) in your [Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources). After Trace ingests data from Monitored Individuals and pushes alerts to the Document object, reviewers can begin reviewing the alerts for true and false positives. You can then leverage Active Learning to conduct a prioritized review of the alerts. You can also use the other tools in the Analytics suite to more quickly drill down to the true alerts.
 
 
