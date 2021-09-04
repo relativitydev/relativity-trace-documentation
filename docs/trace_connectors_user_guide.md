@@ -20,25 +20,11 @@ Description here...
 
 ---
 
-# Relativity Trace Data Source User Guide
+# Overview
 
 For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Veritas Merge1).  You will also need to install additional hardware.
 
-- [Trace Shipper Data Flow Overview](#trace-shipper-data-flow-overview)
-- [Installation of Trace Shipper](#installation-of-trace-shipper)
-  * [Pre-requisites](#pre-requisites)
-  * [Getting Started with Installation](#getting-started-with-installation)
-  * [Trace Shipper Service Configuration](#trace-shipper-service-configuration)
-  * [Setting Up Data Sources in Relativity](#setting-up-data-sources-in-relativity)
-  * [Installation Steps for Veritas Merge1](#installation-steps-for-veritas-merge1)
-  * [Set Up Veritas Merge1](#set-up-veritas-merge1)
-    + [Configuring Veritas Merge1 Importers](#configuring-veritas-merge1-importers)
-- [Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony](#appendix-a-bloomberg--ice-chat-thomson-reuters--symphony)
-- [Appendix B: Veritas Merge1 Importer Schedule Helper](#appendix-b-veritas-merge1-importer-schedule-helper)
-- [Appendix C: High Availability Setup for Veritas Merge1](#appendix-c-high-availability-setup-for-veritas-merge1)
-- [Appendix D: Sync of Config Folder](#appendix-d-sync-of-config-folder)
-
-## Trace Shipper Data Flow Overview 
+# Trace Shipper Data Flow Overview 
 
 ![image-20200817164930647](media/trace_connectors_user_guide/image-20200817164930647.png)
 
@@ -50,9 +36,9 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 
 
-## Installation of Trace Shipper
+# Installation of Trace Shipper
 
-### Pre-requisites
+## Pre-requisites
 
 **System Requirements**
 
@@ -89,7 +75,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
        >  **NOTE:** We recommend to take daily backups and keep them for 1 week
        >  **NOTE:** We recommend to shrink database daily in order not to run out of disk space
 
-### Getting Started with Installation
+## Getting Started with Installation
 
 To set up Trace Shipper, you will need:
 
@@ -116,7 +102,7 @@ Perform the following steps in order to get started:
       > * Globanet\Exchange
       > * Globanet\ICE
 
-### Trace Shipper Service Configuration
+## Trace Shipper Service Configuration
 
 Trace Shipper Service needs to be installed and configured to send data to your Relativity Trace workspace.  Refer to the [Trace Shipper Guide](trace_shipper_service.md) for instructions on how to install and configure the Trace Shipper Service. Use the directories and connection info developed in the previous section configuration values.
 
@@ -126,7 +112,7 @@ Start the Shipper Service when you have finished configuration.
 
 Contact support@relativity.com if you need assistance.
 
-### Setting Up Data Sources in Relativity
+## Setting Up Data Sources in Relativity
 
 In the Trace enabled Relativity workspace configured in [Trace Shipper Service Configuration](#trace-shippper-service-configuration) , perform the following steps:
 
@@ -162,13 +148,13 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
 
 > **NOTE:** All Trace Data Sources serialize their current state to a JSON file and their monitored individuals to a CSV file,  both of which can be retrieved by Trace Shipper. See Appendix D for more information.
 
-### Installation Steps for Veritas Merge1
+## Installation Steps for Veritas Merge1
 
 Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Merge1. 
 
 Contact support@relativity.com if you need assistance with installation steps.
 
-### Set Up Veritas Merge1
+## Set Up Veritas Merge1
 
 Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Merge1 is a Merge1 `target` directory, and each needs a location to store logs related to the retrieval of the data by Merge1. Create a log directory for each.
 
@@ -176,7 +162,7 @@ In order for Support to gain access to your Merge1 logs and provide support, ple
 
 > **EXAMPLE:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
 
-#### Configuring Veritas Merge1 Importers
+### Configuring Veritas Merge1 Importers
 
 For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
@@ -237,7 +223,7 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
 
 
-## Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony
+# Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony
 
 All of these Data Sources work similar via scheduled drops of data to an FTP. Merge1 picks it up from SFTP and delivers it to Trace.
 
@@ -251,7 +237,7 @@ See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaw
 
 > **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
 
-## Appendix B: Veritas Merge1 Importer Schedule Helper
+# Appendix B: Veritas Merge1 Importer Schedule Helper
 
 In order to ensure that data source runs **every X minutes** run the following steps OR manually select appropriate time slots:
 
@@ -271,13 +257,13 @@ In order to ensure that data source runs **every X minutes** run the following s
     2. ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
     3. At this point Importer will be set to run every x minutes
     
-## Appendix C: High Availability Setup for Veritas Merge1
+# Appendix C: High Availability Setup for Veritas Merge1
 
 It is possible to setup Merge1 in HA mode. Recommended approach is to setup secondary Merge1 server that runs the same version of the Merge1 and installed in the same path as the production. You also need to have the same folder structure for all connectors (Import, quarantine, log folders). 
 
 Once that is done, the secondary Merge1 should be connected to the same Merge1 DB as the primary Merge1 server. If for any reason the production server goes down, you just need to run the services on the second Merge1. Please note that no service should be started on the secondary Merge1 if the production is running. 
 For the DB, you can take backups on a daily basis or apply any other standard SQL Server  HA scenarios that you wish.
 
-## Appendix D: Sync of Config Folder
+# Appendix D: Sync of Config Folder
 
 All Data Sources in Relativity Trace serialize their current state as a JSON file at regular intervals. They also save a CSV file of all the linked monitored individuals as well. These files are saved in a Config folder in the Source or Drop folder for each data source. Trace Shipper can be configured to retrieve these Config folders, which allows for a way to sync data sources and monitored individuals from local to remote instance.
