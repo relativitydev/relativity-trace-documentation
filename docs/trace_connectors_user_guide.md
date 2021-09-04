@@ -1,3 +1,25 @@
+---
+layout: default
+title: Relativity Trace Data Source
+parent: Data Ingestion
+nav_order: 1
+---
+
+# Relativity Trace Data Source
+{: .no_toc }
+
+
+Description here...
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 # Relativity Trace Data Source User Guide
 
 For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Veritas Merge1).  You will also need to install additional hardware.
