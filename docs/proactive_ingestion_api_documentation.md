@@ -1,25 +1,24 @@
-# Relativity Trace API
+---
+layout: default
+title: Relativity Trace API
+parent: Data Ingestion
+nav_order: 3
+---
 
-- [Overview](#overview)
-- [Ingest Data From Custom Data Sources](#ingest-data-from-custom-data-sources)
-  * [Glossary](#glossary)
-  * [Prerequisites: Load File and Ingestion Profile](#prerequisites-load-file-and-ingestion-profile)
-  * [Data Batch Overview](#data-batch-overview)
-  * [Ingestion API Usage](#ingestion-api-usage)
-  * [Data Batch creation (Quick Start)](#data-batch-creation-quick-start)
-    + [Data Batch Statuses](#data-batch-statuses)
-    + [Create Data Batch](#create-data-batch)
-    + [Update Data Batch](#update-data-batch)
-  * [Workflow Recommendations](#workflow-recommendations)
-    + [Security](#security)
-    + [Load File Specifications](#load-file-specifications)
-      - [Text Fields](#text-fields)
-    + [Data Mappings stored on Ingestion Profile](#data-mappings-stored-on-ingestion-profile)
-      - [Required (absolute musts)](#required--absolute-musts)
-      - [Recommended](#recommended)
-    + [Data Batches](#data-batches)
-    + [Error Handling](#error-handling)
-- [Ingest Monitored Individuals Information](#ingest-monitored-individuals-information)
+# Relativity Trace API
+{: .no_toc }
+
+
+Description here...
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
 
 # Overview
 
@@ -633,5 +632,4 @@ namespace TraceREST
 	}
 	#endregion
 }
-
 ```
