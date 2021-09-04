@@ -1,9 +1,26 @@
-# Relativity Trace Automated Tests (BIST)
+---
+layout: default
+title: Relativity Trace Automated Tests (BIST)
+parent: Support
+nav_order: 2
+---
 
-* [How to Run **BIST**](#how-to-runbist)
-* [Manual Tests](#manual-tests)
-  + [Pre-requisites](#pre-requisites)
-  + [Test Verification **[AUTOMATED]**](#test-verification-automated)
+# Relativity Trace Automated Tests (BIST)
+{: .no_toc }
+
+
+Description here...
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+# Overview
 
 Trace BIST (Built-in self test) contains automated tasks that perform basic smoke tests to ensure that
 Relativity and Trace have been set up and configured properly. You only need to enable BIST, and let it 
@@ -14,7 +31,7 @@ Manual Tests are recommended but not required to be run. Steps marked with
 to run Manual Tests, it is recommended that you run **BIST** first.
 
 
-## How to Run **BIST**
+# How to Run **BIST**
 
 > **NOTE:** BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates test documents/rules/terms that do not get removed.
 
@@ -47,9 +64,9 @@ to run Manual Tests, it is recommended that you run **BIST** first.
 
 ![image-20191218145951065](media/bist_smoke_tests/image-20191218145951065.png)
 
-## Manual Tests
+# Manual Tests
 
-### Pre-requisites
+## Pre-requisites
 
 1.  Create a new Test Workspace
 
@@ -161,7 +178,7 @@ to run Manual Tests, it is recommended that you run **BIST** first.
     ![](media/bist_smoke_tests/BIST_RuleGenerators.png)
     
     
-### Test Verification [AUTOMATED]
+## Test Verification [AUTOMATED]
 
 **Final expected state of the documents in workspace:**
 
