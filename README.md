@@ -1,4 +1,11 @@
-# Relativity Trace Documentation
+---
+title: Documentation Contributor Guide
+nav_order: 5
+---
+
+Description Here
+
+# Documentation Contributor Guide
 ## General Information
 
 Relativity Trace User and Technical documentation
