@@ -1,56 +1,24 @@
 ---
+layout: default
 title: Relativity Trace Release Notes
 parent: Overview
 nav_order: 2
 ---
 
 # Relativity Trace Release Notes
+{: .no_toc }
 
-- [14.4.1.2 (31 August 2021)](#14412-31-august-2021)
 
-- [14.3.0.4 (27 July 2021) - DEPRECATED](#14304-27-july-2021---deprecated)
+Description here...
+{: .fs-6 .fw-300 }
 
-- [14.2.0.5 (24 June 2021) - DEPRECATED](#14205-24-june-2021---deprecated)
+## Table of contents
+{: .no_toc .text-delta }
 
-- [14.1.0.6 (18 May 2021) - DEPRECATED](#14106-18-may-2021---deprecated)
+1. TOC
+{:toc}
 
-- [14.0.0.4 (13 April 2021) - DEPRECATED](#14004-13-april-2021---deprecated)
-
-- [13.4.0.6 (9 March 2021) - DEPRECATED](#13406-9-march-2021---deprecated)
-
-- [13.3.0.18 (5 February 2021) - DEPRECATED](#133018-5-february-2021---deprecated)
-
-- [13.2.0.3 (15 December 2020) - DEPRECATED](#13203-15-december-2020---deprecated)
-
-- [13.1.0.2 (2 November 2020) - DEPRECATED](#13102-2-november-2020---deprecated)
-
-- [13.0.0.8 (5 October 2020) - DEPRECATED](#13008-5-october-2020---deprecated)
-
-- [12.5.0.6 (17 August 2020) - DEPRECATED](#12506-17-august-2020---deprecated)
-
-- [12.4.1.1 (14 July 2020) - DEPRECATED](#12411-14-july-2020---deprecated)
-
-- [12.3.0.3 (1 June 2020) - DEPRECATED](#12303-1-june-2020---deprecated)
-
-- [12.2.0.13 (27 April 2020) - DEPRECATED](#122013-27-april-2020---deprecated)
-
-- [12.1.0.13 (30 March 2020) - DEPRECATED](#121013-30-march-2020---deprecated)
-
-- [12.0.8.2 (24 February 2020) - DEPRECATED](#12082-24-february-2020---deprecated)
-
-- [12.0.5.2 (24 October 2019) - DEPRECATED](#12052-24-october-2019---deprecated)
-
-- [11.2.11.1 (13 September 2019) - DEPRECATED](#112111-13-september-2019---deprecated)
-
-- [11.2.10.1 (12 August 2019) - DEPRECATED](#112101-12-august-2019---deprecated)
-
-- [11.2.9.2 (15 July 2019) - DEPRECATED](#11292-15-july-2019---deprecated)
-
-- [11.2.6.1 (17 June 2019) - DEPRECATED](#11261-17-june-2019---deprecated)
-
-- [11.2.4.4 (10 June 2019) - DEPRECATED](#11244-10-june-2019---deprecated)
-
-  
+---
 
 # 14.4.1.2 (31 August 2021)
 
