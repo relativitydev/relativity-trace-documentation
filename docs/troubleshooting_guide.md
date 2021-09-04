@@ -5,7 +5,7 @@ parent: Support
 nav_order: 1
 ---
 
-# RRelativity Trace Troubleshooting Guide
+# Relativity Trace Troubleshooting Guide
 {: .no_toc }
 
 
