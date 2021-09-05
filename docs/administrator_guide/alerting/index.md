@@ -2,10 +2,10 @@
 layout: default
 title: Alerting
 parent: Administrator Guide
-nav_order: 2
+nav_order: 6
 ---
 
-# Standard Data Flow
+# Alerting
 {: .no_toc }
 
 
