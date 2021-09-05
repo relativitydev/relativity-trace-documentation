@@ -4,7 +4,6 @@ title: Data Sources
 parent: Collection
 grand_parent: Administrator Guide
 nav_order: 1
-has_children: true
 ---
 
 # Data Sources
