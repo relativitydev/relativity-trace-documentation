@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Relativity Trace Authorization
+title: Authorization
 parent: Administrator Guide
 nav_order: 2
 ---
