@@ -10,7 +10,4 @@ nav_order: 3
 
 Trace Users are those who are directly reviewing alerts and setting policies within an organization. This User Guide will help you be more effective in proactively identifying risky behavior in your organization and making effective decisions on the actions required.
 {: .fs-6 .fw-300 }
-
 {:toc}
-
----
