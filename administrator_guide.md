@@ -10,9 +10,4 @@ nav_order: 4
 
 Trace Administrators are those who are configuring the system for Trace Users. This Administrator Guide will help you be more effective at meeting organization's monitoring requirements within Trace.
 {: .fs-6 .fw-300 }
-
-
-1. TOC
 {:toc}
-
----
