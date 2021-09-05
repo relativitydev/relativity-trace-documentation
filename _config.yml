@@ -55,3 +55,8 @@ back_to_top_text: "Back to top"
 aux_links:
   "Contact Support":
     - "mailto:support@relativity.com"
+
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
