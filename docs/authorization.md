@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Relativity Trace Authorization
-parent: Data Ingestion
+parent: Administrator Guide
 nav_order: 2
 ---
 
