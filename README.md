@@ -1,5 +1,5 @@
 ---
-title: Documentation Contributor Guide
+title: Contribute to Documentation
 nav_order: 6
 ---
 Trace Documentation is open source, meaning you can suggest changes to improve the content.
