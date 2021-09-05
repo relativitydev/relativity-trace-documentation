@@ -5,11 +5,10 @@ parent: What's New
 nav_order: 1
 ---
 
-# Relativity Trace Release Notes
+# Release Notes
 {: .no_toc }
 
-
-Description here...
+New features, enhancements, and defect fixes are released in each monthly update.
 {: .fs-6 .fw-300 }
 
 <details markdown="block">
@@ -49,7 +48,7 @@ Description here...
 - Fixed a rare issue where Data Batches in the non-terminal Retrieval status would wrongfully move to Abandoned
 - Fixed a performance issue in Data Retrieval for the O365 Data Source 
 
-# 14.3.0.4 (27 July 2021) - DEPRECATED
+# 14.3.0.4 (27 July 2021)
 
 **Compatibility**
 
@@ -72,7 +71,7 @@ Description here...
 - Fixed an issue where extra whitespace could prevent Exempt List matches
 - Fixed an intermittent issue with Active Learning that caused indexes to fall into a failure state
 
-# 14.2.0.5 (24 June 2021) - DEPRECATED
+# 14.2.0.5 (24 June 2021)
 
 **Compatibility**
 
@@ -101,7 +100,7 @@ Description here...
 - Fixed an issue where extremely large data batches would fail after successfully importing documents
 - Fixed an issue where Scripts with certain types of input parameters would fail to run within Advanced Actions
 
-# 14.1.0.6 (18 May 2021) - DEPRECATED
+# 14.1.0.6 (18 May 2021)
 
 **Compatibility**
 
@@ -125,7 +124,7 @@ Description here...
 - Fixed an issue with Trace Rule auditing that could cause system slowness
 - Fixed an issue where the Rule Generators were not included in copied workspaces
 
-# 14.0.0.4 (13 April 2021) - DEPRECATED
+# 14.0.0.4 (13 April 2021)
 
 **Compatibility**
 
@@ -149,7 +148,7 @@ Description here...
 - Fixed an issue with Data Batch Retry that caused the operation to fail under certain conditions
 - Fixed an issue where the “Omit from Alerts” field was not being cleared when Trace Document Retry was run
 
-# 13.4.0.6 (9 March 2021) - DEPRECATED
+# 13.4.0.6 (9 March 2021)
 
 **Compatibility**
 
@@ -174,7 +173,7 @@ Description here...
 - Fixed an issue where Trace Document Retry failure causes operation to fall into unrecoverable state
 - Fixed an issue where “Trace AI Calculation Script” failed to calculate precision and recall when Rank values reflected multiple object fields
 
-# 13.3.0.18 (5 February 2021) - DEPRECATED
+# 13.3.0.18 (5 February 2021)
 
 **Compatibility**
 
@@ -200,7 +199,7 @@ Description here...
 - Improved error handling for data batches that are wrongly created without a loadfile.
 - Fixed issue where data batch retry could not be run for custom data sources.
 
-# 13.2.0.3 (15 December 2020) - DEPRECATED
+# 13.2.0.3 (15 December 2020)
 
 **Relativity Compatibility**
 
@@ -225,7 +224,7 @@ Description here...
 
   
 
-# 13.1.0.2 (2 November 2020) - DEPRECATED
+# 13.1.0.2 (2 November 2020)
 
 **Relativity Compatibility**
 
@@ -252,7 +251,7 @@ Description here...
 
   
 
-# 13.0.0.8 (5 October 2020) - DEPRECATED
+# 13.0.0.8 (5 October 2020)
 
 **Relativity Compatibility**
 
@@ -277,7 +276,7 @@ Description here...
 
   
 
-# 12.5.0.6 (17 August 2020) - DEPRECATED
+# 12.5.0.6 (17 August 2020)
 
 **Relativity Compatibility**
 
@@ -322,7 +321,7 @@ Description here...
 
   
 
-# 12.4.1.1 (14 July 2020) - DEPRECATED
+# 12.4.1.1 (14 July 2020)
 
 **Relativity Compatibility**
 
@@ -361,7 +360,7 @@ Description here...
 
 
 
-# 12.3.0.3 (1 June 2020) - DEPRECATED
+# 12.3.0.3 (1 June 2020)
 
 **Relativity Compatibility**
 
@@ -389,7 +388,7 @@ Description here...
 
 - All Office 365 customers should migrate to use of OAuth 2.0. Microsoft will no longer allow basic username/password authentication in O365 starting in October 2020 and Data Sources using it will begin failing. Review [Relativity Trace Authorization](https://relativitydev.github.io/relativity-trace-documentation/authorization) documentation for OAuth 2.0 information.
 
-# 12.2.0.13 (27 April 2020) - DEPRECATED
+# 12.2.0.13 (27 April 2020)
 
 **Relativity Compatibility**
 
@@ -412,7 +411,7 @@ Description here...
 
 - The unsupported workflow of adding a deduplication transform to a Relativity Native Data Source is no longer possible due to data integrity concerns
 
-# 12.1.0.13 (30 March 2020) - DEPRECATED
+# 12.1.0.13 (30 March 2020)
 
 **Relativity Compatibility**
 
@@ -448,7 +447,7 @@ Description here...
 
 - Update an existing Term view or create a new one if you would like to display the now orphaned "Term Category" field
 
-# 12.0.8.2 (24 February 2020) - DEPRECATED
+# 12.0.8.2 (24 February 2020)
 
 **Relativity Compatibility**
 
@@ -514,7 +513,7 @@ Description here...
 
 - None, if upgrading from a currently supported release
 
-# 12.0.5.2 (24 October 2019) - DEPRECATED
+# 12.0.5.2 (24 October 2019)
 
 **Relativity Compatibility**
 
@@ -557,7 +556,7 @@ Description here...
 
 - This is a **major** version change of Relativity Trace.
 
-# 11.2.11.1 (13 September 2019) - DEPRECATED
+# 11.2.11.1 (13 September 2019)
 
 > **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
@@ -570,7 +569,7 @@ Description here...
 - Fixed an issue where Email action was automatically adding trace@relativity.com to recipient list
 
 
-# 11.2.10.1 (12 August 2019) - DEPRECATED
+# 11.2.10.1 (12 August 2019)
 
 > **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
@@ -582,7 +581,7 @@ Description here...
 
 - Fixed an issue where under certain failures of Data Retrieval task, Globanet based data sources would delete retrieved data without extracting it
 
-# 11.2.9.2 (15 July 2019) - DEPRECATED
+# 11.2.9.2 (15 July 2019)
 
 > **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
@@ -639,7 +638,7 @@ Description here...
   settings for each impacted data source to be a relative folder path within
   the default file share configured for the workspace.
 
-# 11.2.6.1 (17 June 2019) - DEPRECATED
+# 11.2.6.1 (17 June 2019)
 
 > **DEPRECATION NOTE:** This version of Trace is **no longer supported**
 
@@ -682,6 +681,6 @@ Description here...
   settings for each impacted data source to be a relative folder path within
   the default file share configured for the workspace.
 
-# 11.2.4.4 (10 June 2019) - DEPRECATED
+# 11.2.4.4 (10 June 2019)
 
 > **DEPRECATION NOTE:** This version of Trace is **no longer supported**
