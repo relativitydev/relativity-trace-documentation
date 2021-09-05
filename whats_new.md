@@ -11,9 +11,6 @@ nav_order: 2
 The Trace product is constantly improving with new innovative functionality, enhancements to existing features, and improvements to stability and performance of the system.
 {: .fs-6 .fw-300 }
 
-## Table of contents
-{: .no_toc .text-delta }
-
 1. TOC
 {:toc}
 
