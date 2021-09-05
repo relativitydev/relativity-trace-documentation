@@ -5,7 +5,7 @@ parent: Administrator Guide
 nav_order: 10
 ---
 
-# Relativity Trace API
+# Extensible API's
 {: .no_toc }
 
 
