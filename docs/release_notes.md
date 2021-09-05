@@ -12,7 +12,7 @@ nav_order: 1
 Description here...
 {: .fs-6 .fw-300 }
 
-<details open markdown="block">
+<details close markdown="block">
   <summary>
     Table of contents
   </summary>
