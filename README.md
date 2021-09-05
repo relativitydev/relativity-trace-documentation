@@ -2,8 +2,7 @@
 title: Documentation Contributor Guide
 nav_order: 6
 ---
-
-Description Here
+Trace Documentation is open source, meaning you can suggest changes to improve the content.
 
 # Documentation Contributor Guide
 ## General Information
