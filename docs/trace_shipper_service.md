@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Trace Shipper Service Documentation
-parent: Data Ingestion
+title: Shipper Service
+parent: Administrator Guide
 nav_order: 4
 ---
 

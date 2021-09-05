@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Relativity Trace Workspace
+title: Workspace Details
 parent: Support
 nav_order: 3
 ---

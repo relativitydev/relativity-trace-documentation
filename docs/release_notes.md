@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Relativity Trace Release Notes
-parent: Overview
-nav_order: 2
+parent: What's New
+nav_order: 1
 ---
 
 # Relativity Trace Release Notes

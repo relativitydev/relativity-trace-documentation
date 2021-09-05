@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Relativity Trace Troubleshooting Guide
+title: Troubleshooting
 parent: Support
 nav_order: 1
 ---

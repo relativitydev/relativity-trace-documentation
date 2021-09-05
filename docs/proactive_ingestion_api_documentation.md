@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Relativity Trace API
-parent: Data Ingestion
+title: Extensible API's
+parent: Administrator Guide
 nav_order: 3
 ---
 
