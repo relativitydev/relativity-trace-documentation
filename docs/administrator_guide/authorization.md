@@ -1,19 +1,17 @@
 ---
 layout: default
-title: Authorization
-parent: Administrator Guide
+title: Azure Authorization
+parent: Collection
+grand_parent: Administrator Guide
 nav_order: 2
 ---
 
-# Relativity Trace Authorization
+# Data Sources
 {: .no_toc }
 
 
 Description here...
 {: .fs-6 .fw-300 }
-
-## Table of contents
-{: .no_toc .text-delta }
 
 1. TOC
 {:toc}
