@@ -6,7 +6,7 @@ grand_parent: Administrator Guide
 nav_order: 2
 ---
 
-# Data Sources
+# Azure Authorization
 {: .no_toc }
 
 
