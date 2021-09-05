@@ -3,6 +3,7 @@ layout: default
 title: Alerting
 parent: Administrator Guide
 nav_order: 6
+has_children: true
 ---
 
 # Alerting

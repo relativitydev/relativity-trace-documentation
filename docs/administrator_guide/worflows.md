@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Permissions
+title: Workflows
 parent: Administrator Guide
-nav_order: 9
+nav_order: 7
 ---
 
-# Permissions
+# Workflows
 {: .no_toc }
 
 
