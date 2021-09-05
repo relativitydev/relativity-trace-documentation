@@ -23,8 +23,8 @@ $callouts: (
     }
 }
 
-.nav-list-link.active {color: #F8981D !default;}
+.nav-list-link.active {color: #F8981D !important;}
 
-.nav-list-link {color: $grey-dk-100 !default;}
+.nav-list-link {color: $grey-dk-100 !important;}
 
 .site-footer {display: none;}
