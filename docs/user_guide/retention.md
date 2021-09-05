@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Retention
-parent: Reporting
+parent: User Guide
 nav_order: 8
 ---
 
