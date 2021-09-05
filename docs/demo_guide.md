@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Relativity Trace Demo Guide
+title: Partner Demo Guide
 parent: Support
 nav_order: 4
 ---

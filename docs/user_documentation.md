@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Relativity Trace User Documentation
-parent: Overview
+title: User Documentation
+parent: User Guide
 nav_order: 1
 ---
 

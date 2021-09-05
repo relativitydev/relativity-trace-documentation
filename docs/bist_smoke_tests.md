@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Relativity Trace Automated Tests (BIST)
+title: Automated Testing (BIST)
 parent: Support
 nav_order: 2
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Relativity Trace Data Source
-parent: Data Ingestion
+title: Data Source
+parent: Administrator Guide
 nav_order: 1
 ---
 
