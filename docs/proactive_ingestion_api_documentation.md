@@ -386,7 +386,7 @@ Sample .NET console app code below demonstrates:
 - Authentication to Relativity REST API
 - Ready / query of Trace-specific RDOs
 
-```CSharp
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
