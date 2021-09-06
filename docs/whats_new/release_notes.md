@@ -22,12 +22,9 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 ---
 
+> **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
+
 # 14.4.1.2 (31 August 2021)
-
-**Compatibility**
-
-- Relativity Version: **RelativityOne ONLY**
-- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
 
 **Features**
 
@@ -50,11 +47,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 14.3.0.4 (27 July 2021)
 
-**Compatibility**
-
-- Relativity Version: **RelativityOne ONLY**
-- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
-
 **Features**
 
 - Added Trace Surveillance Policies in Spanish and German to identify misconduct within global organizations
@@ -72,11 +64,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Fixed an intermittent issue with Active Learning that caused indexes to fall into a failure state
 
 # 14.2.0.5 (24 June 2021)
-
-**Compatibility**
-
-- Relativity Version: **RelativityOne ONLY**
-- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
 
 **Features**
 
@@ -102,11 +89,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 14.1.0.6 (18 May 2021)
 
-**Compatibility**
-
-- Relativity Version: **RelativityOne ONLY**
-- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
-
 **Features**
 
 - Added [Proofpoint Enterprise Archive](https://www.proofpoint.com/us/products/archiving-and-compliance/enterprise-archive) as a new supported data source
@@ -125,11 +107,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Fixed an issue where the Rule Generators were not included in copied workspaces
 
 # 14.0.0.4 (13 April 2021)
-
-**Compatibility**
-
-- Relativity Version: **RelativityOne ONLY**
-- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
 
 **Features**
 
@@ -150,11 +127,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 13.4.0.6 (9 March 2021)
 
-**Compatibility**
-
-- Relativity Version: **RelativityOne ONLY**
-- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
-
 **Features**
 
 - Added native “Microsoft Exchange On-Premises” data sources for Email, Calendar, and Skype data
@@ -174,11 +146,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Fixed an issue where “Trace AI Calculation Script” failed to calculate precision and recall when Rank values reflected multiple object fields
 
 # 13.3.0.18 (5 February 2021)
-
-**Compatibility**
-
-- Relativity Version: **RelativityOne ONLY**
-- Transfer API Services RAP (for Trace Shipper): **1.0.1.11**
 
 **Features**
 
@@ -201,10 +168,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 13.2.0.3 (15 December 2020)
 
-**Relativity Compatibility**
-
-- **≥ 10.3.287.3**
-
 **Features**
 
 - When viewing a Rule, you can now click on the associated Saved Search to navigate directly to it.
@@ -225,10 +188,6 @@ New features, enhancements, and defect fixes are released in each monthly update
   
 
 # 13.1.0.2 (2 November 2020)
-
-**Relativity Compatibility**
-
-- **≥ 10.3.287.3**
 
 **Features**
 
@@ -253,10 +212,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 13.0.0.8 (5 October 2020)
 
-**Relativity Compatibility**
-
-- **≥ 10.3.287.3**
-
 **Features**
 
 - Introducing new Trace Ingestion Profiles to simplify the setup of Data Sources and increase the resiliency of automated data ingestion
@@ -277,10 +232,6 @@ New features, enhancements, and defect fixes are released in each monthly update
   
 
 # 12.5.0.6 (17 August 2020)
-
-**Relativity Compatibility**
-
-- **≥ 10.3.287.3**
 
 **Features**
 
@@ -323,10 +274,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 12.4.1.1 (14 July 2020)
 
-**Relativity Compatibility**
-
-- **≥ 10.3.287.3**
-
 **Features**
 
 - Created the Communication Direction Data Transformation Type, which can be used to determine the direction of communication (Inbound, Outbound, Internal, External, Undefined) based on the Internal Domains defined in the Trace workspace
@@ -362,10 +309,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 12.3.0.3 (1 June 2020)
 
-**Relativity Compatibility**
-
-- **≥ 10.3.287.3**
-
 **Features**
 
 - Microsoft Exchange/O365 Data Source now supports OAuth 2.0 including support for client credential flow where Relativity Trace is registered as a service principal
@@ -390,10 +333,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 12.2.0.13 (27 April 2020)
 
-**Relativity Compatibility**
-
-- **≥ 10.3.287.3**
-
 **Features**
 
 - Added configuration retrieval and log file visibility to the Trace Shipper Service (BETA)
@@ -412,10 +351,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 - The unsupported workflow of adding a deduplication transform to a Relativity Native Data Source is no longer possible due to data integrity concerns
 
 # 12.1.0.13 (30 March 2020)
-
-**Relativity Compatibility**
-
-- \> 9.6.202.10
 
 **Features**
 
@@ -448,10 +383,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Update an existing Term view or create a new one if you would like to display the now orphaned "Term Category" field
 
 # 12.0.8.2 (24 February 2020)
-
-**Relativity Compatibility**
-
-- \> 9.6.202.10
 
 **Features**
 
@@ -515,10 +446,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 12.0.5.2 (24 October 2019)
 
-**Relativity Compatibility**
-
-- \> 9.6.202.10
-
 **Features**
 
 - New Data Enrichment Task performs data extraction independently of data retrieval, allows for better throughput and scalability of data ingestion pipeline
@@ -558,12 +485,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 11.2.11.1 (13 September 2019)
 
-> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
-
-**Relativity Compatibility**
-
-- \> 9.6.202.10
-
 **Defect Fixes**
 
 - Fixed an issue where Email action was automatically adding trace@relativity.com to recipient list
@@ -571,23 +492,11 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 11.2.10.1 (12 August 2019)
 
-> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
-
-**Relativity Compatibility**
-
-- \> 9.6.202.10
-
 **Defect Fixes**
 
 - Fixed an issue where under certain failures of Data Retrieval task, Globanet based data sources would delete retrieved data without extracting it
 
 # 11.2.9.2 (15 July 2019)
-
-> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
-
-**Relativity Compatibility**
-
-- \> 9.6.202.10
 
 **Features**
 
@@ -640,12 +549,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 # 11.2.6.1 (17 June 2019)
 
-> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
-
-**Relativity Compatibility**
-
-- \> 9.6.202.10
-
 **Features**
 
 - Ability to overwrite GUID for Group Identifier field - some instances have
@@ -680,7 +583,3 @@ New features, enhancements, and defect fixes are released in each monthly update
   default workspace fileshare base folder. You must adjust the Source Path
   settings for each impacted data source to be a relative folder path within
   the default file share configured for the workspace.
-
-# 11.2.4.4 (10 June 2019)
-
-> **DEPRECATION NOTE:** This version of Trace is **no longer supported**
