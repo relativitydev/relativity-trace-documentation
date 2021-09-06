@@ -32,24 +32,24 @@ $callouts: (
 .site-footer {display: none;}
 
 .btn-rel-yellow {
-    color: F8981D;
-    background-color: F8981D;
-    background-image: linear-gradient(F8981D, F8981D);
+    color: #F8981D;
+    background-color: #F8981D;
+    background-image: linear-gradient(#F8981D, #F8981D);
     box-shadow: 0 1px 3px rgba(0,0,0,0.25),0 4px 10px rgba(0,0,0,0.12)
 }
 
 .btn-rel-yellow:hover,.btn-rel-yellow.zeroclipboard-is-hover {
-    color: F8981D;
-    background-color: F8981D;
-    background-image: linear-gradient(F8981D,F8981D)
+    color: #F8981D;
+    background-color: #F8981D;
+    background-image: linear-gradient(#F8981D,#F8981D)
 }
 
 .btn-rel-yellow:active,.btn-rel-yellow.selected,.btn-rel-yellow.zeroclipboard-is-active {
-    background-color: F8981D;
+    background-color: #F8981D;
     background-image: none;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.15)
 }
 
 .btn-rel-yellow.selected:hover {
-    background-color: F8981D
+    background-color: #F8981D
 }
