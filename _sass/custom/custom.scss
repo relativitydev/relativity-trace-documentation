@@ -30,3 +30,10 @@ $callouts: (
 .nav-list-expander {color: $grey-dk-100 !important;}
 
 .site-footer {display: none;}
+
+ .btn-primary {
+    color: #F8981D;
+    background-color: #F8981D;
+    background-image: linear-gradient(#F8981D, #F8981D);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 25%), 0 4px 10px rgb(0 0 0 / 12%);
+}
