@@ -2,7 +2,7 @@
 layout: default
 title: Permissions
 parent: Administrator Guide
-nav_order: 9
+nav_order: 10
 ---
 
 # Permissions
