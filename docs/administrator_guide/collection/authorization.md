@@ -176,3 +176,34 @@ The Tenant ID required fields for both AIP and EWS refer to the ID of your Azure
 ### Client Secret for Client Credentials Grant
 
 If using the Client Credentials grant with AIP or EWS, there is a Client Secret value required. To get a value for your Client Secret, navigate to the "Certificates & secrets" blade under your application registration. Once there, you can click "New client secret", which will generate a random client secret string. Copy the value and paste it into the corresponding Client Secret field in Trace. You will not be able to view the secret value after leaving the page.
+
+
+
+# Trace and Azure Information Protection
+
+Trace Data Sources can be configured to decrypt documents that are protected by Azure Information Protection. The Azure Information Protection Instance must have specific configuration applied in order for Trace to decrypt and read AIP protected documents. 
+
+This configuration requires the following access / permissions:
+
+- Administrative access to the Azure Information Protection Instance
+- Access to the Azure Portal with permissions to create Application Registrations
+
+## Configuring Azure Information Protection Instance
+
+#### Enable Unified Labeling
+
+It is required that the Azure Information Protection Instance being used is backed by the unified labeling platform. To see if your instance is backed by the unified labeling platform or to migrate your label to the unified labeling platform, follow these instructions:  https://docs.microsoft.com/en-us/azure/information-protection/configure-policy-migrate-labels 
+
+#### Configure Super User
+
+In order for Trace to be able to read AIP protected documents, the Trace Data Source must be associated with a Super User in your AIP Service. The Super User can be either a real user account in your directory, or a service principal associated with an Azure Application Registration (service principal). You can enable Super Users and set permissions by following this guide :  https://docs.microsoft.com/en-us/azure/information-protection/configure-super-users.
+
+#### Add an Application Registration for Super User
+
+In order for Trace to interact with the Azure Information Protection API, you will need to create an Application Registration in the Azure Active Directory instance associated with your AIP instance. 
+
+Please follow the documentation in authorization.md to create an application registration for AIP.
+
+## Configuring Trace for Azure Information Protection
+
+After finishing the configuration of the Azure Information Protection instance, you're ready to start configuring Trace for consuming AIP protected data. AIP is configured at the Data Source level. Please populate the required fields listed in authorization.md for your intended authorization grant.
