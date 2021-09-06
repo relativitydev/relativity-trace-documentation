@@ -22,4 +22,4 @@ Relativity Trace documentation is broken down into two major sections. One secti
 
 ### Documentation for Developers
 
-Developers looking to extend Relativity Trace functionality can find basic documentation within our [Extensible API's](proactive_ingestion_api_documentation.md) page, but will find more robust documentation at [Relativity Platform Documentation](https://platform.relativity.com/).
+Developers looking to extend Relativity Trace functionality can find basic documentation within our [Extensible API's](/proactive_ingestion_api_documentation.md) page, but will find more robust documentation at [Relativity Platform Documentation](https://platform.relativity.com/).
