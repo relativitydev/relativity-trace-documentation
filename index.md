@@ -9,7 +9,7 @@ permalink: /
 # Welcome to Relativity Trace documentation
 {: .fs-9 }
 
-Relativity Trace proactively monitor communications to identify insider trading, collusion, and other non-compliant behavior. Relativity Trace automatically surfaces the riskiest content, so you can act on it before it’s too late.
+Relativity Trace proactively monitors communications to identify insider trading, collusion, and other non-compliant behavior. Relativity Trace automatically surfaces the riskiest content, so you can act on it before it’s too late.
 {: .fs-6 .fw-300 }
 
 [I'm a Trace User](user_guide.md){: .btn .btn-rel-yellow .fs-5 .mb-4 .mb-md-0 .mr-2 } [I'm a Trace Administrator](/administrator_guide.md){: .btn .fs-5 .mb-4 .mb-md-0 }
