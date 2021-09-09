@@ -21,26 +21,21 @@ The Trace support and engineering team monitor the health of each customer's dep
 
 The `Setup` tab aggregates the most important information about configuration, health and overall status of Trace for a workspace. It shows the currently installed version,  active tasks and their configuration, and a snapshot of instance infrastructure that’s relevant to Trace. More detailed logging information can be retrieved using the "Manage Logs" button on the console.
 
-![1571087647200](media/user_documentation/1571087647200.png)
+![1571087647200](media/system_health/1571087647200.png)
 
 If an update to a new version of Trace is in progress, the Setup page will show a large red bar indicating an Update is in progress:
 
-![1571088232926](media/user_documentation/1571088232926.png)
+![1571088232926](media/system_health/1571088232926.png)
 
 ### Adjusting Logging Level
 
-You can adjust the logging level to get more information about the system performance specific to Trace. The Default logging level is Error. The management of the Logging infrastructure can be adjusted via the UI console button “Manage Logs”. In order to adjust the logging level use the “Update Trace Log Level” option. In order to collect and display logging data use the “Trace Logs” option. You can export the logs to a csv file with a mass operation “Export to File” at the bottom of the list.
-![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\administrator_guide\setup\media\8373e739309804e21560cad5d48100e8.png)
-![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\administrator_guide\setup\media\9c4b600add345fd8c2200544796ac735.png)
-![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\administrator_guide\setup\media\187cb16f17210c7e4105f4df34955731.png)
+You can adjust the logging level to get more information about the system performance specific to Trace. The Default logging level is Error. The management of the Logging infrastructure can be adjusted via the UI console button “Manage Logs”. In order to adjust the logging level use the “Update Trace Log Level” option. In order to collect and display logging data use the “Trace Logs” option. You can export the logs to a csv file with a mass operation “Export to File” at the bottom of the list.![image-20210909134102571](media/system_health/image-20210909134102571.png)![image-20210909134157151](media/system_health/image-20210909134157151.png)![image-20210909134225059](media/system_health/image-20210909134225059.png)
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
 
 ## Reporting Task
 
-The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.
-
-![](media/23b1404cbe20203f82f17154a8685bf1.png)
+The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.![image-20210909134259836](media/system_health/image-20210909134259836.png)
 
 -   **Recipients:** List of emails to send the report to, separated by
     semi-colons (;) (the token \<\<EMAIL_TO_INSTANCE_SETTING\>\> will be
@@ -62,9 +57,7 @@ The Reporting task is designed to email designated administrators information re
 > `SMTPUserName`, `SMTPPassword`, `SMTPServer`, `SMTPPort` and `SMTPSSLisRequired` with
 > details of a functioning email delivery system in order to receive important
 > notifications and alerts from Relativity and Trace.
-> ![](media/f1d0a0d1fda68815093c96764927b0df.png)
-
-1.  https://relativitydev.github.io/relativity-trace-documentation/bist_smoke_tests)
+> ![](media/system_health/f1d0a0d1fda68815093c96764927b0df.png)
 
 ## Built-In Self-Test (BIST)
 
@@ -82,11 +75,11 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
 -   Navigate to -\> Trace -\> Setup
 -   Click Edit, and set Run Option = Continuous
 
-![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\BIST_RunOptionContinuous.png)
+![](media/system_health/BIST_RunOptionContinuous.png)
 
 -   Next, click "Built-in self-test (**BIST**)" link in the console
 
-![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\de731dd917844e3c4429763b8f7b6624.png)
+![](media/system_health/de731dd917844e3c4429763b8f7b6624.png)
 
 -   If the "Built-in self-test (**BIST**)" link does not appear, follow these steps:
       - Navigate to Instance Settings
@@ -95,17 +88,15 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
       - Change IsBISTEnabled from false to true
       - Click Save
 
-![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\BIST_TraceWorkspaceSettings.png)
+![](media/system_health/BIST_TraceWorkspaceSettings.png)
 
 -    Return to Setup tab in your BIST workspace
       - You should now be able to click on the "Built-in self-test (**BIST**)" link in the console
 -    Click Edit on Built-In Self Test (BIST) Task Type, set Enabled to Yes and click Save
 
-![image-20191218145522629](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\bist_smoke_tests\image-20191218145514143.png)
-
 > **NOTE:** Once test completes Last Execution Status field will update to "Completed. Succeeded - Trace Test GoldenFlow Test." and the task will auto-disable itself.
 
-![image-20191218145951065](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\bist_smoke_tests\image-20191218145951065.png)
+![image-20210909135112351](media/system_health/image-20210909135112351.png)
 
 ### Manual Tests
 
@@ -166,21 +157,19 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
 
    8.  "Nederlandsprekendes"  
 
-5. Create Document Folders **[AUTOMATED]**
-
-   ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\ec3755ab72fd53aa637090fcf7d6787a.png)
+5. Create Document Folders **[AUTOMATED]** ![](media/system_health/ec3755ab72fd53aa637090fcf7d6787a.png)
 
 6. Create Saved Searches **[AUTOMATED]**
 
-   ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\707823C7-1856-4831-9564-D06D105DDEA9.PNG)
+   ![](media/system_health/707823C7-1856-4831-9564-D06D105DDEA9-1213663.PNG)
 
 7. Update Rule Evaluation task **[AUTOMATED]**
 
-   ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\E1EE69E1-42DA-45FA-8E97-BD7407012B21.png)
+   ![](media/system_health/E1EE69E1-42DA-45FA-8E97-BD7407012B21.png)
 
 8. Create Rules **[AUTOMATED]**
 
-   ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\408104f8f017cda4fa136c47acfe8038.png)
+   ![](media/system_health/408104f8f017cda4fa136c47acfe8038.png)
 
    1.  Create new Trace BIST - Basic Rule
 
@@ -215,11 +204,11 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
 
 9. Create Rule Generator test object types **[AUTOMATED]**
 
-   ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\bist_smoke_tests\BIST_RuleGeneratorObjectTypes.png)
+   ![](media/system_health/BIST_RuleGeneratorObjectTypes.png)
 
 10. Create Rule Generators **[AUTOMATED]**
 
-    ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\bist_smoke_tests\BIST_RuleGenerators.png)
+    ![](media/system_health/BIST_RuleGenerators.png)
 
     
 
@@ -242,7 +231,7 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
 
 - Documents fields (Trace Hour Of The Day \| Trace Day Of Week): `populated` for all documents with `5 - Ready for Rule Analysis` and `6 - Alert Rules Complete` status
 
-![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\0AA3E43F-2873-4D49-BAB0-7E6566B9E50D.PNG)
+![](media/system_health/0AA3E43F-2873-4D49-BAB0-7E6566B9E50D.PNG)
 
 - Number of rules generated by rule generators: `2`
 
@@ -254,14 +243,14 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
 
 1. Trace custom audits are generated:
 
-   ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\c0ba0573820c03995397d872facb2bb7.png)
+   ![](media/system_health/c0ba0573820c03995397d872facb2bb7.png)
 
 2. Data Batch Retry/Abandon mass-operations work (re-triggers import of data):
 
-   ![](C:\Users\peter.haller\Documents\GitHub1\relativity-trace-documentation\docs\support\media\df8d7d265f3eb5ff3cc04bd60c5e4369.png)
+   ![](media/system_health/df8d7d265f3eb5ff3cc04bd60c5e4369.png)
 
 3. Trace Document Retry mass-operations work (re-submits documents through
    Trace flow, but does not re-trigger import):
 
-![](media/c618f2acac67b761cec5c75a03932eec.png)
+![](media/system_health/c618f2acac67b761cec5c75a03932eec.png)
 
