@@ -69,7 +69,7 @@ If you plan to use `Analytics` functionality, please also make sure the followin
 
 ## Setting up Relativity Trace
 
-1.  Install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?) in all the workspaces that will Run Trace.
+1.  Install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?) in all the workspaces that will Run Trace.![image-20210909130829185](getting_started.assets/image-20210909130829185.png)
     
 2. [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm) the `Trace_<version>.rap` from the Application Library tab in the Admin case to all workspaces
    that will run Trace 
