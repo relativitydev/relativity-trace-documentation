@@ -32,7 +32,11 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
    1. example: 
 
       ```markdown
-      \[Extensible API's]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %})
+      {% raw %}
+          ---
+          ---
+          [Extensible API's]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %})
+      {% endraw %}
       ```
 
 3. Callouts such as `warn`, `info`, etc...
