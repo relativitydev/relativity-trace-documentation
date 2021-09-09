@@ -77,11 +77,10 @@ If you plan to use `Analytics` functionality, please also make sure the followin
    > **NOTE** Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended. Always install Trace from the Application Library.
    
 3. Wait until application Status switches to `Installed` in the target workspaces ![](../../media/administrator_guide/cada62f5fd9156449b21a32c2a9e34f2.png)
-
    
 4. Create Trace agents
 
-   > Trace agents are Resource Pool aware.  A single resource pool supports only one `Trace Manager Agent` and an unlimited number of `Trace Worker Agents`
+   > **NOTE**: Trace agents are Resource Pool aware.  A single resource pool supports only one `Trace Manager Agent` and an unlimited number of `Trace Worker Agents`
 
    1.  Trace Manager Agent
        1.  Agent Type = `Trace Manager Agent`
