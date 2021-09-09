@@ -17,8 +17,7 @@ Follow these steps to get Relativity Trace up and running in your Relativity Ins
 
 ---
 
-Prerequisites
--------------
+## Prerequisites
 
 Ensure the following Relativity Instance components are appropriately configured before setting up Relativity Trace:
 
