@@ -39,7 +39,7 @@ The following Relativity features can be used in a Trace workspace:
   * [ARM](https://help.relativity.com/RelativityOne/Content/ARM/ARM_Overview.htm) (Archive Restore Move)
 
 
-![](media/trace_workspace_capabilities.png)
+![](media/trace_workspace/trace_workspace_capabilities.png)
 
 
 

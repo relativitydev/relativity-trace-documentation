@@ -88,14 +88,14 @@ policy.
 ## Section 1: Rules Overview
 
 1.  Go into the **Trace Demo** workspace
-    ![](media/e0c6e9c767be9be77cafb3db4eebef9b.png)
+    ![](media/demo_guide/e0c6e9c767be9be77cafb3db4eebef9b.png)
 
 2.  Click into the **Trace:Rules** tab to see sample rules in the workspace.
     Rules are how you define the type of content that is relevant to you. The
     **Market Abuse** rule has been pre-created for you along with a few others.
     
 
-![](media/demo_guide/Section1.2-1571771958433.png)
+![](media/demo_guide/Section1.2-1571771958433-1217286.png)
     
 3. Click into the **Market Abuse** rule and see the options that make up this
    rule:
@@ -109,7 +109,7 @@ policy.
    criteria with an e-discovery grade searching engine (dtSearch)
 
    -   The rule is currently **Disabled**
-   ![](media/demo_guide/Section1.3.png)
+   ![](media/demo_guide/Section1.3-1217295.png)
 
 4. Click the **Enable Rule** console button under **Trace Rule Management** section:
 
@@ -117,13 +117,13 @@ policy.
 
    -   As data is ingested, this rule will be automatically applied to all incoming
    documents
-   ![](media/demo_guide/Section1.4.png)
+   ![](media/demo_guide/Section1.4-1217304.png)
 
 ## Section 2: Importing Data and Running Rules
 
 1.  Now let’s test our rules by adding live stream of data into the workspace
     with Office 365 Data Source. Go to the **Trace:Data Sources** tab
-    ![](media/demo_guide/Section2.1.png)
+    ![](media/demo_guide/Section2.1-1217311.png)
 
 2. Click on the **Office 365 Exchange** data source to see how it is configured
 
@@ -133,25 +133,25 @@ policy.
 
    - **Ingestion Profile:** Used for mapping loadfile columns to fields in Relativity and other loadfile specific configuration.
 
-     ![image-20201001154812502](media\demo_guide\image-20201001154812502.png)
+     ![image-20201001154812502](media/demo_guide/image-20201001154812502-1217321.png)
 
    - **Username / Password:** secure way to enter authentication information for various Data Sources (on the Credentials tab of the Data Source Layout)
 
-     ![image-20201001154932635](media\demo_guide\image-20201001154932635.png)
+     ![image-20201001154932635](media/demo_guide/image-20201001154932635-1217329.png)
 
    - **Trace Monitored Individuals:** lets you select which people to monitor
 
    -   The Data Source is currently **Disabled**
 
 3.  Click **Enable Data Source** on the right hand side
-    ![](media/demo_guide/Section2.2a.png)
+    ![](media/demo_guide/Section2.2a-1217336.png)
 
 4.  Data will begin to get pulled from the exchange server for each of the defined Monitored Individuals. Refreshing the page will show data batches as they are pulled from the data source and processed (it may take several minutes for first data batch to be fully created). You can see how much data each Data Batch retrieved and corresponding statuses. Once you have a few Data Batches in “Completed” state the rest of the Trace workflow automatically triggers.
     
-    ![](media/demo_guide/Section2.4.png)
+    ![](media/demo_guide/Section2.4-1217343.png)
 
 As time goes on, more batches with data will be created and ingested:
-![](media/c3ef4b4a771fbfd3d7b25c7dc5ccf4dc.png)
+![](media/demo_guide/c3ef4b4a771fbfd3d7b25c7dc5ccf4dc.png)
 
 ## Section 3: Viewing Results
 
@@ -161,41 +161,40 @@ As time goes on, more batches with data will be created and ingested:
 
    2. For this demo, all ingested documents are routed to the **Ingestion Folder**
 
-      ![1571775679888](media/demo_guide/1571775679888.png)
+      ![1571775679888](media/demo_guide/1571775679888-1217355.png)
 
    3. Documents matched to the **Market Abuse** rule will have the **Default Move To Folder** action execute. The matched documents will appear under the **Alerted Documents** folder.
 
-      ![1571775810589](media/demo_guide/1571775810589.png)
+      ![1571775810589](media/demo_guide/1571775810589-1217360.png)
 
    4. Navigate to the **Trace Demo** root folder. You will find the “**Trace Search Index**” is built automatically for your ad-hoc searching.
-      ![](media/69cbd4e87b452afd74276bba27660db4.png)
+      ![](media/demo_guide/69cbd4e87b452afd74276bba27660db4.png)
 
 3.  Explore Dashboards
-    ![](media/demo_guide/Section3.3.png)
+    ![](media/demo_guide/Section3.3-1217374.png)
 
     1. Once all the data is ingested and analyzed about 8.5% of ingested documents have
         matched the rules:
-        ![](media/demo_guide/Section3.3i.PNG)
+        ![](media/demo_guide/Section3.3i-1217379.PNG)
 
       **(blank)** denotes the number of documents where no Rules were matched.
     
-2. All of the Rules that matched:
-      <br>![](media/demo_guide/Section3.4i.PNG)
-    
+2. All of the Rules that matched:![](media/demo_guide/Section3.4i-1217389.PNG)
+      
 3. File type breakdown of ingested documents:
-      ![](media/demo_guide/Section3.3iii.PNG)
+      ![](media/demo_guide/Section3.3iii-1217407.PNG)
     
 3. Review matched documents
 
    1.  Click on “Market Abuse” bar on the Rules widget
-   ![1571776936298](media/demo_guide/1571776936298.png)
+   ![1571776936298](media/demo_guide/1571776936298-1217414.png)
    2.  Click on “Revenue Sharing” on the Terms widget
-   ![1571777044365](media/demo_guide/1571777044365.png)
+   ![1571777044365](media/demo_guide/1571777044365-1217419.png)
    3.  Click on the top document in the list:
-   ![1571777162502](media/demo_guide/1571777162502.png)
+   ![1571777162502](media/demo_guide/1571777162502-1217425.png)
    4.  Explore document details:
-   ![1571777552542](media/demo_guide/1571777552542.png)
-   ![1571777717924](media/demo_guide/1571777717924.png)
+   ![1571777552542](media/demo_guide/1571777552542-1217429.png)
+   ![1571777717924](media/demo_guide/1571777717924-1217435.png)
 
    - Matched terms are automatically highlighted in the document
 
@@ -232,19 +231,18 @@ feedback. Thanks!
     Search** browser in the **Documents** tab and select the “**Non-alerted
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
-    ![1571779546803](media/demo_guide/1571779546803.png)
-    
+    ![1571779546803](media/demo_guide/1571779546803-1217443.png)
 > **NOTE:** Count on non-alerted documents might vary
 
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
     Rule**.
-    ![1571779609579](media/demo_guide/1571779609579.png)
+    ![1571779609579](media/demo_guide/1571779609579-1217448.png)
 
 4.  You’ll notice that the **Delete Rule** follows a similar format to the prior
     demo. The rule runs on the “Non-alerted Documents” Saved Search and has the
     “Default Data Disposal” action associated with it. Once enabled, This action will delete
-all documents in the Saved Search that were created before the set retention length. This will enable you to have an **automated retention
+    all documents in the Saved Search that were created before the set retention length. This will enable you to have an **automated retention
     policy** in Relativity.
     
     > **NOTE:** For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be delete as soon as the rule runs
@@ -254,20 +252,20 @@ all documents in the Saved Search that were created before the set retention len
 5.  Now let’s enable the rule so Trace can start enforcing your Data Disposal
     policy. Go to the **Trace:Rules** tab again and click on the “**Delete
     Rule**”
-    ![1571779615711](media/demo_guide/1571779615711.png)
+    ![1571779615711](media/demo_guide/1571779615711-1217454.png)
 
 6.  Click on **Enable Rule** in console button under **Trace Rule Management** section
-    ![1571779666116](media/demo_guide/1571779666116.png)
+    ![1571779666116](media/demo_guide/1571779666116-1217460.png)
 
 7.  Go back to the Saved Search Browser in the Documents tab and select the
     “Non-alerted Documents” Saved Search. Within a few minutes you’ll start to
     see documents getting deleted from this workspace.
     
 
-![1571779733791](media/demo_guide/1571779733791.png)
+![1571779733791](media/demo_guide/1571779733791-1217465.png)
     
 8. Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
-   ![1571779820919](media/demo_guide/1571779820919.png)
+   ![1571779820919](media/demo_guide/1571779820919-1217470.png)
 
 Let us know what you think! Reach out to `support@relativity.com` with any
 feedback. Thanks!
