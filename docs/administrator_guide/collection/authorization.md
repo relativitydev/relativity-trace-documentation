@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Microsoft Azure Authorization
+title: Azure Authorization
 parent: Collection
 grand_parent: Administrator Guide
 nav_order: 3
