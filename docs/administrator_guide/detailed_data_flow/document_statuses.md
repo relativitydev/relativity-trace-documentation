@@ -21,7 +21,7 @@ Documents get a status as they progresses through the data flow.
 ## Status Descriptions
 Trace has a six-step Document analysis process. Status is tracked on the `Trace Document Status` field. When a document status is changed the timestamp on the `Trace Document Status Updated On` field is updated.
 
-| Step | Status:                 |            | Overview:                                                    |
+| Step | Status                 |  Type        | Overview                                                    |
 | :--: | ----------------------- |------------|------------------------------------------------------------ |
 |  1   | NEW                     | Transient  | Documents that are brand new to the workspace and are part of `Trace All Documents` saved search. Documents not included in the `Trace All Documents` saved search will not be included in the data flow. |
 |  2   | INDEXED                 | Transient  | Documents that have been successfully indexed. |
