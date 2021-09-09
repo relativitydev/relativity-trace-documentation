@@ -29,7 +29,11 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
 
 2. All `links` MUST be either relative OR refernce root
 
-   1. example: `[I'm a Trace User](/docs/user_guide/index.md)`
+   1. example: 
+
+      ```markdown
+      [I'm a Trace User](/docs/user_guide/index.md)
+      ```
 
 3. Callouts such as `warn`, `info`, etc...
 
