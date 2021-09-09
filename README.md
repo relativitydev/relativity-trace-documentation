@@ -19,9 +19,13 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
 
 1. Image links MUST reference relative `media` folder AND images must be placed in the folder named after the name of `.MD` file  within relative `media` folder
 
-   1. ![image-20210909153552766](media/README/image-20210909153552766.png)
-   2. ![image-20210909153615643](media/README/image-20210909153615643.png)
-   3. ![image-20210909153640922](media/README/image-20210909153640922.png)
+   1. Example mardown: 
+      ```markdown
+      ![](media/dynamic_rules/RuleGeneratorLayout.PNG)
+      ```
+   2. ![image-20210909153552766](media/README/image-20210909153552766.png)
+   3. ![image-20210909153615643](media/README/image-20210909153615643.png)
+   4. ![image-20210909153640922](media/README/image-20210909153640922.png)
 
 2. All `links` MUST be either relative OR refernce root
 
@@ -35,10 +39,10 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
    Do not blah blah blah...
    {: .warn }
    ```
-   
+
    Information
    {: .info }
-   
+
    Warning
    {: .warn }
 
