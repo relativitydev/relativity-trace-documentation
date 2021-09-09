@@ -22,4 +22,4 @@ View current stats on communications, alerts, and reviewer progress in dashboard
 You can get a quick understanding of the status of your system and documents by
 applying Widgets using Trace Document Fields to the Documents dashboard:
 
-![](media/233f58be6430edea9858817e9d1aa6d9.png)
+![](media/dashboards/233f58be6430edea9858817e9d1aa6d9.png)

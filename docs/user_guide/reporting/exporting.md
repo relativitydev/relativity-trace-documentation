@@ -24,7 +24,7 @@ The `Trace`->`Reports` tab serves as a place for reporting capabilities. More re
 
 Trace Terms Report
 ------------------
-![](media/316284f452e265e8db7521909b4c00b0.png)
+![](media/exporting/316284f452e265e8db7521909b4c00b0.png)
 
 The Trace Terms Report provides distinct counts on how many documents matched per Rule per Term. In other words, you can quickly see current state of your Rules and associated terms.
 
