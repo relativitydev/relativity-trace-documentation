@@ -103,7 +103,7 @@ Data Batch is a unit of work in IPI, it has all the needed configuration and  st
 
 The below screenshot shows a sample Data Batch RDO in Relativity:
 
-![](media/240abcbc64be3bc9404c200a39a343f5.png)
+![](media/proactive_ingestion_api_documentation/240abcbc64be3bc9404c200a39a343f5.png)
 
 When a Data Source creates a Data Batch, several fields must be filled out:
 
@@ -120,15 +120,15 @@ When a Data Source creates a Data Batch, several fields must be filled out:
 
    4.  For each Status, Data Source can specify document count and time stamp (optional)
 
-   ![](media/4a1b9ec9b71e8a2e1d07c4e901f2e867.png)
+   ![](media/proactive_ingestion_api_documentation/4a1b9ec9b71e8a2e1d07c4e901f2e867.png)
 
 3.  Data Source
 
     1.  Specify Data Source of the Data Batch
-        1.  ![](media/db43a876e56f862c4b2587b563f8e83a.png)
+        1.  ![](media/proactive_ingestion_api_documentation/db43a876e56f862c4b2587b563f8e83a.png)
     2.  Load File Path
         1.  Specify path to the relativity location of the load file
-            1.  ![](media/8770cf000865b61b94dc24002b7d49e5.png)
+            1.  ![](media/proactive_ingestion_api_documentation/8770cf000865b61b94dc24002b7d49e5.png)
 
 
 ## Ingestion API Usage
@@ -210,7 +210,7 @@ Expect: 100-continue
 
 Above request must be executed using Fiddler, for example:
 
-![](media/94b9bc1537ab80a8592c157df514b711.png)
+![](media/proactive_ingestion_api_documentation/94b9bc1537ab80a8592c157df514b711.png)
 
 ### Update Data Batch
 
@@ -258,15 +258,15 @@ Expect: 100-continue
 
 Above request must be executed using Fiddler, for example:
 
-![](media/94b9bc1537ab80a8592c157df514b711.png)
+![](media/proactive_ingestion_api_documentation/94b9bc1537ab80a8592c157df514b711-1214478.png)
 
 After Data Batch is created or updated, it can be monitored in Relativity UI (or programmatically via identifier returned from Create API request)
 
-![](media/409d8a386254a37e507eebd8042cf8cb.png)
+![](media/proactive_ingestion_api_documentation/409d8a386254a37e507eebd8042cf8cb.png)
 
-![](media/661127765a65e979f55dd2574b10c603.png)
+![](media/proactive_ingestion_api_documentation/661127765a65e979f55dd2574b10c603.png)
 
-![](media/7c0804895ff95708ca6a5553e44277cf.png)
+![](media/proactive_ingestion_api_documentation/7c0804895ff95708ca6a5553e44277cf.png)
 
 ## Workflow Recommendations
 
@@ -293,7 +293,7 @@ Recommended approach to generate **Load Files (.dat)** with the following specs:
 
 All text fields in the load file must avoid special characters mentioned above. They are reserved as delimiters and will produce non-ingestible data. Those characters must be explicitly replaced. **Recommended approach is to replace Column (ASCII 020) and Quote (ASCII 254) characters with a space.** C\# sample below illustrates one way to replace special characters:
 
-![](media/1a153ec4bda6645da5bbf95a89d8679a.png)
+![](media/proactive_ingestion_api_documentation/1a153ec4bda6645da5bbf95a89d8679a.png)
 
 #### Date Fields
 
@@ -347,7 +347,7 @@ The following fields **must** be part of the Load File and must be mapped to app
    are cleared.
 6. `Trace Record Origin Identifier` - this should be an id of a record from it's data origin system. Once included, Trace will track this value across all Trace actions on a particular record. This helps to reconstruct audit trail for a particular record.
 
-![image-20201001160637958](media\proactive_ingestion_api_documentation\image-20201001160637958.png)
+![image-20201001160637958](../media/administrator_guide/image-20201001160637958.png)
 
 ### Data Batches
 
@@ -379,7 +379,7 @@ You may want to automatically ingest and synchronize  [Monitored Individuals](ht
 
 Below diagram shows what is needed in order to synchronize Monitored Individuals information from Active Directory with Trace.
 
-![image-20200517203352102](media/proactive_ingestion_api_documentation/image-20200517203352102.png)
+![image-20200517203352102](../media/administrator_guide/image-20200517203352102.png)
 
 Sample .NET console app code below demonstrates:
 

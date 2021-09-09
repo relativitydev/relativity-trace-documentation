@@ -40,4 +40,4 @@ Client cannot download applications that would enable any restricted features, o
 
 **NOTE: If you need to use any restricted Relativity features, you can export the data to a RelativityOne workspace using [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm).**
 
-![](media/trace_workspace_restrictions.png)
+![](media/workspace_restrictions/trace_workspace_restrictions.png)

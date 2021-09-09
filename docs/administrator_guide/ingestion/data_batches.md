@@ -27,7 +27,7 @@ Once a batch begins the Ingestion process (when status is set to: `ReadyForImpor
 
 > **NOTE:** Trace will only create Integration Points in each workspace up to the number specified in the `Max Simultaneous Import Jobs` setting on the Ingestion Task (default 25). Once that number of Integration Point jobs are created, additional data batches will stay in the `ReadyForImport` status and no additional Integration Point jobs will be created until enough jobs finish to bring the total back under the specified maximum.
 
-![](media/5a4b23b008d4e39bc9bafce213515337.png)
+![](media/data_batches/5a4b23b008d4e39bc9bafce213515337.png)
 
 ### Data Batch Retry and Error Resolution Workflow
 
@@ -53,7 +53,7 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
     >
     > **NOTE**: The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
     
-   ![](media/fafdd5aacec029271e4f39ca303c80fa.png)
+   ![](media/data_batches/fafdd5aacec029271e4f39ca303c80fa.png)
 
 > **NOTE: ** If a Data Batch sits in a status other than `Completed`, `CompletedWithErrors`, `CompletedWithDocumentLevelErrors`, or `Abandoned` for longer than 24 hours (timeout configurable with the `Data Batch Timeout In Hours` setting on the Data Validation Task), it will automatically be:
 >
