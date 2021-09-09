@@ -33,9 +33,9 @@ Ensure the following Relativity Instance components are appropriately configured
 
 -   Auto Batch Manager
 
--   Integration Points Agent (need to install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?) first)
+-   Integration Points Agent (need to install [Relativity Integration Points](https://platform.relativity.com/RelativityOne/index.htm#Relativity_Integration_Points/Get_started_with_integration_points.htm) first)
     
--   Integration Points Manager (need to install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?) first)
+-   Integration Points Manager (need to install [Relativity Integration Points](https://platform.relativity.com/RelativityOne/index.htm#Relativity_Integration_Points/Get_started_with_integration_points.htm) first)
 
 If you plan to use `Analytics` functionality, please also make sure the following agents are set up:
 
@@ -51,16 +51,15 @@ If you plan to use `Analytics` functionality, please also make sure the followin
 
 -   Active Learning Worker
 
--   Structured Analytics Manager (need to install [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm) first)
+-   Structured Analytics Manager (need to install [Relativity Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm) first)
     
--   Structured Analytics Worker (need to install [Relativity Analytics](https://help.relativity.com/9.6/Content/Relativity/Analytics/Structured_analytics_set_tab.htm) first)
+-   Structured Analytics Worker (need to install [Relativity Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm) first)
 
 ### Applications
 
 -   [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm)
-1.  Relativity Integration Points is a required application for Relativity Trace and should be installed in all Trace workspaces BEFORE installing Trace
+    1.  Relativity Integration Points is a required application for Relativity Trace and should be installed in all Trace workspaces BEFORE installing Trace
     2.  Used by Trace Data Sources
-    3.  See this [page](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm) for details on how to install Integration Points
 -   [Relativity Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm#Setting_up_your_environment)
     1.  Used by Trace after ingestion to perform Structured Analytics workflows (language identification, repeated content identification, etc)
     
@@ -69,9 +68,9 @@ If you plan to use `Analytics` functionality, please also make sure the followin
 
 ## Setting up Relativity Trace
 
-1.  Install [Relativity Integration Points](https://platform.relativity.com/9.6/Content/Relativity_Integration_Points/Get_started_with_integration_points.htm?) in all the workspaces that will Run Trace.
+1.  Install [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm) in all the workspaces that will Run Trace.
     
-2. [Install](https://help.relativity.com/9.6/Content/Relativity/Applications/Installing_applications.htm) the `Trace_<version>.rap` from the Application Library tab in the Admin case to all workspaces
+2. [Install](https://help.relativity.com/RelativityOne/Content/Relativity/Applications/Installing_applications.htm) the `Trace_<version>.rap` from the Application Library tab in the Admin case to all workspaces
    that will run Trace 
    
    > **NOTE** Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended. Always install Trace from the Application Library.
@@ -106,8 +105,6 @@ If you plan to use `Analytics` functionality, please also make sure the followin
        3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
        4. Run Interval = `60`
        5. Logging level of event details = `Log critical errors only`
-   
-5. Please review the [Considerations](#infrastructure-and-environment-considerations) for system impact information. By default system processes (Tasks) are scheduled to run every 5 minutes (configurable per workspace).
 
    > Please reach out to `support@relativity.com` for additional information
 
