@@ -28,4 +28,4 @@ It is also possible to automatically add / update / remove Monitored Individuals
 {: .info } 
 
 ## Billing
-Monitored Individuals are also used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
+Monitored Individuals are used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
