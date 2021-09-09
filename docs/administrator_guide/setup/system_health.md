@@ -157,7 +157,8 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
 
    8.  "Nederlandsprekendes"  
 
-5. Create Document Folders **[AUTOMATED]** ![](media/system_health/ec3755ab72fd53aa637090fcf7d6787a.png)
+5. Create Document Folders **[AUTOMATED]** 
+![](media/system_health/ec3755ab72fd53aa637090fcf7d6787a.png)
 
 6. Create Saved Searches **[AUTOMATED]**
 
