@@ -76,7 +76,7 @@ If you plan to use `Analytics` functionality, please also make sure the followin
    
    > **NOTE** Using the Relativity Applications tab from within a workspace to install Trace is NOT recommended. Always install Trace from the Application Library.
    
-3. Wait until application Status switches to `Installed` in the target workspaces ![](/docs/media/administrator_guide/cada62f5fd9156449b21a32c2a9e34f2.png)
+3. Wait until application Status switches to `Installed` in the target workspaces ![](../../media/administrator_guide/cada62f5fd9156449b21a32c2a9e34f2.png)
 
    
 4. Create Trace agents
