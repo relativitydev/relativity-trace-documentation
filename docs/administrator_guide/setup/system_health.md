@@ -16,8 +16,8 @@ The Trace support and engineering team monitor the health of each customer's dep
 {:toc}
 
 ---
-In-product Heath Metrics
------
+
+## In-product Heath Metrics
 
 The `Setup` tab aggregates the most important information about configuration, health and overall status of Trace for a workspace. It shows the currently installed version,  active tasks and their configuration, and a snapshot of instance infrastructure that’s relevant to Trace. More detailed logging information can be retrieved using the "Manage Logs" button on the console.
 
@@ -36,8 +36,7 @@ You can adjust the logging level to get more information about the system perfor
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
 
-Reporting Task
-------------------------
+## Reporting Task
 
 The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.
 
@@ -67,8 +66,7 @@ The Reporting task is designed to email designated administrators information re
 
 1.  https://relativitydev.github.io/relativity-trace-documentation/bist_smoke_tests)
 
-Built-In Self-Test (BIST)
--------------------------
+## Built-In Self-Test (BIST)
 
 Built-In Self-Test (BIST) is a separate Trace Task that can be enabled in certain workspaces. By default, BIST does a basic “happy path” test of the majority of Trace functionality to make sure Trace is functioning properly. You only need to enable BIST, and let it 
 run on its own.
