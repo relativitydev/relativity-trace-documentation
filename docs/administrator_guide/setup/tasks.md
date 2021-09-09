@@ -9,8 +9,7 @@ nav_order: 2
 # Tasks
 {: .no_toc }
 
-
-Description here...
+Tasks are ongoing background processes that both manage and complete work.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,12 +17,8 @@ Description here...
 
 ---
 
-Tasks 
+Types of Tasks
 ------
-
-Tasks are ongoing background processes that are triggered by agents and run on the agent servers. They each have Run Intervals and configurations can be adjusted at a workspace level.
-
-Each task is designed to be auto-recoverable and self-healing. For example, if there are temporary network connection issues that prevent `Data Retrieval` task from retrieving data, Trace will keep trying until network issues are resolved. No manual intervention is needed.
 
 - **Data Retrieval:** Responsible for pulling data for Data Sources
 
@@ -47,4 +42,10 @@ Each task is designed to be auto-recoverable and self-healing. For example, if t
     
 - **Data Enrichment:** Responsible for extracting and enriching nested files (attachments, contents of zip files), generating extracted text, metadata and preparing the load file that is ready for import process.  For security reasons, embedded content that refers to external URL links do not get extracted.
   
-  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com. 
+  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+
+## Task Attributes
+
+Tasks have Run Intervals and configurations can be adjusted at a workspace level.
+
+Each task is designed to be auto-recoverable and self-healing. For example, if there are temporary network connection issues that prevent `Data Retrieval` task from retrieving data, Trace will keep trying until network issues are resolved. No manual intervention is needed.

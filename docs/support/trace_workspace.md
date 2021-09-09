@@ -42,37 +42,11 @@ The following Relativity features can be used in a Trace workspace:
 ![](media/trace_workspace_capabilities.png)
 
 
-# Trace workspace restrictions
-
-The following Relativity features are restricted from use in a Trace workspace:
-
-* Non-Trace Ingestion to Document Object
-  * [Relativity Desktop Client](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm)
-  * [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm) (except within Trace application)
-* [ECA](https://help.relativity.com/RelativityOne/Content/Relativity/ECA_and_Investigation/ECA_and_Investigation.htm)
-* [Processing](https://help.relativity.com/RelativityOne/Content/Relativity/Processing/Processing_in_Relativity.htm)
-* Invariant
-* [Sample-Based Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Assisted_Review/Assisted_Review_Workflow.htm)
-* [Productions](https://help.relativity.com/RelativityOne/Content/Site_Resources/Production.htm)
-  * [Imaging](https://help.relativity.com/RelativityOne/Content/Relativity/Imaging/Imaging.htm)
-  * [Redaction](https://help.relativity.com/RelativityOne/Content/Site_Resources/Supporting_applications_R1.htm#Redactions)
-  * [OCR](https://help.relativity.com/RelativityOne/Content/Relativity/OCR/OCR.htm)
-* [Legal Hold](https://help.relativity.com/RelativityOne/Content/Relativity_Legal_Hold/Relativity_Legal_Hold.htm)
-* Relativity Collect
-* [Repository Workspace](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_document_repository.htm)
-* [Cold Storage](https://help.relativity.com/RelativityOne/Content/Relativity/Workspaces/Workspaces.htm?%20storage#Cold)
-
-Client cannot download applications that would enable any restricted features, or move data to a repository workspace or cold storage. Client is responsible for hiding restricted features from its users.
-
-**NOTE: If you need to use any restricted Relativity features, you can export the data to a fully functional workspace using [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm).**
-
-![](media/trace_workspace_restrictions.png)
 
 
 # Basic Trace workspace usage workflow
 
 Using the Trace workspace allows you to focus on the alerts generated from the [Monitored Individuals](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#monitored-individuals) in your [Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources). After Trace ingests data from Monitored Individuals and pushes alerts to the Document object, reviewers can begin reviewing the alerts for true and false positives. You can then leverage Active Learning to conduct a prioritized review of the alerts. You can also use the other tools in the Analytics suite to more quickly drill down to the true alerts.
-
 
 
 
