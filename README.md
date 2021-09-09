@@ -31,15 +31,20 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
 
    Usage (`.info`,` .warn`, `.danger` are currently supported):
 
-   > This is warning
-   > {: .warn }
+   ```
+   Do not blah blah blah...
+   {: .warn }
+   ```
 
-   1. Warning
-      {: .info }
-   2. Do not blah blah blah...
-      {: .warn }
-   3. Do not blah blah blah...
-      {: .danger }
+   Info
+
+   {: .info }
+
+   Warning
+   {: .warn }
+
+   Danger
+   {: .danger }
 
 ### What is required to start contributing?
 
