@@ -3,14 +3,14 @@ layout: default
 title: Data Sources
 parent: Collection
 grand_parent: Administrator Guide
-nav_order: 1
+nav_order: 2
 ---
 
 # Data Sources
 {: .no_toc }
 
 
-Description here...
+A Data Source allows you to define where and how you are pulling data from a communication channel.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,11 +18,8 @@ Description here...
 
 ---
 
-Data Sources
-------------
-
-Data Source is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows you to define where/how you are pulling data. The Data Source references the Ingestion Profile that holds configuration on how to import data for that Data Source (data mappings). Data Batches reference
-Data Source to dynamically lookup which Ingestion Profile to use during import.
+## Overview
+ A Data Source stores the configuration necessary to retrieve data from a communicaiton channel, process that data, and ingest it into Relativity Trace. Data Sources reference an Ingestion Profile that holds configuration on how to import data for that Data Source (data mappings). Data Batches reference Data Source to dynamically lookup the Ingestion Profile to use during import.
 
 > **Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
 
@@ -30,7 +27,7 @@ Data Source to dynamically lookup which Ingestion Profile to use during import.
 
 ![Credentials Tab](media/data_sources/9631ef5e-4ec9-4096-8c52-0af0377437fc_annotated.png)
 
-Data sources are broken up in several sections:
+### Sections of a Data Source
 
 1. **General**: this tab houses general identifying information and status for the data source. These fields are described in further detail below.
    * **Name:** The name of Data Source
