@@ -32,7 +32,7 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
    1. example: 
 
       ```markdown
-      [I'm a Trace User](/docs/user_guide/index.md)
+      /docs/user_guide/index.md
       ```
 
 3. Callouts such as `warn`, `info`, etc...
