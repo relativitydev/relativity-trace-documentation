@@ -10,6 +10,7 @@ nav_order: 3
 {: .no_toc }
 
 Quickly identify and clear exempt communications, junk, large emails blasts and other irrelevant content prior to running rule evaluation.
+{: .fs-6 .fw-300 }
 
 1. TOC
 {:toc}
