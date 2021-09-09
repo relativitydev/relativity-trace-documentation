@@ -344,7 +344,7 @@ Some Data Sources combine data from several places into a single import flow. In
 >
 >  To ignore case in the entire email address during Monitored Individual discovery, use the `Discover Monitored Individuals Ignores Case` setting. For example, John.DOE@URL.COM  will match always John.DOE@url.com, but only match john.doe@url.com if Discover Monitored Individuals Ignores Case is set to true
 
-![image-20191217151807534](media/user_documentation/image-20191217151807534.png)
+![image-20191217151807534](media/data_sources/image-20191217151807534.png)
 
 ### Monitored Individual Discovery On Merge1 Data Sources
 
