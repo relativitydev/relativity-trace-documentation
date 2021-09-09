@@ -81,15 +81,11 @@ It is designed to work with Load Files as an intermediate step between Source an
 
 2.  Install “Integration Points” application
 
-3. Create Ingestion Profile and adjust advanced settings (encoding, native file path field, etc;)
-
-   ![image-20201001155601069](media\proactive_ingestion_api_documentation\image-20201001155601069.png)
+3. Create Ingestion Profile and adjust advanced settings (encoding, native file path field, etc;) ![image-20210909144014629](media/proactive_ingestion_api_documentation/image-20210909144014629.png)
 
 4.  Save Ingestion Profile
 
-5.  Link/Create Data Mappings
-
-    ![image-20201001155837229](media\proactive_ingestion_api_documentation\image-20201001155837229.png)
+5.  Link/Create Data Mappings ![image-20210909144042650](media/proactive_ingestion_api_documentation/image-20210909144042650.png)
 
     ​	`Source Field Identifier`: Name of the column in the loadfile
 
