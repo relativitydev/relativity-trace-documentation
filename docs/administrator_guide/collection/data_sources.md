@@ -26,9 +26,9 @@ Data Source to dynamically lookup which Ingestion Profile to use during import.
 
 > **Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
 
-![](media\user_documentation\ed6d268b-1439-4a66-aab2-7c8904bbd808_annotated.png)
+![image-20210909142404893](media/data_sources/image-20210909142404893.png)
 
-![Credentials Tab](media/user_documentation/9631ef5e-4ec9-4096-8c52-0af0377437fc_annotated.png)
+![Credentials Tab](media/data_sources/9631ef5e-4ec9-4096-8c52-0af0377437fc_annotated.png)
 
 Data sources are broken up in several sections:
 
@@ -149,7 +149,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 **Data Flow Overview**
 
-![image-20200120151709677](media/user_documentation/image-20200120151709677.png)
+![image-20200120151709677](media/data_sources/image-20200120151709677.png)
 
 **Setup**
 
@@ -165,17 +165,17 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 2.  Adjust Administration Exchange settings:
 
-    ![](media/0fd5f7977b9d30dbb67296d148efc4c5.png)
+    ![](media/data_sources/0fd5f7977b9d30dbb67296d148efc4c5.png)
 
 3.  Under Admin Roles create (or update if exists) Discovery Management role:
 
-    ![](media/857028bf0af361bf0d37d007d8e08672.png)
+    ![](media/data_sources/857028bf0af361bf0d37d007d8e08672.png)
 
 4.  Ensure the account you use to authenticate with includes “Application
     Impersonation”, “Legal Hold”, “Mailbox Import Export” and “Mailbox Search”
     roles:
    
-   ![](media/aff48bb585413bf91fa03d1649933aab.png)
+   ![](media/data_sources/aff48bb585413bf91fa03d1649933aab.png)
 
 5. (Optional) Adjust password expiration permission for the account used for Trace
 
@@ -189,7 +189,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 3.  Select Data Source Type: “Microsoft Exchange”
 
-    ![](media/45f8a402b934539e3a94ed74d11081b3.png)
+    ![](media/data_sources/45f8a402b934539e3a94ed74d11081b3.png)
 
 4.  Select Ingestion Profile created in Step 1
 
@@ -202,7 +202,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
-    ![image-20200817121923967](media\user_documentation\image-20200817121923967.png)
+    ![image-20200817121923967](media/data_sources/image-20200817121923967.png)
     
 1.  *Exchange Settings – Url* gives you the chance to specify the exact URL used when connecting to your exchange server. If this field is left blank, Microsoft’s Autodiscover technology will be used to populate the field with a URL based on the credentials provided in the Username and Password fields. Autodiscover is typically a suitable option and works for Office 365 and many on premises solutions but it is not guaranteed to work.
     
@@ -216,7 +216,7 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 12. Link / Create New Monitored Individuals (same page after clicking Save)
 
-    ![](media/85e99ebffc8ada7ae4c69a61cb873213.png)
+    ![](media/data_sources/85e99ebffc8ada7ae4c69a61cb873213.png)
 
     1.  Click `New` if the monitored individual is not already defined on another Data Source, or “Link” if the user has already been monitored in the past
     
@@ -238,7 +238,7 @@ The Zip Drop Data Source Type allows Relativity Trace to import of fully formed 
 
 **Configuration**
 
-![image-20200713143244403](media/user_documentation/image-20200713143244403.png)
+![image-20200713143244403](media/data_sources/image-20200713143244403.png)
 
 Configuration for the Zip Drop Data Source is pretty simple. There are no credentials or start date required. In fact, there are only a few things that need to be set up:
 
@@ -289,7 +289,7 @@ ZIP Drop Data Source will export its configured Monitored Individuals in CSV for
 
 This Data Source allows for automatic text extraction/expansion of previously ingested documents with natives in Relativity. This data source will automatically extract text, metadata and any children documents from containers/archives for all documents in the workspace with *Trace Data Enrichment Needed* field set to *Yes* and where Trace is able to locate the Native file on disk:
 
-![](media/055bc4b791f13c0bdcb07bed1d907b91.png)
+![](media/data_sources/055bc4b791f13c0bdcb07bed1d907b91.png)
 
 **Setup:**
 

@@ -74,7 +74,7 @@ Follow these steps to build a machine learning model:
             2. "ML [Model Purpose] Validation" field
    4. Organize these Saved Searches within folders for easier navigation as you will be revisiting them periodically.
 
-![Machine Learning Folder Structure](media/user_documentation/image-20210219002027474.png)
+![Machine Learning Folder Structure](media/machine_learning/image-20210219002027474.png)
 
 3. Create the following Document Layouts
    1. Create a layout that will allow for you to code documents on your newly created fields
@@ -105,7 +105,7 @@ Follow these steps to build a machine learning model:
       5. Reviewer Group = *This field doesn't matter for our workflow so select any reviewer group*
 9. Once in the Active Learning project we will calculate Machine Learning Ranks on documents for the first time
    1. Check to make sure you 5 documents marked as "Coded ML [Model Purpose]" and 5 documents marked as "Coded Not ML [Model Purpose]" on the Active Learning dashboard
-   2. Select the "Update Ranks" button ![Update Ranks Button](media/user_documentation/image-20210219003935274.png)in the upper right corner of the Active Learning dashboard 
+   2. Select the "Update Ranks" button ![Update Ranks Button](media/machine_learning/image-20210219003935274.png)in the upper right corner of the Active Learning dashboard 
    3. Add a "ML [Model Purpose] Cutoff" value of `70` *(This value doesn't actually matter as we will be deciding the Rank Cutoff within the Trace workflow)*
    4. Select the "Update Ranks" button
 10. Remove the Active Learning Document View that gets created automatically for active Active Learning Projects
@@ -118,7 +118,7 @@ Follow these steps to build a machine learning model:
           1. OR
        2. System Created On IS AFTER [T-7] (eg. `System Created On` IS AFTER 03/02/2021)
           1. This will limit the number of documents analyzed that are a week old or newer
-       3. ![ML Training and Unanalyzed Saved Search Conditions](media/user_documentation/image-20191223171512394.png)
+       3. ![ML Training and Unanalyzed Saved Search Conditions](media/machine_learning/image-20191223171512394.png)
 12. Configure Trace to automatically run Active Learning (if this has not already been enabled)
     1. Navigate to the "Indexing" Task within the Setup tab.
     2.  Edit the "Global Analytics Build Frequency in Minutes" field to have a value of `120`
@@ -134,7 +134,7 @@ Your Machine Learning Model ranks a document between 0-100 on the likelihood of 
 
 1. Add your Rank field to your Review coding layout
 
-![Machine Learning on Coding Layout](media/user_documentation/image-20210217165536281.png)
+![Machine Learning on Coding Layout](media/machine_learning/image-20210217165536281.png)
 
 1. Add your Rank field to your Document View
 2. Create dashboard showing the ranks across documents
@@ -143,7 +143,7 @@ Your Machine Learning Model ranks a document between 0-100 on the likelihood of 
    3. Sort On = Machine Learning Model rank field [ASC]
    4. Default Display Type = Line Chart
 
-![Machine Learning on Coding Layout](media/user_documentation/image-20210218233922546.png)
+![Machine Learning on Coding Layout](media/machine_learning/image-20210218233922546.png)
 
 #### Validating Model Accuracy
 
@@ -164,7 +164,7 @@ To run a Validation Test, we first need to identify a subset of analyzed documen
    8. For the `Max Number of Documents to Review (default 300)` field keep the default, or populate it with a higher number if you want greater confidence in the Precision and Recall metrics
    9. Press the `Run` within the pop up
 
-![image-20210413144648358](media/user_documentation/image-20210413144648358.png)
+![image-20210413144648358](media/machine_learning/image-20210413144648358.png)
 
 2. Review each document tagged by the `Trace Machine Learning Statistical Sample` for whether they are positive or negative examples of the behavior your model is attempting to identify
    1. Navigate to the "ML [Model Purpose] Validation Test Population" (eg. `ML Spam Validation Test Population`)
@@ -180,7 +180,7 @@ To run a Validation Test, we first need to identify a subset of analyzed documen
    7. Press the `Run` within the pop up
 
 
-![image-20210413143726362](media/user_documentation/image-20210413143726362.png)
+![image-20210413143726362](media/machine_learning/image-20210413143726362.png)
 
 ##### Interpreting Validation Test Results
 
@@ -253,7 +253,7 @@ If your Validation Test is not returning the Accuracy needed based on your organ
 3. Add your Machine Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`)
 4. Rename the field in the layout to be something easier for your reviewer to understand (eg. Spam Rank)
 
-![Machine Learning on Coding Layout](media/user_documentation/image-20210217165536281.png)
+![Machine Learning on Coding Layout](media/machine_learning/image-20210217165536281-1215131.png)
 
 
 
@@ -273,7 +273,7 @@ In this approach you're alerting on documents that you Machine Learning results 
 
 3. Complete the Steps in the "Using Results to Advise Reviewers" section above to ensure a reviewer can see the Machine Learning results for the model while reviewing the document.
 
-   ![Machine Learning Rule](media/user_documentation/image-20210217170551927.png)
+   ![Machine Learning Rule](media/machine_learning/image-20210217170551927.png)
 
 > **NOTE:** If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
 
@@ -287,7 +287,7 @@ Once you are very confident in your Machine Learning models that identify irrele
 2. Update the Saved Search with "AND Machine Learning model rank is greater than *X*" (eg. AND `CSR - Spam Cat. Set::Category Rank` > `80`)
    1. Select the appropriate Rank Cutoff based on your Validation Test
 
-![Omit from Alert Rules and Machine Learning](media/user_documentation/image-20210218234536087.png)
+![Omit from Alert Rules and Machine Learning](media/machine_learning/image-20210218234536087.png)
 
 
 
@@ -299,7 +299,7 @@ Once you are extremely confident in your Machine Learning models, you are ready 
 2. Update the Saved Search with "AND Machine Learning model rank is greater than *X*" (eg. AND `CSR - Insider Information Cat. Set::Category Rank` > `60`)
    1. Start with a lower conservative Cutoff Rank within the Saved Search to be more inclusive. Over time you can raise the Cutoff Rank based on Validation Tests and the desire to further reduce false positive alerts.
 
-![Machine Learning Rules](media/user_documentation/image-20210218235348807.png)
+![Machine Learning Rules](media/machine_learning/image-20210218235348807.png)
 
 **NOTE:** If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
 

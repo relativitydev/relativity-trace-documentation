@@ -27,7 +27,7 @@ To use this feature, an Excluded File RDO has to be created for each individual 
 
 The `Excluded File` RDOs are identified by their Trace Document Hash and have a field for the File itself. 
 
-![excluded-file-rdo](media/user_documentation/excluded%20file%20rdo.png)
+![excluded-file-rdo](media/excluded_files/excluded%20file%20rdo.png)
 
 
 
@@ -43,7 +43,7 @@ Once added as an `Excluded File`, copies of that file (same Trace Document Hash)
 
 `Trace Add To Excluded Files` mass operation can be used to select all the Extracted documents that a user wants to exclude from future ingestion. It works on documents and can be selected in the Documents tab. 
 
-![trace-add-to-excluded-files-mass-operation](media/user_documentation/Trace%20Add%20To%20Excluded%20Files%20Mass%20Operation.png)
+![trace-add-to-excluded-files-mass-operation](media/excluded_files/Trace%20Add%20To%20Excluded%20Files%20Mass%20Operation.png)
 
 
 
@@ -52,7 +52,7 @@ Once the mass operation has completed successfully:
 1. The newly Excluded Files will appear in the Excluded Files list within the Excluded Files tab.
 2. The documents included in the mass operation and any document in the workspace that has the same Trace Document Hash as a selected document will have the `Trace Is Excluded File` field marked as `Yes`, making it easy to queue up these documents for disposal.
 
-![trace-excluded-files-list](media/user_documentation/Excluded%20Files%20List.png)
+![trace-excluded-files-list](media/excluded_files/Excluded%20Files%20List.png)
 
 >  **NOTE:** Native files that are selected for the `Trace Add to Excluded Files` mass operation will NOT be added as `Excluded Files`, since the action only includes on Extracted Files.
 >
@@ -64,7 +64,7 @@ Filter your document list to only show Extracted Files using the `Trace Is Extra
 
 > **NOTE:** If you are attempting to run `Tally/Sum/Average` on more than one million documents you may want to reduce the volume by using the `Sample` function to increase performance.
 
-![trace-excluded-tally](media/user_documentation/2340983024970923840.png)
+![trace-excluded-tally](media/excluded_files/2340983024970923840.png)
 
 Copy the Trace Document Hash values with many hits. Conduct a Document search to find documents with these hashes. Review the documents to ensure they should can be excluded from ingestion going forward.  Use the `Trace Add to Excluded Files` mass operation to add these files to the `Excluded File` list.
 

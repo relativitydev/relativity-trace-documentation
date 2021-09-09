@@ -31,6 +31,6 @@ If you wish to re-submit existing documents through the Trace Data Flow, you can
 
 >  **WARNING:** The retry process can be very resource-intensive. Trace is optimized for ongoing and forward-looking use cases where documents are only searched once upon ingestion. Triggering a retry will treat affected documents as if they were brand new to Trace, clearing all previous Rule and Term associations. If enough documents are retried at once, the system could struggle to handle the sudden influx of documents. Please exercise caution when using this feature.
 
-![](media/b67f9b74d4a53cdd71c6d2915c81830d.png)
+![](media/document_retry/b67f9b74d4a53cdd71c6d2915c81830d.png)
 
-![](media/915f9beb5aa8a35c4a90aae5f23d548c.png)
+![](media/document_retry/915f9beb5aa8a35c4a90aae5f23d548c.png)

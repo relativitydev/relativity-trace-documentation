@@ -27,7 +27,7 @@ Each Rule Generator is associated with a specific Object Type and creates a Rule
 
 ### Creating a Rule Generator
 
-![](media/user_documentation/RuleGeneratorLayout.PNG)
+![](media/dynamic_rules/RuleGeneratorLayout.PNG)
 
 The Rule Generator form contains following fields:
 
@@ -155,7 +155,7 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
 Enabled Rule Generators are executed by the Rule Evaluation task. Each time the task is run: 
 1. Enabled rule generators are identified.
 
-![](media/user_documentation/RuleGeneratorEnabled.png)
+![](media/dynamic_rules/RuleGeneratorEnabled.png)
 
 2. RDOs of Object Type associated with the Rule Generator are identified for each enabled Rule Generator:
    1. If the RDO doesn't have a Rule and Saved Search, then Saved Search/Rule is created for this object
@@ -164,19 +164,19 @@ Enabled Rule Generators are executed by the Rule Evaluation task. Each time the 
 
 Rules created by a Rule Generator are visible in Rule Generator's layout. Rules and Saved Searches names follow the convention `[Rule Generator Name] - [RDO Name] - [RDO ArtifactId]`, but if name exceeds 50 characters then RDO Name gets truncated. All Saved Searches created for the same Rule Generator are stored in folder named `"Dynamic Rule Generation" - [Rule Generator Name]`
 
-![](media/user_documentation/RuleGeneratorRulesLayout.png)
+![](media/dynamic_rules/RuleGeneratorRulesLayout.png)
 
-![](media/user_documentation/RuleGeneratorRules.png)
+![](media/dynamic_rules/RuleGeneratorRules.png)
 
-![](media/user_documentation/RuleGeneratorSavedSearches.png)
+![](media/dynamic_rules/RuleGeneratorSavedSearches.png)
 
 3. After Rule Generators evaluation, all enabled Rules are executed. Rules created by Rule Generator work the same as a regular Rules, but after the Rule Generator's rule is matched with Documents, those Documents are also linked with the RDO for which the Rule was created on the `Relational Field on Document` field selected when creating the Rule Generator.
 
-![](media/user_documentation/RuleGeneratorRDORuleAndDocuments.png)
+![](media/dynamic_rules/RuleGeneratorRDORuleAndDocuments.png)
 
 ### Rule Generator Limitations
 
 1. `Enabled Rules Limit` - a setting in Rule Evaluation task which specifies the maximum number of enabled Rules in the workspace. If there are more Rules enabled than this specified limit, the Rule Evaluation Task errors and no Rules or Rule generators are executed. This is set to 100 by default to reduce strain on the system.
 2. `Disable Active Rule Generators` - a setting which prevents all Rule Generators (enabled or disabled) within a workspace from executing when set to true; by default set to false. This can be treated as a fail switch.
 
-![](media/user_documentation/RuleGeneratorRuleEvaluationTaskSettings.png)
+![](media/dynamic_rules/RuleGeneratorRuleEvaluationTaskSettings.png)

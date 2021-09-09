@@ -28,7 +28,7 @@ The Trace Rules Engine allows users to define data buckets with specific trigger
 
 Create a new [rule](#_Glossary) by clicking `New Rule` on the `Trace`:`Rules` tab
 
-![1571081144550](media/user_documentation/1571081144550.png)
+![1571081144550](media/rules/1571081144550.png)
 
 The Rule Creation form contains the following fields:
 
@@ -57,7 +57,7 @@ The Rule Creation form contains the following fields:
 
 After you create a Rule, use the Rule definition page to associate Terms and Enable/Disable the rule.
 
-![1571079859530](media/user_documentation/1571079859530.png)
+![1571079859530](media/rules/1571079859530.png)
 
 ##### Terms
 
@@ -76,7 +76,7 @@ Clicking the Enable Rule console button on the right of the layout causes the Tr
 
 After Rule executes, documents matching the Rule will be associated to the Rule itself.
 
-![1571081067899](media/user_documentation/1571081067899.png)
+![1571081067899](media/rules/1571081067899.png)
 
 Terms
 -----
@@ -93,7 +93,7 @@ You can create Terms in multiple ways:
 
 3.  By clicking the New button on the Terms section of the Rule Layout.
 
-![](media/e2a523416ac9607f8b2e9f42e2287e0f.png)
+![](media/rules/e2a523416ac9607f8b2e9f42e2287e0f.png)
 
 Term definition contains 3 fields:
 
@@ -105,7 +105,7 @@ Term definition contains 3 fields:
 
 In addition, you can see and modify Term Categories and Rules associated with Term and its status with regards to execution
 
-![](media/5b46e7806548749e50586196d43aa468.png)
+![](media/rules/5b46e7806548749e50586196d43aa468.png)
 
 > **NOTE:** The Term “Name” (actual text being searched) **cannot** be modified after it is created. You must remove and add a new term object to change the search string. You **can** modify the highlight color and term category of an existing term.
 
@@ -117,4 +117,4 @@ By default, Trace creates a `Trace Rules Persistent Highlight Set` that highligh
 
 In addition, you can override default highlight color scheme (magenta background and black text) for a specific Trace Term by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
 
-![](media/587ff246e9bf742376893bde0d0469ab.png)
+![](media/rules/587ff246e9bf742376893bde0d0469ab.png)

@@ -29,7 +29,7 @@ Data Transformations of type *Replace* allow you to strip exact blocks of text o
 
 By Default, content will simply be replaced with nothing (empty string). This can be changed by entering Match Replacement Text in the Configuration section.
 
-![](media/5c3b02bf2c121e73f3a3916db799b306.png)
+![](media/data_transforms/5c3b02bf2c121e73f3a3916db799b306.png)
 
 > **NOTE:** Replacement of the Extracted Text (application of replace data transformation) happens on a new copy of the Extracted Text (referenced as *<original_file_name>.replaced.txt*).  Newly generated Extracted Text is referenced in a separate loadfile (`loadfile.replaced.dat`).  In addition, if original loadfile.dat contains a column named `Extracted Text Size in KB` , ONLY then `Extracted Text Size in KB` field is re-generated with updated length.  **Previously generated/supplied data for `Extracted Text Size in KB` is overwritten in this case.**
 
@@ -39,7 +39,7 @@ Data Transformations of type `Deduplication` prevent a Data Source from importin
 
 For Trace native [Data Sources](#data-sources), deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By Default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file. It is possible to configure the exact hashing algorithm used for emails using the settings in the Configuration section:
 
-![](media/70b0ae9c6debe35956d4988dffaae892.png)
+![](media/data_transforms/70b0ae9c6debe35956d4988dffaae892.png)
 
 When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes of original documents will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
 
@@ -75,7 +75,7 @@ When using the `Communication Direction` transformation type, analysis is perfor
 
 Data Transformations of type `Exempt List` can be used to populate the `Trace Exempt` field on documents with a Yes/No value that indicates whether a particular communication can be excluded from review. The `Trace Exempt` document field is populated based on the `Exempt Entry` objects defined in the workspace. `Exempt List` transformations can specify the `Exempt List Categories` that should apply to the Data Source, or the `Exempt List Categories` field can be left blank in which case all `Exempt Entry` objects in the workspace will be considered. Only one `Exempt List` Data Transformation can be applied to each `Data Source`.
 
-![image-20200602160740161](media/user_documentation/image-20200602160740161.png)
+![image-20200602160740161](media/data_transforms/image-20200602160740161.png)
 
 A communication is considered exempt if the `From ` field matches one or more of the `Exempt Entry` objects in the `Exempt List Categories` specified on the `Exempt List` transform.  An `Exempt Entry` has a value in the `Name` field and an `Entry Type` of **Username** (the part before the `@`) **Domain** (the part after the `@`) or the entire **Email Address**. Regardless of the `Entry Type`, all entries are matched **case insensitive** . An `Exempt Entry` can be in one or more Associated Categories, or it can be left without a category in which case it will only apply for transforms that do not specify a category.
 
@@ -93,7 +93,7 @@ A communication is considered exempt if the `From ` field matches one or more of
 >
 > Notice case is ignored in all three examples.
 
-![image-20200602160404981](media/user_documentation/image-20200602160404981.png)
+![image-20200602160404981](media/data_transforms/image-20200602160404981.png)
 
 When using the `Exempt List` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Exempt` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 
@@ -115,7 +115,7 @@ Data Transformations of type `AI Extracted Text Cleansing` can be used to identi
 
 When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted Text Cleansing Status` and `Trace AI Extracted Text Cleansing Error Details` document fields will be populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred. If an error occurred, information regarding the error will be populated on the `Trace AI Extracted Text Cleansing Error Details` document field.
 
-![cleansing-status-outcome](media/user_documentation/cleansing-status-and-error-outcome.png)
+![cleansing-status-outcome](media/data_transforms/cleansing-status-and-error-outcome.png)
 
 > **NOTE:** AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 

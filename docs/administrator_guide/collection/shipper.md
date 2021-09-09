@@ -22,7 +22,7 @@ Description here...
 
 The Trace Shipper Service is a Windows service released by Trace that delivers data from the client network to a remote Relativity Trace workspace. The service monitors configured source folders on the local network and ships files that appear in the source folders to predetermined file share locations within a Relativity workspace that are associated with Trace Data Sources. The files are deleted from the source folder once they have been transmitted to Relativity successfully. 
 
-![TraceShipperOverview](media/TraceShipperOverview.png)
+![TraceShipperOverview](media/shipper/TraceShipperOverview.png)
 
 # Trace Data Shipper Advantages
 1. Fully managed Windows service with Trace specific semantics and configuration
@@ -153,7 +153,7 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 # Trace Shipper Data Flow Overview 
 
-![image-20200817164930647](media/trace_connectors_user_guide/image-20200817164930647.png)
+![image-20200817164930647](media/shipper/image-20200817164930647.png)
 
 *ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
 
@@ -300,11 +300,11 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
       
       > **NOTE:** If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
       
-        ![](media/0ff2765c48e2574181833392b6b205f6.png)
+        ![](media/shipper/0ff2765c48e2574181833392b6b205f6.png)
       
    2. If `Monitored User` option is NOT available, configure `Filter` and use `Dynamic` -\> `CSV` option to point it to `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Drop\Config\monitored_individuals.csv`
 
-      ![](media/43d295fa5746c8e030f2dcbcd580c3fc.png)
+      ![](media/shipper/43d295fa5746c8e030f2dcbcd580c3fc.png)
 
       1. Go to Edit filters
       2. Add new Mail filter
@@ -321,19 +321,19 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
    3. Configure Target to point to the appropriate `localDirectoryPath`
 
-   ![](media/46158f241adc0ba59c24adb2951886a3.png)
+   ![](media/shipper/46158f241adc0ba59c24adb2951886a3.png)
        
-   ![](media/23c4818eafb2d37846ca93226a1361e5.png)
+   ![](media/shipper/23c4818eafb2d37846ca93226a1361e5.png)
        
 
    4.  Configure `LOG ON ACCOUNT` section
        1.  Best practice is to specify computer administrator's username and password
-           ![1570208778641](media/trace_connectors_user_guide/1570208778641.png)
+           ![1570208778641](media/shipper/1570208778641.png)
    5.  Configure `REPORTING` section
        1.  Report Level = Generate Summary Report Only
        2.  MISC = Leave Checkbox checked for `Delete reported and ...`
        3.  MUST specify `EMAIL REPORT SETTINGS` and send test email
-           ![1570208945951](media/trace_connectors_user_guide/1570208945951.png)
+           ![1570208945951](media/shipper/1570208945951.png)
    6.  Configure `LOGGING` section
        1.  File log folder = `{FILESHARE_WORKSPACE_ROOT}\DataTransfer\Import\Globanet_Data\{DATA_SOURCE_ARTIFACT_ID}\Logs`
        2.  File Log Priority = `Error`
@@ -341,12 +341,12 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
    7.  Configure `ALERTING` section
        1.  MUST configure Email Alert Settings
        2.  Send Test Email
-           ![1570209109659](media/trace_connectors_user_guide/1570209109659.png)
+           ![1570209109659](media/shipper/1570209109659.png)
    8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
    9.  Configure `Importer Schedule` to run at a desirable frequency (daily is the most common frequency)
 
 
-   ![](media/d90fd4dd9b1ec7d63117b9db5b669d78.png)
+   ![](media/shipper/d90fd4dd9b1ec7d63117b9db5b669d78.png)
 
 
 
@@ -356,7 +356,7 @@ All of these Data Sources work similar via scheduled drops of data to an FTP. Me
 
 See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for more details
 
-![image-20200622120337061](media/trace_connectors_user_guide/image-20200622120337061.png)
+![image-20200622120337061](media/shipper/image-20200622120337061.png)
 
 *ref: [PlantUML Code](diagrams/trace_shipper_ice_chat_flow.txt)*
 
@@ -370,18 +370,18 @@ In order to ensure that data source runs **every X minutes** run the following s
 
 1.  Open chrome and navigate to Configuration
 
-    ![](media/1c3c5b8d500ac1bc2ca06148831ba889.png)
+    ![](media/shipper/1c3c5b8d500ac1bc2ca06148831ba889.png)
 
 2.  Edit Importer Settings
 
-    ![](media/d22f8115a803a0e97d02a2ee40f53333.png)
+    ![](media/shipper/d22f8115a803a0e97d02a2ee40f53333.png)
 
-    ![](media/e330c2333a5db370491d8b4ea9f3611d.png)
+    ![](media/shipper/e330c2333a5db370491d8b4ea9f3611d.png)
 
-    ![](media/6003e916fdb6aa9903fd97201f9b9659.png)
+    ![](media/shipper/6003e916fdb6aa9903fd97201f9b9659.png)
 
     1. Script needed:  `$("div.schedule_table").find("td").click()`
-    2. ![](media/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
+    2. ![](media/shipper/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
     3. At this point Importer will be set to run every x minutes
     
 # Appendix C: High Availability Setup for Veritas Merge1
