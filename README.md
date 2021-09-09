@@ -32,7 +32,7 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
    1. example: 
 
       ```markdown
-      /docs/user_guide/index.md
+      [Extensible API's]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %})
       ```
 
 3. Callouts such as `warn`, `info`, etc...
