@@ -15,6 +15,32 @@ https://relativitydev.github.io/relativity-trace-documentation/
 
 This documentation process was inspired by: [Microsoft Docs contributor guide](https://docs.microsoft.com/en-us/contribute/) and is based on Markdown language which is lightweight and portable. See more info [here](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown).
 
+### Key Standard Principles that MUST be followed
+
+1. Image links MUST reference relative `media` folder AND images must be placed in the folder named after the name of `.MD` file  within relative `media` folder
+
+   1. ![image-20210909153552766](media/README/image-20210909153552766.png)
+   2. ![image-20210909153615643](media/README/image-20210909153615643.png)
+   3. ![image-20210909153640922](media/README/image-20210909153640922.png)
+
+2. All `links` MUST be either relative OR refernce root
+
+   1. example: `[I'm a Trace User](/docs/user_guide/index.md)`
+
+3. Callouts such as `warn`, `info`, etc...
+
+   Usage (`.info`,` .warn`, `.danger` are currently supported):
+
+   > This is warning
+   > {: .warn }
+
+   1. Warning
+      {: .info }
+   2. Do not blah blah blah...
+      {: .warn }
+   3. Do not blah blah blah...
+      {: .danger }
+
 ### What is required to start contributing?
 
 1. Setup GitHub
