@@ -25,7 +25,7 @@ Data Sources are configured by a Relativity Trace Administrator. They are config
 ## Data Sources List
 This list covers the most common Data Sources rather than all Data Sources. To better understand holistic Data Source support contact support@relativity.com.
 
-### Email
+### Email Data Sources
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
@@ -36,7 +36,7 @@ This list covers the most common Data Sources rather than all Data Sources. To b
 | Email | HCL Notes and Domino |
 | Email | Zimbra |
 
-### Chat
+### Chat Data Sources
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
@@ -56,7 +56,7 @@ This list covers the most common Data Sources rather than all Data Sources. To b
 | Chat | Microsoft Yammer |
 | Chat | Facebook Workplace |
 
-### Voice
+### Voice Data Sources
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
@@ -73,7 +73,7 @@ This list covers the most common Data Sources rather than all Data Sources. To b
 | Voice | O2 |
 | Voice | Skype for Business |
 
-### Mobile
+### Mobile Data Sources
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
@@ -84,7 +84,7 @@ This list covers the most common Data Sources rather than all Data Sources. To b
 | Mobile | Telegram |
 | Mobile | Signal |
 
-### Collaboration
+### Collaboration Data Sources
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
@@ -95,7 +95,7 @@ This list covers the most common Data Sources rather than all Data Sources. To b
 | Collaboration | AWS S3 |
 | Collaboration | Dropbox |
 
-### Archives
+### Archives Data Sources
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
