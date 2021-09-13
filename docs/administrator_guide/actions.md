@@ -226,12 +226,3 @@ You can configure an action to make an API call to any web services hosted withi
 
 > **NOTE:** Authentication is inherited from the Agent Server that is hosting the Trace agent. The access_token is retrieved from ClaimsPrincipal.Current.Identities.
 
-### Custom Relativity Scripts
-
-Several useful SQL Relativity Scripts are shipped by default with Trace
-application.
-
-| **Script Name**       | **Description**                                              | **Inputs and Outputs**                                       |
-| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Trace Date Parser     | This script parses system CreatedOn Date Time field into a Trace Day Of Week field and Trace Hour Of Day field | **INPUT:** Timezone<br>**INPUT:** Saved Search to execute on (passed from Rule)<br>**OUTPUT:** TraceHourOfDay Field Name<br>**OUTPUT:** TraceDayOfWeek Field Name <br><br>The SQL Query ```SELECT * FROM sys.time_zone_info``` will return all time zones available on the SQL Server. Use any of the Time zone names in the `Timezone` Input. |
-| Trace AI Calculations | **Contact your support@relativity.com prior to using this script.**<br/>This script calculates Precision and Recall across all rank cutoffs for your Active Learning project you can better understand the accuracy and what rank cutoff you should be using in your Rules. | **INPUT:** Rank Field (This should be the CSR Rank field from the Active Learning Project)<br/>**INPUT:** Decision Field (A Yes/No field that denotes whether a document is a true positive)<br/>**OUTPUT:** A table calculating Precision and Recall for all Cutoff Ranks. |
