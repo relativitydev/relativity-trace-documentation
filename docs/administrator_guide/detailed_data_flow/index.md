@@ -10,7 +10,7 @@ has_children: true
 {: .no_toc }
 
 
-Each document flows through the system in a 
+Each communication flows through Relativity Trace in a consistent repeatible way to produce a defensible and explainable surveillance process.
 {: .fs-6 .fw-300 }
 
 1. TOC
