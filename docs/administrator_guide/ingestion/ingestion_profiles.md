@@ -66,11 +66,11 @@ Importing Native files is required for [Deduplication](#deduplication-data-trans
 
 `Nested Value` - The ascii character used to delimit different levels of a multi-choice hierarchy
 
-### Data Mappings
+## Data Mappings
 
 Data mappings are a link between a column in a loadfile and a field in Relativity. 
 
-##### Data Mapping Fields
+### Data Mapping Fields
 
 `Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
 
@@ -99,6 +99,6 @@ Unlike standard data mappings that read directly from the load file, it is possi
 Contents of the "Other Metadata" field will change from file to file, especially between different file types. To understand possible headers and other metadata that can be pulled from this field, create a standard Data Mapping to import the contents of the "Other Metadata" field. You can then decide which metadata keys you would like to pull by adding a Data Mapping with 'Read From Other Metadata Column' checked.
 {: .info }
 
-#### Adding Encoding Choices
+### Adding Encoding Choices
 
 By default, Trace only ships with two encodings (UTF-8 and Windows-1252). More encoding choices can be added for the Ingestion Profile single choice fields `Loadfile Encoding` and `Encoding for Undetectable Files`. The name of the encoding choice you wish to add must be able to be parsed as a valid encoding. See [here](https://docs.microsoft.com/en-us/dotnet/api/system.text.encoding?view=netframework-4.6.2#list-of-encodings) for a list of supported encodings. When choosing from the supported encoding list, you must use the `Name` of the encoding as the choice name (e.g. IBM037, **not** IBM EBCDIC). Encoding support is validated when saving the Ingestion Profile with the specific encoding choice selected.

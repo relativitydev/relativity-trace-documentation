@@ -10,7 +10,7 @@ nav_order: 2
 {: .no_toc }
 
 
-Description here...
+Integration Points is the capability that automatically and continously ingests data into Relativity Trace from various data sources.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,10 +18,9 @@ Description here...
 
 ---
 
-Trace Proactive Ingestion Framework
-===================================
+## Trace Proactive Ingestion Framework
 
-The Proactive Ingestion Framework allows Administrators to automatically and continually ingest data into Relativity from various Data Sources. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
+This ingestion framework is built on top of [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm).
 
 The key benefits of the Proactive Ingestion Framework include:
 
@@ -46,20 +45,21 @@ Reach out to <support@relativity.com> for help integrating with the Proactive
 Ingestion Framework
 
 
-Appendix C: Create Email Fields Data Mappings and Ingestion Profile
-=============================================================
+### Appendix C: Create Email Fields Data Mappings and Ingestion Profile
 
-> **NOTE:** Make sure the Integration Points application is installed in this
+Make sure the Integration Points application is installed in this
 Workspace before proceeding.
+{: .info }
 
-> **NOTE:** Trace uses default Relativity fields for email and attachment data that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). **Trace recommends use of this application, however it is totally optional and one can choose to create custom fields or re-use fields from an existing template.** You can install it to the target workspace like any other application which will bring in all
-the needed fields with standardized names. If you don’t see this application in
+Trace uses default Relativity fields for email and attachment data that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). **Trace recommends use of this application, however it is totally optional and one can choose to create custom fields or re-use fields from an existing template.** You can install it to the target workspace like any other application which will bring in all the needed fields with standardized names. If you don’t see this application in
 your library, reach out to `support@relativity.com`.
+{: .info }
 ![](media/integration_points/045f66f33011aa62ff7d00b2e05274c2.png)
 
 ## Setup Ingestion Profile
 
-**Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
+Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
+{: .warn }
 
 1. Go to the Trace: Ingestion Profile tab
 2. Click “New Ingestion Profile”
@@ -78,4 +78,5 @@ your library, reach out to `support@relativity.com`.
          Administration: Fields Tab. See [Appendix B: Load File Fields for Emails and Attachments](#appendix-b-trace-document-extraction-fields) for a list and associated definition for all Trace
          fields.
 
-> **NOTE:** You can edit the Ingestion Profile settings at any time, however existing completed Data Batches will not automatically re-import the data with new settings/mappings.
+You can edit the Ingestion Profile settings at any time, however existing completed Data Batches will not automatically re-import the data with new settings/mappings.
+{: .info }
