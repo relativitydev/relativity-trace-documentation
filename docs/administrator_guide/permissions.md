@@ -9,7 +9,7 @@ nav_order: 10
 {: .no_toc }
 
 
-Completely flexible permissions can be defined for individual user group down to the field. 
+Flexible permissions can be defined for individual user group down to the field. 
 {: .fs-6 .fw-300 }
 
 1. TOC
