@@ -1,16 +1,15 @@
 ---
 layout: default
-title: Extracted Fields
-parent: Enrichment
-grand_parent: Administrator Guide
-nav_order: 5
+title: Fields
+parent: Administrator Guide
+nav_order: 11
 ---
 
-# Extracted Fields
+# Fields
 {: .no_toc }
 
 
-Description here...
+Many Fields are created or manipulated as a part of Relativity Trace.
 {: .fs-6 .fw-300 }
 
 1. TOC
