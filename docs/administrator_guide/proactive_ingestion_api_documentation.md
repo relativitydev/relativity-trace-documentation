@@ -9,7 +9,7 @@ nav_order: 12
 {: .no_toc }
 
 
-Description here...
+Relativity Trace is an extensible platform that supports open API's to augment standard functionality.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -20,7 +20,7 @@ Description here...
 
 ---
 
-# Overview
+## Overview
 
 Relativity Trace API is based and fully dependent on [Relativity Dynamic Objects](https://help.relativity.com/RelativityOne/Content/Managing_Relativity_dynamic_objects/RDO_11.0/Relativity_objects.htm) (RDOs). Relativity Trace does not have any custom APIs outside of RDOs. Please, refer to [Relativity API Documentation](https://platform.relativity.com/RelativityOne/Content/REST_API/REST_reference/Dynamic_objects.htm) on specifics on how  to interact with RDOs.
 
@@ -33,7 +33,7 @@ There are two key ingredients that Trace needs in order to work:
 
 This documents provides information on how to build custom integration for both use cases.
 
-# Ingest Data From Custom Data Sources
+## Ingest Data From Custom Data Sources
 
 The Trace Proactive Ingestion system (that powers Trace) allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
 
@@ -59,7 +59,7 @@ The key benefits of the Proactive Ingestion Framework include:
 
 It is designed to work with Load Files as an intermediate step between Source and Relativity ingestion. Consumer of the IPI needs to produce a Load File and make an REST call to Relativity telling it the location of the Load File along with other ingestion configurations. After that, Trace will take the Load File and automatically import it using the provided configurations.
 
-## Glossary
+### Glossary
 
 -   **Data Batch:** RDO that contains all needed information about Load File and
     its ingestion status
@@ -75,7 +75,7 @@ It is designed to work with Load Files as an intermediate step between Source an
     
 -   **IPI:** Trace Proactive Ingestion
 
-## Prerequisites: Load File and Ingestion Profile
+### Prerequisites: Load File and Ingestion Profile
 
 1.  Install “Trace” application
 
@@ -93,7 +93,7 @@ It is designed to work with Load Files as an intermediate step between Source an
 
     ​	`Type`: The data mapping type. See [User Documentation](user_documentation.md#data-mappings)
 
-## Data Batch Overview
+### Data Batch Overview
 
 Data Batch is a unit of work in IPI, it has all the needed configuration and  status information to ingest data and monitor ingestion progress.
 
@@ -127,7 +127,7 @@ When a Data Source creates a Data Batch, several fields must be filled out:
             1.  ![](media/proactive_ingestion_api_documentation/8770cf000865b61b94dc24002b7d49e5.png)
 
 
-## Ingestion API Usage
+### Ingestion API Usage
 
 Working with TPI involves several steps in a base workflow:
 
@@ -144,11 +144,11 @@ Working with TPI involves several steps in a base workflow:
 
 On next Ingestion task check-in Trace will automatically ingest the data by creating an Integration Point and will validate the import was successful.
 
-## Data Batch creation (Quick Start)
+### Data Batch creation (Quick Start)
 
 Since Data Batch is an RDO, standard Relativity API can be used to manage it. Sample below shows how to create Data Batches with Relativity REST (generic API). One can prototype with Relativity REST without  having to write any code. We recommend tools such as [Fiddler](https://www.telerik.com/fiddler) to prototype sample calls ahead of creating full solutions in code.
 
-### Data Batch Statuses
+#### Data Batch Statuses
 
 Below status identifiers are needed to set a Data Batch to a particular stage of
 processing. The identifiers are the same across all versions of Relativity and Trace application.
@@ -163,7 +163,7 @@ processing. The identifiers are the same across all versions of Relativity and T
     
 -   `68FCCFB2-6CE4-442C-A402-26A76E37A961` – GUID identifier for `Abandoned` status
 
-### Create Data Batch
+#### Create Data Batch
 
 Below **sample request** will create a Data Batch associated with Load File
 `DataTransfer\Import\Office365Email\20180511200815UTC-20180511210839UTC\loadfile.dat`
@@ -295,7 +295,8 @@ All text fields in the load file must avoid special characters mentioned above. 
 
 Relativity Trace validates and normalizes all values in columns that are mapped to date fields to a standard format before ingestion. If a date value cannot be parsed, the column will be cleared, the row will be marked Trace Has Errors = true, and the original string value will be placed in the Trace Error Details field. This approach prevents invalid date strings from blocking ingestion of documents into the workspace.
 
-> **NOTE:** due to varying minimum and maximum values for dates, Relativity Trace will consider any date with a year less than 1800 or greater than 2200 to be invalid
+Due to varying minimum and maximum values for dates, Relativity Trace will consider any date with a year less than 1800 or greater than 2200 to be invalid.
+{: .info }
 
 ### Data Mappings stored on Ingestion Profile
 
