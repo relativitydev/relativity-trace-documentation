@@ -37,21 +37,26 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 ## Prerequisites Before Installing
 
 - Identify/provision a Windows machine to run the Trace Shipper Service
-> **NOTE:** This should be the same machine as the Veritas Merge1 appliance VM
+This should be the same machine as the Veritas Merge1 appliance VM.
+{: .info }
 - Identify what source folder(s) on your local network need their files shipped to a Relativity
-> **NOTE:** Windows service must have read/write/modify permission on the folders
+Windows service must have read/write/modify permission on the folders.
+{: .info }
 - Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
 - Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
 
-> **NOTE:** A document will fail to ship if a file with the same name already exists in the destination folder. Care should be taken to avoid duplicate file names both when initially retrieving data and at the remote destination folder.
+A document will fail to ship if a file with the same name already exists in the destination folder. Care should be taken to avoid duplicate file names both when initially retrieving data and at the remote destination folder.
+{: .info }
 
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
-> **NOTE:** To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
+To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
+{: .info }
 - Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
 - Download and install ROSE (Staging Explorer) and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection))
 
 - (Only for Web protocol) Request the Relativity Transfer API Services application (Relativity.TransferApi.Services.rap) by submitting a ticket to support@relativity.com. [Install](https://help.relativity.com/10.3/Content/Relativity/Applications/Installing_applications.htm#Installi3) the Relativity Transfer API Services application to the Application Library.
->**NOTE:** Do not install the Relativity Transfer API Services application to any workspaces. By installing the application to the Application Library, the services are available for consumption.
+Do not install the Relativity Transfer API Services application to any workspaces. By installing the application to the Application Library, the services are available for consumption.
+{: .info }
 
 - (Only for Web protocol) Assign required permissions to Relativity user
    1. Go to Instance Details/Manage permissions.
@@ -80,7 +85,8 @@ For details on the IP ranges for your specific RelativityOne instance please con
 3. Go to Services on the machine and verify that the service was installed (`Trace Shipper Service`)
 4. From the Services window, right click on the `Trace Shipper Service` and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
 5. In the `Trace Shipper Service` folder, edit the `serviceConfiguration.json` file. 
-   > **Note:** All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
+All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
+{: .info }
 
    The root object has a single `shippers` property, which is an array of objects with the following properties:
 
@@ -147,9 +153,11 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
 
 *ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
 
-> **NOTE:** Data Pull (2) and Process (3) are performed via Veritas Merge1 software. Audio data is provided by external data provider
+Data Pull (2) and Process (3) are performed via Veritas Merge1 software. Audio data is provided by external data provider.
+{: .info }
 
-> **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
+SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare.
+{: .info }
 
 
 
@@ -189,8 +197,10 @@ For every Trace Data Source, except for [Microsoft Exchange Data Source](https:/
    - .NET Framework 3.5 & 4.7.2
    - Microsoft Visual C++ 2017 (x64) Redistributable
    - SQL Server 2012 or later
-       >  **NOTE:** We recommend to take daily backups and keep them for 1 week
-       >  **NOTE:** We recommend to shrink database daily in order not to run out of disk space
+       We recommend to take daily backups and keep them for 1 week.
+       {: .info }
+       We recommend to shrink database daily in order not to run out of disk space.
+       {: .info }
 
 ## Getting Started with Installation
 
@@ -205,7 +215,8 @@ Perform the following steps in order to get started:
 
 1. First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Merge1), later. 
 
-      > **NOTE:** local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls
+      local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls.
+      {: .info }
 
       > **EXAMPLE:**  Say you are using Merge1 to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
       >
@@ -223,7 +234,8 @@ Perform the following steps in order to get started:
 
 Trace Shipper Service needs to be installed and configured to send data to your Relativity Trace workspace.  Refer to the [Trace Shipper Guide](trace_shipper_service.md) for instructions on how to install and configure the Trace Shipper Service. Use the directories and connection info developed in the previous section configuration values.
 
-> **NOTE:** If you are going to set up Merge1, you **must** set `retrieveConfigurationIntervalInMinutes`. The recommended interval is 5 minutes.
+If you are going to set up Merge1, you **must** set `retrieveConfigurationIntervalInMinutes`. The recommended interval is 5 minutes.
+{: .info }
 
 Start the Shipper Service when you have finished configuration.
 
@@ -233,7 +245,8 @@ Contact support@relativity.com if you need assistance.
 
 In the Trace enabled Relativity workspace configured in [Trace Shipper Service Configuration](#trace-shippper-service-configuration) , perform the following steps:
 
-> **NOTE:** When setting up the Data Source, if you do not see the Data Source Type that you are interested in please contact support@relativity.com.
+When setting up the Data Source, if you do not see the Data Source Type that you are interested in please contact support@relativity.com.
+{: .info }
 
 1. Create Ingestion Profiles for each data source to specify data mappings.  The Ingestion Profile is used to map fields in a source load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Ingestion Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-data-mappings-and-ingestion-profile) for detailed instructions.
 
@@ -245,13 +258,15 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
 
    3. Fill out the required fields and click "Save"
 
-      > **NOTE:** For Veritas Merge1 data sources, be sure to specify the `Source Folder Path` under Data Source Specific Fields. This value needs to be identical to the `remoteRelativePath` configuration setting specified during [Trace Shipper Configuration](#trace-shipper-service-configuration).
+      For Veritas Merge1 data sources, be sure to specify the `Source Folder Path` under Data Source Specific Fields. This value needs to be identical to the `remoteRelativePath` configuration setting specified during [Trace Shipper Configuration](#trace-shipper-service-configuration).
+      {: .info }
 
    4. Create Monitored Individuals
       1. Navigate to Monitored Individuals tab
       2. Click on "New Monitored Individual" to create a new object
 
-      > **NOTE:** You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
+      You can also bulk upload Monitored Individuals using a CSV load file and the Relativity Desktop Client.
+      {: .info }
 
 3. Link the desired Monitored Individuals to the Data Source
 
@@ -263,7 +278,8 @@ In the Trace enabled Relativity workspace configured in [Trace Shipper Service C
    1. Navigate to the Data Source in view mode
    2. Click on "Enable Data Source" in the console on the right hand side
 
-> **NOTE:** All Trace Data Sources serialize their current state to a JSON file and their monitored individuals to a CSV file,  both of which can be retrieved by Trace Shipper. See Appendix D for more information.
+All Trace Data Sources serialize their current state to a JSON file and their monitored individuals to a CSV file,  both of which can be retrieved by Trace Shipper. See Appendix D for more information.
+{: .info }
 
 ## Installation Steps for Veritas Merge1
 
@@ -286,9 +302,11 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
    1. Configure monitored individuals to point to
       `{localDirectoryPath}\Config\monitored_individuals.csv`
 
-      > **NOTE:** The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working.
+      The Config folder will be automatically created and populated with monitored_individuals.csv if Trace Shipper is working.
+      {: .info }
       
-      > **NOTE:** If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
+      If it is not yet, populated, try looking at the Trace Shipper log files and/or wait the time configured in `retrieveConfigurationIntervalInMinutes` in the Trace Shipper Service configuration file.
+      {: .info }
       
         ![](media/shipper/0ff2765c48e2574181833392b6b205f6.png)
       
@@ -350,9 +368,11 @@ See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaw
 
 *ref: [PlantUML Code](diagrams/trace_shipper_ice_chat_flow.txt)*
 
-> **NOTE:** Data Pull (1) and Process (2) are performed via Veritas Merge1 software. Audio data is provided by external data provider
+Data Pull (1) and Process (2) are performed via Veritas Merge1 software. Audio data is provided by external data provider.
+{: .info }
 
-> **NOTE:** SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare
+SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare.
+{: .info }
 
 # Appendix B: Veritas Merge1 Importer Schedule Helper
 

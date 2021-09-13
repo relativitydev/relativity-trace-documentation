@@ -21,7 +21,8 @@ A Data Source allows you to define where and how you are pulling data from a com
 ## Overview
  A Data Source stores the configuration necessary to retrieve data from a communicaiton channel, process that data, and ingest it into Relativity Trace. Data Sources reference an Ingestion Profile that holds configuration on how to import data for that Data Source (data mappings). Data Batches reference Data Source to dynamically lookup the Ingestion Profile to use during import.
 
-> **Warning:** Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
+Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
+{: .warn }
 
 ![image-20210909142404893](media/data_sources/image-20210909142404893.png)
 
@@ -128,7 +129,8 @@ Data source state serialization currently excludes the following fields from bei
 - EWS Client Secret
 - Drop Folder Path
 
-> **NOTE:** Other data source types can serialize their state as well, if this functionality is needed please contact support@relativity.com
+Other data source types can serialize their state as well, if this functionality is needed please contact support@relativity.com.
+{: .info }
 
 ### Data Source Auto-Disable
 
@@ -156,7 +158,8 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 **Step 2: Adjust Office 365 permissions**
 
->   **NOTE:** Settings for On Premises exchange are very similar to Office 365. Setting user permissions only applies if you are using Basic Authentication or OAuth Resource Owner Password Credential Grant (see authorization.md for more details)
+Settings for On Premises exchange are very similar to Office 365. Setting user permissions only applies if you are using Basic Authentication or OAuth Resource Owner Password Credential Grant (see authorization.md for more details).
+{: .info }
 
 1.  Log into the Office 365 Admin Center
 
@@ -225,7 +228,8 @@ time, if you need to retrieve other object types from Microsoft Exchange please 
 
 The Microsoft Exchange Data Source works by pulling content directly from an Exchange Server instance (Office 365 or On Premises) using Exchange Web Services (EWS). The Data Source downloads the native (.eml) email files and then extracts all information including email metadata, email body text, native attachments and their metadata. Container attachment file types (zips and similar archives) are automatically extracted into individual documents – e.g. zip with 10 word (.docx) documents = 11 Relativity documents. In addition, images from email content and each individual document are automatically expanded into separate Relativity documents. 
 
-> **NOTE:** the Microsoft Exchange data source only retrieves emails. It does not retrieve other exchange metadata at this time.
+The Microsoft Exchange data source only retrieves emails. It does not retrieve other exchange metadata at this time.
+{: .info }
 
 Please, refer to [Appendix B: Trace Document Extraction Fields](#appendix-b-trace-document-extraction-fields) for field descriptions.
 
@@ -254,7 +258,8 @@ The following requirements must be met by any ZIP file imported by the Zip Drop 
 - There should be no folders at the root of the ZIP file except for "OriginalNatives" and "ExtractedData"
 - The CSV load file "loadfile.dat" must contain columns named "Trace Monitored Individuals", "Trace Document Hash", and "Trace Data Batch" in addition to the other columns and data mappings that are required by every Relativity Trace data source
 
-> **NOTE:** files imported by the Zip Drop Data Source do not need to have the extension .ZIP
+Files imported by the Zip Drop Data Source do not need to have the extension .ZIP.
+{: .info }
 
 **Drop Folder**
 
@@ -323,9 +328,11 @@ This Data Source allows for automatic text extraction/expansion of previously in
 Extracted text and metadata for submitted Native files and all children documents expanded from containers/archives. Please, refer to [Appendix B](#appendix-b-trace-document-extraction-fields) for field descriptions.
 
 
-> **WARNING:** Re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents (old children will be dropped off the family group) if they already exist in the workspace.
+Re-extraction of child documents from containers (emails, zips, archives) will generate duplicate child documents (old children will be dropped off the family group) if they already exist in the workspace.
+{: .warn }
 
->  **WARNING:** Containers with many children documents (and nested containers) could produce significant number of expanded items in Relativity.
+Containers with many children documents (and nested containers) could produce significant number of expanded items in Relativity.
+{: .warn }
 
 **Limitations**
 
@@ -337,9 +344,11 @@ Discovery of Monitored Individuals
 
 Some Data Sources combine data from several places into a single import flow. In that scenario, it may not be clear which Monitored Individual is the source of a given document and no Monitored Individual will be tagged. To address this issue, Trace has introduced the `Discover Monitored Individuals` option on every Data Source. If enabled, Trace will look inside of the document and tag Monitored Individuals defined on the Data Source if they are found in headers inside the document. Monitored Individuals are recognized by identifier and all secondary identifiers. 
 
->  **NOTE:** By default, Monitored Individual discovery ignores case in the domain portion of the email address but not the name portion. For example, John.DOE@URL.COM will match John.DOE@url.com, but not john.doe@url.com.
->
->  To ignore case in the entire email address during Monitored Individual discovery, use the `Discover Monitored Individuals Ignores Case` setting. For example, John.DOE@URL.COM  will match always John.DOE@url.com, but only match john.doe@url.com if Discover Monitored Individuals Ignores Case is set to true
+By default, Monitored Individual discovery ignores case in the domain portion of the email address but not the name portion. For example, John.DOE@URL.COM will match John.DOE@url.com, but not john.doe@url.com.
+{: .info }
+
+To ignore case in the entire email address during Monitored Individual discovery, use the `Discover Monitored Individuals Ignores Case` setting. For example, John.DOE@URL.COM  will match always John.DOE@url.com, but only match john.doe@url.com if Discover Monitored Individuals Ignores Case is set to true.
+{: .info }
 
 ![image-20191217151807534](media/data_sources/image-20191217151807534.png)
 
