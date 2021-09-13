@@ -20,12 +20,11 @@ Description here...
 
 ---
 
-# Demo Environment and Login Information
+## Demo Environment and Login Information
 
 Reach out to `support@relativity.com`
 
-Relativity Trace: An Overview of Relativity for Compliance
-----------------------------------------------------------
+### Relativity Trace: An Overview of Relativity for Compliance
 
 Relativity today is primarily used for e-discovery, investigations and
 regulatory inquiries: typically reactive and transactional workflows.  Trace is
@@ -38,8 +37,7 @@ Trace can monitor and pull data from **40+ data origins**. In addition, Trace
 can automatically extract text and meta-data from monitored content, **900+ file
 types are supported**.
 
-Goals of the Demo
------------------
+### Goals of the Demo
 
 -   See how Trace can automatically and proactively pull data from a live Office
     365 instance for several Trace Monitored Individuals.
@@ -56,7 +54,7 @@ Goals of the Demo
 -   Familiarize you with broad Trace capabilities in a **sample compliance
     workflow**.
 
-## Demo A 
+### Demo A 
 
 In this demo we will be monitoring for “Market Abuse” conversations and
 automatically flag those documents as they propagate though Trace flow.
@@ -72,7 +70,7 @@ This demo has 4 simple steps:
 
 4.  Viewing the results of the Trace Rules Engine (tagged documents)
 
-## Demo B
+### Demo B
 
 In this demo we will be enabling a disposal rule that is based on Data Disposal
 action to automatically delete data outside of a configured data retention
@@ -119,7 +117,7 @@ policy.
    documents
    ![](media/demo_guide/Section1.4-1217304.png)
 
-## Section 2: Importing Data and Running Rules
+### Section 2: Importing Data and Running Rules
 
 1.  Now let’s test our rules by adding live stream of data into the workspace
     with Office 365 Data Source. Go to the **Trace:Data Sources** tab
@@ -153,7 +151,7 @@ policy.
 As time goes on, more batches with data will be created and ingested:
 ![](media/demo_guide/c3ef4b4a771fbfd3d7b25c7dc5ccf4dc.png)
 
-## Section 3: Viewing Results
+### Section 3: Viewing Results
 
 1. Click on **Documents** tab:
 
@@ -203,7 +201,7 @@ As time goes on, more batches with data will be created and ingested:
    - Related documents are displayed in the “Family” section
 
 
-## Section 4: Recap
+### Section 4: Recap
 
 Thanks for completing Demo A! Quick recap, here’s what we did:
 
@@ -223,7 +221,7 @@ Thanks for completing Demo A! Quick recap, here’s what we did:
 Let us know what you think! Reach out to `trace@relativity.com` with any
 feedback. Thanks!
 
-# DEMO B: Running a Disposal Rule
+## DEMO B: Running a Disposal Rule
 
 1.  Go into the **Trace Demo** workspace
 
@@ -232,7 +230,9 @@ feedback. Thanks!
     Documents**” Saved Search. You’ll notice there are \~5k documents that are
     currently in this Saved Search.
     ![1571779546803](media/demo_guide/1571779546803-1217443.png)
-> **NOTE:** Count on non-alerted documents might vary
+
+Count on non-alerted documents might vary
+{: .info }
 
 3.  Click into the **Trace:Rules** tab to see all rules in the workspace. The
     **Delete Rule** has been pre-created for you. Click into the **Delete
@@ -245,8 +245,9 @@ feedback. Thanks!
     all documents in the Saved Search that were created before the set retention length. This will enable you to have an **automated retention
     policy** in Relativity.
     
-    > **NOTE:** For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be delete as soon as the rule runs
-    >
+    For this demo retention has be purposely set to 0 hours, which means that all of the `non-alerted` data will be delete as soon as the rule runs.
+    {: .info}
+    
     > For Saved Search recommendations, see [Data Disposal Action Type in User Documentation](user_documentation.md#data-disposal-action-type)
     
 5.  Now let’s enable the rule so Trace can start enforcing your Data Disposal

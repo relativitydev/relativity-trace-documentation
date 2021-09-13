@@ -5,11 +5,11 @@ parent: Support
 nav_order: 1
 ---
 
-# Relativity Trace Troubleshooting Guide
+# Troubleshooting
 {: .no_toc }
 
 
-Description here...
+Here are a list of the most common issues with steps on how to resolve them.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -20,10 +20,10 @@ Description here...
 
 ---
 
-# Relativity Trace Troubleshooting Guide
+## Relativity Trace Troubleshooting Guide
 
-   > **Note**: most issues below are purely Relativity issues and must be resolved
-before running Trace*
+Many issues below are Relativity platform issues and must be resolved
+before running Trace.
 
 | Issue ID | Issue Symptoms                                               | Resolution                                                   | Notes                                                        |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |

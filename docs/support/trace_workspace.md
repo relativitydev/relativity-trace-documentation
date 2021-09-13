@@ -20,11 +20,11 @@ Description here...
 
 ---
 
-# Overview
+## Overview
 
 When [Relativity Trace](https://relativitydev.github.io/relativity-trace-documentation/user_documentation) is installed into a workspace, that workspace is limited in Relativity features to provide for a streamlined approach to monitor all forms of communication (audio, email, and chat plus their attachments). This allows for a more cost-effective pricing for Trace by providing only the features you need for proactive compliance monitoring and surveillance.
 
-# Trace workspace capabilities
+## Trace workspace capabilities
 
 The following Relativity features can be used in a Trace workspace:
 
@@ -44,7 +44,7 @@ The following Relativity features can be used in a Trace workspace:
 
 
 
-# Basic Trace workspace usage workflow
+## Basic Trace workspace usage workflow
 
 Using the Trace workspace allows you to focus on the alerts generated from the [Monitored Individuals](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#monitored-individuals) in your [Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#data-sources). After Trace ingests data from Monitored Individuals and pushes alerts to the Document object, reviewers can begin reviewing the alerts for true and false positives. You can then leverage Active Learning to conduct a prioritized review of the alerts. You can also use the other tools in the Analytics suite to more quickly drill down to the true alerts.
 
