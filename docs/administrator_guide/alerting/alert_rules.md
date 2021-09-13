@@ -22,7 +22,7 @@ Alert Rules are used to define the policies that identify misconduct within an o
 
 Alert Rules allow users to define the criteria of a document that should be alerted on. These Rules are executed on periodic basis at pre-configured intervals, allowing users to automatically and continously categorize and tag documents as they are ingested into the workspace.
 
-`Workflow` Rules operate the same way as `Alert` Rules, but are intended to trigger an Action rather than generate an alert for a user.
+`Workflow` Rules operate the same way as `Alert` Rules, but are intended to trigger an [Action]({{ site.baseurl }}{% link docs/administrator_guide/actions.md %}) rather than generate an alert for a user.
 {: .info }
 
 ## 1 - Creating a Rule
