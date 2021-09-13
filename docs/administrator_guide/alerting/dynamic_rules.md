@@ -10,7 +10,7 @@ nav_order: 3
 {: .no_toc }
 
 
-Description here...
+Dynamic Rules are Rules that can change based on changes to external data such as control room data, or human resources data, or expense data. 
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,8 +18,7 @@ Description here...
 
 ---
 
-Rule Generator
------
+## Rule Generator
 
 Rule Generator is a tool for automatically creating Rules based on non-document RDO data. Rule Generators can create rules to link Trade RDO's to Documents to simplify **Trade Reconstruction** workflows, alert on documents that breach insider lists or violate restricted lists defined by **Control Room** teams, or create **dynamic Rules** to link or alert on any communication related to integrated structured data coming from a CRM system, Time & Expense system, HR System, Excel file, or in-house tools.
 
@@ -34,21 +33,25 @@ The Rule Generator form contains following fields:
 -   **Rule Generator Name:** the name of the Rule Generator, limited to 20 characters, must be unique, and can't be modified.
 -   **Associated Object Type:** an Object Type associated with the Rule Generator. For each RDO of the declared Object Type a Rule and Saved Search is created. When a Rule which was created by a Rule Generator is evaluated, the Documents matching the Rule are linked to the associated RDO for which the rule was created.
 
-> **NOTE:** An Object Type can only be associated with a single Rule Generator.
+An Object Type can only be associated with a single Rule Generator.
+{: .info }
 
 -   **Relational Field On Document:** a multi object field on the **Document** object that is associated with the Object Type populated on the `Associated Object Type` field. This Document field is populated with the RDO of the declared Associated Object Type when the Rule created from that RDO hits on the document. 
 
-> **NOTE: **This field must be created manually as it changes based on the Object Type populated on the `Associated Object Type` field.
+This field must be created manually as it changes based on the Object Type populated on the `Associated Object Type` field.
+{: .info }
 
 -   **Relational Field On Rule:** a multi object field on the **Rule** object that is associated with the Object Type populated on the `Associated Object Type` field. This Rule field is populated with the RDO of the declared Associated Object Type when the Rule associated with that RDO is created. 
 
-> **NOTE: **This field must be created manually as it changes based on the Object Type populated on the `Associated Object Type` field.
+This field must be created manually as it changes based on the Object Type populated on the `Associated Object Type` field.
+{: .info }
 
 -   **Alert On Related Documents:** a flag which determines if the Rules that are created by the Rule Generator are of the type `Alert` or `Workflow`. Can't be modified.
 -   **Disable Generated Rules By Default:** a flag which determines if if the Rules that are created by the Rule Generator are disabled when they are created. Rule Generators that are going to create many rules or are of the type `Workflow` should be flagged as disabled by default.
 -   **Disable Generated Rules After (Days):** integer field which indicates the number of days (counting from rule creation date) after which the Rules created by Rule Generator will be disabled.
 
-> **NOTE:** A Rule will only be disabled after it has completed running regardless of the Disable Generated Rules After value.
+A Rule will only be disabled after it has completed running regardless of the Disable Generated Rules After value.
+{: .info }
 
 -   **Search Criteria:** required JSON field to create the search parameters for the Saved Search created and linked to the generated Rule. The details of the proper search criteria can be accessed via Contextual Help button on the Rule Criteria section. Please see the Rule Generator Search Criteria section for more details.
 -   **Terms Field:** optional field, name of the field on the Associated Object Type which will be used to create Terms that are linked to the generated Rule. Must be multiple object or multiple choice type field.
@@ -102,7 +105,6 @@ Rule Generator Search Criteria field is inputted as JSON with each `{}` represen
 > - `Value` value must be convertible to `DocumentFieldName` field type, i.e. if `DocumentFieldName` is date field, then valid values are `15 Apr 2021` or `04/15/2021`
 > - if `DocumentFieldName` is multiple/single object/choice field type, then `Value` should be a name of object/choice we want to search
 > - `Condition` must be valid for field type
-
 
 
 **Example Search Criteria:**

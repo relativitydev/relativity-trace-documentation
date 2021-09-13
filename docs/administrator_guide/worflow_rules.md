@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Workflows
+title: Workflow Rules
 parent: Administrator Guide
 nav_order: 8
 ---
 
-# Workflows
+# Workflow Rules
 {: .no_toc }
 
 

@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Rules
+title: Alert Rules
 parent: Alerting
 grand_parent: Administrator Guide
 nav_order: 1
 ---
 
-# Rules
+# Alert Rules
 {: .no_toc }
 
 
-Description here...
+Alert Rules are used to define the policies that identify misconduct within an organization.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,13 +18,14 @@ Description here...
 
 ---
 
-Trace Rules Engine Overview
-===========================
+## Overview
 
-The Trace Rules Engine allows users to define data buckets with specific triggers and actions. These Rules are executed on periodic basis at pre-configured intervals, allowing users to automatically categorize and tag documents as they are ingested into the workspace.
+Alert Rules allow users to define the criteria of a document that should be alerted on. These Rules are executed on periodic basis at pre-configured intervals, allowing users to automatically and continously categorize and tag documents as they are ingested into the workspace.
 
-1 - Creating a Rule
--------------------
+There are both `Alert` Rules and `Workflow` Rules. This page focuses on Alert Rules. For information on Workflow Rules go to the [Workflow Rules]({{ site.baseurl }}{% link docs/administrator_guide/workflow_rules.md %}) page.
+{: .info }
+
+## 1 - Creating a Rule
 
 Create a new [rule](#_Glossary) by clicking `New Rule` on the `Trace`:`Rules` tab
 
@@ -48,42 +49,43 @@ The Rule Creation form contains the following fields:
     -   **Webhook:** makes a generic API call hosted within Relativity
     -   **Slack:** generates a Slack message with metadata about alerted documents
     -   **Move To Folder:** Move matched documents to a specific folder
-> **NOTE:** Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed) on either the Trace Rules or Trace Workflow Rules field, depending on the Rule Type
 
-> **NOTE:** Default actions shipped with Trace out of the box are meant as examples and are subject to being updated during application upgrades. In order to configure your rules please create a new action of specific type (you can also copy default actions as a starting point).
+Documents are always tagged automatically with the associated Rule (happens as the final action as part of Rule Evaluation, if a document is tagged then all of the actions on the rule were executed) on either the Trace Rules or Trace Workflow Rules field, depending on the Rule Type
+{: .info }
 
-2 - Customizing and Running a Rule
------------------------------------
+Default actions shipped with Trace out of the box are meant as examples and are subject to being updated during application upgrades. In order to configure your rules please create a new action of specific type (you can also copy default actions as a starting point).
+{: .info }
+
+## 2 - Customizing and Running a Rule
 
 After you create a Rule, use the Rule definition page to associate Terms and Enable/Disable the rule.
 
 ![1571079859530](media/rules/1571079859530.png)
 
-##### Terms
+### Terms
 
 Associating Terms with a Rule causes it to only target documents that contain one or more of the associated terms in their extracted text. To associate Terms with a Rule, use the New or Link buttons on the Rule Layout. Please see the Terms section below for more information on creating Terms.
 
-##### Enable / Disable
+### Enable / Disable
 
 Clicking the Enable Rule console button on the right of the layout causes the Trace Manager Agent to run the rule on an ongoing basis. Clicking Disable Rule will stop future execution of the Rule.
 
-> **NOTE:** A Rule will only execute when it is enabled. If a Rule is disabled while running, it will still finish its current execution.
+A Rule will only execute when it is enabled. If a Rule is disabled while running, it will still finish its current execution.
+{: .info }
 
 
 
-3 - Validating Results
-----------------------
+## 3 - Validating Results
 
 After Rule executes, documents matching the Rule will be associated to the Rule itself.
 
 ![1571081067899](media/rules/1571081067899.png)
 
-Terms
------
+### Terms
 
 In addition to metadata conditions of a Saved Search associated with Rule, you can apply extensive searching criteria to isolate only the most relevant documents.
 
-### Creating Terms
+#### Creating Terms
 
 You can create Terms in multiple ways:
 
@@ -107,11 +109,13 @@ In addition, you can see and modify Term Categories and Rules associated with Te
 
 ![](media/rules/5b46e7806548749e50586196d43aa468.png)
 
-> **NOTE:** The Term “Name” (actual text being searched) **cannot** be modified after it is created. You must remove and add a new term object to change the search string. You **can** modify the highlight color and term category of an existing term.
+The Term “Name” (actual text being searched) **cannot** be modified after it is created. You must remove and add a new term object to change the search string. You **can** modify the highlight color and term category of an existing term.
+{: .info }
 
-> **NOTE: The** Term “Name” (actual text being searched) is limited to 450 characters. Please reach out `support@relativity.com` if your use-case requires higher limits for your terms.
+The Term “Name” (actual text being searched) is limited to 450 characters. Please reach out `support@relativity.com` if your use-case requires higher limits for your terms.
+{: .info }
 
-### Highlighting
+## Highlighting
 
 By default, Trace creates a `Trace Rules Persistent Highlight Set` that highlights Trace Terms currently associated with any Rule. If you would like to highlight Trace Terms that are not associated with any Rule, you create additional Persistent Highlight Set as needed.
 

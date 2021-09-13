@@ -10,7 +10,7 @@ has_children: true
 {: .no_toc }
 
 
-Ever communication collected will go through a standard data pipeline.
+The riskiest communications are automatically alerted on based on organization policies.
 {: .fs-6 .fw-300 }
 
 1. TOC
