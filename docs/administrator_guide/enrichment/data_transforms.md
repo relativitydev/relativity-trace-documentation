@@ -10,7 +10,7 @@ nav_order: 1
 {: .no_toc }
 
 
-Description here...
+Data Transformations analyze and enrich communications before they become a documnent and have the ability to adjust underlying content.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,10 +18,9 @@ Description here...
 
 ---
 
-Data Transformations
---------------------
+## Data Transformations
 
-Trace Data Transformation is a Relativity Dynamic Object (RDO) that ships with Trace application. It allows administrators to specify a way data should be transformed while it is being imported by the data source. Currently there are two types of Trace Data Transformations, Replace and Deduplication. Trace Data Transformations are attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout.
+Data Transformations allow administrators to specify a way data should be transformed while it is being imported by the data source. Trace Data Transformations are attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout.
 
 ### Replace Data Transformation
 
@@ -31,7 +30,8 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 
 ![](media/data_transforms/5c3b02bf2c121e73f3a3916db799b306.png)
 
-> **NOTE:** Replacement of the Extracted Text (application of replace data transformation) happens on a new copy of the Extracted Text (referenced as *<original_file_name>.replaced.txt*).  Newly generated Extracted Text is referenced in a separate loadfile (`loadfile.replaced.dat`).  In addition, if original loadfile.dat contains a column named `Extracted Text Size in KB` , ONLY then `Extracted Text Size in KB` field is re-generated with updated length.  **Previously generated/supplied data for `Extracted Text Size in KB` is overwritten in this case.**
+Replacement of the Extracted Text (application of replace data transformation) happens on a new copy of the Extracted Text (referenced as *<original_file_name>.replaced.txt*).  Newly generated Extracted Text is referenced in a separate loadfile (`loadfile.replaced.dat`).  In addition, if original loadfile.dat contains a column named `Extracted Text Size in KB` , ONLY then `Extracted Text Size in KB` field is re-generated with updated length.  **Previously generated/supplied data for `Extracted Text Size in KB` is overwritten in this case.**
+{: .info}
 
 ### Deduplication Data Transformation
 
@@ -51,7 +51,8 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 2. Group Identifier
 3. Native File Path -- must be specified, but not necessarily mapped.
    
-   > **Note:** Because of this requirement, Deduplication is incompatible with [Ingestion Profiles](#Ingestion-Profiles) where Import Natives is set to no.
+   Because of this requirement, Deduplication is incompatible with [Ingestion Profiles](#Ingestion-Profiles) where Import Natives is set to no.
+   {: .info}
 
 ### Communication Direction Data Transformation
 
@@ -65,11 +66,14 @@ Data Transformations of type `Communication Direction` can be used to populate t
 
 When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 
-> **NOTE:** the `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
+The `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
+{: .info}
 
-> **NOTE:** use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+Use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+{: .info}
 
-> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Communication Direction is incompatible with Ingestion Profiles where Import Natives is set to no.
+Use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Communication Direction is incompatible with Ingestion Profiles where Import Natives is set to no.
+{: .info}
 
 ### Exempt List Data Transformation
 
@@ -97,19 +101,24 @@ A communication is considered exempt if the `From ` field matches one or more of
 
 When using the `Exempt List` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Exempt` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 
-> **NOTE:** the `Trace Exempt` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Exempt List` transform.
+The `Trace Exempt` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Exempt List` transform.
+{: .info}
 
-> **NOTE:** Having too many `Exempt Entry` objects in a workspace will increase the memory needs of the `Trace Manager Agent` when running `Exempt List` transformations. If your workspace has more than 5000 `Exempt Entry`  objects defined, please contact `support@relativity.com` to make sure you have adequate system resources available.
+Having too many `Exempt Entry` objects in a workspace will increase the memory needs of the `Trace Manager Agent` when running `Exempt List` transformations. If your workspace has more than 5000 `Exempt Entry`  objects defined, please contact `support@relativity.com` to make sure you have adequate system resources available.
+{: .info}
 
-> **NOTE:** use of the `Exempt List` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+Use of the `Exempt List` Data Transformation type requires that a column named From exists in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+{: .info}
 
-> **NOTE:** use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Exempt List is incompatible with Ingestion Profiles where Import Natives is set to no.
+Use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Exempt List is incompatible with Ingestion Profiles where Import Natives is set to no.
+{: .info}
 
 ### AI Extracted Text Cleansing Data Transformation
 
 Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text of a document. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove confidentiality disclaimers, email signatures, and email headers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise.
 
-> **NOTE:** When `Remove Email Headers` is enabled, cleansing will always act on the document since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
+When `Remove Email Headers` is enabled, cleansing will always act on the document since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
+{: .info}
 
 ![remove-confdentiality-disclaimers-settings](media/user_documentation/remove-confdentiality-disclaimers-settings.png)
 
@@ -117,12 +126,15 @@ When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted
 
 ![cleansing-status-outcome](media/data_transforms/cleansing-status-and-error-outcome.png)
 
-> **NOTE:** AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
+AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
+{: .info}
 
-> **NOTE:** The long text field, `Trace Original Extracted Text`, stores the original contents of the extracted text prior to any data transformations, acting as a source for unaltered data after Text Extraction. It can be used in place of the Extracted Text field or used to verify results of cleansing.
+The long text field, `Trace Original Extracted Text`, stores the original contents of the extracted text prior to any data transformations, acting as a source for unaltered data after Text Extraction. It can be used in place of the Extracted Text field or used to verify results of cleansing.
+{: .info}
 
 ### Group Identifier Truncation for External Data Sources
 
 `Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
 
-> **NOTE:** `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact support@relativity.com.
+`Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact support@relativity.com.
+{: .info}
