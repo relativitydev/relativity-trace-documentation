@@ -10,7 +10,7 @@ nav_order: 3
 {: .no_toc }
 
 
-Description here...
+Analytics capabilities consist of language identification, name normalization, email threading, textual near duplicate identification, repeated content identification, find conceptually similar content, and topic clusting.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,9 +18,12 @@ Description here...
 
 ---
 
-# Analytics Automation
+## Analytics Automation
 
-Relativity Trace is capable of automating builds of Conceptual Analytics Indexes, Classification Analytics Indexes, and Structured Analytics Sets. Note that the Analytics application must be installed into the workspace before analytics automation can be used.
+Conceptual Analytics Indexes, Classification Analytics Indexes, and Structured Analytics Sets can all be automated with Relativity Trace.
+
+The Analytics application must be installed into the workspace before analytics automation can be used.
+{: .info }
 
 ### Conceptual and Classification Analytics
 
@@ -32,7 +35,8 @@ Relativity Trace can trigger automatic builds of any Structured Analytics Set de
 
 1. Create the Structured Analytics Set(s) that will be automated and run Full Builds on them.
 
-   > For recommendations on how to configure each of the different types of Structured Analytics Sets including Saved Search details, how frequently to run, and what kind of builds to automate, please contact support@relativity.com
+   For recommendations on how to configure each of the different types of Structured Analytics Sets including Saved Search details, how frequently to run, and what kind of builds to automate, please contact support@relativity.com
+   {: .info }
 
 2. Edit the Indexing Task from the Setup page. Under Task Settings, the `Sas Automation Configuration Json` field should automatically populate with a JSON node for every Structured Analytics Set defined in the workspace: ![image-20191223171511007](media/analytics/image-20191223171511007.png)
 
@@ -44,15 +48,18 @@ Relativity Trace can trigger automatic builds of any Structured Analytics Set de
 
    3. Change the `BuildFrequencyInMinutes` property to the appropriate build frequency in minutes 
 
-      > **NOTE:** this is the most frequently the Structured Analytics Set will be built, if a build takes longer than the interval then the next build will start when the previous one ends. Be careful not to build more frequently than needed as every build consumes resources on the Analytics server!
+      This is the most frequently the Structured Analytics Set will be built, if a build takes longer than the interval then the next build will start when the previous one ends. Be careful not to build more frequently than needed as every build consumes resources on the Analytics server.
+      {: .info }
 
    4. Change the `PopulateAll` property to `true` if the underlying index should be repopulated with all relevant documents before each build (`true` for a full build, `false` for an incremental build)
 
-      > **NOTE:** Setting `PopulateAll` to `true` can cause builds to take much longer and consume a lot more resources on the Analytics server!
+      Setting `PopulateAll` to `true` can cause builds to take much longer and consume a lot more resources on the Analytics server.
+      {: .info }
 
    5. Change the `AnalyzeAll` property to `true` if the entire index should be analyzed in each build (`true` for a full build, `false` for an incremental build)
 
-      > **NOTE:** Setting `AnalyzeAll` to `true` can cause builds to take much longer and consume a lot more resources on the Analytics server!
+      Setting `AnalyzeAll` to `true` can cause builds to take much longer and consume a lot more resources on the Analytics server.
+      {: .info }
 
 4. Click Save and the Trace Manager Agent will automate for every Structured Analytics set with Enabled = true.
 
