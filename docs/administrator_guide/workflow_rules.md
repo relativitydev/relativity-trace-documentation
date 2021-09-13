@@ -2,14 +2,14 @@
 layout: default
 title: Workflow Rules
 parent: Administrator Guide
-nav_order: 8
+nav_order: 7
 ---
 
 # Workflow Rules
 {: .no_toc }
 
 
-Description here...
+Workflow Rules allow for 
 {: .fs-6 .fw-300 }
 
 1. TOC
