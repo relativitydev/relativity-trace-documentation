@@ -12,3 +12,6 @@ Trace Administrators are those who are configuring the system for Trace Users. T
 {: .fs-6 .fw-300 }
 
 {:toc}
+
+The Administrator Guide is additive to the User Guide and should only be reviewed after an extensive review of the User Guide.
+{: .info }
