@@ -38,10 +38,8 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 
 - Identify/provision a Windows machine to run the Trace Shipper Service
 This should be the same machine as the Veritas Merge1 appliance VM.
-{: .info }
 - Identify what source folder(s) on your local network need their files shipped to a Relativity
 Windows service must have read/write/modify permission on the folders.
-{: .info }
 - Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
 - Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
 
@@ -50,11 +48,10 @@ A document will fail to ship if a file with the same name already exists in the 
 
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
 To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
-{: .info }
 - Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
 - Download and install ROSE (Staging Explorer) and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection))
-
 - (Only for Web protocol) Request the Relativity Transfer API Services application (Relativity.TransferApi.Services.rap) by submitting a ticket to support@relativity.com. [Install](https://help.relativity.com/10.3/Content/Relativity/Applications/Installing_applications.htm#Installi3) the Relativity Transfer API Services application to the Application Library.
+
 Do not install the Relativity Transfer API Services application to any workspaces. By installing the application to the Application Library, the services are available for consumption.
 {: .info }
 
@@ -85,7 +82,9 @@ For details on the IP ranges for your specific RelativityOne instance please con
 3. Go to Services on the machine and verify that the service was installed (`Trace Shipper Service`)
 4. From the Services window, right click on the `Trace Shipper Service` and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
 5. In the `Trace Shipper Service` folder, edit the `serviceConfiguration.json` file. 
-All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
+All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. 
+
+See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
 {: .info }
 
    The root object has a single `shippers` property, which is an array of objects with the following properties:
@@ -215,7 +214,7 @@ Perform the following steps in order to get started:
 
 1. First, **create** the local directories you will be shipping. The actual directories are up to you, but take note of them for configuration of the Trace Shipper Service (and potentially Merge1), later. 
 
-      local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls.
+      Local directory for our purposes means a directory accessible to the Trace Shipper service via normal Windows path calls.
       {: .info }
 
       > **EXAMPLE:**  Say you are using Merge1 to ship both Exchange emails and ICE chat, on the local server, we could create the following directories:
