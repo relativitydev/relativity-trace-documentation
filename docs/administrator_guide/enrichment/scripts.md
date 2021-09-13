@@ -3,7 +3,7 @@ layout: default
 title: Scripts
 parent: Enrichment
 grand_parent: Administrator Guide
-nav_order: 4
+nav_order: 2
 ---
 
 # Scripts

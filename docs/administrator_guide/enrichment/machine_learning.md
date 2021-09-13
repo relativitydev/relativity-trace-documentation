@@ -3,14 +3,14 @@ layout: default
 title: Machine Learning
 parent: Enrichment
 grand_parent: Administrator Guide
-nav_order: 1
+nav_order: 4
 ---
 
 # Machine Learning
 {: .no_toc }
 
 
-Description here...
+Machine Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,25 +18,23 @@ Description here...
 
 ---
 
-### Machine Learning
+## Machine Learning
 
-Machine Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting. Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Machine Learning models implemented within your workspace.
+Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Machine Learning models implemented within your workspace.
 
 Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** and the **Policy Enhancement Process** to effectively implement these models within your organization. To learn more about the Trace Pre-Built Machine Learning Models reach out to support@relativity.com.
 
+Each Machine Learning model should be as specific as possible. Creating a model to identify "Risk" overall will not be very accurate, because "Risk" can be hundreds of different things. Rather you'd want to create one Machine Learning model for "Sharing of Insider Information", another for "Change of Venue", and another for "Sexual Harassment". Each of these models will be more accurate because they are looking for one behavior rather than many.
+{: .info }
 
-
-> **IMPORTANT:** Each Machine Learning model should be as specific as possible. Creating a model to identify "Risk" overall will not be very accurate, because "Risk" can be hundreds of different things. Rather you'd want to create one Machine Learning model for "Sharing of Insider Information", another for "Change of Venue", and another for "Sexual Harassment". Each of these models will be more accurate because they are looking for one behavior rather than many.
->
-> **Examples of common models:**
->
-> 1. Remove Irrelevant Content (Spam, Newsletter, Research Reports, etc.)
-> 2. Classify Communication Types (Trade Related Communications, Sales conversations, etc.)
-> 3. Risk Identification (Insider Information, Boasting, Rumors, etc.)
+**Examples of common models:**
+1. Remove Irrelevant Content (Spam, Newsletter, Research Reports, etc.)
+2. Classify Communication Types (Trade Related Communications, Sales conversations, etc.)
+3. Risk Identification (Insider Information, Boasting, Rumors, etc.)
 
 
 
-#### Setting up a Machine Learning Model
+### Setting up a Machine Learning Model
 
 Follow these steps to build a machine learning model:
 
@@ -124,11 +122,11 @@ Follow these steps to build a machine learning model:
     2.  Edit the "Global Analytics Build Frequency in Minutes" field to have a value of `120`
        1. This means your Machine Learning model will analyze new document every two hours
 
-> **WARNING:** You want to protect these training documents. Set up a workflow rule to move these into a Machine Learning folder, and ensure your Data Disposal does not touch anything in this folder.
+You want to protect these training documents. Set up a workflow rule to move these into a Machine Learning folder, and ensure your Data Disposal does not touch anything in this folder.
+{: .warn }
 
 
-
-#### Viewing Results
+### Viewing Results
 
 Your Machine Learning Model ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. This result can be found your Machine Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`, `CSR - Insider Information Cat. Set::Category Rank`).
 
@@ -145,11 +143,11 @@ Your Machine Learning Model ranks a document between 0-100 on the likelihood of 
 
 ![Machine Learning on Coding Layout](media/machine_learning/image-20210218233922546.png)
 
-#### Validating Model Accuracy
+### Validating Model Accuracy
 
 Before using Machine Learning results to make review or alert decisions, you want to be confident that the model is accurately classifying communications based on its purpose. This requires a validation test, which should be run periodically (quarterly) to understand the accuracy and recorded each time for defensibility.
 
-##### Running a Validation Test
+#### Running a Validation Test
 
 To run a Validation Test, we first need to identify a subset of analyzed documents to manually review for accuracy. We have a Relativity Script that tags these documents for review.
 
@@ -182,12 +180,12 @@ To run a Validation Test, we first need to identify a subset of analyzed documen
 
 ![image-20210413143726362](media/machine_learning/image-20210413143726362.png)
 
-##### Interpreting Validation Test Results
+#### Interpreting Validation Test Results
 
 The `Trace Machine Learning Validation Test` calculates Precision and Recall across all Rank Cutoff values allowing for you to understand the Machine Learning model's accuracy at different implementation ranks.
 
 
-###### What is Precision and Recall and Rank Cutoffs?
+##### What is Precision and Recall and Rank Cutoffs?
 
 To explain Precision and Recall, you first need to understand the four different types of document categorizations.
 
@@ -236,15 +234,13 @@ Recall is a statistical representation of how often your model misses Positive e
 Rank Cutoff is the rank used by the model to classify a document as either Positive or Negative. With a model ranking every document between 0 and 100 it could specify 90 as the rank cutoff where documents with a Rank equal to or above 90 are Positive and a Rank below 90 is Negative. Or a model could specify 70 as the rank cutoff where documents with a Rank equal to or above 70 are Positive and a Rank below 70 is Negative. Adjusting the rank cutoff  allows for you to hone the model for it's specific use case.
 
 > **Example:** 
->
 > 1. If I'm creating a Spam model, I need to be almost 100% sure that the documents the model is identifying as Spam are actually Spam because I will remove these document from Alerting. This means I need my model to have extremely **high Precision** (98-100). In this scenario, I would set my Rank Cutoff to be extremely high (>80) so that my Precision is extremely high. By adjusting the system for high Precision, my Recall will drop. This means that there are many Spam documents in what the model thinks is not Spam. These Spam documents will still be alerted on and will show up to a reviewer as a false-positive alert. This is okay though, because we are erroring on the side of not removing content that could contain misconduct.
 > 2. If I'm creating an Insider Information model, I want to make sure I'm casting a wide net and alerting on anything that could possibly be this type of misconduct. This means I need my model to have extremely **high Recall** (90-100). In this scenario, I would set my Rank Cutoff to be low (60-80) so that my Recall is extremely high. By adjusting the system for high Recall, my Precision will drop. This means that there are many non-Insider Information documents in what the model thinks is Insider Information. These non-Insider Information documents will be alerted on and will show up to a reviewer as a false-positive alert. This is okay though, because it ensures we don't miss any type of misconduct.
 
 
+### Using the Results from a Machine Learning Model
 
-#### Using the Results from a Machine Learning Model
-
-##### Using Results to Advise Reviewers (<u>Less Confident</u> in Accuracy)
+#### Using Results to Advise Reviewers (<u>Less Confident</u> in Accuracy)
 
 If your Validation Test is not returning the Accuracy needed based on your organizations risk appetite or if you are uncomfortable with Machine Learning in general, this approach has little risk.  In this approach you're displaying your Machine Learning results on the Review coding pane so reviewers can use the results to make more informed decisions. If a Spam model give the reviewers document a high Rank, the review can see that and spend less time reviewing that document.
 
@@ -256,8 +252,7 @@ If your Validation Test is not returning the Accuracy needed based on your organ
 ![Machine Learning on Coding Layout](media/machine_learning/image-20210217165536281-1215131.png)
 
 
-
-##### Using Results to Generate New Alerts (<u>Confident</u> in Accuracy)
+#### Using Results to Generate New Alerts (<u>Confident</u> in Accuracy)
 
 In this approach you're alerting on documents that you Machine Learning results believe could contain risk. This approach will catch document that don't hit on standard lexicons.
 
@@ -275,11 +270,12 @@ In this approach you're alerting on documents that you Machine Learning results 
 
    ![Machine Learning Rule](media/machine_learning/image-20210217170551927.png)
 
-> **NOTE:** If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+{: .info }
 
 
 
-##### Using Results to Remove Irrelevant Content (<u>Very Confident</u> in Accuracy)
+#### Using Results to Remove Irrelevant Content (<u>Very Confident</u> in Accuracy)
 
 Once you are very confident in your Machine Learning models that identify irrelevant content, you are ready to use those results to actually remove those documents from being analyzed for alerts.
 
@@ -291,7 +287,7 @@ Once you are very confident in your Machine Learning models that identify irrele
 
 
 
-##### Using Results to Create More Targeted Alerts (<u>Extremely Confident</u> in Accuracy)
+#### Using Results to Create More Targeted Alerts (<u>Extremely Confident</u> in Accuracy)
 
 Once you are extremely confident in your Machine Learning models, you are ready to use those results to narrow the documents that can hit on specific alerts.
 
@@ -301,15 +297,16 @@ Once you are extremely confident in your Machine Learning models, you are ready 
 
 ![Machine Learning Rules](media/machine_learning/image-20210218235348807.png)
 
-**NOTE:** If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+{: .info }
 
-#### Improving Model Accuracy
+### Improving Model Accuracy
 
-##### Relativity Trace Pre-Built Machine Learning Models
+#### Relativity Trace Pre-Built Machine Learning Models
 
 Relativity has multiple pre-built machine learning models that can jump start training and allow for you to get results directly after implementation. To utilize these pre-built machine learning models please reach out to support@relativity.com.
 
-##### Using Historic Data
+#### Using Historic Data
 
 Historic data that has already been coded for the behaviors you are attempting to identify should be added to your models. 
 
@@ -317,7 +314,7 @@ Historic data that has already been coded for the behaviors you are attempting t
 2. Use the Edit Mass Operation and the Machine Learning Document Layout to code the documents on the appropriate "ML [Model Purpose] Training"  field
 3. Once coded, these documents will automatically be pulled into the associated model as training documents
 
-##### Learning from Reviewer Decisions
+#### Learning from Reviewer Decisions
 
 Reviewers can code documents for specific behaviors while they are reviewing alerts.
 
@@ -330,6 +327,8 @@ Reviewers can code documents for specific behaviors while they are reviewing ale
             3. [Model Purpose] (eg. `Collusion`)
 2. During a model training period an Administrator can locate these positive example documents and code them on the "ML [Model Purpose] Training" field so they are automatically pulled into the associated model as training documents
 
-> **NOTE:** Do not let reviewers code directly on the "ML [Model Purpose] Training" field. This will be more challenging for reviewers, cause excess documents to be added to each model, and reduce control Administrators have over the models structure, ultimately garnering poor results.
+Do not let reviewers code directly on the "ML [Model Purpose] Training" field. This will be more challenging for reviewers, cause excess documents to be added to each model, and reduce control Administrators have over the models structure, ultimately garnering poor results.
+{: .info }
 
-> **NOTE:** If your training sets exceeds 10,000 documents please reach out to support@relativity.com for optimization steps.
+If your training sets exceeds 10,000 documents please reach out to support@relativity.com for optimization steps.
+{: .info }

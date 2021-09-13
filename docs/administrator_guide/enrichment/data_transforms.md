@@ -3,7 +3,7 @@ layout: default
 title: Data Transformations
 parent: Enrichment
 grand_parent: Administrator Guide
-nav_order: 3
+nav_order: 1
 ---
 
 # Data Transformations

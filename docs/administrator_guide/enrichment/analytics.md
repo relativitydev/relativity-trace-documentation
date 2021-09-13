@@ -3,7 +3,7 @@ layout: default
 title: Analytics
 parent: Enrichment
 grand_parent: Administrator Guide
-nav_order: 2
+nav_order: 3
 ---
 
 # Analytics
