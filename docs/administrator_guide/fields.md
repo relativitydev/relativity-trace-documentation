@@ -17,7 +17,7 @@ Many Fields are created or manipulated as a part of Relativity Trace.
 
 ---
 
-### Trace Document Fields
+## Trace Document Fields
 
 As documents flow into a Relativity workspace and through the Trace workflow the status of documents is reflected on a few key fields on the Document object
 
@@ -100,8 +100,7 @@ As documents flow into a Relativity workspace and through the Trace workflow the
 
 
 
-Appendix B: Trace Document Extraction Fields
-============================================
+## Appendix B: Trace Document Extraction Fields
 
 Trace automatically extracts metadata information for Microsoft Office 365 Data Source and Relativity Data Extraction Data Source. Below is the list of all the supported fields. There are four major categories for fields:
 
