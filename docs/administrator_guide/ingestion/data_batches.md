@@ -57,9 +57,9 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
     {: .info }
     
     The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+    ![](media/data_batches/fafdd5aacec029271e4f39ca303c80fa.png)
     {: .info }
-    
-   ![](media/data_batches/fafdd5aacec029271e4f39ca303c80fa.png)
+
 
 If a Data Batch sits in a status other than `Completed`, `CompletedWithErrors`, `CompletedWithDocumentLevelErrors`, or `Abandoned` for longer than 24 hours (timeout configurable with the `Data Batch Timeout In Hours` setting on the Data Validation Task), it will automatically be: **(1)** Retried if automatic retry is configured for workspace and retry attempts exist for the stuck data batch (Data Batches can hang in the Enriching status and this reduces the number of Data Batches that must be retried manually). **(2)** Marked `CompletedWithErrors` if the Data Batch exhausted its retry attempts and the error was unable to be resolved. **(3)** Marked `Abandoned` if the Data Batch does not have any files. This functionality helps ensure that temporary system issues do not lead to Data Batches being stuck indefinitely containing documents that never make it into the workspace.
 {: .info }
