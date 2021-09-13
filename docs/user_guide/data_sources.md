@@ -24,7 +24,7 @@ Data Sources are configured by a Relativity Trace Administrator. They are config
 
 ## Data Sources List
 | Type | Data Source |
-|------|-------------|
+|:--:|-------------|
 | Email | Office365|
 | Email | Google Workspace |
 | Email | Bloomberg |
