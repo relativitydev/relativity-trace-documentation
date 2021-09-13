@@ -38,6 +38,8 @@ If a Data Batch completes successfully but has errors at the document level (for
 
 Data Batch objects have associated Mass Operations (and corresponding Data Batch console UI buttons) to help with state resolution
 
+![](media/data_batches/fafdd5aacec029271e4f39ca303c80fa.png)
+
 1. `Trace Data Batch Retry` – submits the Data Batch to be retried by Trace. This is a full retry that reverts the Data Batch to the `RetrievedFromSource` status and Trace will once again attempt to ingest the data.
 
    `Trace Data Batch Retry` should only be run if deduplication is enabled on the Data Source. If it is not enabled on the Data Source you will need to perform a `Trace Document Retry` on all documents in that data batch.
@@ -57,7 +59,6 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
     {: .info }
     
     The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
-    ![](media/data_batches/fafdd5aacec029271e4f39ca303c80fa.png)
     {: .info }
 
 
