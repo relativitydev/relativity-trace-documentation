@@ -23,6 +23,7 @@ Data Sources are used to automatically and continously collect and ingest commun
 Data Sources are configured by a Relativity Trace Administrator. They are configured both during implementation and ad-hoc when monitoring needs to be extended to a new communication channel. Administrator information on how to configure a Data Source can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/collection/data_sources.md %}).
 
 ## Data Sources List
+
 | Type  | Data Source      |
 |-------|------------------|
 | Email | Office365        |
