@@ -9,10 +9,12 @@ nav_order: 10
 {: .no_toc }
 
 
-Description here...
+Completely flexible permissions can be defined for individual user group down to the field. 
 {: .fs-6 .fw-300 }
 
 1. TOC
 {:toc}
 
 ---
+## Overview
+Relativity Trace relies on standard Relativity Permissions. More information on Relativity Permissions can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Security_permissions/Setting_workspace_permissions.htm).
