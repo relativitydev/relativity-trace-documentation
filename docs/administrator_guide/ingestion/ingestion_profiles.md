@@ -10,7 +10,7 @@ nav_order: 3
 {: .no_toc }
 
 
-Description here...
+Ingestion profiles store configuration for ingesting content into Relativity Trace.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,11 +18,9 @@ Description here...
 
 ---
 
-## Ingestion Profiles
+## Ingestion Profile Fields
 
-Ingestion profiles are a store for configuration needed for going from a loadfile to a document in Relativity. Most fields have a default value that will not need to be changed except for advanced use cases.
-
-##### Ingestion Profile Fields
+Most fields have a default value that will not need to be changed except for advanced use cases.
 
 `Name` - The name of the ingestion profile. 
 
@@ -50,7 +48,9 @@ Ingestion profiles are a store for configuration needed for going from a loadfil
 
 `Import Natives` - A yes/no field specifying whether or not Natives should be linked to any documents imported with the Ingestion Profile. If Yes, `Native File Path Location` is required to be linked to a data mapping of type NativeFilePath. If No, `Native File Path` MUST be unlinked. 
 
-> **Note:** Importing Native files is required for [Deduplication](#deduplication-data-transformation), [Communication Direction](#communication-direction-data-transformation), and [Exempt List](#exempt-list-data-transformation) Data Transformations
+Importing Native files is required for [Deduplication](#deduplication-data-transformation), [Communication Direction](#communication-direction-data-transformation), and [Exempt List](#exempt-list-data-transformation) Data Transformations.
+{: .info }
+
 
 `Column Containing File Location` - A data mapping containing the name of the column in the loadfile that contains a text file location. The imported field on the document will display the contents of the text file instead of the file path. This field is optional.
 
@@ -74,7 +74,8 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 `Source Field Name` - The name of the column in the loadfile that will be used with the ingestion profile
 
-> **Note:** The Source Field Name is case sensitive when matching with a column in the loadfile.
+The Source Field Name is case sensitive when matching with a column in the loadfile.
+{: .info }
 
 `Relativity Field` - The field in Relativity that will have it's value populated
 
@@ -88,13 +89,15 @@ Data mappings are a link between a column in a loadfile and a field in Relativit
 
 **Read From Other Metadata Column** - If this field is checked, this data mapping will not read from the load file column with the same name as the source field name. Instead, it will read from the "Other Metadata" field, if it exists, and search for a key with the same name as the source field name. If a matching key is found, then the value associated with the key will be imported into the destination Relativity Field.
 
-> **Note:** The "Other Metadata" field is populated by Trace during extraction. It consists of a JSON list of key value pairs. 
->
-> `[{Key: "This should match source field name", Value: "This value will be read into Relativity"}]`
->
-> **Note:** Unlike standard data mappings that read directly from the load file, it is possible that the "Other Metadata" field JSON will not contain the key specified by Source Field Name. In this case, Trace will not error, it will import an empty value.
->
-> **Note:** Contents of the "Other Metadata" field will change from file to file, especially between different file types. To understand possible headers and other metadata that can be pulled from this field, create a standard Data Mapping to import the contents of the "Other Metadata" field. You can then decide which metadata keys you would like to pull by adding a Data Mapping with 'Read From Other Metadata Column' checked.
+The "Other Metadata" field is populated by Trace during extraction. It consists of a JSON list of key value pairs.
+`[{Key: "This should match source field name", Value: "This value will be read into Relativity"}]`
+{: .info }
+
+Unlike standard data mappings that read directly from the load file, it is possible that the "Other Metadata" field JSON will not contain the key specified by Source Field Name. In this case, Trace will not error, it will import an empty value.
+{: .info }
+
+Contents of the "Other Metadata" field will change from file to file, especially between different file types. To understand possible headers and other metadata that can be pulled from this field, create a standard Data Mapping to import the contents of the "Other Metadata" field. You can then decide which metadata keys you would like to pull by adding a Data Mapping with 'Read From Other Metadata Column' checked.
+{: .info }
 
 #### Adding Encoding Choices
 
