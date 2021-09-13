@@ -7,9 +7,6 @@ nav_order: 4
 # Monitored Individuals
 {: .no_toc }
 
-Under Construction
-{: .label .label-yellow }
-
 A Monitored Indidual is a person within the organization whose communications are being analyzed for misconduct.
 {: .fs-6 .fw-300 }
 
