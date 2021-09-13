@@ -8,8 +8,7 @@ nav_order: 9
 # Retention
 {: .no_toc }
 
-
-Description here...
+Retention policies can be defined to dispose of communications after surveillance has been performed.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -17,15 +16,18 @@ Description here...
 
 ---
 
+## Overview
+Retention policies are defined using [Workflow Rules]({{ site.baseurl }}{% link docs/administrator_guide/workflow_rules.md %}) and the Data Disposal type of [Action]({{ site.baseurl }}{% link docs/administrator_guide/actions.md %}). 
+
 ### Data Disposal Action Type
 
 The Data Disposal Action will permanently delete all documents that match the Rule conditions if they are outside the Data Retention window.
->
-> Data Disposal will only delete files located in valid Data Batch folders. Documents not ingested by Trace will not be deleted.
->
-> If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted.
->
-> _Only_ documents which were imported as part of a Data Batch which is in the `Completed` or `CompletedWithDocumentLevelErrors` state will be deleted.
+
+Data Disposal will only delete files located in valid Data Batch folders. Documents not ingested by Trace will not be deleted.
+
+If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted.
+
+_Only_ documents which were imported as part of a Data Batch which is in the `Completed` or `CompletedWithDocumentLevelErrors` state will be deleted.
 
 The Data Disposal Action Type follows the same Trace Rules Engine paradigm with one added condition:
 
@@ -49,7 +51,8 @@ This action is used to:
 
 `Document Delete Batch Size` - controls number of documents to delete at once
 
-> **Note:** All documents will be deleted in a single pass, this is a tweak to improve SQL performance.  Increasing this setting will only take affect if Rule Evaluation task setting (Max Documents Per Execution) is same or higher value.
+All documents will be deleted in a single pass, this is a tweak to improve SQL performance.  Increasing this setting will only take affect if Rule Evaluation task setting (Max Documents Per Execution) is same or higher value.
+{: .info }
 
 `Delete Documents Older Than Hours` - controls age of a document (based on System Created On date/time) to delete
 
