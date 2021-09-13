@@ -22,7 +22,7 @@ Relativity Trace is an extensible platform that supports open API's to augment s
 
 ## Overview
 
-Relativity Trace API is based and fully dependent on [Relativity Dynamic Objects](https://help.relativity.com/RelativityOne/Content/Managing_Relativity_dynamic_objects/RDO_11.0/Relativity_objects.htm) (RDOs). Relativity Trace does not have any custom APIs outside of RDOs. Please, refer to [Relativity API Documentation](https://platform.relativity.com/RelativityOne/Content/REST_API/REST_reference/Dynamic_objects.htm) on specifics on how  to interact with RDOs.
+Relativity Trace API is based and fully dependent on [Relativity Dynamic Objects](https://help.relativity.com/RelativityOne/Content/Managing_Relativity_dynamic_objects/RDO/Relativity_objects.htm) (RDOs). Relativity Trace does not have any custom APIs outside of RDOs. Please, refer to [Relativity API Documentation](https://platform.relativity.com/RelativityOne/Content/REST_API/REST_reference/Dynamic_objects.htm) on specifics on how  to interact with RDOs.
 
 This documents provides specifications on how one can interact with RDOs specific to Trace.
 
@@ -35,7 +35,7 @@ This documents provides information on how to build custom integration for both 
 
 ## Ingest Data From Custom Data Sources
 
-The Trace Proactive Ingestion system (that powers Trace) allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/9.6/Content/Relativity_Integration_Points/RIP_9.6/Installing_Integration_Points.htm).
+The Trace Proactive Ingestion system (that powers Trace) allows Administrators and Data Sources to automatically and continuously ingest data into Relativity. The framework is built on top of [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm).
 
 The key benefits of the Proactive Ingestion Framework include:
 
