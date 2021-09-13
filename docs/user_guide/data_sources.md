@@ -16,3 +16,5 @@ Trace supports the monitoring of communications across email, chat, audio, mobil
 {:toc}
 
 ---
+
+![](media/data_sources/trace_data_sources.png)
