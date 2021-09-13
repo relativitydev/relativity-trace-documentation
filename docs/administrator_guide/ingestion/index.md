@@ -10,7 +10,7 @@ has_children: true
 {: .no_toc }
 
 
-Description here...
+Data collected is then ingested into Relativity Trace in an ongoing and entirely automated fashion.
 {: .fs-6 .fw-300 }
 
 1. TOC
