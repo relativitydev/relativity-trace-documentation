@@ -3,7 +3,7 @@ layout: default
 title: Integration Points
 parent: Ingestion
 grand_parent: Administrator Guide
-nav_order: 2
+nav_order: 1
 ---
 
 # Integration Points

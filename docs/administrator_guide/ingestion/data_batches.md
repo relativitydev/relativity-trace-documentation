@@ -3,7 +3,7 @@ layout: default
 title: Data Batches
 parent: Ingestion
 grand_parent: Administrator Guide
-nav_order: 1
+nav_order: 3
 ---
 
 # Data Batches

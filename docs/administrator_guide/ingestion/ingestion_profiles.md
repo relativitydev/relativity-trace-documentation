@@ -3,7 +3,7 @@ layout: default
 title: Integration Profiles
 parent: Ingestion
 grand_parent: Administrator Guide
-nav_order: 3
+nav_order: 2
 ---
 
 # Integration Profiles
