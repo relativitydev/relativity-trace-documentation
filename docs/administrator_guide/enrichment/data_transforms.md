@@ -10,7 +10,7 @@ nav_order: 1
 {: .no_toc }
 
 
-Data Transformations analyze and enrich communications before they become a documnent and have the ability to adjust underlying content.
+Data Transformations analyze and enrich communications before they become a document and have the ability to adjust underlying content.
 {: .fs-6 .fw-300 }
 
 1. TOC
