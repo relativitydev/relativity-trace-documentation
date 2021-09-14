@@ -16,6 +16,8 @@ Any piece of data can be manually or automatically exported from Relativity Trac
 {:toc}
 
 ---
+## Overview
+Exporting can be helpful to produce data for an audit or regulator, or for specific stakeholder reporting in business intelligence systems like PowerBI, Tableau, or Qlik.
 
 ## Ad-Hoc Exporting
 Data can be exported directly from a [View]({{ site.baseurl }}{% link docs/user_guide/review/views.md %}) using the [Mass Export to File](https://help.relativity.com/RelativityOne/Content/Relativity/Mass_operations/Mass_export_to_file.htm) mass action. This can be a quick way to export everything from metadata to raw native files. 
