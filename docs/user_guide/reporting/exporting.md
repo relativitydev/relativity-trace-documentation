@@ -36,6 +36,6 @@ The Trace Terms Report provides distinct counts on how many documents matched pe
 - **Date End** - the ending of the date range (until 11:59PM in the Time Zone used by the selected Date Field) to use for documents in the report
 
 ## Automated Exporting
-For more information see [Extensible API's]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %})
+Data can be exported programatically using a robust set of open API's. For more information see [Extensible API's]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %})
 
 
