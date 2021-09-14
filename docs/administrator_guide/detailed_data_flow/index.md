@@ -18,14 +18,13 @@ Each communication flows through Relativity Trace in a consistent repeatible way
 
 ---
 
-## Overview
 Every communication for the individuals being monitored flows through the following steps within the system. Each step can be heavily configured based on an organization's structure, team, and risk tolerances, but the flow stays constant. 
 
 | # | Category | Step | Description |
 |:---:|:------:|:-------------:|:-----:|
-| 1 | Collection | Data Sources | Define the communication channels | |
-| 2 | Collection | Monitored Individuals | set them on data source | |
-| 3 | Collection | Shipper, collect, third party | |
+| 1 | Collection | Data Sources | Define the communication channels |
+| 2 | Collection | Monitored Individuals | set them on data source |
+| 3 | Collection | Shipper, collect, third party |
 | 4 | Enrichment | Data Transformations | |
 | 5 | Ingestion | Load File | |
 | 6 | Ingestion | Data Batches| |
