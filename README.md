@@ -24,7 +24,7 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
 ## What is required to start contributing?
 
 1. Setup GitHub
-2. Create a PR
+2. Create a Pull Request (PR)
    > Please make all enhancements in the **"develop"** branch.
    {: .info }
 3. Use GitHub UI (for Quick Edits) OR [https://typora.io](https://typora.io/) for more involved changes
