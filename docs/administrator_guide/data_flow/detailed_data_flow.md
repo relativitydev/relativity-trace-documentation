@@ -22,7 +22,7 @@ Each communication flows through Relativity Trace in a consistent repeatible way
 Every communication for the individuals being monitored flows through the following steps within the system. Each step can be heavily configured based on an organization's structure, team, and risk tolerances, but the flow stays constant. 
 
 | # | Category | Step | Description |
-|:---:|:------:|:-------------:|:-----:|
+|:---:|:------:|:-------------:|:-----|
 | 1 | Collection | Data Sources | Define the communication channels that need to be monitored |
 | 2 | Collection | Monitored Individuals | Define the individuals that need to be monitored and for what Data Source |
 | 3 | Collection | Collect | Configure underlying collection method either through Relativity Collect capabilities or third party collection tools |
