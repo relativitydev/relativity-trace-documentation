@@ -9,10 +9,13 @@ nav_order: 2
 # Reviewing Communications
 {: .no_toc }
 
-Description here...
+Communications can be reviewed manually to determine whether midconduct occured.
 {: .fs-6 .fw-300 }
 
 1. TOC
 {:toc}
 
 ---
+
+## Overview
+When clicking on a Document within Relativity Trace, the Document Viewer will display that communication in its native format. The Viewer supports the display of more than 900 different file types and is constent across formats. More information on the Viewer can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Viewer/Viewer.htm).
