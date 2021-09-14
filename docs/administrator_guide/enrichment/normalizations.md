@@ -1,16 +1,16 @@
 ---
 layout: default
 title: Normalization
-parent: Detailed Data Flow
+parent: Enrichment
 grand_parent: Administrator Guide
-nav_order: 2
+nav_order: 5
 ---
 
 # Normalization
 {: .no_toc }
 
 
-Prior to running Rules across a document we must ensure all analysis is complete.
+Prior to running Rules across a document we must ensure all document enrichment is complete.
 {: .fs-6 .fw-300 }
 
 1. TOC

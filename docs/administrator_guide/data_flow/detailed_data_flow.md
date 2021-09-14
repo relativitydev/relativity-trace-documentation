@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Detailed Data Flow
-parent: Administrator Guide
-nav_order: 2
-has_children: true
+parent: Data Flow
+grand_parent: Administrator Guide
+nav_order: 1
 ---
 
 # Detailed Data Flow
@@ -17,6 +17,7 @@ Each communication flows through Relativity Trace in a consistent repeatible way
 {:toc}
 
 ---
+## Overview
 
 Every communication for the individuals being monitored flows through the following steps within the system. Each step can be heavily configured based on an organization's structure, team, and risk tolerances, but the flow stays constant. 
 
@@ -39,5 +40,3 @@ Every communication for the individuals being monitored flows through the follow
 | 13 | Review | Manual User Review | Users manually review alerted communications and add their review decisions on the document |
 | 14 | Workflow | Workflow Rules | Communications are moved through the system based on their review decision |
 | 15 | Retention | Disposal | Communications are removed from Relativity Trace based on defined retention policies |
-
-

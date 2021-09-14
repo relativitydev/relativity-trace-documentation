@@ -3,7 +3,7 @@ layout: default
 title: Alert Rules
 parent: Alerting
 grand_parent: Administrator Guide
-nav_order: 1
+nav_order: 2
 ---
 
 # Alert Rules

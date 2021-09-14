@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Resolving Data Flow Issues
-parent: Detailed Data Flow
+parent: Data Flow
 grand_parent: Administrator Guide
 nav_order: 4
 ---

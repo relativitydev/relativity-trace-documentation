@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Omit from Alert Rules
-parent: Detailed Data Flow
+parent: Alerting
 grand_parent: Administrator Guide
-nav_order: 3
+nav_order: 1
 ---
 
 # Omit from Alert Rules

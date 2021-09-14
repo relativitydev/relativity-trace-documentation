@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Document Statuses
-parent: Detailed Data Flow
+parent: Data Flow
 grand_parent: Administrator Guide
-nav_order: 1
+nav_order: 2
 ---
 
 # Document Statuses
