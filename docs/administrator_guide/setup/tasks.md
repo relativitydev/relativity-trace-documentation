@@ -36,13 +36,15 @@ Types of Tasks
     
 -   **Rule Evaluation:** Responsible for evaluating configured Rules within the workspace 
     
-    > **NOTE:** The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+    > The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+    {: .info }
     
 -   **Reporting**: Responsible for reporting on the state of the system via email
     
 - **Data Enrichment:** Responsible for extracting and enriching nested files (attachments, contents of zip files), generating extracted text, metadata and preparing the load file that is ready for import process.  For security reasons, embedded content that refers to external URL links do not get extracted.
   
-  > **NOTE:** The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+  > The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+  {: .info }
 
 ## Task Attributes
 

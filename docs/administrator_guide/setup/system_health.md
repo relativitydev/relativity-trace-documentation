@@ -53,11 +53,12 @@ The Reporting task is designed to email designated administrators information re
     email address in Instance Setting: `EmailTo` under `kCura.Notification`
     section)
 
-> **NOTE:** It is required to fill in the `kCura.Notification` instance settings
+> It is required to fill in the `kCura.Notification` instance settings
 > `SMTPUserName`, `SMTPPassword`, `SMTPServer`, `SMTPPort` and `SMTPSSLisRequired` with
 > details of a functioning email delivery system in order to receive important
 > notifications and alerts from Relativity and Trace.
 > ![](media/system_health/f1d0a0d1fda68815093c96764927b0df.png)
+{: .info }
 
 ## Built-In Self-Test (BIST)
 
@@ -69,7 +70,8 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
 
 ### How to Run BIST
 
-> **NOTE:** BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates test documents/rules/terms that do not get removed.
+> BIST must be run on a separate, dedicated non-production workspace. This is because **BIST** creates test documents/rules/terms that do not get removed.
+{: .info }
 
 -   First, you must set the Trace Configuration "Run Option" to Continuous
 -   Navigate to -\> Trace -\> Setup
@@ -94,7 +96,8 @@ Manual Tests are recommended but not required to be run. Steps marked with **[AU
       - You should now be able to click on the "Built-in self-test (**BIST**)" link in the console
 -    Click Edit on Built-In Self Test (BIST) Task Type, set Enabled to Yes and click Save
 
-> **NOTE:** Once test completes Last Execution Status field will update to "Completed. Succeeded - Trace Test GoldenFlow Test." and the task will auto-disable itself.
+> Once test completes Last Execution Status field will update to "Completed. Succeeded - Trace Test GoldenFlow Test." and the task will auto-disable itself.
+{: .info }
 
 ![image-20210909135112351](media/system_health/image-20210909135112351.png)
 

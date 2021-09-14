@@ -565,9 +565,10 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Data Extraction will include full email header information. Large header
   information was previous truncated due to OI bug
   
-  -  > NOTE: Relativity Viewer will still display truncated header
+  -  > Relativity Viewer will still display truncated header
     information, however relativity fields (EmailTo, EmailFrom,
     EmailCC, EmailBCC will have full non-truncated data)
+    {: .info }
 - App Installation now will fail properly if expected Group Identifier fields is
   not present in the workspace
 
