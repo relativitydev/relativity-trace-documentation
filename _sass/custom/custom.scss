@@ -1,0 +1,56 @@
+$callouts: (
+    info: ($blue-300, rgba($blue-000, .2), 'INFO'),
+    warn: ($yellow-300, rgba($yellow-000, .2), 'WARNING'),
+    danger: ($red-300, rgba($red-000, .2), 'DANGER')
+);
+
+@each $class, $props in $callouts {
+    .#{$class} {
+        background: nth($props, 2);
+        border-left: $border-radius solid nth($props, 1);
+        border-radius: $border-radius;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+        padding: .8rem;
+
+        &::before {
+            color: nth($props, 1);
+            content: nth($props, 3);
+            display: block;
+            font-weight: bold;
+            font-size: .75em;
+            padding-bottom: .125rem;
+        }
+    }
+}
+
+.nav-list-link.active {color: #F8981D !important;}
+
+.nav-list-link {color: $grey-dk-100 !important;}
+
+.nav-list-expander {color: $grey-dk-100 !important;}
+
+.site-footer {display: none;}
+
+.btn-rel-yellow {
+    color: #f5f6fa;
+    background-color: #F8981D;
+    background-image: linear-gradient(#F8981D, #F8981D);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25),0 4px 10px rgba(0,0,0,0.12)
+}
+
+.btn-rel-yellow:hover,.btn-rel-yellow.zeroclipboard-is-hover {
+    color: #f5f6fa;
+    background-color: #F8981D;
+    background-image: linear-gradient(#F8981D,#F8981D)
+}
+
+.btn-rel-yellow:active,.btn-rel-yellow.selected,.btn-rel-yellow.zeroclipboard-is-active {
+    background-color: #F8981D;
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15)
+}
+
+.btn-rel-yellow.selected:hover {
+    background-color: blue
+}
+
