@@ -1,15 +1,19 @@
 ---
-title: Contribute to Documentation
+layout: default
+title: Overview
 nav_order: 6
 ---
-Trace Documentation is open source, meaning you can suggest changes to improve the content.
 
-# Documentation Contributor Guide
-## General Information
+# Contribute to Documentation
+{: .no_toc }
 
-Relativity Trace User and Technical documentation
 
-https://relativitydev.github.io/relativity-trace-documentation/
+Relativity Trace Documentation is open source, meaning anyone can contribute updates to improve the content.
+{: .fs-6 .fw-300 }
+{:toc}
+
+
+---
 
 ## How to contribute to this documentation
 
@@ -17,7 +21,12 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
 
 ### Key Standard Principles that MUST be followed
 
-1. Image links MUST reference relative `media` folder AND images must be placed in the folder named after the name of `.MD` file  within relative `media` folder
+If these standard principles are not met the project will not build successfully.
+{: .warn }
+
+#### Images
+
+Image links MUST reference relative `media` folder AND images must be placed in the folder named after the name of `.MD` file  within relative `media` folder
 
    1. Example mardown: 
       ```markdown
@@ -27,7 +36,9 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
    3. ![image-20210909153615643](media/README/image-20210909153615643.png)
    4. ![image-20210909153640922](media/README/image-20210909153640922.png)
 
-2. All `links` MUST be either relative OR refernce root
+#### Links
+
+All `links` MUST be either relative OR refernce root
 
    1. example: 
 
@@ -39,7 +50,9 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
       {% endraw %}
       ```
 
-3. Callouts such as `warn`, `info`, etc...
+#### Callouts
+
+Callouts such as `warn`, `info`, etc...
 
    Usage (`.info`,` .warn`, `.danger` are currently supported):
 
@@ -68,11 +81,11 @@ This documentation process was inspired by: [Microsoft Docs contributor guide](h
 3. Use GitHub UI (for Quick Edits) OR [https://typora.io](https://typora.io/) for more involved changes
 4. Submit changes for review and get PR approved
 
-### Quick Edits
+#### Quick Edits
 
 Follow this guide: https://docs.microsoft.com/en-us/contribute/#quick-edits-to-existing-documents
 
-### More Involved Edits
+#### More Involved Edits
 
 1. Download [https://typora.io](https://typora.io/)
 2. Open it and then `File` -> `Preferences`
