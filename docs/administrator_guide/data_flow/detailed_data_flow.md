@@ -25,7 +25,7 @@ Every communication for the individuals being monitored flows through the follow
 |:---:|:------:|:-------------:|:-----:|
 | 1 | Collection | Data Sources | Define the communication channels that need to be monitored |
 | 2 | Collection | Monitored Individuals | Define the individuals that need to be monitored and for what Data Source |
-| 3 | Collection | Configure underlying collection method either through Relativity Collect capabilities or third party collection tools |
+| 3 | Collection | Collect | Configure underlying collection method either through Relativity Collect capabilities or third party collection tools |
 | 4 | Enrichment | Data Transformations | Analyze native communication files to ignore, manipulate , or derive content prior to communication becoming a document  |
 | 5 | Ingestion | Load File | Generate a ingestion configuration file for a set of communications |
 | 6 | Ingestion | Data Batches| Define a unit of ingestion work to be performed |
