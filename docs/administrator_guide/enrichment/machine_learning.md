@@ -22,7 +22,7 @@ Machine Learning models can help identify risk, categorize documents to create m
 
 Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Machine Learning models implemented within your workspace.
 
-Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** and the **Policy Enhancement Process** to effectively implement these models within your organization. To learn more about the Trace Pre-Built Machine Learning Models reach out to support@relativity.com.
+Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** and the **Policy Enhancement Process** to effectively implement these models within your organization. To learn more about the Trace Pre-Built Machine Learning Models reach out to [support@relativity.com](mailto:support@relativity.com).
 
 Each Machine Learning model should be as specific as possible. Creating a model to identify "Risk" overall will not be very accurate, because "Risk" can be hundreds of different things. Rather you'd want to create one Machine Learning model for "Sharing of Insider Information", another for "Change of Venue", and another for "Sexual Harassment". Each of these models will be more accurate because they are looking for one behavior rather than many.
 {: .info }
@@ -304,7 +304,7 @@ If you are using Machine Learning results within Rule conditions, you want to ma
 
 #### Relativity Trace Pre-Built Machine Learning Models
 
-Relativity has multiple pre-built machine learning models that can jump start training and allow for you to get results directly after implementation. To utilize these pre-built machine learning models please reach out to support@relativity.com.
+Relativity has multiple pre-built machine learning models that can jump start training and allow for you to get results directly after implementation. To utilize these pre-built machine learning models please reach out to [support@relativity.com](mailto:support@relativity.com).
 
 #### Using Historic Data
 
@@ -330,5 +330,5 @@ Reviewers can code documents for specific behaviors while they are reviewing ale
 Do not let reviewers code directly on the "ML [Model Purpose] Training" field. This will be more challenging for reviewers, cause excess documents to be added to each model, and reduce control Administrators have over the models structure, ultimately garnering poor results.
 {: .info }
 
-If your training sets exceeds 10,000 documents please reach out to support@relativity.com for optimization steps.
+If your training sets exceeds 10,000 documents please reach out to [support@relativity.com](mailto:support@relativity.com) for optimization steps.
 {: .info }

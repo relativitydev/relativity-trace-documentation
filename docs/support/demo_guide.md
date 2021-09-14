@@ -22,7 +22,7 @@ Description here...
 
 ## Demo Environment and Login Information
 
-Reach out to `support@relativity.com`
+Reach out to [support@relativity.com](mailto:support@relativity.com)
 
 ### Relativity Trace: An Overview of Relativity for Compliance
 
@@ -268,5 +268,5 @@ Count on non-alerted documents might vary
 8. Go to **Trace:Rules** , navigate to the Delete Rule and Disable it
    ![1571779820919](media/demo_guide/1571779820919-1217470.png)
 
-Let us know what you think! Reach out to `support@relativity.com` with any
+Let us know what you think! Reach out to [support@relativity.com](mailto:support@relativity.com) with any
 feedback. Thanks!

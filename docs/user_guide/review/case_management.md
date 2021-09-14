@@ -18,4 +18,4 @@ Communications can be added to Cases where multiple artifacts can be stored to b
 ---
 
 ## Overview
-Case Management functionality allows for you to organize multiple communications, external artifacts and events, notes, statuses of processes, and other content for investations, audits, or regulatory inquires. Please contact support@relativity.com for more information on Trace Case Management capabilities.
+Case Management functionality allows for you to organize multiple communications, external artifacts and events, notes, statuses of processes, and other content for investations, audits, or regulatory inquires. Please contact [support@relativity.com](mailto:support@relativity.com) for more information on Trace Case Management capabilities.

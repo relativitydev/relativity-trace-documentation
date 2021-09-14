@@ -41,7 +41,7 @@ The key benefits of the Proactive Ingestion Framework include:
     
 -   Performance monitoring of entire data ingestion pipeline (bottleneck identification, SLA metrics, proactive alerting)
 
-Reach out to <support@relativity.com> for help integrating with the Proactive
+Reach out to [support@relativity.com](mailto:support@relativity.com) for help integrating with the Proactive
 Ingestion Framework
 
 
@@ -52,7 +52,7 @@ Workspace before proceeding.
 {: .info }
 
 Trace uses default Relativity fields for email and attachment data that ship with `Create & Map Field Catalog – Full` (v0.0.1.5+). **Trace recommends use of this application, however it is totally optional and one can choose to create custom fields or re-use fields from an existing template.** You can install it to the target workspace like any other application which will bring in all the needed fields with standardized names. If you don’t see this application in
-your library, reach out to `support@relativity.com`.
+your library, reach out to [support@relativity.com](mailto:support@relativity.com).
 {: .info }
 ![](media/integration_points/045f66f33011aa62ff7d00b2e05274c2.png)
 

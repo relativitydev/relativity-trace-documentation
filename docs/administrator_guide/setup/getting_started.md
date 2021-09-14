@@ -106,7 +106,7 @@ If you plan to use `Analytics` functionality, please also make sure the followin
        4. Run Interval = `60`
        5. Logging level of event details = `Log critical errors only`
 
-   > Please reach out to `support@relativity.com` for additional information
+   > Please reach out to [support@relativity.com](mailto:support@relativity.com) for additional information
 
 6. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](media/getting_started/1571073733941.png)
 > On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer.
@@ -116,5 +116,5 @@ If you plan to use `Analytics` functionality, please also make sure the followin
 
 ![image-20200622103606164](media/getting_started/image-20200622103606164.png)
 
- > Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to `support@relativity.com` for support on installing Trace into workspaces with existing data.
+ > Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to [support@relativity.com](mailto:support@relativity.com) for support on installing Trace into workspaces with existing data.
  {: .warn }

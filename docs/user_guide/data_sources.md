@@ -23,7 +23,7 @@ Data Sources are used to automatically and continously collect and ingest commun
 Data Sources are configured by a Relativity Trace Administrator. They are configured both during implementation and ad-hoc when monitoring needs to be extended to a new communication channel. Administrator information on how to configure a Data Source can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/collection/data_sources.md %}).
 
 ## Data Sources List
-This list covers the most common Data Sources rather than all Data Sources. To better understand holistic Data Source support contact support@relativity.com.
+This list covers the most common Data Sources rather than all Data Sources. To better understand holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
 
 ### Email Data Sources
 
@@ -117,4 +117,4 @@ Some Data Sources are supported through partners.
 
 
 ## Requesting to Monitor a New Communication Channel
-Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data sources please contact support@relativity.com.
+Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data sources please contact [support@relativity.com](mailto:support@relativity.com).

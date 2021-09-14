@@ -58,7 +58,7 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
     Finalizing a Data Batch will only delete files from the current in use Fileshare when its corresponding data batch folder exists.
     {: .info }
     
-    The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact support@relativity.com.
+    The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
     {: .info }
 
 

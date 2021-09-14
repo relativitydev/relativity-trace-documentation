@@ -36,7 +36,7 @@ Only extracted documents (Trace is Extracted = YES) can be used for excluding fi
 Excluded File RDO cannot be created from this tab. All Excluded Files have to be created from the Documents tab via the Trace Add To Excluded Files mass operation.
 {: .info }
 
-There is a 10,000 file limit to the Excluded Files list. Trying to exceed this limit using the `Trace Add To Excluded Files` mass operation will result in an error. If you wish to increase this size limit, please contact support at support@relativity.com.
+There is a 10,000 file limit to the Excluded Files list. Trying to exceed this limit using the `Trace Add To Excluded Files` mass operation will result in an error. If you wish to increase this size limit, please contact support at [support@relativity.com](mailto:support@relativity.com).
 {: .info }
 
 ### Trace Add To Excluded Files

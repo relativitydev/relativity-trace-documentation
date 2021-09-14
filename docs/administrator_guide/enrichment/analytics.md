@@ -35,7 +35,7 @@ Relativity Trace can trigger automatic builds of any Structured Analytics Set de
 
 1. Create the Structured Analytics Set(s) that will be automated and run Full Builds on them.
 
-   For recommendations on how to configure each of the different types of Structured Analytics Sets including Saved Search details, how frequently to run, and what kind of builds to automate, please contact support@relativity.com
+   For recommendations on how to configure each of the different types of Structured Analytics Sets including Saved Search details, how frequently to run, and what kind of builds to automate, please contact [support@relativity.com](mailto:support@relativity.com)
    {: .info }
 
 2. Edit the Indexing Task from the Setup page. Under Task Settings, the `Sas Automation Configuration Json` field should automatically populate with a JSON node for every Structured Analytics Set defined in the workspace: ![image-20191223171511007](media/analytics/image-20191223171511007.png)

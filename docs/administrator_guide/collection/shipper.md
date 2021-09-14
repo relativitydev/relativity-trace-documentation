@@ -48,7 +48,7 @@ A document will fail to ship if a file with the same name already exists in the 
 
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
 To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
-- Request the Trace Shipper deployment package by submitting a ticket to support@relativity.com
+- Request the Trace Shipper deployment package by submitting a ticket to [support@relativity.com](mailto:support@relativity.com)
 - Download and install ROSE (Staging Explorer) and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection))
 - (Only for Web protocol) Request the Relativity Transfer API Services application (Relativity.TransferApi.Services.rap) by submitting a ticket to support@relativity.com. [Install](https://help.relativity.com/10.3/Content/Relativity/Applications/Installing_applications.htm#Installi3) the Relativity Transfer API Services application to the Application Library.
 
@@ -72,7 +72,7 @@ For the Aspera data transfer protocol, the following ports must be configured:
 2. Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
 3. Allow outbound connections to the server on HTTPS (443)
 
-For details on the IP ranges for your specific RelativityOne instance please contact support@relativity.com
+For details on the IP ranges for your specific RelativityOne instance please contact [support@relativity.com](mailto:support@relativity.com)
 
 
 ## Installation Steps
@@ -129,7 +129,7 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 11. (Optional) Create and configure Extension Scripts
 
 ## Data Source Configuration Sync and Extension Scripts
-Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, Data Source Specific Fields changes).  Please contact support@relativity.com for more details.
+Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, Data Source Specific Fields changes).  Please contact [support@relativity.com](mailto:support@relativity.com) for more details.
 
 ## Starting/Stopping Service
 The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
@@ -244,7 +244,7 @@ Contact support@relativity.com if you need assistance.
 
 In the Trace enabled Relativity workspace configured in [Trace Shipper Service Configuration](#trace-shippper-service-configuration) , perform the following steps:
 
-When setting up the Data Source, if you do not see the Data Source Type that you are interested in please contact support@relativity.com.
+When setting up the Data Source, if you do not see the Data Source Type that you are interested in please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info }
 
 1. Create Ingestion Profiles for each data source to specify data mappings.  The Ingestion Profile is used to map fields in a source load file to workspace fields in Relativity Trace. Refer to this document [Setting up an Ingestion Profile for Trace Data Sources](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#appendix-c-create-email-fields-data-mappings-and-ingestion-profile) for detailed instructions.
@@ -284,7 +284,7 @@ All Trace Data Sources serialize their current state to a JSON file and their mo
 
 Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Merge1. 
 
-Contact support@relativity.com if you need assistance with installation steps.
+Contact [support@relativity.com](mailto:support@relativity.com) if you need assistance with installation steps.
 
 ## Set Up Veritas Merge1
 
@@ -349,7 +349,7 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
        1.  MUST configure Email Alert Settings
        2.  Send Test Email
            ![1570209109659](media/shipper/1570209109659.png)
-   8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to support@relativity.com if you don't have access to this guide.
+   8.  For data source-specific instructions, Refer to `Merge1 6.0 User Guide.pdf` guide. Reach out to [support@relativity.com](mailto:support@relativity.com) if you don't have access to this guide.
    9.  Configure `Importer Schedule` to run at a desirable frequency (daily is the most common frequency)
 
 

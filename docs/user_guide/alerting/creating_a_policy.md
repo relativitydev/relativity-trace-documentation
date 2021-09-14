@@ -112,5 +112,5 @@ In addition, you can see and modify Term Categories and Rules associated with Te
 The Term “Name” (actual text being searched) **cannot** be modified after it is created. You must remove and add a new term object to change the search string. You **can** modify the highlight color and term category of an existing term.
 {: .info }
 
-The Term “Name” (actual text being searched) is limited to 450 characters. Please reach out `support@relativity.com` if your use-case requires higher limits for your terms.
+The Term “Name” (actual text being searched) is limited to 450 characters. Please reach out [support@relativity.com](mailto:support@relativity.com) if your use-case requires higher limits for your terms.
 {: .info }

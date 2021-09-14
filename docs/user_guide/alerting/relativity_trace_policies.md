@@ -129,4 +129,4 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 ## Language Support
 
-Policies are supported in English, Spanish, German, French, Japanese, Russian, Italian. Support for new languages are being added in each release. Please contact support@relativity.com for language support requests.
+Policies are supported in English, Spanish, German, French, Japanese, Russian, Italian. Support for new languages are being added in each release. Please contact [support@relativity.com](mailto:support@relativity.com) for language support requests.
