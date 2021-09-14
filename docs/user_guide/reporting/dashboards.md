@@ -9,7 +9,7 @@ nav_order: 1
 # Dashboards
 {: .no_toc }
 
-View current stats on communications, alerts, and reviewer progress in dashboards.
+Dashboards allow for flexible real-time statistics on communications, alerting, review progess, and other necessary reporting.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -17,9 +17,10 @@ View current stats on communications, alerts, and reviewer progress in dashboard
 
 ---
 
-### Dashboard Widgets
+## Overview
 
-You can get a quick understanding of the status of your system and documents by
-applying Widgets using Trace Document Fields to the Documents dashboard:
+The document page (and other object pages) support the addition of widgets to visualize aspects of your data in real-time. More information on Dashboards can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Dashboards.htm).
 
 ![](media/dashboards/233f58be6430edea9858817e9d1aa6d9.png)
+
+
