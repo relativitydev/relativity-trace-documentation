@@ -97,19 +97,19 @@ This list covers the most common Data Sources rather than all Data Sources. To b
 
 ### Archives Data Sources
 
-| Data Source      |
-|:------------------:|
-| Proofpoint |
-| Enterprise Vault |
-| MimeCast |
-| Smarsh |
-| Google Vault |
-| Dell Vault |
-| OpenText |
-| CommVault |
-| Barracuda |
-| Quest |
-| Dell SourceOne |
+| Type | Data Source      |
+|:----:|:------------------:|
+| Archive | Proofpoint |
+| Archive | Enterprise Vault |
+| Archive | MimeCast |
+| Archive | Smarsh |
+| Archive | Google Vault |
+| Archive | Dell Vault |
+| Archive | OpenText |
+| Archive | CommVault |
+| Archive | Barracuda |
+| Archive | Quest |
+| Archive | Dell SourceOne |
 
 Some Data Sources are supported through partners.
 {: .info}
