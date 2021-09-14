@@ -10,7 +10,7 @@ nav_order: 5
 {: .no_toc }
 
 
-You can create Rules to alert on communications that are risky.
+Alerting policies can be created and enhanced to identify the riskiest types of communications within your organization.
 {: .fs-6 .fw-300 }
 
 1. TOC
