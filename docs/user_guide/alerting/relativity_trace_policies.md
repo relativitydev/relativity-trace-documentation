@@ -25,7 +25,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Corrupt Practices | Bribery                                    | Detect an employee offering, giving, receiving, or soliciting an item of value to influence an action of a key decision maker |
-| Corrupt Practices | Coercion and Intimidation                  | Detect persuasion through force or threats. |                 |
+| Corrupt Practices | Coercion and Intimidation                  | Detect persuasion through force or threats. |                
 | Corrupt Practices | Extortion                                  | Detect when someone is forced to feel indebted against their will and is offered "protection" in exchange for money or favors |
 | Corrupt Practices | Embezzlement                               | Detect an attempt to engage in converting assets, entrusted to them via a financial institution or similar business function,for their own personal gain. |
 | Corrupt Practices | Guarantees and Assurances                  | Detect a registered representative providing a guarantee against loss to a customer. |
