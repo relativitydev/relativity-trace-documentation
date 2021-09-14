@@ -10,6 +10,8 @@ nav_order: 6
 
 Relativity Trace Documentation is open source, meaning anyone can contribute updates to improve the content.
 {: .fs-6 .fw-300 }
+
+1. TOC
 {:toc}
 
 
