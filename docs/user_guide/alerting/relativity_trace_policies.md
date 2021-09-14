@@ -21,10 +21,11 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 ## Policy List
 
 ### Corrupt Practices
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Corrupt Practices | Bribery                                    | Detect an employee offering, giving, receiving, or soliciting an item of value to influence an action of a key decision maker |
-| Corrupt Practices | Coercion and Intimidation                  | Detect persuasion through force or threats.                  |
+| Corrupt Practices | Coercion and Intimidation                  | Detect persuasion through force or threats. |                 |
 | Corrupt Practices | Extortion                                  | Detect when someone is forced to feel indebted against their will and is offered "protection" in exchange for money or favors |
 | Corrupt Practices | Embezzlement                               | Detect an attempt to engage in converting assets, entrusted to them via a financial institution or similar business function,for their own personal gain. |
 | Corrupt Practices | Guarantees and Assurances                  | Detect a registered representative providing a guarantee against loss to a customer. |
@@ -35,6 +36,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Inside Information
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Inside Information | General Tipping | Detect the sharing of potential material nonpublic information (MNPI) regarding general company information, financial information, or corporate actions.|
@@ -42,6 +44,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Collusion
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Collusion | Change of Venue | Detect an attempt to avoid discovery by changing the communication venue (i.e., moving from email to phone call). |
@@ -49,6 +52,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Pharmaceuticals Sales Fraud
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Pharmaceuticals Sales Fraud | Kickbacks | Detect pharmaceutical sales representatives paying "remuneration" to induce or reward patient referrals or the generation of business involving any item or service payable by federal health care programs. |
@@ -56,6 +60,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Use of Personally Identifiable Information (PII)
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Use of Personally Identifiable Information (PII) | Credit Card Information | Detect the sharing of credit card information. |
@@ -63,6 +68,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Market Manipulation
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Market Manipulation | Boasting (Market Content) | Detect the excessively proud and self-satisfied talk by a trader of their achievements in regard to someone less fortunate. |
@@ -77,12 +83,14 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Anti-Trust Violations
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Anti-Trust Violations | Price-Gouging | Detect raising the prices of goods to unreasonable levels to take advantage of demand or supply shock. |
 
 
 ### Code of Conduct Breaches
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Code of Conduct Breaches | Hate and Discrimination | Detect inappropriate treatment of others based on race, color, religion, sex, national origin, age, disability or genetic information. |
@@ -92,6 +100,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Gifts and Entertainment
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Gifts and Entertainment | Excessive Entertainment | Detect entertainment that breaches the gifts and entertainment company policy. |
@@ -100,6 +109,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Customer Complaints - Financial 
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Customer Complaints - Financial | Errors | Detect customer complaints about errors causing customer dissatisfaction. |
@@ -109,6 +119,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 
 ### Institutional Customer Complaints - Financial
+
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Institutional Customer Complaints - Financial | Allocation | Detect complaints from institutional clients regarding misallocation of funds. |
