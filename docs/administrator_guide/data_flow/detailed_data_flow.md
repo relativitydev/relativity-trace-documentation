@@ -10,7 +10,7 @@ nav_order: 1
 {: .no_toc }
 
 
-Each communication flows through Relativity Trace in a consistent repeatible way to produce a defensible and explainable surveillance process.
+Many actions are taken to collect, alert, and then dispose of a communication as a part of an ongoing surveillance process. 
 {: .fs-6 .fw-300 }
 
 1. TOC
