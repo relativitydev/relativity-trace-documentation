@@ -33,7 +33,3 @@ Trace has a six-step Document analysis process. Status is tracked on the `Trace 
 
 To identify documents that are stuck in the flow and no longer progressing through the statuses, it is advised that you create a document view that shows documents with a status of  `1 - New`, `2 - Indexed`, OR `3 - Term Searched` and sort the documents in ascending order by the `Trace Document Status Updated On` field, so that documents that have been stuck in a non-terminal status for a significant period of time are identified at the top of your view.
 {: .info }
-
-More information on Normalization can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/normalization.md %})
-
-More information on Omit from Alert Rules can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/alerting/omit_from_alert_rules.md %}). 
