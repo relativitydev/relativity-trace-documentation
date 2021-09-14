@@ -8,10 +8,13 @@ nav_order: 8
 # Retention
 {: .no_toc }
 
-You can create custom retention policies to keep the data you want and dispose of the rest.
+Retention policies can be defined to dispose of communications after surveillance has been performed.
 {: .fs-6 .fw-300 }
 
 1. TOC
 {:toc}
 
 ---
+
+## Overview
+Multiple retention policies can be defined to dispose of communication based on any communication criteria after any period of time. Athough entirely customizable, most organizations implement three separate retetion policies. One short-term policy for communication that were not alerted on, a medium-term policy for communications that were alerted on but cleared through manual review effort, and a long-term policy for communications that were escalated through manual review efforts. Retention policies are defined by administrators during implementation with more configuration information found [here]({{ site.baseurl }}{% link docs/administrator_guide/retention.md %}).
