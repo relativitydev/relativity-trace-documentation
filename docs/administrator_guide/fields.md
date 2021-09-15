@@ -60,6 +60,9 @@ As documents flow into a Relativity workspace and through the Trace workflow the
 
 8. **Trace Data Transformations** – Multi-Object field tracking what data transformations have been applied to the document as part of ingestion
 
+`AI Extracted Text Cleansing` Data Transforms are not currently being added to this field when they are applied to a document. This will be fixed in a subsequent release. `Deduplication` Data Transforms will never be added to this field because deduplicated documents are not ingested into Relativity Trace.
+{: .warn}
+
 9. **Trace Monitored Individuals –** Multi-Object field tracking which Monitored Individuals are associated with each document 
 
 10. **Trace Rules –** Multi-Object field tracking which Rules of type Alert matched a document
@@ -171,7 +174,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Parent Document ID            | Fixed-Length Text | Document ID (Control Number) of the parent document. Empty for top level (original native) documents. For multiple levels of descendants, this field will always be populated with the Document ID (Control Number) of the top level (original native) document for every descendant document. |
 | Calculated               | Password Protected            | Single Choice     | Indicates the documents that were password protected. It contains the value Decrypted if the password was identified, Encrypted if the password was not identified, or no value if the file was not password protected. |
 | Calculated               | Recipient Count               | Decimal           | The total count of unique recipients in an email across the To, CC, and BCC fields |
-| Calculated               | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document  |
+| Calculated               | Trace Data Transformations    | Multiple Object   | Data Transformations that have been applied to the document. **NOTE:** `AI Extracted Text Cleansing` Data Transforms are not currently being added to this field when they are applied to a document. This will be fixed in a subsequent release. `Deduplication` Data Transforms will never be added to this field because deduplicated documents are not ingested into Relativity Trace.  |
 | Calculated               | Trace Document Hash           | Fixed-Length Text | Calculated hash value that is used to determine if a document is a duplicate of another document. Original documents use a partial hash of metadata, while extracted documents use a binary hash. |
 | Calculated               | Trace Error Details           | Long Text         | Details of errors encountered during the extraction/expansion |
 | Calculated               | Trace Has Errors              | Yes/No            | Indicates if any errors occurred during extraction/expansion |
