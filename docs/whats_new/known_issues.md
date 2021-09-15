@@ -16,4 +16,4 @@ The following list provides descriptions of known issues in Relativity Trace. Fo
 | Date Added | Issue # | Feature      | Description                                                  | Resolved |
 | ---------- | ------- | ------------ | ------------------------------------------------------------ | -------- |
 | 9/6/2021   | 1178    | Data Sources | Documents protected with Azure Information Protection (AIP) are currently not showing in the Relativity Viewer. | No       |
-
+| 9/15/2021  | 2501    | Data Transformations | `AI Extracted Text Cleansing` Data Transforms are being added to the `Trace Data Transformations` document field, letting you know that the Data Transform was applied to the document. In the interim you can look to the `Trace AI Exctracted Text Cleansing Status` for similar information. | No |
