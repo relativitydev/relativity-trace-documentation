@@ -144,7 +144,7 @@ The service can be managed directly from the Services application in Windows (yo
 
 # Overview
 
-For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Veritas Merge1).  You will also need to install additional hardware.
+In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Veritas Merge1 OR/AND VerQu).  You will also need to install additional hardware.
 
 # Trace Shipper Data Flow Overview 
 
