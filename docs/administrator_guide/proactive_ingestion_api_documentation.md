@@ -57,7 +57,7 @@ The key benefits of the Proactive Ingestion Framework include:
 -   Performance monitoring of entire data ingestion pipeline (bottleneck
     identification, SLA metrics, proactive alerting)
 
-It is designed to work with Load Files as an intermediate step between Source and Relativity ingestion. Consumer of the IPI needs to produce a Load File and make an REST call to Relativity telling it the location of the Load File along with other ingestion configurations. After that, Trace will take the Load File and automatically import it using the provided configurations.
+It is designed to work with Load Files as an intermediate step between Source and Relativity ingestion. Consumer of the TPI needs to produce a Load File and make an REST call to Relativity telling it the location of the Load File along with other ingestion configurations. After that, Trace will take the Load File and automatically import it using the provided configurations.
 
 ### Glossary
 
