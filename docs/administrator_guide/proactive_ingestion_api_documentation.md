@@ -73,7 +73,7 @@ It is designed to work with Load Files as an intermediate step between Source an
     
 -   **Data Source Type:** Defines inputs to a particular data source. Data Source Type can be mapped to multiple Data Sources
     
--   **IPI:** Trace Proactive Ingestion
+-   **TPI:** Trace Proactive Ingestion
 
 ### Prerequisites: Load File and Ingestion Profile
 
@@ -95,7 +95,7 @@ It is designed to work with Load Files as an intermediate step between Source an
 
 ### Data Batch Overview
 
-Data Batch is a unit of work in IPI, it has all the needed configuration and  status information to ingest data and monitor ingestion progress.
+Data Batch is a unit of work in TPI, it has all the needed configuration and  status information to ingest data and monitor ingestion progress.
 
 The below screenshot shows a sample Data Batch RDO in Relativity:
 
@@ -268,7 +268,7 @@ After Data Batch is created or updated, it can be monitored in Relativity UI (or
 
 ### Security
 
-In order to work with IPI in a secure manner, create a new user with limited permissions: enable access only to Relativity objects that are needed: Data Batch, Data Source and particular fields ( `Trace Has Errors` and `Trace Error Details` ) on a Document object.
+In order to work with TPI in a secure manner, create a new user with limited permissions: enable access only to Relativity objects that are needed: Data Batch, Data Source and particular fields ( `Trace Has Errors` and `Trace Error Details` ) on a Document object.
 
 ### Load File Specifications
 
