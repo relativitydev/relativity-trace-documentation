@@ -43,7 +43,7 @@ The Trade Reconstruction Configuration attached to your Trade is a key component
 
 
 
-## Search Criteria for Trade Reconstruction Configuration
+### Search Criteria for Trade Reconstruction Configuration
 
 Trade Reconstruction Configuration Search Criteria field is inputted as JSON with each `{}` representing a single logic group within a Saved Search. Each logic group should contain a list of conditions and boolean operator `AND|OR` which joins it with the next logic group.
 
@@ -143,13 +143,15 @@ Trade Reconstruction Configuration Search Criteria field is inputted as JSON wit
 
 
 
-## Trade Keywords
+### Trade Keywords
 
 The `Trade Keywords Field` field on the `Trade Reconstruction Configuration` holds the names of the field on Trade which hold critical keywords that will be searched in the created saved search. 
 
 For example, there is a field on Trade called `Important Names` which is a Multiple Choice field. On a particular Trade, the names `John Smith` and `Jane Doe` are selected as choices on `Important Names` that are important for this Trade. To search for these names, you will select `Important Names` in the `Trade Keywords Field` on the `Trade Reconstruction Configuration` attached to the Trade. During Reconstruction, `John Smith` and `Jane Doe` will be created as Trade Keywords, which can be found on the `Trade Keywords` tab and will be attached to that Trade. If another Trade shares the same keyword, they will both be attached to that single keyword.
 
 
+## Integration with Order Management Systems (OMS) or Trade Capture Systems
+Please contact [support@relativity.com](mailto:support@relativity.com) for more information on Trade system integrations.
 
 ## Trade Reconstruction Limitations
 
