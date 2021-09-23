@@ -32,8 +32,8 @@ The Trade Reconstruction Configuration attached to your Trade is a key component
 
 1. Naviagte to the `Trade Reconstruction Configurations` tab and click `New Trade Reconstruction Configuration`.
 
-   ![](C:\Users\jaime.becker\Desktop\trace\documentation\relativity-trace-documentation\docs\administrator_guide\media\trade_reconstruction\trade_reconstruction_configuration_layout.PNG)
-
+	![](media/trade_reconstruction/trade_reconstruction_configuration_layout.PNG)
+ 
 2. The Trade Reconstruction Configuration creation form has the following fields:
 
    1. **Name:** the name of the Trade Reconstruction Configruation
