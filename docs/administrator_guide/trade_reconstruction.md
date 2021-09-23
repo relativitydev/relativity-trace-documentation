@@ -11,7 +11,7 @@ nav_order: 9
 
 {: .no_toc }
 
-Trade Reconstruction is used to automatically link trade and orders from Order Management Systems (OMS) or Trade Capture systems to their related communications. There are configurations to implement before Trade Reconstruction can be performed on a Trade.
+Trade Reconstruction is used to automatically link trade and orders from Order Management Systems (OMS) or Trade Capture systems to their related communications.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -22,7 +22,7 @@ Trade Reconstruction is used to automatically link trade and orders from Order M
 
 ## Overview
 
-Each Trade object has a connected Trade Reconstruction Configuration, which is used to add the criteria necessary to connect Trades to their related Communications. Trade Reconstruction Configruations have two components: the Search Criteria field, which defines the parameters of the saved search created for the Trade, and the Trade Keywords Field, which defines the Trade Keywords created for the Trade. Below is how to create a Trade Reconstruction Configuration, details on the Search Criteria field for Trade Reconstruction Configurations, details about Trade Keywords, and the limitations of Trade Reconstruction.
+Each Trade object has a connected Trade Reconstruction Configuration, which is used to add the criteria necessary to connect Trades to their related Communications. Trade Reconstruction Configruations have two components: the Search Criteria field, which defines the parameters of the saved search created for the Trade, and the Trade Keywords Field, which defines the Trade Keywords created for the Trade. Below is information on how to create a Trade Reconstruction Configuration, details on the Search Criteria field for Trade Reconstruction Configurations, details about Trade Keywords, and the limitations of Trade Reconstruction.
 
 
 
@@ -37,7 +37,7 @@ The Trade Reconstruction Configuration attached to your Trade is a key component
 2. The Trade Reconstruction Configuration creation form has the following fields:
 
    1. **Name:** the name of the Trade Reconstruction Configruation
-   2. **Search Criteria: ** required JSON field to create the search parameters for the Saved Search created and linked to the Trade during Reconstruction. The details of the proper search criteria can be accessed via Contextual Help button on the Configuration secontion. 
+   2. **Search Criteria:** required JSON field to create the search parameters for the Saved Search created and linked to the Trade during Reconstruction. The details of the proper search criteria can be accessed via Contextual Help button on the Configuration secontion. 
       - See the below section titled `Search Criteria for Trade Reconstruction Configuration` for more information
    3. **Trade Keywords Field:** optional field, allows you to choose fields on the Trade object which will be used to create `Trade Keywords` that are linked to the Trade. Must be Multiple Object or Multiple Choice type fields.
 
@@ -153,6 +153,11 @@ For example, there is a field on Trade called `Important Names` which is a Multi
 
 ## Trade Reconstruction Limitations
 
-1. You must create a Trade Reconstruction Configruation before you can create a Trade.
-2. If you decide to Reconstruct a Trade which has already been Reconstructed in the past, everything is removed from the previous Reconstruction and replaced with the new information from the most recent Reconstruction. `Trade Keywords` are not deleted, but the connection between the `Trade Keyword` and the Trade is gone and will not be searched for (unless the same keyword is still on the Trade, in which it will re-establish the connection and search for this keyword). All of the Trade's Related Documents from the previous Reconstruction will be removed.
-3. You must run each Trade indiviudally - mass editing `Perform Reconstruction` field on the Trade will not start Trade Reconstruction.
+You must create a Trade Reconstruction Configruation before you can create a Trade.
+{: .info }
+
+If you decide to Reconstruct a Trade which has already been Reconstructed in the past, everything is removed from the previous Reconstruction and replaced with the new information from the most recent Reconstruction. `Trade Keywords` are not deleted, but the connection between the `Trade Keyword` and the Trade is gone and will not be searched for (unless the same keyword is still on the Trade, in which it will re-establish the connection and search for this keyword). All of the Trade's Related Documents from the previous Reconstruction will be removed.
+{: .danger}
+
+You must run each Trade indiviudally - mass editing `Perform Reconstruction` field on the Trade will not start Trade Reconstruction.
+{: .warn }
