@@ -14,7 +14,6 @@ Trade Reconstruction is used to automatically link trade and orders from Order M
 {: .fs-6 .fw-300 }
 
 1. TOC
-
 {:toc}
 
 ---
