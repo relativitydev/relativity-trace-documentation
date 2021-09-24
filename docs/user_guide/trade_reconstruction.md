@@ -7,7 +7,6 @@ nav_order: 9
 ---
 
 # Trade Reconstruction
-
 {: .no_toc }
 
 Trade Reconstruction is used to automatically link trade and orders from Order Management Systems (OMS) or Trade Capture systems to their related communications.
