@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Trade Reconstruction
-parent: User Guide
-nav_order: 9
+parent: Administrator Guide
+nav_order: 12
 
 
 ---
@@ -15,7 +15,6 @@ Trade Reconstruction is used to automatically link trade and orders from Order M
 {: .fs-6 .fw-300 }
 
 1. TOC
-
 {:toc}
 
 ---
