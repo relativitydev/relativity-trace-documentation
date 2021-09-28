@@ -33,6 +33,30 @@ You can adjust the logging level to get more information about the system perfor
 
 > **CAUTION:** The more verbose logging levels (information/debug) can place substantial load on infrastructure in terms of number of writes and disk space usage (particularly if logs are being written to the EDDSLogging database in SQL, which is the default configuration in new Relativity instances). Don’t forget to adjust your logging level back up to Warning or Error once low level information is no longer needed.
 
+
+
+### Reporting Trace Reviewer Decision
+
+To gain visibility into the amounts of alerts and non-alerts that are being reviewed by compliance teams, we have a `Trace Reviewer Decision` field which needs to be setup by a specialist. This field allows us to collect helpful information for product understanding, better support, and marketing. 
+
+This is a field on the `Document` object and has three review decisions:
+
+1. `Escalate` - the user believes this content needs to be reviewed by other or more senior reviwers
+2. `Clear` - the user does not think this content is risky but it happy an alert was generated
+3. `False Positive` - the user does not think this content is risky and thinks that this content never should have been an alert in the first place
+
+For this field, there are also three relating scripts: `Trace Reviewer Decision - Escalate`, `Trace Reviewer Decision - Clear`, and `Trace Reviewer Decision - False-Positive`.
+
+To setup this reporting, a specialist will create a workflow rule for each type of Review Decision, and map the script to the workflow rule. More information on how to create workflow rules can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/workflow_rules.md %}). The specialist can then define how field choices map to these three review decision buckets.
+
+These reported metrics are based on the first level of reviewer decisions, meaning any decision that may differ after the initial review will not be counted.
+{: .info }
+
+If a review decision doesn't map to one of the three reviewer decision buckets, it will not be reported in these metrics.
+{: .info }
+
+
+
 ## Reporting Task
 
 The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.![image-20210909134259836](media/system_health/image-20210909134259836.png)
