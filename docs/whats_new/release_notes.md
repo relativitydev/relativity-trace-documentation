@@ -25,6 +25,26 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 14.5.0.0 (5 October 2021)
+
+**Features**
+
+- Added Trace Surveillance Policies targeting the Research Desk to identify misconduct where monitored individuals are providing unauthorized investment advice within firm publications.  
+- Added Trace Surveillance Policies targeting new Hires, Internal Transfers, and Terminations of Monitored Individuals to identify monitored individuals who are breaching internal policies around the sharing of information.
+- New Trace Data Sources for Bloomberg Chat and Mail Data Source surveillance that allows for in-house collection without a 3rd party application. 
+- All Trace pages now support the new Relativity Aero design system for simpler user experience and better performance 
+
+**Enhancements**
+
+- Improved O365 cloud-to-cloud data source performance for large numbers of Monitored Individuals 
+- Add Group By and Pivot On for "Trace AI Extracted Text Cleansing Status" field to enable use in dashboard widgets 
+- New Monitored Individual Linking that discovers MIs within a data source and connects them to the entire workspace
+
+**Defect Fixes**
+
+- Fixed rare issue where Data Batches fail due to identifiers not being considered unique 
+- Fixed Data Source Type naming conflict that impacted existing data sources when new cloud-to-cloud data sources were added 
+
 # 14.4.1.2 (31 August 2021)
 
 **Features**
