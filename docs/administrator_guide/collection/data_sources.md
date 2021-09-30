@@ -36,6 +36,7 @@ Ingestion Profiles are susceptible to corruption by modification of Relativity F
 
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
 * **Start Date:** Date from which data will be pulled/pushed into Relativity
+* **End Date:** Optional date to which data will be pulled/pushed into Relativity.
   
 * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
   
@@ -204,7 +205,10 @@ Settings for On Premises exchange are very similar to Office 365. Setting user p
 7.  Set Start Date to the earliest email timestamp you would like imported (UTC
     time)
 
-8.  Under Data Source Specific Fields, set Exchange Settings - Url and Exchange
+8.  Optionally set End Date to the latest email timestamp you would like imported (UTC
+    time)
+    
+9.  Under Data Source Specific Fields, set Exchange Settings - Url and Exchange
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
@@ -323,7 +327,9 @@ This Data Source allows for automatic text extraction/expansion of previously in
 
     7.  Ignore Start Date field
 
-    8.  You have the option to leave the Data Source as Enabled or Disabled
+    8.  Ignore End Data field
+
+    9.  You have the option to leave the Data Source as Enabled or Disabled
 
 3.  Fill out [Data Source Specific Settings](#data-source-specific-settings) and click Save
     
