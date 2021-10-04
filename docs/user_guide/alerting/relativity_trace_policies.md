@@ -78,6 +78,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 | Market Manipulation | Pre-Arranged Trading | Detect traders agreeing on trade price in advance of execution. |
 | Market Manipulation | Price and Benchmark Fixing | Detect agreements between traders to collectively manipulate the price of a financial product or a benchmark to adjust marketconditions. |
 | Market Manipulation | Pump and Dump | Detect traders attempting to boost the price of a financial product after establishing a large long position by sharing falseormisleading information. |
+| Market Manipulation | Research Desk & unathorised Investment Advice | Detects for misconduct where monitored individuals are providing unauthorized investment advice within firm publications. |
 | Market Manipulation | Short and Distort | Detect traders attempting to decrease the price of a financial product after establishing a large short position by sharing false or misleading information. |
 | Market Manipulation | Forex Fix Rigging | Detect agreements between traders to collectively manipulate benchmark foreign exchange rates (FIX) to artificial levels. |
 
@@ -96,6 +97,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 | Code of Conduct Breaches | Hate and Discrimination | Detect inappropriate treatment of others based on race, color, religion, sex, national origin, age, disability or genetic information. |
 | Code of Conduct Breaches | Influencing a Regulator | Detect someone attempting to have an effect on a regulator's actions or decisions. |
 | Code of Conduct Breaches | Influencing Compliance Team | Detect someone attempting to have an effect on a compliance team member's actions or decisions. |
+| Code of Conduct Breaches | New Hires, Internal Transfers, and Terminations | Detect monitored individuals who are breaching internal policies around the sharing of information. |
 | Code of Conduct Breaches | Sexually Explicit Language | Detect sexually explicit language commonly used during sexual harassment. |
 
 
