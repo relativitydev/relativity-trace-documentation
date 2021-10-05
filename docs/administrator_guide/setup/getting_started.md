@@ -117,4 +117,11 @@ If you plan to use `Analytics` functionality, please also make sure the followin
 ![image-20200622103606164](media/getting_started/image-20200622103606164.png)
 
  > Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to [support@relativity.com](mailto:support@relativity.com) for support on installing Trace into workspaces with existing data.
- {: .warn }
+ >  {: .warn }
+
+8. You must also set the `Production Status` of the workspace. The three options are:
+   1. `Not Active` - the workspace is not being used by a customer or in the process of implementation 
+   2. `In Implementation` - the workspace is actively being configured and data sources are being added for a customer
+   3. `Live` - customers are actively getting and reviewing alerts in this workspace
+
+![](media\getting_started\production_status_setting.PNG)

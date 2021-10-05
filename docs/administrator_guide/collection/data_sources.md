@@ -36,6 +36,7 @@ Ingestion Profiles are susceptible to corruption by modification of Relativity F
 
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
 * **Start Date:** Date from which data will be pulled/pushed into Relativity
+* **End Date:** Optional date to which data will be pulled/pushed into Relativity.
   
 * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
   
@@ -101,13 +102,10 @@ This section contains additional settings which are not associated with specific
 {: .info}
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
-
+- **Include Monitored Individuals Not Linked to Data Source:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
 - **Discover Monitored Individuals Ignores Case:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
-
 - **Last Error Retention In Hours:** The length of time to persist any message in the `Last Error` field.
-
 - **Aip Application Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection) 
-
 - **Aip Tenant Id:** See [Trace and Azure Information Protection](#trace-and-azure-information-protection)
 
 ### Data Source State Serialization
@@ -204,7 +202,10 @@ Settings for On Premises exchange are very similar to Office 365. Setting user p
 7.  Set Start Date to the earliest email timestamp you would like imported (UTC
     time)
 
-8.  Under Data Source Specific Fields, set Exchange Settings - Url and Exchange
+8.  Optionally set End Date to the latest email timestamp you would like imported (UTC
+    time)
+    
+9.  Under Data Source Specific Fields, set Exchange Settings - Url and Exchange
     Settings - Version (there are a lot of other settings that can be
     configured, but the default values are fine, please contact us if you would
     like more information)
@@ -323,7 +324,9 @@ This Data Source allows for automatic text extraction/expansion of previously in
 
     7.  Ignore Start Date field
 
-    8.  You have the option to leave the Data Source as Enabled or Disabled
+    8.  Ignore End Data field
+
+    9.  You have the option to leave the Data Source as Enabled or Disabled
 
 3.  Fill out [Data Source Specific Settings](#data-source-specific-settings) and click Save
     
@@ -350,13 +353,15 @@ Discovery of Monitored Individuals
 
 Some Data Sources combine data from several places into a single import flow. In that scenario, it may not be clear which Monitored Individual is the source of a given document and no Monitored Individual will be tagged. To address this issue, Trace has introduced the `Discover Monitored Individuals` option on every Data Source. If enabled, Trace will look inside of the document and tag Monitored Individuals defined on the Data Source if they are found in headers inside the document. Monitored Individuals are recognized by identifier and all secondary identifiers. 
 
+There is also the option to discover Monitored Individuals that are not linked to the Data Source with the setting `Include Monitored Individuals Not Linked To Data Source`. If `Discover Monitored Individuals` is false, this setting will take no action. If `Discover Monitored Individuals` is true and `Include Monitored Individuals Not Linked To Data Source` is false, this setting will take no action and it will only discover Monitored Individuals that are linked to that Data Source. If `Discover Monitored Individuals` is true and `Include Monitored Individuals Not Linked To Data Source` is true, it will use all of the Monitored Individuals in the workspace to tag documents.
+
 By default, Monitored Individual discovery ignores case in the domain portion of the email address but not the name portion. For example, John.DOE@URL.COM will match John.DOE@url.com, but not john.doe@url.com.
 {: .info }
 
 To ignore case in the entire email address during Monitored Individual discovery, use the `Discover Monitored Individuals Ignores Case` setting. For example, John.DOE@URL.COM  will match always John.DOE@url.com, but only match john.doe@url.com if Discover Monitored Individuals Ignores Case is set to true.
 {: .info }
 
-![image-20191217151807534](media/data_sources/image-20191217151807534.png)
+![](media\data_sources\updated_data_source_specific_fields.png)
 
 ### Monitored Individual Discovery On Merge1 Data Sources
 

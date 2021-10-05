@@ -126,7 +126,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Institutional Customer Complaints - Financial | Allocation | Detect complaints from institutional clients regarding misallocation of funds. |
 | Institutional Customer Complaints - Financial | Dissatisfaction | Detect general dissatisfaction complaints from institutional customers. |
-| Institutional Customer Complaints - Financial | Illegal Behavior | Detect accusations of illegal behavior from institutional customers.Trace Policies |
+| Institutional Customer Complaints - Financial | Illegal Behavior | Detect accusations of illegal behavior from institutional customers. |
 
 ### Social Trading Risks
 
