@@ -102,14 +102,14 @@ Follow these steps to build a machine learning model:
       4. Suppress Duplicate Documents = NO
       5. Reviewer Group = *This field doesn't matter for our workflow so select any reviewer group*
 9. Once in the Active Learning project we will calculate Machine Learning Ranks on documents for the first time
-   1. Check to make sure you 5 documents marked as "Coded ML [Model Purpose]" and 5 documents marked as "Coded Not ML [Model Purpose]" on the Active Learning dashboard
+   1. Check to make sure you have 5 documents marked as "Coded ML [Model Purpose]" and 5 documents marked as "Coded Not ML [Model Purpose]" on the Active Learning dashboard
    2. Select the "Update Ranks" button ![Update Ranks Button](media/machine_learning/image-20210219003935274.png)in the upper right corner of the Active Learning dashboard 
    3. Add a "ML [Model Purpose] Cutoff" value of `70` *(This value doesn't actually matter as we will be deciding the Rank Cutoff within the Trace workflow)*
    4. Select the "Update Ranks" button
 10. Remove the Active Learning Document View that gets created automatically for active Active Learning Projects
     1. Navigate to the "Views" tab
     2. Search for a View with the same name as your Active Learning Project (eg. `ML Spam`)
-    3. Edit the View by changing toggling off the "Visible in Dropdown" field under the Other tab
+    3. Edit the View by changing/toggling off the "Visible in Dropdown" field under the Other tab
 11. Update your "ML [Model Purpose] Training and Unanalyzed" Saved Search to include unanalyzed documents after a certain date (eg. `ML Spam Training and Unanalyzed`)
     1. Add the conditions in a logic group <u>with an **OR** operator</u>
        1. Machine Learning model rank field IS NOT SET (eg. `CSR - Spam Cat. Set::Category Rank` IS NOT SET)
