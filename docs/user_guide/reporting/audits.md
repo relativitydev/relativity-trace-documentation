@@ -9,7 +9,7 @@ nav_order: 3
 # Audits
 {: .no_toc }
 
-Every action within the Relativity Trace is audited for complete defensibility and reporting.
+Every action within Relativity Trace is audited for complete defensibility and reporting.
 {: .fs-6 .fw-300 }
 
 1. TOC
