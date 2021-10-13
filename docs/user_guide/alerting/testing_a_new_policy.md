@@ -18,4 +18,4 @@ You can test a new policy on historic data prior to putting it in production to 
 ---
 
 ## Overview
-Search Term Reports can be used to run new policies or policy changes against historic data to understand what the impact of the change would have been had it been implements. More information on Search Term Report can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Search_terms_reports.htm).
+Search Term Reports can be used to run new policies or policy changes against historic data to understand what the impact of the change would have been had it been implemented. More information on Search Term Report can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Search_terms_reports.htm).
