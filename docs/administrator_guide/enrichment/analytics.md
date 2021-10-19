@@ -10,7 +10,7 @@ nav_order: 3
 {: .no_toc }
 
 
-Analytics capabilities consist of language identification, name normalization, email threading, textual near duplicate identification, repeated content identification, find conceptually similar content, and topic clusting.
+Analytics capabilities consist of language identification, name normalization, email threading, textual near duplicate identification, repeated content identification, find conceptually similar content, and topic clustering.
 {: .fs-6 .fw-300 }
 
 1. TOC
