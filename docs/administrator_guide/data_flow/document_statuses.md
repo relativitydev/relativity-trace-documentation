@@ -10,7 +10,7 @@ nav_order: 2
 {: .no_toc }
 
 
-Documents get a status as they progresses through the data flow.
+Documents get a status as they progress through the data flow.
 {: .fs-6 .fw-300 }
 
 1. TOC
