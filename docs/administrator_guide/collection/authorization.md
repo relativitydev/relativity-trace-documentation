@@ -95,7 +95,7 @@ Trace relies on specific configurations of application registrations to be used 
 - **Account Type** : This should be set to "Accounts in this organizational directory only". If using the ROPC flow, this means that configured user on the data source in Trace must belong to the Azure Active Directory where you are creating the application registration.
 - **Redirect URI** : A redirect URI is not required for use with Trace. This may be left as a default value.
 
-If using the ROPC authorization method, the application registration must be enabled to treated as a public client. This can be done under the advanced settings on the "Authentication" blade in your application registration by selecting "Yes" next to "Treat application as a public client".
+If using the ROPC authorization method, the application registration must be enabled to be treated as a public client. This can be done under the advanced settings on the "Authentication" blade in your application registration by selecting "Yes" next to "Treat application as a public client".
 
 ![1590532045656](media/authorization/1590532045656.png)
 
