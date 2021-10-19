@@ -10,7 +10,7 @@ has_children: true
 {: .no_toc }
 
 
-Relativity Trace retieves data directly from communication channels to perform ongoing monitoring.
+Relativity Trace retrieves data directly from communication channels to perform ongoing monitoring.
 {: .fs-6 .fw-300 }
 
 1. TOC
