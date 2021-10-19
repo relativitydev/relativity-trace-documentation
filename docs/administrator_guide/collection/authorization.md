@@ -95,13 +95,13 @@ Trace relies on specific configurations of application registrations to be used 
 - **Account Type** : This should be set to "Accounts in this organizational directory only". If using the ROPC flow, this means that configured user on the data source in Trace must belong to the Azure Active Directory where you are creating the application registration.
 - **Redirect URI** : A redirect URI is not required for use with Trace. This may be left as a default value.
 
-If using the ROPC authorization method, the application registration must be enabled be treated as a public client. This can be done under the advanced settings on the "Authentication" blade in your application registration by selecting "Yes" next to "Treat application as a public client".
+If using the ROPC authorization method, the application registration must be enabled to be treated as a public client. This can be done under the advanced settings on the "Authentication" blade in your application registration by selecting "Yes" next to "Treat application as a public client".
 
 ![1590532045656](media/authorization/1590532045656.png)
 
 #### API Permissions
 
-The API Permissions blade in the application registrations config allows you to assign permissions to API endpoints in Azure. Each permission can be added by navigating to the API permissions blade and clicking "Add a permission". This will cause a pop-up where you can navigate to the API endpoint that is needed scoped permissions can be granted.
+The API Permissions blade in the application registrations config allows you to assign permissions to API endpoints in Azure. Each permission can be added by navigating to the API permissions blade and clicking "Add a permission". This will cause a pop-up where you can navigate to the API endpoint that is needed for scoped permissions to be granted.
 
 ##### Exchange Web Services (EWS)
 
@@ -167,7 +167,7 @@ The Client ID required fields for both AIP and EWS refer to the ID of your appli
 
 
 
-The Tenant ID required fields for both AIP and EWS refer to the ID of your Azure Active Directory. This value is shared by all app registrations in your Azure Active Directory and can be found on the landing page of your application registration in Azure nex to "Directory (tenant) ID" (it will be a GUID).
+The Tenant ID required fields for both AIP and EWS refer to the ID of your Azure Active Directory. This value is shared by all app registrations in your Azure Active Directory and can be found on the landing page of your application registration in Azure next to "Directory (tenant) ID" (it will be a GUID).
 
 
 

@@ -28,7 +28,7 @@ Each Rule Generator is associated with a specific Object Type and creates a Rule
 
 ![](media/dynamic_rules/RuleGeneratorLayout.PNG)
 
-The Rule Generator form contains following fields:
+The Rule Generator form contains the following fields:
 
 -   **Rule Generator Name:** the name of the Rule Generator, limited to 20 characters, must be unique, and can't be modified.
 -   **Associated Object Type:** an Object Type associated with the Rule Generator. For each RDO of the declared Object Type a Rule and Saved Search is created. When a Rule which was created by a Rule Generator is evaluated, the Documents matching the Rule are linked to the associated RDO for which the rule was created.

@@ -9,7 +9,7 @@ nav_order: 1
 # Dashboards
 {: .no_toc }
 
-Dashboards allow for flexible real-time statistics on communications, alerting, review progess, and other necessary reporting.
+Dashboards allow for flexible real-time statistics on communications, alerting, review progress, and other necessary reporting.
 {: .fs-6 .fw-300 }
 
 1. TOC
