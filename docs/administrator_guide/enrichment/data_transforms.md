@@ -115,22 +115,63 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
 
 ### AI Extracted Text Cleansing Data Transformation
 
-Data Transformations of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content from the Extracted Text of a document. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove confidentiality disclaimers, email signatures, and email headers, allowing users to review and run rules on only the relevant information, removing unnecessary text and noise.
+- **Overview**
 
-When `Remove Email Headers` is enabled, cleansing will always act on the document since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
-{: .info}
+  Data Transformation of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content and duplicative content from the Extracted Text of a document. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove confidentiality disclaimers, email signatures, email headers, and duplicative content that has already been ingested, allowing users to review and run rules on only the new and relevant information, removing unnecessary text and noise.
 
-![remove-confdentiality-disclaimers-settings](media/user_documentation/remove-confdentiality-disclaimers-settings.png)
+  There are 2 types of cleansing : <u>Non-Authored Content Removal</u> and <u>Duplicative Content Removal</u>. Non-Authored Content removal allows a user to remove any content that is not written by a user or was auto generated, such as footers, headers, and signatures. Duplicative content is any content that has already been ingested in a previous email. Duplicative content is an email response within an email thread that was already ingested. This is also called Email Thread Deduplication, since the content that gets removed are email threads within the email chain that were previously ingested in another email document. This allows users to only review and alert on only net new email threads as they come in.
 
-When AI Extracted Text Cleansing is performed on a document, `Trace AI Extracted Text Cleansing Status` and `Trace AI Extracted Text Cleansing Error Details` document fields will be populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred. If an error occurred, information regarding the error will be populated on the `Trace AI Extracted Text Cleansing Error Details` document field.
+  There are five fields that are used through the cleansing transformation process:
 
-![cleansing-status-outcome](media/data_transforms/cleansing-status-and-error-outcome.png)
+  1. <u>Extracted Text</u> - input field for cleansing that is generated during enrichment
+  2. <u>Trace Cleansed Extracted Text</u> - field that gets populated during cleansing. If nothing was cleansed, it will contain the same content as Extracted Text.
+  3. <u>Trace Removed Extracted Text</u> - field that gets populated with the content that was removed from Extracted Text if content was removed during cleansing. It will be empty if nothing was cleansed.
+  4. <u>Trace AI Extracted Text Cleansing Status</u> - field that contains the status of the cleansing transformation. There are 4 possible statuses for cleansing. See status section below for the possible statuses.
+  5. <u>Trace AI Extracted Text Cleansing Error Details</u> - field that contains the error details of cleansing transform if an error occurred. It will be empty if no error occurred.
 
-AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
-{: .info}
+  When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extracted Text Cleansing Status` and `Trace AI Extracted Text Cleansing Error Details` document fields will be populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred. If an error occurred, information regarding the error will be populated on the `Trace AI Extracted Text Cleansing Error Details` document field.
 
-The long text field, `Trace Original Extracted Text`, stores the original contents of the extracted text prior to any data transformations, acting as a source for unaltered data after Text Extraction. It can be used in place of the Extracted Text field or used to verify results of cleansing.
-{: .info}
+  There are four possible outcome after cleansing and are denoted with the following four statuses:
+
+  1. <u>Success - Extracted Text Cleansed</u> : Cleansing was successful and content was removed. `Trace Cleansed Extracted Text` will have less content than `Extracted Text`. `Trace Removed Extracted Text`  will contain the removed properties from the emails and `Trace AI Extracted Text Cleansing Error Details` will be empty.
+
+  2. <u>Success - No Extracted Text Cleansed</u> : Cleansing was successful, but no content was removed. `Trace Cleansed Extracted Text` and `Extracted Text` fields will have the same content. `Trace Removed Extracted Text` and `Trace AI Extracted Text Cleansing Error Details` will be empty.
+
+  3. <u>Warning - Service Error</u> : Cleansing was unable to run due to a service error.  `Trace Cleansed Extracted Text` and `Extracted Text` fields will be the same and `Trace Removed Extracted Text` will be empty since cleansing did not occur. `Trace AI Extracted Text Cleansing Error Details` will contain an error message with the reason for the service error.
+
+  4. <u>Warning - Document Error</u> : Cleansing was unable to run due to a document error. This means that the actual input document was the cause of the error and cleansing was unable to run. `Trace Cleansed Extracted Text` and `Extracted Text` fields will be the same and `Trace Removed Extracted Text` will be empty since cleansing did not occur. `Trace AI Extracted Text Cleansing Error Details` will contain an error message with the reason for the document error.
+
+     Common document errors include trying to cleanse documents that are not emails OR the email headers do not contain all required properties. See Considerations section for required email header properties.
+     {: .info}
+
+     ![cleansing-status-outcome](media/data_transforms/cleansing-status-and-error-outcome.png)
+
+  If cleansing was successful, regardless of whether anything was cleansed or not, the cleansed version of extracted text will be found in `Trace Cleansed Extracted Text`. All of the content that was removed during cleansing can be found as a JSON in the `Trace Removed Extracted Text` field. If nothing was actually cleansed, then `Trace Cleansed Extracted Text` will be exactly the same as the `Extracted Text` field and `Trace Removed Extracted Text` will be empty.
+
+- **How To Configure Transform**
+
+  1. To setup cleansing transform, create a new data transformation in the data transformation tab.
+
+  2.  Give the transform a name, select transformation type of `AI Extracted Text Cleansing`, and select the checkboxes on the type of content you want to cleanse. 
+
+     When `Remove Email Headers` is enabled, cleansing will always act on the document since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
+     {: .info}
+
+  3. Once created, add the transformation to the data source you want to run cleansing on.
+
+     Only data sources that bring in emails should be used for cleansing as it only cleanses email documents. If any non-email types are ran through cleansing, they will fail with a status of Warning - Document Error and the error details will contain the reason for the document error.
+     {: .info}
+
+  4. All email documents being ingested from this data source will now undergo cleansing. If you want to change the configuration of the content that gets removed, you can return to the data transformation, click edit, and de-select the checkboxes as desired. Any future emails ingested will now remove content as configured.
+
+     
+
+  ![](C:\SourceCode\relativity-trace-documentation\docs\media\user_documentation\cleansing-data-transform-configuration.png)
+
+- **Considerations**
+
+  1. Cleansing is meant to only work on email documents. This means emails that have clear and defined headers will get cleansed. Email headers need to contain From, Sent, Subject, Body, and at least one of To, CC, or BCC. If these headers can't be parsed, then cleansing will fail with a status of Warning - Document Error. No other type of documents are currently supported for cleansing.
+  2. AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
 ### Group Identifier Truncation for External Data Sources
 
