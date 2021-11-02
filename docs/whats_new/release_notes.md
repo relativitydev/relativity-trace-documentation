@@ -25,6 +25,25 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 14.6.0.0 (9 November 2021)
+
+**Features**
+
+- Added policies to create metadata policy frameworks ready for clients to use. This will allow the client to reduce their alerts down as a first iteration prior to running a PEP. 
+- Added policies targeting Financial Services – Social Platform Risks allowing clients to increase detection of risk, given recent regulatory discussion around social platform influence of market trading. This policy will be a combination of metadata and lexicons to pinpoint where there are a high number of messages shared referencing a tweet or reddit post. 
+- Added policies in Dutch – Change of Venue, Collaborative Discussions, General Tipping, Layering Spoofing, and Rumors and Speculations 
+
+**Enhancements**
+ 
+- Change sort order on the documents list within the Rules layout to show the most recent documents 
+- Enabled support for Cloud9 Audio for in-house transcription generation and review
+- Enabled support for O2 Cloud Audio for in-house transcription generation and review
+
+**Defect Fixes**
+
+- Fixed rare issue where Data Batch metadata not updated when Data Batch is completed
+- Fixed a Job Completed Error message where details where replaced by a standard error message
+
 # 14.5.3.1 (5 October 2021)
 
 **Features**
