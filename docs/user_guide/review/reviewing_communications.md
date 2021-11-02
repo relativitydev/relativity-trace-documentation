@@ -19,3 +19,6 @@ Communications can be reviewed manually to determine whether midconduct occured.
 
 ## Overview
 When clicking on a Document within Relativity Trace, the Document Viewer will display that communication in its native format. The Viewer supports the display of more than 900 different file types and is consistent across formats. More information on the Viewer can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Viewer/Viewer.htm).
+
+If you want this functionality enabled please contact support.
+![TraceAIViewerHighlight](media/user_documentation/TraceAIViewerHighlight.png)
