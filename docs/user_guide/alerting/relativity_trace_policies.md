@@ -80,6 +80,7 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 | Market Manipulation | Pump and Dump | Detect traders attempting to boost the price of a financial product after establishing a large long position by sharing falseormisleading information. |
 | Market Manipulation | Research Desk & unathorised Investment Advice | Detects for misconduct where monitored individuals are providing unauthorized investment advice within firm publications. |
 | Market Manipulation | Short and Distort | Detect traders attempting to decrease the price of a financial product after establishing a large short position by sharing false or misleading information. |
+| Market Manipulation | Social Platform Risks | Detect market manipulation on social platforms shared on work communications channels. |
 | Market Manipulation | Forex Fix Rigging | Detect agreements between traders to collectively manipulate benchmark foreign exchange rates (FIX) to artificial levels. |
 
 
@@ -138,4 +139,4 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 
 ## Language Support
 
-Policies are supported in English, French, German, Italian, Japanese, Russian, Spanish. Support for new languages are being added in each release. Please contact [support@relativity.com](mailto:support@relativity.com) for language support requests.
+Policies are supported in English, Dutch, French, German, Italian, Japanese, Russian, Spanish. Support for new languages are being added in each release. Please contact [support@relativity.com](mailto:support@relativity.com) for language support requests.
