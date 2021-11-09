@@ -140,6 +140,12 @@ When you add the `AI Extracted Text Cleansing` Data Transformation to a any data
 The `Trace Cleansed Extracted Text` can also be used in search, conceptual, or classification indexes to impact other operations and use cases.
 {: .info}
 
+**Cleansed Data in the Viewer**
+
+We are able to identify headers, footers, confidentiality segments, and deduplicative text that were removed during `AI Extracted Text Cleansing`.
+
+More information on the Viewer can be found [here](https://relativitydev.github.io/relativity-trace-documentation/docs/user_guide/review/reviewing_communications.html).
+
 **Statuses**
 
 When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extracted Text Cleansing Status` document field will be populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred when attempting to cleanse. If an error occurred, information regarding the error will be populated on the `Trace AI Extracted Text Cleansing Error Details` document field.

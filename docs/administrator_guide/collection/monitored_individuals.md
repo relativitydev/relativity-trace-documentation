@@ -10,7 +10,7 @@ nav_order: 1
 {: .no_toc }
 
 
-A Monitored Indidual is a person within the organization whose communications are being analyzed for misconduct.
+A Monitored Individual is a person within the organization whose communications are being analyzed for misconduct.
 {: .fs-6 .fw-300 }
 
 1. TOC
