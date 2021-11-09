@@ -29,20 +29,20 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 **Features**
 
-- Added policies to create metadata policy frameworks ready for clients to use. This will allow the client to reduce their alerts down as a first iteration prior to running a PEP. 
-- Added policies targeting Financial Services – Social Platform Risks allowing clients to increase detection of risk, given recent regulatory discussion around social platform influence of market trading. This policy will be a combination of metadata and lexicons to pinpoint where there are a high number of messages shared referencing a tweet or reddit post. 
-- Added policies in Dutch – Change of Venue, Collaborative Discussions, General Tipping, Layering Spoofing, and Rumors and Speculations 
+- Enhanced metadata filtering within Trace Surveillance Policies to further reduce false-positive alerts
+- Added a Trace Surveillance Policy that targets risks associated with financial services employees discussing content on social platforms like Twitter and Reddit. This policy is based on recent regulatory discussions around social platform’s influence on market trading 
+- Added Trace Surveillance Policies in Dutch to identify misconduct within global organizations 
 
 **Enhancements**
  
-- Change sort order on the documents list within the Rules layout to show the most recent documents 
-- Enabled support for Cloud9 Audio for in-house transcription generation and review
-- Enabled support for O2 Cloud Audio for in-house transcription generation and review
+- Change sort order on the documents list within the Rules layout to show the most recent alerts first  
+- Enabled support for Cloud9 Audio for in-house collection, transcription generation, and review 
+- Enabled support for O2 Cloud Audio for in-house collection, transcription generation, and review 
 
 **Defect Fixes**
 
-- Fixed rare issue where Data Batch metadata not updated when Data Batch is completed
-- Fixed a Job Completed Error message where details where replaced by a standard error message
+- Fixed a rare issue where Data Batch metadata is not updated when the Data Batch completes 
+- Fixed an issue where the Data Batch “Job Completion Error” field is overwritten by a generic message after an error occurs 
 
 # 14.5.3.1 (5 October 2021)
 
