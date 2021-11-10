@@ -25,4 +25,6 @@ By default, Trace creates a `Trace Rules Persistent Highlight Set` that highligh
 
 In addition, you can override default highlight color scheme (magenta background and black text) for a specific Trace Term by specifying a semi-colon separated list of pre-configured color combinations. The details of the color codes can be accessed via Context Help button on the Term Definition page.
 
+Please look to the [User Guide Alerting Documentation](https://relativitydev.github.io/relativity-trace-documentation/docs/user_guide/alerting/) for documentation related to implementation. 
+
 ![](media/rules/587ff246e9bf742376893bde0d0469ab.png)
