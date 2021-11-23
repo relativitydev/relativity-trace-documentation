@@ -131,7 +131,13 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
 
 To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. To do this you will need to find the `Trace All Documents` saved search and updated the field in the search from `Extracted Text` to `Trace Cleansed Extracted Text`.
 
-After changing the `Trace All Documents` saved search please contact support@relativity.com when attempting to perform a Document Retry.
+Changing the `Trace All Documents` saved search will impact all functionality that relies on it. Prior to making this change, check search indexes (global search), analytics indexes (classification and conceptual), to better understand how this saved search is being used. In certain cases you may want to create a new saved search that uses the `Extracted Text` field for index builds and other downstream functionality.  
+{: .danger}
+
+Documents created prior Trace version 14.5 being deployed will not have the `Trace Cleansed Extracted Text` field populated. This means that if you were to create a search index off of this field, old documents would not have any text in the index and therefor not be returned in a term search.
+{: .danger}
+
+After changing the `Trace All Documents` saved search please contact support@relativity.com when attempting to perform a Document Retry on old documents that don't have the `Trace Cleansed Extracted Text` populated.
 {: .warn}
 
 When you add the `AI Extracted Text Cleansing` Data Transformation to a any data source, the `Trace Cleansed Extracted Text` is populated for every document that gets ingested into the workspace from any data source. This makes it possible to use the `Trace Cleansed Extracted Text` field within the `Trace All Documents` saved search for every document.
