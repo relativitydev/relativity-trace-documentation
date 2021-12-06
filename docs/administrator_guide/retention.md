@@ -65,4 +65,4 @@ To protect yourself from disposing documents that have not yet been analyzed by 
 |:---:|:------:|:-----|
 | 1 | `Trace Has Errors` field is `False` | Prevent the disposal of documents that are in an errored stated |
 | 2 | `Trace Document Status` any of these: `5 - Ready for Rule Analysis` OR `6 - Alert Rules Complete` | Prevent the disposal of documents that are still being processed by the system |
-| 3 | `Trace Alerted On` field is Set AND _Customer Review Field_ is Not Set | Prevent the disposal of an alerted document that has not yet been reviewed |
+| 3 | `Trace Alerted On` field is Set AND _Customer Review Field_ is Set | Prevent the disposal of an alerted document that has not yet been reviewed |
