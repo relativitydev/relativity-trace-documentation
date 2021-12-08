@@ -24,16 +24,17 @@ A Data Source allows you to define where and how you are pulling data from a com
 Ingestion Profiles are susceptible to corruption by modification of Relativity Fields and Data Mappings which are referenced in the profile.  Any time a Relativity Field or Data Mapping which is used in an Ingestion Profile is edited or deleted, it is imperative to validate the integrity of each of the related Ingestion Profiles. Automatic validation occurs during the Data Retrieval task and may cause a data source to be automatically disabled if it is found to have been corrupted.
 {: .warn }
 
-![image-20210909142404893](media/data_sources/image-20210909142404893.png)
+![image-20210909142404893](media/data_sources/data_source_layout_with_boxes.png)
 
-![Credentials Tab](media/data_sources/9631ef5e-4ec9-4096-8c52-0af0377437fc_annotated.png)
+![Credentials Tab](media/data_sources/data_source_credentials_tab_with_boxes.png)
 
 ### Sections of a Data Source
 
 1. **General**: this tab houses general identifying information and status for the data source. These fields are described in further detail below.
    * **Name:** The name of Data Source
+   * **Document Type Name:** A non-required name that will propagate to the Trace Type field on the documents that come in through this Data Source
+     * If this field is left empty, the name of the Data Source will be used instead
    * **Data Source Type:** Type of the data source
-
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
 * **Start Date:** Date from which data will be pulled/pushed into Relativity
 * **End Date:** Optional date to which data will be pulled/pushed into Relativity.
