@@ -42,7 +42,7 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
 1. `Trace Data Batch Retry` – submits the Data Batch to be retried by Trace. This is a full retry that reverts the Data Batch to the `RetrievedFromSource` status and Trace will once again attempt to ingest the data.
 
-   `Trace Data Batch Retry` should only be run if deduplication is enabled on the Data Source. If it is not enabled on the Data Source you will need to perform a `Trace Document Retry` on all documents in that data batch.
+   If it is not enabled on the Data Source you will need to perform a `Trace Data Batch Retry` on all documents in that data batch.
    {: .warn }
 
 2. `Trace Data Batch Abandon` – updates the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
