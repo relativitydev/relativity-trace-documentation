@@ -10,7 +10,7 @@ nav_order: 4
 {: .no_toc }
 
 
-The Trace Shipper Service transfers data from on-premises locations into Relativity Trace.
+The Trace Shipper Service transfers data from on-premise locations into Relativity Trace.
 {: .fs-6 .fw-300 }
 
 1. TOC
