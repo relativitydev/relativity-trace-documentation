@@ -25,6 +25,24 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 14.7.2.2 (20 December 2021)
+
+**Features**
+
+- Trace added functionality to track if team members viewed documents that should not have been viewed, Trace will send an email report or real-time notifications regarding privacy issues
+- Automated management of Monitored Individuals with Azure Active Directory 
+- Added Trace Surveillance Policies to identify risk and misconduct that contains lexicons specifically used in audio, in order to aid current out of the box policies. This will allow for better alerting and less false positives. 
+
+**Enhancements**
+ 
+- Enabled support for Slack Cloud-to-Cloud Connection 
+- Developed an easy and quick way to view what data soruce a document is sourced from
+
+**Defect Fixes**
+
+- Fixed Persistent Highlighting issue where go to next highlight functionality does not work when block highlighting is collapsed  
+- Fixed an AI Cleansing failing issue that caused documents to not be parsed, this is not a failure though because the system defaults to alerting on Extracted Text as Trace always has 
+
 # 14.6.0.0 (9 November 2021)
 
 **Features**
