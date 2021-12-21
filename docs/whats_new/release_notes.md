@@ -25,7 +25,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
-# 14.7.0.0 (20 December 2021)
+# 14.7.2.2 (20 December 2021)
 
 **Features**
 
