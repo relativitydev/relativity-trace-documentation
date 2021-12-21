@@ -28,6 +28,7 @@ Data Disposal will only delete files located in valid Data Batch folders. Docume
 If a Document is disposed, but not its parent or children, only the disposed Documents files are deleted.
 
 _Only_ documents which were imported as part of a Data Batch which is in the `Completed` or `CompletedWithDocumentLevelErrors` state will be deleted.
+{: .info }
 
 The Data Disposal Action Type follows the same Trace Rules Engine paradigm with one added condition:
 
@@ -58,9 +59,10 @@ All documents will be deleted in a single pass, this is a tweak to improve SQL p
 
 **Saved Search Recommendations for Data Disposal**
 
-Because of the risk of data loss. You should carefully configure the Searchable Set used for Data Disposal. The following are recommended minimum filtering parameters
+To protect yourself from disposing documents that have not yet been analyzed by the system or sufficiently reviewed, it is suggested that you add the following conditions to the saved search used for Data Disposal.
 
--   `Trace Has Errors` field is False
--   `Trace Document Status` any of these: `5 - Ready for Rule Analysis` OR `6 - Alert Rules Complete`
--   The `Alert` field is not set (is empty)
--   A field marking the document as Reviewed is True
+| # | Condition | Description |
+|:---:|:------:|:-----|
+| 1 | `Trace Has Errors` field is `False` | Prevent the disposal of documents that are in an errored stated |
+| 2 | `Trace Document Status` any of these: `5 - Ready for Rule Analysis` OR `6 - Alert Rules Complete` | Prevent the disposal of documents that are still being processed by the system |
+| 3 | `Trace Alerted On` field is Set AND _Customer Review Field_ is Set | Prevent the disposal of an alerted document that has not yet been reviewed |
