@@ -37,6 +37,19 @@ The Trace Terms Report provides distinct counts on how many documents matched pe
 - **Date Begin** - the beginning of the date range (at 12:00AM in the Time Zone used by the selected Date Field) to use for documents in the report
 - **Date End** - the ending of the date range (until 11:59PM in the Time Zone used by the selected Date Field) to use for documents in the report
 
+### Report on Users who Viewed Non-Alerted Documents
+
+1. Go to *Setup Tab*
+2. Click *Reporting* under Tasks ![](media/exporting/Non-Alerted Doc Reports Tab in Setup.png)
+3. Set *Configuration* to Enabled and enter the recipients in the json ![](media/exporting/Non-Alerted Doc Configuration.png)
+
+End Result
+1. Search Reports ![](media/exporting/Non-Alerted Doc Search Reports.png)
+2. Click the report you want to see ![](media/exporting/Non-Alerted Doc Individual Report.png)
+3. Sample Report emailed with attachment ![](media/exporting/Non-Alerted Doc Sample Email Report - cleaned.png)
+4. Sample CSV attachment ![](media/exporting/Non-ALerted Doc Sample CSV - cleaned.png)
+
+
 ## Automated Exporting
 Data can be exported programatically using a robust set of open API's. For more information see [Extensible API's]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %})
 
