@@ -2,6 +2,7 @@
 layout: default
 title: Notifications
 parent: Reporting
+grand_parent: Administrator Guide
 nav_order: 1
 ---
 
