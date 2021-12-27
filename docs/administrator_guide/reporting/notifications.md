@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Notifications
-parent: reporting
+parent: Reporting
 nav_order: 1
 ---
 
