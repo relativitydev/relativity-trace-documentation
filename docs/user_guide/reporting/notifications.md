@@ -9,7 +9,7 @@ nav_order: 2
 # Notifications
 {: .no_toc }
 
-Trace offers predifined notification reports for complete defensibility and reporting.
+Trace offers predifined notification reports for defensibility and reporting.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -19,8 +19,9 @@ Trace offers predifined notification reports for complete defensibility and repo
 ## Overview
 All clients have similar needs and actions that need to be notified on in flexible time periods. 
 
-## Non-Alerted Document Notificaion
-Trace has added functionality that allows companies to better detect risk by monitoring actions taken by their surveillance team. Now companies can track if surveillance team members have viewed documents that should not have been viewed. Trace will send an email report or real-time notifications regarding privacy issues where reviewers are looking at non-alerted documents. 
+## Reports
+### Non-Alerted Document Review Report
+Companies can track when surveillance team members view communications that have not been alerted on to identify scenarios where compliance team members are abusing their access to view employees communications. Trace will send an email report or real-time notifications regarding these privacy issues where reviewers are looking at non-alerted documents. 
 
 The following are steps on how to view this feature, please see the admin guide on how to enable this.
 
