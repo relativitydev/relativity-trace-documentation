@@ -259,12 +259,12 @@ Configuration for the Zip Drop Data Source is pretty simple. There are no creden
 The following requirements must be met by any ZIP file imported by the Zip Drop Data Source:
 
 - The name of the ZIP file is the name of the Data Batch that will be created, and should be unique
-- There must be a CSV load file at the root of the ZIP file named "loadfile.dat"
+- There must be a load file at the root of the ZIP file named "loadfile.dat"
 - There should be no other files at the root of the ZIP file except for "loadfile.dat"
 - All native files should be in a folder named "OriginalNatives" at the root of the ZIP file
 - All extracted text files should be in a folder named "ExtractedData" at the root of the ZIP file
 - There should be no folders at the root of the ZIP file except for "OriginalNatives" and "ExtractedData"
-- The CSV load file "loadfile.dat" must contain columns named "Trace Monitored Individuals", "Trace Document Hash", and "Trace Data Batch" in addition to the other columns and data mappings that are required by every Relativity Trace data source
+- The load file "loadfile.dat" must contain columns named "Trace Monitored Individuals", "Trace Document Hash", and "Trace Data Batch" in addition to the other columns and data mappings that are required by every Relativity Trace data source
 
 Files imported by the Zip Drop Data Source do not need to have the extension .ZIP.
 {: .info }
