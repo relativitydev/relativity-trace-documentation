@@ -30,7 +30,7 @@ The following are steps on how to view this feature, please see the admin guide 
 3. Sample notification emailed with attachment ![](media/notifications/Non-Alerted Doc Sample Email Report - cleaned.png)
 4. Sample csv ![](media/notifications/Non-ALerted Doc Sample CSV - cleaned.png)
 
-**General Notes:** If there are no incidents, the email will be sent but not have content
+**General Notes:** If there is nothing to report an email will not be sent, but an Automated Report object will still be created within the product
 {: .info}
 
 **General Notes:** Notifications only review previous day, not historical data
