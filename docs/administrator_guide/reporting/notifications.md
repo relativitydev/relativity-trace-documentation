@@ -27,7 +27,7 @@ The following is how to enable the feature
 2. Click *Reporting Tasks* ![](media/notifications/Non-Alerted Doc Reports Tab in Setup.png)
 3. Reporting Type Configuration set to enabled and enter the recipients in the json ![](media/notifications/Non-Alerted Doc Configuration.png)
 
-### JSON Configuration Notes
+### JSON Configuration
 Supported Reports Types: NonAlertedDocumentReviewReport & SystemHealthAlertsReport
 
 Each Report Accepts
@@ -37,11 +37,12 @@ Each Report Accepts
 - EmailFrom - email address the report should come from, or <<EMAIL_FROM_INSTANCE_SETTING>>  to override with the EmailFrom Relativity Instance setting
 - IncludeDetails - a true/false value which is used by some reports to provide extra detail. Currently only used by the SystemHealthAlertsReport to provide extra details on the error each Task encountered
 
-**General Notes:** If there are no incidents, the email will be sent but not have content
-{: .info}
+#### Example JSON Configuration
 
-**General Notes:** This feature only reviews the previous 24 hours, not historical data. This adds improtance for having the reporting tasks up for each client
-{: .info}
+```
+{"NonAlertedDocumentReviewReport":{"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}}
+```
 
-**General Notes:** Ensure retention in audits is at least 24 hours for this feature to work
+- If there is nothing to report an email will not be sent, but an Automated Report object will still be created within the product
+- The Non-Alerted Document Review Report only analyzes events that occured the previous day, and cannot gather historical results
 {: .info}
