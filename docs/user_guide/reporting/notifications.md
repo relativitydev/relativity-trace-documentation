@@ -25,8 +25,8 @@ Companies can track when surveillance team members view communications that have
 
 The following are steps on how to view this feature, please see the admin guide on how to enable this.
 
-1. Search Previously Generated Reports ![](media/notifications/Non-Alerted Doc Search Reports.png)
-2. Click on the notification you want to view ![](media/notifications/Non-Alerted Doc Individual Report.png)
+1. Search Previously Generated Reports ![](media/notifications/Non-Alerted Doc Search Reports v2.png)
+2. Click on the notification you want to view ![](media/notifications/Non-Alerted Doc Individual Report v2.png)
 3. Sample notification emailed with attachment ![](media/notifications/Non-Alerted Doc Sample Email Report - cleaned.png)
 4. Sample csv ![](media/notifications/Non-ALerted Doc Sample CSV - cleaned.png)
 
