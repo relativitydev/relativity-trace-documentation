@@ -18,8 +18,8 @@ Trace offers predifined notification reports for complete defensibility and repo
 
 ---
 
-## Trace Document Fields
-Trace has added functionality that allows companies to better detect risk by monitoring actions taken by their surveillance team. Now companies can track if surveillance team members have viewed documents that should not have been viewed. Trace will send an email report or real-time notifications regarding privacy issues where reviewers are looking at non-alerted documents. 
+## Monitor Your Surveillance Team
+Trace has functionality that allows companies to better detect risk by monitoring actions taken by their surveillance team. Now companies can track if surveillance team members have viewed documents that should not have been viewed. Trace will send an email report or real-time notifications regarding privacy issues where reviewers are looking at non-alerted documents. 
 
 The following is how to enable the feature
 
@@ -27,11 +27,22 @@ The following is how to enable the feature
 2. Click *Reporting Tasks* ![](media/notifications/Non-Alerted Doc Reports Tab in Setup.png)
 3. Reporting Type Configuration set to enabled and enter the recipients in the json ![](media/notifications/Non-Alerted Doc Configuration.png)
 
-**General Notes:** If there are no incidents, the email will be sent but not have content
-{: .info}
+### JSON Configuration
+Supported Reports Types: NonAlertedDocumentReviewReport & SystemHealthAlertsReport
 
-**General Notes:** This feature only reviews the previous 24 hours, not historical data. This adds improtance for having the reporting tasks up for each client
-{: .info}
+Each Report Accepts
+- Enabled - a true/false value. Technically deleting the entry from the json will also disable, but to preserve expected settings the preferred method to stop a report is to set this value to false
+- Recipients - a semi-colon-separated list of email addresses to send this report to, or <<EMAIL_TO_INSTANCE_SETTING>> to override with the EmailTo Relativity Instance setting
+- FrequencyInMinutes - how often the report should run, i.e. 15 for every 15 minutes
+- EmailFrom - email address the report should come from, or <<EMAIL_FROM_INSTANCE_SETTING>>  to override with the EmailFrom Relativity Instance setting
+- IncludeDetails - a true/false value which is used by some reports to provide extra detail. Currently only used by the SystemHealthAlertsReport to provide extra details on the error each Task encountered
 
-**General Notes:** Ensure retention in audits is at least 24 hours for this feature to work
+#### Example JSON Configuration
+
+```
+{"NonAlertedDocumentReviewReport":{"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}}
+```
+
+- If there is nothing to report an email will not be sent, but an Automated Report object will still be created within the product
+- The Non-Alerted Document Review Report only analyzes events that occured the previous day, and cannot gather historical results
 {: .info}
