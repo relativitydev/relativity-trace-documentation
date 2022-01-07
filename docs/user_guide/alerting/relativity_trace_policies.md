@@ -137,12 +137,12 @@ Relativity Trace includes over 40 different policies in more than 5 different la
 | Social Trading Risk | Social Trading Conduct Breaches | Detect a social platform user breaching conduct set out by the social platform policy.|
 | Social Trading Risk | Social Trading Platform Risks | Detect general social platform risks such as negative behavior towards services and complaints.|
 
-## Voice Specific risk detection
+## Voice Specific Risk Detection
 
 | Category          | Policy                                     | Description                                                  |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | Voice Policy | Market Abuse | Detect a market abuse taking place on voice communications.|
-| Voice Policy | Audio misconduct | Detect potential audio misconduct taking place over video conferencing applications.|
+| Voice Policy | Audio Misconduct | Detect potential audio misconduct taking place over video conferencing applications.|
 
 ## Language Support
 

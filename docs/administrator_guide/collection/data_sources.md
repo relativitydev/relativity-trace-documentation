@@ -145,8 +145,8 @@ Auto-disabled data sources will have their Disabled Reason field populated to sh
 ### Microsoft Exchange Data Source
 {: .d-inline-block }
 
-Deprecated 
-{: .label .label-red }
+Replaced by O365 Data Source
+{: .label .label-yellow }
 
 The Microsoft Exchange Data Source enables Relativity to automatically pull emails from a Microsoft Exchange instance (Office 365 or On Premises) into Relativity. The Microsoft Exchange Data Source is executed by the Data Retrieval task (seen on the Setup tab). Note, this Data Source only pulls emails at this
 time, if you need to retrieve other object types from Microsoft Exchange please contact [support@relativity.com](mailto:support@relativity.com).
@@ -259,12 +259,12 @@ Configuration for the Zip Drop Data Source is pretty simple. There are no creden
 The following requirements must be met by any ZIP file imported by the Zip Drop Data Source:
 
 - The name of the ZIP file is the name of the Data Batch that will be created, and should be unique
-- There must be a CSV load file at the root of the ZIP file named "loadfile.dat"
+- There must be a load file at the root of the ZIP file named "loadfile.dat"
 - There should be no other files at the root of the ZIP file except for "loadfile.dat"
 - All native files should be in a folder named "OriginalNatives" at the root of the ZIP file
 - All extracted text files should be in a folder named "ExtractedData" at the root of the ZIP file
 - There should be no folders at the root of the ZIP file except for "OriginalNatives" and "ExtractedData"
-- The CSV load file "loadfile.dat" must contain columns named "Trace Monitored Individuals", "Trace Document Hash", and "Trace Data Batch" in addition to the other columns and data mappings that are required by every Relativity Trace data source
+- The load file "loadfile.dat" must contain columns named "Trace Monitored Individuals", "Trace Document Hash", and "Trace Data Batch" in addition to the other columns and data mappings that are required by every Relativity Trace data source
 
 Files imported by the Zip Drop Data Source do not need to have the extension .ZIP.
 {: .info }
