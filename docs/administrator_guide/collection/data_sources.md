@@ -145,8 +145,8 @@ Auto-disabled data sources will have their Disabled Reason field populated to sh
 ### Microsoft Exchange Data Source
 {: .d-inline-block }
 
-Deprecated 
-{: .label .label-red }
+Replaced by O365 Data Source
+{: .label .label-yellow }
 
 The Microsoft Exchange Data Source enables Relativity to automatically pull emails from a Microsoft Exchange instance (Office 365 or On Premises) into Relativity. The Microsoft Exchange Data Source is executed by the Data Retrieval task (seen on the Setup tab). Note, this Data Source only pulls emails at this
 time, if you need to retrieve other object types from Microsoft Exchange please contact [support@relativity.com](mailto:support@relativity.com).
