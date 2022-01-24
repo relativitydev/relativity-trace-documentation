@@ -1,0 +1,22 @@
+grand_parent: User Guide
+nav_order: 2
+---
+
+# Notifications
+{: .no_toc }
+
+Trace offers predifined notification reports for defensibility and reporting.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+## Overview
+All clients have similar needs and actions that need to be notified on in flexible time periods. 
+
+**General Notes:** If there are no incidents, the email will not be sent
+{: .info}
+
+**General Notes:** Notifications only review previous day, not historical data
+{: .info}
