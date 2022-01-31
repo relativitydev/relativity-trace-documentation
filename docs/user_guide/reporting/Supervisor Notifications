@@ -1,8 +1,9 @@
 grand_parent: User Guide
+parent: reporting
 nav_order: 2
 ---
 
-# Notifications
+# Supervisor Notifications
 {: .no_toc }
 
 Trace offers predifined notification reports for defensibility and reporting.
@@ -13,10 +14,9 @@ Trace offers predifined notification reports for defensibility and reporting.
 
 ---
 ## Overview
-All clients have similar needs and actions that need to be notified on in flexible time periods. 
+All clients have similar reporting needs and have stakeholders who are not in Trace daily. The goal of this feature is to provide clients an easily configurable method of recieving email alerts when a certain action occurs.  
 
-**General Notes:** If there are no incidents, the email will not be sent
-{: .info}
-
-**General Notes:** Notifications only review previous day, not historical data
+**General Notes:** 
+# If there are no incidents, the email will not be sent
+# Notifications only review previous day, not historical data
 {: .info}
