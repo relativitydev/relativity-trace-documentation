@@ -5,12 +5,16 @@ parent: Supervisor Notification
 grand_parent: User Guide
 nav_order: 3
 ---
+
 # Supervisor Notification
 {: .no_toc }
+
 Trace offers predefined notification reports for defensibility and reporting.
 {: .fs-6 .fw-300 }
+
 1. TOC
 {:toc}
+
 ---
 ## Overview
 All clients have similar reporting needs and have stakeholders who are not in Trace daily. The goal of this feature is to provide clients an easily configurable method of recieving email alerts when a certain action occurs.  
