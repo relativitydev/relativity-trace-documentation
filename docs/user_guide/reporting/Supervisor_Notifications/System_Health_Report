@@ -5,7 +5,7 @@ parent: Supervisor Notification
 grand_parent: User Guide
 nav_order: 3
 ---
-# Notifications
+# Supervisor Notification
 {: .no_toc }
 Trace offers predefined notification reports for defensibility and reporting.
 {: .fs-6 .fw-300 }
