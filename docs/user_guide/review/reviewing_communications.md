@@ -22,3 +22,21 @@ When clicking on a Document within Relativity Trace, the Document Viewer will di
 
 If you want this functionality enabled please contact support.
 ![viewerScreenshot](/viewerScreenshot.png)
+
+### Fields
+
+Several fields are included to assist in reviewing communications.
+
+#### Email Action
+
+There is a field called `Trace Email Action` that describes what type of email each email is. This field can be set to the following choices:
+
+1. Empty (if this field is left empty, this means that this is not an email)
+2. Draft
+3. Send
+4. Forward
+5. Reply
+6. Reply-All
+
+No setup is needed for this field; it will be populated automatically when the file is imported.
+
