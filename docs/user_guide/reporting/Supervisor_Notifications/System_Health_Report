@@ -18,10 +18,10 @@ All clients have similar reporting needs and have stakeholders who are not in Tr
 ### System Health Report
 Companies must track the system health and alert when there is an issue. The following are steps on how to view this feature, please see the admin guide on how to enable this.
 
-1. Search Previously Generated Reports ![](media/notifications/Supervisor_Notification/System_Health_Report/)
-2. Click on the notification you want to view ![](media/notifications/Supervisor_Notification/System_Health_Report/)
-3. Sample notification emailed with attachment ![](media/notifications/Supervisor_Notification/System_Health_Report/)
-4. Sample csv ![](media/notifications/Supervisor_Notification/System_Health_Report/)
+1. Search Previously Generated Reports ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health Reporting Search.png)
+2. Click on the notification you want to view
+3. Sample notification emailed with attachment ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health Email.png)
+4. Sample csv ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health CSV.png)
 
 **General Notes:** 
 # If there are no incidents, the email will not be sent
