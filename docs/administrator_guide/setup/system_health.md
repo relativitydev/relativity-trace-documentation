@@ -27,7 +27,7 @@ If an update to a new version of Trace is in progress, the Setup page will show 
 
 ![1571088232926](media/system_health/1571088232926.png)
 
-### Adjusting Logging Level
+### Adjusting Logging Level [DEPRECATED]
 
 You can adjust the logging level to get more information about the system performance specific to Trace. The Default logging level is Error. The management of the Logging infrastructure can be adjusted via the UI console button “Manage Logs”. In order to adjust the logging level use the “Update Trace Log Level” option. In order to collect and display logging data use the “Trace Logs” option. You can export the logs to a csv file with a mass operation “Export to File” at the bottom of the list.![image-20210909134102571](media/system_health/image-20210909134102571.png)![image-20210909134157151](media/system_health/image-20210909134157151.png)![image-20210909134225059](media/system_health/image-20210909134225059.png)
 
