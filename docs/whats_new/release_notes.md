@@ -25,6 +25,25 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.0.0 (8 February 2022)
+
+**Features**
+
+- Rule change report: Generate a report that can also be sent via email whenever a change is made to a rule so that compliance can monitor those who have permissions to update controls for any types of misconduct.
+- System Health Report: Generate a report that can also be sent via email whenever a current task status failure occurs so that compliance can monitor system performance or if something is not working as anticipated. 
+
+**Enhancements**
+ 
+- Enabled support for GSuite Cloud-to-Cloud Connection 
+- Enhanced Email Threading to run on all emails upon ingestion and not in Structured Analytics
+- Improved the viewer experience for cleansed block highlighting by no longer highlighting the header envelop
+- Added a field to Trade Reconstruction that allows a user to choose fields on the trade object. 
+- Add new fields to NonAlerted Document Notification Reports
+
+**Defect Fixes**
+
+- Fixed an issue where block highlighting fails when switching back documents too fast
+
 # 14.7.2.2 (20 December 2021)
 
 **Features**
