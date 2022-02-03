@@ -57,7 +57,9 @@ If a review decision doesn't map to one of the three reviewer decision buckets, 
 
 
 
-## Reporting Task
+## Reporting Task (Updated)
+
+For an update improved System Health Reporting please see the [Reporting Tab](docs/administrator_guide/reporting/notifications.html)
 
 The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.![image-20210909134259836](media/system_health/image-20210909134259836.png)
 
