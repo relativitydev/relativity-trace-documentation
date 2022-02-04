@@ -49,5 +49,5 @@ Each Report Accepts
 
 - If there is nothing to report an email will not be sent, but an Automated Report object will still be created within the product
 - The Non-Alerted Document Review Report only analyzes events that occured the previous day, and cannot gather historical results
-- To see what the report looks like in Trace, see the [User Guide](docs/administrator_guide/reporting/notifications.html)
+- To see what the report looks like in Trace, see the [User Guide](docs/user_guide/reporting/)
 {: .info}
