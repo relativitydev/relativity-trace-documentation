@@ -25,3 +25,5 @@ Monitored Individuals can be managed through Active Directory or Azure Active Di
 Monitored Individuals are used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
 
 .
+
++
