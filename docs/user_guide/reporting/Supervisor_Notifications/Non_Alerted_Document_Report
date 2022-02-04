@@ -30,4 +30,5 @@ The following are steps on how to view this feature, please see the admin guide 
 **General Notes:** 
 # If there are no incidents, the email will not be sent
 # Notifications only review previous day, not historical data
+# For configuration, see the [Admin Guide](docs/administrator_guide/reporting/notifications.html)
 {: .info}
