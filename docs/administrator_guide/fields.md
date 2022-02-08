@@ -180,4 +180,4 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Exempt              | Yes/No            | Indicates exempt list data transformation classification |
 | Calculated               | Trace Communication Direction           | Fixed-Length Text | Indicates communication direction data transformation classification (Internal |
 | Calculated               | Trace Is Extracted           | Yes/No | Indicates whether a document is a Native or was Extracted |
-
+| Calculated               | Trace Email Action          | Single Choice | Describes the type of email as either Draft, Send, Forward, Reply, Reply-All, or Empty meaning the document is not an email |

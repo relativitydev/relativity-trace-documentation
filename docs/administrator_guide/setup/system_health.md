@@ -27,7 +27,7 @@ If an update to a new version of Trace is in progress, the Setup page will show 
 
 ![1571088232926](media/system_health/1571088232926.png)
 
-### Adjusting Logging Level
+### Adjusting Logging Level [DEPRECATED]
 
 You can adjust the logging level to get more information about the system performance specific to Trace. The Default logging level is Error. The management of the Logging infrastructure can be adjusted via the UI console button “Manage Logs”. In order to adjust the logging level use the “Update Trace Log Level” option. In order to collect and display logging data use the “Trace Logs” option. You can export the logs to a csv file with a mass operation “Export to File” at the bottom of the list.![image-20210909134102571](media/system_health/image-20210909134102571.png)![image-20210909134157151](media/system_health/image-20210909134157151.png)![image-20210909134225059](media/system_health/image-20210909134225059.png)
 
@@ -57,7 +57,9 @@ If a review decision doesn't map to one of the three reviewer decision buckets, 
 
 
 
-## Reporting Task
+## Reporting Task (Updated)
+
+For an update improved System Health Reporting please see the [Reporting Tab](docs/administrator_guide/reporting/notifications.html)
 
 The Reporting task is designed to email designated administrators information regarding the health of the Trace system every 24 hours, to ensure they are aware of any outages or delays in processes. Email configurations for this task default to instance settings, but can be manually overridden from the Reporting task page. See below sample configuration for example.![image-20210909134259836](media/system_health/image-20210909134259836.png)
 

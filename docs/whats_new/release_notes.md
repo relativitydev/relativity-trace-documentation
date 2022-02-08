@@ -25,6 +25,25 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.0.0 (8 February 2022)
+
+**Features**
+
+- Rule change report: Generate a report that can also be sent via email whenever a change is made to a rule so that compliance can monitor those who have permissions to update controls for any types of misconduct.
+- System Health Report: Generate a report that can also be sent via email whenever a current task status failure occurs so that compliance can monitor system performance or if something is not working as anticipated. 
+- Expanded ZipDrop data sources to be able to collect non-communication data (structured data) such as terms, trades, human resource information, or expense data.
+
+**Enhancements**
+ 
+- Enabled support for GSuite Cloud-to-Cloud Connection 
+- A new Trace Email Action field can be used within Rules to alert differently on Sent, Forwarded, Replies, Replies to All, or Draft emails to further pinpoint risk and reduce false positive alerts
+- Improved the viewer experience for cleansed block highlighting by no longer highlighting the header envelop
+- Add new fields to NonAlerted Document Notification Reports
+
+**Defect Fixes**
+
+- Fixed an issue where block highlighting fails when switching back documents too fast
+
 # 14.7.2.2 (20 December 2021)
 
 **Features**

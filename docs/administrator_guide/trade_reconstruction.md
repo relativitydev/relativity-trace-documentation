@@ -31,13 +31,18 @@ The Trade Reconstruction Configuration attached to your Trade is a key component
 1. Naviagte to the `Trade Reconstruction Configurations` tab and click `New Trade Reconstruction Configuration`.
 
 	![](media/trade_reconstruction/trade_reconstruction_configuration_layout.PNG)
- 
+
 2. The Trade Reconstruction Configuration creation form has the following fields:
 
    1. **Name:** the name of the Trade Reconstruction Configruation
+   
    2. **Search Criteria:** required JSON field to create the search parameters for the Saved Search created and linked to the Trade during Reconstruction. The details of the proper search criteria can be accessed via Contextual Help button on the Configuration secontion. 
       - See the below section titled `Search Criteria for Trade Reconstruction Configuration` for more information
-   3. **Trade Keywords Field:** optional field, allows you to choose fields on the Trade object which will be used to create `Trade Keywords` that are linked to the Trade. Must be Multiple Object or Multiple Choice type fields.
+      
+   3. **Trade Keywords Field:** optional field, allows you to choose fields on the Trade object which will be used to create `Trade Keywords` that are linked to the Trade
+   
+      You can choose Trade fields of any field type. If you choose a Yes/No field, the`Yes Display Value` or `No Display Value` for that field will be used to create the `Trade Keyword`.
+      {: .info }
 
 
 

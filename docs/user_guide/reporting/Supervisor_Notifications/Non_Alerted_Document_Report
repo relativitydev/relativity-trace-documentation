@@ -1,0 +1,34 @@
+---
+layout: default
+title: Non-Alerted Document Report
+parent: Supervisor Notification
+grand_parent: User Guide
+nav_order: 1
+---
+
+# Supervisor Notification
+{: .no_toc }
+Trace offers predefined notification reports for defensibility and reporting.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+## Overview
+All clients have similar reporting needs and have stakeholders who are not in Trace daily. The goal of this feature is to provide clients an easily configurable method of recieving email alerts when a certain action occurs.  
+
+### Non-Alerted Document Review Report
+Companies can track when surveillance team members view communications that have not been alerted on to identify scenarios where compliance team members are abusing their access to view employees communications. Trace will send an email report or real-time notifications regarding these privacy issues where reviewers are looking at non-alerted documents. 
+The following are steps on how to view this feature, please see the admin guide on how to enable this.
+
+1. Search Previously Generated Reports ![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Doc Reports Tab in Setup v2.png)
+2. Click on the notification you want to view ![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Doc Individual Report v2.PNG)
+3. Sample notification emailed with attachment ![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Doc Sample Email Report - cleaned v2.png)
+4. Sample csv ![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Sample Email.PNG )
+
+**General Notes:** 
+# If there are no incidents, the email will not be sent
+# Notifications only review previous day, not historical data
+# For configuration, see the [Admin Guide](docs/administrator_guide/reporting/notifications.html)
+{: .info}
