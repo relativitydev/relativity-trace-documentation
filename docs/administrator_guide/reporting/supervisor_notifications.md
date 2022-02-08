@@ -6,7 +6,7 @@ grand_parent: Administrator Guide
 nav_order: 1
 ---
 
-# Notifications
+# Supervisor Notifications
 {: .no_toc }
 
 
@@ -40,9 +40,14 @@ Each Report Accepts
 #### Example JSON Configuration
 
 ```
-{"NonAlertedDocumentReviewReport":{"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}}
+{"NonAlertedDocumentReviewReport":{"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"},
+"RuleChangeReport": {"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}, "SystemHealthReport": {"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}}
 ```
+
+#### Example JSON Configuration with All Reports
+![](media/notifications/Updated Configuration.PNG)
 
 - If there is nothing to report an email will not be sent, but an Automated Report object will still be created within the product
 - The Non-Alerted Document Review Report only analyzes events that occured the previous day, and cannot gather historical results
+- To see what the report looks like in Trace, see the [User Guide](docs/user_guide/reporting/)
 {: .info}

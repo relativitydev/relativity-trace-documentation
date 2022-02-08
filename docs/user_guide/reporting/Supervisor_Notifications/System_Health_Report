@@ -1,0 +1,34 @@
+---
+layout: default
+title: System Health Report
+parent: Supervisor Notification
+grand_parent: User Guide
+nav_order: 3
+---
+
+# Supervisor Notification
+{: .no_toc }
+
+Trace offers predefined notification reports for defensibility and reporting.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+## Overview
+All clients have similar reporting needs and have stakeholders who are not in Trace daily. The goal of this feature is to provide clients an easily configurable method of recieving email alerts when a certain action occurs.  
+
+### System Health Report
+Companies must track the system health and alert when there is an issue. The following are steps on how to view this feature, please see the admin guide on how to enable this.
+
+1. Search Previously Generated Reports ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health Reporting Search.png)
+2. Click on the notification you want to view
+3. Sample notification emailed with attachment ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health Email.png)
+4. Sample csv ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health CSV.png)
+
+**General Notes:** 
+# If there are no incidents, the email will not be sent
+# Notifications only review previous day, not historical data
+# For configuration, see the [Admin Guide](docs/administrator_guide/reporting/notifications.html)
+{: .info}
