@@ -6,7 +6,7 @@ grand_parent: Administrator Guide
 nav_order: 1
 ---
 
-# Supervisor Notifications
+# Notifications
 {: .no_toc }
 
 
