@@ -9,29 +9,43 @@ nav_order: 2
 # Notifications
 {: .no_toc }
 
-Trace offers predifined notification reports for defensibility and reporting.
+Trace can send email notifications and generate reports for non-communication alert related events.
 {: .fs-6 .fw-300 }
 
 1. TOC
 {:toc}
 
 ---
-## Overview
-All clients have similar needs and actions that need to be notified on in flexible time periods. 
-
 ## Reports
+Each report sends an email notification and creates an Automated Reports object. Automated Report objects can be found within Trace on the Reports tab. On the Reports tab you can filter to find any report by type and by the date it was generated. Within an Automated Report object you can view or download a CSV of the underlying report details.
+
+![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Doc Reports Tab in Setup v2.png)
+
+![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Doc Sample Email Report - cleaned v2.png)
+
+All reports are configured by system administrators. For configuration information, see the [Admin Guide](docs/administrator_guide/reporting/notifications.html)
+{: .info}
+
 ### Non-Alerted Document Review Report
 Companies can track when surveillance team members view communications that have not been alerted on to identify scenarios where compliance team members are abusing their access to view employees communications. Trace will send an email report or real-time notifications regarding these privacy issues where reviewers are looking at non-alerted documents. 
 
-The following are steps on how to view this feature, please see the admin guide on how to enable this.
+Sample notification emailed with attachment ![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Doc Sample Email Report - cleaned v2.png)
+Sample report file ![](media/notifications/Non_Alerted_Document_Report/Non-Alerted Sample Email.PNG )
 
-1. Search Previously Generated Reports ![](media/notifications/Non-Alerted Doc Reports Tab in Setup v2.png)
-2. Click on the notification you want to view ![](media/notifications/Non-Alerted Doc Individual Report v2.PNG)
-3. Sample notification emailed with attachment ![](media/notifications/Non-Alerted Doc Sample Email Report - cleaned.png)
-4. Sample csv ![](media/notifications/Non-ALerted Doc Sample CSV - cleaned v2.PNG)
+### Rule Change Report
+Compliance teams must be aware of any changes or additions made to the Rules that are generating alerts. This report sends email notifications when a change or addition is made so those who aren't using Trace every day are aware of how monitoring is changing and identify any questionable activities by the compliance team.
 
-**General Notes:** If there are no incidents, the email will be sent but not have content
-{: .info}
+Sample notification emailed with attachment ![](media/notifications/Supervisor_Notification/Rule_Change_Report/Term Change Report Email.PNG) ![](media/notifications/Supervisor_Notification/Rule_Change_Report/Rule Change Email.PNG)
 
-**General Notes:** Notifications only review previous day, not historical data
+Sample csv ![](media/notifications/Supervisor_Notification/Rule_Change_Report/Rule Change Report Excel.PNG) ![](media/notifications/Supervisor_Notification/Rule_Change_Report/Term Change Report Excel.PNG)
+
+### System Health Report
+The Trace team gets notified of system health issue in realtime and remediates and problems proactively. If you want greater awareness when system issues occur, this report will send you email notifications for each event.
+
+Sample notification emailed with attachment ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health Email.png)
+Sample csv ![](media/notifications/Supervisor_Notification/System_Health_Report/System Health CSV.png)
+
+**General Notes:** 
+- If there are no incidents, the email will be sent but not have content
+- Notifications only review previous day, not historical data
 {: .info}
