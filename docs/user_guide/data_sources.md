@@ -112,7 +112,7 @@ This list covers the most common Data Sources rather than all Data Sources. To b
 | Archive | Dell SourceOne |
 
 Some Data Sources are supported through partners.
-{: .info}
+{: .warn}
 
 
 
