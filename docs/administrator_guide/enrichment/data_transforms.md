@@ -56,7 +56,7 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 
 ### Communication Direction Data Transformation
 
-Data Transformations of type `Communication Direction` can be used to populate the `Trace Communication Direction` field on documents with a communication direction value based on the `Internal Email Domain` objects in the workspace and values in the To, From, CC, and BCC fields in the load file. A specific email address is considered **internal** if the portion of the value to the right of the first `@` matches one of the defined `Internal Email Domains` (NOT case-sensitive), and **external** if it does not match any of the defined `Internal Email Domains`. Here are the possible `Trace Communication Direction` values:
+Data Transformations of type `Communication Direction` can be used to populate the `Trace Communication Direction` and `Trace Communication Personal` fields on documents with a communication direction value based on the `Email Domain` object (which have a type `Internal` and `Personal`) in the workspace and values in the To, From, CC, and BCC fields in the load file. A specific email address is considered **internal** if the portion of the value to the right of the first `@` matches one of the defined `Internal Email Domains` (NOT case-sensitive), **external** if it does not match any of the defined `Internal Email Domains` and **Personal** if it matches one of pre-defined or defined `Personal Email Domains`. Here are the possible `Trace Communication Direction` values:
 
 - **Internal** ALL of the email addresses in the From, To, CC, and BCC fields are **internal**
 - **Inbound** the From address is **external**, and ONE OR MORE of the email addresses in the To, CC, and BCC fields is **internal**
@@ -64,9 +64,14 @@ Data Transformations of type `Communication Direction` can be used to populate t
 - **External** ALL of the email addresses in the From, To, CC, and BCC fields are **external** (unlikely to happen unless `Internal Email Domains` change)
 - **Undefined** the From field must contain an email address with a domain and at least one of the To, CC, or BCC fields must contain an email address with a domain or the `Trace Communication Direction` is considered **Undefined** (need one domain in each direction to determine `Communication Direction`)
 
-When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
+Here are the possible `Trace Communication Personal` values:
+- **Personal** the From address is **personal** OR any email address in the To, CC, BCC fields is **personal**
+- **No Personal Domains** NONE of the email addresses in From, To, CC and BCC fields is **personal**
+- **Undefined** the From field must contain an email address with a domain and at least one of the To, CC, or BCC fields must contain an email address with a domain or the `Trace Communication Personal` is considered **Undefined** (need one domain in each direction to determine `Communication Direction`)
 
-The `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
+When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` and `Trace Communication Personal` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
+
+The `Trace Communication Direction` and `Trace Communication Personal` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
 {: .info}
 
 Use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
