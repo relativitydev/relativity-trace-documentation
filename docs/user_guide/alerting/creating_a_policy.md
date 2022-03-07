@@ -20,7 +20,7 @@ You can manually create or update a surveillance policy to indentify risk specif
 
 ## Overview
 
-Alert Rules allow users to define the criteria for a surveillance policy. These Rules are executed on periodic basis at pre-configured intervals, allowing users to automatically and continously categorize and tag documents as they are ingested into the workspace.
+Alert Rules allow users to define the criteria for a surveillance policy. These Rules are executed on a periodic basis at pre-configured intervals, allowing users to automatically and continuously categorize and tag documents as they are ingested into the workspace.
 
 `Workflow` Rules operate the same way as `Alert` Rules, but are intended to trigger an [Action]({{ site.baseurl }}{% link docs/administrator_guide/actions.md %}) rather than generate an alert for a user.
 {: .info }
@@ -89,15 +89,15 @@ In addition to metadata conditions of a Saved Search associated with Rule, you c
 
 You can create Terms in multiple ways:
 
-1.  Via [Remote Desktop Client ( RDC )](https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm) load file. This method is ideal if you are adding a lot of terms at once.
+1.  Via a [Relativity Desktop Client ( RDC )](https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm) load file. This method is ideal if you are adding a lot of terms at once.
     
-2.  From Terms tab by clicking “New Term” and adding each Term individually.
+2.  From the Terms tab by clicking “New Term” and adding each Term individually.
 
 3.  By clicking the New button on the Terms section of the Rule Layout.
 
 ![](media/rules/e2a523416ac9607f8b2e9f42e2287e0f.png)
 
-Term definition contains 3 fields:
+Term definitions contain 3 fields:
 
 -   **Term:** searching string (unique identifier)
 -   **Term Category:** optional group name to organize terms
@@ -105,7 +105,7 @@ Term definition contains 3 fields:
 -   **Relativity highlight color:** optional highlighting configuration in the
     Relativity viewer (see [highlighting](#highlighting) section)
 
-In addition, you can see and modify Term Categories and Rules associated with Term and its status with regards to execution
+In addition, you can see and modify Term Categories and Rules associated with each Term and its status with regards to execution
 
 ![](media/rules/5b46e7806548749e50586196d43aa468.png)
 
