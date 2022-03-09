@@ -25,6 +25,28 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.1.0 (15 March 2022)
+
+**Features**
+
+- Developed the ability for a Reviewer can email a monitored individual (and cc managers or supervisors) to let them know that they are in breach of a policy or to get more information about an event.
+- Added the ability to specify when a document was encrypted but was successfully decrypted using the Password functionality so that compliance officers can better understand the number of communications that are being encrypted by everyone as a potential risk indicator.
+- With a high number of alerts being cleared (99%) users want the default action when viewing a document to be marking it cleared. We plan to build an event handler that can optionally be enabled that would deliver this.
+
+**Enhancements**
+ 
+- Expanded Trace’s ability to identify when emails are sent by or to personal emails (gmail, yahoo, etc) so that certain policies (like IP theft) can target these specific communications.
+- Ability to see other communications that exist within an email thread, without having to run the Email Threading Structured Analytics job, to better understand the context around an alert or  how the thread unfolded.
+
+**Advanced Access**
+
+- Sentiment Analysis Model
+- Spam Detection Model
+- Language ID Model
+
+Please reach out to your Trace Specialist if your interested in one of these model
+
+
 # 15.0.0 (8 February 2022)
 
 **Features**
