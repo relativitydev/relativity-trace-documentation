@@ -62,7 +62,7 @@ To run Trade Reconstruction, follow the steps below:
 
 Your Trade will be fully Reconstructed when the **Reconstruction Status** field says `Complete`.
 
-If you choose to perform Reconstruction again on Trade that has already been Reconstructed, this will completely remove any information about the previoujs Reconstruction.
+If you choose to perform Reconstruction again on Trade that has already been Reconstructed, this will completely remove any information about the previous Reconstruction.
 {: .danger }
 
 
