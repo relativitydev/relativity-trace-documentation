@@ -161,7 +161,7 @@ Please contact [support@relativity.com](mailto:support@relativity.com) for more 
 You must create a Trade Reconstruction Configruation before you can create a Trade.
 {: .info }
 
-If you decide to Reconstruct a Trade which has already been Reconstructed in the past, everything is removed from the previous Reconstruction and replaced with the new information from the most recent Reconstruction. `Trade Keywords` are not deleted, but the connection between the `Trade Keyword` and the Trade is gone and will not be searched for (unless the same keyword is still on the Trade, in which it will re-establish the connection and search for this keyword). All of the Trade's Related Documents from the previous Reconstruction will be removed.
+If you decide to Reconstruct a Trade which has already been Reconstructed in the past, everything is removed from the previous Reconstruction and replaced with the new information from the most recent Reconstruction. `Trade Keywords` are not deleted, but the connection between the `Trade Keyword` and the Trade is gone and will not be searched for (unless the same keyword is still on the Trade, in which it will re-establish the connection and search for this keyword). All of the Trade's Related Documents from the previous Reconstruction will be removed. However, an Audit will be created for each Reconstruction with the following information: the Artifact ID of the Reconstructed Trade, the User that kicked off the Reconstruction, the date and time the Reconstruction began, and the Artifact ID of every Related Document that was connected to the Trade.
 {: .danger}
 
 You must run each Trade indiviudally - mass editing `Perform Reconstruction` field on the Trade will not start Trade Reconstruction.
