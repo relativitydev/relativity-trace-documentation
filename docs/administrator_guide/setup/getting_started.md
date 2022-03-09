@@ -79,32 +79,17 @@ If you plan to use `Analytics` functionality, please also make sure the followin
    
 4. Create Trace agents
 
-   > **NOTE**: Trace agents are Resource Pool aware.  A single resource pool supports only one `Trace Manager Agent` and an unlimited number of `Trace Worker Agents`
+   > **NOTE** Trace application will contain deploy.yaml file which automatically sets up agent configurations for tenants.
 
+This file is all it is needed in order to create and start necessary Trace agents in Kubernetes (K8S) architecture for any given Relativity instance.
+Kubernetes environment makes Trace agents scalable based on the workload sent to be handled by them.
+
+On the `Agents` tab, after the Trace application upgrade the following agents should be displayed for all Trace related tasks to be handled by them:
    1.  Trace Manager Agent
-       1.  Agent Type = `Trace Manager Agent`
-       2.  Number of Agents = `1` 
-       3.  Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4.  Run Interval = `60`
-       5.  Logging level of event details = `Log all messages`
-   2.  Trace Worker Agent
-       1. Agent Type = `Trace Worker Agent`
-       2. Number of Agents = `No more than 2x #of CPU cores per agent server (Ex. 4 CPU agent server should host no more than 2 Trace Worker agents`
-       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4. Run Interval = `60`
-       5. Logging level of event details = `Log all messages`
-   3.  Integration Points Manager Agent
-       1. Agent Type = `Integration Points Manager`
-       2. Number of Agents = `1`
-       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4. Run Interval = `60`
-       5. Logging level of event details = `Log critical errors only`
-   4.  Integration Points Agent
-       1. Agent Type = `Integration Points Agent`
-       2. Number of Agents = `up to 4` (start with 1 and add more if data batches get backed up)
-       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4. Run Interval = `60`
-       5. Logging level of event details = `Log critical errors only`
+   2.  Trace Data Batch Finalization Agent
+   3.  Trace Data Enrichment Agent
+   4.  Trace Data Dispose Agent
+   5.  Trace Data Transformation Agent
 
    > Please reach out to [support@relativity.com](mailto:support@relativity.com) for additional information
 
