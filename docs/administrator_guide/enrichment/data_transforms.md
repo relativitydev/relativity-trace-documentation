@@ -127,7 +127,6 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
   4. <u>Trace AI Extracted Text Cleansing Status</u> - field that contains the status of the cleansing transformation. There are 4 possible statuses for cleansing. See status section below for the possible statuses.
   5. <u>Trace AI Extracted Text Cleansing Error Details</u> - field that contains the error details of cleansing transform if an error occurred. It will be empty if no error occurred.
  
- 
 **Alerting on Cleansed Data**
 
 To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. To do this you will need to find the `Trace All Documents` saved search and updated the field in the search from `Extracted Text` to `Trace Cleansed Extracted Text`.
@@ -211,9 +210,11 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 
 Ability to see other communications that exist within an email thread, without having to run the Email Threading Structured Analytics job, to better understand the context around an alert or  how the thread unfolded.
 
+
  1.Will be a data transformation that can be enabled and disabled
  2.If on, runs automatically without the Structured Analytics Job
  3.This adds the communication as a relational field (where family and attachments are now)
+ 
  
 This runs without Structured Analytics but will not produce the threading visualization
 AI Text Cleansing & Deduplicative Content must be enabled
