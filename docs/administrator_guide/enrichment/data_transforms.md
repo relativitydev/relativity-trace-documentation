@@ -216,6 +216,7 @@ Ability to see other communications that exist within an email thread, without h
  3.This adds the communication as a relational field (where family and attachments are now)
  
 This runs without Structured Analytics but will not produce the threading visualization
+AI Text Cleansing & Deduplicative Content must be enabled
 {: .info}
  
 ### Group Identifier Truncation for External Data Sources
