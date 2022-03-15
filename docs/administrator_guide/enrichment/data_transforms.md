@@ -67,6 +67,7 @@ By specifying internal email domains (e.g mycompany.com, us.mycompany.com) on th
 - **External** All of the email addresses in the From, To, CC, and BCC fields have domains that are **NOT internal** (unlikely to happen unless `Internal Email Domains` change)
 - **Undefined** the From field must contain an email address with a domain and at least one of the To, CC, or BCC fields must contain an email address with a domain or the `Trace Communication Direction` is considered **Undefined** (need one domain in each direction to determine `Communication Direction`)
 
+
 **Trace Communication Personal**
 By specifing person email domains (e.g. google.com, yahoo.com) on the `Email Domain` object, the Communcication Direction Data Transformation will mark communications as either `Personal` or `No Personal Domains` on the `Trace Communication Personal` field. This can be used to target risks that only occur when invididuals are sending or receiving communications from personal email addresses.
 
