@@ -74,7 +74,7 @@ By specifing person email domains (e.g. google.com, yahoo.com) on the `Email Dom
 - **No Personal Domains** NONE of the email addresses in From, To, CC and BCC fields has a domina that has been classified as **personal**
 - **Undefined** the From field must contain an email address with a domain and at least one of the To, CC, or BCC fields must contain an email address with a domain or the `Trace Communication Personal` is considered **Undefined** (need one domain in each direction to determine `Communication Direction`)
 
-
+.
 - `Email Domain` object names are not case sensitive.
 - When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` and `Trace Communication Personal` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 - The `Trace Communication Direction` and `Trace Communication Personal` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
