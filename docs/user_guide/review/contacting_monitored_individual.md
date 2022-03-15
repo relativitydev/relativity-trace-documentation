@@ -34,6 +34,6 @@ These email actions are audited as `Trace - Email Sent` actions.
 ![Email Monitored Individual Audit](media/contacting_monitored_individual/Email_MI_3.png)
 
 There are currently no permissions to disable the "Email Monitored Individual" functionality.
-{:info}
+{: .info }
 
 
