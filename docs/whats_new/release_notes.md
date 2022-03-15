@@ -25,6 +25,20 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.1.0 (15 March 2022)
+
+**Features**
+
+- A Reviewer can now email a monitored individual directly within the system to let them know that they are in breach of a policy or to get more information about an event.
+- Communications are now classified as either being sent or received from a personal email address (gmail, yahoo, etc.), so it’s easier to identify scenarios where employees are sending corporate content outside the organization either to themselves or others.
+- To accelerate the pace at which reviewers can clear alerts, we’ve added the ability to set default review decisions that are automatically populated when a communication is viewed.
+
+**Enhancements**
+ 
+- Improved our Password Bank functionality to specify when a document was encrypted but was successfully decrypted using one of the passwords. This allows for compliance teams to better understand the volume of communications that are being encrypted as a potential risk indicator.
+- Ability to see communications that exist within the same email thread in the relational pane in the viewer after Email Thread Deduplication is performed. This reduces the need for running the Email Threading Structured Analytics operation.
+- Added more detailed auditing for when a Trade Reconstruction action is performed to capture the links made between a trade and all its related communications. This enables users to review historic Trade Reconstruction results regardless of whether they’ve rerun the operation.
+
 # 15.0.0 (8 February 2022)
 
 **Features**
