@@ -25,7 +25,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
-# 15.1.0 (15 March 2022)
+# 15.1.23.0 (15 March 2022)
 
 **Features**
 
@@ -39,7 +39,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Ability to see communications that exist within the same email thread in the relational pane in the viewer after Email Thread Deduplication is performed. This reduces the need for running the Email Threading Structured Analytics operation.
 - Added more detailed auditing for when a Trade Reconstruction action is performed to capture the links made between a trade and all its related communications. This enables users to review historic Trade Reconstruction results regardless of whether they’ve rerun the operation.
 
-# 15.0.0 (8 February 2022)
+# 15.0.10.1 (8 February 2022)
 
 **Features**
 
