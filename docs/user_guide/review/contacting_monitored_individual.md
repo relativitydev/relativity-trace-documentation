@@ -31,7 +31,7 @@ When reviewing a communication within the Viewer you can "Email  Document Action
 4. By pressing "Send" the system will generate and automatically send an email to the specified monitored individual.
 
 These email actions are audited as `Trace - Email Sent` actions.
-![Email Monitored Individual Audit](media/contacting_monitored_individual/email_MI_3.png)
+![Email Monitored Individual Audit](media/contacting_monitored_individual/Email_MI_3.png)
 
 There are currently no permissions to disable the "Email Monitored Individual" functionality.
 {:info}
