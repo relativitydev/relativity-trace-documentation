@@ -201,24 +201,17 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 
   ![](C:\SourceCode\relativity-trace-documentation\docs\media\user_documentation\cleansing-data-transform-configuration.png)
 
+**Trace Conversation Thread Field**
+When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
+
+This runs without Structured Analytics and will not produce results that can be visualized in the Email Thread visualization
+{: .info}
+
 **Important Considerations**
 
   1. Cleansing is meant to only work on email documents. This means emails that have clear and defined headers will get cleansed. Email headers need to contain From, Sent, Subject, Body, and at least one of To, CC, or BCC. If these headers can't be parsed, then cleansing will fail with a status of Warning - Document Error. No other type of documents are currently supported for cleansing.
   2. AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
-### Trace Conversation Thread Data Transformation
-
-Ability to see other communications that exist within an email thread, without having to run the Email Threading Structured Analytics job, to better understand the context around an alert or  how the thread unfolded.
-
-
- 1.Will be a data transformation that can be enabled and disabled
- 2.If on, runs automatically without the Structured Analytics Job
- 3.This adds the communication as a relational field (where family and attachments are now)
- 
- 
-This runs without Structured Analytics but will not produce the threading visualization
-AI Text Cleansing & Deduplicative Content must be enabled
-{: .info}
  
 ### Group Identifier Truncation for External Data Sources
 
