@@ -44,9 +44,10 @@ Types of Tasks
 
 - **Term Searching:** Responsible for executing searching of the Terms for Rule evaluations
 
-- **Rule Evaluation:** Responsible for evaluating configured Rules within the workspace 
+- **Rule Evaluation:** Responsible for evaluating configured all Rules except ones with data disposal action assigned within the workspace 
+- **Data Disposal:** Responsible for evaluating configured Rules which have data disposal action assigned within the workspace 
 
-  > The Rule Evaluation task queues up work via the Service Bus framework if the Data Disposal action is in use. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
+  > The Data Disposal task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
   {: .info }
 
 - **Reporting**: Responsible for generating reports (e.g. state of the system, user actions, etc.) and sending those reports via email

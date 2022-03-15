@@ -35,7 +35,6 @@ Ensure the following Relativity Instance components are appropriately configured
 
 -   Integration Points Agent (need to install [Relativity Integration Points](https://platform.relativity.com/RelativityOne/index.htm#Relativity_Integration_Points/Get_started_with_integration_points.htm) first)
     
--   Integration Points Manager (need to install [Relativity Integration Points](https://platform.relativity.com/RelativityOne/index.htm#Relativity_Integration_Points/Get_started_with_integration_points.htm) first)
 
 If you plan to use `Analytics` functionality, please also make sure the following agents are set up:
 
@@ -79,47 +78,38 @@ If you plan to use `Analytics` functionality, please also make sure the followin
    
 4. Create Trace agents
 
-   > **NOTE**: Trace agents are Resource Pool aware.  A single resource pool supports only one `Trace Manager Agent` and an unlimited number of `Trace Worker Agents`
+   > **NOTE**: Trace application will contain deploy.yaml file which automatically sets up the agent configuration.
 
-   1.  Trace Manager Agent
-       1.  Agent Type = `Trace Manager Agent`
-       2.  Number of Agents = `1` 
-       3.  Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4.  Run Interval = `60`
-       5.  Logging level of event details = `Log all messages`
-   2.  Trace Worker Agent
-       1. Agent Type = `Trace Worker Agent`
-       2. Number of Agents = `No more than 2x #of CPU cores per agent server (Ex. 4 CPU agent server should host no more than 2 Trace Worker agents`
-       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4. Run Interval = `60`
-       5. Logging level of event details = `Log all messages`
-   3.  Integration Points Manager Agent
-       1. Agent Type = `Integration Points Manager`
-       2. Number of Agents = `1`
-       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4. Run Interval = `60`
-       5. Logging level of event details = `Log critical errors only`
-   4.  Integration Points Agent
-       1. Agent Type = `Integration Points Agent`
-       2. Number of Agents = `up to 4` (start with 1 and add more if data batches get backed up)
-       3. Agent Server = Select the agent server you would like the agent deployed on (see “Infrastructure and Environment Considerations” section for optimal performance)
-       4. Run Interval = `60`
-       5. Logging level of event details = `Log critical errors only`
+   This file is all that is needed to create and start necessary Trace agents for a Relativity instance. The Trace agents will run in our Kubernetes (K8S) architecture making Trace agents scalable to handle changing workloads.
 
-   > Please reach out to [support@relativity.com](mailto:support@relativity.com) for additional information
+   Once configured, only the following agents will be displayed in the `Agents` tab:
+    - Trace Manager Agent
+    - Trace Data Batch Finalization Agent
+    - Trace Data Enrichment Agent
+    - Trace Data Dispose Agent
+    - Trace Data Transformation Agent
 
-6. On the `Agents` tab, view the Message of `Trace Manager Agent` until there are no longer any workspaces listed as `Updating` (this is necessary because the manager agent makes additional modifications to target workspaces after application install that are needed in the next steps) ![1571073733941](media/getting_started/1571073733941.png)
-> On upgrades, the workspaces with existing data could take considerable time but should not take longer than 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer.
-{: .info }
+   ![image-20220309144345735](media/getting_started/image-20220309144345735.png)
 
-7. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
+   
+    > On the `Agents` tab, the Agent Server column will show a value of `RelativityOne Compute`. This means a given agent type is running in Kubernetes.
+    {: .info }
+
+
+    > When upgrading from standard agends to Kubernetes agends, the workspace may take 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer.
+    {: .info }
+
+
+5. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
 
 ![image-20200622103606164](media/getting_started/image-20200622103606164.png)
 
- > Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to [support@relativity.com](mailto:support@relativity.com) for support on installing Trace into workspaces with existing data.
- >  {: .warn }
 
-8. You must also set the `Production Status` of the workspace. The three options are:
+ > Changing the “Run Option” to “Continuous” will automatically build a dtSearch index for this workspace for all documents present. Only change this setting to "Continuous" when appropriate agent infrastructure is configured and disk space available to build a corresponding dtSearch Index. Please reach out to [support@relativity.com](mailto:support@relativity.com) for support on installing Trace into workspaces with existing data.
+ > {: .warn }
+
+
+6. You must also set the `Production Status` of the workspace. The three options are:
    1. `Not Active` - the workspace is not being used by a customer or in the process of implementation 
    2. `In Implementation` - the workspace is actively being configured and data sources are being added for a customer
    3. `Live` - customers are actively getting and reviewing alerts in this workspace
