@@ -135,21 +135,20 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
   3. <u>Trace Removed Extracted Text</u> - field that gets populated with the content that was removed from Extracted Text if content was removed during cleansing. It will be empty if nothing was cleansed. This content is stored in a JSON format and contains information on why the content was removed.
   4. <u>Trace AI Extracted Text Cleansing Status</u> - field that contains the status of the cleansing transformation. There are 4 possible statuses for cleansing. See status section below for the possible statuses.
   5. <u>Trace AI Extracted Text Cleansing Error Details</u> - field that contains the error details of cleansing transform if an error occurred. It will be empty if no error occurred.
- 
+
 **Alerting on Cleansed Data**
 
-To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. To do this you will need to find the `Trace All Documents` saved search and updated the field in the search from `Extracted Text` to `Trace Cleansed Extracted Text`.
+To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. To do this you will need to navigate to Term Searching task setting page, edit it and check `Perform Term Searching On Trace Cleansed Extracted Text` checkbox.
 
-Changing the `Trace All Documents` saved search will impact all functionality that relies on it. Prior to making this change, check search indexes (global search), analytics indexes (classification and conceptual), to better understand how this saved search is being used. In certain cases you may want to create a new saved search that uses the `Extracted Text` field for index builds and other downstream functionality.  
+![TermSearching](media/data_transforms/TermSearching.png)
+
+This setting effectively decouples `Trace All Documents` saved search from `Term Searching` task settings and its execution results.
+{: .info}
+
+Documents created prior Trace version 14.5 being deployed will not have the `Trace Cleansed Extracted Text` field populated. This means that if you were to create a search index off of this field, old documents would not have any text in the index and therefore not be returned in a term search.
 {: .danger}
 
-Documents created prior Trace version 14.5 being deployed will not have the `Trace Cleansed Extracted Text` field populated. This means that if you were to create a search index off of this field, old documents would not have any text in the index and therefor not be returned in a term search.
-{: .danger}
-
-After changing the `Trace All Documents` saved search please contact support@relativity.com when attempting to perform a Document Retry on old documents that don't have the `Trace Cleansed Extracted Text` populated.
-{: .warn}
-
-When you add the `AI Extracted Text Cleansing` Data Transformation to a any data source, the `Trace Cleansed Extracted Text` is populated for every document that gets ingested into the workspace from any data source. This makes it possible to use the `Trace Cleansed Extracted Text` field within the `Trace All Documents` saved search for every document.
+When you add the `AI Extracted Text Cleansing` Data Transformation to any data source, the `Trace Cleansed Extracted Text` is populated for every document that gets ingested into the workspace from any data source. This makes it possible to use the `Trace Cleansed Extracted Text` field within the `Trace All Documents` saved search for every document.
 {: .info}
 
 The `Trace Cleansed Extracted Text` can also be used in search, conceptual, or classification indexes to impact other operations and use cases.
@@ -168,7 +167,7 @@ More information on the Viewer can be found [here](https://relativitydev.github.
 When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extracted Text Cleansing Status` document field will be populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred when attempting to cleanse. If an error occurred, information regarding the error will be populated on the `Trace AI Extracted Text Cleansing Error Details` document field.
 
   There are four possible outcome after cleansing and are denoted with the following four statuses:
-  
+
   Regardless of the `AI Extracted Text Cleansing Status` a document will move through the document flow and be analyzed for alerts. If a warning status occurs on a document, it purely means that cleansing could not be performed and that analysis and alerting will occur on the original text. 
      {: .info}
      
@@ -221,7 +220,7 @@ This runs without Structured Analytics and will not produce results that can be 
   1. Cleansing is meant to only work on email documents. This means emails that have clear and defined headers will get cleansed. Email headers need to contain From, Sent, Subject, Body, and at least one of To, CC, or BCC. If these headers can't be parsed, then cleansing will fail with a status of Warning - Document Error. No other type of documents are currently supported for cleansing.
   2. AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
- 
+
 ### Group Identifier Truncation for External Data Sources
 
 `Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
