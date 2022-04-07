@@ -6,7 +6,7 @@ description: "Relativity Trace Description"
 permalink: /
 ---
 
-# Welcome to Relativity Trace documentation
+# Welcome to Relativity Trace Documentation
 {: .fs-9 }
 
 Relativity Trace proactively monitors communications to identify insider trading, collusion, and other non-compliant behavior. Relativity Trace automatically surfaces the riskiest content, so you can act on it before it’s too late.
