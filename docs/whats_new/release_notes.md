@@ -25,6 +25,13 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.2.0.0 (19 April 2022)
+
+**Enhancements**
+- Simplified the process of data source creation in Trace to minimize possible configuration error, speed implementation time and reduce need for specialist support
+- Enabled cloud-to-cloud support for Thomson Reuters Chat
+- Introduced capabilities to accept different formats of Audio files
+
 # 15.1.23.0 (15 March 2022)
 
 **Features**
