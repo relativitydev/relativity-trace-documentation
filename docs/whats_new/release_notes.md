@@ -31,6 +31,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Simplified the process of data source creation in Trace to minimize possible configuration error, speed implementation time and reduce need for specialist support
 - Enabled cloud-to-cloud support for Thomson Reuters Chat
 - Introduced capabilities to accept different formats of Audio files
+- Simplified AI Cleansed Text for alerting adoption
 
 # 15.1.23.0 (15 March 2022)
 
