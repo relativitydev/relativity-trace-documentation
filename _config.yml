@@ -54,7 +54,7 @@ back_to_top_text: "Back to top"
 # Aux links for the upper right navigation
 aux_links:
   "Contact Support":
-    - "mailto:support@relativity.com"
+    - "https://community.relativity.com/s/contactsupport"
 
 kramdown:
   syntax_highlighter_opts:
