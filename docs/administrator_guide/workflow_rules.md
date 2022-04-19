@@ -2,7 +2,7 @@
 layout: default
 title: Workflow Rules
 parent: Administrator Guide
-nav_order: 7
+nav_order: 8
 ---
 
 # Workflow Rules
