@@ -10,7 +10,7 @@ has_children: true
 {: .no_toc }
 
 
-Review process can be improved by administrator through setting defualt coding decisions.
+Administrators can enable review functionality that improves the communication review experience to make their team more effective.
 {: .fs-6 .fw-300 }
 
 1. TOC
