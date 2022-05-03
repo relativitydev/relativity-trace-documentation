@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Auto Coding Communication
+title: Auto Coding Communications
 parent: Review
 grand_parent: Administrator Guide
 nav_order: 4
 ---
 
-# Auto Coding Communication
+# Auto Coding Communications
 {: .no_toc }
 
 To increase the efficiency of review, administrator can set default review decisions that are automatically populated when a communication is viewed.
