@@ -136,7 +136,10 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
   4. <u>Trace AI Extracted Text Cleansing Status</u> - field that contains the status of the cleansing transformation. There are 4 possible statuses for cleansing. See status section below for the possible statuses.
   5. <u>Trace AI Extracted Text Cleansing Error Details</u> - field that contains the error details of cleansing transform if an error occurred. It will be empty if no error occurred.
  
-**Alerting on Cleansed Data (This feature is not functional and is a known defect)**
+**Alerting on Cleansed Data**
+
+**This features is currently NOT functional. Please see the [Known Issues]({{ site.baseurl }}{% link docs/whats_new/known_issues.md %}) page for more information.**
+{: .danger}
 
 To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. 
 
