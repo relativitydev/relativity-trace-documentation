@@ -3,7 +3,7 @@ layout: default
 title: Case Management
 parent: Review
 grand_parent: User Guide
-nav_order: 6
+nav_order: 5
 ---
 
 # Case Management
