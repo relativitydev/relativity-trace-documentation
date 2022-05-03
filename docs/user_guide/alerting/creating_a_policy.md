@@ -20,7 +20,7 @@ You can manually create or update a surveillance policy to indentify risk specif
 
 ## Overview
 
-Alert Rules allow users to define the criteria for a surveillance policy. These Rules are executed on periodic basis at pre-configured intervals, allowing users to automatically and continously categorize and tag documents as they are ingested into the workspace.
+Alert Rules allow users to define the criteria for a surveillance policy. These Rules are executed on periodic basis at pre-configured intervals, allowing users to automatically and continuously categorize and tag documents as they are ingested into the workspace.
 
 `Workflow` Rules operate the same way as `Alert` Rules, but are intended to trigger an [Action]({{ site.baseurl }}{% link docs/administrator_guide/actions.md %}) rather than generate an alert for a user.
 {: .info }
@@ -89,7 +89,7 @@ In addition to metadata conditions of a Saved Search associated with Rule, you c
 
 You can create Terms in multiple ways:
 
-1.  Via [Remote Desktop Client ( RDC )](https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm) load file. This method is ideal if you are adding a lot of terms at once.
+1.  Via [Relativity Desktop Client ( RDC )](https://help.relativity.com/9.6/Content/Relativity/Relativity_Desktop_Client/Relativity_Desktop_Client.htm) load file. This method is ideal if you are adding a lot of terms at once.
     
 2.  From Terms tab by clicking “New Term” and adding each Term individually.
 
