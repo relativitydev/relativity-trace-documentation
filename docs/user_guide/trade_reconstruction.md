@@ -62,7 +62,7 @@ To run Trade Reconstruction, follow the steps below:
 
 Your Trade will be fully Reconstructed when the **Reconstruction Status** field says `Complete`.
 
-If you perform a Trade Reconstruction Action on a Trade that has already been reconstructed, all existing results will be purged and new results will be created.
+If you choose to perform Reconstruction again on Trade that has already been Reconstructed, this will completely remove any information about the previous Reconstruction.
 {: .danger }
 
 
