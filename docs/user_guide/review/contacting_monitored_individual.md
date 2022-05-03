@@ -3,7 +3,7 @@ layout: default
 title: Contacting a Monitored Individual
 parent: Review
 grand_parent: User Guide
-nav_order: 5
+nav_order: 4
 ---
 
 # Contacting a Monitored Individual
