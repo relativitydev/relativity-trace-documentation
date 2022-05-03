@@ -56,24 +56,33 @@ Deduplication of a Data Source requires that the following Relativity fields be 
 
 ### Communication Direction Data Transformation
 
-Data Transformations of type `Communication Direction` can be used to populate the `Trace Communication Direction` field on documents with a communication direction value based on the `Internal Email Domain` objects in the workspace and values in the To, From, CC, and BCC fields in the load file. A specific email address is considered **internal** if the portion of the value to the right of the first `@` matches one of the defined `Internal Email Domains` (NOT case-sensitive), and **external** if it does not match any of the defined `Internal Email Domains`. Here are the possible `Trace Communication Direction` values:
+Data Transformations of type `Communication Direction` can be used to populate the `Trace Communication Direction` and `Trace Communication Personal` fields on documents based on domain classifications made on the `Email Domain` object. 
 
-- **Internal** ALL of the email addresses in the From, To, CC, and BCC fields are **internal**
-- **Inbound** the From address is **external**, and ONE OR MORE of the email addresses in the To, CC, and BCC fields is **internal**
-- **Outbound** the From address is **internal**, and ONE OR MORE of the email addresses in the To, CC, and BCC fields is **external**
-- **External** ALL of the email addresses in the From, To, CC, and BCC fields are **external** (unlikely to happen unless `Internal Email Domains` change)
+**Trace Communication Direction**
+By specifying internal email domains (e.g mycompany.com, us.mycompany.com) on the `Email Domain` object, the Communication Direction Data Transformation will mark communications as either `Internal`, `Inbound`, `Outbound`, or `External` on the `Trace Communication Direction` field. This can be used to target risks that only occur on inbound communication or internal communications.
+
+- **Internal** ALL of the email addresses in the From, To, CC, and BCC fields have domains that have been classified as **internal**
+- **Inbound** the From address has a domain that is **NOT internal**, and ONE OR MORE of the email addresses in the To, CC, and BCC fields has a domain that has been classified as **internal**
+- **Outbound** the From address has a domain that has been classified as **internal**, and ONE OR MORE of the email addresses in the To, CC, and BCC fields has a domain that is **NOT internal**
+- **External** All of the email addresses in the From, To, CC, and BCC fields have domains that are **NOT internal** (unlikely to happen unless `Internal Email Domains` change)
 - **Undefined** the From field must contain an email address with a domain and at least one of the To, CC, or BCC fields must contain an email address with a domain or the `Trace Communication Direction` is considered **Undefined** (need one domain in each direction to determine `Communication Direction`)
 
-When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
 
-The `Trace Communication Direction` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
+**Trace Communication Personal**
+By specifing person email domains (e.g. google.com, yahoo.com) on the `Email Domain` object, the Communcication Direction Data Transformation will mark communications as either `Personal` or `No Personal Domains` on the `Trace Communication Personal` field. This can be used to target risks that only occur when invididuals are sending or receiving communications from personal email addresses.
+
+- **Personal** the From address has a domain that has been classified as **personal** OR any email address in the To, CC, BCC fields has a domain that is personal **personal**
+- **No Personal Domains** NONE of the email addresses in From, To, CC and BCC fields has a domina that has been classified as **personal**
+- **Undefined** the From field must contain an email address with a domain and at least one of the To, CC, or BCC fields must contain an email address with a domain or the `Trace Communication Personal` is considered **Undefined** (need one domain in each direction to determine `Communication Direction`)
+
+.
+- `Email Domain` object names are not case sensitive.
+- When using the `Communication Direction` transformation type, analysis is performed only on native documents (top-level) and then the `Trace Communication Direction` and `Trace Communication Personal` value is populated on the native documents and inherited down to all child documents (attachments, embedded objects).
+- The `Trace Communication Direction` and `Trace Communication Personal` field will not be populated on documents unless it is mapped in the Ingestion Profile associated with the Data Source containing the `Communication Direction` transform.
+- Use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
+- Use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Communication Direction is incompatible with Ingestion Profiles where Import Natives is set to no.
 {: .info}
 
-Use of the `Communication Direction` Data Transformation type requires that columns named To, From, CC, and BCC exist in the load file. This is always true for Data Sources that ship with Relativity Trace but may not be true for certain external data sources.
-{: .info}
-
-Use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Communication Direction is incompatible with Ingestion Profiles where Import Natives is set to no.
-{: .info}
 
 ### Exempt List Data Transformation
 
@@ -126,11 +135,13 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
   3. <u>Trace Removed Extracted Text</u> - field that gets populated with the content that was removed from Extracted Text if content was removed during cleansing. It will be empty if nothing was cleansed. This content is stored in a JSON format and contains information on why the content was removed.
   4. <u>Trace AI Extracted Text Cleansing Status</u> - field that contains the status of the cleansing transformation. There are 4 possible statuses for cleansing. See status section below for the possible statuses.
   5. <u>Trace AI Extracted Text Cleansing Error Details</u> - field that contains the error details of cleansing transform if an error occurred. It will be empty if no error occurred.
-
+ 
 **Alerting on Cleansed Data**
 
-To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. To do this you will need to find the `Trace All Documents` saved search and updated the field in the search from `Extracted Text` to `Trace Cleansed Extracted Text`.
+To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. 
 
+One can migrate to use the cleansed text for term searching by changing the field included in the `Trace All Documents` saved search from the `Extracted Text` field to the `Trace Cleansed Extracted Text` field.
+ 
 Changing the `Trace All Documents` saved search will impact all functionality that relies on it. Prior to making this change, check search indexes (global search), analytics indexes (classification and conceptual), to better understand how this saved search is being used. In certain cases you may want to create a new saved search that uses the `Extracted Text` field for index builds and other downstream functionality.  
 {: .danger}
 
@@ -201,11 +212,18 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 
   ![](C:\SourceCode\relativity-trace-documentation\docs\media\user_documentation\cleansing-data-transform-configuration.png)
 
+**Trace Conversation Thread Field**
+When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
+
+This runs without Structured Analytics and will not produce results that can be visualized in the Email Thread visualization
+{: .info}
+
 **Important Considerations**
 
   1. Cleansing is meant to only work on email documents. This means emails that have clear and defined headers will get cleansed. Email headers need to contain From, Sent, Subject, Body, and at least one of To, CC, or BCC. If these headers can't be parsed, then cleansing will fail with a status of Warning - Document Error. No other type of documents are currently supported for cleansing.
   2. AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
+ 
 ### Group Identifier Truncation for External Data Sources
 
 `Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
