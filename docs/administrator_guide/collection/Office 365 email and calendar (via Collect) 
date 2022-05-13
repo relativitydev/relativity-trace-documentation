@@ -1,0 +1,31 @@
+Via Collect, you can use Office 365 email and calendar items as data sources. 
+
+Deployment option B, depicted below, is required to use these data sources. 
+
+@startuml
+autonumber
+
+box "Client Controlled" #LightGreen
+    participant Office365
+end box
+
+box "Relativity" #LightBlue
+    participant Collect
+    participant Trace
+    participant Workspace
+end box
+
+group Manual OneTime Setup
+    Trace -> Trace: Authentication
+    Trace -> Trace: Configure
+    Trace -> Trace: Set Start Date
+end
+
+group Trace Run | Every X hrs
+    Trace -> Collect: Request data | filters: MIs, date range, other
+    Office365 -> Collect: Requested Data
+    Collect -> Trace: Requested Data
+    Trace -> Trace: Process
+    Trace -> Workspace: Ingest
+end group
+@endum 
