@@ -6,7 +6,7 @@ The following sections provide the steps required for installing and configuring
 
 Before configuring the required instance settings and the Trace data source, install the Collect RAP to the Trace Workspace. You will do this from the Application Library in Relativity. 
 
- ![](media\Installing_and_configuring_Trace_data_sources\InstallCollectApp.png)
+ ![](media/Installing_and_configuring_Trace_data_sources/InstallCollectApp.png)
 
  **Configuring instance settings** 
 
