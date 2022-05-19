@@ -1,0 +1,84 @@
+---
+layout: default
+title: Machine Learning
+parent: User Guide
+grand_parent: User Guide
+nav_order: 3
+---
+
+# Machine Learning
+{: .no_toc }
+
+
+Machine Learning models can help detect risk to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+## Machine Learning
+
+Trace Machine Learning models are binary classifiers, meaning each model scores a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would score a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Machine Learning models implemented within your workspace.
+
+Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** to effectively implement these models within your organization.
+
+Each Machine Learning model should be as specific as possible. Creating a model to identify "Risk" overall will not be very accurate, because "Risk" can be hundreds of different things. Rather you'd want to create one Machine Learning model for "Sharing of Insider Information", "Money Laundering", and another for "Sexual Harassment". Each of these models will be more accurate because they are looking for one behavior rather than many.
+{: .info }
+
+**Pre-Built models:**
+1. Change of Venue Risk Detection -> Detect an attempt to avoid discovery by changing the communication venue (i.e., moving from email to phone call).
+2. Rumors and Speculation Risk Detection -> Detect the distribution or discussion of unverified and doubtfully true information.
+3. Collaborative Discussion Risk Detection -> Detect employees working together to prevent the discovery of misconduct. 
+4. Boasting Risk Detection -> Detect the excessively proud and self-satisfied talk by a trader of their achievements in regard to someone less fortunate.
+5. General Tipping Risk Detection -> Detect the sharing of potential material nonpublic information (MNPI) regarding general company information, financial information, or corporate actions
+
+### Workflow
+
+Trace offers two paths to implementing models in production. The first path is via 'Trace Defined Models' where Trace provides a seed training set to accelerate your process to using a model in production and gaining value. The second path is 'Customer Defined Models', where the customer must label their own seed training set before building a model. The following sections will go into greater detail. 
+
+#### Trace Defined Models
+
+As mentioned above, 'Trace Defined Models' come ready to build with a Trace provided seed Training Set. Therefore, the customer does not need to label any data to build version 1. However, the user can add data to this training set if they would please. 
+
+1.Navigate to the **Machine Learning** tab
+2. Click on the model you want to implement, for example **Change of Venue**
+3. Click **Build New Model Version**
+4. A pop-up will appear confirming how many documents are part of this version and confirming that one wants to continue
+5. After confirmation, the model will build (see **Status** field to track)
+6. Once complete, one can set the **Positive Cutoff Rank**. This determines how positive of an example a user wants to be shown. For example, selecting 90 will only show the top examples where 50 will show a larger variance of examples. Trace recommends setting the rank at 75
+7. Now, Select **Active Version* if you want to use the model in production, this will create a rule
+8. If you want to use the rule for alerting, 'Enable' the rule
+
+#### Customer Defined Models
+
+1.Navigate to the **Machine Learning** tab
+2 Click **New Machine Learning Model**
+3. Fill out the name and purpose
+Please consider the option, Risk Detection vs Irrelevant Content matters. This impacts the model building tools used and how the model is deployed to production
+{: .info }
+4. Press 'Save'
+5. This will take you to the Machine Model Layout
+6. Before you build a model version, you need to label at least 5 positive examples of what you're looking for, however more samples will improve the performance of your model
+Trace recommends creating a Saved Search to identify the samples used to start your model
+{: .info }
+8. Once satisfied, click **Build New Model Version**
+9. A pop-up will appear confirming how many documents are part of this version and confirming that one wants to continue
+10. After confirmation, the model will build (see **Status** field to track)
+11. Once complete, one can set the **Positive Cutoff Rank**. This determines how positive of an example a user wants to be shown. For example, selecting 90 will only show the top examples where 50 will show a larger variance of examples. Trace recommends setting the rank at 75
+12. Now, Select **Active Version* if you want to use the model in production, this will create a rule
+13. If you want to use the rule for alerting, 'Enable' the rule
+
+### Viewing Results
+
+Your Machine Learning Model ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. This result can be found your Machine Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`, `CSR - Insider Information Cat. Set::Category Rank`).
+
+1. Add your Rank field to your Review coding layout
+
+### Considerations
+
+1. The process for labeling your own data for Trace Defined Models is the same for Customer Defined Models
+2. After V1 is built, press **Build New Model Version** anytime you want to add new labelled data to the model
+3. Model Validation is not offered at this time
+
