@@ -4,7 +4,7 @@ Via Collect, you can use Office 365 email and calendar items as data sources.
 
 Deployment option B, depicted below, is required to use these data sources. 
 
-![](media/Office_365_email_and_calendar_(via Collect) /DeploymentBOffice.png)
+![](media\Office_365_email_and_calendar_(via Collect) \DeploymentBOffice.png)
 
 ## **Mailbox collection** 
 
