@@ -4,7 +4,7 @@ Via Collect, you can use Office 365 email and calendar items as data sources.
 
 Deployment option B, depicted below, is required to use these data sources. 
 
-![](media\Office_365_email_and_calendar_(via Collect) \DeploymentBOffice.png)
+![](media/Office_365_email_and_calendar_via_Collect/DeploymentBOffice.png)
 
 ## **Mailbox collection** 
 
@@ -124,7 +124,7 @@ Before configuring the data source, register your app through the following step
 6. Click **Accept** to grant the permissions. 
 7. In the left navigation menu, select **Certificates & secrets**. 
 8. Select **New client secret**. 
-   ![](media\Office_365_email_and_calendar_(via Collect) \NewClientSecret.png)
+   ![](media/Office_365_email_and_calendar_via_Collect/ClientSecret.png)
 
 9. Enter a description in the **Description** text box. 
 10. Set the expiration time frame to **Never**. 
@@ -154,7 +154,7 @@ General section:
 
 1. **Data Source Type**: Select Microsoft O365 Mail or Calendar. 
 
-![](media/Office_365_email_and_calendar_(via Collect) /DataSourceType.png)
+​		![](media/Office_365_email_and_calendar_via_Collect/DataSourceType.png)
 
 Credentials section: 
 
@@ -175,5 +175,5 @@ Credentials section:
    - **Collection Period Offset in Minutes**: 0 
 
 
- ![](media/Office_365_email_and_calendar_(via Collect) /DataSourceSpecificFields.png)
+ ![](media/Office_365_email_and_calendar_via_Collect/DataSourceSpecificFields.png)
 
