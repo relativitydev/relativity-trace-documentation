@@ -25,17 +25,10 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
-# 15.3.0.0 (24 May 2022)
+# 15.3.0.0 (31 May 2022)
 
 **Features**
 
-- Delievered functionality allowing automatic enablement of the followingRisk Detection Models 
-  - Change of Venue Risk Detection 
-  - Rumors and Speculation Risk Detection 
-  - Collaborative Discussion Risk Detection 
-  - Boasting Risk Detection 
-  - General Tipping Risk Detection 
-- Delievered functionality for users to create a their own models, select a training set, create multiple versions of that model, and enable a rule to alert for that model 
 - Released Language ID and Spam Detection to run automatically upon ingestion, removing the need for Active Learning or Structured Analytic Sets 
 
 **Defect Fixes**
