@@ -1,12 +1,25 @@
-# **Office 365 email and calendar via Collect**  
+---
+layout: default
+title: Microsoft Office 365 Email and Calendar
+---
 
-Via Collect, you can use Office 365 email and calendar items as data sources. 
+# Microsoft Office 365 Email and Calendar
+{: .no_toc }
 
+Collect O365 Email and Calendar messages via Relativity Collect 
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+# Overview
 Deployment option B, depicted below, is required to use these data sources. 
 
 ![](media/Office_365_email_and_calendar_via_Collect/DeploymentBOffice.png)
 
-## **Mailbox collection** 
+## Mailbox collection 
 
 Note the following details regarding mailbox collection: 
 
@@ -36,7 +49,7 @@ Note the following details regarding mailbox collection:
 - Team meetings captured as message placeholder. 
 - Emojis are collected as plain text. 
 
-## **Activities captured** 
+## Activities captured 
 
 The following activities are captured: 
 
@@ -46,7 +59,7 @@ The following activities are captured:
 
 - Calendar events (vCalendar) 
 
-## **Data Filtering** 
+## Data Filtering 
 
 There are two levels of filtering data: 
 
@@ -54,7 +67,7 @@ There are two levels of filtering data:
 
 - **Data Batch** - only messages which have “Date Received” within Data Batch collection period will be captured. 
 
-## **License Requirements** 
+## License Requirements 
 
 The following license is required: 
 
@@ -64,13 +77,13 @@ The following license is required:
 
 - The mailbox must still be active in the case where the user is unlicensed 
 
-## **Configuring Collect** 
+## Configuring Collect 
 
 Collect is used for data retrieval. Make sure Collect is installed in the workspace before configuring the data source. 
 
 For detailed installation steps see Installing Collect. 
 
-## **Authorizing Azure** 
+## Authorizing Azure 
 
 Before configuring the data source, register your app through the following steps: 
 
