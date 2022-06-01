@@ -3,10 +3,10 @@ layout: default
 title: Bloomberg Chat and PChat
 ---
 
-# Bloomberg Chat & PChat
+# Bloomberg Chat and PChat
 {: .no_toc }
 
-Collect Bloomberg Chat and PChat messages via Relativity Collect
+Collect Bloomberg Chat and PChat messages via Relativity Collect.
 {: .fs-6 .fw-300 }
 
 1. TOC
