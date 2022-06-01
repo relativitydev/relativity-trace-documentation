@@ -1,0 +1,31 @@
+---
+layout: default
+title: Artifical Intelligence
+parent: User Guide
+nav_order: 4
+---
+
+# Artifical Intelligence
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+---
+
+## Overview
+
+Trace provids out-of-the box Artifical Intelligence (AI) to improve the user experience, reduce review time, pinpoint risk. 
+
+## Models
+
+| **Trace Model Category** | **Relativity Model**          | **Model Type**    | **Model Description**                                        |
+| ------------------------ | ----------------------------- | ----------------- | ------------------------------------------------------------ |
+| Irrelevant Content       | Spam Detection                | Classification    | Identifies spam and not spam communications                  |
+| Irrelevant Content       | Text Cleansing                | Classification    | Identifies non-authored or duplicative content               |
+| Context                  | Language Identification       | NLP               | Identifies the primary and other languages in a communication|
+| Transciptio              | Audio                         | NLP               | Transcibes audio communciations into text                    |
+
+## Fields
+[Fields]https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html) for more information on AI Fields
+
