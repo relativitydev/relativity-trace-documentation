@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Monitored Individual Automated Sync from Microsoft Azure Active Directory
+nav_exclude: true
 ---
 
 # Monitored Individual Automated Sync from Microsoft Azure Active Directory
