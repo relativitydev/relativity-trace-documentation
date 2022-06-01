@@ -1,7 +1,20 @@
-# Bloomberg Chat & PChat (via Collect)
+---
+layout: default
+title: Bloomberg Chat and PChat
+---
 
-Via Collect, you can use Bloomberg Chat & PChat as data sources.
+# Bloomberg Chat & PChat
+{: .no_toc }
 
+Collect Bloomberg Chat and PChat messages via Relativity Collect
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+ 
+## Overview
 Deployment option B, depicted below, is required to use these data sources.
 
 ![](media/BloombergChatPchat_viaCollect/BloomChat_DeplymtB_Diagrm.png)
