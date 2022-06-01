@@ -25,19 +25,18 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
-# 15.3.0.0 (31 May 2022)
+# 15.3.32 (31 May 2022)
 
 **Features**
 
-- Released Language ID and Spam Detection to run automatically upon ingestion, removing the need for Active Learning or Structured Analytic Sets 
+- Identifying the languages used within a communication and the detection of language switching is now enabled by default with no need for configuration within Structured Analytics.
+- Spam detection is now automatically run across all communications without the need for configuration through Active Learning.
 
 **Enhacements**
 
-- Expanded audio to be able to accept metadata (connected with audio files) to be in different format than JSON.
-
-**Defect Fixes**
-
-- Fixed a known issue where the Perform Term Searching On Trace Cleansed Extracted Text checkbox does not control the text that is used for Term Searching, instead the fields set in the Trace All Documents Saved Search will still be honored. 
+- Expanded the audio metadata formats accepted (past JSON)
+- Made it easier to use the Cleansed Extracted Text for alerting by configuring this on Term Searching Task rather than in the `Trace All Documents` saved search. 
+ 
 
 # 15.2.0.0 (19 April 2022)
 
@@ -45,7 +44,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Simplified the process of data source creation in Trace to minimize possible configuration error, speed implementation time and reduce need for specialist support
 - Enabled cloud-to-cloud support for Thomson Reuters Chat
 - Introduced capabilities to accept different formats of Audio files
-- Simplified AI Cleansed Text for alerting adoption
 
 # 15.1.23.0 (15 March 2022)
 
