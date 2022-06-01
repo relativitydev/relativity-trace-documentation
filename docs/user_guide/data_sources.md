@@ -8,7 +8,6 @@ nav_order: 3
 # Data Sources
 {: .no_toc }
 
-
 Trace supports the monitoring of communications across email, chat, voice, mobile, collaboration, and Archive Data Sources.
 {: .fs-6 .fw-300 }
 
