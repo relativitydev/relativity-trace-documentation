@@ -1,6 +1,7 @@
 ---
 layout: default
 title: ICE Chat
+nav_exclude: true
 ---
 
 # ICE Chat
