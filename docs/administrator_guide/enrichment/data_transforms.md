@@ -142,7 +142,7 @@ To get the alert reduction benefit of text cleansing, you will need to have Term
 
 One can migrate to 'Trace Cleansed Extracted Text' in the Setup tab. Please see the image below. 
 
-![Cleansed Text for Alerting Check Box](media/data_transforms/Cleansed Text for Alerting Check Box.png)
+![](media/data_transforms/cleansed-text-for-alerting-check-box.png)
  
 Changing the `Trace All Documents` saved search will impact all functionality that relies on it. Prior to making this change, check search indexes (global search), analytics indexes (classification and conceptual), to better understand how this saved search is being used. In certain cases you may want to create a new saved search that uses the `Extracted Text` field for index builds and other downstream functionality.  
 {: .danger}

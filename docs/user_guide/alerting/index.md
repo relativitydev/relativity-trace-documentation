@@ -3,7 +3,7 @@ layout: default
 title: Alerting
 parent: User Guide
 has_children: true
-nav_order: 5
+nav_order: 6
 ---
 
 # Alerting
