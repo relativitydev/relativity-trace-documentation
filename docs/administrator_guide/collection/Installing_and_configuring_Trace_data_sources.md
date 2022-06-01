@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Installing and Configuring Data Sources
+nav_exclude: true
 ---
 
 # Installing and Configuring Data Sources
