@@ -31,6 +31,11 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 - Released Language ID and Spam Detection to run automatically upon ingestion, removing the need for Active Learning or Structured Analytic Sets 
 
+**Enhacements**
+
+- Enabled cloud-to-cloud support for Refinitiv Eikon Chat
+- Expanded audio to to be able to accept metadata (connected with audio files) to be in different format than JSON.
+
 **Defect Fixes**
 
 - Fixed a known issue where the Perform Term Searching On Trace Cleansed Extracted Text checkbox does not control the text that is used for Term Searching, instead the fields set in the Trace All Documents Saved Search will still be honored. 
