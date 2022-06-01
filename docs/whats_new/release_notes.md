@@ -33,7 +33,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 **Enhacements**
 
-- Enabled cloud-to-cloud support for Refinitiv Eikon Chat
 - Expanded audio to to be able to accept metadata (connected with audio files) to be in different format than JSON.
 
 **Defect Fixes**
