@@ -25,6 +25,16 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.3.0.0 (31 May 2022)
+
+**Features**
+
+- Released Language ID and Spam Detection to run automatically upon ingestion, removing the need for Active Learning or Structured Analytic Sets 
+
+**Defect Fixes**
+
+- Fixed a known issue where the Perform Term Searching On Trace Cleansed Extracted Text checkbox does not control the text that is used for Term Searching, instead the fields set in the Trace All Documents Saved Search will still be honored. 
+
 # 15.2.0.0 (19 April 2022)
 
 **Enhancements**
