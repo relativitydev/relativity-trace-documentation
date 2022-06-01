@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Artifical Intelligence
-parent: User Guide
+parent: Enrichment
+grand_parent: User Guide
 nav_order: 5
 ---
 
@@ -27,5 +28,5 @@ Trace provides out-of-the-box Artifical Intelligence (AI) to improve the user ex
 | Transciption             | Audio                         | NLP               | Transcibes audio communciations into text                    |
 
 ## Fields
-[Fields]https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html) for more information on AI Fields
+Document fields are created for each enrichment method. These document fields can be used as part of the Omit from Alert Rules functionality or Rules. See more information on AI fields [here]https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html).
 
