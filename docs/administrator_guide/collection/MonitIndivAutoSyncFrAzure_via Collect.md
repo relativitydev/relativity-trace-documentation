@@ -1,6 +1,20 @@
-# Monitored Individuals Automated Sync from Azure AD (via Collect)
+---
+layout: default
+title: Monitored Individual Automated Sync from Microsoft Azure Active Directory
+---
 
-Via Collect, you can use Monitored Individuals (MI) Automated Sync from Azure AD as a data source.
+# Monitored Individual Automated Sync from Microsoft Azure Active Directory
+{: .no_toc }
+
+Sync Monitored Individuals with Microsoft Azure Active Directory.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+## Overview
 
 Deployment option B, depicted below, is required to use these data sources.
 
@@ -44,7 +58,7 @@ You will configure the following in this topic:
 
  
 
-##### *Configure Users in O365*
+##### Configure Users in O365
 
 Follow the steps below to configure Users in O365.
 
@@ -62,7 +76,7 @@ Follow the steps below to configure Users in O365.
 5. Proceed to the next section to configure user and groups in Azure.
      
 
-##### *Configure Users and Groups in Azure*
+##### Configure Users and Groups in Azure
 
 Follow the steps below to configure Users and Groups in Azure.
 
@@ -113,7 +127,7 @@ To create a new Group, navigate to **Azure Active Directory** > **Groups,** clic
 8. Proceed to the next section to map Azure Active Directory Group identifier (Object Id) towards Data Sources to sync with JSON.
     
 
-##### *Map Azure Active Directory Group identifier (Object Id) to Data Source with JSON*
+##### Map Azure Active Directory Group identifier (Object Id) to Data Source with JSON
 
 Create mapping of the Azure Active Directory Group identifier (Object Id) to the Data Source with a JSON config file where:
 
@@ -148,7 +162,7 @@ Users from “9ccf…” group will be linked to “Collect O365 Mail,” “Col
 
 
 
-##### *Register Azure App with specific permission* 
+##### Register Azure App with specific permission 
 
 Follow the instructions from [O365 Mail and Calendar via Collect](#Step ) to register Azure App with specific permission.
 
@@ -168,7 +182,7 @@ Follow the instructions from [O365 Mail and Calendar via Collect](#Step ) to reg
 
  
 
-##### *Configure Monitored Individual on “Restricted” or “Non-Restricted” group*
+##### Configure Monitored Individual on “Restricted” or “Non-Restricted” group
 
 This step is only necessary if tagging Monitored Individual on “Restricted” or “Non-Restricted” group. You need to create an **ADGroupIDsPlusNames** multi-choice field on Monitored Individual object. Make sure the following parameters are set as shown below:
 
@@ -184,7 +198,7 @@ This step is only necessary if tagging Monitored Individual on “Restricted” 
 
  
 
-##### *Configure Data Mapping and Ingestion Profile*
+##### Configure Data Mapping and Ingestion Profile
 
 Follow the steps below if tagging Monitored Individual on “Restricted” or “Non-Restricted” group.
 
@@ -214,7 +228,7 @@ In the example below, the Ingestion Profile has been extended by three additiona
 
  
 
-##### *Set-up Data Transformation*
+##### Set-up Data Transformation
 
 To create a new Data Transformation, make sure the following parameters are set as shown below.
 
@@ -229,7 +243,7 @@ To create a new Data Transformation, make sure the following parameters are set 
 
  
 
-##### *Set-up Data Source*
+##### Set-up Data Source
 
 Most parameters work the same for all Collect Data Sources. Follow the instructions from [Common Collect Data Source Functionality](#_Common_Collect_Data) section.
 
@@ -264,8 +278,6 @@ Below are Azure AD Directory specific parameters:
 - **Pull Unlicensed Users:** Disabled by default. Enable to be able to pull shared mailboxes. To double check with customer if in given groups there are no other unlicensed accounts other than shared accounts
 - **Pull Disabled Users:** Disabled by default. Enable if customer is aware of the risk of pulling disabled users for some use case.
 - **Active Directory User Fields Json:** leave default values.
-
- 
 
 5. **Data Transformations:** Add **MI Sync** Data Transformation to **Azure Active Directory Sync** Data Source.
    ![](media/MonitoredIndiv/Set-up Data Source_DataTransformations.png)
