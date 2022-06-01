@@ -1,14 +1,27 @@
-# **Installing and configuring Trace data sources** 
+---
+layout: default
+title: Installing and Configuring Data Sources
+---
 
-The following sections provide the steps required for installing and configuring Trace data sources. 
+# Installing and Configuring Data Sources
+{: .no_toc }
 
-## **Installing Collect** 
+
+The following sections provide the steps required for installing and configuring new data sources.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+## Installing Collect 
 
 Before configuring the required instance settings and the Trace data source, install the Collect RAP to the Trace Workspace. You will do this from the Application Library in Relativity. 
 
  ![](media/Installing_and_configuring_Trace_data_sources/InstallCollectApp.png)
 
-##  **Configuring instance settings** 
+## Configuring instance settings 
 
 Before configuring Trace data source, configure the following instance settings: 
 
