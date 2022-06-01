@@ -28,5 +28,5 @@ Trace provides out-of-the-box Artifical Intelligence (AI) to improve the user ex
 | Transciption             | Audio                         | NLP               | Transcibes audio communciations into text                    |
 
 ## Fields
-Document fields are created for each enrichment method. These document fields can be used as part of the Omit from Alert Rules functionality or Rules. See more information on AI fields [here]https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html).
+Document fields are created for each enrichment method. These document fields can be used as part of the Omit from Alert Rules functionality or Rules. See more information on AI fields [here](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html).
 
