@@ -1,6 +1,20 @@
-# ICE Chat (via Collect)
+---
+layout: default
+title: ICE Chat
+---
 
-Via Collect, you can use ICE Chat as a data source.
+# ICE Chat
+{: .no_toc }
+
+Collect ICE Chat messages via Relativity Collect.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+## Overview
 
 Deployment option B, depicted below, is required to use this data source.
 
