@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Bloomberg Chat and PChat
+nav_exclude: true
 ---
 
 # Bloomberg Chat and PChat
