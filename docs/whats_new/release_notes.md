@@ -37,6 +37,9 @@ New features, enhancements, and defect fixes are released in each monthly update
 - Expanded the audio metadata formats accepted (past JSON)
 - Made it easier to use the Cleansed Extracted Text for alerting by configuring this on Term Searching Task rather than in the `Trace All Documents` saved search. 
  
+ **Defect Fixes**
+
+- Fixed an issue with our in-house O365 Mail and Calendar data source, where email data that is created and moved to the Archive folder (mailbox) between Data Retrieval task runs is not collected (fixed through the introduction of the separate O365 Archive data source)
 
 # 15.2.0.0 (19 April 2022)
 
