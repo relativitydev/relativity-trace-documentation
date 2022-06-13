@@ -1,0 +1,60 @@
+---
+layout: default
+title: Calculated Fields
+parent: Enrichment
+grand_parent: User Guide
+nav_order: 6
+---
+
+# Calculated Fields
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+---
+
+## Overview
+
+Trace provides out-of-the-box calcualted fields to improve the uncover real risk, reduce review time, and build confidence. 
+
+What does this mean for you? Trace goes beyond lexicon-based surveillance systems with powerful AI models specifically designed to uncover true risk and reduce review time. Trace AI models learn and improve over time, delivering smarter alerts your compliance team can rely on. And with fully transparent results, analysts will understand the alerts and compliance teams can easily explain outcomes to stakeholders.
+
+
+## Models
+
+| **Trace Category** | **Trace Feature**       | **Description**                                |**Implementation**                           | **Fields** |
+| -------------------| ------------------------| -----------------------------------------------| --------------------------------------------|---------------|
+| Reduce Review Time | Spam Detection          | Identifies spam and not spam communications    | Map field to coding panel (must add to [Omit from Alert Rules](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/alerting/omit_from_alert_rules.html) to prevent spam from being alerted on) |Trace Is Spam|
+| Reduce Review Time | Text Cleansing          | Identifies non-authored or duplicative content | See [Data Transformations](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/data_transforms.html#ai-extracted-text-cleansing-data-transformation) |Trace Primary Language, Trace Other Languages, Trace Language Switching Detected|
+| Reduce Review Time | Replace                 | Strip exact blocks of text out of the Extracted Text for any documents imported by the associated Data Source| Data Transformation |             |
+| Reduce Review Time | Deduplication           | prevent a Data Source from importing an original document and its extractions if the same document already exists in the workspace| Data Transformation |Deduplication |
+| Uncover Real Risk  | Communication Direction | Target risks that only occur on inbound communication or internal communications| Data Transformation | Internal, Inbound, Outbound, or External on the Trace Communication Direction field|
+| Uncover Real Risk  | Communication Personal  | Target risks that only occur when invididuals are sending or receiving communications from personal email addresses| Data Transformation | Personal or No Personal Domains on the Trace Communication Personal field|
+| Reduce Review Time | Exempt List             | prevent a Data Source from importing communnivatio due to Username, Domain, or Email Address| Data Transformation | Trace Exempt       |
+| Reduce Review Time | Conversation Thread     | Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane| Data Transformation |          |
+| Build Confience    | Language Identification | Identifies primary and other languages ([Support Languages](https://help.relativity.com/RelativityOne/Content/Solutions/Supported_languages_matrix.htm))        | Map desired fields to coding panel, view, etc. Could add "Trace Language Switching Detected" to a [Worfklow](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/workflow_rules.html) or [Alert Rule](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/alerting/alert_rules.html).|             |
+| Transcription      | Audio                   | Transcibes audio communciations into text      | Contact Trace Support                       |             |
+| Uncover Real Risk  | Change of Venue         | Detect an attempt to avoid discovery by changing the communication venue (i.e., moving from email to phone call)| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Rumors and Speculation  | Detect the distribution or discussion of unverified and doubtfully true information| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Boasting                | Detect the excessively proud and self-satisfied talk by a trader of their achievements in regard to someone less fortunate| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | General Tipping         | Detect the sharing of potential material nonpublic information (MNPI) regarding general company information, financial information, or corporate actions| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Prearranged Trading     | Detect traders agreeing on trade price in advance of execution | Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Price & Benchmark Fixing| Detect agreements between traders to collectively manipulate the price of a financial product or a benchmark to adjust market conditions| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Coercion & Intimidation | Detect persuasion through force or threats     | Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Mirror Trading          | Detect simultaneous buy and sell trades of the same stock on different exchanges by the same entity, as a way to move money between jurisdictions| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Trade Fixing            | Detect agreements between traders to collectively manipulate benchmark foreign exchange rates (FIX) to artificial levels| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Layering & Spoofing     | Detect traders placing and then cancelling orders that they never intended to execute, with the intention of influencing the price| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Front Running           | Detect traders attempting to buy or sell financial products ahead of other orders to lock in a better price| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Pump & Dump             | Detect traders attempting to boost the price of a financial product after establishing a large long position by sharing false or misleading information| Please contact Trace Support to Implement   |na          |
+| Uncover Real Risk  | Short & Distort         | Detect traders attempting to decrease the price of a financial product after establishing a large short position by sharing false or misleading information| Please contact Trace Support to Implement   |na          |
+
+## Fields
+Document fields are created for each enrichment method. These document fields can be used as part of the Omit from Alert Rules functionality or Rules. See more information on AI fields [here](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html).
+
+Fields are populated automatically, there is not transformation or action requried
+{: .info }
+
+## Appedix
+See the [Adminstrator Guide](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/) for implementation details or other notes
+{: .info }
