@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Data Transformations
+title: Data Analytics
 parent: Enrichment
 grand_parent: Administrator Guide
 nav_order: 1
 ---
 
-# Data Transformations
+# Data Analytics
 {: .no_toc }
 
 
-Data Transformations analyze and enrich communications before they become a document and have the ability to adjust underlying content.
+Trace enriches and anlzues communication data before the become Data Transformations analyze and enrich communications before they become a document and have the ability to adjust underlying content.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,7 +18,7 @@ Data Transformations analyze and enrich communications before they become a docu
 
 ---
 
-## Data Transformations
+## Data Analytics via Data Transformation Transformations
 
 Data Transformations allow administrators to specify a way data should be transformed while it is being imported by the data source. Trace Data Transformations are attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout.
 
@@ -232,3 +232,21 @@ This runs without Structured Analytics and will not produce results that can be 
 
 `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info}
+
+### AI Transformations
+
+Trace releases certain AI tools via our AI Transformation. This is automatically enabled so below are tools on how to validate performance
+
+#### Testing Model Outcomes
+
+Users may want to test the result before adding a field to their standard workflow, whether that be in a view, coding panel, or in alerting. One can do this by creating a Saved Search
+
+1. Click "Crete New Search"
+2. Name the search (for example, "Spam Detection")
+3. Add any condition (for example, alerts in the past 30 days)
+4. Add "Trace is Spam" to Fields
+5. Click "Save & Search"
+6. From here, you can see what alerts would have been caught via the Spam Detection model
+
+To only see results from that model, create a condition where that field value "is set" or "is" Spam/Not Spam
+{: .info }
