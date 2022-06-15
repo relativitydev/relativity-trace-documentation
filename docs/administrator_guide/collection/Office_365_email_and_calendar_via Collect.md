@@ -96,7 +96,7 @@ You must have the following in order to complete the setup instructions for this
 
 You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
 
-For details on installing Collect, see Collect.
+For details on installing Collect, see [Collect]().
 
 #### Company specific
 
@@ -112,7 +112,7 @@ You must have the following company-provided information to complete the authent
 
 #### Data transfer
 
-You must have the following information to complete
+You must have the following information to complete the data transfer.
 
 - An application ID
 - A Client secret
