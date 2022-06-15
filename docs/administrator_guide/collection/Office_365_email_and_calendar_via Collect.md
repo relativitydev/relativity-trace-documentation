@@ -5,15 +5,11 @@ nav_exclude: true
 ---
 
 # Microsoft Office 365 Email and Calendar
+{: .no_toc }
 
 This topic provides details on how to capture Microsoft Office 365 Email and Calendar messages via Collect.
 
-Note that the deployment option depicted below is required to use this data source. 
-
-![](media/Office_365_email_and_calendar_via_Collect/DeploymentBOffice.png)
-
 {:toc}
-
 ## Requirements 
 
 Before using this data source, note the following license requirements, version support, and special considerations.
