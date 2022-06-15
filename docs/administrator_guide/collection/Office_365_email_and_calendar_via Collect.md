@@ -5,6 +5,13 @@ nav_exclude: true
 ---
 
 # Microsoft Office 365 Email and Calendar
+
+This topic provides details on how to capture Microsoft Office 365 Email and Calendar messages via Collect.
+
+Note that the deployment option depicted below is required to use this data source. 
+
+![](media/Office_365_email_and_calendar_via_Collect/DeploymentBOffice.png)
+
 {: .no_toc }
 
 Collect O365 Email and Calendar messages via Relativity Collect 
@@ -13,80 +20,107 @@ Collect O365 Email and Calendar messages via Relativity Collect
 1. TOC
 {:toc}
 
----
+## Requirements 
 
-# Overview
-Deployment option B, depicted below, is required to use these data sources. 
+Before using this data source, note the following license requirements, version support, and special considerations.
 
-![](media/Office_365_email_and_calendar_via_Collect/DeploymentBOffice.png)
+### License requirements
 
-## Mailbox collection 
+The following licenses are required to use this data source:
 
-Note the following details regarding mailbox collection: 
+- Microsoft 365 E3 or higher is required.
+  - If you're using version E3, you also need to add the Compliance module. 
+  - You can collect from unlicensed custodians.
+  - The mailbox must still be active in the case where the user is unlicensed.
 
-- The connector supports accessing active, licensed mailboxes. It does not support accessing inactive and archived mailboxes. 
-  - Archived collection to be included in a future release. 
-- Hidden folders cannot be collected. 
-- Deleted items can be collected. 
-  - Users must set their "Deleted items retention" to at least 14 days (MSFT default). 
+### Versions supported
 
-  - If this is not set, Trace cannot collect data that has been “triple deleted by user.” 
-- Permanently deleted items can be collected. 
-- Shared mailboxes can be collected if they are active. 
-- Distribution lists: a copy of any email sent to distribution lists will be picked up from each mailbox that is on the distribution list; a distribution list itself is not a mailbox. 
+We support Microsoft 365 Enterprise 3 and above.
+
+### Special considerations
+
+Note the following special considerations about this data source: 
+
+- The connector supports accessing active and licensed mailboxes. It does not support accessing inactive and archived mailboxes. 
+  - Archived collection will be included in a future release. 
 - Guest accounts can only be collected if they are active & licensed. 
+- There are two levels of filtering data: 
 
- Note the following current limitations: 
+  - Data Source - only data linked to a Data Source Monitored Individuals will be captured. 
 
-- Archive folder 
+  - Data Batch - only messages which have “Date Received” within Data Batch collection period will be captured. 
 
-  - Currently we are not capturing archive folder. 
+## Information captured 
 
-  - New O365 Archive Data Source which will be released on May 24th will allow collection) 
+This section lists what activities and, if applicable, metadata are captured when you use this data source.
 
-- Formatted text is captured as plain text. 
-- Numbered rows are captured as a single line. 
-- Participant leaving/being deleted from the channel event not collected (participant is captured only if wrote a message). 
-- Team meetings captured as message placeholder. 
-- Emojis are collected as plain text. 
+### Activities captured
 
-## Activities captured 
+The following table lists all activities captured when you use this data source:
 
-The following activities are captured: 
+| Activity                    | Notes                                                        |
+| --------------------------- | ------------------------------------------------------------ |
+| Messages with attachments   | A participant is only captured if they wrote a message.      |
+| Meeting request             | A team meeting request is captured as a message placeholder. |
+| Meeting cancellations       |                                                              |
+| Calendar events (vCalendar) |                                                              |
+| Deleted items               | Users must set their Deleted items retention to at least 14 days (MSFT default).  If this is not set, Trace cannot collect data that has been triple deleted by user. |
+| Permanently deleted items   |                                                              |
+| Shared mailboxes            | Shared mailboxes can only be captured if they are active.    |
+| Distribution list emails    | A copy of any email sent to a distribution list is captured from each mailbox that is on the distribution list. A distribution list itself is not a mailbox. |
 
-- Messages with attachments 
-- Meeting Requests 
-- Meeting Cancellations 
+### Activities not captured
 
-- Calendar events (vCalendar) 
+The following table lists all activities not captured when you use this data source:
 
-## Data Filtering 
+| Activity not captured            | Notes                                                        |
+| -------------------------------- | ------------------------------------------------------------ |
+| Emojis                           | An emoji is captured only as plain text.                     |
+| Formatted text                   | Formatted text is captured only as plain text.               |
+| Numbered rows                    | Numbered rows are captured as a single line.                 |
+| Hidden folders                   |                                                              |
+| Inactive mailboxes               |                                                              |
+| Archived folders                 |                                                              |
+| Participant removed from channel | A participant who leaves or is removed from a channel event is not captured. |
+| Distribution lists               | A distribution list itself is not a mailbox.                 |
 
-There are two levels of filtering data: 
+## Setup instructions
 
-- **Data Source** - only data linked to a Data Source Monitored Individuals will be captured. 
+This section provides details on the prerequisites and steps for setting up this data source.
 
-- **Data Batch** - only messages which have “Date Received” within Data Batch collection period will be captured. 
+### Prerequisites
 
-## License Requirements 
+You must have the following in order to complete the setup instructions for this data source.
 
-The following license is required: 
+#### Standard prerequisites
 
-- Microsoft 365 E3 or higher (if E3, also need the compliance module) 
+You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
 
-- You can collect from unlicensed custodians 
+For details on installing Collect, see Collect.
 
-- The mailbox must still be active in the case where the user is unlicensed 
+#### Company specific
 
-## Configuring Collect 
+You must have the following company-provided information to complete the authentication steps that precede setting up the data source:
 
-Collect is used for data retrieval. Make sure Collect is installed in the workspace before configuring the data source. 
+- Access to the Azure portal and an active account
 
-For detailed installation steps see Installing Collect. 
+- A Client Secret
 
-## Authorizing Azure 
+- An O365 domain name
 
-Before configuring the data source, register your app through the following steps: 
+- An Application / Client ID
+
+#### Data transfer
+
+You must have the following information to complete
+
+- An application ID
+- A Client secret
+- An O365 domain name
+
+### Authentication
+
+Before configuring the data source complete the following authentication steps. We strongly recommend registering a separate Azure Application for each Data Source.
 
 1. Open your [Azure Portal](https://portal.azure.com/). 
 
@@ -154,11 +188,62 @@ Before configuring the data source, register your app through the following step
 
       - Client Secret (copy the **Value** field) 
 
-      - Domain e.g., mycompanydomain.com 
+      - Domain (mycompanydomain.com)
 
- Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access). 
+Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access). 
 
-**Configuring the data source** 
+### Setup in Trace
+
+The following sections provide the steps for installing Collect and configuring the data source.
+
+#### Collect
+
+Before configuring the required instance settings and the data source, install the Collect RAP from the Application Library in Relativity via the following steps.
+
+ ![](media/Office_365_email_and_calendar_via%20Collect/InstallCollectApp.png)
+
+1. Navigate to the workspace where you want to install the application.
+2. Navigate to the **Application Admin** tab.
+3. Click **New Relativity Application** to display an application form.
+4. Click the **Select from Application Library** radio button in the Application Type section.
+5. Click the ellipses in the **Choose from Application Library** field.
+6. Select **Collect** on the Select Library Application dialog. This dialog only displays applications added to the Application Library. 
+7. Click Ok to display the application in the Choose from Application Library field.
+8. Click **Import** to install Collect into the workspace.
+9. Review the import status of the application. Verify that the install was successful or resolve errors.
+
+##### Instance settings
+
+Configure the following instance settings: 
+
+- Configure Collect Queue Depth: 
+
+- **Name**: MaxNumberOfRunningStandaloneCollections 
+- **Section**: Relativity.Collection 
+- **Value Type**: Integer 32-bit 
+- **Value**: 10 
+
+ ![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting1.png)
+
+Configure Data Batch Automatic Retry Policy: 
+
+- **Name**: TraceWorkspaceSetting 
+- **Section**: Trace.Workspace 
+- **Value Type**: Text 
+- **Value**: “DataBatchRetryIntervals”:[10,30,60] 
+
+ ![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting2.png)
+
+Toggle On/Off Auto Batch Split functionality: 
+
+- **Name**: EnableCollectDataBatchSplit. 
+- **Section**: Trace.Workspace. 
+- **Value Type**: True/False. 
+- **Value**: False (auto split disabled) or True (auto split enabled). 
+
+![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting3.png)
+
+#### Data source
 
 Most parameters work the same for all Collect Data Sources. Follow the instructions from [Common Collect Data Source Functionality](https://usc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=en-US&rs=en-US&wopisrc=https%3A%2F%2Fkcura-my.sharepoint.com%2Fpersonal%2Fdavid_bachmann_relativity_com%2F_vti_bin%2Fwopi.ashx%2Ffiles%2F8077c5fa29d1469ea6506ce3df735cdd&wdenableroaming=1&mscc=1&wdodb=1&hid=8AFF3CA0-908D-1000-AACB-EFC268F94A9E&wdorigin=ItemsView&wdhostclicktime=1652451692337&jsapi=1&jsapiver=v1&newsession=1&corrid=29e99580-431c-435c-8525-71c6894c27b1&usid=29e99580-431c-435c-8525-71c6894c27b1&sftc=1&cac=1&mtf=1&sfp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#_Common_Collect_Data) section. 
 
@@ -168,7 +253,7 @@ General section:
 
 1. **Data Source Type**: Select Microsoft O365 Mail or Calendar. 
 
-​		![](media/Office_365_email_and_calendar_via_Collect/DataSourceType.png)
+​	![](media/Office_365_email_and_calendar_via_Collect/DataSourceType.png)
 
 Credentials section: 
 
