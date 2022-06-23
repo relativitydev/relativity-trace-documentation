@@ -37,25 +37,60 @@ Each Machine Learning model should be as specific as possible. Each of these mod
 
 Follow these steps to adopt a Trace Defined a machine learning model:
 
-1. Create the following Document fields
-   1. A field to code documents that should act as Training document to build the model
-      1. Name = "ML [Model Purpose] Training" (eg. `ML Spam Training`)
-         1. Field Type = Single Choice
-            1. Add Choices
-               1. "Positive [Model Purpose]" (eg. `Positive Spam`)
-               2. "Negative [Model Purpose]" (eg. `Negative Spam`)
+1. Navigate to the ![Machine Learning Model Tab](media/machine_learning_model/machine_learning_model_home_page.PNG)
+   1. All Trace Defined models will be in the layout
+2. Click into the Model of interest
+   1. ![Change of Venue Model](media/machine_learning_model/machine_learning_model_trace_defined.PNG)
+3. Click "Build New Model Version" if you do not have a version or want to build an improved version
+   1. To code new communications, code on the "Risk Detection Label" or "Irrelevant Content Detection Label" fields
+      1. Fields on a Layout ![Example](media/machine_learning_model/machine_learning_model_communication_labeling.PNG)
+4. Once a version is created, you must assign a "Positive Cutoff Rank" in the version
+   1. ![Edit Version](media/machine_learning_model/machine_learning_model_edit_version.PNG)
+5. Now you can set an "Active Version"
+   1. Note the "Cutoff Rank" MUST be set
+   2. Only 1 Active Version can be set at a time
+   3. ![Edit Active Version](media/machine_learning_model/machine_learning_model_ edit_active_version.PNG)
+6. This will create fields
+   1. Decision = Y/N on whether the communication is a positive example of the model
+   2. Score = [0-100] rank on the liklihood the expected outcome occured
+   3. Version = each score and decision is tied to a version for transparency and explainability
+   4. ![Example](media/machine_learning_model/machine_learning_model_fields.PNG)
+7. To enable a rule go to the "Rules" Tab
+   1. Each Active Version will create a rule than can be enabled
+   2.  ![Change of Venue Rule](media/machine_learning_model/machine_learning_model_rule_generator.PNG)
                
 ### Customer Defined Machine Learning Model               
 
 Follow these steps to adopt a Customer Defined a machine learning model:
 
-1. Create the following Document fields
-   1. A field to code documents that should act as Training document to build the model
-      1. Name = "ML [Model Purpose] Training" (eg. `ML Spam Training`)
-         1. Field Type = Single Choice
-            1. Add Choices
-               1. "Positive [Model Purpose]" (eg. `Positive Spam`)
-               2. "Negative [Model Purpose]" (eg. `Negative Spam`)
+1. Navigate to the ![Machine Learning Model Tab](media/machine_learning_model/machine_learning_model_home_page.PNG)
+2. Click the New Machine Learning Model Button
+   1. The model MUST have a name
+      1. This name will be used for other aspects so please be specific
+   2. Select a purpose
+      1. Risk Detection = creates a rule for alerting
+      2. Purpose = allows one to omit content from alerting
+      3 Description = for one's own tracking
+   1. ![New Machine Learning Model](media/machine_learning_model/machine_learning_model_new_model.PNG)
+3. Return to the Machine Learning Tab and click into your model
+4. You must code at least 5 positive examples before building a model version
+   1. To code new communications, code on the "Risk Detection Label" or "Irrelevant Content Detection Label" fields
+      1. Fields on a Layout ![Example](media/machine_learning_model/machine_learning_model_communication_labeling.PNG)
+5. Click "Build New Model Version" if you do not have a version or want to build an improved version
+6. Once a version is created, you must assign a "Positive Cutoff Rank" in the version
+   1. ![Edit Version](media/machine_learning_model/machine_learning_model_edit_version.PNG)
+7. Now you can set an "Active Version"
+   1. Note the "Cutoff Rank" MUST be set
+   2. Only 1 Active Version can be set at a time
+   3. ![Edit Active Version](media/machine_learning_model/machine_learning_model_ edit_active_version.PNG)
+8. This will create fields
+   1. Decision = Y/N on whether the communication is a positive example of the model
+   2. Score = [0-100] rank on the liklihood the expected outcome occured
+   3. Version = each score and decision is tied to a version for transparency and explainability
+   4. ![Example](media/machine_learning_model/machine_learning_model_fields.PNG)
+9. To enable a rule go to the "Rules" Tab
+   1. Each Active Version will create a rule than can be enabled
+   2.  ![Change of Venue Rule](media/machine_learning_model/machine_learning_model_rule_generator.PNG)
 
 ### Viewing Results
 
@@ -63,13 +98,9 @@ Your Machine Learning Model ranks a document between 0-100 on the likelihood of 
 
 1. Add your Rank field to your Review coding layout
 
-![Machine Learning on Coding Layout](media/machine_learning/image-20210217165536281.png)
-
 1. Add your Rank field to your Document View
 2. Create dashboard showing the ranks across documents
    1. Click the "Add Widget" button on the document Tab and select Pivot
-   2. Group By = Machine Learning Model rank field (eg. `CSR - Spam Cat. Set::Category Rank`)
+   2. Group By = Machine Learning Model rank field
    3. Sort On = Machine Learning Model rank field [ASC]
    4. Default Display Type = Line Chart
-
-![Machine Learning on Coding Layout](media/machine_learning/image-20210218233922546.png)
