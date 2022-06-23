@@ -1,0 +1,75 @@
+---
+layout: default
+title: Machine Learning Model
+parent: Enrichment
+grand_parent: User Guide
+nav_order: 3
+---
+
+# Machine Learning Model
+{: .no_toc }
+
+
+Machine Learning Models can help detect risk or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+## Machine Learning
+
+Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Machine Learning models implemented within your workspace.
+
+Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** to easily adopt these models within your organization. 
+
+Each Machine Learning model should be as specific as possible. Each of these models will be more accurate because they are looking for one behavior rather than many.
+{: .info }
+
+**Examples of common models:**
+1. Remove Irrelevant Content (Internal Newsletter, Internal Research Reports, etc.)
+2. Classify Communication Types (Trade Related Communications, Sales conversations, etc.)
+3. Risk Identification (Insider Information, Market Manipulation, Code of Conduct Breaches, etc.)
+
+
+### Trace Defined Machine Learning Model
+
+Follow these steps to adopt a Trace Defined a machine learning model:
+
+1. Create the following Document fields
+   1. A field to code documents that should act as Training document to build the model
+      1. Name = "ML [Model Purpose] Training" (eg. `ML Spam Training`)
+         1. Field Type = Single Choice
+            1. Add Choices
+               1. "Positive [Model Purpose]" (eg. `Positive Spam`)
+               2. "Negative [Model Purpose]" (eg. `Negative Spam`)
+               
+### Customer Defined Machine Learning Model               
+
+Follow these steps to adopt a Customer Defined a machine learning model:
+
+1. Create the following Document fields
+   1. A field to code documents that should act as Training document to build the model
+      1. Name = "ML [Model Purpose] Training" (eg. `ML Spam Training`)
+         1. Field Type = Single Choice
+            1. Add Choices
+               1. "Positive [Model Purpose]" (eg. `Positive Spam`)
+               2. "Negative [Model Purpose]" (eg. `Negative Spam`)
+
+### Viewing Results
+
+Your Machine Learning Model ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. This result can be found your Machine Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`, `CSR - Insider Information Cat. Set::Category Rank`).
+
+1. Add your Rank field to your Review coding layout
+
+![Machine Learning on Coding Layout](media/machine_learning/image-20210217165536281.png)
+
+1. Add your Rank field to your Document View
+2. Create dashboard showing the ranks across documents
+   1. Click the "Add Widget" button on the document Tab and select Pivot
+   2. Group By = Machine Learning Model rank field (eg. `CSR - Spam Cat. Set::Category Rank`)
+   3. Sort On = Machine Learning Model rank field [ASC]
+   4. Default Display Type = Line Chart
+
+![Machine Learning on Coding Layout](media/machine_learning/image-20210218233922546.png)
