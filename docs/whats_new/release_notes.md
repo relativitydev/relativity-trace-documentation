@@ -40,7 +40,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 **Enhacements**
 
 - Configurable Data Source Auto-Disable 
- - Previously, customers had to set 1 auto-disable time for all data sources. Now, customers can set a different time frame for each data source.  
+  - Previously, customers had to set 1 auto-disable time for all data sources. Now, customers can set a different time frame for each data source.  
 
 # 15.3.32 (31 May 2022)
 
