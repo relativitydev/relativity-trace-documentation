@@ -8,8 +8,13 @@ nav_exclude: true
 {: .no_toc }
 
 This topic provides details on how to capture Microsoft Office 365 Email and Calendar messages via Collect.
+{: .fs-6 .fw-300 }
 
+1. TOC
 {:toc}
+
+---
+
 ## Requirements 
 
 Before using this data source, note the following license requirements, version support, and special considerations.
