@@ -27,7 +27,7 @@ The following document fields are created for each Machine Learning Model once t
    1. [Model Name] Decision = Yes or No value on whether the communication is a positive example of the model based on the Rank and the Positive Rank Cutoff value
    2. [Model Name] Score = 0-100 rank on the likelihood the expected outcome occurred with 100 being a high and 0 being low
    3. [Model Name] Version = the Model Version that was set as the Active version when the document was analyzed
-   ![Example](media/machine_learning_model/machine_learning_model_fields.PNG)
+   ![Example](media/machine_learning_models/machine_learning_model/machine_learning_model_fields.PNG)
 
 ### Using Machine Learning Model Results
 
@@ -36,7 +36,7 @@ Add the `[Machine Learning Model] Decision` and `[Machine Learning Model] Rank` 
 
 #### Alerting on Risky Content
 A Rule is automatically created for `Risk Detection` Machine Learning Models. The associated Rule is `Disabled` by default, but can be enabled to start alerting on the risk that the model is built to identify. Other search criteria can be added to this Rule to further hone or expand to broader risks.
-![Change of Venue Rule](media/machine_learning_model/machine_learning_model_rule_generator.PNG)
+![Change of Venue Rule](media/machine_learning_models/machine_learning_model_rule_generator.PNG)
 
 #### Ignoring Irrelevant Content
 Machine Learning Models with the purpose of detecting irrelevant content can be used to reduce false-positive alerts. Follow the steps below to ignore this irrelevant content. 
@@ -48,13 +48,13 @@ Machine Learning Models with the purpose of detecting irrelevant content can be 
 The following steps can be used to enable a Trace Defined Machine Learning Model.
 
 1. Navigate to the Machine Learning Model tab
-![Machine Learning Model Tab](media/machine_learning_model/machine_learning_model_home_page.PNG)
+![Machine Learning Model Tab](media/machine_learning_models/machine_learning_model_home_page.PNG)
 2. Click into the Machine Learning Model of interest
-![Change of Venue Model](media/machine_learning_model/machine_learning_model_trace_defined.PNG)
+![Change of Venue Model](media/machine_learning_models/machine_learning_model_trace_defined.PNG)
 3. If you don't see a Model Version in the list at the bottom of the page, click "Build New Model Version" on the Console (refresh the page to see the status of the new Model Version)
 4. Click on the Model Version in the list at the bottom of the page
 5. Assign a "Positive Cutoff Rank" (Start with 70 if no validation test has been performed)
-![Edit Version](media/machine_learning_model/machine_learning_model_edit_version.PNG)
+![Edit Version](media/machine_learning_models/machine_learning_model_edit_version.PNG)
 5. Navigate back to the Machine Learning Model
 6. Edit the Machine Learning Model and populate the "Active Version" field with the most recent Model Version
 ![Edit Active Version](media/machine_learning_model/machine_learning_model_ edit_active_version.PNG)
@@ -78,26 +78,26 @@ The following steps can be used to build your own Machine Learning Models for ei
 
 
 1. Navigate to the Machine Learning Model tab
-![Machine Learning Model Tab](media/machine_learning_model/machine_learning_model_home_page.PNG)
+![Machine Learning Model Tab](media/machine_learning_models/machine_learning_model_home_page.PNG)
 2. Click the `New Machine Learning Model` button and create a new Machine Learning Model
    1. Name = This should describe what the model is attempting to identify. This value must be unique. This value will be used to create document fields and other objects
    2. Purpose = The goal of the model (If Risk Detection is selected a disabled Rule will be created for this model)
    3. Description = Explain what this model is intended to accomplish for your own understanding
-![New Machine Learning Model](media/machine_learning_model/machine_learning_model_new_model.PNG)
+![New Machine Learning Model](media/machine_learning_models/machine_learning_model_new_model.PNG)
 
 By saving the Machine Learning Model, a choice with the name of the Machine Learning Model will be added to the `Risk Detection Label` field or `Irrelevant Content Detection Label` document field based on the Purpose field value on the Machine Learning Model.
 
 Prior to enabling a Machine Learning Model, at least five documents will need to be tagged with the corresponding choice on either the `Risk Detection Label` or `Irrelevant Content Detection Label` field.
-![Example](media/machine_learning_model/machine_learning_model_communication_labeling.PNG)
+![Example](media/machine_learning_models/machine_learning_model_communication_labeling.PNG)
 
 5. Once labeling requirements are met, navigate back to the Machine Learning Model
 6. Click "Build New Model Version" on the console (refresh the page to see the status of the new Model Version)
 7. Click on the Model Version in the list at the bottom of the page
 5. Assign a "Positive Cutoff Rank" (Start with 70 if no validation test has been performed)
-![Edit Version](media/machine_learning_model/machine_learning_model_edit_version.PNG)
+![Edit Version](media/machine_learning_models/machine_learning_model_edit_version.PNG)
 5. Navigate back to the Machine Learning Model
 6. Edit the Machine Learning Model and populate the "Active Version" field with the most recent Model Version
-![Edit Active Version](media/machine_learning_model/machine_learning_model_ edit_active_version.PNG)
+![Edit Active Version](media/machine_learning_models/machine_learning_model_edit_active_version.PNG)
 
 - A "Positive Rank Cutoff" must be set on the Model Version to be set as the Active Version
 - Only one Model Version can be set as the Active Version at a time
