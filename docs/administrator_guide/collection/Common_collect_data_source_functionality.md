@@ -1,8 +1,20 @@
-# Common collect data source functionality
+---
+layout: default
+title: Common Collect Data Source Functionality
+nav_exclude: true
+---
+
+# Common Collect Data Source Functionality
+{: .no_toc }
+
 
 This topic provides information on functionality common to most or all data sources.
+{: .fs-6 .fw-300 }
 
-[TOC]
+1. TOC
+{:toc}
+
+---
 
 ## IP whitelisting pre-work 
 

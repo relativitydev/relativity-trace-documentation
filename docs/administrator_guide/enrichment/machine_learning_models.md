@@ -22,6 +22,9 @@ Trace Machine Learning models are binary classifiers where each model determines
 
 Both pre-built machine learning models and user created models can be used to detect risky content or identify irrelevant content.
 
+Documentation on the deprecated Active Learning workflow for machine learning can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/active_learning.md %}).
+{: .info }
+
 ## Machine Learning Model Results
 The following document fields are created for each Machine Learning Model once the model is enabled (Active Version set).
    1. [Model Name] Decision = Yes or No value on whether the communication is a positive example of the model based on the Rank and the Positive Rank Cutoff value
