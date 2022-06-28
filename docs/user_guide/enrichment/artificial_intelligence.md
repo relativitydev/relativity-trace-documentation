@@ -3,7 +3,7 @@ layout: default
 title: Artifical Intelligence
 parent: Enrichment
 grand_parent: User Guide
-nav_order: 5
+nav_order: 1
 ---
 
 # Artifical Intelligence

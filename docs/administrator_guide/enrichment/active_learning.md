@@ -1,16 +1,17 @@
 ---
 layout: default
-title: Machine Learning
+title: Active Learning (Deprecated)
 parent: Enrichment
 grand_parent: Administrator Guide
-nav_order: 4
+nav_order: 6
 ---
+Deprecated
+{: .label .label-red }
 
-# Machine Learning
+# Active Learning
 {: .no_toc }
 
-
-Machine Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
+Active Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,13 +19,13 @@ Machine Learning models can help identify risk, categorize documents to create m
 
 ---
 
-## Machine Learning
+## Active Learning
 
-Trace Machine Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Machine Learning models implemented within your workspace.
+Trace Active Learning models are binary classifiers, meaning each model Ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. E.g. a Spam model would Rank a document it's confident is spam as 95 and a document it believes is not spam as 15. Because our models are binary classifiers, you will create a different model for each behavior you are looking to identify. You can have multiple Active Learning models implemented within your workspace.
 
-Relativity Trace comes with an expanding set of **Pre-Built Machine Learning Models** and the **Policy Enhancement Process** to effectively implement these models within your organization. To learn more about the Trace Pre-Built Machine Learning Models reach out to [support@relativity.com](mailto:support@relativity.com).
+Relativity Trace comes with an expanding set of **Pre-Built Active Learning Models** and the **Policy Enhancement Process** to effectively implement these models within your organization. To learn more about the Trace Pre-Built Active Learning Models reach out to [support@relativity.com](mailto:support@relativity.com).
 
-Each Machine Learning model should be as specific as possible. Creating a model to identify "Risk" overall will not be very accurate, because "Risk" can be hundreds of different things. Rather you'd want to create one Machine Learning model for "Sharing of Insider Information", another for "Change of Venue", and another for "Sexual Harassment". Each of these models will be more accurate because they are looking for one behavior rather than many.
+Each Active Learning model should be as specific as possible. Creating a model to identify "Risk" overall will not be very accurate, because "Risk" can be hundreds of different things. Rather you'd want to create one Active Learning model for "Sharing of Insider Information", another for "Change of Venue", and another for "Sexual Harassment". Each of these models will be more accurate because they are looking for one behavior rather than many.
 {: .info }
 
 **Examples of common models:**
@@ -34,9 +35,9 @@ Each Machine Learning model should be as specific as possible. Creating a model 
 
 
 
-### Setting up a Machine Learning Model
+### Setting up a Active Learning Model
 
-Follow these steps to build a machine learning model:
+Follow these steps to build a Active learning model:
 
 1. Create the following Document fields
    1. A field to code documents that should act as Training document to build the model
@@ -54,7 +55,7 @@ Follow these steps to build a machine learning model:
       1. Name = "ML [Model Purpose] Pending Validation" (eg. `ML Spam Pending Validation)
          1. Field Type = Yes/No
 2. Create the following Saved Searches
-   1. A Saved Search that includes your Training documents along with documents that don't have Machine Learning results for your Classification Index
+   1. A Saved Search that includes your Training documents along with documents that don't have Active Learning results for your Classification Index
       1. Name = "ML [Model Purpose] Training and Unanalyzed" (eg. `ML Spam Training and Unanalyzed`)
          1. Conditions
             1. "ML [Model Purpose] Training" field IS SET. (eg. `ML Spam Training` IS SET)
@@ -72,7 +73,7 @@ Follow these steps to build a machine learning model:
             2. "ML [Model Purpose] Validation" field
    4. Organize these Saved Searches within folders for easier navigation as you will be revisiting them periodically.
 
-![Machine Learning Folder Structure](media/machine_learning/image-20210219002027474.png)
+![Active Learning Folder Structure](media/machine_learning/image-20210219002027474.png)
 
 3. Create the following Document Layouts
    1. Create a layout that will allow for you to code documents on your newly created fields
@@ -101,7 +102,7 @@ Follow these steps to build a machine learning model:
       3. Review Field = "ML [Model Purpose] Training" (eg. `ML Spam Training`)
       4. Suppress Duplicate Documents = NO
       5. Reviewer Group = *This field doesn't matter for our workflow so select any reviewer group*
-9. Once in the Active Learning project we will calculate Machine Learning Ranks on documents for the first time
+9. Once in the Active Learning project we will calculate Active Learning Ranks on documents for the first time
    1. Check to make sure you have 5 documents marked as "Coded ML [Model Purpose]" and 5 documents marked as "Coded Not ML [Model Purpose]" on the Active Learning dashboard
    2. Select the "Update Ranks" button ![Update Ranks Button](media/machine_learning/image-20210219003935274.png)in the upper right corner of the Active Learning dashboard 
    3. Add a "ML [Model Purpose] Cutoff" value of `70` *(This value doesn't actually matter as we will be deciding the Rank Cutoff within the Trace workflow)*
@@ -120,19 +121,19 @@ Follow these steps to build a machine learning model:
 12. Configure Trace to automatically run Active Learning (if this has not already been enabled)
     1. Navigate to the "Indexing" Task within the Setup tab.
     2.  Edit the "Global Analytics Build Frequency in Minutes" field to have a value of `120`
-       1. This means your Machine Learning model will analyze new document every two hours
+       1. This means your Active Learning model will analyze new document every two hours
 
-You want to protect these training documents. Set up a workflow rule to move these into a Machine Learning folder, and ensure your Data Disposal does not touch anything in this folder.
+You want to protect these training documents. Set up a workflow rule to move these into a Active Learning folder, and ensure your Data Disposal does not touch anything in this folder.
 {: .warn }
 
 
 ### Viewing Results
 
-Your Machine Learning Model ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. This result can be found your Machine Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`, `CSR - Insider Information Cat. Set::Category Rank`).
+Your Active Learning Model ranks a document between 0-100 on the likelihood of it being a positive example of the type of content that the model is attempting to identify. This result can be found your Active Learning model rank field (eg. `CSR - Spam Cat. Set::Category Rank`, `CSR - Insider Information Cat. Set::Category Rank`).
 
 1. Add your Rank field to your Review coding layout
 
-![Machine Learning on Coding Layout](media/machine_learning/image-20210217165536281.png)
+![Active Learning on Coding Layout](media/machine_learning/image-20210217165536281.png)
 
 1. Add your Rank field to your Document View
 2. Create dashboard showing the ranks across documents
@@ -141,11 +142,11 @@ Your Machine Learning Model ranks a document between 0-100 on the likelihood of 
    3. Sort On = Machine Learning Model rank field [ASC]
    4. Default Display Type = Line Chart
 
-![Machine Learning on Coding Layout](media/machine_learning/image-20210218233922546.png)
+![Active Learning on Coding Layout](media/machine_learning/image-20210218233922546.png)
 
 ### Validating Model Accuracy
 
-Before using Machine Learning results to make review or alert decisions, you want to be confident that the model is accurately classifying communications based on its purpose. This requires a validation test, which should be run periodically (quarterly) to understand the accuracy and recorded each time for defensibility.
+Before using Active Learning results to make review or alert decisions, you want to be confident that the model is accurately classifying communications based on its purpose. This requires a validation test, which should be run periodically (quarterly) to understand the accuracy and recorded each time for defensibility.
 
 #### Running a Validation Test
 
@@ -238,11 +239,11 @@ Rank Cutoff is the rank used by the model to classify a document as either Posit
 > 2. If I'm creating an Insider Information model, I want to make sure I'm casting a wide net and alerting on anything that could possibly be this type of misconduct. This means I need my model to have extremely **high Recall** (90-100). In this scenario, I would set my Rank Cutoff to be low (60-80) so that my Recall is extremely high. By adjusting the system for high Recall, my Precision will drop. This means that there are many non-Insider Information documents in what the model thinks is Insider Information. These non-Insider Information documents will be alerted on and will show up to a reviewer as a false-positive alert. This is okay though, because it ensures we don't miss any type of misconduct.
 
 
-### Using the Results from a Machine Learning Model
+### Using the Results from a Active Learning Model
 
 #### Using Results to Advise Reviewers (<u>Less Confident</u> in Accuracy)
 
-If your Validation Test is not returning the Accuracy needed based on your organizations risk appetite or if you are uncomfortable with Machine Learning in general, this approach has little risk.  In this approach you're displaying your Machine Learning results on the Review coding pane so reviewers can use the results to make more informed decisions. If a Spam model give the reviewers document a high Rank, the review can see that and spend less time reviewing that document.
+If your Validation Test is not returning the Accuracy needed based on your organizations risk appetite or if you are uncomfortable with Active Learning in general, this approach has little risk.  In this approach you're displaying your Active Learning results on the Review coding pane so reviewers can use the results to make more informed decisions. If a Spam model give the reviewers document a high Rank, the review can see that and spend less time reviewing that document.
 
 1. Navigate to Document Layout that you would like to adjust and select `Build Layout`
 2. Add a `Machine Learning` Category to your layout where you can park all result fields
@@ -254,7 +255,7 @@ If your Validation Test is not returning the Accuracy needed based on your organ
 
 #### Using Results to Generate New Alerts (<u>Confident</u> in Accuracy)
 
-In this approach you're alerting on documents that you Machine Learning results believe could contain risk. This approach will catch document that don't hit on standard lexicons.
+In this approach you're alerting on documents that you Active Learning results believe could contain risk. This approach will catch document that don't hit on standard lexicons.
 
 1. Create a new saved search for the misconduct you are attempting to catch (eg. Insider Information Machine Learning)
 
@@ -266,18 +267,18 @@ In this approach you're alerting on documents that you Machine Learning results 
    1. Link the saved search created in Step 1 to this rule
    2. Don't add any terms or any other criteria to the rule
 
-3. Complete the Steps in the "Using Results to Advise Reviewers" section above to ensure a reviewer can see the Machine Learning results for the model while reviewing the document.
+3. Complete the Steps in the "Using Results to Advise Reviewers" section above to ensure a reviewer can see the Active Learning results for the model while reviewing the document.
 
    ![Machine Learning Rule](media/machine_learning/image-20210217170551927.png)
 
-If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+If you are using Active Learning results within Rule conditions, you want to make sure that your Active Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Active Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
 {: .info }
 
 
 
 #### Using Results to Remove Irrelevant Content (<u>Very Confident</u> in Accuracy)
 
-Once you are very confident in your Machine Learning models that identify irrelevant content, you are ready to use those results to actually remove those documents from being analyzed for alerts.
+Once you are very confident in your Active Learning models that identify irrelevant content, you are ready to use those results to actually remove those documents from being analyzed for alerts.
 
 1. Locate the Saved Search used for the `Omit from Alert Rules` functionality within the `Rules Evaluation` Task (See Trace Document Flow Overview section for more information)
 2. Update the Saved Search with "AND Machine Learning model rank is greater than *X*" (eg. AND `CSR - Spam Cat. Set::Category Rank` > `80`)
@@ -289,7 +290,7 @@ Once you are very confident in your Machine Learning models that identify irrele
 
 #### Using Results to Create More Targeted Alerts (<u>Extremely Confident</u> in Accuracy)
 
-Once you are extremely confident in your Machine Learning models, you are ready to use those results to narrow the documents that can hit on specific alerts.
+Once you are extremely confident in your Active Learning models, you are ready to use those results to narrow the documents that can hit on specific alerts.
 
 1. Locate the Saved Search for your existing Metadata and Lexicon based rule that relates to the model that you created. (eg. Insider Information Rule)
 2. Update the Saved Search with "AND Machine Learning model rank is greater than *X*" (eg. AND `CSR - Insider Information Cat. Set::Category Rank` > `60`)
@@ -297,14 +298,14 @@ Once you are extremely confident in your Machine Learning models, you are ready 
 
 ![Machine Learning Rules](media/machine_learning/image-20210218235348807.png)
 
-If you are using Machine Learning results within Rule conditions, you want to make sure that your Machine Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Machine Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
+If you are using Active Learning results within Rule conditions, you want to make sure that your Active Learning model has completed analyzing a document before the Rule begins to analyze it. You can set Rules to wait for a document to have Active Learning results by updating the Saved Search for the `Normalized` setting within the `Rule Evaluation` Task.
 {: .info }
 
 ### Improving Model Accuracy
 
-#### Relativity Trace Pre-Built Machine Learning Models
+#### Relativity Trace Pre-Built Active Learning Models
 
-Relativity has multiple pre-built machine learning models that can jump start training and allow for you to get results directly after implementation. To utilize these pre-built machine learning models please reach out to [support@relativity.com](mailto:support@relativity.com).
+Relativity has multiple pre-built active learning models that can jump start training and allow for you to get results directly after implementation. To utilize these pre-built active learning models please reach out to [support@relativity.com](mailto:support@relativity.com).
 
 #### Using Historic Data
 
@@ -318,7 +319,7 @@ Historic data that has already been coded for the behaviors you are attempting t
 
 Reviewers can code documents for specific behaviors while they are reviewing alerts.
 
-1. Create a new document field where reviewers can make decisions for machine learning models
+1. Create a new document field where reviewers can make decisions for active learning models
    1. Name = `Machine Learning Decision`
       1. Field Type = Single Choice
          1. Add Choices
