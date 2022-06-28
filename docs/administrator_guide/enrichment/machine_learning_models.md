@@ -27,7 +27,7 @@ The following document fields are created for each Machine Learning Model once t
    1. [Model Name] Decision = Yes or No value on whether the communication is a positive example of the model based on the Rank and the Positive Rank Cutoff value
    2. [Model Name] Score = 0-100 rank on the likelihood the expected outcome occurred with 100 being a high and 0 being low
    3. [Model Name] Version = the Model Version that was set as the Active version when the document was analyzed
-   ![Example](media/machine_learning_models/machine_learning_model/machine_learning_model_fields.PNG)
+   ![Example](media/machine_learning_models/machine_learning_model_fields.PNG)
 
 ### Using Machine Learning Model Results
 
@@ -57,7 +57,7 @@ The following steps can be used to enable a Trace Defined Machine Learning Model
 ![Edit Version](media/machine_learning_models/machine_learning_model_edit_version.PNG)
 5. Navigate back to the Machine Learning Model
 6. Edit the Machine Learning Model and populate the "Active Version" field with the most recent Model Version
-![Edit Active Version](media/machine_learning_model/machine_learning_model_ edit_active_version.PNG)
+![Edit Active Version](media/machine_learning_models/machine_learning_model_edit_active_version.PNG)
 
 - A "Positive Rank Cutoff" must be set on the Model Version to be set as the Active Version
 - Only one Model Version can be set as the Active Version at a time
@@ -113,7 +113,7 @@ Both Trace Defined and Customer Defined Machine Learning Models can be enhanced 
 2. Use either the Mass Edit operation or Viewer coding pane to tag the appropriate choice on the `Risk Detection Label` or `Irrelevant Content Detection Label` document field
 4. Navigate to the Machine Learning Model and press the "Build New Model Version" console button (refresh the page to see the status of the new Model Version)
 5. Edit the Machine Learning Model and populate the "Active Version" field the newly created Model Version
-![Edit Active Version](media/machine_learning_model/machine_learning_model_ edit_active_version.PNG)
+![Edit Active Version](media/machine_learning_models/machine_learning_model_edit_active_version.PNG)
 
 Machine Learning Models are not updated by simply labeling documents on either the `Risk Detection Label` or `Irrelevant Content Detection Label` document field. You must build a new model version and set that new version as the "Active Version" to get the benefits of the newly labeled documents.
 {: .info }
