@@ -157,22 +157,21 @@ Generate Client Secret:
 3. Enter a description in the **Description** text box. 
 4. Set the expiration time frame to **Never**. 
 5. Click **Add**. 
-6. Click on the clipboard and copy secret to clipboard to paste in your text document. 
-    - You should copy the secret and save it, as you will need it to set up your data sources in Trace. 
+6. Click on the clipboard and copy secret to clipboard to paste in your text document. Save this secret, as you will need it to set up your data sources in Trace. 
 
 Microsoft will only show this secret this one time; there is no way to recover a secret if it is forgotten or lost. Make a note of the Application ID that Microsoft assigned to the app registration. This ID is also required for setup of data sources in Trace.
-{info:}
+{: .info }
 
-    - You will need the following information to complete setup of the data source from the Trace front end: 
-      - Application ID 
-      - Client Secret (copy the **Value** field) 
-      - Domain (mycompanydomain.com)
+You will need the following information to complete setup of the data source from the Trace front end: 
+  - Application ID 
+  - Client Secret (copy the **Value** field) 
+  - Domain (mycompanydomain.com)
 
 Make sure you copy the **Value** field value for your Client Secret. Do not accidentally copy the Secret ID.
-{warn:}
+{: .warn }
 
 Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access).
-{info:}
+{: .info }
 
 ### Setup in Trace
 
