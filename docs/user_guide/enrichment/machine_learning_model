@@ -3,14 +3,14 @@ layout: default
 title: Machine Learning Model
 parent: Enrichment
 grand_parent: User Guide
-nav_order: 3
+nav_order: 2
 ---
 
 # Machine Learning Model
 {: .no_toc }
 
 
-Machine Learning Models can help detect risk or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
+Machine Learning Models can help detect risky content that isn't captured by term searching or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
 {: .fs-6 .fw-300 }
 
 1. TOC
