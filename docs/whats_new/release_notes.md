@@ -25,6 +25,22 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.4.00 (28 June 2022)
+
+**Features**
+
+- The following pre-built risk detection AI models can be enabled within our new Machine Learning frameork: 
+  - Change of Venue: an attempt to avoid discovery by changing the communication venue (e.g., moving from email to phone call)
+  - Rumors and Speculation: the distribution or discussion of unverified and doubtfully true information 
+  - Collaborative Discussion: employees working together to prevent the discovery of misconduct and sharing of client identifying data
+  - Boasting: excessively proud and self-satisfied talk by a trader of their achievements in regard to someone less fortunate
+  - General Tipping: the sharing of potential material nonpublic information (MNPI) regarding general company information, financial information, or corporate actions 
+- Customers can define and implement their own AI models through our self-service Machine Learning framework to detect risky or irrelevant content
+
+**Enhancements**
+
+- The Data Source auto-disable time period can now be set per Data source rather than across all Data Sources
+
 # 15.3.32 (31 May 2022)
 
 **Features**
