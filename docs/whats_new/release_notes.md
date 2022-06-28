@@ -25,7 +25,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
-# 15.4.00 (28 June 2022)
+# 15.4.14.0 (28 June 2022)
 
 **Features**
 
@@ -41,7 +41,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 - The Data Source auto-disable time period can now be set per Data source rather than across all Data Sources
 
-# 15.3.32 (31 May 2022)
+# 15.3.32.0 (31 May 2022)
 
 **Features**
 
