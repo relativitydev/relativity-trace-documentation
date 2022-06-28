@@ -25,29 +25,29 @@ The following licenses are required to use this data source:
 
 We support Microsoft 365 Enterprise 3 and above.
 
-### Considerations
+## Considerations
 
 Note the following considerations about this data source:
 
-#### Mailbox Collection
+### Mailbox Collection
 - The connector supports accessing active and licensed mailboxes. It does not support accessing inactive and archived mailboxes. 
   - Archived collection will be included in a future release. 
 - You can collect from unlicensed custodians, but the mailbox must still be active in the case where the user is unlicensed.
 - Guest mailboxes can only be collected if they are active & licensed.
 - Shared mailboxes can only be captured if they are active.
 
-#### Email Collection
+### Email Collection
 - The connector collects all items in visible folders within Outlook’s inbox and custom folders. 
 - Deleted items can be collected. 
 - Deleted items from deleted folder (deleted and purged items) can be collected. Users must set their "Deleted items retention" to at least 14 days (Microsoft default). 
 - Hidden folders cannot be collected. 
 
-#### Email Content
+### Email Content
 - Formatted text is captured as plain text. 
 - Numbered rows are captured as a single line. 
 - Emojis are collected as plain text. 
   
-#### Data Filtering
+### Data Filtering
 - There are two levels of filtering data: 
   - Data Source - only data linked to a Data Source Monitored Individuals will be captured. 
   - Data Batch - only messages which have “Date Received” within Data Batch collection period will be captured. 
@@ -93,7 +93,7 @@ You must have Collect installed in the workspace to set up this data source, sin
 
 For details on installing Collect, see [Collect]().
 
-#### Company specific
+#### Company specific prerequisites
 
 You must have the following company-provided information to complete the authentication steps that precede setting up the data source:
 
@@ -102,7 +102,7 @@ You must have the following company-provided information to complete the authent
 - An O365 domain name
 - An Application / Client ID
 
-#### Data transfer
+#### Data transfer prerequisites
 
 You must have the following information to complete the data transfer.
 
@@ -125,7 +125,7 @@ To register your app:
 1. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
 1. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
 
- From the app's page, add permissions to the web API: 
+From the app's page, add permissions to the web API: 
 1. Click **API Permissions**. 
 2. Click **Add a permission**. 
 3. Click **Microsoft Graph**. 
@@ -138,7 +138,7 @@ To register your app:
 6. Click **Add permissions**. 
 7. Click **Grant Permission**. 
 
- Grant Admin consent for the API: 
+Grant Admin consent for the API: 
 1. Click the **API Permissions** tab. 
 2. Click **Grant admin consent** for [tenant]. 
 3. In the pop-up window, click **Accept**. If you do not have the ability to grant Admin consent for application permissions, you will need to find an Admin that can consent. 
