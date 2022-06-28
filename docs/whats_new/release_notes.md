@@ -29,18 +29,17 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 **Features**
 
-- Pre-built Risk Detection AI Models: Uncover true regulatory and reputational risk with AI models that Trace ships with 
-  - Change of Venue: an attempt to avoid discovery by changing the communication venue (e.g., moving from email to phone call). 
+- The following pre-built risk detection AI models can be enabled within our new Machine Learning frameork: 
+  - Change of Venue: an attempt to avoid discovery by changing the communication venue (e.g., moving from email to phone call)
   - Rumors and Speculation: the distribution or discussion of unverified and doubtfully true information 
-  - Collaborative Discussion: employees working together to prevent the discovery of misconduct and sharing of client identifying data. 
-  - Boasting: excessively proud and self-satisfied talk by a trader of their achievements in regard to someone less fortunate. 
-  - General Tipping: the sharing of potential material nonpublic information (MNPI) regarding general company information, financial information, or corporate actions. 
-- On-demand AI Models: self-service ability for customers to define and implement their own AI model for a particular risk type, such as anti-trust violations, code-o of- conduct breaches, pharma sales fraud, social trading risks, etc. 
+  - Collaborative Discussion: employees working together to prevent the discovery of misconduct and sharing of client identifying data
+  - Boasting: excessively proud and self-satisfied talk by a trader of their achievements in regard to someone less fortunate
+  - General Tipping: the sharing of potential material nonpublic information (MNPI) regarding general company information, financial information, or corporate actions 
+- Customers can define and implement their own AI models through our self-service Machine Learning framework to detect risky or irrelevant content
 
-**Enhacements**
+**Enhancements**
 
-- Configurable Data Source Auto-Disable 
-  - Previously, customers had to set 1 auto-disable time for all data sources. Now, customers can set a different time frame for each data source.  
+- The Data Source auto-disable time period can now be set per Data source rather than across all Data Sources
 
 # 15.3.32 (31 May 2022)
 
