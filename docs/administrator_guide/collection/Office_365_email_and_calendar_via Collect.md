@@ -167,7 +167,7 @@ You will need the following information to complete setup of the data source fro
   - Client Secret (copy the **Value** field) 
   - Domain (mycompanydomain.com)
 
-Make sure you copy the **Value** field value for your Client Secret. Do not accidentally copy the Secret ID.
+Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
 {: .warn }
 
 Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access).
