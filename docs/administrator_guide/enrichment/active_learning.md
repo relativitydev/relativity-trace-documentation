@@ -1,14 +1,15 @@
 ---
 layout: default
-title: Active Learning
+title: Active Learning (Deprecated)
 parent: Enrichment
 grand_parent: Administrator Guide
 nav_order: 4
 ---
+Deprecated
+{: .label .label-red }
 
-# Active Learning (To be Depricated)
+# Active Learning
 {: .no_toc }
-
 
 Active Learning models can help identify risk, categorize documents to create more tailored Rules, or identify irrelevant content that shouldn't be alerted on to reduce false-positive alerting.
 {: .fs-6 .fw-300 }
