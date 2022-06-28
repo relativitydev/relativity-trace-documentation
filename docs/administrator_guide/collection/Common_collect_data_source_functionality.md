@@ -9,7 +9,6 @@ This topic provides information on functionality common to most or all data sour
 For data sources such as Bloomberg, ICE Chat, and Eikon Messenger, before you can start collection, you must be able to make a connection to the native SFTPs. 
 
 - For every instance you need to whitelist a unique IP. 
-
 - For multiple SFTP data sources within a single instance you need to whitelist same IP. 
 - You need to whitelist IP with every Data Source provider using SFTP, with a separate request to Bloomberg and a separate request to ICE.
 
