@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Active Learning (Deprecated)
-parent: Enrichment
-grand_parent: Administrator Guide
-nav_order: 6
+nav_exclude: true
 ---
 Deprecated
 {: .label .label-red }
