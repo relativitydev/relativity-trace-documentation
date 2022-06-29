@@ -32,9 +32,9 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Type  | Data Source      |
 |:-------:|:------------------:|
 | Email | [Office365 Email and Calendar]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/Office_365_email_and_calendar_via_Collect.md %}) |
-| Email | Google Workspace |
-| Email | Bloomberg        |
-| Email | Microsoft Exchange |
+| Email | [Google GSuite]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) |
+| Email | [Bloomberg Mail]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/bloomberg_mail_via_collect.md %}) |
+| Email | [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_exchange_server_via_verqu.md %}) |
 | Email | HCL Notes and Domino |
 | Email | Zimbra |
 
@@ -42,19 +42,20 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
-| Chat | Bloomberg |
-| Chat | IceChat |
-| Chat | Refinitiv Eikon |
+| Chat | [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}) |
+| Chat | [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %}) |
+| Chat | [Refinitiv Eikon Chat and FXT]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %}) |
+| Chat | [Mattermost Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/refinitiv_eikon_chat_and_fxt_via_collect.md %}) |
 | Chat | Symphony |
 | Chat | Skype for Business |
-| Chat | Microsoft Teams |
+| Chat | [Microsoft Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/microsoft_office_365_teams_chat_via_collect.md %}) |
 | Chat | Zoom Chat |
 | Chat | FXConnect |
-| Chat | WebEx Teams |
+| Chat | [Cisco WebEx Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %}) |
 | Chat | ServiceNow |
 | Chat | Google Chat |
 | Chat | Salesforce Chatter |
-| Chat | Slack |
+| Chat | [Slack Enterprise Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/slack_enterprise_via_collect.md %}) |
 | Chat | Microsoft Yammer |
 | Chat | Facebook Workplace |
 
@@ -62,10 +63,10 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
-| Voice | Microsoft Teams |
-| Voice | Zoom |
-| Voice | Symphony |
-| Voice | WebEx Teams |
+| Voice | Microsoft Teams Audio |
+| Voice | Zoom Audio |
+| Voice | Symphony Audio |
+| Voice | WebEx Teams Audio |
 | Voice | Vodafone |
 | Voice | Avaya |
 | Voice | Cloud 9 |
@@ -73,7 +74,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Voice | Mitel |
 | Voice | Liquid Voice |
 | Voice | O2 |
-| Voice | Skype for Business |
+| Voice | Skype for Business Audio |
 
 ### Mobile Data Sources
 
@@ -102,7 +103,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Type | Data Source      |
 |:----:|:------------------:|
 | Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |
-| Archive | Enterprise Vault |
+| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |
 | Archive | MimeCast |
 | Archive | Smarsh |
 | Archive | Google Vault |
