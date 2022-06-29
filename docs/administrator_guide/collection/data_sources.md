@@ -25,7 +25,7 @@ A Data Source allows you to define where and how you are pulling data from a com
 This list covers the most common Data Sources. To better understand the holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
 
 Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data sources please contact [support@relativity.com](mailto:support@relativity.com).
-{ :info }
+{: .info }
 
 ### Email Data Sources
 
