@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Proofpoint
+title: Proofpoint Archive
 nav_exclude: true
 ---
 
-# Proofpoint
+# Proofpoint Archive
 {: .no_toc }
 
 Data can be collected from the Proofpoint Archive via existing connectors.
