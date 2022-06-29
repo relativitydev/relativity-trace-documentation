@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Monitored Individual Automated Sync from Microsoft Azure Active Directory
+title: Microsoft Azure Active Directory
 nav_exclude: true
 ---
 
-# Monitored Individual Automated Sync from Microsoft Azure Active Directory
+# Microsoft Azure Active Directory
 {: .no_toc }
 
 Sync Monitored Individuals with Microsoft Azure Active Directory.
