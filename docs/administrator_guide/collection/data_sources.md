@@ -101,7 +101,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 | Type | Data Source      |
 |:----:|:------------------:|
-| Archive | Proofpoint |
+| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |
 | Archive | Enterprise Vault |
 | Archive | MimeCast |
 | Archive | Smarsh |
