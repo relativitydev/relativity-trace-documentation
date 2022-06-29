@@ -31,7 +31,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 | Type  | Data Source      |
 |:-------:|:------------------:|
-| Email | [Office365 Email and Calendar]({{ site.baseurl }}{% link docs\administrator_guide\collection\all_data_sources\email_data_sources\Office_365_email_and_calendar_via Collect.md %}) |
+| Email | [Office365 Email and Calendar]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/Office_365_email_and_calendar_via_Collect.md %}) |
 | Email | Google Workspace |
 | Email | Bloomberg        |
 | Email | Microsoft Exchange |
