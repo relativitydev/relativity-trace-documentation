@@ -30,7 +30,7 @@ Both the media file and the metadata file **must** have the exact same name to e
 {: .warn }
 
 
-### JSON Metadata File Format
+### Metadata File Format
 
 #### JSON Template
 ```json
@@ -62,7 +62,48 @@ Both the media file and the metadata file **must** have the exact same name to e
 }
 ```
 
-#### JSON Recording Section Details
+All non-required tags in the JSON will be added to the `Other Metadata` field and will not be mapped to fields.
+{: .info }
+
+
+#### XML Template
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<CAudioFile xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <Recording>
+    <id>10000022203</id>
+    <created>2021-07-13T16:12:53.811012</created>
+    <md5>a73cb85a77a2faddf9a10e538192609b</md5>
+    <mediaType>MPEG-1 Audio Layer 3</mediaType>
+    <fileExtension>mp3</fileExtension>
+  </Recording>
+  <Metadata>
+    <end>2021-07-13T16:12:53.811012</end>
+    <start>2021-07-13T16:14:59.811012</start>
+    <duration>120000</duration>
+    <direction>in</direction>
+    <channels>
+      <channel>
+        <id>0</id>
+        <userID>John.Doe@domain.com</userID>
+        <userName>John Doe</userName>
+        <deviceID>+48223416489</deviceID>
+        <deviceName>JDOEDESK6489</deviceName>
+        <joined></joined>
+        <left></left>
+      </channel>  
+    </channels>
+  </Metadata>
+</CAudioFile>
+```
+
+All non-required tags in the XML will be added to the `Other Metadata` field and will not be mapped to fields.
+{: .info }
+
+
+#### Recording Section Details
 
 | Name  | Required      | Parent | Description |
 |:-------:|:------------------:|:-------:|:------------------:|
@@ -73,11 +114,11 @@ Both the media file and the metadata file **must** have the exact same name to e
 | fileExtension |  Required | NA | A file extension for the media file. |
 
 
-#### JSON Metadata Section Details
+#### Metadata Section Details
 
 | Name  | Required      | Parent | Description |
 |:-------:|:------------------:|:-------:|:------------------:|
-| end |  Required | NA | ISO 8601 format datetime string representing the point in time when the call terminated. If this information is not available then a filesystem timestamp of the recording file can be substituted. |
+| end |  Optional | NA | ISO 8601 format datetime string representing the point in time when the call terminated. If this information is not available then a filesystem timestamp of the recording file can be substituted. |
 | start |  Optional | NA | ISO 8601 format datetime string representing the point in time when the call started. If not populated a start will be calculated using the end and duration. |
 | duration |  Optional | NA | Number representing total milliseconds of the call. No fractional values should be provided. If not populated a duration will be calculated from the media file. |
 | direction |  Optional | NA | String "in" or "out" representing the direction of the call as observed by the recorder. No other values are permitted. |
@@ -89,49 +130,3 @@ Both the media file and the metadata file **must** have the exact same name to e
 | deviceName |  Optional | channels | A human-readable display name for the participant. |
 | joined |  Optional | channels | ISO 8601 format datetime string representing the point in time when the participant joined the call. |
 | left |  Optional | channels | ISO 8601 format datetime string representing the point in time when the participant joined the call. |
-
-
-### XML Generic Audio Format
-
-#### XML Template
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<CAudioFile xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <CRI>
-    <LocalStartTime>2017-10-17T11:04:00.4000000-0400</LocalStartTime>
-    <LocalEndTime>2017-10-17T11:04:53.4000000-0400</LocalEndTime>
-    <AgentPBXID>John.Doe@domain.com</AgentPBXID>
-    <Extension>+48223416489</Extension>
-    <Duration>53000</Duration>
-    <Direction>in</Direction>
-    <DataSourceName>ABC Call Recorder Data Center</DataSourceName>
-  </CRI>
-  <Agent>
-    <Name>John Doe</Name>
-  </Agent>
-</CAudioFile>
-```
-
-#### XML CRI Section Details
-
-| Name  | Required      | Parent | Description |
-|:-------:|:------------------:|:-------:|:------------------:|
-| LocalStartTime |  Required | CRI | YYYY-MM-DDTHH:mm:ss.ms+TimeZoneOffset format (e.g 2017-10-17T11:04:00.4000000-0400) datetime string representing the point in time when the call started. If not populated a start will be calculated using the end and duration. |
-| LocalEndTime |  Required | CRI | YYYY-MM-DDTHH:mm:ss.ms+TimeZoneOffset format (e.g 2017-10-17T11:04:00.4000000-0400)datetime string representing the point in time when the call terminated. If this information is not available then a filesystem timestamp of the recording file can be substituted. |
-| AgentPBXID |  Required | CRI | String containing a globally unique identifier for the call participant. This will be used to match the participant across all recordings. |
-| Extension |  Required | CRI | String containing a globally unique identifier for the device. This will be used to match the device across all recordings. |
-| Duration |  Optional | CRI | Number representing total milliseconds of the call. No fractional values should be provided. If not populated a duration will be calculated from the media file. |
-| Direction |  Optional | CRI | String "in" or "out" representing the direction of the call as observed by the recorder. No other values are permitted. |
-| Channel |  Optional | CRI | help |
-| DataSourceName |  Optional | CRI | A human-readable display name for the origin data source that the media was retrieved from. |
-
-#### XML Agent Section Details
-
-| Name  | Required      | Parent | Description |
-|:-------:|:------------------:|:-------:|:------------------:|
-| Name |  Required | Agent | A human-readable display name for the participant. |
-
-All non-required tags in the XML will be added to the `Other Metadata` field and will not be mapped to fields.
-{: .info }
