@@ -1,0 +1,126 @@
+---
+layout: default
+title: Generic Audio Data
+nav_exclude: true
+---
+
+# Generic Audio Data
+{: .no_toc }
+
+Audio data from any source can be processed, transcribed, and ingested if it is provided in one of our standard supported formats and structures.
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+## Overview
+Although audio data can be retrieved directly from the most common audio data channels through our standard audio data sources, we understand that some users either do not want Trace to connect directly to these sources or are using unique call recording capabilities that do not support direct connect. For these cases, data can still be processed, transcribed, and ingested as long as it's provided to Trace in one of our standard supported formats and structures.
+
+
+### Supported Formats and Structures
+Two formats are currently supported for generic audio data. There is a JSON format and an XML format.
+
+### JSON Generic Audio Format
+
+#### JSON Template
+```json
+{
+    "Recording": {
+        "id": "10000022203",       
+        "created": "2021-07-13T16:12:53.811012",
+        "md5": "a73cb85a77a2faddf9a10e538192609b",
+        "mediaType": "",
+        "fileExtenstion": "mp3"
+    },
+    "Metadata": {
+        "end": "2021-07-13T16:12:53.811012",
+        "start": "",
+        "duration": "",
+        "direction": "in",
+        "channels": [
+            {
+                "id": 0,
+                "userID": "John.Doe@relativity.com",
+                "userName": "John Doe",
+                "deviceID": "+48223416489",
+                "deviceName": "",
+                "joined": "",
+                "left": ""
+            },
+            {
+                "id": 1,
+                "userID": "",
+                "userName": "",
+                "deviceID": "+49123456789",
+                "deviceName": "",
+                "joined": "",
+                "left": ""
+            }
+        ]
+    }
+}
+```
+
+#### JSON Metadata Details
+
+| Name  | Required      | Parent | Description |
+|:-------:|:------------------:|:-------:|:------------------:|
+| No |  Yes | No | Yes |
+
+
+
+### XML Generic Audio Format
+
+#### XML Template
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<CAudioFile xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CRI>
+    <StartTime>2017-10-17T15:04:00.4000000+0000</StartTime>
+    <Duration>53</Duration>
+    <ANI>ResourceAOR1140030001</ANI>
+    <DNIS>1140030001</DNIS>
+    <Direction>2</Direction>
+    <AgentPBXID></AgentPBXID>
+    <AgentID>0</AgentID>
+    <PrivateData>
+      <PrivateData>
+        <DictionaryEntry>
+          <Key>CD16</Key>
+          <Value>471</Value>
+        </DictionaryEntry>
+      </PrivateData>
+    </PrivateData>
+    <Channel>2471</Channel>
+    <Unit>1000</Unit>
+    <ScreenUnit>0</ScreenUnit>
+    <LocalStartTime123>2017-10-17T11:04:00.4000000-0400</LocalStartTime123>
+    <LocalEndTime>2017-10-17T11:04:53.4000000-0400</LocalEndTime>
+    <ContactID>9144605059860000008</ContactID>
+    <DataSourceName>Unigy Data Center</DataSourceName>
+    <DeviceId123>1234</DeviceId123>
+  </CRI>
+  <Agent>
+    <GroupsList />
+    <Name123>Ipc Test XML</Name123>
+  </Agent>
+  <File>
+    <Location>http://localhost/WSAAudio/Job1;1_20220322_164632/WAV/471.wav</Location>
+    <RawLocation>G:\Impact360\Calls\ExtractionEngine\repositories\output\Job1;1_20220322_164632\WAV\471.wav</RawLocation>
+    <RawLocationType>File</RawLocationType>
+  </File>
+  <Instances>
+    <CInstance>
+      <Id>1</Id>
+      <Name>CI-Analytics Instance 1</Name>
+    </CInstance>
+  </Instances>
+  <XmlVersion>10.0.0.0</XmlVersion>
+</CAudioFile>
+```
+
+#### XML Metadata Details
