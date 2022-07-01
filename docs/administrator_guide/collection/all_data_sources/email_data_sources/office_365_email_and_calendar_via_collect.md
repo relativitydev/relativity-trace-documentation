@@ -35,11 +35,14 @@ We support Microsoft 365 Enterprise 3 and above.
 Note the following considerations about this data source:
 
 ### Mailbox Collection
-- The connector supports accessing active and licensed mailboxes. It does not support accessing inactive and archived mailboxes. 
-  - Archived collection will be included in a future release. 
+- The connector only supports accessing active mailboxes.
+- The connector does **NOT** support collection from Archive mailboxes
 - You can collect from unlicensed custodians, but the mailbox must still be active in the case where the user is unlicensed.
 - Guest mailboxes can only be collected if they are active & licensed.
 - Shared mailboxes can only be captured if they are active.
+
+The Microsoft Office O365 Archive data source should always be enabled alongside the Microsoft Office 365 Email and Calendar data source to ensure holistic collection is performed. Without Microsoft Office O365 Archive data source enabled you may miss data that is quickly archived either by a rule or manual action.
+{: warn.}
 
 ### Email Collection
 - The connector collects all items in visible folders within Outlook’s inbox and custom folders. 
@@ -117,7 +120,10 @@ You must have the following information to complete the data transfer.
 
 ### Authentication
 
-Before configuring the data source complete the following authentication steps. We strongly recommend registering a separate Azure Application for each Data Source.
+Before configuring the data source complete the following authentication steps. 
+
+We strongly recommend registering a separate Azure Application for each Data Source.
+{: .info }
 
 To register your app:
 1. Open your [Azure Portal](https://portal.azure.com/). 
