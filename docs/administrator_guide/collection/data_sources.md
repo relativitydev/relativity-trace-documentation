@@ -75,6 +75,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Voice | Liquid Voice |
 | Voice | O2 |
 | Voice | Skype for Business Audio |
+| Voice | Generic Audio Data |
 
 ### Mobile Data Sources
 
