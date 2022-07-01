@@ -103,7 +103,7 @@ All non-required tags in the XML will be added to the `Other Metadata` field and
 {: .info }
 
 
-#### Recording Section Details
+#### "Recording" Section Details
 
 | Name  | Required      | Parent | Description |
 |:-------:|:------------------:|:-------:|:------------------:|
@@ -114,7 +114,7 @@ All non-required tags in the XML will be added to the `Other Metadata` field and
 | fileExtension |  Required | NA | A file extension for the media file. |
 
 
-#### Metadata Section Details
+#### "Metadata" Section Details
 
 | Name  | Required      | Parent | Description |
 |:-------:|:------------------:|:-------:|:------------------:|
