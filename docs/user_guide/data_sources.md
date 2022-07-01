@@ -24,7 +24,7 @@ Data Sources are configured by a Relativity Trace Administrator. They are config
 ## Data Sources List
 This list covers the most common Data Sources. To better understand holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
 
-![Data Source List](media/6.28.2022_datasourcelist.png.PNG)
+![Data Source List](media/6.28.2022_datasourcelist.png)
 
 Some Data Sources are supported through partners.
 {: .info}
