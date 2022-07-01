@@ -7,7 +7,7 @@ nav_exclude: true
 # Generic Audio Data Source
 {: .no_toc }
 
-Audio data from any source can be processed, transcribed, and ingested if it is provided in one of our standard supported formats and structures.
+Audio data from any source can be processed, transcribed, and ingested if provided in one of our standard supported formats and structures.
 {: .fs-6 .fw-300 }
 
 1. TOC
