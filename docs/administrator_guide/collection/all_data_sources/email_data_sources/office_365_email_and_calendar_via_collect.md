@@ -42,7 +42,7 @@ Note the following considerations about this data source:
 - Shared mailboxes can only be captured if they are active.
 
 The Microsoft Office O365 Archive data source should always be enabled alongside the Microsoft Office 365 Email and Calendar data source to ensure holistic collection is performed. Without Microsoft Office O365 Archive data source enabled you may miss data that is quickly archived either by a rule or manual action.
-{: warn.}
+{: .warn}
 
 ### Email Collection
 - The connector collects all items in visible folders within Outlook’s inbox and custom folders. 
