@@ -67,7 +67,13 @@ Two formats are currently supported for generic audio data. There is a JSON form
 
 | Name  | Required      | Parent | Description |
 |:-------:|:------------------:|:-------:|:------------------:|
-| No |  Yes | No | Yes |
+| end |  Required | NA | ISO 8601 format datetime string representing the point in time when the call terminated. If this information is not available then a filesystem timestamp of the recording file can be substituted. |
+| start |  Optional | NA | Yes |
+| duration |  Optional | NA | Yes |
+| direction |  Optional | NA | Yes |
+| channels |  Optional | NA | Yes |
+
+
 
 
 
