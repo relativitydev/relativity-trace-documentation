@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Microsoft Office 365 Email and Calendar
+title: Microsoft O365 Email and Calendar
 nav_exclude: true
 ---
 
-# Microsoft Office 365 Email and Calendar
+# Microsoft O365 Email and Calendar
 {: .no_toc }
 
 This topic provides details on how to capture Microsoft Office 365 Email and Calendar messages via Collect.
@@ -41,8 +41,8 @@ Note the following considerations about this data source:
 - Guest mailboxes can only be collected if they are active & licensed.
 - Shared mailboxes can only be captured if they are active.
 
-The Microsoft Office O365 Archive data source should always be enabled alongside the Microsoft Office 365 Email and Calendar data source to ensure holistic collection is performed. Without Microsoft Office O365 Archive data source enabled you may miss data that is quickly archived either by a rule or manual action.
-{: warn.}
+The Microsoft O365 Archive data source should always be enabled alongside the Microsoft O365 Email and Calendar data source to ensure holistic collection is performed. Without Microsoft O365 Archive data source enabled you may miss data that is quickly archived either by a rule or manual action.
+{: .warn}
 
 ### Email Collection
 - The connector collects all items in visible folders within Outlook’s inbox and custom folders. 
