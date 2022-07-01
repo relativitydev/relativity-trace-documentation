@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Generic Audio Data
+title: Generic Audio Data Source
 nav_exclude: true
 ---
 
-# Generic Audio Data
+# Generic Audio Data Source
 {: .no_toc }
 
 Audio data from any source can be processed, transcribed, and ingested if it is provided in one of our standard supported formats and structures.
@@ -109,47 +109,38 @@ Both the media file and the metadata file **must** have the exact same name to e
 <CAudioFile xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CRI>
-    <StartTime>2017-10-17T15:04:00.4000000+0000</StartTime>
-    <Duration>53</Duration>
-    <ANI>ResourceAOR1140030001</ANI>
-    <DNIS>1140030001</DNIS>
-    <Direction>2</Direction>
-    <AgentPBXID></AgentPBXID>
-    <AgentID>0</AgentID>
-    <PrivateData>
-      <PrivateData>
-        <DictionaryEntry>
-          <Key>CD16</Key>
-          <Value>471</Value>
-        </DictionaryEntry>
-      </PrivateData>
-    </PrivateData>
-    <Channel>2471</Channel>
-    <Unit>1000</Unit>
-    <ScreenUnit>0</ScreenUnit>
-    <LocalStartTime123>2017-10-17T11:04:00.4000000-0400</LocalStartTime123>
+    <LocalStartTime>2017-10-17T11:04:00.4000000-0400</LocalStartTime>
     <LocalEndTime>2017-10-17T11:04:53.4000000-0400</LocalEndTime>
-    <ContactID>9144605059860000008</ContactID>
+    <AgentPBXID></AgentPBXID>
+    <Extension></Extension>
+    <Duration>12342</Duration>
+    <Direction>in</Direction>
     <DataSourceName>Unigy Data Center</DataSourceName>
-    <DeviceId123>1234</DeviceId123>
   </CRI>
   <Agent>
-    <GroupsList />
-    <Name123>Ipc Test XML</Name123>
+    <Name>Ipc Test XML</Name>
   </Agent>
-  <File>
-    <Location>http://localhost/WSAAudio/Job1;1_20220322_164632/WAV/471.wav</Location>
-    <RawLocation>G:\Impact360\Calls\ExtractionEngine\repositories\output\Job1;1_20220322_164632\WAV\471.wav</RawLocation>
-    <RawLocationType>File</RawLocationType>
-  </File>
-  <Instances>
-    <CInstance>
-      <Id>1</Id>
-      <Name>CI-Analytics Instance 1</Name>
-    </CInstance>
-  </Instances>
-  <XmlVersion>10.0.0.0</XmlVersion>
 </CAudioFile>
 ```
 
-#### XML Metadata Details
+#### XML CRI Section Details
+
+| Name  | Required      | Parent | Description |
+|:-------:|:------------------:|:-------:|:------------------:|
+| LocalStartTime |  Required | CRI | YYYY-MM-DDTHH:mm:ss.ms+TimeZoneOffset format (e.g 2017-10-17T11:04:00.4000000-0400) datetime string representing the point in time when the call started. If not populated a start will be calculated using the end and duration. |
+| LocalEndTime |  Required | CRI | YYYY-MM-DDTHH:mm:ss.ms+TimeZoneOffset format (e.g 2017-10-17T11:04:00.4000000-0400)datetime string representing the point in time when the call terminated. If this information is not available then a filesystem timestamp of the recording file can be substituted. |
+| AgentPBXID |  Required | CRI | String containing a globally unique identifier for the call participant. This will be used to match the participant across all recordings. |
+| Extension |  Required | CRI | String containing a globally unique identifier for the device. This will be used to match the device across all recordings. |
+| Duration |  Optional | CRI | Number representing total milliseconds of the call. No fractional values should be provided. If not populated a duration will be calculated from the media file. |
+| Direction |  Optional | CRI | String "in" or "out" representing the direction of the call as observed by the recorder. No other values are permitted. |
+| Channel |  Optional | CRI | help |
+| DataSourceName |  Optional | CRI | A human-readable display name for the origin data source that the media was retrieved from. |
+
+#### XML Agent Section Details
+
+| Name  | Required      | Parent | Description |
+|:-------:|:------------------:|:-------:|:------------------:|
+| Name |  Required | Agent | A human-readable display name for the participant. |
+
+All non-required tags in the XML will be added to the `Other Metadata` field and will not be mapped to fields.
+{: .info }
