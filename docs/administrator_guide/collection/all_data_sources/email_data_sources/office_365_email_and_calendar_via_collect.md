@@ -120,7 +120,10 @@ You must have the following information to complete the data transfer.
 
 ### Authentication
 
-Before configuring the data source complete the following authentication steps. We strongly recommend registering a separate Azure Application for each Data Source.
+Before configuring the data source complete the following authentication steps. 
+
+We strongly recommend registering a separate Azure Application for each Data Source.
+{: .info }
 
 To register your app:
 1. Open your [Azure Portal](https://portal.azure.com/). 
