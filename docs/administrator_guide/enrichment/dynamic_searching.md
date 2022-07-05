@@ -8,7 +8,7 @@ nav_order: 6
 # Dynamic Searching
 {: .no_toc }
 
-Dynamic Searching is a feature, which allows user to perform search for different objects that Trace Terms. 
+Dynamic Searching is a feature, which allows user to perform search for different objects than Trace Terms. 
 
 1. TOC
 {:toc}
@@ -51,5 +51,5 @@ Dynamic Searching can be configured in `Data Transformation` task using `Dynamic
 
 ## Dynamic Searching Execution
 
-After saving 
+After saving dynamic search configuration
 
