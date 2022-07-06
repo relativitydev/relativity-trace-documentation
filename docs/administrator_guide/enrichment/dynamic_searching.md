@@ -64,4 +64,13 @@ After saving `Dynamic Searching Object Types Json` a new configuration is create
 
     ![](media/dynamic_searching/DynamicSearching_DataMapping.PNG)
 
+When new documents are ingested into the system and data transformations are executed on documents' data batch, documents are tagged with objects set up in `Dynamic Searching Object Types Json` setting.
+
+![](media/dynamic_searching/DynamicSearching_DocumentView.PNG)
+![](media/dynamic_searching/DynamicSearching_HighlightedDocument.PNG)
+
+## Dynamic Searching Limitations
+1) Objects of object type set up in `Dynamic Searching Object Types Json` cannot contain semicolon (`;`) in identifier field.
+2) `Insight.Shared.Toggles.RunTraceDynamicSearchTransformation` toggle must be set to true in order for Dynamic Search to be performed.
+
 
