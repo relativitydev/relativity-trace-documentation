@@ -17,7 +17,7 @@ Dynamic Searching is a feature, which allows user to perform search for differen
 ## Dynamic Searching Configuration
 Dynamic Searching can be configured in `Data Transformation` task using `Dynamic Searching Object Types Json` setting. In this setting user can set up a list of object types and object types' fields for which searching should be performed. 
 
-![](media/dynamic_searching/DynamicSearchingConfigurationSetup.PNG)
+  ![](media/dynamic_searching/DynamicSearchingConfigurationSetup.PNG)
 
 ### Dynamic Search Configuration Parameters
 
@@ -51,5 +51,17 @@ Dynamic Searching can be configured in `Data Transformation` task using `Dynamic
 
 ## Dynamic Searching Execution
 
-After saving dynamic search configuration
+After saving `Dynamic Searching Object Types Json` a new configuration is created automatically for every object type + field pair added to json.
+1) New multiple object field called `ObjectTypeName` + `FieldName` is created on `Document` object type. This field joins `Document` and particular `Object Type`.
+
+    ![](media/dynamic_searching/DynamicSearching_MultipleObjectDocumentField.PNG)
+
+2) New `Persistent Highlight Set` is created and it is set to highlight values from multiple object document field created in previous step.
+
+    ![](media/dynamic_searching/DynamicSearching_PersistentHighlightSet.PNG)
+
+3) New `Data Mapping` is created for multiple object document field created in first step. This data mapping is also added to each `Ingestion Profile` set up for `Document` object type.
+
+    ![](media/dynamic_searching/DynamicSearching_DataMapping.PNG)
+
 
