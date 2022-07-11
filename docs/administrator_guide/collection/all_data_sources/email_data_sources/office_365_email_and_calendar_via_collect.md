@@ -99,7 +99,7 @@ You must have the following in order to complete the setup instructions for this
 
 You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
 
-For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/general_data_source_information/using_relativity_collect.md %}).
+For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}).
 
 #### Company specific prerequisites
 
