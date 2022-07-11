@@ -188,7 +188,7 @@ Prior to creating the Data Source, install the Collect application and configure
 
 #### Data source
 
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
 
 O365 Mail and Calendar specific parameters: 
 
