@@ -23,6 +23,34 @@ For data sources such as Bloomberg, ICE Chat, and Eikon Messenger, before you ca
 - For every instance you need to whitelist a unique IP. 
 - For multiple SFTP data sources within a single instance you need to whitelist same IP. 
 - You need to whitelist IP with every Data Source provider using SFTP, with a separate request to Bloomberg and a separate request to ICE.
+- For Collect to connect to other vendors who provide data to their clients on SFTP sites, such as Bloomberg, ICE Chat, and Eikon, the vendors must whitelist our connection request. 
+- Take the Outbound IP address from the list below that corresponds to the region that your R1 instance is located in and have your IT contacts for the other vendor (BBG, ICE, Eikon) reach out to that vendor with the following request:
+  - “We are setting up a connection with Relativity to automatically ingest our data from you into Relativity. Please whitelist this IP address so that Relativity is able to connect to our SFTP site and collect data on our behalf. IP: value here”
+
+- The client’s IT department needs to request this of each other vendor, so if you're using Bloomberg, ICE Chat, and Eikon, that is a separate request to each vendor (respectively).
+- If you have more than 1 R1 instance in different regions that will be connecting to other vendor sites, you will need to whitelist the IP address(es) for the other regions as well.
+
+| Region               | Outbound IP address |
+| -------------------- | ------------------- |
+| Australia East       | 20.53.89.176/28     |
+| Brazil South         | 20.201.55.192/28    |
+| Canada Central       | 52.237.59.0/28      |
+| Central India        | 20.204.224.224/28   |
+| Central US           | 20.109.248.176/28   |
+| East Asia            | 168.63.211.176/2    |
+| East US              | 52.226.235.64/28    |
+| Germany West Central | 20.113.19.176/28    |
+| Japan East           | 20.210.49.80/28     |
+| Korea Central        | 20.196.233.192/28   |
+| North Europe         | 20.54.28.144/28     |
+| South Africa North   | 20.87.37.80/28      |
+| Southeast Asia       | 104.43.75.192/28    |
+| Switzerland North    | 20.203.175.64/28    |
+| UAE North            | 20.203.42.80/28     |
+| UK South             | 20.108.135.0/28     |
+| West Europe          | 20.50.242.80/28     |
+
+
 
 ## Current known IPs
 
