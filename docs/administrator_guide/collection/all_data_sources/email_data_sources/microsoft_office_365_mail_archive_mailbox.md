@@ -70,6 +70,9 @@ The following table lists activities captured by this data source:
 | Meeting Requests   |       |
 | Meeting Cancellations   |      |
 | Calendar Events (vCalendar)   |     |
+| Deleted items               | Users must set their Deleted items retention to at least 14 days (MSFT default).  If this is not set, Trace cannot collect data that has been triple deleted by user. |
+| Permanently deleted items   |                                                              |
+| Distribution list emails    | A copy of any email sent to a distribution list is captured from each mailbox that is on the distribution list. A distribution list itself is not a mailbox. |
 
 
 ### Activities not captured
@@ -78,6 +81,7 @@ The following table lists activities not captured by this data source:
 
 | Activity not captured            | Notes                                                        |
 | -------------------------------- | ------------------------------------------------------------ |
+| Distribution lists               | A distribution list itself is not a mailbox.                 |
 
 ## Setup instructions
 
@@ -91,7 +95,7 @@ You must have the following in order to complete the setup instructions for this
 
 You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
 
-For details on installing Collect, see [Collect]().
+For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}).
 
 #### Company specific prerequisites
 

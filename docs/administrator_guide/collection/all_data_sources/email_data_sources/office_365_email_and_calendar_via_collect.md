@@ -41,7 +41,7 @@ Note the following considerations about this data source:
 - Guest mailboxes can only be collected if they are active & licensed.
 - Shared mailboxes can only be captured if they are active.
 
-The [Microsoft O365 Mail Archive Mailbox data source]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %})should always be enabled alongside the Microsoft O365 Email and Calendar data source to ensure holistic collection is performed. Without Microsoft O365 Mail Archive Mailbox data source enabled you may miss data that is quickly archived either by a rule or manual action.
+The [Microsoft O365 Mail Archive Mailbox data source]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %}) should always be enabled alongside the Microsoft O365 Email and Calendar data source to ensure holistic collection is performed. Without Microsoft O365 Mail Archive Mailbox data source enabled you may miss data that is quickly archived either by a rule or manual action.
 {: .warn}
 
 ### Email Collection
