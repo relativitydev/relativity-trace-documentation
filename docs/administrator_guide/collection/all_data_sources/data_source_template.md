@@ -132,55 +132,11 @@ You will need the following information to complete setup of the data source fro
 The following sections provide the steps for installing Collect and configuring the data source.
 
 #### Collect
-
-Before configuring the required instance settings and the data source, install the Collect RAP from the Application Library in Relativity via the following steps.
-
- ![](media/Office_365_email_and_calendar_via%20Collect/InstallCollectApp.png)
-
-1. Navigate to the workspace where you want to install the application.
-2. Navigate to the **Application Admin** tab.
-3. Click **New Relativity Application** to display an application form.
-4. Click the **Select from Application Library** radio button in the Application Type section.
-5. Click the ellipses in the **Choose from Application Library** field.
-6. Select **Collect** on the Select Library Application dialog. This dialog only displays applications added to the Application Library. 
-7. Click Ok to display the application in the Choose from Application Library field.
-8. Click **Import** to install Collect into the workspace.
-9. Review the import status of the application. Verify that the install was successful or resolve errors.
-
-##### Instance settings
-
-Configure the following instance settings: 
-
-- Configure Collect Queue Depth: 
-
-- **Name**: MaxNumberOfRunningStandaloneCollections 
-- **Section**: Relativity.Collection 
-- **Value Type**: Integer 32-bit 
-- **Value**: 10 
-
- ![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting1.png)
-
-Configure Data Batch Automatic Retry Policy: 
-
-- **Name**: TraceWorkspaceSetting 
-- **Section**: Trace.Workspace 
-- **Value Type**: Text 
-- **Value**: “DataBatchRetryIntervals”:[10,30,60] 
-
- ![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting2.png)
-
-Toggle On/Off Auto Batch Split functionality: 
-
-- **Name**: EnableCollectDataBatchSplit. 
-- **Section**: Trace.Workspace. 
-- **Value Type**: True/False. 
-- **Value**: False (auto split disabled) or True (auto split enabled). 
-
-![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting3.png)
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
 
 #### Data source
 
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [Common Collect Data Source Functionality](https://usc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=en-US&rs=en-US&wopisrc=https%3A%2F%2Fkcura-my.sharepoint.com%2Fpersonal%2Fdavid_bachmann_relativity_com%2F_vti_bin%2Fwopi.ashx%2Ffiles%2F8077c5fa29d1469ea6506ce3df735cdd&wdenableroaming=1&mscc=1&wdodb=1&hid=8AFF3CA0-908D-1000-AACB-EFC268F94A9E&wdorigin=ItemsView&wdhostclicktime=1652451692337&jsapi=1&jsapiver=v1&newsession=1&corrid=29e99580-431c-435c-8525-71c6894c27b1&usid=29e99580-431c-435c-8525-71c6894c27b1&sftc=1&cac=1&mtf=1&sfp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#_Common_Collect_Data) section. 
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
 
 O365 Mail and Calendar specific parameters: 
 
@@ -192,8 +148,8 @@ General section:
 
 Credentials section: 
 
-1. **Application Secret:** The Client Secret provided by the client (see [Authentication (Set up Azure Application)](https://usc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=en-US&rs=en-US&wopisrc=https%3A%2F%2Fkcura-my.sharepoint.com%2Fpersonal%2Fdavid_bachmann_relativity_com%2F_vti_bin%2Fwopi.ashx%2Ffiles%2F8077c5fa29d1469ea6506ce3df735cdd&wdenableroaming=1&mscc=1&wdodb=1&hid=8AFF3CA0-908D-1000-AACB-EFC268F94A9E&wdorigin=ItemsView&wdhostclicktime=1652451692337&jsapi=1&jsapiver=v1&newsession=1&corrid=29e99580-431c-435c-8525-71c6894c27b1&usid=29e99580-431c-435c-8525-71c6894c27b1&sftc=1&cac=1&mtf=1&sfp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#Step) for more details). 
-2. Data Source Specific Fields section (see also [Common Collect Data Source Functionality](https://usc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=en-US&rs=en-US&wopisrc=https%3A%2F%2Fkcura-my.sharepoint.com%2Fpersonal%2Fdavid_bachmann_relativity_com%2F_vti_bin%2Fwopi.ashx%2Ffiles%2F8077c5fa29d1469ea6506ce3df735cdd&wdenableroaming=1&mscc=1&wdodb=1&hid=8AFF3CA0-908D-1000-AACB-EFC268F94A9E&wdorigin=ItemsView&wdhostclicktime=1652451692337&jsapi=1&jsapiver=v1&newsession=1&corrid=29e99580-431c-435c-8525-71c6894c27b1&usid=29e99580-431c-435c-8525-71c6894c27b1&sftc=1&cac=1&mtf=1&sfp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#_Common_Collect_Data)): 
+1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
+2. Data Source Specific Fields section
    - **Collect Draft items**: True or False (default)**.** False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
    - **Domain**: The O365 domain name provided by the client. 
    - **Application Id**: Application / Client ID provided by the client. 
