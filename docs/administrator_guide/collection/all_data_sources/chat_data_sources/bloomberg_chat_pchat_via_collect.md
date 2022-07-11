@@ -59,14 +59,7 @@ There are two levels of filtering data, which are the same for Bloomberg Mail (v
 
 - **Data Batch -** Only messages with data for the date that matches Data Batch collection period will be captured. For example, a message that has been exported for 10/1/2021 will be captured by the Data Batch that has collection period from “10/1/2021 00:00” to “10/2/2021 00:00”.
 
- 
-
-## Configuring Collect
-
-Collect is used for data retrieval. Make sure Collect is installed in the workspace before configuring the data source. For detailed installation steps, see Installing Collect.
-
-## Configuring Bloomberg Chat and PChat Trace Data Source 
-
+ ## Authentication
 Obtain the following information about the Bloomberg SFTP server:
 
 - Host name and Port number
@@ -77,9 +70,18 @@ If Bloomberg messages are encrypted, then obtain the following information:
 - PGP Key (Private Key is required)
 - Passphrase (used to encrypt/decrypt PGP key)
 
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [Common Collect Data Source Functionality](#_Common_Collect_Data) section.
+ ## Setup in Trace
 
-Below are specific parameters for Bloomberg Chat and PChat:
+The following sections provide the steps for installing Collect and configuring the data source.
+
+### Collect
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
+
+### Data source
+
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
+
+Bloomberg specific parameters: 
 
 1. On the **General** tab, select **Bloomberg Chat** for the **Data Source Type**.
 
