@@ -17,13 +17,11 @@ The Relativity Collect application is required for all cloud-to-cloud data sourc
 
 ## Setup in Trace
 
-The following sections provide the steps for installing Collect and configuring the data source.
+The following sections provide the steps for installing Collect and configuring appropriate instance settings.
 
 ### Collect
 
 Before configuring the required instance settings and any data source, install the Collect RAP from the Application Library in Relativity via the following steps.
-
- ![](media/Office_365_email_and_calendar_via%20Collect/InstallCollectApp.png)
 
 1. Navigate to the workspace where you want to install the application.
 2. Navigate to the **Application Admin** tab.
@@ -46,8 +44,6 @@ Configure the following instance settings:
 - **Value Type**: Integer 32-bit 
 - **Value**: 10 
 
- ![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting1.png)
-
 Configure Data Batch Automatic Retry Policy: 
 
 - **Name**: TraceWorkspaceSetting 
@@ -55,13 +51,9 @@ Configure Data Batch Automatic Retry Policy:
 - **Value Type**: Text 
 - **Value**: “DataBatchRetryIntervals”:[10,30,60] 
 
- ![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting2.png)
-
 Toggle On/Off Auto Batch Split functionality: 
 
 - **Name**: EnableCollectDataBatchSplit. 
 - **Section**: Trace.Workspace. 
 - **Value Type**: True/False. 
 - **Value**: False (auto split disabled) or True (auto split enabled). 
-
-![](media/Office_365_email_and_calendar_via%20Collect/CollectInstanceSetting3.png)
