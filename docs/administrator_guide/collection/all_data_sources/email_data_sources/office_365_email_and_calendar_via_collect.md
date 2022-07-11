@@ -184,7 +184,7 @@ Limit the access of Relativity Collect to specific Microsoft user accounts and m
 The following sections provide the steps for installing Collect and configuring the data source.
 
 #### Collect
-Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/general_data_source_information/using_relativity_collect.md %}) page.
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
 
 #### Data source
 
