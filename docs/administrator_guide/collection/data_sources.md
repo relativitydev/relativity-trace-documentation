@@ -27,6 +27,13 @@ This list covers the most common Data Sources. To better understand the holistic
 Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data sources please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info }
 
+### Generic Data Sources
+
+| Type  | Data Source      |
+|:-------:|:------------------:|
+| Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) |
+
+
 ### Email Data Sources
 
 | Type  | Data Source      |
@@ -119,3 +126,6 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 Some Data Sources are supported through partners.
 {: .info}
+
+
+## Data Sources List
