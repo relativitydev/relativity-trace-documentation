@@ -21,7 +21,7 @@ The Zip Drop Data Source Type allows Relativity Trace to import of fully formed 
 
 **Configuration**
 
-![image-20200713143244403](media/data_sources/image-20200713143244403.png)
+![image-20200713143244403](media/image-20200713143244403.png)
 
 Configuration for the Zip Drop Data Source is pretty simple. There are no credentials or start date required. In fact, there are only a few things that need to be set up:
 
