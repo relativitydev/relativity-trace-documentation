@@ -209,29 +209,4 @@ Containers with many children documents (and nested containers) could produce si
 Relativity Native Data Extraction Data Source do not support [Deduplication](#deduplication-data-transformation). Deduplication transformations must be unlinked before the Data Source can be enabled.
 
 
-Discovery of Monitored Individuals
---------------------------------------------
 
-Some Data Sources combine data from several places into a single import flow. In that scenario, it may not be clear which Monitored Individual is the source of a given document and no Monitored Individual will be tagged. To address this issue, Trace has introduced the `Discover Monitored Individuals` option on every Data Source. If enabled, Trace will look inside of the document and tag Monitored Individuals defined on the Data Source if they are found in headers inside the document. Monitored Individuals are recognized by identifier and all secondary identifiers. 
-
-There is also the option to discover Monitored Individuals that are not linked to the Data Source with the setting `Include Monitored Individuals Not Linked To Data Source`. If `Discover Monitored Individuals` is false, this setting will take no action. If `Discover Monitored Individuals` is true and `Include Monitored Individuals Not Linked To Data Source` is false, this setting will take no action and it will only discover Monitored Individuals that are linked to that Data Source. If `Discover Monitored Individuals` is true and `Include Monitored Individuals Not Linked To Data Source` is true, it will use all of the Monitored Individuals in the workspace to tag documents.
-
-By default, Monitored Individual discovery ignores case in the domain portion of the email address but not the name portion. For example, John.DOE@URL.COM will match John.DOE@url.com, but not john.doe@url.com.
-{: .info }
-
-To ignore case in the entire email address during Monitored Individual discovery, use the `Discover Monitored Individuals Ignores Case` setting. For example, John.DOE@URL.COM  will match always John.DOE@url.com, but only match john.doe@url.com if Discover Monitored Individuals Ignores Case is set to true.
-{: .info }
-
-![](media\data_sources\updated_data_source_specific_fields.png)
-
-### Monitored Individual Discovery On Merge1 Data Sources
-
-Merge1's EWS Data Source only looks for Monitored Individuals in the `X-UserMailbox` header of an email. This header is provided by Merge1 and typically contains exactly one Monitored Individual.
-
-### Monitored Individual Discovery On Other Data Sources
-
-All other data sources discover Monitored Individuals based on the `FROM`, `TO`, `CC`, and `BCC` headers. Any Monitored Individual on the Data Source with an identifier (primary or secondary) contained in any of these headers will be associated with the document.
-
-### Supported File Formats
-
-Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on .eml, .msg, and .rsmf (Relativity Short Message Format) files. Any other file format is not currently supported.
