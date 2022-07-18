@@ -9,10 +9,10 @@ nav_exclude: true
 
 As Google Workspace is highly integrated platform having as a goal for the user to seamlessly use Mail, Chat and Drive (file storage and collaboration) from same interface - it can be seen as single Data Source. In Trace as we want to take advantage of our specific formats for separate source types (EML for Mails, RSMF for Chats) we are managing GSuite through three separate Data Sources: 
 
-- GMail (for mails) 
+- GMail (for emails)
 
-- GChat (for chat data) 
-- Google Drive (for file storage and collaboration) 
+- GChat (for chat data)
+- Google Drive (for file storage and collaboration)
 
 {: .fs-6 .fw-300 }
 
@@ -35,35 +35,14 @@ The following licenses are required to use this data source:
 
 Note the following considerations about this data source:
 
-### Mailbox Collection
-
-- The connector only supports accessing active mailboxes.
-- The connector does **NOT** support collection from Archive mailboxes
-- You can collect from unlicensed custodians, but the mailbox must still be active in the case where the user is unlicensed.
-- Guest mailboxes can only be collected if they are active & licensed.
-- Shared mailboxes can only be captured if they are active.
-
-The [Microsoft O365 Mail Archive Mailbox data source]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %}) should always be enabled alongside the Microsoft O365 Email and Calendar data source to ensure holistic collection is performed. Without Microsoft O365 Mail Archive Mailbox data source enabled you may miss data that is quickly archived either by a rule or manual action.
-{: .warn}
-
-### Email Collection
-
-- The connector collects all items in visible folders within Outlook’s inbox and custom folders. 
-- Deleted items can be collected. 
-- Deleted items from deleted folder (deleted and purged items) can be collected. Users must set their "Deleted items retention" to at least 14 days (Microsoft default). 
-- Hidden folders cannot be collected. 
-
-### Email Content
-
-- Formatted text is captured as plain text. 
-- Numbered rows are captured as a single line. 
-- Emojis are collected as plain text. 
+- The collection range ignores Hours, Minutes, Seconds (granularity on level of Day).
+- We are collecting with 24 offset (collecting data from day now-1).
 
 ### Data Filtering
 
 - There are two levels of filtering data: 
-  - Data Source - only data linked to a Data Source Monitored Individuals will be captured. 
-  - Data Batch - only messages which have “Date Received” within Data Batch collection period will be captured. 
+  - Data Source - data is being filtered according to specified Monitored Individuals. No filter is applied at message level. So, if MI exists in a channel, we will ingest the whole conversation for a given slice. If conversation does not have any Mis in participants for that day, we don’t ingest conversation at all. 
+  - Data Batch - only messages with data for the date that matches Data Batch collection period will be captured. For example, a message that has been exported for 10/1/2021 will be captured by the Data Batch that has collection period from “10/1/2021 00:00” to “10/2/2021 00:00”.
 
 ## Information captured 
 
@@ -71,26 +50,87 @@ This section lists what activities and, if applicable, metadata are captured whe
 
 ### Activities captured
 
-The following table lists activities captured by this data source:
+The following tables list activities captured by this data source:
 
-| Activity                    | Notes                                                        |
-| --------------------------- | ------------------------------------------------------------ |
-| Messages with attachments   | A participant is only captured if they wrote a message.      |
-| Meeting request             | A team meeting request is captured as a message placeholder. |
-| Meeting cancellations       |                                                              |
-| Calendar events (vCalendar) |                                                              |
-| Deleted items               | Users must set their Deleted items retention to at least 14 days (MSFT default).  If this is not set, Trace cannot collect data that has been triple deleted by user. |
-| Permanently deleted items   |                                                              |
-| Distribution list emails    | A copy of any email sent to a distribution list is captured from each mailbox that is on the distribution list. A distribution list itself is not a mailbox. |
+#### Gmail
+
+| Activity                  | Notes |
+| ------------------------- | ----- |
+| Messages with attachments |       |
+| Meeting request           |       |
+| Meeting cancellations     |       |
+
+#### GChat
+
+| Activity                     | Notes                                                    |
+| ---------------------------- | -------------------------------------------------------- |
+| One-on-one chat messages     |                                                          |
+| Group chat messages          |                                                          |
+| Space chat messages          |                                                          |
+| Space threaded chat messages |                                                          |
+| Attachments                  |                                                          |
+| Emojis                       | These are captured as text.                              |
+| Deletes                      | These include the deleted message and the event itself.  |
+| Edits                        | These include the message before and after it is edited. |
+| Message reactions            |                                                          |
+| Files delete event           |                                                          |
+| Video chat meeting           |                                                          |
+| Stickers                     |                                                          |
+| Images                       |                                                          |
+
+#### Google Drive
+
+| Activity                  | Notes                                                        |
+| ------------------------- | ------------------------------------------------------------ |
+| Files and file operations | These include the following actions: added, copied, deleted, downloaded, edited, moved, permanently deleted, renamed, restored, reverted, and rolled back. |
+| Comments                  | These include the following actions: added, deleted, and edited. |
+| Shared content            | These include the following actions: add invitees, add members, copy, view, and unshare. |
+| Shared folder             | These include the following actions: create, mount, and unmount. |
+| Shared link               | These include the following actions: create, copy, download, and view. |
 
 ### Activities not captured
 
-The following table lists activities not captured by this data source:
+The following tables list activities not captured by this data source:
 
-| Activity not captured            | Notes                                                        |
-| -------------------------------- | ------------------------------------------------------------ |
-| Participant removed from channel | A participant who leaves or is removed from a channel event is not captured. The participant is captured only if they wrote a message |
-| Distribution lists               | A distribution list itself is not a mailbox.                 |
+#### Gmail
+
+| Activity not captured                  | Notes                                                        |
+| -------------------------------------- | ------------------------------------------------------------ |
+| Chat conversation in Email data source | **Workaround:** Mapping in ingestion profile from metadata value “**Labels**:” which contains tags indicating origins of the message (including **^Chat**) |
+
+#### GChat
+
+| Activity not captured          | Notes                                      |
+| ------------------------------ | ------------------------------------------ |
+| Message reactions in RSMF      |                                            |
+| Video Calls in RSMF            |                                            |
+| Calendar Event details in RSMF | The only information is *“Event created”*. |
+
+Other notes:
+
+- You cannot collect if the MI list consists of even a single unlicensed / disabled account.
+- Attachments are duplicated after each edit/delete of the message containing attachment.
+
+#### Google Drive
+
+| Activity not captured                               | Notes |
+| --------------------------------------------------- | ----- |
+| Information about the event which caused collection |       |
+
+### Metadata captured
+
+In addition to standard metadata populated during extracting data, the GSuite Data Source captures the following:
+
+| Fields                                                       | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| “DATE” Start date of a chat or start date of a slice in the chat split into slices. |                                                              |
+| “SUBJECT” Friendly name of the team and channel.             |                                                              |
+| “FROM” The first person to send a message in that respective slice. |                                                              |
+| “TO” Chat attendees.                                         |                                                              |
+| “CONVERSATION-ID:” The unique identifier.                    | When creating a Data Mapping, set “Read From Other Metadata Column” to “Yes”. |
+| “X-RSMF-EndDate:” End date of the chat / slice.              | When creating a Data Mapping, set “Read From Other Metadata Column” to “Yes”. |
+| “X-RSMF-MessageCount:” # messages in the chat / slice.       | When creating a Data Mapping, set “Read From Other Metadata Column” to “Yes”. |
+| “X-RSMF-AttachmentCount:” # attachments in the chat / slice. | When creating a Data Mapping, set “Read From Other Metadata Column” to “Yes”. |
 
 ## Setup instructions
 
@@ -106,24 +146,22 @@ You must have Collect installed in the workspace to set up this data source, sin
 
 For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}).
 
-#### Company specific prerequisites
-
-You must have the following company-provided information to complete the authentication steps that precede setting up the data source:
-
-- Access to the Azure portal and an active account
-- A Client Secret
-- An O365 domain name
-- An Application / Client ID
-
-#### Data transfer prerequisites
-
-You must have the following information to complete the data transfer.
-
-- An application ID
-- A Client secret
-- An O365 domain name
-
 ### Authentication
+
+STOPPED HERE - headers to divide up are below:
+
+*Step #1: Required Google Workspace Credentials Setup*
+*Create Google Cloud Project* 
+*Enable required APIs for the Project*
+*Setup OAuth2 Consent Screen*
+*Create Credentials*
+*Step #2: Required Google Workspace User Account Setup*
+*Create admin role for Vault API*
+*Create admin role for the user accounts listing*
+*Create admin role for the groups listing*
+*Enable required privileges*
+*Step #3: Obtaining Application Token (in Trace)*
+*Step #4: Configure Trace Data Source*
 
 Before configuring the data source complete the following authentication steps. 
 
@@ -222,3 +260,12 @@ Credentials section:
    - **Collection Period Offset in Minutes**: 0 
 
  ![](C:\Users\jean.whiting\Documents\relativity-trace-documentation\docs\administrator_guide\collection\all_data_sources\email_data_sources\media\Office_365_email_and_calendar_via_Collect\DataSourceSpecificFields.png)
+
+
+
+![image-20220718150723384](google_gsuite_via_collect/image-20220718150723384.png)
+
+
+
+![image-20220718150746787](google_gsuite_via_collect/image-20220718150746787.png)
+
