@@ -43,7 +43,7 @@ Dynamic Searching can be configured in `Data Transformation` task using `Dynamic
 > - `ObjectTypeName` must be a name of object type which exists in the workspace
 > - One object type can occur only once in `Dynamic Searching Object Types Json` configuration
 > - Object type has to have fixed-length field of type identifier
-> - Object type can't be saved in configuration if there are no RDOs of gived object type
+> - Object type can't be saved in configuration if there are no RDOs of given object type
 > - Object type can't be saved in configuration if there are RDOs of this object type with duplicated values in identifer field
 
 ## Dynamic Searching Execution
@@ -65,6 +65,7 @@ When new documents are ingested into the system and data transformations are exe
 
 ![](media/dynamic_searching/DynamicSearching_DocumentView.PNG)
 ![](media/dynamic_searching/DynamicSearching_HighlightedDocument.PNG)
+![](media/dynamic_searching/DynamicSearching_FinancialProducts.PNG)
 
 ## Dynamic Searching Limitations
 1) Objects of object type set up in `Dynamic Searching Object Types Json` cannot contain semicolon (`;`) in identifier field.
