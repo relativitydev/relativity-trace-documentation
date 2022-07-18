@@ -9,7 +9,7 @@ nav_exclude: true
 
 {: .no_toc }
 
-This topic provides details on how to capture Microsoft Office 365 Email and Calendar messages via Collect.
+This topic provides details on how to capture Microsoft Office 365 Teams Chat messages via Collect.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -26,31 +26,48 @@ Before using this data source, note the following license requirements, version 
 
 The following licenses are required to use this data source:
 
+The following license is required.
 
+- Microsoft 365 E5/A5/G5
+
+OR
+
+- Microsoft 365 E3 plus one of the following:
+  - Microsoft 365 E5 Security Add-on
+  - Microsoft 365 E5 Compliance Add-on
+  - Microsoft 365 E5 Information Protection and Governance Add-on
+  - Microsoft 365 E5 Information Protection & Data Loss Prevention Add-on
+
+For more details on Microsoft 365 requirements, see [Accessing Microsoft 365 tenants](https://help.relativity.com/RelativityOne/Content/Collect/Accessing_Microsoft_365_tenants.htm) on the Relativity documentation site.
 
 ### Versions supported
 
-
+We support Microsoft 365 E3, E5, A5, and G5.
 
 ## Considerations
 
 Note the following considerations about this data source:
 
-### Mailbox Collection
-
-
-
-### Email Collection
-
-- 
-
-### Email Content
-
-- 
-
 ### Data Filtering
 
-- - 
+There are two levels of filtering data:
+
+- **Data Source** - data is being filtered according to specified Monitored Individuals. No filter is applied at message level. If MI exists in a channel, we will ingest the whole conversation for a given slice. If a conversation does not have any MIs in participants for that day, we don’t ingest the conversation at all.
+- **Data Batch**- only messages that have created within or deleted from a data batch collection period are captured.
+
+### Chat content
+
+Note the following considerations about how chat content is captured:
+
+- Mentions are captured as plain text. 
+
+- Formatted text is captured as plain text. 
+
+- Numbered rows are captured as a single line.
+
+- Team meetings are captured as message placeholder.
+
+- Emojis are collected as plain text.
 
 ## Information captured 
 
@@ -60,24 +77,55 @@ This section lists what activities and, if applicable, metadata are captured whe
 
 The following table lists activities captured by this data source:
 
-| Activity | Notes |
-| -------- | ----- |
-|          |       |
-|          |       |
-|          |       |
-|          |       |
-|          |       |
-|          |       |
-|          |       |
+| Activity                                                 | Notes                                                        |
+| -------------------------------------------------------- | ------------------------------------------------------------ |
+| Combined chats                                           | Chats are combined into easy-to-read threads                 |
+| One-on-one chat messages                                 |                                                              |
+| Group chat messages                                      |                                                              |
+| Public team messages                                     | Applies to both public and private channels                  |
+| Private team messages                                    | Applies to both public and private channels                  |
+| Organization-wide team messages                          | Applies to both public and private channels                  |
+| Last version of edited messages                          |                                                              |
+| Chat meetings                                            | Includes chats via internal Teams video calls only, not external |
+| Attachments                                              | This includes archived attachments                           |
+| Stickers                                                 |                                                              |
+| Images                                                   |                                                              |
+| Code snippets                                            |                                                              |
+| Message count metadata                                   |                                                              |
+| Attachment count metadata                                |                                                              |
+| Message title                                            |                                                              |
+| Deleted messages                                         |                                                              |
+| Data for accurate search and retrieval during eDiscovery | Includes preserved metadata and  original message time       |
 
 ### Activities not captured
 
 The following table lists activities not captured by this data source:
 
-| Activity not captured | Notes |
-| --------------------- | ----- |
-|                       |       |
-|                       |       |
+| Activity not captured                                        | Notes                                                |
+| ------------------------------------------------------------ | ---------------------------------------------------- |
+| GIF collection                                               |                                                      |
+| Reaction collection                                          | MS Export API does not yet support this              |
+| Summary record collection for every Microsoft Teams meeting or call |                                                      |
+| User profile images                                          |                                                      |
+| Chats during externally-hosted Teams video calls             |                                                      |
+| Participant leaving/being deleted from the channel           | Participant is captured only if they wrote a message |
+
+### Metadata captured
+
+The following table lists metadata captured by this data source:
+
+| Field                  | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| DATE                   | Start date of a chat or start date of a slice in the chat split into slices |
+| SUBJECT                | Friendly name of the team and channe                         |
+| FROM                   | The first person to send a message in that respective slice  |
+| TO                     | Chat attendees                                               |
+| CONVERSATION-ID        | Unique identifier - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-EndDate         | End date of the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-MessageCount    | Number of messages in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-AttachmentCount | Number of attachments in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+
+
 
 ## Setup instructions
 
@@ -97,13 +145,18 @@ For details on installing Collect, see [Using Relativity Collect]({{ site.baseur
 
 You must have the following company-provided information to complete the authentication steps that precede setting up the data source:
 
-- 
+- Access to the Azure portal and an active account
+- A Client Secret
+- An O365 domain name
+- An Application / Client ID
 
 #### Data transfer prerequisites
 
 You must have the following information to complete the data transfer.
 
-- 
+- An application ID
+- A Client secret
+- An O365 domain name
 
 ### Authentication
 
@@ -143,6 +196,8 @@ From the app's page, add permissions to the web API:
 6. Click **Add permissions**. 
 7. Click **Grant Permission**. 
 
+To request access to the protected APIs mentioned in this topic, complete the following [request form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1ax4zKyZjVBmutzKVo1pVtUQ1VJMlNTNUdJV1FKTzVZSVU4MlMwTTdOTSQlQCN0PWcu). Microsoft review access requests every Wednesday and deploy approvals every Friday, except during major holiday weeks in the U.S. Submissions during those weeks will be processed the following non-holiday week. For additional details about Teams security, contact Trace support.
+
 Grant Admin consent for the API: 
 
 1. Click the **API Permissions** tab. 
@@ -158,6 +213,7 @@ Generate Client Secret:
 
 1. In the left navigation menu, select **Certificates & secrets**. 
 2. Select **New client secret**.
+   ![](media/microsoft_office_365_teams_chat_via_collect/GenerateClientSecret.png)
 3. Enter a description in the **Description** text box. 
 4. Set the expiration time frame to **Never**. 
 5. Click **Add**. 
@@ -194,20 +250,18 @@ O365 Mail and Calendar specific parameters:
 
 General section: 
 
-1. **Data Source Type**: Select Microsoft O365 Mail or Calendar. 
-
-​	![](../email_data_sources/media/Office_365_email_and_calendar_via_Collect/DataSourceType.png)
+1. **Data Source Type**: Select Microsoft O365 Teams. 
+   ![](media/microsoft_office_365_teams_chat_via_collect/MSTeamsDataSource.png)
 
 Credentials section: 
 
 1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
-2. Data Source Specific Fields section
-   - **Collect Draft items**: True or False (default)**.** False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
-   - **Domain**: The O365 domain name provided by the client. 
-   - **Application Id**: Application / Client ID provided by the client. 
-   - **Use Quick Discovery**: True 
-   - **Frequency in Minutes**: 60 
-   - **Number of Monitored Individual Per job**: 100 
-   - **Collection Period Offset in Minutes**: 0 
+   - The following is an example of an application secret, which includes random chars and numbers: NMubGVcDqkwwGnCs6fa01tqlkTisfUd4pBBYgcxxx=
 
- ![](media/Office_365_email_and_calendar_via_Collect/DataSourceSpecificFields.png)
+2. Data Source Specific Fields section
+   - **Domain**: The O365 domain name provided by the client. 
+   - **Application Id**: Application / Client ID provided by the client. For example, 53ba6f2b-6d52-4f5c-8ae0-7adc20808854
+   - **Frequency in Minutes**: 240 
+   - **Collection Period Offset in Minutes**: 1440 
+
+![](media/microsoft_office_365_teams_chat_via_collect/MSTeamsFields.png)
