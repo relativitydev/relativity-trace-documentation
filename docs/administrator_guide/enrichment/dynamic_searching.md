@@ -65,7 +65,7 @@ When new documents are ingested into the system and data transformations are exe
 
 ![](media/dynamic_searching/DynamicSearching_DocumentView.PNG)
 ![](media/dynamic_searching/DynamicSearching_HighlightedDocument.PNG)
-![](media/dynamic_searching/DynamicSearching_FinancialProducts.PNG)
+![](media/dynamic_searching/DynamicSearching_FinancialProductsView.PNG)
 
 ## Dynamic Searching Limitations
 1) Objects of object type set up in `Dynamic Searching Object Types Json` cannot contain semicolon (`;`) in identifier field.
