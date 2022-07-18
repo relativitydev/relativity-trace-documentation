@@ -26,7 +26,9 @@ The following document fields are created for each Machine Learning Model once t
    1. [Model Name] Decision = Yes or No value on whether the communication is a positive example of the model based on the Rank and the Positive Rank Cutoff value
    2. [Model Name] Score = 0-100 rank on the likelihood the expected outcome occurred with 100 being a high and 0 being low
    3. [Model Name] Version = the Model Version that was set as the Active version when the document was analyzed
-   ![Example](media/machine_learning_model/machine_learning_model_fields.PNG)
+   ![Example](media/machine_learning_model/machine_learning_model_fields.PNG)  
+
+[comment]: <> (IMAGE broken line 29) 
 
 ### Viewing Machine Learning Model Results
 Find the `[Machine Learning Model] Decision` and `[Machine Learning Model] Rank` fields within your views, layouts, and coding pane to understand the model results.
