@@ -10,7 +10,7 @@ nav_order: 1
 {: .no_toc }
 
 
-Trace enriches and anlzues communication data before the become Data Transformations analyze and enrich communications before they become a document and have the ability to adjust underlying content.
+Trace enriches and analyzes communication data before the become Data Transformations analyze and enrich communications before they become a document and have the ability to adjust underlying content.
 {: .fs-6 .fw-300 }
 
 1. TOC
