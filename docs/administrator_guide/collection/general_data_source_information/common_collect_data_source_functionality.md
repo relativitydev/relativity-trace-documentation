@@ -16,13 +16,38 @@ This topic provides information on functionality common to most or all data sour
 
 ---
 
-## IP whitelisting pre-work 
+## IP Address Whitelisting Pre-work 
 
-For data sources such as Bloomberg, ICE Chat, and Eikon Messenger, before you can start collection, you must be able to make a connection to the native SFTPs. 
+For data sources such as [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}), [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %})
+, and [Refinitiv Eikon Chat and FXT]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %})
+, you must be able to make a connection to the Data Source's SFTP accounts prior to starting collection. For security purposes, only IP addresses that have been whitelisted by the vendor can connect to their SFTP accounts. For this reason, you must reach out to each vendor and get Relativity IP addresses added to the vendors whitelist.
 
-- For every instance you need to whitelist a unique IP. 
-- For multiple SFTP data sources within a single instance you need to whitelist same IP. 
-- You need to whitelist IP with every Data Source provider using SFTP, with a separate request to Bloomberg and a separate request to ICE.
+**Requirements**
+- Each Relativity instance has unique IP addresses that must be added to each vendor's whitelist for Relativity to connect to their SFTP accounts. 
+- Find the `Outbound IP address` in the table below that corresponds to the region or regions of your Relativity instances.
+- Have your IT team contact each data source vendor (independently) with the following request, "“We are setting up a connection with Relativity to automatically ingest our data from you into Relativity. Please whitelist this IP address so that Relativity is able to connect to our SFTP site and collect data on our behalf. `Outbound IP address`: value here”
+
+| Region               | Outbound IP address |
+| -------------------- | ------------------- |
+| Australia East       | 20.53.89.176/28     |
+| Brazil South         | 20.201.55.192/28    |
+| Canada Central       | 52.237.59.0/28      |
+| Central India        | 20.204.224.224/28   |
+| Central US           | 20.109.248.176/28   |
+| East Asia            | 168.63.211.176/2    |
+| East US              | 52.226.235.64/28    |
+| Germany West Central | 20.113.19.176/28    |
+| Japan East           | 20.210.49.80/28     |
+| Korea Central        | 20.196.233.192/28   |
+| North Europe         | 20.54.28.144/28     |
+| South Africa North   | 20.87.37.80/28      |
+| Southeast Asia       | 104.43.75.192/28    |
+| Switzerland North    | 20.203.175.64/28    |
+| UAE North            | 20.203.42.80/28     |
+| UK South             | 20.108.135.0/28     |
+| West Europe          | 20.50.242.80/28     |
+
+
 
 ## Current known IPs
 
