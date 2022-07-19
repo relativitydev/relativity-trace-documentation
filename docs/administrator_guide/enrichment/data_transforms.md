@@ -20,7 +20,48 @@ Data Transformations analyze and enrich communications before they become a docu
 
 ## Data Transformations
 
-Data Transformations allow administrators to specify a way data should be transformed while it is being imported by the data source. Trace Data Transformations are attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout.
+Data Transformations allow administrators to specify a way data should be transformed while it is being imported by the data source. Some Trace Data Transformations must be attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout, while other Data Transformations run automatically for all data sources.
+
+### Language Identification
+
+This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
+{: .info}
+
+The languages used within a communication are automatically identified by the system. The `Cleansed Extracted Text` field is used to analyze for languages used. The following language related fields are populated:
+- `Trace Primary Language`: A fixed-length text field that contains the most used language in the communication (e.g. `French`)
+- `Trace Other Langauges`: A fixed-length text field that lists all of the non-primary languages used in the communication (e.g. `(Language: Danish , Confidence: 540),(Language: Japanese , Confidence: 1977)`)
+
+There is a a known issue for the spelling of the `Trace Other Langauges` field and the format of the results.
+{: .warn}
+
+- `Trace Language Switching`: A Yes/No field the denotes whether multiple languages are detected in the communication
+
+**Limitations**
+- If the `Cleansed Extracted Text` field does not contain any content for a communication then results will not be populated for the language identification fields.
+- If the `Cleansed Extracted Text` field contains more than 30mb of text then results will not be populated for the language identification fields.
+
+**Using Results**
+These language identification results can be used to hone alert Rules, build workflow Rules that direct communications in certain languages to native speaking reviewers, or search for specific communications as part of an investigation.
+
+
+### Spam Detection
+
+This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
+{: .info}
+
+The system automatically detects whether a communication is Spam based on the `Cleansed Extracted Text` of the communication. Spam is defined as irrelevant communications that could not contain misconduct. The `Trace Is Spam` field is populated with either a `Spam` or `Not Spam` value based on its analysis.
+
+**Limitations**
+- Spam Detection only analyzes English text within a communication, so if there is no English text or an insufficient amount to determine whether the communication is Spam the communication will receive a value of `Not Spam`.
+- If the `Cleansed Extracted Text` field does not contain any content for a communication then results will not be populated for the `Trace Is Spam` field.
+- If the `Cleansed Extracted Text` field contains more than 30mb of text then results will not be populated for the `Trace Is Spam` field.
+
+**Using Results**
+To remove all Spam content from generating false-positive alerts, it is suggested that you add a `Trace Is Spam = Spam` condition to the Saved Search used on the `Omit from Alert Rules` setting on the `Rule Evaluation` Task. Find more information on `Omit from Alert Rules` [here]({{ site.baseurl }}{% link docs/administrator_guide/alerting/omit_from_alert_rules.md %})
+
+To eliminate the likelihood false-positive spam detection, the threshold for classifying a communication as `Spam` is high.
+{: .info}
+
 
 ### Replace Data Transformation
 

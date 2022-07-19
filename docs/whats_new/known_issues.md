@@ -21,3 +21,5 @@ The following list provides descriptions of known issues in Relativity Trace. Fo
 | 6/28/2022  | 4564    | Machine Learning Model Data Mapping | If a user sets and then removes an active version for a 'Machine Learning Model', they will not be able to see results from another version. As a work around, do not have the 'Active Version' field be empty after set.| No |
 | 6/28/2022  | 4569    | Build New Machine Learning Model | A user cannot put special characters into the 'New Machine Learning Model' Name field, for example the model cannot be "Trace's Model" | No |
 | 6/28/2022  | 4567    | Machine Learning Model Tab | The Machine Learning Model tab is wrongfully set to Not Visible making it where the Machine Learning functionality cannot be used | No |
+| 7/19/2022  | 4722    | Language Identification Transformation | The `Trace Other Langauges` field is misspelled and should be `Trace Other Languages` | No |
+| 7/19/2022  | 4664    | Language Identification Transformation | The `Trace Other Languages` field results should not include the confidence scores and just be a list of languages. | No |

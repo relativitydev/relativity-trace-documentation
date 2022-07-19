@@ -31,6 +31,9 @@ Relativity Trace will create the Trace Conceptual Analytics Index and the Trace 
 
 ### Structured Analytics Sets
 
+It is suggested to use the [Language Identification Data Transformation ]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}) rather than the Language Identification in Structured Analytics sets to produce Language Identification results prior to the creation of a Document.
+{: .info }
+
 Relativity Trace can trigger automatic builds of any Structured Analytics Set defined in the workspace. It is possible to configure automation of multiple Structured Analytics Sets at the same time with different settings for build frequency, population scope and analysis scope.
 
 1. Create the Structured Analytics Set(s) that will be automated and run Full Builds on them.
