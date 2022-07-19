@@ -16,19 +16,16 @@ This topic provides information on functionality common to most or all data sour
 
 ---
 
-## IP whitelisting pre-work 
+## IP Address Whitelisting Pre-work 
 
-For data sources such as Bloomberg, ICE Chat, and Eikon Messenger, before you can start collection, you must be able to make a connection to the native SFTPs. 
+For data sources such as [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}), [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %})
+, and [Refinitiv Eikon Chat and FXT]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %})
+, you must be able to make a connection to the Data Source's SFTP accounts prior to starting collection. For security purposes, only IP addresses that have been whitelisted by the vendor can connect to their SFTP accounts. For this reason, you must reach out to each vendor and get Relativity IP addresses added to the vendors whitelist.
 
-- For every instance you need to whitelist a unique IP. 
-- For multiple SFTP data sources within a single instance you need to whitelist same IP. 
-- You need to whitelist IP with every Data Source provider using SFTP, with a separate request to Bloomberg and a separate request to ICE.
-- For Collect to connect to other vendors who provide data to their clients on SFTP sites, such as Bloomberg, ICE Chat, and Eikon, the vendors must whitelist our connection request. 
-- Take the Outbound IP address from the list below that corresponds to the region that your R1 instance is located in and have your IT contacts for the other vendor (BBG, ICE, Eikon) reach out to that vendor with the following request:
-  - “We are setting up a connection with Relativity to automatically ingest our data from you into Relativity. Please whitelist this IP address so that Relativity is able to connect to our SFTP site and collect data on our behalf. IP: value here”
-
-- The client’s IT department needs to request this of each other vendor, so if you're using Bloomberg, ICE Chat, and Eikon, that is a separate request to each vendor (respectively).
-- If you have more than 1 R1 instance in different regions that will be connecting to other vendor sites, you will need to whitelist the IP address(es) for the other regions as well.
+**Requirements**
+- Each Relativity instance has unique IP addresses that must be added to each vendor's whitelist for Relativity to connect to their SFTP accounts. 
+- Find the `Outbound IP address` in the table below that corresponds to the region or regions of your Relativity instances.
+- Have your IT team contact each data source vendor (independently) with the following request, "“We are setting up a connection with Relativity to automatically ingest our data from you into Relativity. Please whitelist this IP address so that Relativity is able to connect to our SFTP site and collect data on our behalf. `Outbound IP address`: value here”
 
 | Region               | Outbound IP address |
 | -------------------- | ------------------- |
