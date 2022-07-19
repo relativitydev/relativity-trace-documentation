@@ -37,12 +37,16 @@ Document fields are created for each enrichment method. These document fields ca
 
 ## Model Details
 
-Below is supplement information to help understand and implement the models above. All Risk Detection information can be found [here](https://relativitydev.github.io/relativity-trace-documentation/docs/user_guide/enrichment/machine_learning_model.html)
+Below is supplement information to help understand and implement the models above. 
+
+### Risk Detection
+
+All Risk Detection information can be found [here](https://relativitydev.github.io/relativity-trace-documentation/docs/user_guide/enrichment/machine_learning_model.html)
 
 ### Language Identification
 
-tbd
+For infromation on enablment can be found [here]https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/data_transforms.html)
 
 ### Spam Detection
 
-tbd
+For infromation on enablment can be found [here]https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/data_transforms.html)
