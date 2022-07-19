@@ -37,7 +37,7 @@ Document fields are created for each enrichment method. These document fields ca
 
 ## Model Details
 
-Below is supplement information to help understand and implement the models above. 
+Below is supplemental information to help understand and implement the models above. 
 
 ### Risk Detection
 
