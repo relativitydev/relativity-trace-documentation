@@ -114,7 +114,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 
 -   `Calculated` – fields that are calculated dynamically by Trace
 
-| **Trace Field Category** | **Relativity Field**          | **Field Type**    | **Field Description**                                        |
+| **Trace Field Information** | **Relativity Field**          | **Field Type**    | **Field Description**                                        |
 | ------------------------ | ----------------------------- | ----------------- | ------------------------------------------------------------ |
 | Email Only               | Attachment List               | Long Text         | Attachment file names of all child items in a family group, delimited by semicolon, only present on parent items. |
 | Email Only               | BCC                           | Long Text         | The name(s) (when available) and email address(es) of the Blind Carbon Copy recipient(s) of an email message. |
@@ -181,7 +181,7 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Communication Direction | Fixed-Length Text | Indicates communication direction data transformation classification (Internal |
 | Calculated               | Trace Is Extracted            | Yes/No            | Indicates whether a document is a Native or was Extracted |
 | Calculated               | Trace Email Action            | Single Choice     | Describes the type of email as either Draft, Send, Forward, Reply, Reply-All, or Empty meaning the document is not an email |
-| AI                       | Trace Primary Language        | Fixed-Length Text | Describes the primary language used in a communication |
-| AI                       | Trace Other Languages         | Long Text         | Describes the type other language used in a communication |
+| Calculated               | Trace Primary Language        | Fixed-Length Text | Describes the primary language used in a communication |
+| Calculated               | Trace Other Languages         | Fixed-Length Text | Describes the type other language used in a communication |
 | Calculated               | Trace Language Switching Detected| Yes/No         | Describes if language switching (multiple languages used) occurs in a communication|
-| AI                       | Trace Is Spam                 | Yes/No            | Describes if a communication is spam or not spam |
+| Calculated               | Trace Is Spam                 | Yes/No            | Describes if a communication is `Spam` or `Not Spam` |
