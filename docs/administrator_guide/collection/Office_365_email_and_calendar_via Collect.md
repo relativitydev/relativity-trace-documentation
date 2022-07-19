@@ -30,12 +30,11 @@ We support Microsoft 365 Enterprise 3 and above.
 Note the following considerations about this data source:
 
 #### Mailbox Collection
-- The connector supports Outlook mailboxes and OneDrive for user accounts that are both licensed and unlicensed, as long as the account is still active. It does not support archived mailboxes. 
-  - Archived collection will be included in a future release.
-
-- Inactive (soft-deleted) accounts are not accessible through Microsoft's Graph API. 
+- Only Active accounts are collected (Inactive accounts are not collected regardless of license status)
+- Both Licensed and Unlicensed mailbox can be collected 
 - Guest mailboxes can only be collected if they are active.
 - Shared mailboxes can only be captured if they are active.
+- Archive mailboxes are not collected, but can be collected via the [Microsoft O365 Mail Archive Mailbox data source]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %})
 
 #### Email Collection
 - The connector collects all items in visible folders within Outlook’s inbox and custom folders. 
