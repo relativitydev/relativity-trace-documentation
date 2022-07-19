@@ -35,3 +35,14 @@ Trace provides out-of-the-box Artifical Intelligence (AI) to improve the user ex
 ## Fields
 Document fields are created for each enrichment method. These document fields can be used as part of the Omit from Alert Rules functionality or Rules. See more information on AI fields [here](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html).
 
+## Model Details
+
+Below is supplement information to help understand and implement the models above. All Risk Detection information can be found [here](https://relativitydev.github.io/relativity-trace-documentation/docs/user_guide/enrichment/machine_learning_model.html)
+
+### Language Identification
+
+tbd
+
+### Spam Detection
+
+tbd
