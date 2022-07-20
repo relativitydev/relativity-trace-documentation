@@ -33,17 +33,13 @@ The following versions of Microsoft Exchange are supported:
 ## Considerations
 Note the following considerations about this data source:
 
-### Retention Policy
-- It is recommended to have a retention policy set to at least 30 days for all users who are being monitored. Refer to the following guide from Microsoft to get started with retention policy, if you do not have one in place already: https://docs.microsoft.com/en-us/exchange/policy-and-compliance/policy-and-compliance?view=exchserver-2019
-
 ### Email Collection
 - By default, draft email messages are excluded
-
-### Other
 - Items deleted from the **Deleted Items** folder are captured by default
-  ![](media/microsoft_exchange_server_via_verqu/DeletedItems.png)
 - Data in the folder **Recoverable Items** > **Audit** will be skipped since this folder contains system information only
 
+It is recommended to have a retention policy set to at least 30 days for all users who are being monitored. Refer to the following guide from Microsoft to get started with retention policy, if you do not have one in place already: https://docs.microsoft.com/en-us/exchange/policy-and-compliance/policy-and-compliance?view=exchserver-2019
+{: .info}
 
 ## Information captured 
 This section lists what activities and, if applicable, metadata are captured when you use this data source.
@@ -57,7 +53,7 @@ The following table lists activities captured by this data source:
 | Calendar Appointments |  |
 | Calendar Meeting requests |  |
 | Calendar Meeting Cancellations |  |
-| Skype Conversations | Skype Conversations are pulled from the **Conversation History** folder<br />![](media/microsoft_exchange_server_via_verqu/ConversationHistory.png) |
+| Skype Conversations | Skype Conversations are pulled from the **Conversation History** folder |
 
 ### Activities not captured
 The following table lists activities not captured by this data source:
@@ -73,24 +69,24 @@ This section provides details on the prerequisites and steps for setting up this
 You must have the following in order to complete the setup instructions for this data source.
 
 #### Company specific prerequisites
-- You must provide an Exchange Service Account user with the following permissions: 
-  - **ApplicationImpersonation** Role
-  - Be ready to enter the email address and password for Exchange Service Account
+You must provide an Exchange Service Account user with the following permissions: 
+- **ApplicationImpersonation** Role
+- Be ready to enter the email address and password for Exchange Service Account
 
-- To configure an Exchange Service Account, follow the steps below:
-  1. Navigate to the admin section for your Exchange server (**Exchange** under **Admin Center**)
-  2. Navigate to **Permissions** > **Admin Roles**
-     ![](media/microsoft_exchange_server_via_verqu/Exchange1.png)
-  3. Select an Existing Admin Role OR Create a new one. Edit the Role as follows:
-     - **Roles** must include **ApplicationImpersonation**
-     - **Members** must include Exchange Service Account that will be used to pull Exchange data
-      ![](media/microsoft_exchange_server_via_verqu/Exchange2.png)
+To configure an Exchange Service Account, follow the steps below:
+1. Navigate to the admin section for your Exchange server (**Exchange** under **Admin Center**)
+2. Navigate to **Permissions** > **Admin Roles**
+   ![](media/microsoft_exchange_server_via_verqu/Exchange1.png)
+3. Select an Existing Admin Role OR Create a new one. Edit the Role as follows:
+   - **Roles** must include **ApplicationImpersonation**
+   - **Members** must include Exchange Service Account that will be used to pull Exchange data
+   ![](media/microsoft_exchange_server_via_verqu/Exchange2.png)
 
 ### Setup in Trace
 The following sections provide the steps for installing and configuring the data source.
 
-#### Request the Installation Package
-- Email [support@relativity.com](mailto:support@relativity.com) to request the installation package for Trace non-cloud data source deployment powered by VerQu.
+### VerQu On-Premises Application
+- Email [support@relativity.com](mailto:support@relativity.com) to request the installation package for Trace on-premises data source deployment powered by VerQu.
 
 #### Deploy and run
 
@@ -121,14 +117,16 @@ The following sections provide the steps for installing and configuring the data
 | **Destination**                   | The locally accessible path of the folder that needs to ship files from the Exchange server (note that the user running the service must have access) |
 | **DataRangeStart / DataRangeEnd** | This contains information on the start date of the first run |
 | **ConnectionString**              | This a standard SQL Server connection string that support all possible ways of connecting to SQL Server, including Windows Authentication and SQL Server Authentication |
+
 5. Run a Smoke Test using the command line shown below
    ![](media/microsoft_exchange_server_via_verqu/DeploySmokeTest.png)
 6. Configure the task to run on a schedule
    a. See the Microsoft documentation for any customizations: [Windows Task Scheduler](https://docs.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/schedule-server-process#:~:text=Schedule the Task,on your computer is displayed)
    
    b. Use the Windows Task Scheduler Template shown below to create a file called **RelativityTraceExchangeMail.xml**.
-   Note that the **Author** value should be full username that will run this task – e.g. *DOMAIN\username*, and edit the file system paths to reflect the correct values for your environment. 
+   Note that the **Author** value should be full username that will run this task – e.g. *DOMAIN\username*, and edit the file system paths to reflect the correct values for your environment.
 
+```xml
    `<?xml version="1.0" encoding="UTF-16"?>`
    `<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">`
     `<RegistrationInfo>`
@@ -183,6 +181,7 @@ The following sections provide the steps for installing and configuring the data
      `</Exec>`
     `</Actions>`
    `</Task>`
+```
    
    c. Import the XML file into Windows Task Scheduler
    ![](media/microsoft_exchange_server_via_verqu/DeployImportTask.png)
@@ -196,3 +195,9 @@ The following sections provide the steps for installing and configuring the data
 
    e. Enable the Task Scheduler
    ![](media/microsoft_exchange_server_via_verqu/DeployEnableScheduler.png)
+
+### Data Transfer
+[Shipper]({{ site.baseurl }}{% link docs/administrator_guide/collection/shipper.html#trace-shipper-service-configuration.md %}) will be used to transfer on-premises data collected by the VerQu application to Relativity Trace in the cloud.
+
+### Data Source
+Use the Setting Up [Setting Up Data Sources in Relativity with Shipper]({{ site.baseurl }}{% link docs/administrator_guide/collection/shipper.md#setting-up-data-sources-in-relativity %}) to configure the Data Source.
