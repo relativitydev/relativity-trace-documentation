@@ -19,7 +19,7 @@ A Data Source allows you to define where and how you are pulling data from a com
 ---
 
 ## Overview
- A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. Click on the Data Source name to see more extensive details on how to configure.
+ A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. **Click on the Data Source name to see more extensive details on how to configure.**
 
 ## Data Sources List
 This list covers the most common Data Sources. To better understand the holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
