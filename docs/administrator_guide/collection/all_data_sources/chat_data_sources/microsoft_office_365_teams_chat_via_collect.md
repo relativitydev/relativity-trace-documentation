@@ -192,7 +192,7 @@ From the app's page, add permissions to the web API:
 6. Click **Add permissions**. 
 7. Click **Grant Permission**. 
 
-To request access to the protected APIs mentioned in this topic, complete the following [request form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1ax4zKyZjVBmutzKVo1pVtUQ1VJMlNTNUdJV1FKTzVZSVU4MlMwTTdOTSQlQCN0PWcu). Microsoft review access requests every Wednesday and deploy approvals every Friday, except during major holiday weeks in the U.S. Submissions during those weeks will be processed the following non-holiday week. For additional details about Teams security, contact Trace support. The person who submits the above form to Microsoft needs to receive confirmation from Microsoft that permission has been granted.
+To request access to the protected APIs mentioned in this topic, complete the following [request form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1ax4zKyZjVBmutzKVo1pVtUQ1VJMlNTNUdJV1FKTzVZSVU4MlMwTTdOTSQlQCN0PWcu). Microsoft review access requests every Wednesday and deploy approvals every Friday, except during major holiday weeks in the U.S. Submissions during those weeks will be processed the following non-holiday week. The person who submits the above form to Microsoft needs to receive confirmation from Microsoft that permission has been granted. For additional details about Teams security, contact Trace support. 
 
 Grant Admin consent for the API: 
 
