@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Microsoft O365 MAil Archive Mailbox
+title: Microsoft O365 Mail Archive Mailbox
 nav_exclude: true
 ---
 
