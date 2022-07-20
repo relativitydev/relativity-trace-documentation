@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Shipper
+title: Data Transfer
 parent: Collection
 grand_parent: Administrator Guide
 nav_order: 4
 ---
 
-# Shipper
+# Data Transfer
 {: .no_toc }
 
 
-The Trace Shipper Service transfers data from on-premise locations into Relativity Trace.
+On-premises data can be transferred to Relativity Trace in the cloud using either Trace Shipper or SFTP.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -18,7 +18,10 @@ The Trace Shipper Service transfers data from on-premise locations into Relativi
 
 ---
 
-## Overview
+## SFTP
+Please contact [support@relativity.com](mailto:support@relativity.com) for more information on our SFTP data transfer options.
+
+## Trace Shipper
 The Trace Shipper Service is a Windows service released by Trace that delivers data from the client network to a remote Relativity Trace workspace. The service monitors configured source folders on the local network and ships files that appear in the source folders to predetermined file share locations within a Relativity workspace that are associated with Trace Data Sources. The files are deleted from the source folder once they have been transmitted to Relativity successfully. 
 
 ![TraceShipperOverview](media/shipper/TraceShipperOverview.png)
@@ -34,7 +37,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 3. Fast data transfer rates
 4. Secure (data encrypted in flight)
 
-## Prerequisites Before Installing
+### Prerequisites Before Installing
 
 - Identify/provision a Windows machine to run the Trace Shipper Service
 This should be the same machine as the Veritas Merge1 appliance VM.
@@ -60,13 +63,49 @@ Do not install the Relativity Transfer API Services application to any workspace
    2. Go to Admin Operations and select a group the user belongs to.
    3. Check "Data Transfer Operations" permission.
 
-### Data Transfer Protocols
+#### System Requirements
+- Hardware
+  -  2.4 GHz or faster 64-bit dual-core processor
+  -  16 GB RAM
+  -  300 GB hard-disk space
+- Software
+   - Windows 8 or later; Windows Server 2012 or later
+   - Internet Information Services 7.0 or higher
+      - Make sure the following **components** are installed
+         - **Web Server**
+            - Common HTTP Features
+               - Default Document
+               - Static Content
+            - Security
+               - Basic Authentication
+               - Request Filtering
+               - Windows Authentication
+            - Application Development
+               - All .NET Extensibility Components
+               - All ASP.NET Components
+               - SAPI Extensions
+               - ISAPI Filters
+         - **Web Management Tools**
+            - IIS Management Console
+            - IIS 6 Management Compatibility
+               - IIS Metabase and IIS 6 configuration compatibility
+            - IIS Management Scripts and Tools
+            - IIS Management Service
+   - .NET Framework 3.5 & 4.7.2
+   - Microsoft Visual C++ 2017 (x64) Redistributable
+   - SQL Server 2012 or later
+       We recommend to take daily backups and keep them for 1 week.
+       {: .info }
+       We recommend to shrink database daily in order not to run out of disk space.
+       {: .info }
+
+#### Data Transfer Protocols
 Transfer API (TAPI) is the underlying method of data delivery to RelativityOne.  TAPI supports multiple protocols of data transfer including:
 1. Direct - only available on-premise
 2. Aspera (FASP protocol) - default for RelativityOne
 3. Web - available on-premise
 
-### Ports and Firewall settings
+#### Ports and Firewall settings
 For the Aspera data transfer protocol, the following ports must be configured:
 1. Allow outbound connections to the server on the TCP port 33001.
 2. Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
@@ -75,7 +114,7 @@ For the Aspera data transfer protocol, the following ports must be configured:
 For details on the IP ranges for your specific RelativityOne instance please contact [support@relativity.com](mailto:support@relativity.com)
 
 
-## Installation Steps
+### Installation Steps
 
 1. Extract `TraceShipperService_(version).zip` to a folder called `Trace Shipper Service` on the machine that will be running the service. Make sure that the files are directly under the `Trace Shipper Service` directory with no extra nested folders.
 2. Run a command prompt AS ADMINISTRATOR, navigate to the `Trace Shipper Service` folder in the command prompt, and run `TraceShipperService.exe /i`
@@ -128,13 +167,13 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 10. Finally, once everything is running, use Windows permissions to secure the `Trace Shipper Service` folder and the configured logs folder to only users that should be able to access the sensitive information contained within (Relativity credentials, file paths, etc.).
 11. (Optional) Create and configure Extension Scripts
 
-## Data Source Configuration Sync and Extension Scripts
+### Data Source Configuration Sync and Extension Scripts
 Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, Data Source Specific Fields changes).  Please contact [support@relativity.com](mailto:support@relativity.com) for more details.
 
-## Starting/Stopping Service
+### Starting/Stopping Service
 The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
 
-## Uninstall Steps
+### Uninstall Steps
 
 1. Run a command prompt AS ADMINISTRATOR
 2. Navigate to the `Trace Shipper Service` folder in the command prompt
@@ -142,66 +181,9 @@ The service can be managed directly from the Services application in Windows (yo
 
 
 
-# Overview
+## Extras
 
-For every Trace Data Source, except for [Microsoft Exchange Data Source](https://relativitydev.github.io/relativity-trace-documentation/user_documentation#microsoft-exchange-data-source), it is required to set up and deploy additional software.  In order to ship the data from on-premise network to Relativity you must deploy: Trace Data Shipper and additional data source provider (Veritas Merge1).  You will also need to install additional hardware.
-
-# Trace Shipper Data Flow Overview 
-
-![image-20200817164930647](media/shipper/image-20200817164930647.png)
-
-*ref: [PlantUML Code](diagrams/trace_shipper_data_flow.txt)*
-
-Data Pull (2) and Process (3) are performed via Veritas Merge1 software. Audio data is provided by external data provider.
-{: .info }
-
-SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare.
-{: .info }
-
-
-
-# Installation of Trace Shipper
-
-## Pre-requisites
-
-**System Requirements**
-
-- Hardware
-  -  2.4 GHz or faster 64-bit dual-core processor
-  -  16 GB RAM
-  -  300 GB hard-disk space
-- Software
-   - Windows 8 or later; Windows Server 2012 or later
-   - Internet Information Services 7.0 or higher
-      - Make sure the following **components** are installed
-         - **Web Server**
-            - Common HTTP Features
-               - Default Document
-               - Static Content
-            - Security
-               - Basic Authentication
-               - Request Filtering
-               - Windows Authentication
-            - Application Development
-               - All .NET Extensibility Components
-               - All ASP.NET Components
-               - SAPI Extensions
-               - ISAPI Filters
-         - **Web Management Tools**
-            - IIS Management Console
-            - IIS 6 Management Compatibility
-               - IIS Metabase and IIS 6 configuration compatibility
-            - IIS Management Scripts and Tools
-            - IIS Management Service
-   - .NET Framework 3.5 & 4.7.2
-   - Microsoft Visual C++ 2017 (x64) Redistributable
-   - SQL Server 2012 or later
-       We recommend to take daily backups and keep them for 1 week.
-       {: .info }
-       We recommend to shrink database daily in order not to run out of disk space.
-       {: .info }
-
-## Getting Started with Installation
+### Getting Started with Installation
 
 To set up Trace Shipper, you will need:
 
@@ -229,7 +211,7 @@ Perform the following steps in order to get started:
       > * Globanet\Exchange
       > * Globanet\ICE
 
-## Trace Shipper Service Configuration
+### Trace Shipper Service Configuration
 
 Trace Shipper Service needs to be installed and configured to send data to your Relativity Trace workspace.  Refer to the [Trace Shipper Guide](trace_shipper_service.md) for instructions on how to install and configure the Trace Shipper Service. Use the directories and connection info developed in the previous section configuration values.
 
@@ -240,9 +222,9 @@ Start the Shipper Service when you have finished configuration.
 
 Contact support@relativity.com if you need assistance.
 
-## Setting Up Data Sources in Relativity
+### Setting Up Data Sources in Relativity
 
-In the Trace enabled Relativity workspace configured in [Trace Shipper Service Configuration](#trace-shippper-service-configuration) , perform the following steps:
+In the Trace enabled Relativity workspace configured in [Trace Shipper Service Configuration](#trace-shippper-service-configuration), perform the following steps:
 
 When setting up the Data Source, if you do not see the Data Source Type that you are interested in please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info }
@@ -280,13 +262,13 @@ When setting up the Data Source, if you do not see the Data Source Type that you
 All Trace Data Sources serialize their current state to a JSON file and their monitored individuals to a CSV file,  both of which can be retrieved by Trace Shipper. See Appendix D for more information.
 {: .info }
 
-## Installation Steps for Veritas Merge1
+### Installation Steps for Veritas Merge1
 
 Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Merge1. 
 
 Contact [support@relativity.com](mailto:support@relativity.com) if you need assistance with installation steps.
 
-## Set Up Veritas Merge1
+### Set Up Veritas Merge1
 
 Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Merge1 is a Merge1 `target` directory, and each needs a location to store logs related to the retrieval of the data by Merge1. Create a log directory for each.
 
@@ -294,7 +276,7 @@ In order for Support to gain access to your Merge1 logs and provide support, ple
 
 > **EXAMPLE:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
 
-### Configuring Veritas Merge1 Importers
+#### Configuring Veritas Merge1 Importers
 
 For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
@@ -357,7 +339,7 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
 
 
-# Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony
+### Appendix A: Bloomberg, ICE Chat, Thomson Reuters, Symphony
 
 All of these Data Sources work similar via scheduled drops of data to an FTP. Merge1 picks it up from SFTP and delivers it to Trace.
 
@@ -373,7 +355,7 @@ Data Pull (1) and Process (2) are performed via Veritas Merge1 software. Audio d
 SMB protocol is available only for on-premise deployments with direct access to RelativityFileshare.
 {: .info }
 
-# Appendix B: Veritas Merge1 Importer Schedule Helper
+### Appendix B: Veritas Merge1 Importer Schedule Helper
 
 In order to ensure that data source runs **every X minutes** run the following steps OR manually select appropriate time slots:
 
@@ -393,13 +375,13 @@ In order to ensure that data source runs **every X minutes** run the following s
     2. ![](media/shipper/d4d77fcd54ae2bdf3659ac5cf8c22296.png)
     3. At this point Importer will be set to run every x minutes
     
-# Appendix C: High Availability Setup for Veritas Merge1
+### Appendix C: High Availability Setup for Veritas Merge1
 
 It is possible to setup Merge1 in HA mode. Recommended approach is to setup secondary Merge1 server that runs the same version of the Merge1 and installed in the same path as the production. You also need to have the same folder structure for all connectors (Import, quarantine, log folders). 
 
 Once that is done, the secondary Merge1 should be connected to the same Merge1 DB as the primary Merge1 server. If for any reason the production server goes down, you just need to run the services on the second Merge1. Please note that no service should be started on the secondary Merge1 if the production is running. 
 For the DB, you can take backups on a daily basis or apply any other standard SQL Server  HA scenarios that you wish.
 
-# Appendix D: Sync of Config Folder
+### Appendix D: Sync of Config Folder
 
 All Data Sources in Relativity Trace serialize their current state as a JSON file at regular intervals. They also save a CSV file of all the linked monitored individuals as well. These files are saved in a Config folder in the Source or Drop folder for each data source. Trace Shipper can be configured to retrieve these Config folders, which allows for a way to sync data sources and monitored individuals from local to remote instance.
