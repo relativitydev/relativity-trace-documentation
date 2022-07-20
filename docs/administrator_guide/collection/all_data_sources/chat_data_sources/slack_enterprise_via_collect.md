@@ -69,6 +69,14 @@ The following table lists activities captured by this data source:
 | Channel join event                                           | Includes instances of joining and leaving           |
 | Set channel purpose event                                    |                                                     |
 
+### Activities not captured
+
+The following table lists activities not captured by this data source:
+
+| Activity not captured            | Notes                                                        |
+| -------------------------------- | ------------------------------------------------------------ |
+|               |               |
+
 ### Metadata captured
 
 The following table lists metadata captured by this data source:
