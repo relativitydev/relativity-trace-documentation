@@ -274,19 +274,21 @@ This runs without Structured Analytics and will not produce results that can be 
 `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info}
 
-## Dynamic Searching Configuration
+## Dynamic Searching
+
+**Dynamic Searching Configuration**
 Dynamic Searching can be configured in `Data Transformation` task using `Dynamic Searching Object Types Json` setting. In this setting user can set up a list of object types for which searching should be performed. 
 
   ![](media/dynamic_searching/DynamicSearchingConfigurationSetup.PNG)
 
-### Dynamic Search Configuration Parameters
+**Dynamic Search Configuration Parameters**
 
 `Dynamic Searching Object Types Json` field is inputted as JSON with each `{}` representing a single object type.
 
 **Parameters of `Dynamic Searching Object Types Json`:**
 - `ObjectTypeName` - [Required] an object type for which search will be performed
 
-**Example `Dynamic Searching Object Types Json` configuration:**
+*Example `Dynamic Searching Object Types Json` configuration:*
 ```json
 [
    {
@@ -306,7 +308,7 @@ Dynamic Searching can be configured in `Data Transformation` task using `Dynamic
 > - Object type can't be saved in configuration if there are no RDOs of given object type
 > - Object type can't be saved in configuration if there are RDOs of this object type with duplicated values in identifer field
 
-## Dynamic Searching Execution
+**Dynamic Searching Execution**
 
 After saving `Dynamic Searching Object Types Json` a new configuration is created automatically for every object type.
 1) New multiple object field called `Trace` + `ObjectTypeName` is created on `Document` object type. This field joins `Document` and particular `Object Type`.
@@ -327,7 +329,7 @@ When new documents are ingested into the system and data transformations are exe
 ![](media/dynamic_searching/DynamicSearching_HighlightedDocument.PNG)
 ![](media/dynamic_searching/DynamicSearching_FinancialProductsView.PNG)
 
-## Dynamic Searching Limitations
+**Dynamic Searching Limitations**
 1) Objects of object type set up in `Dynamic Searching Object Types Json` cannot contain semicolon (`;`) in identifier field.
 2) `Insight.Shared.Toggles.RunTraceDynamicSearchTransformation` toggle must be set to true in order for Dynamic Search to be performed.
 
