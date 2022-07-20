@@ -6,14 +6,12 @@ nav_exclude: true
 ---
 
 # Office 365 Teams Chat (via Collect)
-
 {: .no_toc }
 
 This topic provides details on how to capture Microsoft Office 365 Teams Chat messages via Collect.
 {: .fs-6 .fw-300 }
 
 1. TOC
-
 {:toc}
 
 ---
@@ -26,11 +24,9 @@ Before using this data source, note the following license requirements, version 
 
 The following licenses are required to use this data source:
 
-The following license is required.
-
 - Microsoft 365 E5/A5/G5
 
-OR
+**OR**
 
 - Microsoft 365 E3 plus one of the following:
   - Microsoft 365 E5 Security Add-on
@@ -51,23 +47,21 @@ Note the following considerations about this data source:
 ### Data Filtering
 
 There are two levels of filtering data:
-
-- **Data Source** - data is being filtered according to specified Monitored Individuals. No filter is applied at message level. If MI exists in a channel, we will ingest the whole conversation for a given slice. If a conversation does not have any MIs in participants for that day, we don’t ingest the conversation at all.
-- **Data Batch**- only messages that have created within or deleted from a data batch collection period are captured.
+- **Data Source** - data is being filtered according to specified Monitored Individuals. No filter is applied at message level. So, if a Monitored Individual exists in a channel, we will ingest the whole conversation for the day. If a conversation does not have any Monitored Individuals as participants for that day, we don’t ingest the conversation at all.
+- **Data Batch**- only messages with data for the date that matches the Data Batch collection period will be captured. For example, a message that has been exported for 10/1/2021 will be captured by the Data Batch that has collection period from “10/1/2021 00:00” to “10/2/2021 00:00”.
 
 ### Chat content
 
 Note the following considerations about how chat content is captured:
-
 - Mentions are captured as plain text. 
-
 - Formatted text is captured as plain text. 
-
 - Numbered rows are captured as a single line.
-
 - Team meetings are captured as message placeholder.
-
 - Emojis are collected as plain text.
+
+### Data Format
+
+Slack content will be displayed in the Relativity Short Message Format (RSMF) in the Relativity Viewer to provide reviewers with a native chat like review experience. You can find more information on the Relativity Short Message Format [here](https://help.relativity.com/RelativityOne/Content/System_Guides/Relativity_Short_Message_Format/Relativity_Short_Message_Format.htm).
 
 ## Information captured 
 
@@ -117,7 +111,7 @@ The following table lists metadata captured by this data source:
 | Field                  | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
 | DATE                   | Start date of a chat or start date of a slice in the chat split into slices |
-| SUBJECT                | Friendly name of the team and channe                         |
+| SUBJECT                | Friendly name of the team and channel                         |
 | FROM                   | The first person to send a message in that respective slice  |
 | TO                     | Chat attendees                                               |
 | CONVERSATION-ID        | Unique identifier - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
@@ -125,6 +119,8 @@ The following table lists metadata captured by this data source:
 | X-RSMF-MessageCount    | Number of messages in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
 | X-RSMF-AttachmentCount | Number of attachments in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
 
+A "Slice" of data refers to a start and end time of data that will be captured in one Relativity Document. Unless specified, a slice will contain one days worth of data.
+{: .info}
 
 
 ## Setup instructions
@@ -207,13 +203,10 @@ Grant Admin consent for the API:
 5. Verify all permissions have been granted. 
 6. Click **Accept** to grant the permissions. 
 
-![](media/microsoft_office_365_teams_chat_via_collect/OfficeChat1.png)
-
 Generate Client Secret:
 
 1. In the left navigation menu, select **Certificates & secrets**. 
 2. Select **New client secret**.
-   ![](media/microsoft_office_365_teams_chat_via_collect/GenerateClientSecret.png)
 3. Enter a description in the **Description** text box. 
 4. Set the expiration time frame to **Never**. 
 5. Click **Add**. 
@@ -246,7 +239,7 @@ Prior to creating the Data Source, install the Collect application and configure
 
 Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
 
-O365 Mail and Calendar specific parameters: 
+O365 Teams specific parameters: 
 
 General section: 
 
@@ -263,5 +256,3 @@ Credentials section:
    - **Application Id**: Application / Client ID provided by the client. For example, 53ba6f2b-6d52-4f5c-8ae0-7adc20808854
    - **Frequency in Minutes**: 240 
    - **Collection Period Offset in Minutes**: 1440 
-
-![](media/microsoft_office_365_teams_chat_via_collect/MSTeamsFields.png)
