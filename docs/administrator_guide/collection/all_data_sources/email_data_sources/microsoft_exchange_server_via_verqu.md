@@ -197,7 +197,7 @@ The following sections provide the steps for installing and configuring the data
    ![](media/microsoft_exchange_server_via_verqu/DeployEnableScheduler.png)
 
 ### Data Transfer
-[Shipper]({{ site.baseurl }}{% link docs/administrator_guide/collection/shipper.md#trace-shipper-service-configuration.md %}) will be used to transfer on-premises data collected by the VerQu application to Relativity Trace in the cloud.
+[Shipper]({{ site.baseurl }}{% link docs/administrator_guide/collection/shipper.md#trace-shipper-service-configuration %}) will be used to transfer on-premises data collected by the VerQu application to Relativity Trace in the cloud.
 
 ### Data Source
 Use the [Setting Up Data Sources in Relativity with Shipper]({{ site.baseurl }}{% link docs/administrator_guide/collection/shipper.md#setting-up-data-sources-in-relativity %}) to configure the Data Source.
