@@ -5,14 +5,12 @@ nav_exclude: true
 ---
 
 # Slack Enterprise Chat
-
 {: .no_toc }
 
 This topic provides details on how to capture Slack Enterprise chat messages via Collect.
 {: .fs-6 .fw-300 }
 
 1. TOC
-
 {:toc}
 
 ---
@@ -46,7 +44,7 @@ Note the following considerations about this data source:
 
 ### Data Format
 
-- Slack content will be displayed in the Relativity Short Message Format (RSMF) in the Relativity Viewer to provide reviewers with a native chat like review experience. You can find more information on the Relativity Short Message Format [here](https://help.relativity.com/RelativityOne/Content/System_Guides/Relativity_Short_Message_Format/Relativity_Short_Message_Format.htm).
+Slack content will be displayed in the Relativity Short Message Format (RSMF) in the Relativity Viewer to provide reviewers with a native chat like review experience. You can find more information on the Relativity Short Message Format [here](https://help.relativity.com/RelativityOne/Content/System_Guides/Relativity_Short_Message_Format/Relativity_Short_Message_Format.htm).
 
 ## Information captured 
 

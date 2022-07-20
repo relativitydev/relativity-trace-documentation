@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Office 365 Teams Chat (via Collect)
+title: Microsoft O365 Teams Chat
 nav_exclude: true
 
 ---
 
-# Office 365 Teams Chat (via Collect)
+# Microsoft O365 Teams Chat
 {: .no_toc }
 
 This topic provides details on how to capture Microsoft Office 365 Teams Chat messages via Collect.
