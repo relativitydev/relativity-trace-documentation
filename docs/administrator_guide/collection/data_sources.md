@@ -140,6 +140,12 @@ Some Data Sources are supported through partners.
    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
 * **Start Date:** Date from which data will be pulled/pushed into Relativity
 * **End Date:** Optional date to which data will be pulled/pushed into Relativity.
+
+- If both dates are provided, data will be collected between “Start Date” and “End Date”. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and “End Date”. 
+- If only “Start Date” is provided, data will be collected between “Start Date” and now. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and now. 
+- If only “End Date” is provided, data will be collected between “Ingestion State” and “End Date”. 
+- If none of them is provided, data will be collected between “Ingestion State” and now.
+{: .info}
   
 * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
   
