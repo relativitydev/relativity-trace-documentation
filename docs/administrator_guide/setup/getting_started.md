@@ -65,6 +65,8 @@ If you plan to use `Analytics` functionality, please also make sure the followin
 -   [Active Learning](https://help.relativity.com/RelativityOne/Content/Relativity/Active_Learning/Active_Learning.htm)
     1. Used by Trace after ingestion to analyze documents against Machine Learning models.
 
+[comment]: <> (Line 59 - Link Broken)
+
 ## Setting up Relativity Trace
 
 1.  Install [Relativity Integration Points](https://help.relativity.com/RelativityOne/Content/Relativity/Relativity_Integration_Points/Relativity_Integration_Points.htm) in all the workspaces that will Run Trace.
@@ -115,3 +117,6 @@ If you plan to use `Analytics` functionality, please also make sure the followin
    3. `Live` - customers are actively getting and reviewing alerts in this workspace
 
 ![](media\getting_started\production_status_setting.PNG)
+
+[comment]: <> (Line 72 - Link Broken)
+[comment]: <> (Line 83 - grammar add in: 'Trace application will contain a deploy.yml file)
