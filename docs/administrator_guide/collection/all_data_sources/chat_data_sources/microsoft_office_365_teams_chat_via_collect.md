@@ -103,6 +103,7 @@ The following table lists activities not captured by this data source:
 | User profile images                                          |                                                      |
 | Chats during externally-hosted Teams video calls             |                                                      |
 | Participant leaving/being deleted from the channel           | Participant is captured only if they wrote a message |
+| Self Chats           | These are messages that a user sends to themself |
 
 ### Metadata captured
 
