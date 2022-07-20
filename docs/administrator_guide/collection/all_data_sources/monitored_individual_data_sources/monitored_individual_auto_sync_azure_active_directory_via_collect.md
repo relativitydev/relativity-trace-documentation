@@ -125,7 +125,7 @@ Create a JSON config file that will be used to map the Azure Active Directory Gr
 
 Azure Active Directory Users from “9ccf…” group will be linked to “Collect O365 Mail” Data Source.
 
-```JSON
+```json
 [ 
     { 
         "GroupId": "9ccf034a-d46e-4a04-b730-1f2bd8399aa7", 
@@ -138,7 +138,7 @@ Azure Active Directory Users from “9ccf…” group will be linked to “Colle
 
 Users from “9ccf…” group will be linked to “Collect O365 Mail,” “Collect O365 Calendar,” and other Data Sources.
 
-```JSON
+```json
 [ 
     { 
         "GroupId": "9ccf034a-d46e-4a04-b730-1f2bd8399aa7", 
@@ -169,7 +169,7 @@ Users from “9ccf…” group will be linked to “Collect O365 Mail” and “
 
 Additionally, indication if a user belongs to “Restricted” (13be) or “Non-Restricted” (b324) group will be populated. This requires changes to: Monitored Individual, Data Mapping, and Ingestion Profile. See further instructions.
 
-```JSON
+```json
 [ 
     { 
         "GroupId": "9ccf034a-d46e-4a04-b730-1f2bd8399aa7", 
@@ -281,7 +281,7 @@ In the example below, the Ingestion Profile has been extended by three additiona
 - **hireDate**: additional Azure Active Directory field
 - **ADGroupIDsPlusNames**: user Groups
 
-![](media/MonitoredIndiv/ConfigDataMapAndIngestProfile_DataMappings.png)
+![](media/ConfigDataMapAndIngestProfile_DataMappings.png)
 
 #### Set-up Data Transformation
 
