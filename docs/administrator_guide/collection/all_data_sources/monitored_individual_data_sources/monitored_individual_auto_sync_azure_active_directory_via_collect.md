@@ -23,7 +23,7 @@ The following licenses are required to use this data source:
 Microsoft 365 E3 or higher is required.
 If you are using Microsoft 365 E3, you also need to add the Compliance module.
 
-### versions supported
+### Versions supported
 We support Microsoft 365 Enterprise 3 and above.
 
 ## Considerations
@@ -253,6 +253,8 @@ You will need the following information to complete setup of the data source fro
 Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
 {: .warn } 
 
+### Setup in Trace
+
 #### Configure Monitored Individual on “Restricted” or “Non-Restricted” group
 
 This step is only necessary if tagging Monitored Individual on “Restricted” or “Non-Restricted” group. You need to create an **ADGroupIDsPlusNames** multi-choice field on Monitored Individual object. Make sure the following parameters are set as shown below:
@@ -283,9 +285,9 @@ In the example below, the Ingestion Profile has been extended by three additiona
 
 ![](media/ConfigDataMapAndIngestProfile_DataMappings.png)
 
-#### Set-up Data Transformation
+#### Data Transformation
 
-To create a new Data Transformation, make sure the following parameters are set as shown below.
+Create a new Data Transformation, make sure the following parameters are set as shown below.
 - **Name**: Enter **MI Sync**.
 - **Transformation Type**: Select **Monitored Individual Sync**.
 - **Content**: leave this field blank.
@@ -293,7 +295,7 @@ To create a new Data Transformation, make sure the following parameters are set 
 - **Group Id To Data Source Name Mapping Json**: Copy the JSON config file created in the *“Map Azure Active Directory Group identifier (Object Id) to Data Source with JSON”* section above.
 - **Secondary Identifier User Fields Json**: leave the default value.
 
-#### Set-up Data Source
+#### Data Source
 
 Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}).
 
@@ -314,9 +316,3 @@ Most parameters work the same for all Collect Data Sources. Follow the instructi
 - **Active Directory User Fields Json:** leave default values.
 
 5. **Data Transformations:** Add **MI Sync** Data Transformation to **Azure Active Directory Sync** Data Source.
-
-
-
- 
-
- 
