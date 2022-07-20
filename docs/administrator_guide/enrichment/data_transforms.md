@@ -277,6 +277,7 @@ This runs without Structured Analytics and will not produce results that can be 
 ## Dynamic Searching
 
 **Dynamic Searching Configuration**
+
 Dynamic Searching can be configured in `Data Transformation` task using `Dynamic Searching Object Types Json` setting. In this setting user can set up a list of object types for which searching should be performed. 
 
   ![](media/dynamic_searching/DynamicSearchingConfigurationSetup.PNG)
