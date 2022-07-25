@@ -25,6 +25,31 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.5.0.0 (2 Aug 2022)
+
+**Features**
+
+- Pre-built Irrelevant Content AI Models: Uncover irrelevant communication to better identify regulatory and reputational risk with AI models that Trace ships out-of-the-box 
+  - Newsletter Detection: detect widely disseminated and recurring messages that summarize world and financial market news (“Newsletters”) that do not need to be reviewed, to reduce false positives 
+  - Financial Research Report Detection: detect widely disseminated documents prepared by investment research firms that describe a company and often provide a particular recommendation (“Research Reports”) that do not need to be reviewed, to reduce false positives 
+- Product Identification: categorize communications that reference a relevant product based on a pre-defined list of products relevant to the organization (e.g. Financial instruments including CUSIP, ISIN, Ticker, Benchmark, Index or Pharmaceutical Products).  
+
+**Enhancements**
+
+- Expanded Trace Conversation Threading to work capture communication threads between load files producing more accurate results
+- Expanded Notification Reporting functionality to allow clients to exlude certain communications by Trace Type for more accurate reproting
+
+**Defect Fixes**
+- Fixed issues with Language Identification Transformation (4722 & 4664)
+- Fixed issues with Machine Learning Model Data Mapping (4564 & 4569)
+
+# 15.3.32.0 (31 May 2022)
+
+**Features**
+
+- Identifying the languages used within a communication and the detection of language switching is now enabled by default with no need for configuration within Structured Analytics.
+- Spam detection is now automatically run across all communications without the need for configuration through Active Learning.
+
 # 15.4.14.0 (28 June 2022)
 
 **Features**
