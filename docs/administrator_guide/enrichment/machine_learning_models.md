@@ -45,7 +45,7 @@ A Rule is automatically created for `Risk Detection` Machine Learning Models. Th
 Machine Learning Models with the purpose of detecting irrelevant content can be used to reduce false-positive alerts. Trace has two pre-built models to be enabled - `Newsletter & Financial Research Report Identification`. Follow the steps below to ignore this irrelevant content. 
 1. Locate the Saved Search used for the `Omit from Alert Rules` functionality within the `Rules Evaluation` Task (See Trace Document Flow Overview section for more information)
 2. Update the Saved Search with "AND `[Machine Learning model] Decision` is *YES*"
-![Omit from Alert Rules and Machine Learning](media/machine_learning/image-20210218234536087.png)
+![Omit from Alert Rules and Machine Learning](media/machine_learning_models/Machine Learning Models - Irrelvant Content - Omit from Saved Search.PNG)
 
 ## Enabling a Trace Defined Machine Learning Model
 The following steps can be used to enable a Trace Defined Machine Learning Model.
