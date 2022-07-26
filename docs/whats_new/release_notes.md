@@ -36,7 +36,6 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 **Enhancements**
 
-- Expanded Trace Conversation Threading to work capture communication threads between load files producing more accurate results
 - Expanded Notification Reporting functionality to allow clients to exlude certain communications by Trace Type for more accurate reproting
 
 **Defect Fixes**
