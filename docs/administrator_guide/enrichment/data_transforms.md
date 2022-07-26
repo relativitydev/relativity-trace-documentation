@@ -31,7 +31,7 @@ The languages used within a communication are automatically identified by the sy
 - `Trace Primary Language`: A fixed-length text field that contains the most used language in the communication (e.g. `French`)
 - `Trace Other Langauges`: A fixed-length text field that lists all of the non-primary languages used in the communication (e.g. `(Language: Danish , Confidence: 540),(Language: Japanese , Confidence: 1977)`)
 
-There is a a known issue for the spelling of the `Trace Other Langauges` field and the format of the results.
+An "Unknown" value will populate for text outside that is too small or large (20 Bytes to 40 KB)
 {: .warn}
 
 - `Trace Language Switching`: A Yes/No field the denotes whether multiple languages are detected in the communication
