@@ -22,12 +22,12 @@ Trace provides out-of-the-box Artifical Intelligence (AI) to improve the user ex
 
 | **Trace Model Category**   | **Trace Model Type**   | **Relativity Model**          | **Model Type**    | **Model Description**           |
 | -------------------------- |----------------------- | ----------------------------- | ----------------- | --------------------------------|
+| Irrelevant Content Dection | Standard               | AI Extracted Text Cleansing   | NLP    | Identifies non-authored or duplicative content, email headers, email signatures, and confidentiality footers |
 | Irrelevant Content Dection | Standard               | Spam Detection                | Classification    | Spam is defined as irrelevant communications that could not contain misconduct |
-| Irrelevant Content Dection | Pre-Built              | Text Cleansing                | Classification    | Identifies non-authored or duplicative content               |
 | Irrelevant Content Dection | Pre-Built              | Newsletter Detection          | Classification    | Detect widely disseminated and recurring messages that summarize world and market news (“Newsletters”) that do not need to be reviewed, to reduce false positives               |
-| Irrelevant Content Dection | Irrelevant Content Dection | Financial Research Report Detection| Classification    | Detect widely disseminated documents prepared by investment research firms that describe a company and often provide a particular recommendation (“Research Reports”) that do not need to be reviewed, to reduce false positives               |
+| Irrelevant Content Dection | Pre-Built              | Financial Research Report Detection| Classification    | Detect widely disseminated documents prepared by investment research firms that describe a company and often provide a particular recommendation (“Research Reports”) that do not need to be reviewed, to reduce false positives               |
 | Reviewer Understanding     | Standard               | Language Identification       | NLP               | Identifies the primary and other languages in a communication|
-| Transciption               | Standard               | Audio                         | NLP               | Transcibes audio communciations into text                    |
+| Reviewer Understanding     |Pre-Built               | Audio Trascription            | NLP               | Transcibes audio communciations into text                    |
 | Risk Detection             | Pre-Built              | Change of Venue               | Classification    | Detect an attempt to avoid discovery by changing the communication venue|
 | Risk Detection             | Pre-Built              | Rumors And Speculation        | Classification    | Detect the distribution or discussion of unverified and doubtfully true information|
 | Risk Detection             | Pre-Built              | Collaborative Discussions     | Classification    | Detect employees working together to prevent the discovery of misconduct and sharing of client identifying data |
@@ -66,6 +66,10 @@ For infromation on enablment can be found [here](https://relativitydev.github.io
 ### Spam Detection
 
 For infromation on enablment can be found [here](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/data_transforms.html)
+
+### AI Extracted Text Cleansing
+
+For infromation on enablment can be found [here](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/data_transforms.html#ai-extracted-text-cleansing-data-transformation)
 
 ## Additional Information
 
