@@ -38,15 +38,15 @@ Trace provides out-of-the-box Artifical Intelligence (AI) to improve the user ex
 
 ### Standard
 
-tbd
+AI functionality enabled for all customers that is built by Trace and requires no customer training. Standard models are focused on understanding that doesn’t change across customers or industries
 
 ### Pre-Built
 
-tbd
+AI functionality avaliable to all customers that is built by Trace and can be improved by a customer. These models support validation and are focused on common compliance requirements. 
 
-## On-Demand
+### On-Demand
 
-tbd
+AI functionality that a customer can define and build. These are focused on customer specific requirements. 
 
 ## Fields
 Document fields are created for each enrichment method. These document fields can be used as part of the Omit from Alert Rules functionality or Rules. See more information on AI fields [here](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/fields.html).
