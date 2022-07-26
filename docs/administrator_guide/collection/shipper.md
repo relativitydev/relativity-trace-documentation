@@ -19,7 +19,7 @@ On-premises data can be transferred to Relativity Trace in the cloud using eithe
 ---
 
 ## SFTP
-Please contact [support@relativity.com](mailto:support@relativity.com) for more information on our SFTP data transfer options.
+Basic information on our SFTP data transfer approach can be found in our [RelativityOne Documentation](https://help.relativity.com/RelativityOne/Content/Data_migration/S-FTP.htm). Not all Data Sources support SFTP data transfer. Please contact [support@relativity.com](mailto:support@relativity.com) for more information on our SFTP data transfer options.
 
 ## Trace Shipper
 The Trace Shipper Service is a Windows service released by Trace that delivers data from the client network to a remote Relativity Trace workspace. The service monitors configured source folders on the local network and ships files that appear in the source folders to predetermined file share locations within a Relativity workspace that are associated with Trace Data Sources. The files are deleted from the source folder once they have been transmitted to Relativity successfully. 
