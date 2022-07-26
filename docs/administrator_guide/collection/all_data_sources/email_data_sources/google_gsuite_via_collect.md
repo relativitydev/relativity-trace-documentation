@@ -148,84 +148,154 @@ For details on installing Collect, see [Using Relativity Collect]({{ site.baseur
 
 ### Authentication
 
-STOPPED HERE - headers to divide up are below:
+Before configuring the data source, complete the following authentication steps. 
 
-*Step #1: Required Google Workspace Credentials Setup*
-*Create Google Cloud Project* 
-*Enable required APIs for the Project*
-*Setup OAuth2 Consent Screen*
-*Create Credentials*
-*Step #2: Required Google Workspace User Account Setup*
-*Create admin role for Vault API*
-*Create admin role for the user accounts listing*
-*Create admin role for the groups listing*
-*Enable required privileges*
-*Step #3: Obtaining Application Token (in Trace)*
-*Step #4: Configure Trace Data Source*
+#### Required Google Workspace Credentials Setup 
 
-Before configuring the data source complete the following authentication steps. 
+##### Create Google Cloud Project 
 
-We strongly recommend registering a separate Azure Application for each Data Source.
-{: .info }
+1) Open **Cloud Resource Manager** in **Google’s Cloud Console** https://console.cloud.google.com/cloud-resource-manager. 
+2) Select an **Organization/Project** within which Trace will perform eDiscovery tasks. 
+3) See https://cloud.google.com/resource-manager/docs/creating-managing-projects for more information. 
 
-To register your app:
+![Graphical user interface, application, Word  Description automatically generated](google_gsuite_via_collect/clip_image002.png)
 
-1. Open your [Azure Portal](https://portal.azure.com/). 
-1. Click **More Services**. 
-1. Search for and select **Azure Active Directory**. 
-1. In the left-navigation menu, click **App registrations**. 
-1. Click **New Registration**. This will open the Register an application page. 
-1. Enter an application name in the **Name** field. 
-1. Select **Accounts** in this organizational directory only as the supported account type. 
-1. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
-1. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
+##### Enable required APIs for the Project
 
-From the app's page, add permissions to the web API: 
+1. Open Google Cloud Console https://console.cloud.google.com/ and select newly created project.
+2. Click on the **Navigation Menu** and select [**'APIs & Services**' → '**Library**'].
+3. Find and enable **'Google Vault API'**. See https://cloud.google.com/service-usage/docs/enable-disable for more information.
+4. Find and enable **'Admin SDK API**'
+5. Find and enable **'Cloud Storage' API**.
 
-1. Click **API Permissions**. 
-2. Click **Add a permission**. 
-3. Click **Microsoft Graph**. 
-4. Select **Application Permissions**. 
-5. Select the following options from the **Application Permissions** section: 
-   - **Mail** - Read. 
-   - **User** - Read.All 
-   - **Calendars** - Read. For the Email only option, this permission is not needed 
+*Note: **'Cloud Storage'** API may be enabled by default.*
 
-6. Click **Add permissions**. 
-7. Click **Grant Permission**. 
+##### Setup OAuth2 Consent Screen
 
-Grant Admin consent for the API: 
+1. Open **Google Cloud Console** https://console.cloud.google.com/ and select newly created project. 
+2. Click on the **Navigation Menu** and select [**'APIs & Services**' → **'OAuth consent screen**'].
+3. Select '**Internal'** type and click Create. ![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image004.png)
+4. Enter descriptive **'App name'**, e.g., *Trace Collect* and provide **'User support email'** from within your organization.
+   ![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image006.png)
+5. Enter *relativity.one* as **'Authorized domain'** and provide **'Developer contact information**' email from within your organization.
+   ![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image008.png)
+6. Click **'Save and continue'**. 
+7. On the next step click **'Add or remove scopes'**. 
+8. Either filter and select required scopes one-by-one or enter them in the text box. The scopes are: 
+   - https://www.googleapis.com/auth/ediscovery 
+   - https://www.googleapis.com/auth/devstorage.read_only 
+   - https://www.googleapis.com/auth/admin.directory.user.readonly 
+   - https://www.googleapis.com/auth/admin.directory.group.readonly![Text, table  Description automatically generated with medium confidence](google_gsuite_via_collect/clip_image010.png)
+9. Click **'Update'** and then **'Save and continue'**. 
 
-1. Click the **API Permissions** tab. 
-2. Click **Grant admin consent** for [tenant]. 
-3. In the pop-up window, click **Accept**. If you do not have the ability to grant Admin consent for application permissions, you will need to find an Admin that can consent. 
-4. Once clicked, the window will show all permissions granted. 
-5. Verify all permissions have been granted. 
-6. Click **Accept** to grant the permissions. 
+##### Create Credentials
 
-Generate Client Secret:
+1. Open Google Cloud Console https://console.cloud.google.com/ and select newly created project. 
+2. Click on the Navigation Menu and select [**'APIs & Services'** → '**Credentials**'] 
+3. Create new OAuth **Client ID** credentials 
+4. For *Application Type* select *Web application* 
+5. Enter required **'Name'**.
+6. Add based on geo:
+   - Asia (East)- https://services.esas.relativity.one/collect-oauth-authorization/index.html
+   - Asia (Southeast) - https://services.seas.relativity.one/collect-oauth-authorization/index.html
+   - Brazil (South) - https://services.brso.relativity.one/collect-oauth-authorization/index.html
+   - Canada (Central) - https://services.cact.relativity.one/collect-oauth-authorization/index.html
+   - Europe (North) - https://services.noeu.relativity.one/collect-oauth-authorization/index.html
+   - Europe (West) - https://services.wseu.relativity.one/collect-oauth-authorization/index.html
+   - Germany (West Central) - https://services.dect.relativity.one/collect-oauth-authorization/index.html
+   - India (Central) - https://services.inct.relativity.one/collect-oauth-authorization/index.html
+   - Korea (Central) - https://services.krct.relativity.one/collect-oauth-authorization/index.html
+   - United Kingdom (South) - https://services.ukso.relativity.one/collect-oauth-authorization/index.html
+   - United States (Central) - https://services.ctus.relativity.one/collect-oauth-authorization/index.html
+   - United States (East) - https://services.esus.relativity.one/collect-oauth-authorization/index.html 
+   - https://services.ctus.relativity.one/collect-oauth-authorization/index.html as 'Authorized redirect URI'. 
+7. Click **'Create'** and take note of **Client ID** and **Client Secret** values.![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image012.png)
 
-1. In the left navigation menu, select **Certificates & secrets**. 
-2. Select **New client secret**.
-3. Enter a description in the **Description** text box. 
-4. Set the expiration time frame to **Never**. 
-5. Click **Add**. 
-6. Click on the clipboard and copy secret to clipboard to paste in your text document. Save this secret, as you will need it to set up your data sources in Trace. 
+#### Required Google Workspace User Account Setup
 
-Microsoft will only show this secret this one time; there is no way to recover a secret if it is forgotten or lost. Make a note of the Application ID that Microsoft assigned to the app registration. This ID is also required for setup of data sources in Trace.
-{: .info }
+*Collections require user account on which behalf Trace exports data. This can be a dedicated or an existing user account.*
 
-You will need the following information to complete setup of the data source from the Trace front end: 
+##### Create admin role for Vault API
 
-  - Application ID 
-  - Client Secret (copy the **Value** field) 
-  - Domain (mycompanydomain.com)
+1. Open Google Admin page https://admin.google.com/ac/home. 
 
-Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
-{: .warn }
+2. Click on the Navigation Menu and select [**'Account'** → **'Admin roles'**]. 
 
-Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access).
-{: .info }
+3. Click **'Create new role'**, enter required **'Name'** and click **'Continue'**.![Table  Description automatically generated](google_gsuite_via_collect/clip_image002-16588626847067.png)
+
+4. On the **'Admin console privileges'** scroll down to **'Google Vault**' and select the required privileges: 
+
+   - Manage Matters 
+   - Manage Searches 
+   - Manage Exports
+
+   ![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image004-16588626847068.png)
+
+5. Click **'Continue'**, review assigned privileges and click **'Create Role'**. 
+
+####  
+
+#### Create admin role for the user accounts listing
+
+\1.   Open Google Admin page https://admin.google.com/ac/home. 
+
+\2.   Click on the Navigation Menu and select [**'Account'** → **'Admin roles'**]. 
+
+\3.   Click **'Create new role'**, enter required **'Name'** and click **'Continue'**. 
+
+\4.   On the **'Admin API privileges’** scroll down to **'Users'** and select the required privilege: 
+
+a.   Read 
+
+\5.   Click **'Continue'**, review assigned privileges and click **'Create Role'**. 
+
+ 
+
+![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image006-16588626847069.png)
+
+####  
+
+#### Create admin role for the groups listing
+
+\1.   Open Google Admin page https://admin.google.com/ac/home. 
+
+\2.   Click on the **Navigation Menu** and select [**'Account'** → **'Admin roles'**]. 
+
+\3.   Click **'Create new role'**, enter required **'Name'** and click **'Continue'**. 
+
+\4.   On the **'Admin API privileges’** scroll down to **'Users'** and select the required privilege: 
+
+a.   Read 
+
+\5.   Click **'Continue'**, review assigned privileges and click **'Create Role'**. 
+
+![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image008-165886268470710.png)
+
+####  
+
+#### Enable required privileges
+
+\1.   Open Google Admin page https://admin.google.com/ac/home. 
+
+\2.   Click on the **Navigation Menu** and select [**'Directory'** → **'Users'**]. 
+
+\3.   Create new or select existing user account. 
+
+![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image010-165886268470712.png)
+
+\4.   Select and expand **'Admin roles and privileges**' pane. 
+
+\5.   Assign the following roles to the user in **'All organizational units'** scope. 
+
+![Graphical user interface, application, email  Description automatically generated](google_gsuite_via_collect/clip_image012-165886268470711.png)
+
+
+
+
+
+------------
+
+
 
 ### Setup in Trace
 
