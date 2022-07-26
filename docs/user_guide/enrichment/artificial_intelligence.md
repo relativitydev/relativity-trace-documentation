@@ -66,3 +66,7 @@ For infromation on enablment can be found [here](https://relativitydev.github.io
 ### Spam Detection
 
 For infromation on enablment can be found [here](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/data_transforms.html)
+
+## Additional Information
+
+For more information on how Trace' AI models are enabled, please see the [Admin Guide](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/data_transforms.html)
