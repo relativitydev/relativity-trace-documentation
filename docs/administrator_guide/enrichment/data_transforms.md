@@ -273,3 +273,7 @@ This runs without Structured Analytics and will not produce results that can be 
 
 `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info}
+
+## Trace Search
+
+Trace improved term searching to provide better workspace performance to clients. As part of this, tbd
