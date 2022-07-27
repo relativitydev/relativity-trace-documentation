@@ -275,11 +275,16 @@ This runs without Structured Analytics and will not produce results that can be 
 {: .info}
 
 ## Product Identification
+Preview
+{: .label .label-yellow }
 
-This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
+This feature is in **Preview** and is not yet generally available to all customer. To enable this feature in Preview within your environment, please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info}
 
 Product Identification can be used to detect important user-defined identifiers like financial tickers (stocks, companies), pharmaceutical products (drugs, chemicals, competitors), or project names (confidential lists) within communications. The identification of these products can be used to create more targeted alerts, provide greater context for reviewers, or expose trends for investigation. Multiple different product lists can be used for detection (e.g. financial tickers AND project names). These lists of products can be managed either manually or automatically through a sync with an external system.
+
+This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
+{: .info}
 
 **Configuration**
 1. Create a new Object Type that will be used to define the identifiers that will be detected in communications.
