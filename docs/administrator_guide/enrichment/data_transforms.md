@@ -273,3 +273,85 @@ This runs without Structured Analytics and will not produce results that can be 
 
 `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info}
+
+## Product Identification
+Preview
+{: .label .label-yellow }
+
+This feature is in **Preview** and is not yet generally available to all customer. To enable this feature in Preview within your environment, please contact [support@relativity.com](mailto:support@relativity.com).
+{: .info}
+
+Product Identification can be used to detect important user-defined identifiers like financial tickers (stocks, companies), pharmaceutical products (drugs, chemicals, competitors), or project names (confidential lists) within communications. The identification of these products can be used to create more targeted alerts, provide greater context for reviewers, or expose trends for investigation. Multiple different product lists can be used for detection (e.g. financial tickers AND project names). These lists of products can be managed either manually or automatically through a sync with an external system.
+
+This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
+{: .info}
+
+**Configuration**
+1. Create a new Object Type that will be used to define the identifiers that will be detected in communications.
+
+Create multiple new Object Types if you have different categories of products that should be detected in communications.
+{: .info}
+
+2. Configure the newly created Object Type to be used as a product list for Product Identification by populating the `Dynamic Searching Object Types Json` setting on the `Data Transformation` task that can be found on the `Setup` page.
+
+3. The `Dynamic Searching Object Types Json` field is inputted as JSON with each `{}` representing a single object type.
+
+*Example `Dynamic Searching Object Types Json` configuration:*
+
+```json
+[
+   {
+      "ObjectTypeName":"Financial Products",
+   },
+   {
+      "ObjectTypeName":"Pharmaceutical Products"
+   }
+]
+```
+
+The following criteria must be met for the setting to be valid:
+- `ObjectTypeName` must be a name of object type which exists in the workspace
+- One object type can occur only once in `Dynamic Searching Object Types Json` configuration
+- Object type has to have fixed-length field of type identifier
+- Object type can't be saved in configuration if there are no RDOs of given object type
+- Object type can't be saved in configuration if there are RDOs of this object type with duplicated values in identifier field
+{: .warn}
+
+If this field is not populated then the Product Identification Data Transformation will not run.
+{: .info}
+
+4. Save the changes made to `Dynamic Searching Object Type JSON` on the `Data Transformation` task.
+
+Product Identification is now enabled. The data transformation will search for the `Name` field (identifier) values for the Objects on the configured Object Types within the communication text.
+
+
+**Results**
+
+After saving `Dynamic Searching Object Types Json` a new configuration is created automatically for every object type.
+1. New multiple object field called `Trace [ObjectTypeName]` is created on the `Document` object type (e.g. `Trace Financial Product`). This field joins `Document` and the particular `Object Type`.
+
+    ![](media/dynamic_searching/DynamicSearching_MultipleObjectDocumentField.PNG)
+
+2. New `Persistent Highlight Set` is created and it is set to highlight values from the multiple object document field created in the previous step.
+
+    ![](media/dynamic_searching/DynamicSearching_NewPersistentHighlightSet.PNG)
+
+3. New `Data Mapping` is created for the multiple object document field from the first step so that the detected Product values are ingested. This data mapping is linked to each `Ingestion Profile` set up for `Document` object type.
+
+    ![](media/dynamic_searching/DynamicSearching_NewDataMapping.PNG)
+
+When new documents are ingested into the system and data transformations are executed on documents' data batch, documents are tagged with objects set up in `Dynamic Searching Object Types Json` setting.
+
+![](media/dynamic_searching/DynamicSearching_DocumentView.PNG)
+![](media/dynamic_searching/DynamicSearching_HighlightedDocument.PNG)
+![](media/dynamic_searching/DynamicSearching_FinancialProductsView.PNG)
+
+**Syncing Products from an External System**
+
+The [Zip Drop Data Source]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) can be used to automatically upload lists of Products to an Object Type from an external system.
+
+**Considerations**
+
+- Objects of object type set up in `Dynamic Searching Object Types Json` cannot contain semicolon (`;`) in identifier field.
+- Product Identification does rely on the `Perform Term Searching On Trace Cleansed Extracted Text` setting on the `Term Searching Task` to decided whether to analyze the `Extracted Text` field or the `Trace Cleansed Extracted Text` field.
+- Product Identification searching relies on the default Trace Searching alphabet and cannot be adjusted at this time.
