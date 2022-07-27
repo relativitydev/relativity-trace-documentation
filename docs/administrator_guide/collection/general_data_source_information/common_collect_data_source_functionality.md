@@ -56,13 +56,14 @@ Data is retrieved from the source via data batches. The data batch collection pe
 
 In the following example, the Frequency in Minutes was set to 240 and the Ingestion State was 00:00. Once enabled, the data source started retrieving data. During data retrieval execution, there was the first data batch created, from 00:00 to 04:00. The Ingestion State was changed to 04:00. During the next data retrieval run, there was another Batch created, from 04:00 to 08:00, and the Ingestion State was set to 08:00. Then, during two more data retrieval runs, more data batches were created, with the final Ingestion State set to 16:00. 
 
-![](media/Common_collect_data_source_functionality/IngestionStates.png)
+![](media/IngestionStates.png)
 
-Now, when the Merge Batches During Cold Start is set to True, then the Data Batch collection period will be modified to improve performance. 
+When `Merge Batches During Cold Start` is set to True, then the Data Batch collection period will be modified to improve performance.
+{: .info}
 
 In the following example , a data source was run at 04:00 on Day-2. Because the Ingestion State was Day-1 00:00, there were two merged data batches created. The first was between 00:00 and 12:00 on Day-1 and the second was between 12:00 and 24:00 on Day-1. Then, there was a third data batch created to cover the remaining period from 00:00 to 04:00 on Day-2, and the Ingestion State was changed to 04:00 on Day-2. 
 
-![](media/Common_collect_data_source_functionality/Day2IngestionStates.png)
+![](media/Day2IngestionStates.png)
 
 ## Collection period offset
 
@@ -70,10 +71,8 @@ If data is not available for retrieval immediately, the Collection Period Offset
 
 ## Data batch split
 
-A data batch that has completed with errors and displays a status of CompletedWithErrors will be automatically split into two Data Batches: 
-
+A data batch that has completed with errors and displays a status of `CompletedWithErrors` will be automatically split into two Data Batches: 
 - Batch #1 - the batch that contains mailboxes that were retrieved successfully. The status of this batch is Completed. There is no action that needs to be taken on it. 
-
 - Batch #2 - the batch that contains mailboxes that were failed during data retrieval. The status of that batch is Abandoned. Depending on the reason for failure, that batch can be retried manually. 
 
 ## Message slicing – Chat only  
@@ -86,4 +85,4 @@ In the following example:
 - Message sent by Misha Kogan on 7/25/2021 11:58PM is the parent message, previously captured. It doesn’t contain text. 
 - Start date of this slice is 7/26/201 12:00AM. 
 
-![](media/Common_collect_data_source_functionality/MessageSlicing.png)
+![](media/MessageSlicing.png)

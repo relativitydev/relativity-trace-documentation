@@ -144,25 +144,21 @@ To register your app:
 1. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
 
 From the app's page, add permissions to the web API: 
-1. Click **API Permissions**. 
-2. Click **Add a permission**
-3. Click **Microsoft Graph**
-4. Select **Application Permissions**
-5. In the left hand navigation, select **Manage>Manifest**. Locate the **requiredResourceAccess** property in the manifest and add the following code inside the square brackets:
+1. Click **Manifest** in the left-hand navigation under **Manage**. 
+2. Locate the **requiredResourceAccess** property in the manifest and add the following code inside the square brackets:
 
 ```json
 { 
 "resourceAppId": "00000002-0000-0ff1-ce00-000000000000", 
 "resourceAccess": [ 
   { 
-    "id": "dc890d15-9560-4a4c-9b7f-a736ec74ec40", "type": "Role" 
+    "id": "dc890d15-9560-4a4c-9b7f-a736ec74ec40", 
+    "type": "Role" 
   } 
   ] 
 }, 
 ```
-6. Click **Save**. Then confirm that the **full_access_as_app** permission is listed.
-7. Click **Add Permission**
-8. Click **Grant Permission**
+3. Click **Save**. Then confirm that the **full_access_as_app** permission is listed.
 
 Grant Admin consent for the API: 
 1. Click the **API Permissions** tab. 
@@ -195,7 +191,7 @@ You will need the following information to complete setup of the data source fro
 Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
 {: .warn }
 
-Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access).
+Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation]([https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access](https://docs.microsoft.com/en-us/powershell/module/exchange/new-applicationaccesspolicy?view=exchange-ps)).
 {: .info }
 
 ### Setup in Trace
