@@ -159,8 +159,6 @@ From the app's page, add permissions to the web API:
 }, 
 ```
 3. Click **Save**. Then confirm that the **full_access_as_app** permission is listed.
-4. Click **Grant admin consent for org** and accept the consent dialog
-5. Click **Grant Permission**
 
 Grant Admin consent for the API: 
 1. Click the **API Permissions** tab. 
