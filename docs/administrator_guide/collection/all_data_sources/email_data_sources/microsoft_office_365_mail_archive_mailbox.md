@@ -144,46 +144,30 @@ We strongly recommend registering a separate Azure Application for each Data Sou
 1. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
 1. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
 
-**From the app's page, add permissions to the Graph API:**
-1. Click **API Permissions**
-1. Click **Add a permission**
-1. Click **Microsoft Graph**
-1. Select **Application Permissions**
-1. Sect the following options from the Application Permission section:
-  - Calendars.Read
-  - Contacts.Read
-  - Files.Read.All
-  - Mail.Read
-  - Sites.Read.All
-  - User.Read
-  - User.Read.All
-1. Click **Add permissions**
-1. Click **Grant permissions**
-1. Type must be **Application**, not **Delegated**
-
 **From the app's page, add permissions to the web API (EWS):**
 1. Click **Manifest** in the left-hand navigation under **Manage**. 
 1. Locate the **requiredResourceAccess** property in the manifest and add the following code inside the square brackets:
-  ```json
-  { 
-  "resourceAppId": "00000002-0000-0ff1-ce00-000000000000", 
-  "resourceAccess": [ 
+  
+    ```json
     { 
-      "id": "dc890d15-9560-4a4c-9b7f-a736ec74ec40", 
-      "type": "Role" 
-    } 
-    ] 
-  }, 
-  ```
+    "resourceAppId": "00000002-0000-0ff1-ce00-000000000000", 
+    "resourceAccess": [ 
+      { 
+        "id": "dc890d15-9560-4a4c-9b7f-a736ec74ec40", 
+        "type": "Role" 
+      } 
+      ] 
+    }, 
+    ```
 
-  *Example*
+    *Example*
 
-  ​![](media/microsoft_office_365_mail_archive_mailbox/requiredresourceaccess.png)
+    ​![](media/microsoft_office_365_mail_archive_mailbox/requiredresourceaccess.png)
 
 1. Click **Save**. 
 1. Confirm that the **full_access_as_app** permission is listed.
 
-​ ![](media/microsoft_office_365_mail_archive_mailbox/fullaccessasapp.png)
+    ![](media/microsoft_office_365_mail_archive_mailbox/fullaccessasapp.png)
 
 **Grant Admin consent for the API:**
 1. Click the **API Permissions** tab. 
@@ -199,11 +183,11 @@ We strongly recommend registering a separate Azure Application for each Data Sou
 
 Generate Client Secret:
 1. In the left navigation menu, select **Certificates & secrets**. 
-2. Select **New client secret**.
-3. Enter a description in the **Description** text box
-4. Set the expiration time frame to **Never**.
-5. Click **Add**. 
-6. Click on the clipboard and copy secret to clipboard to paste in your text document.
+1. Select **New client secret**.
+1. Enter a description in the **Description** text box
+1. Set the expiration time frame to **Never**.
+1. Click **Add**. 
+1. Click on the clipboard and copy secret to clipboard to paste in your text document.
 
 Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
 {: .warn }
@@ -216,7 +200,7 @@ You will need the following information to complete setup of the data source fro
   - Client Secret (copy the **Value** field) 
   - Domain (mycompanydomain.com)
 
-Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation]([https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access](https://docs.microsoft.com/en-us/powershell/module/exchange/new-applicationaccesspolicy?view=exchange-ps)).
+Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/powershell/module/exchange/new-applicationaccesspolicy?view=exchange-ps).
 {: .info }
 
 ### Setup in Trace
@@ -241,7 +225,7 @@ Credentials section:
 
 1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
 2. Data Source Specific Fields section
-   - **Collect Draft items**: True or False (default)**.** False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
+   - **Collect Draft items**: True or False (default). False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
    - **Domain**: The O365 domain name provided by the client. 
    - **Application Id**: Application / Client ID provided by the client. 
    - **Use Quick Discovery**: True 
