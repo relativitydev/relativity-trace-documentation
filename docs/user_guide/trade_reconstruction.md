@@ -21,7 +21,7 @@ Trade Reconstruction is used to automatically link trade and orders from Order M
 
 There are several components to Trade Reconstruction. To begin, a Trade Reconstruction Configuration must be created. Trade Reconstruction Configurations are defined by administrators during implementation, more configuration information found [here]({{ site.baseurl }}{% link docs/administrator_guide/trade_reconstruction.md %}). Once a Trade Reconstruction Configuration is created, Trades can be reconstructed.
 
-## Creating or Ingesting A Trade
+## Creating or Ingesting a Trade
 
 To run Trade Reconstruction, you need a Trade. Trades can be created manually following the steps below or created through an integration with an OMS or Trade Capture system. Trade integrations are configured by administrators during implementation, more information can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/trade_reconstruction.md %}).
 
