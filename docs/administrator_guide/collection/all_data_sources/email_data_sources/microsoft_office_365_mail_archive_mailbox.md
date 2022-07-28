@@ -190,8 +190,8 @@ We strongly recommend registering a separate Azure Application for each Data Sou
 1. Click **Grant admin consent for [tenant]**. 
 1. In the pop-up window, click Accept. 
 
-  If you do not have the ability to grant Admin consent for application permissions, you will need to find an Admin that can consent.
-  {: .info }
+    If you do not have the ability to grant Admin consent for application permissions, you will need to find an Admin that can consent.
+    {: .info }
 
 1. Once clicked, the window will show all permissions granted. 
 1. Verify all permissions have been granted
