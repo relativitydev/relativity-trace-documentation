@@ -28,6 +28,7 @@ There are several components to Trade Reconstruction. To begin, a Trade Reconstr
 To run Trade Reconstruction, you need a Trade. Trades can be created manually following the steps below or created through an integration with an OMS or Trade Capture system. Trade integrations are configured by administrators during implementation, more information can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/trade_reconstruction.md %}).
 
 **Manual Trade Creation**
+
 1. Navigate to `Trades` tab and click `New Trade`.
 
    ![](media/trade_reconstruction/trade_layout.PNG)
@@ -41,10 +42,16 @@ To run Trade Reconstruction, you need a Trade. Trades can be created manually fo
      - `InProgress` - Trade is in the process of being Reconstructed
      - `Complete` - Trade has successfully finished being Reconstructed
      - `Errored` - Trade Reconstruction has failed to Reconstruct this Trade
+   - **Last Reconstruction Time:** uneditable field, the date and time that the previous Reconstruction began
+     - Additional Reconstruction Fields:
+       - **Last Reconstruction Completion Time:** the date and time that the previous Reconstruction completed
+       - **Last Reconstruction Performed By User Artifact ID:** the Artifact ID of the User that performed the previous Reconstruction 
+   - **Trade Reconstruction Action Count:** the number of times the Trade has been Reconstructed
+     - This count is total number of times `Perform Reconstruction` is set to `Yes`, meaning it counts both completed and errored Reconstructions
    - **Error Details:** uneditable field, if the Trade is in `Errored` status, this field displays why the Reconstruction may have failed
    - **Perform Reconstruction:** y/n field indicating if you want to perform Reconstruction on this Trade
      - More infomormation on this field can be found below in the section `Running Trade Reconstruction`
-   - **Reconstruction Configuration:** choose the `Trade Reconstruction Configuration` used to perform Reconsstruction
+   - **Reconstruction Configuration:** choose the `Trade Reconstruction Configuration` used to perform Reconstruction
      - A Trade Reconstruction Configuration is required to run Trade Reconstruction and is configured by a Relativity Trace Administrator. Administrator information on how to set up a Trade Reconstruction Configuration can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/trade_reconstruction.md %}).
 
 
