@@ -38,6 +38,7 @@ Note the following considerations about this data source:
 
 - This data source does not capture information about invited external users joining a channel.
 - This data source does not capture whether a user is external or internal.
+- 
 
 ### Data Filtering
 
