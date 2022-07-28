@@ -25,10 +25,8 @@ Private Preview
 New features that must be `Toggled On` by Relativity to function correctly. Please contact [support@relativity.com](mailto:support@relativity.com) if you would like access to one of these features.
 
 Public Preview 
-{: .label .label-yellow }
-
-New features that are available to all users (doesn't require any outreach to Support), but are in their infancy and may be missing a robust capability set.
+{: .label .label-yellow } - New features that are available to all users (doesn't require any outreach to Support), but are in their infancy and may be missing a robust capability set.
 
 **General Availability (GA)**
 
-Feature is fully released to all customers with full support. We don't normally tag any feature as GA as it's assumed that if it's not tagged it is in GA. |
+Feature is fully released to all customers with full support. We don't normally tag any feature as GA as it's assumed that if it's not tagged it is in GA.
