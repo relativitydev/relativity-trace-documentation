@@ -44,6 +44,9 @@ We support Microsoft 365 E3, E5, A5, and G5.
 
 Note the following considerations about this data source:
 
+### Data Access
+- The connector can access data regardless of the geographic location the data resides in when [Microsoft Multi-Geo](https://docs.microsoft.com/en-us/microsoft-365/enterprise/multi-geo-capabilities-in-teams-in-microsoft-365?view=o365-worldwide) capabilities have been implemented.
+
 ### Data Filtering
 
 There are two levels of filtering data:

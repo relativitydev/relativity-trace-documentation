@@ -251,10 +251,6 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 
   4. All email documents being ingested from this data source will now undergo cleansing. If you want to change the configuration of the content that gets removed, you can return to the data transformation, click edit, and de-select the checkboxes as desired. Any future emails ingested will now remove content as configured.
 
-     
-
-  ![](C:\SourceCode\relativity-trace-documentation\docs\media\user_documentation\cleansing-data-transform-configuration.png)
-
 **Trace Conversation Thread Field**
 When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
 
@@ -275,10 +271,10 @@ This runs without Structured Analytics and will not produce results that can be 
 {: .info}
 
 ## Product Identification
-Preview
+Private Preview
 {: .label .label-yellow }
 
-This feature is in **Preview** and is not yet generally available to all customer. To enable this feature in Preview within your environment, please contact [support@relativity.com](mailto:support@relativity.com).
+This feature is in **Private Preview** and is not yet generally available to all customer. Please visit the [Feature Preview]({{ site.baseurl }}{% link docs/whats_new/feature_preview.md %}) page for more information.
 {: .info}
 
 Product Identification can be used to detect important user-defined identifiers like financial tickers (stocks, companies), pharmaceutical products (drugs, chemicals, competitors), or project names (confidential lists) within communications. The identification of these products can be used to create more targeted alerts, provide greater context for reviewers, or expose trends for investigation. Multiple different product lists can be used for detection (e.g. financial tickers AND project names). These lists of products can be managed either manually or automatically through a sync with an external system.
