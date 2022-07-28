@@ -38,6 +38,7 @@ Note the following considerations about this data source:
 - The connector only supports accessing active mailboxes.
 - The connector does **NOT** support collection from Archive mailboxes
 - You can collect from unlicensed custodians, but the mailbox must still be active in the case where the user is unlicensed.
+- The connector can access data regardless of the geographic location the data resides in when [Microsoft Multi-Geo](https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide) capabilities have been implemented.
 - Guest mailboxes can only be collected if they are active & licensed.
 - Shared mailboxes can only be captured if they are active.
 
