@@ -118,6 +118,9 @@ To configure the Trace data source, perform the following steps. See the [Data S
    - Aip Tenant Id -  not used.
    - Last Error Retention In Hours
    - Excluded File Transformation Enabled.
+   - Health Check Failure Window Length In Minutes - when set, specifies time after which a Data Source is auto-disable due to no data/natives retrieved. If empty, a Data Source will never be auto-disabled.
+
+Note: This parameter does not apply to "processing type of Data Source" - the Data Source which has "Only Retrieve Natives And Copy To Folder" configured. In that case, the parameter value should be empty.
 
 ​	![](media/Installing_and_configuring_Trace_data_sources/DataSourceSpecificFields.png)
 
