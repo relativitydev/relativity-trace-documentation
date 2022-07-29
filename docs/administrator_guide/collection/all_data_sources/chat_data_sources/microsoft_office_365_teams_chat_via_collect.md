@@ -116,9 +116,9 @@ The following table lists metadata captured by this data source:
 | FROM                   | The first person to send a message in that respective slice  |
 | TO                     | Chat attendees                                               |
 | CONVERSATION-ID        | Unique identifier - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
-| X-RSMF-EndDate         | End date of the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
-| X-RSMF-MessageCount    | Number of messages in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
-| X-RSMF-AttachmentCount | Number of attachments in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-EndDate:         | End date of the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-MessageCount:    | Number of messages in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-AttachmentCount: | Number of attachments in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
 
 A "Slice" of data refers to a start and end time of data that will be captured in one Relativity Document. Unless specified, a slice will contain one days worth of data.
 {: .info}
