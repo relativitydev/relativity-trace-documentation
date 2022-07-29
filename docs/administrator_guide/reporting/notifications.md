@@ -36,6 +36,7 @@ Each Report Accepts
 - FrequencyInMinutes - how often the report should run, i.e. 15 for every 15 minutes
 - EmailFrom - email address the report should come from, or <<EMAIL_FROM_INSTANCE_SETTING>>  to override with the EmailFrom Relativity Instance setting
 - IncludeDetails - a true/false value which is used by some reports to provide extra detail. Currently only used by the SystemHealthAlertsReport to provide extra details on the error each Task encountered
+- ExcludedTraceTypes - a field that allows you to exclude certain information from a report, note you can remove multiple options '["Office 365 Email", "Slack]'
 
 #### Example JSON Configuration
 
