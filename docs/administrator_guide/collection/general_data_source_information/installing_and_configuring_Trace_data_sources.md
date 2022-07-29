@@ -118,7 +118,6 @@ To configure the Trace data source, perform the following steps. See the [Data S
    - Include Monitored Individuals Not Linked To Data Source.
    - Discover Monitored Individuals Ignore Case
    - Last Error Retention In Hours
-   - Excluded File Transformation Enabled.
 
 ​	![](media/Installing_and_configuring_Trace_data_sources/DataSourceSpecificFields.png)
 
