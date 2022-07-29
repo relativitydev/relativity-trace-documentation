@@ -106,10 +106,6 @@ The following table lists activities not captured by this data source:
 | Self Chats           | These are messages that a user sends to themself |
 | Messages submitted by unlicensed O365 User                    | Microsoft Export API does not support the collection of this data                  |
 
-Note:
-1. All messages originalgt
-
-
 ### Metadata captured
 
 The following table lists metadata captured by this data source:
