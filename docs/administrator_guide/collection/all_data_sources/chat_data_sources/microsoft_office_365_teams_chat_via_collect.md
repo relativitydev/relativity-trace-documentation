@@ -104,6 +104,11 @@ The following table lists activities not captured by this data source:
 | Chats during externally-hosted Teams video calls             |                                                      |
 | Participant leaving/being deleted from the channel           | Participant is captured only if they wrote a message |
 | Self Chats           | These are messages that a user sends to themself |
+| Message submitted by unlicensed O365 User                    | MS Export API does not support this                  |
+
+Note:
+1. All messages originalgt
+
 
 ### Metadata captured
 
