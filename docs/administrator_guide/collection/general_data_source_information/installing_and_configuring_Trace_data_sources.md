@@ -31,7 +31,9 @@ Before configuring Trace data source, configure the following instance settings:
 - **Name**: MaxNumberOfRunningStandaloneCollections 
 - **Section**: Relativity.Collection 
 - **Value Type**: Integer 32-bit 
-- **Value**: 10 
+- **Value**: 10
+
+Note: There is global (per instance) limit of concurent Collection jobs. For instance, eDiscovery Workspace runs 5 parallel jobs, only 5 wil be available for Trace Workspace. All other jobs will be queued and depends on the current load, Data Batches might stay in Retrieval state for longer time.
 
  ![](media/Installing_and_configuring_Trace_data_sources/CollectInstanceSetting1.png)
 
