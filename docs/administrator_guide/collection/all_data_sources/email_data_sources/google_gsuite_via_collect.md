@@ -174,7 +174,8 @@ Before configuring the data source, complete the following authentication steps.
 
 1. Open **Google Cloud Console** https://console.cloud.google.com/ and select newly created project. 
 2. Click on the **Navigation Menu** and select [**'APIs & Services**' → **'OAuth consent screen**'].
-3. Select '**Internal'** type and click Create. ![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image004.png)
+3. Select '**Internal'** type and click Create.
+    ![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image004.png)
 4. Enter descriptive **'App name'**, e.g., *Trace Collect* and provide **'User support email'** from within your organization.
    ![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image006.png)
 5. Enter *relativity.one* as **'Authorized domain'** and provide **'Developer contact information**' email from within your organization.
@@ -185,7 +186,8 @@ Before configuring the data source, complete the following authentication steps.
    - https://www.googleapis.com/auth/ediscovery 
    - https://www.googleapis.com/auth/devstorage.read_only 
    - https://www.googleapis.com/auth/admin.directory.user.readonly 
-   - https://www.googleapis.com/auth/admin.directory.group.readonly![Text, table  Description automatically generated with medium confidence](google_gsuite_via_collect/clip_image010.png)
+   - https://www.googleapis.com/auth/admin.directory.group.readonly
+     ![Text, table  Description automatically generated with medium confidence](google_gsuite_via_collect/clip_image010.png)
 9. Click **'Update'** and then **'Save and continue'**. 
 
 ##### Create Credentials
@@ -209,7 +211,8 @@ Before configuring the data source, complete the following authentication steps.
    - United States (Central) - https://services.ctus.relativity.one/collect-oauth-authorization/index.html
    - United States (East) - https://services.esus.relativity.one/collect-oauth-authorization/index.html 
    - https://services.ctus.relativity.one/collect-oauth-authorization/index.html as 'Authorized redirect URI'. 
-7. Click **'Create'** and take note of **Client ID** and **Client Secret** values.![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image012.png)
+7. Click **'Create'** and take note of **Client ID** and **Client Secret** values.
+   ![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image012.png)
 
 #### Required Google Workspace User Account Setup
 
@@ -221,81 +224,54 @@ Before configuring the data source, complete the following authentication steps.
 
 2. Click on the Navigation Menu and select [**'Account'** → **'Admin roles'**]. 
 
-3. Click **'Create new role'**, enter required **'Name'** and click **'Continue'**.![Table  Description automatically generated](google_gsuite_via_collect/clip_image002-16588626847067.png)
+3. Click **'Create new role'**, enter required **'Name'** and click **'Continue'**.
+   ![Table  Description automatically generated](google_gsuite_via_collect/clip_image002-16588626847067.png)
 
 4. On the **'Admin console privileges'** scroll down to **'Google Vault**' and select the required privileges: 
 
    - Manage Matters 
    - Manage Searches 
    - Manage Exports
-
-   ![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image004-16588626847068.png)
-
+     ![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image004-16588626847068.png)
+   
 5. Click **'Continue'**, review assigned privileges and click **'Create Role'**. 
 
-####  
+#####  Create admin role for the user accounts listing
 
-#### Create admin role for the user accounts listing
+1. Open Google Admin page https://admin.google.com/ac/home. 
+2. Click on the Navigation Menu and select [**'Account'** → **'Admin roles'**].
+3. Click **'Create new role'**, enter required **'Name'** and click **'Continue'**. 
+4. On the **'Admin API privileges’** scroll down to **'Users'** and select the required privilege: 
+   - Read 
+5. Click **'Continue'**, review assigned privileges and click **'Create Role'**.
+   ![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image006-16588626847069.png)
 
-\1.   Open Google Admin page https://admin.google.com/ac/home. 
+##### Create admin role for the groups listing
 
-\2.   Click on the Navigation Menu and select [**'Account'** → **'Admin roles'**]. 
+1. Open Google Admin page https://admin.google.com/ac/home. 
 
-\3.   Click **'Create new role'**, enter required **'Name'** and click **'Continue'**. 
+2. Click on the **Navigation Menu** and select [**'Account'** → **'Admin roles'**]. 
 
-\4.   On the **'Admin API privileges’** scroll down to **'Users'** and select the required privilege: 
+3. Click **'Create new role'**, enter required **'Name'** and click **'Continue'**. 
 
-a.   Read 
-
-\5.   Click **'Continue'**, review assigned privileges and click **'Create Role'**. 
-
- 
-
-![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image006-16588626847069.png)
-
-####  
-
-#### Create admin role for the groups listing
-
-\1.   Open Google Admin page https://admin.google.com/ac/home. 
-
-\2.   Click on the **Navigation Menu** and select [**'Account'** → **'Admin roles'**]. 
-
-\3.   Click **'Create new role'**, enter required **'Name'** and click **'Continue'**. 
-
-\4.   On the **'Admin API privileges’** scroll down to **'Users'** and select the required privilege: 
-
-a.   Read 
-
-\5.   Click **'Continue'**, review assigned privileges and click **'Create Role'**. 
-
-![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image008-165886268470710.png)
-
-####  
+4. On the **'Admin API privileges’** scroll down to **'Users'** and select the required privilege: 
+   - Read 
+5. Click **'Continue'**, review assigned privileges and click **'Create Role'**.
+   ![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image008-165886268470710.png)
 
 #### Enable required privileges
 
-\1.   Open Google Admin page https://admin.google.com/ac/home. 
+1. Open Google Admin page https://admin.google.com/ac/home. 
 
-\2.   Click on the **Navigation Menu** and select [**'Directory'** → **'Users'**]. 
+2. Click on the **Navigation Menu** and select [**'Directory'** → **'Users'**]. 
 
-\3.   Create new or select existing user account. 
+3. Create new or select existing user account.
+   ![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image010-165886268470712.png)
 
-![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image010-165886268470712.png)
+4. Select and expand **'Admin roles and privileges**' pane. 
 
-\4.   Select and expand **'Admin roles and privileges**' pane. 
-
-\5.   Assign the following roles to the user in **'All organizational units'** scope. 
-
-![Graphical user interface, application, email  Description automatically generated](google_gsuite_via_collect/clip_image012-165886268470711.png)
-
-
-
-
-
-------------
-
-
+5. Assign the following roles to the user in **'All organizational units'** scope.
+   ![Graphical user interface, application, email  Description automatically generated](google_gsuite_via_collect/clip_image012-165886268470711.png)
 
 ### Setup in Trace
 
@@ -305,37 +281,76 @@ The following sections provide the steps for installing Collect and configuring 
 
 Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
 
+#### Obtaining Application Token (in Trace)
+
+This step should be done by a customer representative with access to the Google admin account.
+
+1. In the Trace workspace, navigate to **Collect Admin**
+
+2. Click the **New Collection Source Instance** button
+
+3. Leave the data source name empty
+
+4. Select **Gmail, Google Drive or Google Chat** as the data source
+   ![Graphical user interface  Description automatically generated](google_gsuite_via_collect/clip_image002-16591219620221.png)
+
+5. In the 'Settings' pane enter **'Client Id'** and **'Client Secret'** copied from Google’s OAuth2 credentials page.
+   ![Graphical user interface  Description automatically generated](google_gsuite_via_collect/clip_image004-16591219620222.png)
+
+6. Click **'Generate Code'**. 
+
+7. Select or sign into Google’s account on which behalf collections will be performed (see *Required Google Workspace User Account Setup* for details). 
+
+8. Click **'Copy Temporary Code'** on the loaded page and close this window.
+   ![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image008-16591219620223.png)
+
+9. Paste **'Temporary Code'** into appropriate filed and click **'Generate Refresh Token'**. The **'Refresh Token'** field will be automatically populated.
+   ![Graphical user interface, text, application, email  Description automatically generated](google_gsuite_via_collect/clip_image010-16591219620225.png)
+
+10. **Don’t click SAVE** – just copy the **Refresh Token**, click Cancel, and navigate to the **Trace Data Source** page.
+    ![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image012-16591219620226.png)
+
 #### Data source
 
 Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
 
-O365 Mail and Calendar specific parameters: 
+GSuite (Gmail, Google Chat, Google Drive) specific parameters: 
 
-General section: 
-
-1. **Data Source Type**: Select Microsoft O365 Mail or Calendar. 
-
-​	![](C:\Users\jean.whiting\Documents\relativity-trace-documentation\docs\administrator_guide\collection\all_data_sources\email_data_sources\media\Office_365_email_and_calendar_via_Collect\DataSourceType.png)
-
-Credentials section: 
-
-1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
-2. Data Source Specific Fields section
-   - **Collect Draft items**: True or False (default)**.** False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
-   - **Domain**: The O365 domain name provided by the client. 
-   - **Application Id**: Application / Client ID provided by the client. 
-   - **Use Quick Discovery**: True 
-   - **Frequency in Minutes**: 60 
-   - **Number of Monitored Individual Per job**: 100 
-   - **Collection Period Offset in Minutes**: 0 
-
- ![](C:\Users\jean.whiting\Documents\relativity-trace-documentation\docs\administrator_guide\collection\all_data_sources\email_data_sources\media\Office_365_email_and_calendar_via_Collect\DataSourceSpecificFields.png)
+1. General section: 
+   - **Data Source Type**: Select **Google Gmail (Vault), Google Chat or Google Drive**.
+     ![image-20220729142150563](google_gsuite_via_collect/image-20220729142150563.png)
 
 
+2. Credentials section: 
 
-![image-20220718150723384](google_gsuite_via_collect/image-20220718150723384.png)
+   - **Application Token**: Enter generated **Refresh Token**
+
+   - **Application Secret:** Enter generated **Application Secret**
 
 
+3. Data Source Specific Fields section
+   - Number of Monitored Individuals Per Job: **100**.
+   - Client Id: **Captured Client Id**
+   - Frequency in Minutes: **1440**
+   - Merge Batches During Cold Start: **True**
+   - Max Number of Batches To Merge: **1**
+   - Collect Job Timeout In Minutes: **1440**.
+   - Collection Period Offset in Minutes: **1440**.
+   - Extraction Count: **2**
+   - Enrich Documents: **True**
+   - Embedded File Behavior: **DoNotImport**
+   - Discover Monitored Individuals: **True**
+   - Include Monitored Individuals Not Linked To Data Source: **False**
+   - Discover Monitored Individuals Ignores Case: **False**
+   - Last Error Retention In Hours: **120**
+   - Excluded File Transformation Enabled: **True**
+4. Set-up **DeDuplication** for this data source with following configuration:
+   - Email Hashing - Use Binary Hash : **False**
+   - Email Hashing - Use Sender In Hash : **True**
+   - Email Hashing - Use Subject In Hash : **False**
+   - Email Hashing - Use Sent Date In Hash : **True**
+   - Email Hashing - Use Recipients In Hash : **True**
+   - Email Hashing - Use Body In Hash : **True**
+   - Email Hashing - Use Attachment List In Hash : **False**
 
-![image-20220718150746787](google_gsuite_via_collect/image-20220718150746787.png)
-
+ 
