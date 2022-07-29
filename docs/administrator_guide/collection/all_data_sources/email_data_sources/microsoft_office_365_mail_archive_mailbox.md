@@ -106,15 +106,15 @@ You must have the following company-provided information to complete the authent
 - Access to the Azure portal and an active account
 - Archive mailboxes configured for users
 
-Set an employee up with archive mailbox capabilities (this is not required to set up the Microsoft O365 Mail Archive Mailbox Data Source)
-1. Go to Microsoft Purview compliance portal and sign in. 
-2. In the left pane of the compliance portal, select Data lifecycle management > Archive. 
-3. On the Archive page, the Archive mailbox column identifies whether an archive mailbox is enabled or disabled for each user. 
-4. In the list of mailboxes, select the user to enable their mailbox for archive, and then select the Enable archive option: Enable archive option for a selected user. 
-5. A warning is displayed saying that if you enable the archive mailbox, items in the user's mailbox that are older than the archiving policy assigned to the mailbox will be moved to the new archive mailbox. The default archive policy that is part of the retention policy assigned to Exchange Online mailboxes moves items to the archive mailbox two years after the date the item was delivered to the mailbox or created by the user. For more information, see Learn about archive mailboxes
-6. Select Enable to confirm.
-7. It might take a few moments to create the archive mailbox. When it's created, Enabled is displayed in the Archive mailbox column for the selected user, although you might need to refresh the page to see the change of status.
-{: .info }
+> Set an employee up with archive mailbox capabilities (this is not required to set up the Microsoft O365 Mail Archive Mailbox Data Source)
+> 1. Go to Microsoft Purview compliance portal and sign in. 
+> 2. In the left pane of the compliance portal, select Data lifecycle management > Archive. 
+> 3. On the Archive page, the Archive mailbox column identifies whether an archive mailbox is enabled or disabled for each user. 
+> 4. In the list of mailboxes, select the user to enable their mailbox for archive, and then select the Enable archive option: Enable archive option for a selected user. 
+> 5. A warning is displayed saying that if you enable the archive mailbox, items in the user's mailbox that are older than the archiving policy assigned to the mailbox will be moved to the new archive mailbox. The default archive policy that is part of the retention policy assigned to Exchange Online mailboxes moves items to the archive mailbox two years after the date the item was delivered to the mailbox or created by the user. For more information, see Learn about archive mailboxes
+> 6. Select Enable to confirm.
+> 7. It might take a few moments to create the archive mailbox. When it's created, Enabled is displayed in the Archive mailbox column for the selected user, although you might need to refresh the page to see the change of status.
+{: .info}
 
 
 #### Data transfer prerequisites
@@ -132,53 +132,65 @@ Before configuring the data source complete the following authentication steps.
 We strongly recommend registering a separate Azure Application for each Data Source.
 {: .info }
 
-To register your app:
+**To register your app:**
 1. Open your [Azure Portal](https://portal.azure.com/). 
 1. Click **More Services**. 
 1. Search for and select **Azure Active Directory**. 
 1. In the left-navigation menu, click **App registrations**. 
 1. Click **New Registration**. This will open the Register an application page. 
 1. Enter an application name in the **Name** field. 
-1. Select **Accounts** in this organizational directory only as the supported account type. 
+1. Select **Accounts in this organizational directory only** as the supported account type.
+1. For **Platform Type** set `Web`
 1. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
 1. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
 
-From the app's page, add permissions to the web API: 
+**From the app's page, add permissions to the web API (EWS):**
 1. Click **Manifest** in the left-hand navigation under **Manage**. 
-2. Locate the **requiredResourceAccess** property in the manifest and add the following code inside the square brackets:
+1. Locate the **requiredResourceAccess** property in the manifest and add the following code inside the square brackets:
+  
+    ```json
+    { 
+    "resourceAppId": "00000002-0000-0ff1-ce00-000000000000", 
+    "resourceAccess": [ 
+      { 
+        "id": "dc890d15-9560-4a4c-9b7f-a736ec74ec40", 
+        "type": "Role" 
+      } 
+      ] 
+    }, 
+    ```
 
-```json
-{ 
-"resourceAppId": "00000002-0000-0ff1-ce00-000000000000", 
-"resourceAccess": [ 
-  { 
-    "id": "dc890d15-9560-4a4c-9b7f-a736ec74ec40", 
-    "type": "Role" 
-  } 
-  ] 
-}, 
-```
-3. Click **Save**. Then confirm that the **full_access_as_app** permission is listed.
+    *Example*
 
-Grant Admin consent for the API: 
+    ​![](media/microsoft_office_365_mail_archive_mailbox/requiredresourceaccess.png)
+
+1. Click **Save**. 
+1. Confirm that the **full_access_as_app** permission is listed.
+
+    ![](media/microsoft_office_365_mail_archive_mailbox/fullaccessasapp.png)
+
+**Grant Admin consent for the API:**
 1. Click the **API Permissions** tab. 
-2. Click **Grant admin consent for [tenant]**. 
-3. In the pop-up window, click Accept. 
+1. Click **Grant admin consent for [tenant]**. 
+1. In the pop-up window, click Accept. 
 
-If you do not have the ability to grant Admin consent for application permissions, you will need to find an Admin that can consent.
-{: .info }
+    If you do not have the ability to grant Admin consent for application permissions, you will need to find an Admin that can consent.
+    {: .info }
 
-4. Once clicked, the window will show all permissions granted. 
-5. Verify all permissions have been granted
-6. Click **Accept** to grant the permissions. 
+1. Once clicked, the window will show all permissions granted. 
+1. Verify all permissions have been granted
+1. Click **Accept** to grant the permissions. 
 
 Generate Client Secret:
 1. In the left navigation menu, select **Certificates & secrets**. 
-2. Select **New client secret**.
-3. Enter a description in the **Description** text box
-4. Set the expiration time frame to **Never**.
-5. Click **Add**. 
-6. Click on the clipboard and copy secret to clipboard to paste in your text document. 
+1. Select **New client secret**.
+1. Enter a description in the **Description** text box
+1. Set the expiration time frame to **Never**.
+1. Click **Add**. 
+1. Click on the clipboard and copy secret to clipboard to paste in your text document.
+
+Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
+{: .warn }
 
 Microsoft will only show this secret this one time; there is no way to recover a secret if it is forgotten or lost. Make a note of the Application ID that Microsoft assigned to the app registration. This ID is also required for setup of data sources in Trace.
 {: .info }
@@ -188,10 +200,7 @@ You will need the following information to complete setup of the data source fro
   - Client Secret (copy the **Value** field) 
   - Domain (mycompanydomain.com)
 
-Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
-{: .warn }
-
-Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation]([https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access](https://docs.microsoft.com/en-us/powershell/module/exchange/new-applicationaccesspolicy?view=exchange-ps)).
+Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/powershell/module/exchange/new-applicationaccesspolicy?view=exchange-ps).
 {: .info }
 
 ### Setup in Trace
@@ -216,7 +225,7 @@ Credentials section:
 
 1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
 2. Data Source Specific Fields section
-   - **Collect Draft items**: True or False (default)**.** False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
+   - **Collect Draft items**: True or False (default). False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
    - **Domain**: The O365 domain name provided by the client. 
    - **Application Id**: Application / Client ID provided by the client. 
    - **Use Quick Discovery**: True 

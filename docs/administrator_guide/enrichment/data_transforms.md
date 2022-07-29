@@ -18,11 +18,11 @@ Data Transformations analyze and enrich communications before they become a docu
 
 ---
 
-## Data Transformations
+## Overview
 
 Data Transformations allow administrators to specify a way data should be transformed while it is being imported by the data source. Some Trace Data Transformations must be attached to a Data Source by clicking Link in the Data Transformations section of the Data Source Layout, while other Data Transformations run automatically for all data sources.
 
-### Language Identification
+## Language Identification
 
 This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
 {: .info}
@@ -44,7 +44,7 @@ There is a a known issue for the spelling of the `Trace Other Langauges` field a
 These language identification results can be used to hone alert Rules, build workflow Rules that direct communications in certain languages to native speaking reviewers, or search for specific communications as part of an investigation.
 
 
-### Spam Detection
+## Spam Detection
 
 This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
 {: .info}
@@ -63,7 +63,7 @@ To eliminate the likelihood false-positive spam detection, the threshold for cla
 {: .info}
 
 
-### Replace Data Transformation
+## Replace Data Transformation
 
 Data Transformations of type *Replace* allow you to strip exact blocks of text out of the Extracted Text for any documents imported by the associated Data Source. This allows for removal of things like email signatures and other frequently occurring, benign text so that they do not match Terms. A Data Source can be associated with multiple Data Transformations of type Replace.
 
@@ -74,7 +74,7 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 Replacement of the Extracted Text (application of replace data transformation) happens on a new copy of the Extracted Text (referenced as *<original_file_name>.replaced.txt*).  Newly generated Extracted Text is referenced in a separate loadfile (`loadfile.replaced.dat`).  In addition, if original loadfile.dat contains a column named `Extracted Text Size in KB` , ONLY then `Extracted Text Size in KB` field is re-generated with updated length.  **Previously generated/supplied data for `Extracted Text Size in KB` is overwritten in this case.**
 {: .info}
 
-### Deduplication Data Transformation
+## Deduplication Data Transformation
 
 Data Transformations of type `Deduplication` prevent a Data Source from importing an original document and its extractions if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
 
@@ -84,7 +84,7 @@ For Trace native [Data Sources](#data-sources), deduplication is driven by a SHA
 
 When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes of original documents will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
 
-#### Required Fields for Deduplication
+**Required Fields for Deduplication**
 
 Deduplication of a Data Source requires that the following Relativity fields be mapped in the Data Source's associated Ingestion Profile.
 
@@ -95,7 +95,7 @@ Deduplication of a Data Source requires that the following Relativity fields be 
    Because of this requirement, Deduplication is incompatible with [Ingestion Profiles](#Ingestion-Profiles) where Import Natives is set to no.
    {: .info}
 
-### Communication Direction Data Transformation
+## Communication Direction Data Transformation
 
 Data Transformations of type `Communication Direction` can be used to populate the `Trace Communication Direction` and `Trace Communication Personal` fields on documents based on domain classifications made on the `Email Domain` object. 
 
@@ -125,7 +125,7 @@ By specifing person email domains (e.g. google.com, yahoo.com) on the `Email Dom
 {: .info}
 
 
-### Exempt List Data Transformation
+## Exempt List Data Transformation
 
 Data Transformations of type `Exempt List` can be used to populate the `Trace Exempt` field on documents with a Yes/No value that indicates whether a particular communication can be excluded from review. The `Trace Exempt` document field is populated based on the `Exempt Entry` objects defined in the workspace. `Exempt List` transformations can specify the `Exempt List Categories` that should apply to the Data Source, or the `Exempt List Categories` field can be left blank in which case all `Exempt Entry` objects in the workspace will be considered. Only one `Exempt List` Data Transformation can be applied to each `Data Source`.
 
@@ -163,7 +163,7 @@ Use of the `Exempt List` Data Transformation type requires that a column named F
 Use of the `Communication Direction` Data Transformation type requires that a load file column be specified as a Native File Path in the Data Source's [Ingestion Profile](#Ingestion-Profiles). Because of this requirement, Exempt List is incompatible with Ingestion Profiles where Import Natives is set to no.
 {: .info}
 
-### AI Extracted Text Cleansing Data Transformation
+## AI Extracted Text Cleansing Data Transformation
 
   Data Transformation of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content and duplicative content from the Extracted Text of an email document. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove confidentiality disclaimers, email signatures, email headers, and duplicative email content that has already been ingested, allowing users to review and run rules on only new authored content. This will reduce both false positive and duplicative alert volumes.
 
@@ -251,10 +251,6 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 
   4. All email documents being ingested from this data source will now undergo cleansing. If you want to change the configuration of the content that gets removed, you can return to the data transformation, click edit, and de-select the checkboxes as desired. Any future emails ingested will now remove content as configured.
 
-     
-
-  ![](C:\SourceCode\relativity-trace-documentation\docs\media\user_documentation\cleansing-data-transform-configuration.png)
-
 **Trace Conversation Thread Field**
 When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
 
@@ -267,7 +263,7 @@ This runs without Structured Analytics and will not produce results that can be 
   2. AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
  
-### Group Identifier Truncation for External Data Sources
+## Group Identifier Truncation for External Data Sources
 
 `Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
 
@@ -275,11 +271,6 @@ This runs without Structured Analytics and will not produce results that can be 
 {: .info}
 
 ## Product Identification
-Preview
-{: .label .label-yellow }
-
-This feature is in **Preview** and is not yet generally available to all customer. To enable this feature in Preview within your environment, please contact [support@relativity.com](mailto:support@relativity.com).
-{: .info}
 
 Product Identification can be used to detect important user-defined identifiers like financial tickers (stocks, companies), pharmaceutical products (drugs, chemicals, competitors), or project names (confidential lists) within communications. The identification of these products can be used to create more targeted alerts, provide greater context for reviewers, or expose trends for investigation. Multiple different product lists can be used for detection (e.g. financial tickers AND project names). These lists of products can be managed either manually or automatically through a sync with an external system.
 
