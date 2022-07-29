@@ -255,5 +255,5 @@ Credentials section:
 2. Data Source Specific Fields section
    - **Domain**: The O365 domain name provided by the client. 
    - **Application Id**: Application / Client ID provided by the client. For example, 53ba6f2b-6d52-4f5c-8ae0-7adc20808854
-   - **Frequency in Minutes**: 240 
-   - **Collection Period Offset in Minutes**: 1440 
+   - **Frequency in Minutes**: 1440 
+   - **Collection Period Offset in Minutes**: 0 
