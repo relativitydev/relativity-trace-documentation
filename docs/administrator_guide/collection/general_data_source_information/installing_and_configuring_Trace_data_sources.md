@@ -116,8 +116,6 @@ To configure the Trace data source, perform the following steps. See the [Data S
    - Discover Monitored Individual
    - Include Monitored Individuals Not Linked To Data Source
    - Discover Monitored Individuals Ignore Case
-   - Aip Application Id - not used.
-   - Aip Tenant Id -  not used.
    - Last Error Retention In Hours
    - Excluded File Transformation Enabled.
 
