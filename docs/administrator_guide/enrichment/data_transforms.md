@@ -276,4 +276,12 @@ This runs without Structured Analytics and will not produce results that can be 
 
 ## Trace Search
 
-Trace improved term searching to provide better workspace performance to clients. As part of this, tbd
+Trace improved term searching to provide better workspace performance to clients. As part of this, Trace updated the types of terms we can define. Note, Trace can can create only one of each configuration. 
+
+- Case Sensitive
+- Accent Sensitive
+- Fuzziness Level
+- Alphabet
+- Noise Word
+
+![](media/data_transforms/Trace-Search-Data-Transformation.png)
