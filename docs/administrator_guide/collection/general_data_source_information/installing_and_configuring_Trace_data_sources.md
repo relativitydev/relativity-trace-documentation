@@ -109,12 +109,13 @@ To configure the Trace data source, perform the following steps. See the [Data S
    - Collect Job Timeout in Minutes - 1440 (default) – Time interval after which a Data Batch will be moved from Retrieving to Abandoned state.
    - Number of Monitored Individual Per Job - 100 (default) – Internal parameter to tweak data retrieval performance. This parameter is available for non-chat Data Sources only. See specific Data Source for more details.
    - Collection Period Offset in Minutes - 0 (default) – Modify Collection Period by adding offset in minutes to both Start and End Date. This parameter is used to collect data that are available to be retrieved with some delay, for example, 24 hours.
+   - Only Retrieve Natives And Copy To Folder - Globanet Data Source folder location - this parameter is used to split natives captured by Collect job onto smaller chunks. A typical use case for this is Bloomberg Chat or Mail where a single collection from 1 day can return hunder thousands natives. When the parameter is set, the Data Source will only retrieve natives. Then corresponding Globanet type of Data Source will pick up natives in batches and process them.
    - Password Bank
    - Extraction Thread Count
    - Enrich Documents
    - Embedded File Behavior
    - Discover Monitored Individual
-   - Include Monitored Individuals Not Linked To Data Source
+   - Include Monitored Individuals Not Linked To Data Source.
    - Discover Monitored Individuals Ignore Case
    - Last Error Retention In Hours
    - Excluded File Transformation Enabled.
