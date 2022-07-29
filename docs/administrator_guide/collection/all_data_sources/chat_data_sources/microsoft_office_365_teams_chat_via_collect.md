@@ -81,7 +81,7 @@ The following table lists activities captured by this data source:
 | Organization-wide team messages                          | Applies to both public and private channels                  |
 | Last version of edited messages                          |                                                              |
 | Chat meetings                                            | Includes chats via internal Teams video calls only, not external |
-| Attachments                                              | This includes archived attachments                           |
+| Attachments including audio and video files              | This includes archived attachments                           |
 | Stickers                                                 |                                                              |
 | Images                                                   |                                                              |
 | Code snippets                                            |                                                              |
