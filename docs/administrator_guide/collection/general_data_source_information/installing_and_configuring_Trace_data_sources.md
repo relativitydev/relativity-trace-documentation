@@ -33,7 +33,8 @@ Before configuring Trace data source, configure the following instance settings:
 - **Value Type**: Integer 32-bit 
 - **Value**: 10
 
-Note: There is global (per instance) limit of concurent Collection jobs. For instance, eDiscovery Workspace runs 5 parallel jobs, only 5 wil be available for Trace Workspace. All other jobs will be queued and depends on the current load, Data Batches might stay in Retrieval state for longer time.
+There is a global (per instance) limit of the number of Collection jobs that can run at the same time. By default, this limit is set to five. If this limit is met, all subsequent jobs will be queued which may cause Data Batches to remain in the Retrieval state for longer period of time.
+{: .info}
 
  ![](media/Installing_and_configuring_Trace_data_sources/CollectInstanceSetting1.png)
 
@@ -109,13 +110,13 @@ To configure the Trace data source, perform the following steps. See the [Data S
    - Collect Job Timeout in Minutes - 1440 (default) – Time interval after which a Data Batch will be moved from Retrieving to Abandoned state.
    - Number of Monitored Individual Per Job - 100 (default) – Internal parameter to tweak data retrieval performance. This parameter is available for non-chat Data Sources only. See specific Data Source for more details.
    - Collection Period Offset in Minutes - 0 (default) – Modify Collection Period by adding offset in minutes to both Start and End Date. This parameter is used to collect data that are available to be retrieved with some delay, for example, 24 hours.
-   - Only Retrieve Natives And Copy To Folder - Globanet Data Source folder location - this parameter is used to split natives captured by Collect job onto smaller chunks. A typical use case for this is Bloomberg Chat or Mail where a single collection from 1 day can return hunder thousands natives. When the parameter is set, the Data Source will only retrieve natives. Then corresponding Globanet type of Data Source will pick up natives in batches and process them.
+   - Only Retrieve Natives And Copy To Folder - Drop Data Source folder location (or Globanet) - This parameter is used when a single collection could result in hundreds of thousands of native files and overload the system. This is most frequently seen for Bloomberg chat or mail when one day of data for all monitored individuals is collected at one time. When this parameter is set, the Data Source will only retrieve natives and write them to this folder. Then a separate related data source can be created to pick up all the natives at the location and create smaller batches of data that can be more easily processed.
    - Password Bank
    - Extraction Thread Count
    - Enrich Documents
    - Embedded File Behavior
    - Discover Monitored Individual
-   - Include Monitored Individuals Not Linked To Data Source.
+   - Include Monitored Individuals Not Linked To Data Source
    - Discover Monitored Individuals Ignore Case
    - Last Error Retention In Hours
    - Health Check Failure Window Length In Minutes - when set, specifies time after which a Data Source is auto-disable due to no data/natives retrieved. If empty, a Data Source will never be auto-disabled.This parameter does not apply to "processing type of Data Source" - the Data Source which has "Only Retrieve Natives And Copy To Folder" configured. In that case, the parameter value should be empty.

@@ -104,7 +104,7 @@ The following table lists activities not captured by this data source:
 | Chats during externally-hosted Teams video calls             |                                                      |
 | Participant leaving/being deleted from the channel           | Participant is captured only if they wrote a message |
 | Self Chats           | These are messages that a user sends to themself |
-| Message submitted by unlicensed O365 User                    | MS Export API does not support this                  |
+| Messages submitted by unlicensed O365 User                    | Microsoft Export API does not support the collection of this data                  |
 
 Note:
 1. All messages originalgt
@@ -166,9 +166,8 @@ Before configuring the data source complete the following authentication steps.
 
 We strongly recommend registering a separate Azure Application for each Data Source.
 
-Note: Due to MS Export API throttling, you should try to avoid running parallel Teams connections from the same Azure Application.
-
-{: .info }
+Try to avoid running parallel Teams connections from the same Azure Application as Microsoft will throttle calls causing collection jobs to fail.
+{: .warn }
 
 To register your app:
 
