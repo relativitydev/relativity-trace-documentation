@@ -160,6 +160,9 @@ You must have the following information to complete the data transfer.
 Before configuring the data source complete the following authentication steps. 
 
 We strongly recommend registering a separate Azure Application for each Data Source.
+
+Note: Due to MS Export API throttling, you should try to avoid running parallel Teams connections from the same Azure Application.
+
 {: .info }
 
 To register your app:
