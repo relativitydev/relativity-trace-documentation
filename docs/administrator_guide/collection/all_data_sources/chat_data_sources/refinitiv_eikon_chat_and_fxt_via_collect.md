@@ -130,6 +130,7 @@ Settings section:
 
 - **Username:** SFTP user.
 - **Password:** SFTP password.
+- **Ignore Historic:** If set to False, whenever a user joins the chat, all of the messages they missed since last joining are sent to the chat. This can cause a lot of duplicate data. Default value is True.
 - **Host:** SFTP location.
 - **Path:** Folder path on SFTP.
 - **Port:** TCP port number. Default value is 22.
