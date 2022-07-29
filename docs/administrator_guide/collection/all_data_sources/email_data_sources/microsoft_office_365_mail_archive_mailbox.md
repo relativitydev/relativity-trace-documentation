@@ -220,6 +220,6 @@ Credentials section:
    - **Domain**: The O365 domain name provided by the client. 
    - **Application Id**: Application / Client ID provided by the client. 
    - **Use Quick Discovery**: True 
-   - **Frequency in Minutes**: 60 
+   - **Frequency in Minutes**: 1440 
    - **Number of Monitored Individual Per job**: 100 
    - **Collection Period Offset in Minutes**: 0 
