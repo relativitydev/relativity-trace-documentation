@@ -271,11 +271,6 @@ This runs without Structured Analytics and will not produce results that can be 
 {: .info}
 
 ## Product Identification
-Private Preview
-{: .label .label-yellow }
-
-This feature is in **Private Preview** and is not yet generally available to all customer. Please visit the [Feature Preview]({{ site.baseurl }}{% link docs/whats_new/feature_preview.md %}) page for more information.
-{: .info}
 
 Product Identification can be used to detect important user-defined identifiers like financial tickers (stocks, companies), pharmaceutical products (drugs, chemicals, competitors), or project names (confidential lists) within communications. The identification of these products can be used to create more targeted alerts, provide greater context for reviewers, or expose trends for investigation. Multiple different product lists can be used for detection (e.g. financial tickers AND project names). These lists of products can be managed either manually or automatically through a sync with an external system.
 
