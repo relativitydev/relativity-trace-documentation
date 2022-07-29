@@ -107,6 +107,7 @@ The following table lists activities not captured by this data source:
 | Chats during externally-hosted Teams video calls             |                                                      |
 | Participant leaving/being deleted from the channel           | Participant is captured only if they wrote a message |
 | Self Chats           | These are messages that a user sends to themself |
+| Messages submitted by unlicensed O365 User                    | Microsoft Export API does not support the collection of this data                  |
 
 ### Metadata captured
 
@@ -119,9 +120,9 @@ The following table lists metadata captured by this data source:
 | FROM                   | The first person to send a message in that respective slice  |
 | TO                     | Chat attendees                                               |
 | CONVERSATION-ID        | Unique identifier - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
-| X-RSMF-EndDate         | End date of the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
-| X-RSMF-MessageCount    | Number of messages in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
-| X-RSMF-AttachmentCount | Number of attachments in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-EndDate:         | End date of the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-MessageCount:    | Number of messages in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
+| X-RSMF-AttachmentCount: | Number of attachments in the chat/slice - when creating a data mapping, set **Read From Other Metadata Column** to Yes. |
 
 A "Slice" of data refers to a start and end time of data that will be captured in one Relativity Document. Unless specified, a slice will contain one days worth of data.
 {: .info}
@@ -163,7 +164,9 @@ You must have the following information to complete the data transfer.
 Before configuring the data source complete the following authentication steps. 
 
 We strongly recommend registering a separate Azure Application for each Data Source.
-{: .info }
+
+Try to avoid running parallel Teams connections from the same Azure Application as Microsoft will throttle calls causing collection jobs to fail.
+{: .warn }
 
 To register your app:
 
@@ -258,5 +261,5 @@ Credentials section:
 2. Data Source Specific Fields section
    - **Domain**: The O365 domain name provided by the client. 
    - **Application Id**: Application / Client ID provided by the client. For example, 53ba6f2b-6d52-4f5c-8ae0-7adc20808854
-   - **Frequency in Minutes**: 240 
-   - **Collection Period Offset in Minutes**: 1440 
+   - **Frequency in Minutes**: 1440 
+   - **Collection Period Offset in Minutes**: 0 

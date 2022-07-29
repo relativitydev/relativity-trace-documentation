@@ -203,7 +203,7 @@ Credentials section:
 
 1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
 2. Data Source Specific Fields section
-   - **Collect Draft items**: True or False (default)**.** False is default setting due to the nature of drafts (they are not sent we don’t want to risk false positives). 
+   - **Collect Draft items**: If set to `FALSE` (default), then only emails that were sent (non-Draft) are collected. If set to `TRUE`, then both sent emails (non-draft) and drafts emails are collected. Since draft emails are not actually communication, most customers elect to set this to `FALSE` and ignore the collection of draft emails to reduce false-positive alerts.
    - **Domain**: The O365 domain name provided by the client. 
    - **Application Id**: Application / Client ID provided by the client. 
    - **Use Quick Discovery**: True 

@@ -94,6 +94,47 @@ Bloomberg specific parameters:
 - **Username** - enter the SFTP username.
 - **Password** - enter the SFTP password.
 - **PGP Key** - enter the PGP Key used for message encryption.
+
+For instance, if the PGP/GPG key looks like below:
+
+```
+-----BEGIN PGP PRIVATE KEY BLOCK-----
+lQdGBGKRw94BEADeO1Fle0W0lqki3DyVDOfVcHXRzWl6TpVxlZO7mxLYDp/myUzK
+1txcDvMzF506zK6cmeIkanpDkWjoVP6kpopRbQfhF9UMNUURPw416ORhxiQ4eDX2
+W6Tf7Sxgjm/jI9RAooXT938DbKRPcIgRL5nLuaQXvL7WxZVa2Y6jyxt1uG9w7ZUQ
+WEMqau6d3+B6q+g0WZg2tPkmQI84LCGio3uo/WpjjLWdOeUJjB/rR+3bFwxNOCCwX
+...
+CCZ0nburBylUt7VEjjvIuMWsaCC3GYhjvM8owUExAGrns4+FHeGQ6wmtVRH/Ekqf
+3GIW6fh0/KXLsDhNnG2ZA+doI0Eg6j4UGZQMFkdmeYlL+6xlE28SWxFY4JZ79NBo
+j5r+T+V2idFXxw==
+=pDiN
+-----END PGP PRIVATE KEY BLOCK-----
+-----BEGIN PGP PUBLIC KEY BLOCK-----mQINBGKRw94BEADeO1Fle0W0lqki3DyVDOfVcHXRzWl6TpVxlZO7mxLYDp/myUzK
+1txcDvMzF506zK6cmeIkanpDkWjoVP6kpopRbQfhF9UMNUURPw416ORhxiQ4eDX2
+W6Tf7Sxgjm/jI9RAooXT938DbKRPcIgRL5nLuaQXvL7WxZVa2Y6jyxt1uG9w7ZUQ
+WEMqau6d3+B6q+g0WZg2tPkmQI84LCGio3uo/WpjjLWdOeUJjB/rR+3bFwxNOCCw
+...
+h/67uxBLZP9BEyk+UYsIJnSdu6sHKVS3tUSOO8i4xaxoILcZiGO8zyjBQTEAauez
+j4Ud4ZDrCa1VEf8SSp/cYhbp+HT8pcuwOE2cbZkD52gjQSDqPhQZlAwWR2Z5iUv7
+rGUTbxJbEVjglnv00GiPmv5P5XaJ0VfH
+=D22y
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+Only text between BEGIN PGP PRIVATE KEY BLOCK and END PGP PRIVATE KEY BLOCK needs to be entered:
+
+```
+lQdGBGKRw94BEADeO1Fle0W0lqki3DyVDOfVcHXRzWl6TpVxlZO7mxLYDp/myUzK
+1txcDvMzF506zK6cmeIkanpDkWjoVP6kpopRbQfhF9UMNUURPw416ORhxiQ4eDX2
+W6Tf7Sxgjm/jI9RAooXT938DbKRPcIgRL5nLuaQXvL7WxZVa2Y6jyxt1uG9w7ZUQ
+WEMqau6d3+B6q+g0WZg2tPkmQI84LCGio3uo/WpjjLWdOeUJjB/rR+3bFwxNOCCwX
+```
+```
+CCZ0nburBylUt7VEjjvIuMWsaCC3GYhjvM8owUExAGrns4+FHeGQ6wmtVRH/Ekqf
+3GIW6fh0/KXLsDhNnG2ZA+doI0Eg6j4UGZQMFkdmeYlL+6xlE28SWxFY4JZ79NBo
+j5r+T+V2idFXxw==
+```
+
 - **Passphrase** - enter the PGP Passphrase used for message encryption.
 
 3. For the **Data Source Specific Fields** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data).
