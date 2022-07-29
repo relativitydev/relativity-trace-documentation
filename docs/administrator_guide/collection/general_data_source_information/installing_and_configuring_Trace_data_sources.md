@@ -117,7 +117,6 @@ To configure the Trace data source, perform the following steps. See the [Data S
    - Aip Application Id - not used.
    - Aip Tenant Id -  not used.
    - Last Error Retention In Hours
-   - Excluded File Transformation Enabled.
 
 ​	![](media/Installing_and_configuring_Trace_data_sources/DataSourceSpecificFields.png)
 
