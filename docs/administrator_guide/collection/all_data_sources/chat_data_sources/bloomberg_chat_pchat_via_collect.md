@@ -97,7 +97,7 @@ Bloomberg specific parameters:
 
 For instance, if the PGP/GPG key looks like below:
 
-```json
+```
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 lQdGBGKRw94BEADeO1Fle0W0lqki3DyVDOfVcHXRzWl6TpVxlZO7mxLYDp/myUzK
 1txcDvMzF506zK6cmeIkanpDkWjoVP6kpopRbQfhF9UMNUURPw416ORhxiQ4eDX2
@@ -123,13 +123,13 @@ rGUTbxJbEVjglnv00GiPmv5P5XaJ0VfH
 
 Only text between BEGIN PGP PRIVATE KEY BLOCK and END PGP PRIVATE KEY BLOCK needs to be entered:
 
-```json
+```
 lQdGBGKRw94BEADeO1Fle0W0lqki3DyVDOfVcHXRzWl6TpVxlZO7mxLYDp/myUzK
 1txcDvMzF506zK6cmeIkanpDkWjoVP6kpopRbQfhF9UMNUURPw416ORhxiQ4eDX2
 W6Tf7Sxgjm/jI9RAooXT938DbKRPcIgRL5nLuaQXvL7WxZVa2Y6jyxt1uG9w7ZUQ
 WEMqau6d3+B6q+g0WZg2tPkmQI84LCGio3uo/WpjjLWdOeUJjB/rR+3bFwxNOCCwX
 ```
-```json
+```
 CCZ0nburBylUt7VEjjvIuMWsaCC3GYhjvM8owUExAGrns4+FHeGQ6wmtVRH/Ekqf
 3GIW6fh0/KXLsDhNnG2ZA+doI0Eg6j4UGZQMFkdmeYlL+6xlE28SWxFY4JZ79NBo
 j5r+T+V2idFXxw==
