@@ -42,8 +42,11 @@ Email [support@relativity.com](mailto:support@relativity.com) to request the ins
 
 1. Identify the location where you want data to be exported to and create a folder called `RelativityTraceData`
 1. Create unique folders within `RelativityTraceData` for each unique data source
+
     ![](media/using_verqu/DeployDataStructure.png)
+
 1. Create a `Logs`, `Output`, and `Temp` folder within each unique data source folder.
+
     ![](media/using_verqu/DeployDataStructure1.png)
 
     The output folder is where Shipper will access the data or where data will be retrieved to transfer through SFTP to RelativityOne.
@@ -70,6 +73,7 @@ Email [support@relativity.com](mailto:support@relativity.com) to request the ins
     ![](media/using_verqu/DeploySmokeTest.png)
 
 1. Check the `RelativityTraceData\[DataSourceName]\Output` folder to ensure data was extracted from the source
+
 1. Check the `RelativityTraceData\[DataSourceName]\Logs` folder to ensure there are no critical errors
 
 The VerQu connector is now properly configured.
@@ -81,6 +85,7 @@ The VerQu connector is now properly configured.
 1. Create a Task configuration .xml file that will be uploaded to the Windows Task Scheduler.
    
     Here is an example Task configuration .xml file for a Microsoft Exchange connector (**RelativityTraceExchangeMail.xml**).
+
     The **Author** value should be full username that will run this task (e.g.) *DOMAIN\username*)
     {: .info}
 
@@ -142,6 +147,7 @@ The VerQu connector is now properly configured.
     ```
    
 1. Import the Task configuration .xml file into Windows Task Scheduler by going to `Action` > `Import Task`.
+
     ![](media/using_verqu/DeployImportTask.png)
    
 1. Verify that the Task is properly configured.
