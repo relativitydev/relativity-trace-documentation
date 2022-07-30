@@ -51,7 +51,7 @@ Email [support@relativity.com](mailto:support@relativity.com) to request the ins
 
 1.  Navigate back to the folder where the **Trace.Core.exe** resides and locate the .json configuration files that align with the data source you are configuring.
 
-        The .json configuration file that needs to be edited for the data source you are configuring will be specified in the data source specific documentation page (e.g. [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/email_data_sources_/microsoft_exchange_server_via_verqu.md %})).
+        The .json configuration file that needs to be edited for the data source you are configuring will be specified in the data source specific documentation page (e.g. [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/email_data_sources/microsoft_exchange_server_via_verqu.md %})).
         {: .info}
 
 1. Edit the .json configuration to define specific values. 
