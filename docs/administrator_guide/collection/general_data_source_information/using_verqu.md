@@ -72,7 +72,7 @@ Email [support@relativity.com](mailto:support@relativity.com) to request the ins
 
 The VerQu connector is now properly configured.
 
-### Setting VerQu to Run on a Schedule
+## Setting VerQu to Run on a Schedule
 
 1. VerQu is set to run on a schedule using the [Windows Task Scheduler](https://docs.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/schedule-server-process). Familiarize yourself with this tool.
 
