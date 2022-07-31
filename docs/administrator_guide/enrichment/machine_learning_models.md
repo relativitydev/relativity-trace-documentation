@@ -68,6 +68,26 @@ The following steps can be used to enable a Trace Defined Machine Learning Model
 
 Once an "Active Version is set, the Machine Learning Model is enabled, and will analyze new communications that are ingested through Data Batches. See the Machine Learning Model Results for more details.
 
+### Applying a Machine Learning Model
+
+#### Ignoring Irrelevant Content
+
+The following are Trace's recommendation on how to apply Irrelvant Content models to best target irrelevant content
+
+- Spam: Exclude Attachments, set 'Direction' to inbound only, set 'Channel Type' to eComm only, set 'Language' to English only, and set 'Text' to Extracted Text
+- Newsletter:  Exclude Attachments, set 'Direction' to inbound only, set 'Channel Type' to eComm only, set 'Language' to English only, and set 'Text' to Extracted Text
+- Research Report:  Exclude Attachments, set 'Direction' to inbound only, set 'Channel Type' to eComm only, set 'Language' to English only, and set 'Text' to Extracted Text
+
+#### Alerting on Risky Content
+
+The following are fields to consider when applying Trace's Risk Detection Models
+
+- Change of Venue: Recipient Count, 'Parents Only', 'Not Exluded','Language' to English only, Mailbox Group/Business Divsion, set text to Cleansed Extracted Text
+- Collaborative Discussion:Recipient Count, 'Parents Only', 'Not Exluded','Language' to English only, Mailbox Group/Business Divsion, set text to Cleansed Extracted Text
+- Financial Boasting: Recipient Count, 'Parents Only', 'Not Exluded','Language' to English only, Mailbox Group/Business Divsion, set text to Cleansed Extracted Text
+- General Tipping: Recipient Count, 'Parents Only', 'Not Exluded','Language' to English only, Mailbox Group/Business Divsion, set text to Cleansed Extracted Text
+- Rumors and Speculation: Recipient Count, 'Parents Only', 'Not Exluded','Language' to English only, Mailbox Group/Business Divsion, set text to Cleansed Extracted Text
+
 ## Building your own Machine Learning Model
 The following steps can be used to build your own Machine Learning Models for either risk detection or irrelevant content detection.
 
