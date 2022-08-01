@@ -29,8 +29,11 @@ Configuring a default coding decision:
 
 2. Click "New Auto Code Configuration" button.
 
-3. Provide the "Layout Name", "Field Name" and the coding "Value" (expected defualt value for the field).
+3. Provide the "Layout Name", "Field Name" and the coding "Value" (expected default value for the field).
 ![Document Action Menu](media/auto_coding_communication/auto_coding_2.png)
+
+    The "Field Name" cannot be a fields that is `Read-only` in the layout specified in the "Layout Name".
+    {: .warn}
 
 4. When done click "Save"
 
@@ -39,3 +42,4 @@ At this point, when reviewing communication using the layout specified in the "A
 - Supported field types are limited to (Single Choice, Multiple Choice, Fixed Text Length, Long Text Length, Yes/No, Whole Number, Decimal, Currency). 
 - If “Copy from Previous” is enabled on the layout for any of the "Auto Code Configuration" fields then the auto coding will not run on the layout and display an error message.
 {: .info }
+

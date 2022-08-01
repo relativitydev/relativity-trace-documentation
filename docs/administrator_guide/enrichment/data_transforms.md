@@ -29,12 +29,11 @@ This Data Transformation runs automatically for all Data Sources and does not re
 
 The languages used within a communication are automatically identified by the system. The `Cleansed Extracted Text` field is used to analyze for languages used. The following language related fields are populated:
 - `Trace Primary Language`: A fixed-length text field that contains the most used language in the communication (e.g. `French`)
-- `Trace Other Langauges`: A fixed-length text field that lists all of the non-primary languages used in the communication (e.g. `(Language: Danish , Confidence: 540),(Language: Japanese , Confidence: 1977)`)
-
-There is a a known issue for the spelling of the `Trace Other Langauges` field and the format of the results.
-{: .warn}
-
+- `Trace Other Languages`: A fixed-length text field that lists all of the non-primary languages used in the communication (e.g. `(Language: Danish , Confidence: 540),(Language: Japanese , Confidence: 1977)`)
 - `Trace Language Switching`: A Yes/No field the denotes whether multiple languages are detected in the communication
+
+A value `Unknown` will be populated when the text analyzed is less that 20 Bytes or more than 40 MB.
+{: .info}
 
 **Limitations**
 - If the `Cleansed Extracted Text` field does not contain any content for a communication then results will not be populated for the language identification fields.
