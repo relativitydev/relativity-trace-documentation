@@ -35,4 +35,6 @@ Find the `[Machine Learning Model] Decision` and `[Machine Learning Model] Rank`
 
 ## Additional Information
 
-For setup or detailed information, please see the [Admin Guide](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/enrichment/machine_learning_models.html)
+For setup or detailed information, please see the [Administrator Guide]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/machine_learning_models.md %}).
+
+

@@ -29,18 +29,18 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 **Features**
 
-- Pre-built Irrelevant Content AI Models: Uncover irrelevant communication to better identify regulatory and reputational risk with AI models that Trace ships out-of-the-box 
-  - Newsletter Detection: detect widely disseminated and recurring messages that summarize world and financial market news (“Newsletters”) that do not need to be reviewed, to reduce false positives 
-  - Financial Research Report Detection: detect widely disseminated documents prepared by investment research firms that describe a company and often provide a particular recommendation (“Research Reports”) that do not need to be reviewed, to reduce false positives 
-- Product Identification: categorize communications that reference a relevant product based on a pre-defined list of products relevant to the organization (e.g. Financial instruments including CUSIP, ISIN, Ticker, Benchmark, Index or Pharmaceutical Products).  
+- The following pre-build irrelevant content detection AI models can be enabled within our Machine Learning framework to further reduce false-positive alerts:
+  - Newsletter Detection: detect widely disseminated and recurring messages that summarize world and financial market news
+  - Financial Research Report Detection: detect widely disseminated documents prepared by investment research firms that describe a company and often provide a particular recommendation
+- Identify financial products (tickers, stocks, companies), pharmaceutical products (drugs, chemicals, competitors), or projects (names, lists) mentioned in communications using [Product Identification]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}) to create more targeted alerts, provide greater context for reviewers, or expose trends for investigation
 
 **Enhancements**
 
-- Expanded Notification Reporting functionality to allow clients to exlude certain communications by Trace Type for more accurate reproting
+- Excluded certain communications from "Non-Alerted Document Review Report" [Notifications]({{ site.baseurl }}{% link docs/administrator_guide/reporting/notifications.md %}) using the `Trace Type` field value to reduce false positive notifications
 
 **Defect Fixes**
-- Fixed issues with Language Identification Transformation (4722 & 4664)
-- Fixed issues with Machine Learning Model Data Mapping (4564 & 4569)
+- Fixed known issues with Language Identification Transformation `Trace Other Languages` results
+- Fixed known issues with Machine Learning Model Data Mapping and Tab
 
 # 15.3.32.0 (31 May 2022)
 
@@ -53,7 +53,7 @@ New features, enhancements, and defect fixes are released in each monthly update
 
 **Features**
 
-- The following pre-built risk detection AI models can be enabled within our new Machine Learning frameork: 
+- The following pre-built risk detection AI models can be enabled within our new Machine Learning framework: 
   - Change of Venue: an attempt to avoid discovery by changing the communication venue (e.g., moving from email to phone call)
   - Rumors and Speculation: the distribution or discussion of unverified and doubtfully true information 
   - Collaborative Discussion: employees working together to prevent the discovery of misconduct and sharing of client identifying data
