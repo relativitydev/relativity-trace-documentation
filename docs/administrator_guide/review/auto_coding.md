@@ -39,3 +39,7 @@ At this point, when reviewing communication using the layout specified in the "A
 - Supported field types are limited to (Single Choice, Multiple Choice, Fixed Text Length, Long Text Length, Yes/No, Whole Number, Decimal, Currency). 
 - If “Copy from Previous” is enabled on the layout for any of the "Auto Code Configuration" fields then the auto coding will not run on the layout and display an error message.
 {: .info }
+
+- Default coding feature does not work if a field is set as "Read-only" in the layout
+{: .warn }
+
