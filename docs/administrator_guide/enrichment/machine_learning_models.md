@@ -41,11 +41,20 @@ Add the `[Machine Learning Model] Decision` and `[Machine Learning Model] Rank` 
 A Rule is automatically created for `Risk Detection` Machine Learning Models. The associated Rule is `Disabled` by default, but can be enabled to start alerting on the risk that the model is built to identify. Other search criteria can be added to this Rule to further hone or expand to broader risks.
 ![Change of Venue Rule](media/machine_learning_models/machine_learning_model_rule_generator.PNG)
 
+Rules work best when they leverage AI, metadata, and terms. Prior to enabling a machine learning created Risk Detection rule consider updating the corresponding saved search to evaluate the following fields: `Recipient Count`, `Trace Is Extracted`, `Trace Primary Language`, `Communication Direction`, `Trace Type`, or Mailbox Group/Business Division of Monitored Individuals.
+{: .info}
+
 #### Ignoring Irrelevant Content
-Machine Learning Models with the purpose of detecting irrelevant content can be used to reduce false-positive alerts. Follow the steps below to ignore this irrelevant content. 
+Machine Learning Models with the purpose of detecting irrelevant content can be used to reduce false-positive alerts.
 1. Locate the Saved Search used for the `Omit from Alert Rules` functionality within the `Rules Evaluation` Task (See Trace Document Flow Overview section for more information)
-2. Update the Saved Search with "AND `[Machine Learning model] Decision` is *YES*"
-![Omit from Alert Rules and Machine Learning](media/machine_learning/image-20210218234536087.png)
+1. Create a new logic group with an `OR` operator
+1. Add `[Machine Learning model] Decision` is `YES` to the logic group
+1. Add more conditions to the logic group separated by `AND` operators to hone what is removed:
+   - `Trace Is Extracted`: `False`
+   - `Trace Communication Direction`: `Inbound`
+   - `Trace Primary Language`: `English`
+   - `Trace Type`: Select email data sources
+1. Save the saved search
 
 ## Enabling a Trace Defined Machine Learning Model
 The following steps can be used to enable a Trace Defined Machine Learning Model.
@@ -78,7 +87,6 @@ The following steps can be used to build your own Machine Learning Models for ei
 - Machine Learning Model names cannot be changed after they are created
 - Machine Learning Models cannot be deleted after being created
 {: .warn }        
-
 
 1. Navigate to the Machine Learning Model tab
 ![Machine Learning Model Tab](media/machine_learning_models/machine_learning_model_home_page.PNG)

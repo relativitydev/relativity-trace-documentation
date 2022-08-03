@@ -32,3 +32,9 @@ The following document fields are created for each Machine Learning Model once t
 
 ### Viewing Machine Learning Model Results
 Find the `[Machine Learning Model] Decision` and `[Machine Learning Model] Rank` fields within your views, layouts, and coding pane to understand the model results.
+
+## Additional Information
+
+For setup or detailed information, please see the [Administrator Guide]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/machine_learning_models.md %}).
+
+
