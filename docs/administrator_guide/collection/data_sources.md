@@ -24,7 +24,7 @@ A Data Source allows you to define where and how you are pulling data from a com
 ## Data Sources List
 This list covers the most common Data Sources. To better understand the holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
 
-Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data sources please contact [support@relativity.com](mailto:support@relativity.com).
+Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data source please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info }
 
 ### Generic Data Sources
@@ -133,7 +133,7 @@ Some Data Sources are supported through partners.
 ### Sections of a Data Source
 
 1. **General**: this tab houses general identifying information and status for the data source. These fields are described in further detail below.
-   * **Name:** The name of Data Source
+   * **Name:** The name of the Data Source
    * **Document Type Name:** A non-required name that will propagate to the Trace Type field on the documents that come in through this Data Source
      * If this field is left empty, the name of the Data Source will be used instead
    * **Data Source Type:** Type of the data source
@@ -156,7 +156,7 @@ Some Data Sources are supported through partners.
     
     * **AIP Client Secret:** Contact [support@relativity.com](mailto:support@relativity.com) for more information on Azure Information Protection support.
     
-    * **EWS Client Secret:** Optional field used for authentication of exchange email retrieval using OAUT.
+    * **EWS Client Secret:** Optional field used for authentication of exchange email retrieval using OAuth.
     
       > EWS Client Secret is used only on Microsoft Exchange type Data Sources. See [Microsoft Exchange Data Source](#microsoft-exchange-data-source) for specifics on authentication.
 3. **Trace Monitored Individuals:** Configures which monitored individual’s data should be retrieved from the data source. See [Monitored Individuals](#monitored-individuals) for more information.
@@ -246,3 +246,22 @@ All other data sources discover Monitored Individuals based on the `FROM`, `TO`,
 **Supported File Formats**
 
 Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on .eml, .msg, and .rsmf (Relativity Short Message Format) files. Any other file format is not currently supported.
+
+[comment]: <> (Line 46 - No link)
+[comment]: <> (Line 47 - No link)
+[comment]: <> (Line 57 - No Link)
+[comment]: <> (Line 58 - No link)
+[comment]: <> (Line 60 - No link)
+[comment]: <> (Line 61 - No link)
+[comment]: <> (Line 63 - No link)
+[comment]: <> (Line 64 - No link)
+[comment]: <> (Line 65 - No link)
+[comment]: <> (Line 67 - No link)
+[comment]: <> (Line 68 - No link)
+[comment]: <> (Lines 74-85 - No links)
+[comment]: <> (Lines 93-98 - No links)
+[comment]: <> (Lines 104-109 - No links)
+[comment]: <> (Lines 117-125 - No links)
+[comment]: <> (Lines 141-142 - Formatting - off from rest of section)
+[comment]: <> (Lines 211 - No Link) 
+[comment]: <> (Lines 236 - Image sits over text)
