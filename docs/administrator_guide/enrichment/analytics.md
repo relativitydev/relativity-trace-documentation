@@ -66,3 +66,9 @@ Relativity Trace can trigger automatic builds of any Structured Analytics Set de
 
 4. Click Save and the Trace Manager Agent will automate for every Structured Analytics set with Enabled = true.
 
+#### Textual Near Duplicate Identification
+
+Functionality that allows users to identify and remove similar communications. More information can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Textual_near_duplicate_identification.htm)
+
+      Setting Textually Similar to 100% would only remove exact textual duplicate.
+      {: .info }
