@@ -252,3 +252,16 @@ All other data sources discover Monitored Individuals based on the `FROM`, `TO`,
 **Supported File Formats**
 
 Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on .eml, .msg, and .rsmf (Relativity Short Message Format) files. Any other file format is not currently supported.
+
+[comment]: <> (Line 46-47 - No links)
+[comment]: <> (Line 57-58 - No links)
+[comment]: <> (Line 60-61 - No links)
+[comment]: <> (Line 63-65 - No links)
+[comment]: <> (Line 67-68 - No links)
+[comment]: <> (Line 74-85 - No links)
+[comment]: <> (Line 93-98 - No links)
+[comment]: <> (Line 104-109 - No links)
+[comment]: <> (Line 117-125 - No links)
+[comment]: <> (Line 140-142 - Check paragraph formatting)
+[comment]: <> (Line 172 - No information provided for Console)
+[comment]: <> (Line 217 - No link)
