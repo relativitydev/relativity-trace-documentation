@@ -178,34 +178,28 @@ Some Data Sources are supported through partners.
 
 This section contains additional settings which are not associated with specific Relativity Fields. The settings described here are common across all Data Source Types. Type-specific settings are documented under their respected Data Source sections.
 
--   **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
+- **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
     
     > **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
-    >
-    > Yields the following passwords:
->
-    > * `passw0rd`
-    > * `Trace1234!`
-    > * `aaa`
-    > * `bb`
-    > * `cccc|dd|eee|`
-    > * `ff|`
-    > * `ggg||hhh||`
+      >
+      > Yields the following passwords:
+        > * `passw0rd`
+        > * `Trace1234!`
+        > * `aaa`
+        > * `bb`
+        > * `cccc|dd|eee|`
+        > * `ff|`
+        > * `ggg||hhh||`
 
 - **Extraction Thread Count:** The number of documents to extract in parallel.
-
-- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: 
-
-  -   `true`
-  -   `false`
-
+- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: `true` or `false`
 - **Embedded File Behavior:** Embedded files are defined as attachments without file names. Most commonly these are in-line images. This setting changes the import behavior for embedded files. Valid options are:
+  - **`Import`** - Import all embedded files (top level and child) as separate documents in Relativity Trace.
+  - **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
+  - **`DoNotImport`** - Do not import any embedded files.
 
-  -   **`Import`** - Import all embedded files (top level and child) as separate documents in Relativity Trace.
-  -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
-  -   **`DoNotImport`** - Do not import any embedded files.
->   Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
-{: .info}
+      Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
+      {: .info}
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
 - **Include Monitored Individuals Not Linked to Data Source:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
