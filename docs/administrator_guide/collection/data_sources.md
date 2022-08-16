@@ -180,16 +180,15 @@ This section contains additional settings which are not associated with specific
 
 - **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
     
-    > **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
-      >
-      > Yields the following passwords:
-        > * `passw0rd`
-        > * `Trace1234!`
-        > * `aaa`
-        > * `bb`
-        > * `cccc|dd|eee|`
-        > * `ff|`
-        > * `ggg||hhh||`
+  **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
+    Yields the following passwords:
+      - `passw0rd`
+      - `Trace1234!`
+      - `aaa`
+      - `bb`
+      - `cccc|dd|eee|`
+      - `ff|`
+      - `ggg||hhh||`
 
 - **Extraction Thread Count:** The number of documents to extract in parallel.
 - **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: `true` or `false`
