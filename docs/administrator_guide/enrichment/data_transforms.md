@@ -253,13 +253,10 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 **Trace Conversation Thread Field**
 When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
 
-Below are additional notes.
-
-1. Trace Conversation Threading runs across all documents that exist in a workspace at the point of ingestion & can handle Comms coming into the system out of sync from the timeline of creation
-2. Trace Conversation Threading is a Transform that can be enabled by checking off the box for "Duplicative Content - Remove Already Ingested Email Segments"
-
-This runs without Structured Analytics and will not produce results that can be visualized in the Email Thread visualization
-{: .info}
+      - Trace Conversation Threading runs across all documents that exist in a workspace at the point of ingestion & can handle communications ingested out of order from when they were created
+      - Trace Conversation Threading is automatically enabled when the "Duplicative Content - Remove Already Ingested Email Segments" setting on the "AI Extracted Text Cleansing Data Transformation" is enabled.
+      - Trace Conversation Threading runs without Structured Analytics and will not produce results that can be visualized in the Email Thread visualization
+      {: .info}
 
 **Important Considerations**
 
