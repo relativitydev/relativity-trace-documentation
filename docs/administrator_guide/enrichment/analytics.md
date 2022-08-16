@@ -33,7 +33,7 @@ Relativity Trace will create the Trace Conceptual Analytics Index and the Trace 
 
 **Email Threading**
 
-It is suggested to use the [AI Extracted Text Cleansing Data Transform]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}) and the "remove duplicative email content" setting to ignore duplicative email segments rather than Email Threading in Structured Analytics sets as finding inclusive emails is less effective due to the growing of email threads each day with ongoing monitoring.
+It is suggested to use the [AI Extracted Text Cleansing Data Transform]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}) and the "Duplicative Content - Remove Already Ingested Email segments" setting to ignore duplicative email segments rather than Email Threading in Structured Analytics sets as finding inclusive emails is less effective due to the growing of email threads each day with ongoing monitoring.
 {: .warn }
 
 Email Threading identifies "inclusive emails" that contain all prior content within a thread to reduce the number of documents that need to be reviewed. More information can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Email_threading.htm).
