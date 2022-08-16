@@ -10,7 +10,7 @@ nav_order: 4
 {: .no_toc }
 
 
-Although the Trace team is monitoring data flows to ensure all documents are progressing through status there are rare times when manual intervention is necesssary.
+Although the Trace team is monitoring data flows to ensure all documents are progressing through status there are rare times when manual intervention is necessary.
 {: .fs-6 .fw-300 }
 
 1. TOC
