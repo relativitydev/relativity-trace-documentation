@@ -81,6 +81,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Voice | Mitel |
 | Voice | Liquid Voice |
 | Voice | O2 |
+| Voice | Microsoft Teams Audio |
 | Voice | Skype for Business Audio |
 | Voice | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) |
 
