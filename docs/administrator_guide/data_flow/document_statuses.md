@@ -19,7 +19,7 @@ Documents get a status as they progress through the data flow.
 ---
 
 ## Status Descriptions
-Trace has a six-step Document analysis process. Status is tracked on the `Trace Document Status` field. When a document status is changed the timestamp on the `Trace Document Status Updated On` field is updated.
+Trace has a six-step Document Analysis process. Status is tracked on the `Trace Document Status` field. When a document status is changed the timestamp on the `Trace Document Status Updated On` field is updated.
 
 | Step | Status                 |  Type        | Overview                                                    |
 | :--: | ----------------------- |------------|------------------------------------------------------------ |
