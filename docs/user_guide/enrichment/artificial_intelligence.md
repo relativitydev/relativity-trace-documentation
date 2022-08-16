@@ -37,7 +37,7 @@ Trace provides out-of-the-box Artifical Intelligence (AI) to improve the user ex
 | Risk Detection             | Pre-Built              | Price and Benchmark Fixing    | Classification    | Detect agreements between traders to collectively manipulate the price of a financial product or a benchmark to adjust market conditions   |
 | Risk Detection             | Pre-Built              | Front Running                 | Classification    | Detect traders attempting to buy or sell financial products ahead of other orders to lock in a better price      |
 | Risk Detection             | Pre-Built              | Mirror Trading                | Classification    | Detect simultaneous buy and sell trades of the same stock on different exchanges by the same entity, as a way to move money between jurisdictions      |
-| Risk Detection             | Pre-Built              | Forex Collusion - Trade Fixing| Classification    | Detect agreements between traders to collectively manipulate benchmark foreign exchange rates (FIX) to artificial levels     |
+| Risk Detection             | Pre-Built              | Forex Collusion - Trade Fixing| Classification    | Detect agreements between traders to collectively manipulate benchmark foreign exchange rates (FX) to artificial levels     |
 
 ## Trace Model Type
 
