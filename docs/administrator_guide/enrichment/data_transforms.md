@@ -56,7 +56,7 @@ The system automatically detects whether a communication is Spam based on the `C
 - If the `Cleansed Extracted Text` field contains more than 30mb of text then results will not be populated for the `Trace Is Spam` field.
 
 **Using Results**
-To remove all Spam content from generating false-positive alerts, it is suggested that you add a `Trace Is Spam = Spam` condition to the Saved Search used on the `Omit from Alert Rules` setting on the `Rule Evaluation` Task. Find more information on `Omit from Alert Rules` [here]({{ site.baseurl }}{% link docs/administrator_guide/alerting/omit_from_alert_rules.md %})
+To remove all Spam content from generating false-positive alerts, it is suggested that you add a `Trace Is Spam = Spam` condition to the Saved Search used on the `Omit from Alert Rules` setting on the `Rule Evaluation` Task. All communication get a Spam determination, but it's suggested that you don't omit attachments or internal and outbound communications (see Communication Direction Data Transformation) that have been classified as Spam. Find more information on `Omit from Alert Rules` [here]({{ site.baseurl }}{% link docs/administrator_guide/alerting/omit_from_alert_rules.md %})
 
 To eliminate the likelihood false-positive spam detection, the threshold for classifying a communication as `Spam` is high.
 {: .info}
@@ -253,8 +253,10 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 **Trace Conversation Thread Field**
 When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
 
-This runs without Structured Analytics and will not produce results that can be visualized in the Email Thread visualization
-{: .info}
+      - Trace Conversation Threading runs across all documents that exist in a workspace at the point of ingestion & can handle communications ingested out of order from when they were created
+      - Trace Conversation Threading is automatically enabled when the "Duplicative Content - Remove Already Ingested Email Segments" setting on the "AI Extracted Text Cleansing Data Transformation" is enabled.
+      - Trace Conversation Threading runs without Structured Analytics and will not produce results that can be visualized in the Email Thread visualization
+      {: .info}
 
 **Important Considerations**
 
