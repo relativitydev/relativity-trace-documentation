@@ -134,27 +134,27 @@ Some Data Sources are supported through partners.
 
 1. **General**: this tab houses general identifying information and status for the data source. These fields are described in further detail below.
 
-  * **Data Source Type:** Type of the data source
-  * **Name:** The name of the Data Source
-  * **Document Type Name:** A non-required name that will propagate to the Trace Type field on the documents that come in through this Data Source
-     * If this field is left empty, the name of the Data Source will be used instead
-  * **Provider Type:** The type fo communications that are being collected (Audio, Written, etc.)
-  * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
-  * **Start Date:** Date from which data will be pulled/pushed into Relativity
-  * **End Date:** Optional date to which data will be pulled/pushed into Relativity.
+    * **Data Source Type:** Type of the data source
+    * **Name:** The name of the Data Source
+    * **Document Type Name:** A non-required name that will propagate to the Trace Type field on the documents that come in through this Data Source
+      * If this field is left empty, the name of the Data Source will be used instead
+    * **Provider Type:** The type fo communications that are being collected (Audio, Written, etc.)
+    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
+    * **Start Date:** Date from which data will be pulled/pushed into Relativity
+    * **End Date:** Optional date to which data will be pulled/pushed into Relativity.
 
-  - If both dates are provided, data will be collected between “Start Date” and “End Date”. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and “End Date”. 
-  - If only “Start Date” is provided, data will be collected between “Start Date” and now. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and now. 
-  - If only “End Date” is provided, data will be collected between “Ingestion State” and “End Date”. 
-  - If none of them is provided, data will be collected between “Ingestion State” and now.
-  {: .info}
-  
-  * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
-  * **Enabled Time:** The timestamp when this Data Source was last enabled
-  * **Disabled Reason:** An explanation for why a data source was automatically disabled by the system
-  * **Status:** The last status message recorded by the Data Source
-  * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
-  * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
+      - If both dates are provided, data will be collected between “Start Date” and “End Date”. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and “End Date”. 
+      - If only “Start Date” is provided, data will be collected between “Start Date” and now. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and now. 
+      - If only “End Date” is provided, data will be collected between “Ingestion State” and “End Date”. 
+      - If none of them is provided, data will be collected between “Ingestion State” and now.
+      {: .info}
+    
+    * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
+    * **Enabled Time:** The timestamp when this Data Source was last enabled
+    * **Disabled Reason:** An explanation for why a data source was automatically disabled by the system
+    * **Status:** The last status message recorded by the Data Source
+    * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
+    * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
 
 1. **Settings**: Configures standard settings required for the specific Data Source Type. These settings can be found on specific data source documentation pages.
 
@@ -168,11 +168,11 @@ Some Data Sources are supported through partners.
 
 1. **Console**
    
-  - **Enable/Disable Data Source:** Enables (or disables) data retrieval for a particular data source.
-  - **Reset Data Source:** Disables *and* resets data source to retrieve data from the specified Start Date. 
+    - **Enable/Disable Data Source:** Enables (or disables) data retrieval for a particular data source.
+    - **Reset Data Source:** Disables *and* resets data source to retrieve data from the specified Start Date. 
 
-    Depending on Import settings, enabling a reset Data Source could duplicate data in the Workspace.
-    {: .info }
+      Depending on Import settings, enabling a reset Data Source could duplicate data in the Workspace.
+      {: .info }
 
 ### Advanced Configuration
 
