@@ -56,7 +56,7 @@ The system automatically detects whether a communication is Spam based on the `C
 - If the `Cleansed Extracted Text` field contains more than 30mb of text then results will not be populated for the `Trace Is Spam` field.
 
 **Using Results**
-To remove all Spam content from generating false-positive alerts, it is suggested that you add a `Trace Is Spam = Spam` condition to the Saved Search used on the `Omit from Alert Rules` setting on the `Rule Evaluation` Task. All communication get a Spam determination, but it's suggested that you don't omit attachments that have been classified as Spam or internal and outbound communications (see Communication Direction Data Transformation). Find more information on `Omit from Alert Rules` [here]({{ site.baseurl }}{% link docs/administrator_guide/alerting/omit_from_alert_rules.md %})
+To remove all Spam content from generating false-positive alerts, it is suggested that you add a `Trace Is Spam = Spam` condition to the Saved Search used on the `Omit from Alert Rules` setting on the `Rule Evaluation` Task. All communication get a Spam determination, but it's suggested that you don't omit attachments or internal and outbound communications (see Communication Direction Data Transformation) that have been classified as Spam. Find more information on `Omit from Alert Rules` [here]({{ site.baseurl }}{% link docs/administrator_guide/alerting/omit_from_alert_rules.md %})
 
 To eliminate the likelihood false-positive spam detection, the threshold for classifying a communication as `Spam` is high.
 {: .info}
