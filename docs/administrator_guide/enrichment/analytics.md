@@ -29,10 +29,38 @@ The Analytics application must be installed into the workspace before analytics 
 
 Relativity Trace will create the Trace Conceptual Analytics Index and the Trace Classification Analytics Index after install or upgrade of the Trace application if the Analytics application is installed in the workspace. By default, these indexes will not build automatically. To begin automation of an index, first perform a Full Build manually through the Relativity UI. Subsequently, Relativity Trace will automate incremental builds of the index based on the value of the `Global Analytics Build Frequency In Minutes` setting defined on the Indexing Task. To disable automatic builds of the Trace Conceptual and Classification indexes, set the value of the `Global Analytics Build Frequency In Minutes` setting to `-1`.
 
-### Structured Analytics Sets
+### Structured Analytics
 
-It is suggested to use the [Language Identification Data Transformation ]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}) rather than the Language Identification in Structured Analytics sets to produce Language Identification results prior to the creation of a Document.
+**Email Threading**
+
+It is suggested to use the [AI Extracted Text Cleansing Data Transform]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}) and the "remove duplicative email content" setting to ignore duplicative email segments rather than Email Threading in Structured Analytics sets as finding inclusive emails is less effective due to the growing of email threads each day with ongoing monitoring.
+{: .warn }
+
+Email Threading identifies "inclusive emails" that contain all prior content within a thread to reduce the number of documents that need to be reviewed. More information can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Email_threading.htm).
+
+**Name Normalization**
+
+Name Normalization groups different email address aliases to the same individual (entity) to improve the understanding of who is communicating. Name Normalization is necessary to use the Communication Analysis widget on the document page to analyze social networks. More information can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Name_normalization.htm).
+
+**Textual Near Duplicate Identification**
+
+Textual Near Duplicate Identification locates similar communications or attachments for removal. More information can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Textual_near_duplicate_identification.htm).
+
+Setting Textually Similar to 100% would only remove exact textual duplicate.
 {: .info }
+
+**Language Identification**
+
+It is suggested to use the [Language Identification Data Transformation]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}) rather than the Language Identification in Structured Analytics sets to produce Language Identification results prior to the creation of a Document.
+{: .warn }
+
+Language Identification detects the primary language and other languages used within a communication. More information can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Language_identification.htm).
+
+**Repeated Content Identification**
+
+Repeated Content Identification will identify section of communications that are repeated through a high number of communications such as disclaimers or common language. Once identified, this irrelevant repetitive content can be removed using [Replace Data Transformations]({{ site.baseurl }}{% link docs/administrator_guide/enrichment/data_transforms.md %}).
+
+#### Configuring the Automation of Structured Analytics Sets
 
 Relativity Trace can trigger automatic builds of any Structured Analytics Set defined in the workspace. It is possible to configure automation of multiple Structured Analytics Sets at the same time with different settings for build frequency, population scope and analysis scope.
 
@@ -66,9 +94,3 @@ Relativity Trace can trigger automatic builds of any Structured Analytics Set de
 
 4. Click Save and the Trace Manager Agent will automate for every Structured Analytics set with Enabled = true.
 
-#### Textual Near Duplicate Identification
-
-Functionality that allows users to identify and remove similar communications. More information can be found [here](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Textual_near_duplicate_identification.htm)
-
-      Setting Textually Similar to 100% would only remove exact textual duplicate.
-      {: .info }
