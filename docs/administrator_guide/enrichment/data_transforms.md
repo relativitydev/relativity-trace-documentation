@@ -286,9 +286,9 @@ Create multiple new Object Types if you have different categories of products th
 
 2. Configure the newly created Object Type to be used as a product list for Product Identification by populating the `Dynamic Searching Object Types Json` setting on the `Data Transformation` task that can be found on the `Setup` page.
 
-3. The `Dynamic Searching Object Types Json` field is inputted as JSON with each `{}` representing a single object type.
+3. The `Product Identifiers Object Types Json` field is inputted as JSON with each `{}` representing a single object type.
 
-*Example `Dynamic Searching Object Types Json` configuration:*
+*Example `Product Identifiers Object Types Json` configuration:*
 
 ```json
 [
@@ -303,7 +303,7 @@ Create multiple new Object Types if you have different categories of products th
 
 The following criteria must be met for the setting to be valid:
 - `ObjectTypeName` must be a name of object type which exists in the workspace
-- One object type can occur only once in `Dynamic Searching Object Types Json` configuration
+- One object type can occur only once in `Product Identifiers Object Types Json` configuration
 - Object type has to have fixed-length field of type identifier
 - Object type can't be saved in configuration if there are no RDOs of given object type
 - Object type can't be saved in configuration if there are RDOs of this object type with duplicated values in identifier field
@@ -312,14 +312,14 @@ The following criteria must be met for the setting to be valid:
 If this field is not populated then the Product Identification Data Transformation will not run.
 {: .info}
 
-4. Save the changes made to `Dynamic Searching Object Type JSON` on the `Data Transformation` task.
+4. Save the changes made to `Product Identifiers Object Types Json` on the `Data Transformation` task.
 
 Product Identification is now enabled. The data transformation will search for the `Name` field (identifier) values for the Objects on the configured Object Types within the communication text.
 
 
 **Results**
 
-After saving `Dynamic Searching Object Types Json` a new configuration is created automatically for every object type.
+After saving `Product Identifiers Object Types Json` a new configuration is created automatically for every object type.
 1. New multiple object field called `Trace [ObjectTypeName]` is created on the `Document` object type (e.g. `Trace Financial Product`). This field joins `Document` and the particular `Object Type`.
 
     ![](media/dynamic_searching/DynamicSearching_MultipleObjectDocumentField.PNG)
@@ -344,6 +344,6 @@ The [Zip Drop Data Source]({{ site.baseurl }}{% link docs/administrator_guide/co
 
 **Considerations**
 
-- Objects of object type set up in `Dynamic Searching Object Types Json` cannot contain semicolon (`;`) in identifier field.
+- Objects of object type set up in `Product Identifiers Object Types Json` cannot contain semicolon (`;`) in identifier field.
 - Product Identification does rely on the `Perform Term Searching On Trace Cleansed Extracted Text` setting on the `Term Searching Task` to decided whether to analyze the `Extracted Text` field or the `Trace Cleansed Extracted Text` field.
 - Product Identification searching relies on the default Trace Searching alphabet and cannot be adjusted at this time.

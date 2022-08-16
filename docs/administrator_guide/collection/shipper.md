@@ -42,14 +42,14 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 - Identify/provision a Windows machine to run the Trace Shipper Service
 This should be the same machine as the Veritas Merge1 appliance VM.
 - Identify what source folder(s) on your local network need their files shipped to a Relativity
-Windows service must have read/write/modify permission on the folders.
+Windows service. The source folder(s) must have read/write/modify permissions.
 - Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
 - Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
 
 A document will fail to ship if a file with the same name already exists in the destination folder. Care should be taken to avoid duplicate file names both when initially retrieving data and at the remote destination folder.
 {: .info }
 
-- Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights
+- Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights.
 To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
 - Request the Trace Shipper deployment package by submitting a ticket to [support@relativity.com](mailto:support@relativity.com)
 - Download and install ROSE (Staging Explorer) and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection))
@@ -134,7 +134,7 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
    | remoteRelativePath                     | yes      | string           | The path relative to the workspace fileshare root of the destination workspace where all files should be stored |
    | retrieveConfigurationIntervalInMinutes | no       | number           | The interval between Data Source configuration pulls from Relativity. Values less than or equal to 0 turns off this feature. This setting is used to synchronize, for example, monitored individuals and data source state from Relativity One to a local Veritas Merge1 instance. For further customization of Data Source configuration pulling, contact support@relativity.com.<br />*Default: 0 (off)* |
    | remoteRelativeConfigPath               | no       | string           | Location of the remote Config folder to retrieve, relative to the workspace fileshare root of the destination workspace. The default should be correct for most situations. This setting is ignored if `retrieveConfigurationIntervalInMinutes` is less than or equal to 0. Contact support@relativity.com prior to changing this value.<br />*Default: `**remoteRelativePath**\Config`* |
-   | localConfigDestinationPath             | no       | string           | The full path to the local folder where the remote Config directory should be downloaded. This will create a subdirectory named `Config` in the configured location and contents of the remote Config folder will be placed inside. This setting should only be changed if necessary.<br />*Default: the value of `localDiretoryPath`* |
+   | localConfigDestinationPath             | no       | string           | The full path to the local folder where the remote Config directory should be downloaded. This will create a subdirectory named `Config` in the configured location and contents of the remote Config folder will be placed inside. This setting should only be changed if necessary.<br />*Default: the value of `localDirectoryPath`* |
    | cacheLengthInMinutes                   | no       | number           | How long a file is ignored by monitoring before Trace Shipper Service attempts to send it to Relativity again (provides a buffer for long transfer times and surges in volume as well as automatic retries of failed transfers)<br />*Default: 20* |
    | logLevel                               | no       | string           | The minimum message level to include in the log file (Verbose/Debug/Information/Warning/Error/Fatal), increase if log files are too large, decrease when troubleshooting. <br />*Default: Warning* |
    | logFilePath                            | yes      | string           | A local file path **ACCESSIBLE TO THE SERVICE USER** where the log files for the application should be stored. The log files roll automatically every 100MB, so there will be more than one file, it is best to dedicate a folder to these Trace Shipper logs. Each configured local folder requires a unique `logFilePath` |
@@ -272,7 +272,7 @@ Contact [support@relativity.com](mailto:support@relativity.com) if you need assi
 
 Each local directory created in [Getting Started](#getting-started-with-installation) which will be populated by Merge1 is a Merge1 `target` directory, and each needs a location to store logs related to the retrieval of the data by Merge1. Create a log directory for each.
 
-In order for Support to gain access to your Merge1 logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shippper-service-configuration) under `externalServiceLogLocations`. Merge1 creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connector}.log`.
+In order for Support to gain access to your Merge1 logs and provide support, please include these logs in your [Trace Shipper Service Configuration](#trace-shipper-service-configuration) under `externalServiceLogLocations`. Merge1 creates logs of the form `\path\to\log\directory\{name of connector}.{yyyy-mm-dd}.log` so the `logFilePath` in your External Log Location object should be of the form `\path\to\log\directory\{name of connector}.log`.
 
 > **EXAMPLE:** for the C:/Globanet/Exchange target directory, create a directory called C:/Globanet/Exchange_Logs
 
@@ -298,7 +298,7 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
       1. Go to Edit filters
       2. Add new Mail filter
       3. From Filter type select Dynamic option
-      4. Select CSV option and type path to CSV file. Please be sure that CSV has no headers and contains only two columns: SMTP address in the first column and the username in the second (example@exampe.com, username).
+      4. Select CSV option and type path to CSV file. Please be sure that CSV has no headers and contains only two columns: SMTP address in the first column and the username in the second (example@example.com, username).
       5. Go to importer settings
       6. Under the filtering section check Enable Filtering checkbox
       7. Check Process all filters checkbox
@@ -377,7 +377,7 @@ In order to ensure that data source runs **every X minutes** run the following s
     
 ### Appendix C: High Availability Setup for Veritas Merge1
 
-It is possible to setup Merge1 in HA mode. Recommended approach is to setup secondary Merge1 server that runs the same version of the Merge1 and installed in the same path as the production. You also need to have the same folder structure for all connectors (Import, quarantine, log folders). 
+It is possible to setup Merge1 in HA mode. The recommended approach is to setup secondary Merge1 server that runs the same version of the Merge1 and installed in the same path as the production. You also need to have the same folder structure for all connectors (Import, quarantine, log folders). 
 
 Once that is done, the secondary Merge1 should be connected to the same Merge1 DB as the primary Merge1 server. If for any reason the production server goes down, you just need to run the services on the second Merge1. Please note that no service should be started on the secondary Merge1 if the production is running. 
 For the DB, you can take backups on a daily basis or apply any other standard SQL Server  HA scenarios that you wish.
@@ -385,3 +385,17 @@ For the DB, you can take backups on a daily basis or apply any other standard SQ
 ### Appendix D: Sync of Config Folder
 
 All Data Sources in Relativity Trace serialize their current state as a JSON file at regular intervals. They also save a CSV file of all the linked monitored individuals as well. These files are saved in a Config folder in the Source or Drop folder for each data source. Trace Shipper can be configured to retrieve these Config folders, which allows for a way to sync data sources and monitored individuals from local to remote instance.
+
+
+[comment]: <> (Line 56 - No link to support email)
+[comment]: <> (Line 135 - No link to support email)
+[comment]: <> (Line 136 - No link to support email)
+[comment]: <> (Line 141 - No link to support email)
+[comment]: <> (Line 143 - No link to support email)
+[comment]: <> (Line 223 - No link to support email)
+[comment]: <> (Line 232 - Link is broken)
+[comment]: <> (Line 238 - Link is broken)
+[comment]: <> (Line 267 - No link to support email)
+[comment]: <> (Line 346 - Link is broken)
+[comment]: <> (Line 350 - Link is broken)
+[comment]: <> (Line 372 - Image sits over text, hard to read)
