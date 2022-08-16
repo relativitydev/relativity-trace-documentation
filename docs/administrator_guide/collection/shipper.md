@@ -42,7 +42,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 - Identify/provision a Windows machine to run the Trace Shipper Service
 This should be the same machine as the Veritas Merge1 appliance VM.
 - Identify what source folder(s) on your local network need their files shipped to a Relativity
-Windows service. The source folder(s) must have read/write/modify permission on the folders.
+Windows service. The source folder(s) must have read/write/modify permissions.
 - Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
 - Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
 
