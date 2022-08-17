@@ -57,7 +57,6 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Chat | Symphony |
 | Chat | Skype for Business |
 | Chat | [Microsoft O365 Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/microsoft_office_365_teams_chat_via_collect.md %}) |
-| Chat | Zoom Chat |
 | Chat | FXConnect |
 | Chat | [Cisco WebEx Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %}) |
 | Chat | ServiceNow |
