@@ -135,6 +135,6 @@ Settings section:
 - **Path:** Folder path on SFTP.
 - **Port:** TCP port number. Default value is 22.
 
-
- 
-
+- **Frequency in Minutes** - enter 1440.
+- **Max Number of Batches To Merge** - enter 1.
+- **Collection Period Offset in Minutes** - enter 0.
