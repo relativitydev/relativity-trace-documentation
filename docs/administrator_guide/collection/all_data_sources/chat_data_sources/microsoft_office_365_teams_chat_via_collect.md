@@ -248,18 +248,21 @@ Most parameters work the same for all Collect Data Sources. Follow the instructi
 
 O365 Teams specific parameters: 
 
-General section: 
+In **General** section, select **Microsoft O365 Teams** for the **Data Source Type**.
+![](media/microsoft_office_365_teams_chat_via_collect/MSTeamsDataSource.png)
 
-1. **Data Source Type**: Select Microsoft O365 Teams. 
-   ![](media/microsoft_office_365_teams_chat_via_collect/MSTeamsDataSource.png)
+In **Settings** section:
 
-Credentials section: 
-
-1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
+1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details).
    - The following is an example of an application secret, which includes random chars and numbers: NMubGVcDqkwwGnCs6fa01tqlkTisfUd4pBBYgcxxx=
+2. **Domain**: The O365 domain name provided by the client.
+3. **Application Id**: Application / Client ID provided by the client. For example, 53ba6f2b-6d52-4f5c-8ae0-7adc20808854
 
-2. Data Source Specific Fields section
-   - **Domain**: The O365 domain name provided by the client. 
-   - **Application Id**: Application / Client ID provided by the client. For example, 53ba6f2b-6d52-4f5c-8ae0-7adc20808854
-   - **Frequency in Minutes**: 1440 
-   - **Collection Period Offset in Minutes**: 0 
+![](media/microsoft_office_365_teams_chat_via_collect/MSTeamsCredentials.png)
+
+In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+
+1. **Frequency in Minutes** - enter 1440.
+2. **Merge Batches During Cold Start**: enter True.
+3. **Max Number of Batches To Merge** - enter 7.
+4. **Collection Period Offset in Minutes** - enter 0.
