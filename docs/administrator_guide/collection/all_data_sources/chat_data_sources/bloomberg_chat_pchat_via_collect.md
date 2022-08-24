@@ -34,7 +34,7 @@ The following activities are captured:
 
 ## Metadata
 
-In addition to standard metadata populated during extracting data, the O365 Teams Data Source captures the following ones:
+In addition to standard (O365 Mail) metadata populated during extracting data, the Bloomberg Chat Data Source captures the following ones:
 
 - **DATE** - start date of a chat or start date of a slice in the chat split into slices.
 - **SUBJECT** - friendly name of the team and channel.
@@ -91,15 +91,8 @@ In **Settings** section, do the following:
 1. **Use Unc Path**:
     - **False** - if data is collected from external SFTP server.
     - **True** - if data is collected directly from the RelativityOne Fileshare.
-
-Other parameter values depend on **Use Unc Path** setting.
-
-If **Use Unc Path** is set to **False**:
-
-2. **Username** - enter the SFTP username.
-3. **Password** - enter the SFTP password.
-4. **Use PGP Encryption** - select this check box to decrypt a source file with the PGP Key and PGP Passphrase; otherwise, leave it blank.
-5. **PGP Key** - if **Use PGP Encryption** is set to **True**, enter the PGP Key used for message encryption. Otherwise, leave it empty.
+2. **Use PGP Encryption** - select this check box to decrypt a source file with the PGP Key and PGP Passphrase; otherwise, leave it blank.
+3. **PGP Key** - if **Use PGP Encryption** is set to **True**, enter the PGP Key used for message encryption. Otherwise, leave it empty.
 
 For instance, if the PGP/GPG key looks like below:
 ```
@@ -140,7 +133,14 @@ CCZ0nburBylUt7VEjjvIuMWsaCC3GYhjvM8owUExAGrns4+FHeGQ6wmtVRH/Ekqf
 j5r+T+V2idFXxw==
 ```
 
-6. **Passphrase** - if **Use PGP Encryption** is set to **True**, enter the PGP Passphrase used for message encryption. Otherwise, leave it empty.
+4. **Passphrase** - if **Use PGP Encryption** is set to **True**, enter the PGP Passphrase used for message encryption. Otherwise, leave it empty.
+
+Other parameter values depend on **Use Unc Path** setting.
+
+If **Use Unc Path** is set to **False**:
+
+5. **Username** - enter the SFTP username.
+6. **Password** - enter the SFTP password.
 7. **Host** - enter the SFTP location.
 8. **Path** - enter the folder path on the SFTP.
 9. **Port** - enter the TCP port number. Default value is 22.
@@ -149,11 +149,8 @@ j5r+T+V2idFXxw==
 
 If **Use Unc Path** is set to **True**:
 
-2. **Username** - leave empty.
-3. **Password** - leave empty.
-4. **Use PGP Encryption** - **False**.
-5. **PGP Key** - leave empty.
-6. **Passphrase** - leave empty.
+5. **Username** - leave empty.
+6. **Password** - leave empty.
 7. **Host** - leave empty.
 8. **Path** - enter the folder path on the RelativityOne Fileshare.
 9. **Port** - enter any intiger value e.g. **22**.
