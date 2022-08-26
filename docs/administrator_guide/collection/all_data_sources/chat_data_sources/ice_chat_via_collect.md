@@ -66,40 +66,31 @@ Collect is used for data retrieval. Make sure Collect is installed in the worksp
 ## Configuring ICE Chat Trace Data Source 
 
 Obtain the following information about the ICE Chat SFTP server:
-
-- Host name
-- Username and password
-
-If ICE Chat messages are encrypted, then obtain the following information:
-
-- PGP Key
-- Passphrase
+- Host name.
+- Path.
+- TCP Port.
+- Username and password.
 
  Most parameters work the same for all Collect Data Sources. Follow the instructions from [Common Collect Data Source Functionality](#_Common_Collect_Data) section.
 
 Below are specific parameters for ICE Chat:
 
-1. On the **General** tab, select **ICE Chat** for the **Data Source Type**.
+In **General** section, select **ICE Chat** for the **Data Source Type**.
+![](media/ICE_Chat_viaCollect/General_ICE_DataSourceType.png)
 
-![](media/ICE Chat_viaCollect/General_ICE_DataSourceType.png)
+In **Settings** section, do the following:
 
-2. On the **Credentials** tab, do the following:
+1. **Username** - enter the SFTP username.
+2. **Password** - enter the SFTP password.
+6. **Host** - enter the SFTP location.
+7. **Path** - enter the folder path on the SFTP.
+8. **Port** - the TCP port number. Default value is 22.
 
-   ![](media/ICE Chat_viaCollect/ICE_CredentialsTab.png)
+![](media/ICE_Chat_viaCollect/ICE_CredentialsTab.png)
 
-- **Userame** - enter the SFTP usernname.
-- **Password** - enter the SFTP password.
-- **PGP Key** - enter the PGP Key used for message encryption.
-- **Passphrase** - enter the PGP Passphrase used for message encryption. 
+In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
 
-3. For the Data Source Specific Fields section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data).
-
-    ![](media/ICE Chat_viaCollect/ICE_DataSourceSpecificFields.png)
-
-- **Host** - enter the SFTP location.
-- **Path** - enter the Folder path on SFTP.
-- **Port** - enter the TCP port number. Default value is 22.
-- **Use PGP Encryption** - select this check box to decrypt a source file with the PGP Key and PGP Passphrase; otherwise, leave it blank.
-- **Frequency in Minutes** - enter 1440.
-- **Max Number of Batches To Merge** - enter 1.
-- **Collection Period Offset in Minutes** - enter 1440.
+1. **Frequency in Minutes** - enter 1440.
+2. **Merge Batches During Cold Start**: enter True.
+3. **Max Number of Batches To Merge** - enter 1.
+4. **Collection Period Offset in Minutes** - enter 1440.

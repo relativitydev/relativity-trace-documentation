@@ -174,32 +174,27 @@ Most parameters work the same for all Collect Data Sources. Follow the instructi
 
 Slack Enterprise specific parameters: 
 
-General section: 
-
-- **Data Source Type**: Slack Enterprise. 
-
+In **General** section: select **Slack Enterprise** for the **Data Source Type**.
 ![](media/slack_enterprise_via_collect/SlackEnterpriseDataSource.png)
 
-Credentials section: 
+In **Settings** section, do the following:
 
-- **Application Token**: Enter generated Application Token
-
-Data Source Specific Fields section
-
-- **Frequency in Minutes**: 129.
-- **Merge Batches During Cold Start**: True
-- **Max Number of Batches To Merge**: 24.
-- **Collection Period Offset in Minutes**: 0.
-- **Extraction Thread Count**: 2
-
+1. **Application Token**: Enter generated Application Token.
 ![](media/slack_enterprise_via_collect/DataSourceFields.png)
+
+In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+
+1. **Frequency in Minutes**: 480.
+2. **Merge Batches During Cold Start**: True.
+3. **Max Number of Batches To Merge**: 7.
+4. **Collection Period Offset in Minutes**: 0.
 
 Set up deduplication for this data source by configuring the following:
 
-- **Email Hashing - Use Binary Hash** : false
-- **Email Hashing - Use Sender In Hash** : true
-- **Email Hashing - Use Subject In Hash** : true
-- **Email Hashing - Use Sent Date In Hash** : true
-- **Email Hashing - Use Recipients In Hash** : true
-- **Email Hashing - Use Body In Hash** : true
-- **Email Hashing - Use Attachment List In Hash** : false
+- **Email Hashing - Use Binary Hash** : False.
+- **Email Hashing - Use Sender In Hash** : True.
+- **Email Hashing - Use Subject In Hash** : True.
+- **Email Hashing - Use Sent Date In Hash** : True.
+- **Email Hashing - Use Recipients In Hash** : True.
+- **Email Hashing - Use Body In Hash** : True.
+- **Email Hashing - Use Attachment List In Hash** : False.

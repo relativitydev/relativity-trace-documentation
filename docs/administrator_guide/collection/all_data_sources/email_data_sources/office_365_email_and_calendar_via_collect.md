@@ -193,22 +193,26 @@ Most parameters work the same for all Collect Data Sources. Follow the instructi
 
 O365 Mail and Calendar specific parameters: 
 
-General section: 
+In **General** section, select **Microsoft O365 Mail or Calendar** for the **Data Source Type**.
 
-1. **Data Source Type**: Select Microsoft O365 Mail or Calendar. 
+![](media/Office_365_email_and_calendar_via_Collect/DataSourceType.png)
 
-​	![](media/Office_365_email_and_calendar_via_Collect/DataSourceType.png)
+In **Settings** section, do the following:
 
-Credentials section: 
+1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details).
+2. **Domain**: The O365 domain name provided by the client.
+3. **Application Id**: Application / Client ID provided by the client.
 
-1. **Application Secret:** The Client Secret provided by the client (see [Authentication](#authentication) for more details). 
-2. Data Source Specific Fields section
-   - **Collect Draft items**: If set to `FALSE` (default), then only emails that were sent (non-Draft) are collected. If set to `TRUE`, then both sent emails (non-draft) and drafts emails are collected. Since draft emails are not actually communication, most customers elect to set this to `FALSE` and ignore the collection of draft emails to reduce false-positive alerts.
-   - **Domain**: The O365 domain name provided by the client. 
-   - **Application Id**: Application / Client ID provided by the client. 
-   - **Use Quick Discovery**: True 
-   - **Frequency in Minutes**: 60 
-   - **Number of Monitored Individual Per job**: 100 
-   - **Collection Period Offset in Minutes**: 0 
+![](media/Office_365_email_and_calendar_via_Collect/Mail_Credentials.png)
 
- ![](media/Office_365_email_and_calendar_via_Collect/DataSourceSpecificFields.png)
+In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+
+1. **Collect Draft items**: If set to `FALSE` (default), then only emails that were sent (non-Draft) are collected. If set to `TRUE`, then both sent emails (non-draft) and drafts emails are collected. Since draft emails are not actually communication, most customers elect to set this to `FALSE` and ignore the collection of draft emails to reduce false-positive alerts.
+2. **Number of Monitored Individual Per job**: 100.
+3. **Use Quick Discovery**: True.
+4. **Frequency in Minutes**: 60.
+5. **Merge Batches During Cold Start**: enter True.
+6. **Max Number of Batches To Merge** - enter 24.
+7. **Collection Period Offset in Minutes**: 0.
+
+![](media/Office_365_email_and_calendar_via_Collect/DataSourceSpecificFields.png)

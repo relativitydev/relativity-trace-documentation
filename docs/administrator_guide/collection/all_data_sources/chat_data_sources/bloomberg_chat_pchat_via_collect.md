@@ -34,7 +34,7 @@ The following activities are captured:
 
 ## Metadata
 
-In addition to standard metadata populated during extracting data, the O365 Teams Data Source captures the following ones:
+In addition to standard (O365 Mail) metadata populated during extracting data, the Bloomberg Chat Data Source captures the following ones:
 
 - **DATE** - start date of a chat or start date of a slice in the chat split into slices.
 - **SUBJECT** - friendly name of the team and channel.
@@ -81,22 +81,20 @@ Prior to creating the Data Source, install the Collect application and configure
 
 Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
 
-Bloomberg specific parameters: 
+Bloomberg Chat specific parameters: 
 
-1. On the **General** tab, select **Bloomberg Chat** for the **Data Source Type**.
+In **General** section, select **Bloomberg Chat** for the **Data Source Type**.
+![](media/BloombergChatPchat_viaCollect/General_BloomChat_DataSourceType.png)
 
- ![](media/BloombergChatPchat_viaCollect/General_BloomChat_DataSourceType.png)
+In **Settings** section, do the following:
 
-2. On the **Credentials** tab, do the following:
-
-![](media/BloombergChatPchat_viaCollect/BloomChat_CredentialsTab.png)
-
-- **Username** - enter the SFTP username.
-- **Password** - enter the SFTP password.
-- **PGP Key** - enter the PGP Key used for message encryption.
+1. **Use Unc Path**:
+    - **False** - if data is collected from external SFTP server.
+    - **True** - if data is collected directly from the RelativityOne Fileshare.
+2. **Use PGP Encryption** - select this check box to decrypt a source file with the PGP Key and PGP Passphrase; otherwise, leave it blank.
+3. **PGP Key** - if **Use PGP Encryption** is set to **True**, enter the PGP Key used for message encryption. Otherwise, leave it empty.
 
 For instance, if the PGP/GPG key looks like below:
-
 ```
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 lQdGBGKRw94BEADeO1Fle0W0lqki3DyVDOfVcHXRzWl6TpVxlZO7mxLYDp/myUzK
@@ -135,16 +133,42 @@ CCZ0nburBylUt7VEjjvIuMWsaCC3GYhjvM8owUExAGrns4+FHeGQ6wmtVRH/Ekqf
 j5r+T+V2idFXxw==
 ```
 
-- **Passphrase** - enter the PGP Passphrase used for message encryption.
+4. **Passphrase** - if **Use PGP Encryption** is set to **True**, enter the PGP Passphrase used for message encryption. Otherwise, leave it empty.
 
-3. For the **Data Source Specific Fields** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data).
+Other parameter values depend on **Use Unc Path** setting.
 
-![](media/BloombergChatPchat_viaCollect/BloomChat_DataSourceSpecificFields.png)
+If **Use Unc Path** is set to **False**:
 
-- **Host** - enter the SFTP location.
-- **Path** - enter the folder path on the SFTP.
-- **Port** - the TCP port number. Default value is 22.
-- **Use PGP Encryption** - select this check box to decrypt a source file with the PGP Key and PGP Passphrase; otherwise, leave it blank.
-- **Frequency in Minutes** - enter 1440.
-- **Max Number of Batches To Merge** - enter 1.
-- **Collection Period Offset in Minutes** - enter 1440.
+5. **Username** - enter the SFTP username.
+6. **Password** - enter the SFTP password.
+7. **Host** - enter the SFTP location.
+8. **Path** - enter the folder path on the SFTP.
+9. **Port** - enter the TCP port number. Default value is 22.
+
+![](media/BloombergChatPchat_viaCollect/BloomChat_CredentialsTab.png)
+
+If **Use Unc Path** is set to **True**:
+
+5. **Username** - leave empty.
+6. **Password** - leave empty.
+7. **Host** - leave empty.
+8. **Path** - enter the folder path on the RelativityOne Fileshare.
+9. **Port** - enter any intiger value e.g. **22**.
+
+In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+
+If **Use Unc Path** is set to **False**:
+
+1. **Batch Size** - enter 1.
+2. **Frequency in Minutes** - enter 1440.
+3. **Merge Batches During Cold Start**: enter True.
+4. **Max Number of Batches To Merge** - enter 1.
+5. **Collection Period Offset in Minutes** - enter 1440.
+
+If **Use Unc Path** is set to **True**:
+
+1. **Batch Size** - enter 1.
+2. **Frequency in Minutes** - enter 480.
+3. **Merge Batches During Cold Start**: enter True.
+4. **Max Number of Batches To Merge** - enter 1.
+5. **Collection Period Offset in Minutes** - enter 0.

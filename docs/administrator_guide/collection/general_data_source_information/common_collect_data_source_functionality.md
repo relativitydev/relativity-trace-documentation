@@ -75,6 +75,9 @@ A data batch that has completed with errors and displays a status of `CompletedW
 - Batch #1 - the batch that contains mailboxes that were retrieved successfully. The status of this batch is Completed. There is no action that needs to be taken on it. 
 - Batch #2 - the batch that contains mailboxes that were failed during data retrieval. The status of that batch is Abandoned. Depending on the reason for failure, that batch can be retried manually. 
 
+This functionality doesn't apply to chat type of Data Sources e.g. O365 Teams, Bloomberg Chat, etc.
+{: .info }
+
 ## Message slicing – Chat only  
 
 To handle dynamics and continuity of the communication in chat channels, Trace uses a slicing strategy to divide chats while keeping needed context for analysis. If the first message in a slice is a reply to the previously captured message, then the parent message is replaced by an empty message placeholder. 
