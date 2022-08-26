@@ -122,19 +122,23 @@ Most parameters work the same for all Collect Data Sources. Follow the instructi
 
 **Refinitiv Eikon Chat specific parameters:** 
 
-General section: 
+In **General** section, select **Eikon Chat** for the **Data Source Type**.
+![](media/refinitiv_eikon_chat_and_fxt_viacollect/SelectItem_DataSourceType.png)
 
-- **Data Source Type:** Eikon Chat.  
+In **Settings** section:
 
-Settings section:
+1. **Username:** SFTP user.
+2. **Password:** SFTP password.
+3. **Ignore Historic:** If set to `FALSE`, when a new user joins a chat, all of the messages that were sent since the last time they joined the chat will be collected. This can cause a lot of duplicative data collection. The default value is `TRUE`.
+4. **Host:** SFTP location.
+5. **Path:** Folder path on SFTP.
+6. **Port:** TCP port number. Default value is 22.
 
-- **Username:** SFTP user.
-- **Password:** SFTP password.
-- **Ignore Historic:** If set to `FALSE`, when a new user joins a chat, all of the messages that were sent since the last time they joined the chat will be collected. This can cause a lot of duplicative data collection. The default value is `TRUE`.
-- **Host:** SFTP location.
-- **Path:** Folder path on SFTP.
-- **Port:** TCP port number. Default value is 22.
+![](media/refinitiv_eikon_chat_and_fxt_viacollect/Eikon_Credentials.png)
 
+In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
 
- 
-
+1. **Frequency in Minutes** - enter 1440.
+2. **Merge Batches During Cold Start**: enter True.
+3. **Max Number of Batches To Merge** - enter 1.
+4. **Collection Period Offset in Minutes** - enter 1440.
