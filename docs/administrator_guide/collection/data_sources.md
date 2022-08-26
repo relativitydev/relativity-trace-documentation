@@ -57,7 +57,6 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Chat | Symphony |
 | Chat | Skype for Business |
 | Chat | [Microsoft O365 Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/microsoft_office_365_teams_chat_via_collect.md %}) |
-| Chat | Zoom Chat |
 | Chat | FXConnect |
 | Chat | [Cisco WebEx Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %}) |
 | Chat | ServiceNow |
@@ -133,82 +132,72 @@ Some Data Sources are supported through partners.
 ### Sections of a Data Source
 
 1. **General**: this tab houses general identifying information and status for the data source. These fields are described in further detail below.
-   * **Name:** The name of the Data Source
-   * **Document Type Name:** A non-required name that will propagate to the Trace Type field on the documents that come in through this Data Source
-     * If this field is left empty, the name of the Data Source will be used instead
-   * **Data Source Type:** Type of the data source
-   * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
-* **Start Date:** Date from which data will be pulled/pushed into Relativity
-* **End Date:** Optional date to which data will be pulled/pushed into Relativity.
 
-- If both dates are provided, data will be collected between “Start Date” and “End Date”. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and “End Date”. 
-- If only “Start Date” is provided, data will be collected between “Start Date” and now. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and now. 
-- If only “End Date” is provided, data will be collected between “Ingestion State” and “End Date”. 
-- If none of them is provided, data will be collected between “Ingestion State” and now.
-{: .info}
-  
-* **Last Runtime (UTC):** The timestamp when this Data Source was last executed
-  
-   * **Status:** The last status message recorded by the Data Source
+    * **Data Source Type:** Type of the data source
+    * **Name:** The name of the Data Source
+    * **Document Type Name:** A non-required name that will propagate to the Trace Type field on the documents that come in through this Data Source
+      * If this field is left empty, the name of the Data Source will be used instead
+    * **Provider Type:** The type fo communications that are being collected (Audio, Written, etc.)
+    * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
+    * **Start Date:** Date from which data will be pulled/pushed into Relativity
+    * **End Date:** Optional date to which data will be pulled/pushed into Relativity.
 
-   * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
-   
-   * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
-2. **Credentials:** this tab is used to securely input and store credential information. This includes username and password as well as OAuth client secrets, should they be used. Not all Data Sources require credential information.
-   
-    * **Username:** Optional field used for authentication of a data source.
+      - If both dates are provided, data will be collected between “Start Date” and “End Date”. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and “End Date”. 
+      - If only “Start Date” is provided, data will be collected between “Start Date” and now. If “Ingestion State” is later than “Start Date”, then data will be collected between “Ingestion State” and now. 
+      - If only “End Date” is provided, data will be collected between “Ingestion State” and “End Date”. 
+      - If none of them is provided, data will be collected between “Ingestion State” and now.
+      {: .info}
     
-    * **Password:** Optional field used for authentication of a data source.
-    
-    * **AIP Client Secret:** Contact [support@relativity.com](mailto:support@relativity.com) for more information on Azure Information Protection support.
-    
-    * **EWS Client Secret:** Optional field used for authentication of exchange email retrieval using OAuth.
-    
-      > EWS Client Secret is used only on Microsoft Exchange type Data Sources. See [Microsoft Exchange Data Source](#microsoft-exchange-data-source) for specifics on authentication.
-3. **Trace Monitored Individuals:** Configures which monitored individual’s data should be retrieved from the data source. See [Monitored Individuals](#monitored-individuals) for more information.
-4. **Data Transformations:** Determines which data transformations to apply to documents prior to ingestion into Relativity by this data source. See [Data Transformations](#data-transformations) for more information.
-5. **Data Batches:** The data batches which have been generated by this data source. See [Data Batches](#data-batches) for more information.
-6. **Data Source Specific Settings**: Different data source types have different configuration options. This section updates dynamically to allow access to these configuration options. See [Data Source Specific Settings](#data-source-specific-settings) and the documentation of your specific Data Source Type for more information.
-7. **Console**
+    * **Last Runtime (UTC):** The timestamp when this Data Source was last executed
+    * **Enabled Time:** The timestamp when this Data Source was last enabled
+    * **Disabled Reason:** An explanation for why a data source was automatically disabled by the system
+    * **Status:** The last status message recorded by the Data Source
+    * **Last Error Date:** Timestamp of the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
+    * **Last Error:** Error message from the last time this Data Source failed, if it happened recently (based on Last Error Retention in Hours setting under Data Source Specific Fields)
+
+1. **Settings**: Configures standard settings required for the specific Data Source Type. These settings can be found on specific data source documentation pages.
+
+1. **Trace Monitored Individuals:** Configures which monitored individual’s data should be retrieved from the data source. See [Monitored Individuals](#monitored-individuals) for more information.
+
+1. **Data Transformations:** Determines which data transformations to apply to documents prior to ingestion into Relativity by this data source. See [Data Transformations](#data-transformations) for more information.
+
+1. **Data Batches:** The data batches which have been generated by this data source. See [Data Batches](#data-batches) for more information.
+
+1. **Advanced Configuration**: Different data source types have different configuration options. This section updates dynamically to allow access to these configuration options. See [Advanced Configuration](#advanced-configuration) and the documentation of your specific Data Source Type for more information.
+
+1. **Console**
    
     - **Enable/Disable Data Source:** Enables (or disables) data retrieval for a particular data source.
     - **Reset Data Source:** Disables *and* resets data source to retrieve data from the specified Start Date. 
-    
-      > Depending on Import settings, enabling a reset Data Source could duplicate data in the Workspace.
+
+      Depending on Import settings, enabling a reset Data Source could duplicate data in the Workspace.
       {: .info }
 
-### Data Source Specific Settings
+### Advanced Configuration
 
 This section contains additional settings which are not associated with specific Relativity Fields. The settings described here are common across all Data Source Types. Type-specific settings are documented under their respected Data Source sections.
 
--   **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
+- **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
     
-    > **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
-    >
-    > Yields the following passwords:
->
-    > * `passw0rd`
-    > * `Trace1234!`
-    > * `aaa`
-    > * `bb`
-    > * `cccc|dd|eee|`
-    > * `ff|`
-    > * `ggg||hhh||`
+  **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
+    Yields the following passwords:
+      - `passw0rd`
+      - `Trace1234!`
+      - `aaa`
+      - `bb`
+      - `cccc|dd|eee|`
+      - `ff|`
+      - `ggg||hhh||`
 
 - **Extraction Thread Count:** The number of documents to extract in parallel.
-
-- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: 
-
-  -   `true`
-  -   `false`
-
+- **Enrich Documents:** Whether or not to extract metadata and children from original documents. Valid values: `true` or `false`
 - **Embedded File Behavior:** Embedded files are defined as attachments without file names. Most commonly these are in-line images. This setting changes the import behavior for embedded files. Valid options are:
+  - **`Import`** - Import all embedded files (top level and child) as separate documents in Relativity Trace.
+  - **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
+  - **`DoNotImport`** - Do not import any embedded files.
 
-  -   **`Import`** - Import all embedded files (top level and child) as separate documents in Relativity Trace.
-  -   **`DoNotImportFromAttachments`** - Import embedded files from top level documents *only*. Do not extract embedded files from child documents.
-  -   **`DoNotImport`** - Do not import any embedded files.
->   Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
-{: .info}
+      Both the `Import` and `DoNotImportFromAttachments` settings will greatly increase document volumes in Relativity Trace.
+      {: .info}
 
 - **Discover Monitored Individuals:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
 - **Include Monitored Individuals Not Linked to Data Source:** See [Discovery of Monitored Individuals](#discovery-of-monitored-individuals)
