@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Veritas Enterprise Vault Archive
+title: Veritas Enterprise Vault On-Premises Archive
 nav_exclude: true
 ---
 
@@ -41,18 +41,14 @@ This section lists what activities and, if applicable, metadata are captured whe
 
 ### Activities captured
 
-[comment]: <	"No activities captured listed in Word doc"
-
 The following table lists activities captured by this data source:
 
 | Activity | Notes |
 | -------- | ----- |
-|  Files      |   See supported file types under the Considerations section    |
+|  Archived Files      |   See supported file types under the Considerations section    |
 
 
 ### Activities not captured
-
-[comment]: <	"No activities not captured listed in Word doc"
 
 The following table lists activities that are not captured by this data source:
 
