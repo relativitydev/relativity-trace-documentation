@@ -238,17 +238,20 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 
   1. To setup cleansing transform, create a new data transformation in the data transformation tab.
 
-  2.  Give the transform a name, select transformation type of `AI Extracted Text Cleansing`, and select the checkboxes on the type of content you want to cleanse.
+  2.  Give the transform a name, select transformation type of `AI Extracted Text Cleansing`, and select the checkboxes on the type of content you want to cleanse. We have cleansing options available for both Email and RSMF (Relativity Short Message Format).
 
      When `Remove Email Headers` is enabled, cleansing will always act on the document since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
      {: .info} 
 
   3. Once created, add the transformation to the data source you want to run cleansing on.
 
-     Only data sources that bring in emails should be used for cleansing as it only cleanses email documents. If any non-email types are ran through cleansing, they will fail with a status of Warning - Document Error and the error details will contain the reason for the document error.
+     Only data sources that bring in emails or RSMF's should be used for cleansing as it only cleanses these documents. If any non-email or non-RSMF types are ran through cleansing, they will fail with a status of Warning - Document Error and the error details will contain the reason for the document error.
+     {: .info}
+     
+     Choosing to not cleanse RSMF timestamps may have the effect of adding timestamps in the transformation. It is a know defect that some Extracted Text lack timestamps. If you do not want timestamps in your Cleansed Extracted Text, be sure to toggle this option.
      {: .info}
 
-  4. All email documents being ingested from this data source will now undergo cleansing. If you want to change the configuration of the content that gets removed, you can return to the data transformation, click edit, and de-select the checkboxes as desired. Any future emails ingested will now remove content as configured.
+  4. All email and RSMF documents being ingested from this data source will now undergo cleansing. If you want to change the configuration of the content that gets removed, you can return to the data transformation, click edit, and de-select the checkboxes as desired. Any future emails and RSMF's ingested will now remove content as configured.
 
 **Trace Conversation Thread Field**
 When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
