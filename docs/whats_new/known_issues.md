@@ -23,3 +23,4 @@ The following list provides descriptions of known issues in Relativity Trace. Fo
 | 6/28/2022  | 4567    | Machine Learning Model Tab | The Machine Learning Model tab is wrongfully set to Not Visible making it where the Machine Learning functionality cannot be used | Yes |
 | 7/19/2022  | 4722    | Language Identification Transformation | The `Trace Other Langauges` field is misspelled and should be `Trace Other Languages` | Yes |
 | 7/19/2022  | 4664    | Language Identification Transformation | The `Trace Other Languages` field results should not include the confidence scores and just be a list of languages. | Yes |
+| 9/6/2022  | 5036    | AI Extracted Text Cleansing - Short Message | Trace fails to remove disclaimers from Reuters Chats | No |
