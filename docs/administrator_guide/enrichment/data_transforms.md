@@ -180,8 +180,9 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
    - Short Message: Remove Short Message Username 
    
  Use the 'Filter By' function to show removed text in the Native Viewer
-  
-
+ 
+ ![RSMF_suppression.png](media/data_transforms/RSMF_suppression.png)
+ 
   There are five fields that are used through the cleansing transformation process:
 
   1. <u>Extracted Text</u> - input field for cleansing that is generated during enrichment
