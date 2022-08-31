@@ -172,7 +172,15 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
   
 ### AI Extracted Text Cleasning - Short Messaged
 
-tbd
+  Trace allows clients to identify and remove non-authored content across short message data sources (RSMFs). This data transformation is part of the AI Extracted Text Cleansing Data Transformation and needs to be applied to a data source. It removes the following:
+   - Short Message: Remove Short Message Leaver/Joiner 
+   - Short Message: Remove Short Message Headers 
+   - Short Message: Remove Short Message Time Stamps 
+   - Short Message: Remove Short Message Disclaimer 
+   - Short Message: Remove Short Message Username 
+   
+ Use the 'Filter By' function to show removed text in the Native Viewer
+  
 
   There are five fields that are used through the cleansing transformation process:
 
