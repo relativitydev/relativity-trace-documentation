@@ -297,7 +297,7 @@ This Data Transformation runs automatically for all Data Sources and does not re
 Create multiple new Object Types if you have different categories of products that should be detected in communications.
 {: .info}
 
-2. Configure the newly created Object Type to be used as a product list for Product Identification by populating the `Dynamic Searching Object Types Json` setting on the `Data Transformation` task that can be found on the `Setup` page.
+2. Configure the newly created Object Type to be used as a product list for Product Identification by populating the `Product Identifier Object Json` setting on the `Data Transformation` task that can be found on the `Setup` page.
 
 3. The `Dynamic Searching Object Types Json` field is inputted as JSON with each `{}` representing a single object type.
 
