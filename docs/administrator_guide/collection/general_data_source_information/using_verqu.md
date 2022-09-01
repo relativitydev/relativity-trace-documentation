@@ -38,9 +38,8 @@ Email [support@relativity.com](mailto:support@relativity.com) to request the ins
     - You will be directed to use one of the .json configurations depending on what type of data sources you are configuring.
     {: .info}
 
-    ![](media/using_verqu/DeployConfigs.png)
-
 1. Identify the location where you want data to be exported to and create a folder called `RelativityTraceData`
+
 1. Create unique folders within `RelativityTraceData` for each unique data source
 
     ![](media/using_verqu/DeployDataStructure.png)
@@ -53,6 +52,8 @@ Email [support@relativity.com](mailto:support@relativity.com) to request the ins
     {: .info}
 
 1.  Navigate back to the folder where the **Trace.Core.exe** resides and locate the .json configuration files that align with the data source you are configuring.
+
+    ![](media/using_verqu/DeployConfigs.png)
 
     The .json configuration file that needs to be edited for the data source you are configuring will be specified in the data source specific documentation page (e.g. [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %})).
     {: .info}

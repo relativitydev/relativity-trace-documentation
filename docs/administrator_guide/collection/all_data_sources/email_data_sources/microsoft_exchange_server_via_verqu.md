@@ -7,7 +7,7 @@ nav_exclude: true
 # Microsoft Exchange Server
 {: .no_toc }
 
-This topic provides details on how to capture Microsoft Exchange Server data sources via Collect.
+This topic provides details on how to capture Microsoft Exchange Server on-premises data via the VerQu on-premises collection application.
 {: .fs-6 .fw-300 }
 
 1. TOC
