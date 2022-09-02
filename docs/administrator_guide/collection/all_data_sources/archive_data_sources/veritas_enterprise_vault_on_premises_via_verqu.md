@@ -63,11 +63,33 @@ The following table lists activities that are not captured by this data source:
 This section provides details on the prerequisites and steps for setting up this data source.
 
 ```mermaid
-  graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
+
+    sequenceDiagram
+    autonumber
+
+    participant EV
+    participant VerQu
+    participant Trace Shipper
+    participant RelativityOne Trace
+
+    RelativityOne Trace ->> RelativityOne Trace: Setup Data Source
+
+    rect rgb(200, 150, 255)
+        note left of VerQu: Customer On-Premises Infrastructure
+        EV->>EV: Check pre reqs
+        VerQu->>VerQu: Install and Configure
+        Trace Shipper ->> Trace Shipper: Install and Configure
+        VerQu->>VerQu: Start Run Scheduler
+        loop daily
+            EV->>VerQu:Net New Data
+            VerQu->>Trace Shipper: Net New Data
+        end
+    end
+   
+    loop daily
+        Trace Shipper->>RelativityOne Trace: Net New Data
+    end
+
 ```
 
 ### Prerequisites
