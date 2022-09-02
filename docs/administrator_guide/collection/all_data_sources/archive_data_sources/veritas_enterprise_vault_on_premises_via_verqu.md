@@ -11,6 +11,7 @@ This topic provides details on how to capture Veritas Enterprise Vault on-premis
 {: .fs-6 .fw-300 }
 
 1. TOC
+{:toc}
 
 ## Requirements
 
