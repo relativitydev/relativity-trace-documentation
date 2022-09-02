@@ -62,6 +62,14 @@ The following table lists activities that are not captured by this data source:
 
 This section provides details on the prerequisites and steps for setting up this data source.
 
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
+
 ### Prerequisites
 
 You must have the following access configuration.
