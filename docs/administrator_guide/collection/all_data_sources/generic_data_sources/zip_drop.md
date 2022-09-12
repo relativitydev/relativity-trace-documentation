@@ -43,6 +43,13 @@ The following requirements must be met by any ZIP file imported by the Zip Drop 
 Files imported by the Zip Drop Data Source do not need to have the extension .ZIP.
 {: .info }
 
+**Zip File Supported Formats**
+
+| Archive format  | Compression method      |
+|:-------:|:------------------:|
+| zip | Deflate |
+
+
 **Drop Folder**
 
 The Drop Folder is the place on the file share where ZIP files full of documents and metadata should be placed. The Zip Drop Data Source will discover ZIP files, extract them to a different location, and then delete each ZIP file from the Drop Folder so that the next file can be processed. The Zip Drop Data Source attempts to extract every file in the Drop Folder, regardless of extension. Only one file is processed at a time, so the file is always moved or deleted after a single attempt to guarantee throughput. 
