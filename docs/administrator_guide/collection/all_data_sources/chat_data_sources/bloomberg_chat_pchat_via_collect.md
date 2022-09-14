@@ -90,7 +90,7 @@ In **Settings** section, do the following:
 
 1. **Use Unc Path**:
     - **False** - if data is collected from external SFTP server.
-    - **True** - if data is collected directly from the RelativityOne Fileshare.
+    - **True** - if data is collected directly from the RelativityOne Fileshare. Use this option if client is dropping data directly to Fileshare using SFTP server hosted by Relativity.
 2. **Use PGP Encryption** - select this check box to decrypt a source file with the PGP Key and PGP Passphrase; otherwise, leave it blank.
 3. **PGP Key** - if **Use PGP Encryption** is set to **True**, enter the PGP Key used for message encryption. Otherwise, leave it empty.
 
@@ -152,7 +152,7 @@ If **Use Unc Path** is set to **True**:
 5. **Username** - leave empty.
 6. **Password** - leave empty.
 7. **Host** - leave empty.
-8. **Path** - enter the folder path on the RelativityOne Fileshare.
+8. **Path** - enter the folder path on the RelativityOne Fileshare relative to workspace folder. Usually it will be drop folder exposed in internal SFTP server. For example *DataTransfer/Import/SFTP/BloombergChat/Drop* (while SFTP server is set up to expose following path relative to Fileshare: */Files/EDDS1020064/DataTransfer/Import/SFTP* where *EDDS1020064* is a workspace where data source is created).
 9. **Port** - enter any intiger value e.g. **22**.
 
 In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
