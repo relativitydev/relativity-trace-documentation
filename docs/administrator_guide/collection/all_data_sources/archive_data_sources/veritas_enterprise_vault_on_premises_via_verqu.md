@@ -30,7 +30,7 @@ Older versions of Veritas are supported on a case-by-case basis, but additional 
 ## Considerations
 
 ### File Collection
-Only the following file types are collected:
+The following file types are collected:
 - Exchange Journal Archive (Journal Wrapped MSG)
 - SMTP Journal Archive (Journal Wrapped EML)
 - User Archive (Journal wrapped MSG)
