@@ -27,7 +27,7 @@ Monitored Individuals can be managed through Active Directory or Azure Active Di
 |:-------:|:------------------:|
 | Monitored Individual | [Microsoft Azure Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_azure_active_directory_via_collect.md %})|
 | Monitored Individual | [Microsoft Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_active_directory_via_verqu.md %}) |
-
+| Monitored Individual | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) |
 
 ## Billing
 Monitored Individuals are used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.

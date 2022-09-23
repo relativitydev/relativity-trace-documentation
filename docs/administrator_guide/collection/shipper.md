@@ -264,7 +264,7 @@ All Trace Data Sources serialize their current state to a JSON file and their mo
 
 ### Installation Steps for Veritas Merge1
 
-Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Merge1. 
+Refer to the [Merge 1 User Guide](https://www.veritas.com/content/support/en_US/doc/Merge1_7.0_UserGuide) for instructions on how to install Merge1. 
 
 Contact [support@relativity.com](mailto:support@relativity.com) if you need assistance with installation steps.
 
@@ -343,7 +343,7 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
 All of these Data Sources work similar via scheduled drops of data to an FTP. Merge1 picks it up from SFTP and delivers it to Trace.
 
-See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for more details
+See sample data flow below and refer to [Merge 1 User Guide](https://www.veritas.com/content/support/en_US/doc/Merge1_7.0_UserGuide) for more details
 
 ![image-20200622120337061](media/shipper/image-20200622120337061.png)
 

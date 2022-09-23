@@ -29,9 +29,9 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 ### Generic Data Sources
 
-| Type  | Data Source      |
-|:-------:|:------------------:|
-| Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) |
+| Type    | Data Source        | Notes
+|:-------:|:------------------:|:--------------:|
+| Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | Particularly useful for data like audio and already processed data |
 
 
 ### Email Data Sources
