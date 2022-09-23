@@ -31,13 +31,13 @@ used together with `Monitored Individuals Sync` data transformation.
 | displayName                | Full Name            |                                                                                                                                                                                                                      |
 | givenName                  | First Name           |                                                                                                                                                                                                                      |
 | surname                    | Last Name            |                                                                                                                                                                                                                      |
-| ADGroupIDs                 |                      | List of azure active directory group ids (separated by default with semi-colon). Not ingested into relativity by default. Used with ‘Monitored Individuals Sync’ data transformation to map ids to Data Source names |
+| ADGroupIDs                 |                      | List of active directory group ids (separated by default with semi-colon). Not ingested into relativity by default. Used with ‘Monitored Individuals Sync’ data transformation to map ids to Data Source names |
 
 
 `Monitored Individuals Sync` data transformation which should be associated with
 Zip Drop data source does the following:
 
-1.  Maps azure active directory ids specified in ADGroupIDs column to data
+1.  Maps active directory ids specified in ADGroupIDs column to data
     source names
 2.  Creates SecondaryIdentifier field by combining existing fields in the load
     file
@@ -56,7 +56,7 @@ ingestion profile include:
 # Settings of `Monitored Individuals Sync` data transformation:
 
 ## Group Id To Data Source Name Mapping Json
-User needs to specify how to map azure active directory group id (specified in
+User needs to specify how to map active directory group id (specified in
 the ADGroupIDs load file field) to Trace Data Source name. One to one mappings
 are specified in the JSON format in the fashion similar to this:
 
