@@ -27,7 +27,7 @@ used together with `Monitored Individuals Sync` data transformation.
 
 | Load Fille column name | Relativity Field | Comments |
 |:----------------------------:|:----------------------:|:--------:|
-| userPrincipalName          | Identifier           |                                                                                                                                                                                                                      |
+| userPrincipalName          | Identifier           | Email Address                                                                                                                                                                                                        |
 | displayName                | Full Name            |                                                                                                                                                                                                                      |
 | givenName                  | First Name           |                                                                                                                                                                                                                      |
 | surname                    | Last Name            |                                                                                                                                                                                                                      |
