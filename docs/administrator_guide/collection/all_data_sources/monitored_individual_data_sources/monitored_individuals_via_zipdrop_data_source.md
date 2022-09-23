@@ -50,7 +50,7 @@ ingestion profile include:
 
 | Load Fille column name | Relativity Field |   Comments    |
 |:----------------------------:|:----------------------:|:------------:|
-| TraceDataSource            | Data Sources         | Multi value field containing list of data source names generated based on ‘Group Id To Data Source Name Mapping Json’ setting on the data transformation |
+| TraceDataSource            | Data Sources         | Multi value field containing list of data source names generated based on `Group Id To Data Source Name Mapping Json` setting on the data transformation |
 | SecondaryIdentifier        | Secondary Identifier | Semi-colon separated list of other load file fields values which are provided in ‘Secondary Identifier User Fields Json’ setting                         |
 
 # Settings of `Monitored Individuals Sync` data transformation:
