@@ -121,7 +121,7 @@ For details on the IP ranges for your specific RelativityOne instance please con
 3. Go to Services on the machine and verify that the service was installed (`Trace Shipper Service`)
 4. From the Services window, right click on the `Trace Shipper Service` and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
 5. In the `Trace Shipper Service` folder, edit the `serviceConfiguration.json` file. 
-All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. 
+All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. See sample ![configuration file](media/shipper/TraceShipperConfiguration.json) for reference
 
 See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
 {: .info }
@@ -165,10 +165,6 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 8. If the Service fails to start, look at the Application Event Logs (Event Viewer > Windows Logs > Application) to see any errors.
 9. If the Service starts but does not ship files, look at the log files (as configured in the logFilePath setting) to see what messages are logged.
 10. Finally, once everything is running, use Windows permissions to secure the `Trace Shipper Service` folder and the configured logs folder to only users that should be able to access the sensitive information contained within (Relativity credentials, file paths, etc.).
-11. (Optional) Create and configure Extension Scripts
-
-### Data Source Configuration Sync and Extension Scripts
-Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, Data Source Specific Fields changes).  Please contact [support@relativity.com](mailto:support@relativity.com) for more details.
 
 ### Starting/Stopping Service
 The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
