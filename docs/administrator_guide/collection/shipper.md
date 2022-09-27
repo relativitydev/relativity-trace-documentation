@@ -121,7 +121,88 @@ For details on the IP ranges for your specific RelativityOne instance please con
 3. Go to Services on the machine and verify that the service was installed (`Trace Shipper Service`)
 4. From the Services window, right click on the `Trace Shipper Service` and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
 5. In the `Trace Shipper Service` folder, edit the `serviceConfiguration.json` file. 
-All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. See sample ![configuration file](media/shipper/TraceShipperConfiguration.json) for reference
+All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character.
+
+Sample configuration file
+
+```json
+{
+	"shippers": [{
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			Exchange",
+			"remoteRelativePath": "Globanet
+			Exchange",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_Exchange.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\Office 365.log",
+					"uniqueRemoteName": "Exchange.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}, {
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			Teams",
+			"remoteRelativePath": "Globanet
+			Teams",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_Teams.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\Teams.log",
+					"uniqueRemoteName": "Teams.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}, {
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			OneDrive",
+			"remoteRelativePath": "Globanet
+			OneDrive",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_OneDrive.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\OneDrive.log",
+					"uniqueRemoteName": "OneDrive.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}
+	]
+}
+```
 
 See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
 {: .info }
