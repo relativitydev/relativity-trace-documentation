@@ -74,7 +74,7 @@ In addition to standard metadata populated during extracting data, the Eikon Cha
 | TO                                          | Chat attendees.                                              |
 | CONVERSATION-ID                             | The unique identifier. When creating a Data Mapping, set “Read From Other Metadata Column” to “Yes.” |
 | X-RSMF-EndDate                              | Number of messages in the chat / slice. When creating a Data Mapping, set “Read From Other Metadata Column” to “Yes.” |
-| Distribution list emailsX-RSMF-MessageCount | A copy of any email sent to a distribution list is captured from each mailbox that is on the distribution list. A distribution list itself is not a mailbox. |
+| Distribution list emailsX-RSMF-EventCount | A copy of any email sent to a distribution list is captured from each mailbox that is on the distribution list. A distribution list itself is not a mailbox. |
 | X-RSMF-AttachmentCount                      | Number of attachments in the chat / slice. When creating a Data Mapping, set “Read From Other Metadata Column” to “Yes.” |
 
 A "Slice" of data refers to a start and end time of data that will be captured in one Relativity Document. Unless specified, a slice will contain one days worth of data.
