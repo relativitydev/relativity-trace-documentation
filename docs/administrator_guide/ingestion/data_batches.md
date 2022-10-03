@@ -47,20 +47,19 @@ Data Batch objects have associated Mass Operations (and corresponding Data Batch
 
 2. `Trace Data Batch Abandon` – updates the Data Batch to indicate that it has been manually resolved and that no further work needs to be done. Using this action is necessary when errors are resolved manually because otherwise the Ingestion task will continue to report the presence of Data Batches in the CompletedWithErrors status.
 
-3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace. Finalization deletes files associated with a Data Batch from the Fileshare, excluding files linked to Documents in Relativity and load files. Finalization frees up space on the current Fileshare.
+3. `Trace Data Batch Finalize` – submits the Data Batch for finalization by Trace (cleanup of temporary files). Finalization deletes files associated with a Data Batch from the Fileshare, excluding files linked to Documents in Relativity and load files. Finalization frees up space on the current Fileshare.
 
-    After performing this action, you can no longer retry the Data Batch. There is no way to undo this action once it is taken.
-    {: .warn }
-    
-    Only Data Batches that are Completed or CompletedWithDocumentLeverlErrors can undergo Finalization. Data Batches that were already Finalized or Pending Finalization can be selected to be retried for Finalization.
+    Only Data Batches that are Completed or CompletedWithDocumentLeverlErrors can undergo Finalization.
     {: .info }
-    
+
     Finalizing a Data Batch will only delete files from the current in use Fileshare when its corresponding data batch folder exists.
     {: .info }
-    
-    The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
+
+    The Data Validation task queues up work via the Service Bus framework for each Data Batch selected for finalization. Trace supports any queueing framework supported by Relativity. Data Batch Finalization tasks are performed by the `Trace Data Batch Finalization Agent`.
     {: .info }
 
+    This option is planned to be removed in the future version of Trace and replaced with automatic finalization of data batches in status Completed or CompletedWithDocumentLevelErrors. Currently it is left to free space for older data batches, as for the data batches currently processed automatic finalization can be turned on. For more information, contact [support@relativity.com](mailto:support@relativity.com).
+    {: .warning }
 
 If a Data Batch sits in a status other than `Completed`, `CompletedWithErrors`, `CompletedWithDocumentLevelErrors`, or `Abandoned` for longer than 24 hours (timeout configurable with the `Data Batch Timeout In Hours` setting on the Data Validation Task), it will automatically be: **(1)** Retried if automatic retry is configured for workspace and retry attempts exist for the stuck data batch (Data Batches can hang in the Enriching status and this reduces the number of Data Batches that must be retried manually). **(2)** Marked `CompletedWithErrors` if the Data Batch exhausted its retry attempts and the error was unable to be resolved. **(3)** Marked `Abandoned` if the Data Batch does not have any files. This functionality helps ensure that temporary system issues do not lead to Data Batches being stuck indefinitely containing documents that never make it into the workspace.
 {: .info }
