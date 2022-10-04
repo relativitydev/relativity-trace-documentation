@@ -19,100 +19,127 @@ On-premises data can be transferred to Relativity Trace in the cloud using eithe
 ---
 
 ## SFTP
-Basic information on our SFTP data transfer approach can be found in our [RelativityOne Documentation](https://help.relativity.com/RelativityOne/Content/Data_migration/S-FTP.htm). Not all Data Sources support SFTP data transfer. Please contact [support@relativity.com](mailto:support@relativity.com) for more information on our SFTP data transfer options.
+
+Basic information on our SFTP data transfer approach can be found in our [RelativityOne Documentation](https://help.relativity.com/RelativityOne/Content/Data_migration/S-FTP.htm).
+Relativity Trace supports the following Data Sources via SFTP:
+- Microsft Exchange On-Prem (EML loose files).
+- Enterprise Vault On-Prem via Relativity VerQ.
+- Bloomberg Chat and Mail (zipped package).
+- Audio Transcript.
+- ZipDrop Data Source.
+{: .info}
 
 ## Trace Shipper
+
 The Trace Shipper Service is a Windows service released by Trace that delivers data from the client network to a remote Relativity Trace workspace. The service monitors configured source folders on the local network and ships files that appear in the source folders to predetermined file share locations within a Relativity workspace that are associated with Trace Data Sources. The files are deleted from the source folder once they have been transmitted to Relativity successfully. 
 
 ![TraceShipperOverview](media/shipper/TraceShipperOverview.png)
 
 ### Trace Data Shipper Advantages
+
 1. Fully managed Windows service with Trace specific semantics and configuration
-   1. Integration with IT policies managing Windows reporting/alerting
-   2. Robust mechanism for retrying in case of data transfer failures
-   3. Integration of Data Source configuration from Relativity side
+   1. Integration with IT policies managing Windows reporting/alerting.
+   2. Robust mechanism for retrying in case of data transfer failures.
+   3. Integration of Data Source configuration from Relativity side.
 2. No need for VPN setup
-   1. Faster onboarding of clients
-   2. Fewer dependent components in data transfer
-3. Fast data transfer rates
-4. Secure (data encrypted in flight)
+   1. Faster onboarding of clients.
+   2. Fewer dependent components in data transfer.
+3. Fast data transfer rates.
+4. Secure (data encrypted in flight).
 
 ### Prerequisites Before Installing
 
-- Identify/provision a Windows machine to run the Trace Shipper Service
-This should be the same machine as the Veritas Merge1 appliance VM.
-- Identify what source folder(s) on your local network need their files shipped to a Relativity
-Windows service. The source folder(s) must have read/write/modify permissions.
-- Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration
-- Lookup the destination Relativity Instance(s), Workspace(s) and Target folder(s) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources)
+- Trace application needs to be installed on the Relativity Workspace.
+- Identify/provision a Windows machine to run the Trace Shipper Service.
+  
+  a) System Requirements
+  
+  - Hardware:
+    -  2.4 GHz or faster 64-bit dual-core processor.
+    -  16 GB RAM.
+    -  300 GB hard-disk space.
+  - Software:
+    - Windows 8 or later; Windows Server 2012 or later.
+    - .NET Framework 4.7.2.
+
+  b) Ports and Firewall settings
+  
+  - For the Aspera data transfer protocol, the following ports must be configured:
+    - **TCP port 443** - required to be opened to the **[customerinstance].relativity.one** endpoint for login.
+    - **TCP port 33001** - required to connect the local machine to the RelativityOne data transfer server.
+    - **UDP ports 33001 - 33050** - required to send and receive data from local machine to the RelativityOne data transfer server.
+
+    See [RelativityOne data transfer IP Ranage](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) by Azure Region for more details.
+    {: .info }
+
+
+- Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration.
+- Identify what source folder(s) on your local network need their files shipped to a Relativity Windows service. The newly created Windows user must have read/write/modify permissions to the source folder(s).
+- Lookup the destination Relativity Instance URL(s) and Workspace(s).
+_ Lookup Target folder(s) (**Source Folder Path**) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources).
+
+  ![SourceFolderPath](media/shipper/SourceFolderPath.png)
 
 A document will fail to ship if a file with the same name already exists in the destination folder. Care should be taken to avoid duplicate file names both when initially retrieving data and at the remote destination folder.
 {: .info }
 
 - Create a designated Relativity username and password for each destination that can be used to authenticate against a Relativity API with appropriate rights.
+
 To view the file shares the user must be in a group, other than the System Administrator group, that is added to at least one workspace built on the Resource Pool with the associated file shares.
-- Request the Trace Shipper deployment package by submitting a ticket to [support@relativity.com](mailto:support@relativity.com)
-- Download and install ROSE (Staging Explorer) and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection))
+{: .info }
+
+  Step by step procedure to configure Relativity Group and User:
+  
+  a) Open RelativityOne portal.
+  
+  b) Create a new Group e.g. **Trace Shipper Aspera**.
+
+  ![TraceShipperGroup](media/shipper/TraceShipperGroup.png)
+
+  c) Create a ne User e.g. **Trace Shipper**.
+
+  ![TraceShipperUser](media/shipper/TraceShipperUser.png)
+  
+  d) Once the user is created, add Default Password Provider Login Method to it. Use the following parameters: **Can Change Password** set to true, **Require Change Password On Next Login** set to false, **Maximum Password Age** set to false, **Set Password for User** set to yes. Then type password and confirm.
+  
+  ![DefaultPasswordSettings](media/shipper/DefaultPasswordSettings.png)
+
+  e) Add **Trace Shipper** User to **Trace Shipper Aspera** Group.
+
+  f) Open **Instance Details** and **Manage Permissions**. On **Group Management** tab add **Trace Shipper Aspera** Group to the Instance.
+
+  ![AdminPermissions](media/shipper/AdminPermissions.png)
+
+  g) On **Admin Operations** tab, select **Trace Shipper Aspera** Group then check **Access RelativityOne Staging Explorer** option. Then click **Save** and **Close**.
+
+  ![AdminSecurity](media/shipper/AdminSecurity.png)
+
+  h) Go to Trace Workspace. Open **Workspace Details** and **Manage Workspace Permissions**. On **Group Management** tab add **Trace Shipper Aspera** Group to the Workspace.
+
+  ![WorkspacePermissions](media/shipper/WorkspacePermissions.png)
+
+  i) View **Trace Shipper Aspera** Group Users to confirm **Trace Shipper** User is present.
+
+  ![ViewUsers](media/shipper/ViewUsers.png)
+
+  j) Open **Trace Shipper Aspera** Group again. Confirm that Trace Shipper User and Trace Workspace is linked to it.
+
+- Request the Trace Shipper deployment package by submitting a ticket to [support@relativity.com](mailto:support@relativity.com).
+
+- Download and install ROSE (Staging Explorer), login to ROSE as **Trace Shipper** User and Password and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection)).
+
+This step is requried to confirm that all TCP and UDP ports required for transferring data from the client local machine to the RelativityOne instance are opened.
+{: .info }
+
 - (Only for Web protocol) Request the Relativity Transfer API Services application (Relativity.TransferApi.Services.rap) by submitting a ticket to support@relativity.com. [Install](https://help.relativity.com/10.3/Content/Relativity/Applications/Installing_applications.htm#Installi3) the Relativity Transfer API Services application to the Application Library.
 
 Do not install the Relativity Transfer API Services application to any workspaces. By installing the application to the Application Library, the services are available for consumption.
 {: .info }
 
 - (Only for Web protocol) Assign required permissions to Relativity user
-   1. Go to Instance Details/Manage permissions.
-   2. Go to Admin Operations and select a group the user belongs to.
-   3. Check "Data Transfer Operations" permission.
-
-#### System Requirements
-- Hardware
-  -  2.4 GHz or faster 64-bit dual-core processor
-  -  16 GB RAM
-  -  300 GB hard-disk space
-- Software
-   - Windows 8 or later; Windows Server 2012 or later
-   - Internet Information Services 7.0 or higher
-      - Make sure the following **components** are installed
-         - **Web Server**
-            - Common HTTP Features
-               - Default Document
-               - Static Content
-            - Security
-               - Basic Authentication
-               - Request Filtering
-               - Windows Authentication
-            - Application Development
-               - All .NET Extensibility Components
-               - All ASP.NET Components
-               - SAPI Extensions
-               - ISAPI Filters
-         - **Web Management Tools**
-            - IIS Management Console
-            - IIS 6 Management Compatibility
-               - IIS Metabase and IIS 6 configuration compatibility
-            - IIS Management Scripts and Tools
-            - IIS Management Service
-   - .NET Framework 3.5 & 4.7.2
-   - Microsoft Visual C++ 2017 (x64) Redistributable
-   - SQL Server 2012 or later
-       We recommend to take daily backups and keep them for 1 week.
-       {: .info }
-       We recommend to shrink database daily in order not to run out of disk space.
-       {: .info }
-
-#### Data Transfer Protocols
-Transfer API (TAPI) is the underlying method of data delivery to RelativityOne.  TAPI supports multiple protocols of data transfer including:
-1. Direct - only available on-premise
-2. Aspera (FASP protocol) - default for RelativityOne
-3. Web - available on-premise
-
-#### Ports and Firewall settings
-For the Aspera data transfer protocol, the following ports must be configured:
-1. Allow outbound connections to the server on the TCP port 33001.
-2. Allow outbound connections to the server on the UDP ports 33001 - 33050, 33101, 33102.
-3. Allow outbound connections to the server on HTTPS (443)
-
-For details on the IP ranges for your specific RelativityOne instance please contact [support@relativity.com](mailto:support@relativity.com)
-
+   a) Go to Instance Details/Manage permissions.
+   b) Go to Admin Operations and select a group the user belongs to.
+   c) Check "Data Transfer Operations" permission.
 
 ### Installation Steps
 
@@ -167,11 +194,55 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 10. Finally, once everything is running, use Windows permissions to secure the `Trace Shipper Service` folder and the configured logs folder to only users that should be able to access the sensitive information contained within (Relativity credentials, file paths, etc.).
 11. (Optional) Create and configure Extension Scripts
 
+### Comomon Errors
+
+| Description | Log details example |
+| :---------- | :---------- |
+| Incorrect `relativityUrl` | 2022-09-30 11:10:20.604 [15] ERROR: Failed to call the HTTP 'Relativity.Rest/API/Relativity.Objects/workspace/-1/object/queryslim' (POST) endpoint operation. Web Response Status="NameResolutionFailure", Response= System.Net.WebException: The remote name could not be resolved: 'trace.relativity.oneddd' at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context) at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)|
+| Incorrect `workspaceId` | 2022-09-30 11:14:44.190 [19] WARNING: Successfully retrieved the '37022420' workspace from the '"https://trace.relativity.one/"' Relativity server but it does not exist. |
+| Incorrect `relativityUserName` and/or `relativityPassword` | 2022-09-30 11:18:11.543 [21] ERROR: Failed to call the HTTP 'Relativity.Rest/API/Relativity.Objects/workspace/-1/object/queryslim' (POST) endpoint operation. HTTP StatusCode="Unauthorized", Response= System.Net.Http.HttpRequestException: Response status code does not indicate success: 401 (Unauthorized). at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode() at Relativity.Transfer.RestClient.<ExecuteCall>d__20.MoveNext() |
+| Incorrect `localDirectoryPath` | 2022-09-30 11:25:31.017 [11] WARNING: Failed to get files from folder J:\Users\superuser\Downloads\Globanet3\Exchange, will wait 60000ms then try again System.Exception: Folder path J:\Users\superuser\Downloads\Globanet3\Exchange cannot be found. at Insight.Core.FolderWatcher.FolderWatcher.WatchFolderAndQueueFiles(CancellationToken cancellationToken) in S:\Jenkins\workspace\Trace_Trace_csquared_master@2\source\Insight.Core\FolderWatcher\FolderWatcher.cs:line 85 |
+| Incorrect `remoteRelativePath` | 2022-09-30 11:38:32.325 [4] WARNING: Begin shipping files from folder C:\Users\superuser\Downloads\Globanet3\Exchange. trace-shipper-version: 15.4.0.0 |
+| Incorrect `logFilePath` | No Trace Shipper log available |
+|
+
 ### Data Source Configuration Sync and Extension Scripts
-Each configured shipper automatically syncs data source configuration (in Relativity).  This configuration can be used to create custom actions that automatically trigger on certain events and changes (ex: Data Source enable/disable, Monitored Individual changes, Data Source Specific Fields changes).  Please contact [support@relativity.com](mailto:support@relativity.com) for more details.
+
+Each configured shipper automatically syncs Data Source configuration (in Relativity). This configuration can be used to create custom actions that automatically trigger on certain events and changes:
+1. Data Source settings snapshot (**monitored_individuals.csv**).
+2. Momnitored Individual changes (**DataSourceState.json**).
+The local folder in which Data Source configuration is being stored is **localFolderPath\Config**.
 
 ### Starting/Stopping Service
+
 The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
+
+### Update Steps
+
+1. Extract `TraceShipperService_(version).zip` to a temporary folder.
+2. Go to **Services** management console, locate **Trace Shipper Service** service and stop it.
+3. Perform a backup of **Trace Shipper Service** production folder.
+4. Go to new Trace Shipper unzipped, temporary folder, copy all files and place them onto **Trace Shipper Service** production folder.
+5. Go to backup folder, copy `serviceConfiguration.json` and place it onto **Trace Shipper Service** production folder.
+This step is needed to recover original configuration file.
+{: .info}
+6. Optional - clean up logs.
+7. Start **Trace Shipper Service**
+
+### Recovery Steps
+
+1. Stop **Trace Shipper Service**.
+2. Restore backup.
+3. Start **Trace Shipper Service**.
+
+### Validation Steps
+
+1. Drop a sample message onto the **Drop** folder.
+2. Wait a minute.
+3. Check if the message disappears from the **Drop** folder.
+4. Check int the log if a transfer has been completed.
+
+`INFORMATION: TransferJobMetricReporting: "1d2cc33a-4863-4b5a-8cea-de1f790cae9a" | CorrelationId: "c8811425-fde9-41ff-86ac-862f4b159ef3" | Transfer job completed. shipper-metrics-transfer-information: {"Mode":"Aspera","Status":"Successful","File Type":"Data","Request Name":"TraceShipper-upload","Direction":"Upload","Has Errors":false,"Error Message":"","Elapsed Time":"00:00:07","Total Files":171,"Total Transferred Files":171,"Total Transferred Bytes":34322167,"Total Files Not Found":0,"Total Files Failed":0,"Total Fatal Errors":0,"Total File Permission Errors":0,"Total Skipped Files":0,"Total Bad Path Errors":0,"Total Empty Directories Failed":0,"Data Rate":33.25,"Retry Count":0,"Issue Count":0,"Issues Messages":""}`
 
 ### Uninstall Steps
 
@@ -385,17 +456,3 @@ For the DB, you can take backups on a daily basis or apply any other standard SQ
 ### Appendix D: Sync of Config Folder
 
 All Data Sources in Relativity Trace serialize their current state as a JSON file at regular intervals. They also save a CSV file of all the linked monitored individuals as well. These files are saved in a Config folder in the Source or Drop folder for each data source. Trace Shipper can be configured to retrieve these Config folders, which allows for a way to sync data sources and monitored individuals from local to remote instance.
-
-
-[comment]: <> (Line 56 - No link to support email)
-[comment]: <> (Line 135 - No link to support email)
-[comment]: <> (Line 136 - No link to support email)
-[comment]: <> (Line 141 - No link to support email)
-[comment]: <> (Line 143 - No link to support email)
-[comment]: <> (Line 223 - No link to support email)
-[comment]: <> (Line 232 - Link is broken)
-[comment]: <> (Line 238 - Link is broken)
-[comment]: <> (Line 267 - No link to support email)
-[comment]: <> (Line 346 - Link is broken)
-[comment]: <> (Line 350 - Link is broken)
-[comment]: <> (Line 372 - Image sits over text, hard to read)
