@@ -3,8 +3,6 @@ layout: default
 title: Active Learning (Deprecated)
 nav_exclude: true
 ---
-Deprecated
-{: .label .label-red }
 
 # Active Learning
 {: .no_toc }
