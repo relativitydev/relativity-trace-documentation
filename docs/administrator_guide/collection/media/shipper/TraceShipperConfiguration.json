@@ -1,0 +1,76 @@
+{
+	"shippers": [{
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			Exchange",
+			"remoteRelativePath": "Globanet
+			Exchange",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_Exchange.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\Office 365.log",
+					"uniqueRemoteName": "Exchange.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}, {
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			Teams",
+			"remoteRelativePath": "Globanet
+			Teams",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_Teams.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\Teams.log",
+					"uniqueRemoteName": "Teams.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}, {
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			OneDrive",
+			"remoteRelativePath": "Globanet
+			OneDrive",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_OneDrive.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\OneDrive.log",
+					"uniqueRemoteName": "OneDrive.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}
+	]
+}

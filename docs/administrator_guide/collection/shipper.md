@@ -148,7 +148,88 @@ Do not install the Relativity Transfer API Services application to any workspace
 3. Go to Services on the machine and verify that the service was installed (`Trace Shipper Service`)
 4. From the Services window, right click on the `Trace Shipper Service` and select Properties, and then on the Log On tab configure the service to run as the user with proper access to the local folders
 5. In the `Trace Shipper Service` folder, edit the `serviceConfiguration.json` file. 
-All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character. 
+All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character.
+
+Sample configuration file
+
+```json
+{
+	"shippers": [{
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			Exchange",
+			"remoteRelativePath": "Globanet
+			Exchange",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_Exchange.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\Office 365.log",
+					"uniqueRemoteName": "Exchange.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}, {
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			Teams",
+			"remoteRelativePath": "Globanet
+			Teams",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_Teams.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\Teams.log",
+					"uniqueRemoteName": "Teams.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}, {
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			OneDrive",
+			"remoteRelativePath": "Globanet
+			OneDrive",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_OneDrive.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\OneDrive.log",
+					"uniqueRemoteName": "OneDrive.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Aspera"
+		}
+	]
+}
+```
 
 See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
 {: .info }
@@ -204,7 +285,6 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 | Incorrect `localDirectoryPath` | 2022-09-30 11:25:31.017 [11] WARNING: Failed to get files from folder J:\Users\superuser\Downloads\Globanet3\Exchange, will wait 60000ms then try again System.Exception: Folder path J:\Users\superuser\Downloads\Globanet3\Exchange cannot be found. at Insight.Core.FolderWatcher.FolderWatcher.WatchFolderAndQueueFiles(CancellationToken cancellationToken) in S:\Jenkins\workspace\Trace_Trace_csquared_master@2\source\Insight.Core\FolderWatcher\FolderWatcher.cs:line 85 |
 | Incorrect `remoteRelativePath` | 2022-09-30 11:38:32.325 [4] WARNING: Begin shipping files from folder C:\Users\superuser\Downloads\Globanet3\Exchange. trace-shipper-version: 15.4.0.0 |
 | Incorrect `logFilePath` | No Trace Shipper log available |
-|
 
 ### Data Source Configuration Sync and Extension Scripts
 
@@ -212,6 +292,7 @@ Each configured shipper automatically syncs Data Source configuration (in Relati
 1. Data Source settings snapshot (**monitored_individuals.csv**).
 2. Momnitored Individual changes (**DataSourceState.json**).
 The local folder in which Data Source configuration is being stored is **localFolderPath\Config**.
+
 
 ### Starting/Stopping Service
 
@@ -335,7 +416,7 @@ All Trace Data Sources serialize their current state to a JSON file and their mo
 
 ### Installation Steps for Veritas Merge1
 
-Refer to the [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for instructions on how to install Merge1. 
+Refer to the [Merge 1 User Guide](https://www.veritas.com/content/support/en_US/doc/Merge1_7.0_UserGuide) for instructions on how to install Merge1. 
 
 Contact [support@relativity.com](mailto:support@relativity.com) if you need assistance with installation steps.
 
@@ -414,7 +495,7 @@ For each Merge1 `target` directory, configure a Merge1 Importer in Merge 1.
 
 All of these Data Sources work similar via scheduled drops of data to an FTP. Merge1 picks it up from SFTP and delivers it to Trace.
 
-See sample data flow below and refer to [Merge 1 User Guide](https://s3.amazonaws.com/Merge1Public/User%20Guide/Merge1%206.20.0131.257.pdf) for more details
+See sample data flow below and refer to [Merge 1 User Guide](https://www.veritas.com/content/support/en_US/doc/Merge1_7.0_UserGuide) for more details
 
 ![image-20200622120337061](media/shipper/image-20200622120337061.png)
 
