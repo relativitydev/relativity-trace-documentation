@@ -25,6 +25,23 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
+# 15.6.0.0 (6 Sept 2022)
+
+**Features**
+
+- The following pre-build irrelevant content detection AI models can be enabled within our Machine Learning framework to further identify maningful alerts:
+  - Prearranged Trading Risk Detection Model: 
+  - Price and Benchmark Fixing Detection Model: 
+  - Front Running Risk Detection Model: 
+  - Mirror Trading Risk Detection Model: 
+  - Trade Fixing Risk Detection Model: 
+- RSMF Cleansing: Expand Trace AI Text Cleansing functionality to remove headers, signatures, continentality footers, and duplicative content from chats 
+- Public SFTP: Expand how Trace can ingest data (please contact your specialist if interested) 
+
+**Defect Fixes**
+- Fixed known issues with Language Identification Transformation `Trace Other Languages` results
+- Fixed known issues with Machine Learning Model Data Mapping and Tab
+
 # 15.5.0.0 (2 Aug 2022)
 
 **Features**
