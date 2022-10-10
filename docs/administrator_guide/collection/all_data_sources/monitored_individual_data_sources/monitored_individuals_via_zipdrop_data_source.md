@@ -17,7 +17,7 @@ Sync Monitored Individuals generically from any data source using [Trace ZipDrop
 
 ---
 
-# Mandatory columns names that need to be included in the load file are:
+## Mandatory columns names that need to be included in the load file are:
 
 | Load Fille column name | Relativity Field | Comments |
 |:----------------------------:|:----------------------:|:--------:|
@@ -47,9 +47,9 @@ ingestion profile include:
 | TraceDataSource            | Data Sources         | Multi value field containing list of data source names generated based on `Group Id To Data Source Name Mapping Json` setting on the data transformation |
 | SecondaryIdentifier        | Secondary Identifier | Semi-colon separated list of other load file fields values which are provided in ‘Secondary Identifier User Fields Json’ setting                         |
 
-# Settings of `Monitored Individuals Sync` data transformation:
+## Settings of `Monitored Individuals Sync` data transformation:
 
-## Group Id To Data Source Name Mapping Json
+### Group Id To Data Source Name Mapping Json
 User needs to specify how to map active directory group id (specified in
 the ADGroupIDs load file field) to Trace Data Source name. One to one mappings
 are specified in the JSON format in the fashion similar to this:
@@ -70,7 +70,7 @@ are specified in the JSON format in the fashion similar to this:
 In this case MI belonging to group 89e02ec8-e03e-4da7-a637-0ee497d44513 will be
 mapped into 2 data sources: ‘Bloomberg Mail’ and ‘Bloomberg Chat’
 
-## Secondary Identifier User Fields Json
+### Secondary Identifier User Fields Json
 
 Json list of column names already existing in the load file that will be
 combined into be semicolon separated list and put into SecondaryIdentifier load
