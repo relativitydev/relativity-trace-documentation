@@ -22,12 +22,11 @@ On-premises data can be transferred to Relativity Trace in the cloud using eithe
 
 Basic information on our SFTP data transfer approach can be found in our [RelativityOne Documentation](https://help.relativity.com/RelativityOne/Content/Data_migration/S-FTP.htm).
 Relativity Trace supports the following Data Sources via SFTP:
-- Microsft Exchange On-Prem (EML loose files).
-- Enterprise Vault On-Prem via Relativity VerQ.
-- Bloomberg Chat and Mail (zipped package).
-- Audio Transcript.
-- ZipDrop Data Source.
-{: .info}
+1. Microsft Exchange On-Prem (EML loose files)
+2. Enterprise Vault On-Prem via Relativity VerQu
+3. Bloomberg Chat and Mail (zipped package)
+4. Audio Transcript
+5. ZipDrop Data Source
 
 ## Trace Shipper
 
@@ -261,13 +260,15 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
    | logFilePath      | yes      | string | The path to the external service log to ship. The final element of this path is not necessarily an existing file, but rather a pattern to match existing files. A wildcard match is inserted after the filename, before the file extension. All files matching this pattern are considered equivalent for shipping, and the only newest files will be transferred.<br />**For Example:** If logs of the form `\path\to\EWS.mm-dd-yyyy.log` are to be shipped, the setting should read (excluding escape characters for clarity) `\path\to\EWS.log`. This setting will match any file in `\path\to\` of the form `EWS*.log`. By using this template scheme, logging systems which include the date of the log and/or an index can be transferred. |
    | uniqueRemoteName | no       | string | The file name of the log on the remote Relativity fileshare. All external service logs are shipped to the same remote path (`**remoteRelativePath**\Logs`). If you need to transfer logs from two services with the same file name, this setting allows you to distinguish between them.<br />*Default: the filename and extension of the path in `logFilePath` of this External Service Log object* |
 
-6. At times you may need to uncomment proxy settings in TraceShipperService.exe.config in `Trace Shipper Service` folder and set the correct address and port of proxy. 
+6. At times you may need to uncomment proxy settings in TraceShipperService.exe.config in `Trace Shipper Service` folder and set the correct address and port of proxy
 
-        <system.net>  
-            <defaultProxy>  
-                <proxy usesystemdefault="false" proxyaddress="http://host:8080"/>
-            </defaultProxy>  
-        </system.net> 
+```xml
+<system.net>  
+    <defaultProxy>  
+	<proxy usesystemdefault="false" proxyaddress="http://host:8080"/>
+    </defaultProxy>  
+</system.net>
+```
 	
 7. From the Services window, Start the `Trace Shipper Service`. If all configuration is correct, files should start departing the local source folders and showing up on the Relativity fileshare as configured.
 8. If the Service fails to start, look at the Application Event Logs (Event Viewer > Windows Logs > Application) to see any errors.
