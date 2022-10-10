@@ -45,9 +45,13 @@ Types of Tasks
 - **Term Searching:** Responsible for executing searching of the Terms for Rule evaluations
 
 - **Rule Evaluation:** Responsible for evaluating configured all Rules except ones with data disposal action assigned within the workspace 
-- **Data Disposal:** Responsible for evaluating configured Rules which have data disposal action assigned within the workspace 
 
-  > The Data Disposal task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
+  > Run interval should be set to a value at least 50% higher than average execution time of the task, for example, if rule evaluation task typically runs for about 600 seconds, set run interval to be at least 900 seconds. Max Documents Per Execution parameter should be set to match or exceed document ingestion rate, for example if daily ingestion rate is 96000 documents and run interval is set to 15 minutes, then Max Documents per Execution should be at least 1000.
+  {: .info }
+  
+- **Data Disposal:** Responsible for evaluating configured Rules which have data disposal action assigned within the workspace.
+
+  > Run interval and Max Documents Per Execution should be set using same suggestions as for Rule Evaluation task. The Data Disposal task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
   {: .info }
 
 - **Reporting**: Responsible for generating reports (e.g. state of the system, user actions, etc.) and sending those reports via email

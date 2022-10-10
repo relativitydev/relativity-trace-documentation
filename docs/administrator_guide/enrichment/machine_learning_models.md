@@ -51,9 +51,9 @@ Machine Learning Models with the purpose of detecting irrelevant content can be 
 1. Add `[Machine Learning model] Decision` is `YES` to the logic group
 1. Add more conditions to the logic group separated by `AND` operators to hone what is removed:
    - `Trace Is Extracted`: `False`
-   - `Trace Communication Direction`: `Inbound`
+   - `Trace Communication Direction`: `Inbound`, `Outbound`, `Internal`, `External`
    - `Trace Primary Language`: `English`
-   - `Trace Type`: Select email data sources
+   - `Trace Type`: Select email, chat, and audio data sources
 1. Save the saved search
 
 ## Enabling a Trace Defined Machine Learning Model

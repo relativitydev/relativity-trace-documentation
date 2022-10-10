@@ -164,10 +164,25 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
 
 ## AI Extracted Text Cleansing Data Transformation
 
+### AI Extracted Text Cleansing - Email
+
   Data Transformation of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content and duplicative content from the Extracted Text of an email document. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove confidentiality disclaimers, email signatures, email headers, and duplicative email content that has already been ingested, allowing users to review and run rules on only new authored content. This will reduce both false positive and duplicative alert volumes.
 
   There are two categories of cleansing : <u>Non-Authored Content Removal</u> and <u>Duplicative Content Removal</u>. Non-Authored Content removal automatically removes content that was not written by the sender of the email, such as headers, signatures, and disclaimers. Duplicative Content Removal automatically removes content within an email that was previously ingested in a separate email. For example, when you reply or forward an email previous emails within the chain will be included in your new email below your new message. If these prior emails were already ingested by the system, this content would be removed from the new email, leaving only the new authored content. This is also called Email Thread Deduplication, since the content that gets removed are email threads within the email chain that were previously ingested in another email document. This allows users to only review and alert on net new emails as they come in.
+  
+### AI Extracted Text Cleasning - Short Messaged
 
+  Trace allows clients to identify and remove non-authored content across short message data sources (RSMFs). This data transformation is part of the AI Extracted Text Cleansing Data Transformation and needs to be applied to a data source. It removes the following:
+   - Short Message: Remove Short Message Leaver/Joiner 
+   - Short Message: Remove Short Message Headers 
+   - Short Message: Remove Short Message Time Stamps 
+   - Short Message: Remove Short Message Disclaimer 
+   - Short Message: Remove Short Message Username 
+   
+ Use the 'Filter By' function to show removed text in the Native Viewer
+ 
+ ![RSMF_suppression.png](media/data_transforms/RSMF_suppression.png)
+ 
   There are five fields that are used through the cleansing transformation process:
 
   1. <u>Extracted Text</u> - input field for cleansing that is generated during enrichment
@@ -238,17 +253,20 @@ When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extract
 
   1. To setup cleansing transform, create a new data transformation in the data transformation tab.
 
-  2.  Give the transform a name, select transformation type of `AI Extracted Text Cleansing`, and select the checkboxes on the type of content you want to cleanse.
+  2.  Give the transform a name, select transformation type of `AI Extracted Text Cleansing`, and select the checkboxes on the type of content you want to cleanse. We have cleansing options available for both Email and RSMF (Relativity Short Message Format).
 
      When `Remove Email Headers` is enabled, cleansing will always act on the document since headers will always exist in an email, unlike email signatures or confidentiality disclaimers.
      {: .info} 
 
   3. Once created, add the transformation to the data source you want to run cleansing on.
 
-     Only data sources that bring in emails should be used for cleansing as it only cleanses email documents. If any non-email types are ran through cleansing, they will fail with a status of Warning - Document Error and the error details will contain the reason for the document error.
+     Only data sources that bring in emails or RSMF's should be used for cleansing as it only cleanses these documents. If any non-email or non-RSMF types are ran through cleansing, they will fail with a status of Warning - Document Error and the error details will contain the reason for the document error.
+     {: .info}
+     
+     Choosing to not cleanse RSMF timestamps may have the effect of adding timestamps in the transformation. It is a know defect that some Extracted Text lack timestamps. If you do not want timestamps in your Cleansed Extracted Text, be sure to toggle this option.
      {: .info}
 
-  4. All email documents being ingested from this data source will now undergo cleansing. If you want to change the configuration of the content that gets removed, you can return to the data transformation, click edit, and de-select the checkboxes as desired. Any future emails ingested will now remove content as configured.
+  4. All email and RSMF documents being ingested from this data source will now undergo cleansing. If you want to change the configuration of the content that gets removed, you can return to the data transformation, click edit, and de-select the checkboxes as desired. Any future emails and RSMF's ingested will now remove content as configured.
 
 **Trace Conversation Thread Field**
 When the "Duplicative Content - Remove Already Ingested Email segments" configuration is set to TRUE, and the operation runs successfully, the Trace Conversation Thread field is populated with an id that links together all emails within the same thread. The Trace Conversation Thread field is a Relational field making it where documents within the same thread as a document shown in the Viewer will be displayed in the Relational Pane, allowing for quick navigation to other communications in a thread for greater context around how events unfolded. This field can be used as an alternative to the Email Thread Group ID created by the Structured Analytics operation.
@@ -284,7 +302,7 @@ This Data Transformation runs automatically for all Data Sources and does not re
 Create multiple new Object Types if you have different categories of products that should be detected in communications.
 {: .info}
 
-2. Configure the newly created Object Type to be used as a product list for Product Identification by populating the `Dynamic Searching Object Types Json` setting on the `Data Transformation` task that can be found on the `Setup` page.
+2. Configure the newly created Object Type to be used as a product list for Product Identification by populating the `Product Identifier Object Json` setting on the `Data Transformation` task that can be found on the `Setup` page.
 
 3. The `Product Identifiers Object Types Json` field is inputted as JSON with each `{}` representing a single object type.
 
