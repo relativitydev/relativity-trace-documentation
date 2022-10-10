@@ -10,18 +10,12 @@ nav_exclude: true
 Sync Monitored Individuals generically from any data source using [Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %})
 
 [Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) data source can be used to import Monitored Individuals data. Trace is shipped with ingestion profile named `Default Monitored Individuals Sync` which is set to import objects of type `Monitored Individual` and by design should be used together with `Monitored Individuals Sync` data transformation. 
-
 {: .fs-6 .fw-300 }
 
 1. TOC
 {:toc}
 
 ---
-
-Zip drop data source can be used to import Monitored Individuals data. Trace is
-shipped with ingestion profile named `Default Monitored Individuals Sync` which
-is set to import objects of type `Monitored Individual` and by design should be
-used together with `Monitored Individuals Sync` data transformation.
 
 # Mandatory columns names that need to be included in the load file are:
 
