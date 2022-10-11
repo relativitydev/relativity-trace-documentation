@@ -25,24 +25,44 @@ New features, enhancements, and defect fixes are released in each monthly update
 **General Compatibility:** Transfer API Services RAP (for Trace Shipper): 1.0.1.11
 {: .info}
 
-# 15.6.0.0 (6 Sept 2022)
+# 15.7.0.0 (11 October 2022)
 
 **Features**
 
-- The following pre-build irrelevant content detection AI models can be enabled within our Machine Learning framework to further identify maningful alerts:
-  - Prearranged Trading Risk Detection Model: 
-  - Price and Benchmark Fixing Detection Model: 
-  - Front Running Risk Detection Model: 
-  - Mirror Trading Risk Detection Model: 
-  - Trade Fixing Risk Detection Model: 
-- RSMF Cleansing: Expand Trace AI Text Cleansing functionality to remove headers, signatures, continentality footers, and duplicative content from chats 
-- Public SFTP: Expand how Trace can ingest data (please contact your specialist if interested) 
+- Added broad support for Journal Wrapped Email files extracted from archives to ensure metadata robustness and accuracy
+- Validation will be performed when saving a new Term, to ensure the dtSearch syntax on the term is valid for searching
+ 
+**Enhancements**
+
+- Improved error reporting when performing Trade Reconstruction
+- Reduced data ingestion speeds through enhancements to automated retry process
+
+**Defect Fixes**
+
+- Fixed issue with the "Optional" condition in Trade Reconstruction Configurations did not function properly
+- Fixed defect that caused AI Text Cleansing for Relativity Short Message Format (RSMF) messages to occasionally fail
+
+# 15.6.40.0 (6 Sept 2022)
+
+**Features**
+
+- The following pre-build risk detection AI models can be enabled within our Machine Learning framework to identify key misconduct:
+  - Prearranged Trading Detection
+  - Price and Benchmark Fixing Detection
+  - Front Running Detection
+  - Mirror Trading Detection 
+  - Trade Fixing Detection
+
+**Enhancements**
+
+- Expand Trace AI Text Cleansing to remove disclaimers, Join and Leave tags, usernames, headers, and timestamps from chat data in the Relativity Short Message Format (RSMF) 
+- Added support for publicly accessible SFTP, alongside our more secure SFTP with VPN approach
 
 **Defect Fixes**
 - Fixed known issues with Language Identification Transformation `Trace Other Languages` results
 - Fixed known issues with Machine Learning Model Data Mapping and Tab
 
-# 15.5.0.0 (2 Aug 2022)
+# 15.5.11.0 (2 Aug 2022)
 
 **Features**
 
