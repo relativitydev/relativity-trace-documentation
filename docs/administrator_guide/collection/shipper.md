@@ -292,12 +292,13 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 Each configured shipper automatically syncs Data Source configuration (in Relativity). This configuration can be used to create custom actions that automatically trigger on certain events and changes:
 1. Data Source settings snapshot (**monitored_individuals.csv**).
 2. Momnitored Individual changes (**DataSourceState.json**).
+
 The local folder in which Data Source configuration is being stored is **localFolderPath\Config**.
 
 
 ### Starting/Stopping Service
 
-The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar)
+The service can be managed directly from the Services application in Windows (you can quickly navigate to the window by executing `services.msc` in the Windows task bar).
 
 ### Update Steps
 
@@ -305,9 +306,7 @@ The service can be managed directly from the Services application in Windows (yo
 2. Go to **Services** management console, locate **Trace Shipper Service** service and stop it.
 3. Perform a backup of **Trace Shipper Service** production folder.
 4. Go to new Trace Shipper unzipped, temporary folder, copy all files and place them onto **Trace Shipper Service** production folder.
-5. Go to backup folder, copy `serviceConfiguration.json` and place it onto **Trace Shipper Service** production folder.
-This step is needed to recover original configuration file.
-{: .info}
+5. Go to backup folder, copy `serviceConfiguration.json` and place it onto **Trace Shipper Service** production folder. This step is needed to recover original configuration file.
 6. Optional - clean up logs.
 7. Start **Trace Shipper Service**
 
