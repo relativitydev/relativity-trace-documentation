@@ -19,7 +19,7 @@ Collect ICE Chat messages via Relativity Collect.
 
 Deployment option B, depicted below, is required to use this data source.
 
-![](media/ICE Chat_viaCollect/ICE_DeploymtB_Diagrm.png)
+![](media/ICE_Chat_viaCollect/ICE_DeploymtB_Diagrm.png)
 
 ## Activities Captured
 
@@ -35,7 +35,7 @@ The following activities are captured:
 
 ## Metadata
 
-In addition to standard metadata populated during extracting data, the O365 Teams Data Source captures the following ones:
+In addition to standard metadata populated during extracting data, this Data Source captures the following ones:
 
 - **DATE** - start date of a chat or start date of a slice in the chat split into slices.
 - **SUBJECT** - friendly name of the team and channel.
@@ -50,7 +50,7 @@ In addition to standard metadata populated during extracting data, the O365 Team
 
 ICE Chat messages are captured as RMFS (Relativity Short Message Format) files. Relativity has created a Viewer experience to help reviewing RSMF data. See [Relativity Short Message Format](https://help.relativity.com/RelativityOne/Content/System_Guides/Relativity_Short_Message_Format/Relativity_Short_Message_Format.htm) for more details.
 
-![](media/ICE Chat_viaCollect/ICE_DocumtView.png)
+![](media/ICE_Chat_viaCollect/ICE_DocumtView.png)
 
 ## Data Filtering
 
