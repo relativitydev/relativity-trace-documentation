@@ -291,7 +291,7 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 Each configured shipper automatically syncs Data Source configuration (in Relativity). This configuration can be used to create custom actions that automatically trigger on certain events and changes:
 1. Data Source settings snapshot (**monitored_individuals.csv**).
-2. Momnitored Individual changes (**DataSourceState.json**).
+2. Monitored Individual changes (**DataSourceState.json**).
 
 The local folder in which Data Source configuration is being stored is **localFolderPath\Config**.
 
