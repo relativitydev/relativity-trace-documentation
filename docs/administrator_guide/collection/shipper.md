@@ -68,7 +68,7 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
     - **TCP port 33001** - required to connect the local machine to the Aspera server (asp-[region].relativity.one)
     - **UDP ports 33001 - 33050** - required to send and receive data from local machine to the Aspera server (asp-[region].relativity.one)
 
-    See [RelativityOne data transfer IP Ranage](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) by Azure Region for more details. **Please, disregard `VPN Portlal URL` column and all information related to `VPN`.**
+    See [RelativityOne data transfer IP Range](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) by Azure Region for more details. **Please, disregard `VPN Portal URL` column and all information related to `VPN`.**
     {: .info }
 
 
