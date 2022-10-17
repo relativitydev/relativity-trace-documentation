@@ -64,11 +64,11 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
   b) Ports and Firewall settings
   
   - For the Aspera data transfer protocol, the following ports must be configured:
-    - **TCP port 443** - required to be opened to the **[customerinstance].relativity.one** endpoint for login.
-    - **TCP port 33001** - required to connect the local machine to the RelativityOne data transfer server.
-    - **UDP ports 33001 - 33050** - required to send and receive data from local machine to the RelativityOne data transfer server.
+    - **TCP port 443** - required to be opened to the **[customerinstance].relativity.one** endpoint for login
+    - **TCP port 33001** - required to connect the local machine to the Aspera server (asp-[region].relativity.one)
+    - **UDP ports 33001 - 33050** - required to send and receive data from local machine to the Aspera server (asp-[region].relativity.one)
 
-    See [RelativityOne data transfer IP Ranage](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) by Azure Region for more details.
+    See [RelativityOne data transfer IP Ranage](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) by Azure Region for more details. Please, disregard VPN Portla ULR column and all information related to VPN.
     {: .info }
 
 
