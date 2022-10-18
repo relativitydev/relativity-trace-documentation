@@ -29,8 +29,10 @@ This list covers the most common Data Sources. To better understand the holistic
 | Type    | Data Source        | Notes|
 |:-------:|:------------------:|----------------|
 | Generic | EML Drop | For deliverying daily EML exports from various systems |
+| Generic | Mailbox with 3rd part data | For deliverying data from mobile (and others) providers who delivery their data to a mailbox |
 | Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | For already processed structured data |
 | Generic | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) | For audio data |
+| Generic | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) |  |
 
 
 ### Email Data Sources
@@ -112,6 +114,17 @@ This list covers the most common Data Sources. To better understand the holistic
 | Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  |
 | Archive | Smarsh | Data must be recieved via Scheduled Export configured by the archive |
 
+### People / HR Data Sources
+
+In Trace People / HR data is reffered to as `Monitored Individuals`. A Monitored Individual is a person within the organization whose communications are being analyzed for misconduct.
+
+`Monitored Individuals` are used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
+
+|         Type         |                         Data Source                          |
+| :------------------: | :----------------------------------------------------------: |
+| Monitored Individual | [Microsoft Azure Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_azure_active_directory_via_collect.md %}) |
+| Monitored Individual | [Microsoft Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_active_directory_via_verqu.md %}) |
+| Monitored Individual | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) |
 
 ## Data Source Details
 
