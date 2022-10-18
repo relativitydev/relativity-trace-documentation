@@ -116,7 +116,7 @@ This list covers the most common Data Sources. To better understand the holistic
 
 ### People / HR Data Sources
 
-In Trace People / HR data is reffered to as `Monitored Individuals`. A Monitored Individual is a person within the organization whose communications are being analyzed for misconduct.
+In Trace People / HR data is refered to as `Monitored Individuals`. A Monitored Individual is a person within the organization whose communications are being analyzed for misconduct.
 
 `Monitored Individuals` are used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
 
