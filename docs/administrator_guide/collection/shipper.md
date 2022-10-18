@@ -50,15 +50,15 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 
 1. Trace application needs to be installed on the Relativity Workspace.
 2. Identify/provision a Windows machine to run the Trace Shipper Service.
-  1. System Requirements
-        1. Hardware:
-       1. 2.4 GHz or faster 64-bit dual-core processor.
-       2. 16 GB RAM.
-       3. 300 GB hard-disk space.
-        2. Software:
-       1. Windows 8 or later; Windows Server 2012 or later.
-       2. .NET Framework 4.7.2.
-  2. Ports and Firewall settings
+3. System Requirements
+      1. Hardware:
+            1. 2.4 GHz or faster 64-bit dual-core processor.
+            2. 16 GB RAM.
+            3. 300 GB hard-disk space.
+      2. Software:
+            1. Windows 8 or later; Windows Server 2012 or later.
+            2. .NET Framework 4.7.2.
+4. Ports and Firewall settings
      1. For the Aspera data transfer protocol, the following ports must be configured:
         1. **TCP port 443** - required to be opened for the **[customerinstance].relativity.one** endpoint
         2. **TCP port 33001** - required to be opened for the `IP Range` listed in  [RelativityOne data transfer IP Range](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) table
@@ -71,9 +71,9 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
            {: .info }
            2. `IP Min` and `Max` can be calculated using tools such as https://jodies.de/ipcalc
            {: .info }
-3. Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration.
-4. Identify what source folder(s) on your local network need their files shipped to a Relativity Windows service. The newly created Windows user must have read/write/modify permissions to the source folder(s).
-5. Lookup the destination Relativity Instance URL(s) and Workspace(s).
+5. Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration.
+6. Identify what source folder(s) on your local network need their files shipped to a Relativity Windows service. The newly created Windows user must have read/write/modify permissions to the source folder(s).
+7. Lookup the destination Relativity Instance URL(s) and Workspace(s).
    _ Lookup Target folder(s) (**Source Folder Path**) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources).
 
 ![SourceFolderPath](media/shipper/SourceFolderPath.png)
