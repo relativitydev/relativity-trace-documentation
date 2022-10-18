@@ -21,12 +21,3 @@ Data Sources are used to automatically and continuously collect and ingest commu
 ## Configuring a Data Source
 Data Sources are configured by a Relativity Trace Administrator. They are configured both during implementation and ad-hoc when monitoring needs to be extended to a new communication channel. Administrator information on how to configure a Data Source can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/collection/data_sources.md %}).
 
-## Data Sources List
-This list covers the most common Data Sources. To better understand holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
-
-![Data Source List](media/6.28.2022_datasourcelist.png)
-
-Some Data Sources are supported through partners.
-{: .info}
-
-

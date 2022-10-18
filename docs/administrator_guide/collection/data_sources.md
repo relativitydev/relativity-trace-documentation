@@ -19,19 +19,18 @@ A Data Source allows you to define where and how you are pulling data from a com
 ---
 
 ## Overview
- A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. **Click on the Data Source name to see more extensive details on how to configure.**
+ A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. **Click on the Data Source name to see more extensive details.**
 
 ## Data Sources List
 This list covers the most common Data Sources. To better understand the holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
 
-Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data source please contact [support@relativity.com](mailto:support@relativity.com).
-{: .info }
-
 ### Generic Data Sources
 
-| Type    | Data Source        | Notes
-|:-------:|:------------------:|:--------------:|
-| Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | Particularly useful for data like audio and already processed data |
+| Type    | Data Source        | Notes|
+|:-------:|:------------------:|----------------|
+| Generic | EML Drop | For deliverying daily EML exports from various systems |
+| Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | For already processed structured data |
+| Generic | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) | For audio data |
 
 
 ### Email Data Sources
@@ -62,6 +61,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Chat | [Slack Enterprise Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/slack_enterprise_via_collect.md %}) |
 | Chat | Microsoft Yammer |
 | Chat | Facebook Workplace |
+| Chat | YieldBroker |
 
 ### Voice Data Sources
 
@@ -106,22 +106,11 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 ### Archives Data Sources
 
-| Type | Data Source      |
-|:----:|:------------------:|
-| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |
-| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |
-| Archive | MimeCast |
-| Archive | Smarsh |
-| Archive | Google Vault |
-| Archive | Dell Vault |
-| Archive | OpenText |
-| Archive | CommVault |
-| Archive | Barracuda |
-| Archive | Quest |
-| Archive | Dell SourceOne |
-
-Some Data Sources are supported through partners.
-{: .info}
+| Type | Data Source      | Notes |
+|:----:|:------------------:|--------------------|
+| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |  |
+| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  |
+| Archive | Smarsh | Data must be recieved via Scheduled Export configured by the archive |
 
 
 ## Data Source Details
@@ -175,7 +164,7 @@ Some Data Sources are supported through partners.
 This section contains additional settings which are not associated with specific Relativity Fields. The settings described here are common across all Data Source Types. Type-specific settings are documented under their respected Data Source sections.
 
 - **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
-    
+  
   **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
     Yields the following passwords:
       - `passw0rd`
@@ -237,19 +226,4 @@ All other data sources discover Monitored Individuals based on the `FROM`, `TO`,
 
 **Supported File Formats**
 
-Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on .eml, .msg, and .rsmf (Relativity Short Message Format) files. Any other file format is not currently supported.
-
-[comment]: <> (Line 46-47 - No links)
-[comment]: <> (Line 57-58 - No links)
-[comment]: <> (Line 60-61 - No links)
-[comment]: <> (Line 63-65 - No links)
-[comment]: <> (Line 67-68 - No links)
-[comment]: <> (Line 74-85 - No links)
-[comment]: <> (Line 93-98 - No links)
-[comment]: <> (Line 104-109 - No links)
-[comment]: <> (Line 117-125 - No links)
-[comment]: <> (Line 140-142 - Check paragraph formatting)
-[comment]: <> (Line 172 - No information provided for Console)
-[comment]: <> (Lines 211 - No Link) 
-[comment]: <> (Line 217 - No link)
-[comment]: <> (Lines 236 - Image sits over text)
+Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on `.eml`, `.msg`, and `.rsmf` (Relativity Short Message Format) files. Any other file format is not currently supported.
