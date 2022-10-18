@@ -104,7 +104,7 @@ This list covers the most common Data Sources. To better understand the holistic
 | Collaboration | AWS S3 |
 | Collaboration | Dropbox |
 
-### Archives Data Sources
+### Archive Data Sources
 
 | Type | Data Source      | Notes |
 |:----:|:------------------:|--------------------|
