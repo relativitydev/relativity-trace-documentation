@@ -86,14 +86,14 @@ This list covers the most common Data Sources. To better understand the holistic
 
 ### Mobile Data Sources
 
-| Type  | Data Source      |
-|:-------:|:------------------:|
-| Mobile | WhatsApp |
-| Mobile | WeChat |
-| Mobile | SMS/MMS |
-| Mobile | iMessage |
-| Mobile | Telegram |
-| Mobile | Signal |
+| Type  | Data Source      | Notes |
+|:-------:|:------------------:|--------------------|
+| Mobile | WhatsApp | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | WeChat | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | SMS/MMS | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | iMessage | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | Telegram | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | Signal | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
 
 ### Collaboration Data Sources
 
