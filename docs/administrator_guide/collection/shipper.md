@@ -61,12 +61,12 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
   2. Ports and Firewall settings
      1. For the Aspera data transfer protocol, the following ports must be configured:
         1. **TCP port 443** - required to be opened for the **[customerinstance].relativity.one** endpoint
-        2. **TCP port 33001** - required to to be opened for the `IP Range` listed in  [RelativityOne data transfer IP Range](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) table
+        2. **TCP port 33001** - required to be opened for the `IP Range` listed in  [RelativityOne data transfer IP Range](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) table
            1. **Please, disregard `VPN Portal URL` column and all information related to `VPN`, use only IP Range from `Primary IP Range` column for a given `Primary Azure Region`**
            {: .info }
            2. IP Min and Max can be calculated using tools such as https://jodies.de/ipcalc
            {: .info }
-        3. **UDP ports 33001 - 33050** - required to to be opened for the IP Range listed in  [RelativityOne data transfer IP Range](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) table
+        3. **UDP ports 33001 - 33050** - required to be opened for the IP Range listed in  [RelativityOne data transfer IP Range](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) table
            1. **Please, disregard `VPN Portal URL` column and all information related to `VPN`, use only IP Range from `Primary IP Range` column for a given `Primary Azure Region`**
            {: .info }
            2. `IP Min` and `Max` can be calculated using tools such as https://jodies.de/ipcalc
