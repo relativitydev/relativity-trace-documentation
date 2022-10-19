@@ -40,9 +40,11 @@ Note the following considerations about this data source:
 
 ### Data Filtering
 
-- There are two levels of filtering data: 
-  - Data Source - data is being filtered according to specified Monitored Individuals. No filter is applied at message level. So, if MI exists in a channel, we will ingest the whole conversation for a given slice. If conversation does not have any Mis in participants for that day, we don’t ingest conversation at all. 
-  - Data Batch - only messages with data for the date that matches Data Batch collection period will be captured. For example, a message that has been exported for 10/1/2021 will be captured by the Data Batch that has collection period from “10/1/2021 00:00” to “10/2/2021 00:00”.
+There are two levels of filtering data: 
+
+- Data Source - data is being filtered according to specified Monitored Individuals. No filter is applied at message level. So, if MI exists in a channel, we will ingest the whole conversation for a given slice. If conversation does not have any Mis in participants for that day, we don’t ingest conversation at all. 
+
+- Data Batch - only messages with data for the date that matches Data Batch collection period will be captured. For example, a message that has been exported for 10/1/2021 will be captured by the Data Batch that has collection period from “10/1/2021 00:00” to “10/2/2021 00:00”.
 
 ## Information captured 
 
@@ -142,21 +144,22 @@ You must have the following in order to complete the setup instructions for this
 
 #### Standard prerequisites
 
-You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
-
-For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}).
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.html) page.
 
 ### Authentication
 
-Before configuring the data source, complete the following authentication steps. 
+Before configuring the data source, complete the following authentication steps:
+- Required Google Workspace Credentials.
+- Required Google Workspace User Account.
+- Enable Required Privilages. 
 
-#### Required Google Workspace Credentials Setup 
+#### Required Google Workspace Credentials Setup
 
-##### Create Google Cloud Project 
+##### Create Google Cloud Project
 
-1) Open **Cloud Resource Manager** in **Google’s Cloud Console** https://console.cloud.google.com/cloud-resource-manager. 
-2) Select an **Organization/Project** within which Trace will perform eDiscovery tasks. 
-3) See https://cloud.google.com/resource-manager/docs/creating-managing-projects for more information. 
+1. Open **Cloud Resource Manager** in **Google’s Cloud Console** https://console.cloud.google.com/cloud-resource-manager. 
+2. Select an **Organization/Project** within which Trace will perform eDiscovery tasks. 
+3. See https://cloud.google.com/resource-manager/docs/creating-managing-projects for more information. 
 
 ![Graphical user interface, application, Word  Description automatically generated](google_gsuite_via_collect/clip_image002.png)
 
@@ -259,7 +262,7 @@ Before configuring the data source, complete the following authentication steps.
 5. Click **'Continue'**, review assigned privileges and click **'Create Role'**.
    ![Graphical user interface, application  Description automatically generated](google_gsuite_via_collect/clip_image008-165886268470710.png)
 
-#### Enable required privileges
+#### Enable Required Privileges
 
 1. Open Google Admin page https://admin.google.com/ac/home. 
 
@@ -279,7 +282,7 @@ The following sections provide the steps for installing Collect and configuring 
 
 #### Collect
 
-Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.html) page.
 
 #### Obtaining Application Token (in Trace)
 
@@ -310,47 +313,34 @@ This step should be done by a customer representative with access to the Google 
 10. **Don’t click SAVE** – just copy the **Refresh Token**, click Cancel, and navigate to the **Trace Data Source** page.
     ![Graphical user interface, text, application  Description automatically generated](google_gsuite_via_collect/clip_image012-16591219620226.png)
 
-#### Data source
+#### Configure Data source
 
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [Sections of a Data Source]( https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/data_sources.html#data-source-details).
 
-GSuite (Gmail, Google Chat, Google Drive) specific parameters: 
+**GSuite (Gmail, Google Chat, Google Drive) specific parameters:**
 
 1. General section: 
    - **Data Source Type**: Select **Google Gmail (Vault), Google Chat or Google Drive**.
      ![image-20220729142150563](google_gsuite_via_collect/image-20220729142150563.png)
 
-
 2. Credentials section: 
+   - **Application Token**: Enter generated **Refresh Token**.
+   - **Application Secret:** Enter generated **Application Secret**.
 
-   - **Application Token**: Enter generated **Refresh Token**
-
-   - **Application Secret:** Enter generated **Application Secret**
-
-
-3. Data Source Specific Fields section
+3. Data Source Specific Fields section:
    - Number of Monitored Individuals Per Job: **100**.
-   - Client Id: **Captured Client Id**
-   - Frequency in Minutes: **1440**
-   - Merge Batches During Cold Start: **True**
-   - Max Number of Batches To Merge: **1**
+   - Client Id: **Captured Client Id**.
+   - Frequency in Minutes: **1440**.
+   - Merge Batches During Cold Start: **True**.
+   - Max Number of Batches To Merge: **1**.
    - Collect Job Timeout In Minutes: **1440**.
-   - Collection Period Offset in Minutes: **1440**.
-   - Extraction Count: **2**
-   - Enrich Documents: **True**
-   - Embedded File Behavior: **DoNotImport**
-   - Discover Monitored Individuals: **True**
-   - Include Monitored Individuals Not Linked To Data Source: **False**
-   - Discover Monitored Individuals Ignores Case: **False**
-   - Last Error Retention In Hours: **120**
-   - Excluded File Transformation Enabled: **True**
-4. Set-up **DeDuplication** for this data source with following configuration:
-   - Email Hashing - Use Binary Hash : **False**
-   - Email Hashing - Use Sender In Hash : **True**
-   - Email Hashing - Use Subject In Hash : **False**
-   - Email Hashing - Use Sent Date In Hash : **True**
-   - Email Hashing - Use Recipients In Hash : **True**
-   - Email Hashing - Use Body In Hash : **True**
-   - Email Hashing - Use Attachment List In Hash : **False**
+   - Collection Period Offset in Minutes: **0**.
 
- 
+4. Set-up **DeDuplication** for this data source with following configuration:
+   - Email Hashing - Use Binary Hash : **False**.
+   - Email Hashing - Use Sender In Hash : **True**.
+   - Email Hashing - Use Subject In Hash : **False**.
+   - Email Hashing - Use Sent Date In Hash : **True**.
+   - Email Hashing - Use Recipients In Hash : **True**.
+   - Email Hashing - Use Body In Hash : **True**.
+   - Email Hashing - Use Attachment List In Hash : **False**.

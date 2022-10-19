@@ -195,7 +195,7 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
 
 To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. 
 
-One can migrate to 'Trace Cleansed Extracted Text' in the Setup tab. Please see the image below. 
+One can migrate to 'Trace Cleansed Extracted Text' in the Setup -> Data Transformation tab -> `Use Trace Cleansed Extracted Text` option. Please see the image below. 
 
 ![](media/data_transforms/cleansed-text-for-alerting-check-box.png)
  

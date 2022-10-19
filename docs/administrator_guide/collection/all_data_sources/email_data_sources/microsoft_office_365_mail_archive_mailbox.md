@@ -19,13 +19,12 @@ The Microsoft O365 Mail Archive Mailbox is not collected via the Microsoft O365 
 
 Before using this data source, note the following license requirements, version support, and special considerations.
 
-### License requirements
+### License Requirements
 
 The following licenses are required to use this data source:
-
 - Microsoft 365 E3 or higher (if E3, also need the compliance module) license is required. 
 
-### Versions supported
+### Versions Supported
 
 We support Microsoft 365 Enterprise 3 and above.
 
@@ -34,6 +33,7 @@ We support Microsoft 365 Enterprise 3 and above.
 Note the following considerations about this data source:
 
 ### Mailbox Collection
+
 - Only Active accounts are collected (Inactive accounts are not collected regardless of license status)
 - Both Licensed and Unlicensed mailbox can be collected 
 - Guest mailboxes can only be collected if they are active.
@@ -41,6 +41,7 @@ Note the following considerations about this data source:
 - Archive mailboxes are not collected, but can be collected via the [Microsoft O365 Mail Archive Mailbox data source]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %})
 
 ### Email Collection
+
 - The connector collects all items in visible folders within Outlook’s inbox and custom folders
 - Deleted items can be collected. 
 - Deleted items from deleted folder (deleted and purged items) can be collected.
@@ -49,14 +50,16 @@ Note the following considerations about this data source:
 - Hidden folders cannot be collected. 
 
 ### Email Content
+
 - Formatted text is captured as plain text. 
 - Numbered rows are captured as a single line.
 - Emojis collected as plain text. 
   
 ### Data Filtering
+
 - There are two levels of filtering data: 
-  - Data Source - only data linked to a Data Source Monitored Individuals will be captured. 
-  - Data Batch - only messages which have “Date Received” within Data Batch collection period will be captured. 
+- Data Source - only data linked to a Data Source Monitored Individuals will be captured. 
+- Data Batch - only messages which have “Date Received” within Data Batch collection period will be captured. 
 
 ## Information captured 
 
@@ -85,21 +88,15 @@ The following table lists activities not captured by this data source:
 | -------------------------------- | ------------------------------------------------------------ |
 | Distribution lists               | A distribution list itself is not a mailbox.                 |
 
-## Setup instructions
+## Setup in Trace
 
 This section provides details on the prerequisites and steps for setting up this data source.
 
-### Prerequisites
+### Collect
 
-You must have the following in order to complete the setup instructions for this data source.
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.html) page.
 
-#### Standard prerequisites
-
-You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
-
-For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}).
-
-#### Company specific prerequisites
+### Company specific prerequisites
 
 You must have the following company-provided information to complete the authentication steps that precede setting up the data source:
 
@@ -116,11 +113,9 @@ You must have the following company-provided information to complete the authent
 > 7. It might take a few moments to create the archive mailbox. When it's created, Enabled is displayed in the Archive mailbox column for the selected user, although you might need to refresh the page to see the change of status.
 {: .info}
 
+### Data transfer prerequisites
 
-#### Data transfer prerequisites
-
-You must have the following information to complete the data transfer.
-
+You must have the following information to complete the data transfer:
 - An application ID
 - Client Secret
 - Domain (e.g. mycompanydomain.com)
@@ -134,19 +129,19 @@ We strongly recommend registering a separate Azure Application for each Data Sou
 
 **To register your app:**
 1. Open your [Azure Portal](https://portal.azure.com/). 
-1. Click **More Services**. 
-1. Search for and select **Azure Active Directory**. 
-1. In the left-navigation menu, click **App registrations**. 
-1. Click **New Registration**. This will open the Register an application page. 
-1. Enter an application name in the **Name** field. 
-1. Select **Accounts in this organizational directory only** as the supported account type.
-1. For **Platform Type** set `Web`
-1. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
-1. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
+2. Click **More Services**. 
+3. Search for and select **Azure Active Directory**. 
+4. In the left-navigation menu, click **App registrations**. 
+5. Click **New Registration**. This will open the Register an application page. 
+6. Enter an application name in the **Name** field. 
+7. Select **Accounts in this organizational directory only** as the supported account type.
+8. For **Platform Type** set `Web`
+9. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
+10. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
 
 **From the app's page, add permissions to the web API (EWS):**
 1. Click **Manifest** in the left-hand navigation under **Manage**. 
-1. Locate the **requiredResourceAccess** property in the manifest and add the following code inside the square brackets:
+2. Locate the **requiredResourceAccess** property in the manifest and add the following code inside the square brackets:
   
     ```json
     { 
@@ -164,30 +159,30 @@ We strongly recommend registering a separate Azure Application for each Data Sou
 
     ​![](media/microsoft_office_365_mail_archive_mailbox/requiredresourceaccess.png)
 
-1. Click **Save**. 
-1. Confirm that the **full_access_as_app** permission is listed.
+3. Click **Save**. 
+4. Confirm that the **full_access_as_app** permission is listed.
 
     ![](media/microsoft_office_365_mail_archive_mailbox/fullaccessasapp.png)
 
 **Grant Admin consent for the API:**
 1. Click the **API Permissions** tab. 
-1. Click **Grant admin consent for [tenant]**. 
-1. In the pop-up window, click Accept. 
+2. Click **Grant admin consent for [tenant]**. 
+3. In the pop-up window, click Accept. 
 
     If you do not have the ability to grant Admin consent for application permissions, you will need to find an Admin that can consent.
     {: .info }
 
-1. Once clicked, the window will show all permissions granted. 
-1. Verify all permissions have been granted
-1. Click **Accept** to grant the permissions. 
+4. Once clicked, the window will show all permissions granted. 
+5. Verify all permissions have been granted
+6. Click **Accept** to grant the permissions. 
 
 Generate Client Secret:
 1. In the left navigation menu, select **Certificates & secrets**. 
-1. Select **New client secret**.
-1. Enter a description in the **Description** text box
-1. Set the expiration time frame to **Never**.
-1. Click **Add**. 
-1. Click on the clipboard and copy secret to clipboard to paste in your text document.
+2. Select **New client secret**.
+3. Enter a description in the **Description** text box
+4. Set the expiration time frame to **Never**.
+5. Click **Add**. 
+6. Click on the clipboard and copy secret to clipboard to paste in your text document.
 
 Make sure you copy the **Value** field item for your Client Secret. Do not accidentally copy the Secret ID item as this is not the your Client Secret.
 {: .warn }
@@ -203,18 +198,11 @@ You will need the following information to complete setup of the data source fro
 Limit the access of Relativity Collect to specific Microsoft user accounts and mailboxes by using the New-ApplicationAccessPolicy Powershell cmdlet. For more information, see [Microsoft documentation](https://docs.microsoft.com/en-us/powershell/module/exchange/new-applicationaccesspolicy?view=exchange-ps).
 {: .info }
 
-### Setup in Trace
+### Data source
 
-The following sections provide the steps for installing Collect and configuring the data source.
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [Sections of a Data Source](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/data_sources.html#data-source-details).
 
-#### Collect
-Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
-
-#### Data source
-
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
-
-Microsoft O365 Mail Archive Data Source specific parameters: 
+**Microsoft O365 Mail Archive Data Source specific parameters:**
 
 In **General** section, select **Select Microsoft O365 Mail (Archived)** for the **Data Source Type**.
 
@@ -224,7 +212,7 @@ In **Settings** section, do the following:
 2. **Domain**: The O365 domain name provided by the client.
 3. **Application Id**: Application / Client ID provided by the client.
 
-In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+In **Advanced Configuration** section, do the following:
 
 1. **Collect Draft items**: If set to `FALSE` (default), then only emails that were sent (non-Draft) are collected. If set to `TRUE`, then both sent emails (non-draft) and drafts emails are collected. Since draft emails are not actually communication, most customers elect to set this to `FALSE` and ignore the collection of draft emails to reduce false-positive alerts.
 2. **Number of Monitored Individual Per job**: 100.

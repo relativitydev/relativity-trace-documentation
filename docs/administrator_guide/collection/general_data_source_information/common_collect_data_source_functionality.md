@@ -50,20 +50,25 @@ For data sources such as [Bloomberg Chat and PChat]({{ site.baseurl }}{% link do
 ## Data retrieval
 
 Data is retrieved from the source via data batches. The data batch collection period is controlled by the following parameters on the data source: 
-
-- Ingestion State - the date to which data has been retrieved. This parameter is only visible in Date Source Layout (dev).
-- Frequency in Minutes - the data batch duration (size) in minutes. 
+- **Ingestion State:** the date to which data has been retrieved during the last pull via Data Retrieval Task. This parameter is only visible in **Date Source Layout (dev)**.
+- **Frequency in Minutes:** Number of minutes worth of data to pull for each attempted data pull via Data Retrieval Task.
+- **Merge Batches During Cold Start:** It will merge initial Data Batches into ont, big Data Batch.
+- **Max Number Of Batches To Merge:** Input Value to control number of hours collected per Data Batch created, dependent on Frequency in Minutes value.
 
 In the following example, the Frequency in Minutes was set to 240 and the Ingestion State was 00:00. Once enabled, the data source started retrieving data. During data retrieval execution, there was the first data batch created, from 00:00 to 04:00. The Ingestion State was changed to 04:00. During the next data retrieval run, there was another Batch created, from 04:00 to 08:00, and the Ingestion State was set to 08:00. Then, during two more data retrieval runs, more data batches were created, with the final Ingestion State set to 16:00. 
 
 ![](media/IngestionStates.png)
 
-When `Merge Batches During Cold Start` is set to True, then the Data Batch collection period will be modified to improve performance.
+When **Merge Batches During Cold Start** is set to True, then the Data Batch collection period will be modified to improve performance.
 {: .info}
 
 In the following example , a data source was run at 04:00 on Day-2. Because the Ingestion State was Day-1 00:00, there were two merged data batches created. The first was between 00:00 and 12:00 on Day-1 and the second was between 12:00 and 24:00 on Day-1. Then, there was a third data batch created to cover the remaining period from 00:00 to 04:00 on Day-2, and the Ingestion State was changed to 04:00 on Day-2. 
 
 ![](media/Day2IngestionStates.png)
+
+## Data Batch status update
+
+When Collect Data Source is disabled, the status of its Data Batches will not be updated, even though underlying Collect Jobs got completed. Before disabling a Data Source, make sure all Data Batches were moved to the final state.
 
 ## Collection period offset
 

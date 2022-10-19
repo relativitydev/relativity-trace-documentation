@@ -16,7 +16,8 @@ Collect Bloomberg Chat and PChat messages via Relativity Collect.
 ---
  
 ## Overview
-Deployment option B, depicted below, is required to use these data sources.
+
+The connector is pulling data directly from Cloud.
 
 ![](media/BloombergChatPchat_viaCollect/BloomChat_DeplymtB_Diagrm.png)
 
@@ -27,15 +28,13 @@ We support 1.3 as well as the latest 1.9 version.
 ## Activities Captured
 
 The following activities are captured:
-
-- Attachments (.att)
-- Disclaimers (.dscl)
-- Instant Bloomberg Messages (Chat & PChat) (.ib)
+- Attachments (.att).
+- Disclaimers (.dscl).
+- Instant Bloomberg Messages (Chat & PChat) (.ib).
 
 ## Metadata
 
 In addition to standard (O365 Mail) metadata populated during extracting data, the Bloomberg Chat Data Source captures the following ones:
-
 - **DATE** - start date of a chat or start date of a slice in the chat split into slices.
 - **SUBJECT** - friendly name of the team and channel.
 - **FROM** - the first person to send a message in that respective slice.
@@ -59,31 +58,38 @@ There are two levels of filtering data, which are the same for Bloomberg Mail (v
 
 - **Data Batch -** Only messages with data for the date that matches Data Batch collection period will be captured. For example, a message that has been exported for 10/1/2021 will be captured by the Data Batch that has collection period from “10/1/2021 00:00” to “10/2/2021 00:00”.
 
- ## Authentication
-Obtain the following information about the Bloomberg SFTP server:
+## Setup in Trace
 
-- Host name and Port number
-- Username and password
+This section provides details on the prerequisites and steps for setting up this data source.
+
+### Obtaining Credentials
+
+Obtain the following information about the Bloomberg SFTP server:
+- Host name.
+- Path.
+- TCP Port.
+- Username and password.
 
 If Bloomberg messages are encrypted, then obtain the following information:
+- PGP Key (Private Key is required).
+- Passphrase (used to encrypt/decrypt PGP key).
 
-- PGP Key (Private Key is required)
-- Passphrase (used to encrypt/decrypt PGP key)
+### Whitelist Relativity IP Addresses
 
- ## Setup in Trace
-
-The following sections provide the steps for installing Collect and configuring the data source.
+Bloomberg must add Relativity IP addresses to a whitelist so the system can connect and collect data. Please refer to the [IP Address Whitelisting Pre-work](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.html#ip-address-whitelisting-pre-work) for more details.
 
 ### Collect
-Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
+
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.html) page.
 
 ### Data source
 
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [Sections of a Data Source]( https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/data_sources.html#data-source-details).
 
-Bloomberg Chat specific parameters: 
+**Bloomberg Chat specific parameters:**
 
 In **General** section, select **Bloomberg Chat** for the **Data Source Type**.
+
 ![](media/BloombergChatPchat_viaCollect/General_BloomChat_DataSourceType.png)
 
 In **Settings** section, do the following:
@@ -155,7 +161,7 @@ If **Use Unc Path** is set to **True**:
 8. **Path** - enter the folder path on the RelativityOne Fileshare relative to workspace folder. Usually it will be drop folder exposed in internal SFTP server. For example *DataTransfer/Import/SFTP/BloombergChat/Drop* (while SFTP server is set up to expose following path relative to Fileshare: */Files/EDDS1020064/DataTransfer/Import/SFTP* where *EDDS1020064* is a workspace where data source is created).
 9. **Port** - enter any intiger value e.g. **22**.
 
-In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+In **Advanced Configuration** section, do the following:
 
 If **Use Unc Path** is set to **False**:
 

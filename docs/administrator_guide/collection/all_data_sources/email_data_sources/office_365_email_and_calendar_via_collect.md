@@ -35,6 +35,7 @@ We support Microsoft 365 Enterprise 3 and above.
 Note the following considerations about this data source:
 
 ### Mailbox Collection
+
 - The connector only supports accessing active mailboxes.
 - The connector does **NOT** support collection from Archive mailboxes
 - You can collect from unlicensed custodians, but the mailbox must still be active in the case where the user is unlicensed.
@@ -46,20 +47,23 @@ The [Microsoft O365 Mail Archive Mailbox data source]({{ site.baseurl }}{% link 
 {: .warn}
 
 ### Email Collection
+
 - The connector collects all items in visible folders within Outlook’s inbox and custom folders. 
 - Deleted items can be collected. 
 - Deleted items from deleted folder (deleted and purged items) can be collected. Users must set their "Deleted items retention" to at least 14 days (Microsoft default). 
 - Hidden folders cannot be collected. 
 
 ### Email Content
+
 - Formatted text is captured as plain text. 
 - Numbered rows are captured as a single line. 
 - Emojis are collected as plain text. 
   
 ### Data Filtering
+
 - There are two levels of filtering data: 
-  - Data Source - only data linked to a Data Source Monitored Individuals will be captured. 
-  - Data Batch - only messages which have “Date Received” within Data Batch collection period will be captured. 
+- Data Source - only data linked to a Data Source Monitored Individuals will be captured. 
+- Data Batch - only messages which have “Date Received” within Data Batch collection period will be captured. 
 
 ## Information captured 
 
@@ -98,9 +102,7 @@ You must have the following in order to complete the setup instructions for this
 
 #### Standard prerequisites
 
-You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
-
-For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}).
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.html) page.
 
 #### Company specific prerequisites
 
@@ -128,14 +130,14 @@ We strongly recommend registering a separate Azure Application for each Data Sou
 
 To register your app:
 1. Open your [Azure Portal](https://portal.azure.com/). 
-1. Click **More Services**. 
-1. Search for and select **Azure Active Directory**. 
-1. In the left-navigation menu, click **App registrations**. 
-1. Click **New Registration**. This will open the Register an application page. 
-1. Enter an application name in the **Name** field. 
-1. Select **Accounts** in this organizational directory only as the supported account type. 
-1. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
-1. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
+2. Click **More Services**. 
+3. Search for and select **Azure Active Directory**. 
+4. In the left-navigation menu, click **App registrations**. 
+5. Click **New Registration**. This will open the Register an application page. 
+6. Enter an application name in the **Name** field. 
+7. Select **Accounts** in this organizational directory only as the supported account type. 
+8. Enter the redirect URL, http://localhost/ or https://localhost/, as the sign-on URL. 
+9. Click **Register**. For more information on registering an application in Azure, see [Microsoft's documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app). 
 
 From the app's page, add permissions to the web API: 
 1. Click **API Permissions**. 
@@ -184,14 +186,11 @@ Limit the access of Relativity Collect to specific Microsoft user accounts and m
 
 The following sections provide the steps for installing Collect and configuring the data source.
 
-#### Collect
-Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
-
 #### Data source
 
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [Sections of a Data Source]( https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/data_sources.html#data-source-details).
 
-O365 Mail and Calendar specific parameters: 
+**O365 Mail and Calendar specific parameters:**
 
 In **General** section, select **Microsoft O365 Mail or Calendar** for the **Data Source Type**.
 
@@ -205,7 +204,7 @@ In **Settings** section, do the following:
 
 ![](media/Office_365_email_and_calendar_via_Collect/Mail_Credentials.png)
 
-In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+In **Advanced Configuration** section, do the following:
 
 1. **Collect Draft items**: If set to `FALSE` (default), then only emails that were sent (non-Draft) are collected. If set to `TRUE`, then both sent emails (non-draft) and drafts emails are collected. Since draft emails are not actually communication, most customers elect to set this to `FALSE` and ignore the collection of draft emails to reduce false-positive alerts.
 2. **Number of Monitored Individual Per job**: 100.
