@@ -48,36 +48,39 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
 
 ### Prerequisites Before Installing
 
-- Trace application needs to be installed on the Relativity Workspace.
-- Identify/provision a Windows machine to run the Trace Shipper Service.
-  
-  a) System Requirements
-  
-  - Hardware:
-    -  2.4 GHz or faster 64-bit dual-core processor.
-    -  16 GB RAM.
-    -  300 GB hard-disk space.
-  - Software:
-    - Windows 8 or later; Windows Server 2012 or later.
-    - .NET Framework 4.7.2.
+1. Trace application needs to be installed on the Relativity Workspace.
 
-  b) Ports and Firewall settings
-  
-  - For the Aspera data transfer protocol, the following ports must be configured:
-    - **TCP port 443** - required to be opened to the **[customerinstance].relativity.one** endpoint for login.
-    - **TCP port 33001** - required to connect the local machine to the RelativityOne data transfer server.
-    - **UDP ports 33001 - 33050** - required to send and receive data from local machine to the RelativityOne data transfer server.
+2. Identify/provision a Windows machine to run the Trace Shipper Service.
 
-    See [RelativityOne data transfer IP Ranage](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) by Azure Region for more details.
-    {: .info }
+3. System Requirements
+      1. Hardware:
+            1. 2.4 GHz or faster 64-bit dual-core processor.
+            2. 16 GB RAM.
+            3. 300 GB hard-disk space.
+      2. Software:
+            1. Windows 8 or later; Windows Server 2012 or later.
+            2. .NET Framework 4.7.2.
+      
+4. Ports and Firewall settings
+     1. For the Aspera data transfer protocol, the following ports must be configured:
+        1. **TCP port 443** - required to be opened for the **[customerinstance].relativity.one** endpoint
+        
+        2. **TCP port 33001** AND **UDP ports 33001 - 33050** - required to be opened for the `IP Range` listed in  [RelativityOne data transfer IP Range](https://help.relativity.com/RelativityOne/Content/Getting_Started/RelativityOne_technical_overview.htm#Fully) table
 
+            Please, disregard `VPN Portal URL` column and all information related to `VPN`, use only IP Range from `Primary IP Range` column for a given `Primary Azure Region`
+            {: .info }
+        
+            IP Min and Max can be calculated using tools such as https://jodies.de/ipcalc
+            {: .info }
 
-- Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration.
-- Identify what source folder(s) on your local network need their files shipped to a Relativity Windows service. The newly created Windows user must have read/write/modify permissions to the source folder(s).
-- Lookup the destination Relativity Instance URL(s) and Workspace(s).
-_ Lookup Target folder(s) (**Source Folder Path**) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources).
+5. Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration.
 
-  ![SourceFolderPath](media/shipper/SourceFolderPath.png)
+6. Identify what source folder(s) on your local network need their files shipped to a Relativity Windows service. The newly created Windows user must have read/write/modify permissions to the source folder(s).
+
+7. Lookup the destination Relativity Instance URL(s) and Workspace(s).
+   _ Lookup Target folder(s) (**Source Folder Path**) on the destination fileshare(s) where the files should be shipped (configured as part of creating Trace Data Sources).
+
+![SourceFolderPath](media/shipper/SourceFolderPath.png)
 
 A document will fail to ship if a file with the same name already exists in the destination folder. Care should be taken to avoid duplicate file names both when initially retrieving data and at the remote destination folder.
 {: .info }
@@ -88,9 +91,9 @@ To view the file shares the user must be in a group, other than the System Admin
 {: .info }
 
   Step by step procedure to configure Relativity Group and User:
-  
+
   a) Open RelativityOne portal.
-  
+
   b) Create a new Group e.g. **Trace Shipper Aspera**.
 
   ![TraceShipperGroup](media/shipper/TraceShipperGroup.png)
@@ -98,9 +101,9 @@ To view the file shares the user must be in a group, other than the System Admin
   c) Create a ne User e.g. **Trace Shipper**.
 
   ![TraceShipperUser](media/shipper/TraceShipperUser.png)
-  
+
   d) Once the user is created, add Default Password Provider Login Method to it. Use the following parameters: **Can Change Password** set to true, **Require Change Password On Next Login** set to false, **Maximum Password Age** set to false, **Set Password for User** set to yes. Then type password and confirm.
-  
+
   ![DefaultPasswordSettings](media/shipper/DefaultPasswordSettings.png)
 
   e) Add **Trace Shipper** User to **Trace Shipper Aspera** Group.
@@ -269,7 +272,7 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
     </defaultProxy>  
 </system.net>
 ```
-	
+
 7. From the Services window, Start the `Trace Shipper Service`. If all configuration is correct, files should start departing the local source folders and showing up on the Relativity fileshare as configured.
 8. If the Service fails to start, look at the Application Event Logs (Event Viewer > Windows Logs > Application) to see any errors.
 9. If the Service starts but does not ship files, look at the log files (as configured in the logFilePath setting) to see what messages are logged.

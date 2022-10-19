@@ -19,19 +19,20 @@ A Data Source allows you to define where and how you are pulling data from a com
 ---
 
 ## Overview
- A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. **Click on the Data Source name to see more extensive details on how to configure.**
+ A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. **Click on the Data Source name to see more extensive details.**
 
 ## Data Sources List
 This list covers the most common Data Sources. To better understand the holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
 
-Currently unsupported communication channels can be added in as quickly as two weeks depending on the channel's openness and integration capabilities. To have a currently unsupported communication channel added as a supported data source please contact [support@relativity.com](mailto:support@relativity.com).
-{: .info }
-
 ### Generic Data Sources
 
-| Type    | Data Source        | Notes
-|:-------:|:------------------:|:--------------:|
-| Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | Particularly useful for data like audio and already processed data |
+| Type    | Data Source        | Notes|
+|:-------:|:------------------:|----------------|
+| Generic | EML Drop | For deliverying daily EML exports from various systems |
+| Generic | Mailbox with 3rd part data | For deliverying data from mobile (and others) providers who delivery their data to a mailbox |
+| Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | For already processed structured data |
+| Generic | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) | For audio data |
+| Generic | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) |  |
 
 
 ### Email Data Sources
@@ -43,8 +44,6 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Email | [Google Suite]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) |
 | Email | [Bloomberg Mail]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/bloomberg_mail_via_collect.md %}) |
 | Email | [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_exchange_server_via_verqu.md %}) |
-| Email | HCL Notes and Domino |
-| Email | Zimbra |
 
 ### Chat Data Sources
 
@@ -53,7 +52,6 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Chat | [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}) |
 | Chat | [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %}) |
 | Chat | [Refinitiv Eikon Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/refinitiv_eikon_chat_and_fxt_via_collect.md %}) |
-| Chat | [Mattermost Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/mattermost_via_verqu.md %}) |
 | Chat | Symphony |
 | Chat | Skype for Business |
 | Chat | [Microsoft O365 Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/microsoft_office_365_teams_chat_via_collect.md %}) |
@@ -65,6 +63,7 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Chat | [Slack Enterprise Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/slack_enterprise_via_collect.md %}) |
 | Chat | Microsoft Yammer |
 | Chat | Facebook Workplace |
+| Chat | YieldBroker |
 
 ### Voice Data Sources
 
@@ -87,14 +86,14 @@ Currently unsupported communication channels can be added in as quickly as two w
 
 ### Mobile Data Sources
 
-| Type  | Data Source      |
-|:-------:|:------------------:|
-| Mobile | WhatsApp |
-| Mobile | WeChat |
-| Mobile | SMS/MMS |
-| Mobile | iMessage |
-| Mobile | Telegram |
-| Mobile | Signal |
+| Type  | Data Source      | Notes |
+|:-------:|:------------------:|--------------------|
+| Mobile | WhatsApp | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | WeChat | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | SMS/MMS | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | iMessage | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | Telegram | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | Signal | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
 
 ### Collaboration Data Sources
 
@@ -107,25 +106,25 @@ Currently unsupported communication channels can be added in as quickly as two w
 | Collaboration | AWS S3 |
 | Collaboration | Dropbox |
 
-### Archives Data Sources
+### Archive Data Sources
 
-| Type | Data Source      |
-|:----:|:------------------:|
-| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |
-| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |
-| Archive | MimeCast |
-| Archive | Smarsh |
-| Archive | Google Vault |
-| Archive | Dell Vault |
-| Archive | OpenText |
-| Archive | CommVault |
-| Archive | Barracuda |
-| Archive | Quest |
-| Archive | Dell SourceOne |
+| Type | Data Source      | Notes |
+|:----:|:------------------:|--------------------|
+| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |  |
+| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  |
+| Archive | Smarsh | Data must be recieved via Scheduled Export configured by the archive |
 
-Some Data Sources are supported through partners.
-{: .info}
+### People / HR Data Sources
 
+In Trace People / HR data is refered to as `Monitored Individuals`. A Monitored Individual is a person within the organization whose communications are being analyzed for misconduct.
+
+`Monitored Individuals` are used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
+
+|         Type         |                         Data Source                          |
+| :------------------: | :----------------------------------------------------------: |
+| Monitored Individual | [Microsoft Azure Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_azure_active_directory_via_collect.md %}) |
+| Monitored Individual | [Microsoft Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_active_directory_via_verqu.md %}) |
+| Monitored Individual | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) |
 
 ## Data Source Details
 
@@ -193,7 +192,7 @@ See [Data Retrieval](https://relativitydev.github.io/relativity-trace-documentat
   - Retrieving - For retrieving files via Collect.
   - Pocessing - for enriching and ingestion those files in smaller chunks (1000 files each).
 - **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
-    
+  
   **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`
     Yields the following passwords:
       - `passw0rd`
@@ -257,4 +256,4 @@ All other data sources discover Monitored Individuals based on the `FROM`, `TO`,
 
 **Supported File Formats**
 
-Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on .eml, .msg, and .rsmf (Relativity Short Message Format) files. Any other file format is not currently supported.
+Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on `.eml`, `.msg`, and `.rsmf` (Relativity Short Message Format) files. Any other file format is not currently supported.

@@ -38,7 +38,8 @@ The following activities are captured:
 
 ## Metadata
 
-In addition to standard metadata populated during extracting data, the O365 Teams Data Source captures the following ones:
+In addition to standard metadata populated during extracting data, this Data Source captures the following ones:
+
 - **DATE** - start date of a chat or start date of a slice in the chat split into slices.
 - **SUBJECT** - friendly name of the team and channel.
 - **FROM** - the first person to send a message in that respective slice.
