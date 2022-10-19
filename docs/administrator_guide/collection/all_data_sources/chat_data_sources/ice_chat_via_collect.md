@@ -17,26 +17,28 @@ Collect ICE Chat messages via Relativity Collect.
 
 ## Overview
 
-Deployment option B, depicted below, is required to use this data source.
+The connector is pulling data directly from Cloud.
 
-![](media/ICE Chat_viaCollect/ICE_DeploymtB_Diagrm.png)
+![](media/ICE_Chat_viaCollect/ICE_DeploymtB_Diagrm.png)
+
+## Versions supported
+
+There are no specific version requirements.
 
 ## Activities Captured
 
 The following activities are captured:
-
-- Room ID
-- Start Time
-- Message content
-- Participants
-- Participant Entered & Left
+- Room ID.
+- Start Time.
+- Message content.
+- Participants.
+- Participant Entered & Left.
 - Message date
 - Disclaimers
 
 ## Metadata
 
 In addition to standard metadata populated during extracting data, the O365 Teams Data Source captures the following ones:
-
 - **DATE** - start date of a chat or start date of a slice in the chat split into slices.
 - **SUBJECT** - friendly name of the team and channel.
 - **FROM** - the first person to send a message in that respective slice.
@@ -50,32 +52,44 @@ In addition to standard metadata populated during extracting data, the O365 Team
 
 ICE Chat messages are captured as RMFS (Relativity Short Message Format) files. Relativity has created a Viewer experience to help reviewing RSMF data. See [Relativity Short Message Format](https://help.relativity.com/RelativityOne/Content/System_Guides/Relativity_Short_Message_Format/Relativity_Short_Message_Format.htm) for more details.
 
-![](media/ICE Chat_viaCollect/ICE_DocumtView.png)
+![](media/ICE_Chat_viaCollect/ICE_DocumtView.png)
 
 ## Data Filtering
 
 There are two levels of filtering data:
 
 - **Data Source** - Data is being filtered according to specified Monitored Individuals (MI). No filter is applied at the message level. So, if MI exists in a channel, we will ingest the whole conversation for a given slice. If the conversation does not have any MIs in participants for that day, we do not ingest conversation at all.
+
 - **Data Batch** - Only messages with data for the date that matches Data Batch collection period will be captured. For example, a message that has been exported for 10/1/2021 will be captured by the Data Batch that has collection period from “10/1/2021 00:00” to “10/2/2021 00:00”.
 
-## Configuring Collect
+## Setup in Trace
 
-Collect is used for data retrieval. Make sure Collect is installed in the workspace before configuring the data source. For detailed installation steps, see Installing Collect.
+This section provides details on the prerequisites and steps for setting up this data source.
 
-## Configuring ICE Chat Trace Data Source 
+### Obtaining Credentials
 
-Obtain the following information about the ICE Chat SFTP server:
-- Host name.
-- Path.
-- TCP Port.
-- Username and password.
+Obtain the following information about Eikon Chat SFTP server: 
+1. Host.
+2. Path.
+3. TCP Port.
+4. User and password.
 
- Most parameters work the same for all Collect Data Sources. Follow the instructions from [Common Collect Data Source Functionality](#_Common_Collect_Data) section.
+### Whitelist Relativity IP Addresses
 
-Below are specific parameters for ICE Chat:
+Bloomberg must add Relativity IP addresses to a whitelist so the system can connect and collect data. Please refer to the [IP Address Whitelisting Pre-work](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.html#ip-address-whitelisting-pre-work) for more details.
+
+### Collect
+
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.html) page.
+
+### Data source
+
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [Sections of a Data Source]( https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/data_sources.html#data-source-details).
+
+**ICE Chat specific parameters:**
 
 In **General** section, select **ICE Chat** for the **Data Source Type**.
+
 ![](media/ICE_Chat_viaCollect/General_ICE_DataSourceType.png)
 
 In **Settings** section, do the following:
@@ -88,7 +102,7 @@ In **Settings** section, do the following:
 
 ![](media/ICE_Chat_viaCollect/ICE_CredentialsTab.png)
 
-In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+In **Advanced Configuration** section, do the following:
 
 1. **Frequency in Minutes** - enter 1440.
 2. **Merge Batches During Cold Start**: enter True.
