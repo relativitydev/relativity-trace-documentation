@@ -180,8 +180,13 @@ This section contains additional settings which are not associated with specific
 
 - **Aip Application Id:** This parameter is deprecated. Leave it empty.
 - **Aip Tenant Id:** This parameter is deprecated. Leave it empty.
-- **Frequency In Minutes:** Number of minutes between collection attempts. This creates slices of conversation that have a maximum duration of the minutes in this field. See specific Data Source for more details.
-- **Merge Batches During Cold Start** and **Max Number Of Batches To Merge:** When set to **True** it will merge initial Data Batches into bigger chunks of data. See [Data Retrieval](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.html#data-retrieval) for more details.
+- **Frequency In Minutes:** Number of minutes worth of data to pull for each attempted data pull via Data Retrieval Task.
+- **Merge Batches During Cold Start:** When set to **True** it will merge initial Data Batches into ont, big Data Batch.
+- **Max Number Of Batches To Merge:** Input Value to control number of hours collected per Data Batch created, dependent on Frequency in Minutes value. This parametr is used when **Merge Batches During Cold Start** is set to **True**.
+
+See [Data Retrieval](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.html#data-retrieval) for more details about **Frequency In Minutes**, **Merge Batches During Cold Start** and **Max Number Of Batches To Merge**.
+{: .info}
+
 - **Collect Job Timeout In Minutes:** 1440 (default) – Time interval after which a Data Batch will be automatically moved from Retrieving to Abandoned state.
 - **Collection Period Offset In Minutes:** 0 (default) – Modify Collection Period by adding offset in minutes to both Start and End Date. This parameter is used to collect data that are available to be retrieved with some delay e.g. 24 hours.
 - **Only Retrieve Natives And Copy To Folder:** Relative path to the fileshare folder (e.g. **BloombergMailDrop\Drop**). This parameter is used to improve performance of ingesting big portion of data e.g. 300,000 files (typical scenario for Bloombertg Chat and Mail). When the parameter is set, the Data Source will only retrieve files and store those files in the given folder. Neither enrichmnet nor ingestion will be performed on those files. To complete enrichment and ingestion, another Data Source (Globanet type of Data Source) needs to be created and configured to point to the folder. Eventually, there will be two Data Sources:
