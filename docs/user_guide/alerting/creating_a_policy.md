@@ -114,3 +114,8 @@ The Term “Name” (actual text being searched) **cannot** be modified after it
 
 The Term “Name” (actual text being searched) is limited to 450 characters. Please reach out [support@relativity.com](mailto:support@relativity.com) if your use-case requires higher limits for your terms.
 {: .info }
+
+The user cannot create a Term with incorrect syntax.
+{: .info}
+
+![](media/rules/Term_incorrect_syntax.png)
