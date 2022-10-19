@@ -66,6 +66,10 @@ In the following example , a data source was run at 04:00 on Day-2. Because the 
 
 ![](media/Day2IngestionStates.png)
 
+## Data Batch status update
+
+When Collect Data Source is disabled, the status of its Data Batches will not be updated, even though underlying Collect Jobs got completed. Before disabling a Data Source, make sure all Data Batches were moved to the final state.
+
 ## Collection period offset
 
 If data is not available for retrieval immediately, the Collection Period Offset needs to be applied on the data source. For example, if chat data is available with 24-hour delay, then a 24-hour offset needs to be configured on the data source. The Collection Period Offset is controlled by the Offset in Minutes parameter on the data source. 
