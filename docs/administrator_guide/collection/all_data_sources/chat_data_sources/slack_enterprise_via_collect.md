@@ -105,9 +105,7 @@ You must have the following in order to complete the setup instructions for this
 
 #### Standard prerequisites
 
-You must have Collect installed in the workspace to set up this data source, since Collect will be used for data retrieval. 
-
-For details on installing Collect, see [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}).
+Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect](https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.html) page.
 
 #### Company specific prerequisites
 
@@ -162,15 +160,9 @@ To obtain an application token, perform the following steps:
 
 The following sections provide the steps for installing Collect and configuring the data source.
 
-#### Collect
-
-*This should have already been completed to obtain an application token.*
-
-Prior to creating the Data Source, install the Collect application and configure the appropriate instance settings by following the [Using Relativity Collect]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_relativity_collect.md %}) page.
-
 #### Data source
 
-Most parameters work the same for all Collect Data Sources. Follow the instructions from [common_collect_data_source_functionality]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/common_collect_data_source_functionality.md %}) section. 
+Most parameters work the same for all Collect Data Sources. Follow the instructions from [Sections of a Data Source]( https://relativitydev.github.io/relativity-trace-documentation/docs/administrator_guide/collection/data_sources.html#data-source-details).
 
 Slack Enterprise specific parameters: 
 
@@ -182,7 +174,7 @@ In **Settings** section, do the following:
 1. **Application Token**: Enter generated Application Token.
 ![](media/slack_enterprise_via_collect/DataSourceFields.png)
 
-In **Advanced Configuration** section, do the following. For more information, see [Common Collect Data Source Functionality](#_Common_Collect_Data):
+In **Advanced Configuration** section, do the following:
 
 1. **Frequency in Minutes**: 480.
 2. **Merge Batches During Cold Start**: True.
