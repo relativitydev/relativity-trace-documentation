@@ -29,7 +29,7 @@ This list covers the most common Data Sources. To better understand the holistic
 | Type    | Data Source        | Notes|
 |:-------:|:------------------:|----------------|
 | Generic | EML Drop | For deliverying daily EML exports from various systems |
-| Generic | Mailbox with 3rd part data | For deliverying data from mobile (and others) providers who delivery their data to a mailbox |
+| Generic | Mailbox with 3rd party data | For deliverying data from mobile (and others) providers who delivery their data to a mailbox |
 | Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | For already processed structured data |
 | Generic | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) | For audio data |
 | Generic | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) |  |
