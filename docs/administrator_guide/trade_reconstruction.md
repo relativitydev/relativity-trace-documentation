@@ -20,19 +20,19 @@ Trade Reconstruction is used to automatically link trade and orders from Order M
 
 ## Overview
 
-Each Trade object has a connected Trade Reconstruction Configuration, which is used to add the criteria necessary to connect Trades to their related Communications. Trade Reconstruction Configruations have two components: the Search Criteria field, which defines the parameters of the saved search created for the Trade, and the Trade Keywords Field, which defines the Trade Keywords created for the Trade. Below is information on how to create a Trade Reconstruction Configuration, details on the Search Criteria field for Trade Reconstruction Configurations, details about Trade Keywords, and the limitations of Trade Reconstruction.
+Each Trade object has a connected Trade Reconstruction Configuration, which is used to add the criteria necessary to connect Trades to their related Communications. Trade Reconstruction Configurations have two components: the Search Criteria field, which defines the parameters of the saved search created for the Trade, and the Trade Keywords Field, which defines the Trade Keywords created for the Trade. Below is information on how to create a Trade Reconstruction Configuration, details on the Search Criteria field for Trade Reconstruction Configurations, details about Trade Keywords, and the limitations of Trade Reconstruction.
 
 ## Creating A Trade Reconstruction Configuration
 
-The Trade Reconstruction Configuration attached to your Trade is a key component to Trade Reconstruction, as it determines how Trades will be connected to their related communications. **This must be created before you can create your Trade**. To create a Trade Reconstruciton Configuration, follow the steps below:
+The Trade Reconstruction Configuration attached to your Trade is a key component to Trade Reconstruction, as it determines how Trades will be connected to their related communications. **This must be created before you can create your Trade**. To create a Trade Reconstruction Configuration, follow the steps below:
 
-1. Naviagte to the `Trade Reconstruction Configurations` tab and click `New Trade Reconstruction Configuration`.
+1. Navigate to the `Trade Reconstruction Configurations` tab and click `New Trade Reconstruction Configuration`.
 
 	![](media/trade_reconstruction/trade_reconstruction_configuration_layout.PNG)
 
 2. The Trade Reconstruction Configuration creation form has the following fields:
 
-   1. **Name:** the name of the Trade Reconstruction Configruation
+   1. **Name:** the name of the Trade Reconstruction Configuration
    
    2. **Search Criteria:** required JSON field to create the search parameters for the Saved Search created and linked to the Trade during Reconstruction. The details of the proper search criteria can be accessed via Contextual Help button on the Configuration secontion. 
       - See the below section titled `Search Criteria for Trade Reconstruction Configuration` for more information
@@ -72,6 +72,9 @@ Trade Reconstruction Configuration Search Criteria field is inputted as JSON wit
 | Fixed Length    | `GreaterThan`, `GreaterThanOrEqualTo`, `Is`, `IsLike`, `IsSet`, `LessThan`, `LessThanOrEqualTo`, `StartsWith`, `EndsWith` |
 | Long Text       | `GreaterThan`, `GreaterThanOrEqualTo`, `Is`, `IsLike`, `IsSet`, `LessThan`, `LessThanOrEqualTo`, `StartsWith`, `EndsWith` |
 | Yes/No          | `Is`, `IsSet`                                                |
+
+We do not use the time on Date fields when creating a condition using the `Between` operator. For all Date fields (whether you provide a time or not), we create the condition to include the full day on both ends of the condition. For example, if you want a condition that finds communications with the `Sent Date/Time` between 10/1 8AM and 10/2 10AM, we will create a condition that is `Send Date/Time` > 10/1 at midnight and `Sent Date/Time` < 10/2 at the end of the day.
+{: .warn }
 
 - `NotOperator` - specifies if condition should be negative (defaults `false` if not added)
 - `DayRange` - specifies a number of days which will be added or subtracted from ObjectField date specified in condition (this works only for DATE fields when `BETWEEN` condition in specified, but it won't break when added to other conditions)
@@ -149,7 +152,7 @@ Please contact [support@relativity.com](mailto:support@relativity.com) for more 
 
 ## Trade Reconstruction Limitations
 
-You must create a Trade Reconstruction Configruation before you can create a Trade.
+You must create a Trade Reconstruction Configuration before you can create a Trade.
 {: .info }
 
 If you decide to Reconstruct a Trade which has already been Reconstructed in the past, everything is removed from the previous Reconstruction and replaced with the new information from the most recent Reconstruction. `Trade Keywords` are not deleted, but the connection between the `Trade Keyword` and the Trade is gone and will not be searched for (unless the same keyword is still on the Trade, in which it will re-establish the connection and search for this keyword). All of the Trade's Related Documents from the previous Reconstruction will be removed. However, an Audit will be created for each Reconstruction with the following information: the Artifact ID of the Reconstructed Trade, the User that kicked off the Reconstruction, the date and time the Reconstruction began, and the Artifact ID of every Related Document that was connected to the Trade.
