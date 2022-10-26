@@ -101,7 +101,7 @@ As documents flow into a Relativity workspace and through the Trace workflow the
 
 22. **Trace Removed Extracted Text** - Long Test field which stores a JSON of the email properties that were removed for a given document during AI Extracted Text Cleansing. If cleansing is turned off or if no content was removed during cleansing, then it will always be empty.
 
-23. **Trace Is Duplicate** - Boolean (yes/no) field indicating if the document is a Duplicate (another of this file already exists in Relativity) or Non-duplicate (Document is the first of its kind in Relativity).
+23. **Trace Is Duplicate** - Boolean (yes/no) field indicating if the document is a `Duplicate` (another of this file already exists in Relativity) or `Not Dupicate` (Document is the first of its kind in Relativity).
 
 24. **Trace Original Document Control Number** - Fixed Length Text field containing the `Control Number` of the Original Document. For duplicate documents this value will contain the `Control Number` of it's Original document. Original documents will have a `Trace Original Document Control Number` that is equal to its own `Control Number`. Note that this can be the `Control Number` of a document that has already been removed by Data Disposal.
 
@@ -189,5 +189,5 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Other Languages         | Fixed-Length Text | Describes the type other language used in a communication |
 | Calculated               | Trace Language Switching Detected| Yes/No         | Describes if language switching (multiple languages used) occurs in a communication|
 | Calculated               | Trace Is Spam                 | Yes/No            | Describes if a communication is `Spam` or `Not Spam` |
-| Calculated               | Trace Is Duplicate            | Yes/No            | Determines whether or not a document is Duplicate or Original|
+| Calculated               | Trace Is Duplicate            | Yes/No            | Determines whether or not a document is `Duplicate` or `Not Duplicate`|
 | Calculated               | Trace Original Document Control Number| Fixed-Length Text | The identifier of a duplicate's Original document (Non-duplicate documents will point to themselves) |
