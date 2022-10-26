@@ -101,9 +101,9 @@ As documents flow into a Relativity workspace and through the Trace workflow the
 
 22. **Trace Removed Extracted Text** - Long Test field which stores a JSON of the email properties that were removed for a given document during AI Extracted Text Cleansing. If cleansing is turned off or if no content was removed during cleansing, then it will always be empty.
 
-23. **Trace Is Duplicate** - Boolean (yes/no) field indicating if the document is a Duplicate (another of its kind already exists in Relativity) or Original (Document is the first of its kind in Relativity).
+23. **Trace Is Duplicate** - Boolean (yes/no) field indicating if the document is a Duplicate (another of this file already exists in Relativity) or Non-duplicate (Document is the first of its kind in Relativity).
 
-24. **Trace Original Document Control Number** - Fixed Length Text field containing the Control Number of the Original Document. For duplicate documents this value will contain the `Control Number` of it's Original document. Original documents will have a `Trace Original Document Control Number` that is equal to its own `Control Number`. Note that this can be the `Control Number` of a document that has already been removed by Data Disposal.
+24. **Trace Original Document Control Number** - Fixed Length Text field containing the `Control Number` of the Original Document. For duplicate documents this value will contain the `Control Number` of it's Original document. Original documents will have a `Trace Original Document Control Number` that is equal to its own `Control Number`. Note that this can be the `Control Number` of a document that has already been removed by Data Disposal.
 
 ## Appendix B: Trace Document Extraction Fields
 
