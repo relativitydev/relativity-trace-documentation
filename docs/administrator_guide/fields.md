@@ -103,7 +103,7 @@ As documents flow into a Relativity workspace and through the Trace workflow the
 
 23. **Trace Is Duplicate** - Boolean (yes/no) field indicating if the document is a Duplicate (another of its kind already exists in Relativity) or Original (Document is the first of its kind in Relativity).
 
-24. **Trace Original Document Control Number** - Fixed Length Text field containing the Control Number of the Original Document. For duplicate documents this value will contain the Control Number of it's Original document. Original documents will have a Trace Original Document Control Number that is equal to its own Control Number. Note that this can be the Control Number of a document that has already been removed by Data Disposal.
+24. **Trace Original Document Control Number** - Fixed Length Text field containing the Control Number of the Original Document. For duplicate documents this value will contain the `Control Number` of it's Original document. Original documents will have a `Trace Original Document Control Number` that is equal to its own `Control Number`. Note that this can be the `Control Number` of a document that has already been removed by Data Disposal.
 
 ## Appendix B: Trace Document Extraction Fields
 
