@@ -190,4 +190,4 @@ Trace automatically extracts metadata information for Microsoft Office 365 Data 
 | Calculated               | Trace Language Switching Detected| Yes/No         | Describes if language switching (multiple languages used) occurs in a communication|
 | Calculated               | Trace Is Spam                 | Yes/No            | Describes if a communication is `Spam` or `Not Spam` |
 | Calculated               | Trace Is Duplicate            | Yes/No            | Determines whether or not a document is Duplicate or Original|
-| Calculated               | Trace Original Document Control Number| Fixed-Length Text | The identifier of the Original document (for duplicates) |
+| Calculated               | Trace Original Document Control Number| Fixed-Length Text | The identifier of a duplicate's Original document (Non-duplicate documents will point to themselves) |
