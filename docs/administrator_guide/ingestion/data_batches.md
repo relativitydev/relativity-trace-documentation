@@ -33,6 +33,9 @@ Trace will only create Integration Points in each workspace up to the number spe
 
 By default, Data Batches that fail will be automatically retried up to 3 times, where the 3 retries are attempted after 1 hour, 3 hours, and 6 hours, respectively. When preparing to retry, the status of the Data Batch is marked as `PendingRetry`. The retry count and the last time it was retried can be viewed on the layout as well. This automatic retry is a full retry, starting from the `RetrievedFromSource` status. Data Batches that fail all the configured retries will set `Has Errors` to true, populate the `Error Details` field with the details of the specific error encountered, and be given a status of `CompletedWithErrors`.
 
+If some natives fail due to extraction issues, Trace will automatically split a Data Batch onto two Data Batches: 1st Data Batch - that contains all natives which passed extraction and 2nd Data Batch - that contains failed natives. The second Data Batch will be retried three times and if fails, it would go to `CompletedWithError` status. This logic is to ensure that Trace will try ingesting as much data as possible and isolate failed data in a separate Data Batch.
+{: .info}
+
 If a Data Batch completes successfully but has errors at the document level (for example, if a date field value could not be parsed as a date), the Data Batch will be marked `CompletedWithDocumentLevelErrors` and there will not be an automatic retry.
 {: .info }
 
