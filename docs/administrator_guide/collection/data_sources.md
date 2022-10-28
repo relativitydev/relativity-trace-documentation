@@ -137,6 +137,7 @@ In Trace People / HR data is refered to as `Monitored Individuals`. A Monitored 
     * **Document Type Name:** A non-required name that will propagate to the Trace Type field on the documents that come in through this Data Source
       * If this field is left empty, the name of the Data Source will be used instead
     * **Provider Type:** The type fo communications that are being collected (Audio, Written, etc.)
+    * **Alternative Monitored Individual Identifier Field:** Field which can be used to have different Monitored Individual identifier used when retrieving data from different data sources
     * **Ingestion Profile:** Ingestion Profile used to load data from this Data Source
     * **Start Date:** Date from which data will be pulled/pushed into Relativity
     * **End Date:** Optional date to which data will be pulled/pushed into Relativity.
@@ -257,3 +258,8 @@ All other data sources discover Monitored Individuals based on the `FROM`, `TO`,
 **Supported File Formats**
 
 Discovery of monitored individuals is based on finding the email addresses of monitored individuals in the headers of an email file. Therefore, it will only work properly on `.eml`, `.msg`, and `.rsmf` (Relativity Short Message Format) files. Any other file format is not currently supported.
+
+**Usage of Alternative Monitored Individual Identifier Field**
+
+Alternative Monitored Individual Identifier field give possibility to choose Fixed-Length Text field from Monitored Individual which we indicate to be main identifier to retrieve data from source.
+After retrieve, Monitored Individuals are always link to proper Identifier field.
