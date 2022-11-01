@@ -19,12 +19,14 @@ A Data Source allows you to define where and how you are pulling data from a com
 ---
 
 ## Overview
- A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. **Click on the Data Source name to see more extensive details.**
+ A Data Source stores the configuration necessary to retrieve data from a communication channel, process that data, and ingest it into Relativity Trace. 
 
 ## Data Sources List
-This list covers the most common Data Sources. To better understand the holistic Data Source support contact [support@relativity.com](mailto:support@relativity.com).
+This list covers currently available Data Sources.
 
 ### Generic Data Sources
+
+If your specific data source is not found on this page, Trace has numerious capabilities to support your data using the below methods.
 
 | Type    | Data Source        | Notes|
 |:-------:|:------------------:|----------------|
@@ -32,7 +34,7 @@ This list covers the most common Data Sources. To better understand the holistic
 | Generic | Mailbox with 3rd part data | For deliverying data from mobile (and others) providers who delivery their data to a mailbox |
 | Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | For already processed structured data |
 | Generic | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) | For audio data |
-| Generic | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) |  |
+| Generic | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) | For custom HR / People data |
 
 
 ### Email Data Sources
