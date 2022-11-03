@@ -223,8 +223,9 @@ See [Data Retrieval](https://relativitydev.github.io/relativity-trace-documentat
 - **Health Check Failure Window Length in Minutes:** See [Data Source Auto-Disable] (#data-source-auto-disable)
 
 - **Ingestion State:** Timestamp of last Data Source execution.
-This parameter is only visible on **Data Source Layout (dev)** Layout.
-{: .info}
+
+      This parameter is only visible on **Data Source Layout (dev)** Layout. {: .info}
+- **Retry Policy:** Data Batch Automatic Custom Retry Policy. Defined as intervals in minutes between each Data Batch retry. It overwrites Instance Settings Retry Policy. If empty - Instance Settings Retry Policy will be used. Example values: `[720,720,360,180,180]` or `[]`
 
 ### Data Source Auto-Disable
 
