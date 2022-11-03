@@ -20,13 +20,10 @@ On-premises data can be transferred to Relativity Trace in the cloud using eithe
 
 ## SFTP
 
-Basic information on our SFTP data transfer approach can be found in our [RelativityOne Documentation](https://help.relativity.com/RelativityOne/Content/Data_migration/S-FTP.htm).
-Relativity Trace supports the following Data Sources via SFTP:
-1. Microsft Exchange On-Prem (EML loose files)
-2. Enterprise Vault On-Prem via Relativity VerQu
-3. Bloomberg Chat and Mail (zipped package)
-4. Audio Transcript
-5. ZipDrop Data Source
+Trace supports receiving data via SFTP. There are two methods:
+
+1. SFTP with VPN - [RelativityOne Documentation](https://help.relativity.com/RelativityOne/Content/Data_migration/S-FTP.htm)
+2. SFTP without VPN - [RelativityOne Documentation](https://help.relativity.com/RelativityOne/Content/Data_migration/S-FTP.htm)
 
 ## Trace Shipper
 
