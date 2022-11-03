@@ -114,7 +114,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 |:----:|:------------------:|--------------------|
 | Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |  |
 | Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  |
-| Archive | Smarsh | Data must be recieved via Scheduled Export configured by the archive |
+| Archive | [Smarsh](all_data_sources/archive_data_sources/smarsh.md) | Data must be recieved via Scheduled Export configured in Smarsh |
 
 ### People / HR Data Sources
 
