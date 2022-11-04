@@ -23,17 +23,18 @@ Smarsh license
 
 ### Supported versions
 
-All Smarsh versions that support Scheduled Export: https://central.smarsh.com/s/article/How-to-Schedule-Exports
+All Smarsh versions that support [Scheduled Exports](https://central.smarsh.com/s/article/How-to-Schedule-Exports)
 
 ## Considerations
 
-Smarsh outputs data in ZIP with EMLs. Trace currently supports plain EMLs only. ZIP needs to be unpacked prior to deliverying data to Trace
-
+Smarsh outputs data in `.ZIP` with `EMLs`. Trace currently supports plain `EMLs` only. `ZIP` needs to be unpacked prior to deliverying data to Trace
+{: .warn }
 
 ## Setup instructions
 
-1. Configure scheduled export: https://central.smarsh.com/s/article/How-to-Schedule-Exports
-   1. Underlying saved search must have a condition to select only specified group of monitored people
+1. Configure scheduled export: [Scheduled Exports](https://central.smarsh.com/s/article/How-to-Schedule-Exports)
+   1. Underlying saved search must have a `condition` to select only specified group of monitored people
+      1. Example: `monitored = true` OR `group = "monitored"`
    2. Run schedule is daily
-2. Data will need to flow into RelativityOne Trace SFTP location
-3. Data must be unzipped into plain EMLs (ZIP is not currently supported)
+2. Data will need to flow into  [RelativityOne Trace SFTP](../../shipper.md#sftp) location
+3. Data must be unzipped into plain `EMLs`  (`ZIP` is not currently supported)
