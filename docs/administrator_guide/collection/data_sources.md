@@ -88,7 +88,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 
 ### Mobile Data Sources
 
-| Type  | Data Source      | Capture Methods | Data Capture Provide | Notes |
+| Type  | Data Source      | Capture Methods | Data Capture Provider | Notes |
 |:-------:|:------------------:|--------------------|---------|---------|
 | Mobile | WhatsApp | via Native WhatsApp; via MS Teams; via Slak; via [Leap Work](https://apps.apple.com/us/app/leap-work/id1483553630) | [Leap Expert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
 | Mobile | WeChat | via MS Teams; via [Leap Work](https://apps.apple.com/us/app/leap-work/id1483553630) | [Leap Expert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
