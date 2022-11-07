@@ -23,9 +23,6 @@ Types of Tasks
 - **Data Retrieval:** Responsible for pulling data from Data Sources
 
 - **Data Enrichment:** Responsible for extracting and enriching nested files (attachments, contents of zip files), generating extracted text, metadata and preparing the load file that is ready for import process. For security reasons, embedded content that refers to external URL links do not get extracted.
-
-  > The Data Enrichment task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Enrichment tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
-  {: .info }
   
 - **Transcription:** Responsible for transcribing audio files into text
 
@@ -50,9 +47,6 @@ Types of Tasks
   {: .info }
   
 - **Data Disposal:** Responsible for evaluating configured Rules which have data disposal action assigned within the workspace.
-
-  > Run interval and Max Documents Per Execution should be set using same suggestions as for Rule Evaluation task. The Data Disposal task queues up work via the Service Bus framework. Trace supports any queueing framework supported by Relativity. Data Disposal  tasks are performed by the `Trace Worker Agent`. Additional Trace Worker Agents can be added to increase capacity. For more information, contact [support@relativity.com](mailto:support@relativity.com).
-  {: .info }
 
 - **Reporting**: Responsible for generating reports (e.g. state of the system, user actions, etc.) and sending those reports via email
 
