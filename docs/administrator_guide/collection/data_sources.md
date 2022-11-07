@@ -31,7 +31,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 | Type    | Data Source        | Notes|
 |:-------:|:------------------:|----------------|
 | Generic | EML Drop | For deliverying daily EML exports from various systems |
-| Generic | Mailbox with 3rd party data | For deliverying data from mobile (and others) providers who delivery their data to a mailbox |
+| Generic | Mailbox with 3rd party data | For deliverying data from mobile (and other) providers such as TeleMessage who deliver their data to customer mailbox |
 | Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | For already processed structured data |
 | Generic | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) | For audio data |
 | Generic | [Monitored Individuals from any source using Trace ZipDrop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individuals_via_zipdrop_data_source.md %}) | For custom HR / People data |
