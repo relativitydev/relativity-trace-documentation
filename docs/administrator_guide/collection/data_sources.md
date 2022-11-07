@@ -88,14 +88,17 @@ If your specific data source is not found on this page, Trace has numerious capa
 
 ### Mobile Data Sources
 
-| Type  | Data Source      | Notes |
-|:-------:|:------------------:|--------------------|
-| Mobile | WhatsApp | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
-| Mobile | WeChat | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
-| Mobile | SMS/MMS | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
-| Mobile | iMessage | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
-| Mobile | Telegram | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
-| Mobile | Signal | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Type  | Data Source      | Capture Methods | Notes |
+|:-------:|:------------------:|--------------------|---------|
+| Mobile | WhatsApp | via Native WhatsApp; via MS Teams; via Slak; via Leap Work | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | WeChat | via MS Teams; via Leap Work | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | WeChat  miniapp | via Leap Work | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | SMS/MMS | via native SMS/MMS app on the phone; via MS Teams; via Leap Work | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | iMessage | via native iMessage app on iphone | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox. iMessage capture requires access to apple iCloud backup. |
+| Mobile | Telegram | via native Telegram app | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | Signal | via Leap Work | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | WeCom | via native WeCom app | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
+| Mobile | LINE | via Leap Work | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox |
 
 ### Collaboration Data Sources
 
