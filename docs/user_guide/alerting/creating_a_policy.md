@@ -95,14 +95,13 @@ You can create Terms in multiple ways:
 
 3.  By clicking the New button on the Terms section of the Rule Layout.
 
-![](media/rules/e2a523416ac9607f8b2e9f42e2287e0f.png)
+![](media/rules/Term_New_Term.png)
 
 Term definition contains 3 fields:
 
 -   **Term:** searching string (unique identifier)
--   **Term Category:** optional group name to organize terms
 -   **Score:** optional field to populate term weight to indicate importance
--   **Relativity highlight color:** optional highlighting configuration in the
+-   **Highlight Colors:** optional highlighting configuration in the
     Relativity viewer (see [highlighting](#highlighting) section)
 
 In addition, you can see and modify Term Categories and Rules associated with Term and its status with regards to execution
