@@ -23,34 +23,7 @@ Ensure the following Relativity Instance components are appropriately configured
 
 ### Agents
 
--   dtSearch Index Manager
-
--   dtSearch Index Worker
-
--   dtSearch Search
-
--   Application Installation Manager
-
--   Integration Points Agent (need to install [Relativity Integration Points](https://platform.relativity.com/RelativityOne/index.htm#Relativity_Integration_Points/Get_started_with_integration_points.htm) first)
-    
-
-If you plan to use `Analytics` functionality, please also make sure the following agents are set up:
-
--   Relativity Analytics Index Manager
-
--   Relativity Analytics Cluster Manager
-
--   Analytics Categorization Manager
-
--   Analytics Index Progress Manager
-
--   Active Learning Manager
-
--   Active Learning Worker
-
--   Structured Analytics Manager (need to install [Relativity Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm) first)
-    
--   Structured Analytics Worker (need to install [Relativity Analytics](https://help.relativity.com/RelativityOne/Content/Relativity/Analytics/Structured_analytics_set_tab.htm) first)
+All required by Trace Agents are deployed automatically during instance creation. There is no additional setup needed.
 
 ### Applications
 
@@ -78,27 +51,23 @@ If you plan to use `Analytics` functionality, please also make sure the followin
    
 4. Create Trace agents
 
-   > **NOTE**: Trace application will contain deploy.yaml file which automatically sets up the agent configuration.
-
-   This file is all that is needed to create and start necessary Trace agents for a Relativity instance. The Trace agents will run in our Kubernetes (K8S) architecture making Trace agents scalable to handle changing workloads.
-
-   Once configured, only the following agents will be displayed in the `Agents` tab:
+    Trace Application requires the following Agents to be enabled on the instance:
     - Trace Manager Agent
     - Trace Data Batch Finalization Agent
     - Trace Data Enrichment Agent
     - Trace Data Dispose Agent
     - Trace Data Transformation Agent
 
-   ![image-20220309144345735](media/getting_started/image-20220309144345735.png)
+    ![image-20220309144345735](media/getting_started/image-20220309144345735.png)
 
-   
-    > On the `Agents` tab, the Agent Server column will show a value of `RelativityOne Compute`. This means a given agent type is running in Kubernetes.
+    > On the `Agents` tab, the Agent Server column should show a value of `RelativityOne Compute`. This means a given agent type is running in Kubernetes.
     {: .info }
 
-
-    > When upgrading from standard agends to Kubernetes agends, the workspace may take 20-30 minutes to finish upgrading.  Please reach out support@relativity.com if the upgrade takes longer.
+    > When installing Trace for a new client please reach out support@relativity.com.
     {: .info }
 
+    > When upgrading from standard agends to Kubernetes agends please reach out support@relativity.com.
+    {: .info }
 
 5. In the workspace, navigate to the `Trace`->`Setup` tab and set the `Run Option` to `Continuous`
 
