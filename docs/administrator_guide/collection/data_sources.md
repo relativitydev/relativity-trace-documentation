@@ -85,20 +85,22 @@ If your specific data source is not found on this page, Trace has numerious capa
 | Voice | Microsoft Teams Audio | On-premises software required - Intelligent Voice | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
 | Voice | Skype for Business Audio | On-premises software required - Intelligent Voice | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
 
-
 ### Mobile Data Sources
+
+Trace supports picking up mobile data from customer's mailbox. In other words, mobile data is delivered to customer's mailbox and then picked up by Trace from the mailbox.
+{: .info }
 
 | Type  | Data Source      | Capture Methods | Data Capture Provider | Notes | License |
 |:-------:|:------------------:|--------------------|---------|---------|---------|
-| Mobile | WhatsApp | via Native WhatsApp; via MS Teams; via Slak; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
-| Mobile | WeChat | via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
-| Mobile | WeChat  miniapp | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
-| Mobile | SMS/MMS | via native SMS/MMS app on the phone; via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
-| Mobile | iMessage | via native iMessage app on iphone | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox. iMessage capture requires access to apple iCloud backup. | Additional license with LeapXpert is required |
-| Mobile | Telegram | via native Telegram app | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
-| Mobile | Signal | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
-| Mobile | WeCom | via native WeCom app | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
-| Mobile | LINE | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) | Trace supports picking up this data from customer's mailbox. In other words, this data will be delivered to customer's mailbox and then picked up by Trace from the mailbox | Additional license with LeapXpert is required |
+| Mobile | WhatsApp | via Native WhatsApp; via MS Teams; via Slak; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Mobile | WeChat | via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Mobile | WeChat  miniapp | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Mobile | SMS/MMS | via native SMS/MMS app on the phone; via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Mobile | iMessage | via native iMessage app on iphone | [LeapXpert](https://www.leap.expert/) | iMessage capture requires user Apple ID and synchronizing the data from iCloud | Additional license with LeapXpert is required |
+| Mobile | Telegram | via native Telegram app | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Mobile | Signal | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Mobile | WeCom | via native WeCom app | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Mobile | LINE | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
 
 ### Collaboration Data Sources
 
