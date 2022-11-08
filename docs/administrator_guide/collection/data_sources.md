@@ -46,7 +46,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 | Email | [Microsoft O365 Mail Archive Mailbox]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %}) | Cloud-to-cloud | Relativity Collect |
 | Email | [Google Suite]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
 | Email | [Bloomberg Mail]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/bloomberg_mail_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
-| Email | [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_exchange_server_via_verqu.md %}) | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+| Email | [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_exchange_server_via_verqu.md %}) | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) |
 
 ### Chat Data Sources
 
@@ -55,18 +55,18 @@ If your specific data source is not found on this page, Trace has numerious capa
 | Chat | [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
 | Chat | [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Collect |
 | Chat | [Refinitiv Eikon Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/refinitiv_eikon_chat_and_fxt_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Collect |
-| Chat | Symphony | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Chat | Skype for Business | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+| Chat | Symphony | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Chat | Skype for Business | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | [Microsoft O365 Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/microsoft_office_365_teams_chat_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
-| Chat | FXConnect | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Chat | [Cisco WebEx Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %}) | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Chat | ServiceNow | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+| Chat | FXConnect | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Chat | Cisco WebEx Teams Chat | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Chat | ServiceNow | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | Google Chat | Cloud-to-cloud | Relativity Collect |
-| Chat | Salesforce Chatter | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+| Chat | Salesforce Chatter | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | [Slack Enterprise Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/slack_enterprise_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
-| Chat | Microsoft Yammer | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Chat | Facebook Workplace | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Chat | YieldBroker | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+| Chat | Microsoft Yammer | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Chat | Facebook Workplace | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Chat | YieldBroker | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 
 ### Voice Data Sources
 
@@ -90,35 +90,35 @@ If your specific data source is not found on this page, Trace has numerious capa
 Trace supports picking up mobile data from customer's mailbox. In other words, mobile data is delivered to customer's mailbox and then picked up by Trace from the mailbox.
 {: .info }
 
-| Type  | Data Source      | Capture Methods | Data Capture Provider | Notes | License |
-|:-------:|:------------------:|--------------------|---------|---------|---------|
-| Mobile | WhatsApp | via Native WhatsApp; via MS Teams; via Slak; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
-| Mobile | WeChat | via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
-| Mobile | WeChat  miniapp | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
-| Mobile | SMS/MMS | via native SMS/MMS app on the phone; via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
-| Mobile | iMessage | via native iMessage app on iphone | [LeapXpert](https://www.leap.expert/) | iMessage capture requires user Apple ID and synchronizing the data from iCloud | Additional license with LeapXpert is required |
-| Mobile | Telegram | via native Telegram app | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
-| Mobile | Signal | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
-| Mobile | WeCom | via native WeCom app | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
-| Mobile | LINE | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) |  | Additional license with LeapXpert is required |
+| Type  | Data Source      | Capture Methods | Data Collection Method | Data Transfer Method | Notes | License |
+|:-------:|:------------------:|--------------------|---------|---------|---------|---------|
+| Mobile | WhatsApp | via Native WhatsApp; via MS Teams; via Slak; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
+| Mobile | WeChat | via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
+| Mobile | WeChat  miniapp | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
+| Mobile | SMS/MMS | via native SMS/MMS app on the phone; via MS Teams; via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
+| Mobile | iMessage | via native iMessage app on iphone | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) | iMessage capture requires user Apple ID and synchronizing the data from iCloud | Additional license with LeapXpert is required |
+| Mobile | Telegram | via native Telegram app | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
+| Mobile | Signal | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
+| Mobile | WeCom | via native WeCom app | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
+| Mobile | LINE | via Leap Work (iOS and Android) | [LeapXpert](https://www.leap.expert/) delivers to customer mailbox | [Email Data Sources](data_sources.md#email-data-sources) |  | Additional license with LeapXpert is required |
 
 ### Collaboration Data Sources
 
 | Type  | Data Source      | Data Collection Method | Data Transfer Method |
 |:-------:|:------------------:|--------------------|--------------------|
-| Collaboration | OneDrive for Business |  |  |
-| Collaboration | SharePoint | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Collaboration | Google Drive |  |  |
-| Collaboration | Box | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Collaboration | AWS S3 | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Collaboration | Dropbox | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+| Collaboration | OneDrive for Business | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Collaboration | SharePoint | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Collaboration | Google Drive | Cloud-to-cloud | Relativity Collect |
+| Collaboration | Box | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Collaboration | AWS S3 | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
+| Collaboration | Dropbox | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 
 ### Archive Data Sources
 
 | Type | Data Source      | Notes | Data Collection Method | Data Transfer Method |
 |:----:|:------------------:|--------------------|--------------------|--------------------|
-| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |  | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
-| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |  | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) |
+| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) |
 | Archive | [Smarsh](all_data_sources/archive_data_sources/smarsh.md) | Data must be recieved via Scheduled Export configured in Smarsh | N / A | [R1 SFTP](shipper.md#sftp) |
 
 ### People / HR Data Sources
