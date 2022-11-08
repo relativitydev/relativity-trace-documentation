@@ -31,6 +31,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 | Type    | Data Source        | Notes|
 |:-------:|:------------------:|----------------|
 | Generic | EML Drop | For deliverying daily EML exports from various systems |
+| Generic | [RSMF](https://help.relativity.com/RelativityOne/Content/Relativity/Viewer/Short_Message_Viewer.htm) Drop | For deliverying chat-like data (social, mobile, etc...) |
 | Generic | Mailbox with 3rd party data | For deliverying data from mobile (and other) providers such as TeleMessage who deliver their data to customer mailbox |
 | Generic | [Zip Drop]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/generic_data_sources/zip_drop.md %}) | For already processed structured data |
 | Generic | [Generic Audio Data]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md %}) | For audio data |
