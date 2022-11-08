@@ -18,9 +18,7 @@ This topic provides information on functionality common to most or all data sour
 
 ## IP Address Whitelisting Pre-work 
 
-For data sources such as [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}), [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %})
-, and [Refinitiv Eikon Chat and FXT]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/cisco_webex_teams_via_collect.md %})
-, you must be able to make a connection to the Data Source's SFTP accounts prior to starting collection. For security purposes, only IP addresses that have been whitelisted by the vendor can connect to their SFTP accounts. For this reason, you must reach out to each vendor and get Relativity IP addresses added to the vendors whitelist.
+For data sources such as [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}), [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %}), Refinitiv Eikon Chat and Cisco Webex Teams, you must be able to make a connection to the Data Source's SFTP accounts prior to starting collection. For security purposes, only IP addresses that have been whitelisted by the vendor can connect to their SFTP accounts. For this reason, you must reach out to each vendor and get Relativity IP addresses added to the vendors whitelist.
 
 **Requirements**
 - Each Relativity instance has unique IP addresses that must be added to each vendor's whitelist for Relativity to connect to their SFTP accounts. 
