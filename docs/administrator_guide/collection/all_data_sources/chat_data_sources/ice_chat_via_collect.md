@@ -17,9 +17,26 @@ Collect ICE Chat messages via Relativity Collect.
 
 ## Overview
 
-The connector is pulling data directly from Cloud.
+The connector is pulling data directly from ICE Chat SFTP.
 
-![](media/ICE_Chat_viaCollect/ICE_DeploymtB_Diagrm.png)
+```mermaid
+sequenceDiagram
+    autonumber
+
+    participant ICEChatSFTP
+    participant Relativity Collect
+    participant Relativity Trace
+    participant Relativity Workspace
+
+    Relativity Trace->>Relativity Trace: Configure Connection
+    loop daily
+        Relativity Trace->>Relativity Collect: Request Data (MI filter, Date Range)
+        ICEChatSFTP->>Relativity Collect: Requested Data
+        Relativity Collect->>Relativity Trace: Requested Data
+        Relativity Trace->>Relativity Trace: Process
+        Relativity Trace->>Relativity Workspace: Ingest
+    end
+```
 
 ## Versions supported
 
