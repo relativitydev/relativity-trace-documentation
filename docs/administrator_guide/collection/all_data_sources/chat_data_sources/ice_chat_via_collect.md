@@ -33,7 +33,7 @@ sequenceDiagram
         Relativity Trace->>Relativity Collect: Request Data (MI filter, Date Range)
         ICEChatSFTP->>Relativity Collect: Requested Data
         Relativity Collect->>Relativity Collect: Convert to RSMF
-        Relativity Collect->>Relativity Trace: Requested Data
+        Relativity Collect->>Relativity Trace: RSMFs
         Relativity Trace->>Relativity Trace: Process
         Relativity Trace->>Relativity Workspace: Ingest
     end
