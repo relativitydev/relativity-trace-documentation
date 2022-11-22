@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Release Notes
+title: Product Updates
 parent: What's New
 nav_order: 1
 ---
 
-# Release Notes
+# Product Updates
 {: .no_toc }
 
-New features, enhancements, and defect fixes are released in each monthly update.
+New features, enhancements, and defect fixes are released frequently to deliver the best experience for users.
 {: .fs-6 .fw-300 }
 
 <details markdown="block">
