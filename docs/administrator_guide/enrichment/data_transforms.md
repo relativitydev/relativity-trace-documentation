@@ -73,24 +73,48 @@ By Default, content will simply be replaced with nothing (empty string). This ca
 Replacement of the Extracted Text (application of replace data transformation) happens on a new copy of the Extracted Text (referenced as *<original_file_name>.replaced.txt*).  Newly generated Extracted Text is referenced in a separate loadfile (`loadfile.replaced.dat`).  In addition, if original loadfile.dat contains a column named `Extracted Text Size in KB` , ONLY then `Extracted Text Size in KB` field is re-generated with updated length.  **Previously generated/supplied data for `Extracted Text Size in KB` is overwritten in this case.**
 {: .info}
 
+## Duplicate Analysis Data Transformation
+
+This Data Transformation runs automatically for all Data Sources and does not require a Data Transformation to be manually linked to a Data Source.
+{: .info}
+
+`Duplicate Analysis` detects if an original document and its extractions already exist in the workspace. If a duplicate is found, the field `Trace Is Duplicate` is set to `True` and `Trace Original Document Control Number` is set to the original document's control number. If a duplicate is not found for a given file,  `Trace Is Duplicate` is set to `False` and `Trace Original Document Control Number` is set to it's own control number.
+
+For Trace native [Data Sources](#data-sources), Duplicate Analysis is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file.
+
+When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes of original documents will be compared to those on documents that already exist in the workspace. In addition to the duplicate's  `Trace Is Duplicate` field being set to `True` and `Trace Original Document Control Number` field set to the original document's control number, the Trace Monitored Individuals field on the document will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
+
+**Required Fields for Deduplication**
+
+Duplicate Analysis of a Data Source requires that the following Relativity fields be mapped in the Data Source's associated Ingestion Profile.
+
+1. Trace Document Hash
+
+2. Control Number
+
+3. Trace Is Duplicate
+
+4. Trace Original Document Control Number
+
+5. *Group Identifier
+
+6. *Native File Path -- must be specified, but not necessarily mapped.
+
+   Group Identifier and Native File path are not technically required for this transformation - Duplicate Analysis will still run without errors. However, we are unable to to properly perform duplicate analysis without these fields, so this transform will always set `Trace Is Duplicate` to `False` and `Trace Original Document Control Number` to it's own control number if these fields are missing.
+   {: .warn}
+
+   Because Native File Path must be specified for Duplicate Analysis to run properly, Duplicate Analysis is incompatible with [Ingestion Profiles](#Ingestion-Profiles) where Import Natives is set to no.
+   {: .info}
+
 ## Deduplication Data Transformation
 
-Data Transformations of type `Deduplication` prevent a Data Source from importing an original document and its extractions if the same document already exists in the workspace. Only one Data Transformation of type Deduplication should be associated with each Data Source.
-
-For Trace native [Data Sources](#data-sources), deduplication is driven by a SHA256 hashing algorithm that populates the Trace Document Hash field on each document. By default, if the document is an email, the algorithm will hash together the sender, subject, recipients, sent date, email body and attachment list to create the hash value. If the document is not an email, then the hash will be done directly on the bytes of the file.
-
-When additional documents are ingested (either within the same Data Batch or different Data Batches), hashes of original documents will be compared to those on documents that already exist in the workspace. If there is a match, the duplicate document will not be ingested. Instead, the Trace Monitored Individuals field on the document will be updated to include the Monitored Individual that was the source of the duplicate in addition to the Monitored Individual that was the source of the original.
+Data Transformations of type `Deduplication` prevent a Data Source from importing an original document and its extractions if the same document already exists in the workspace. It performs this transform by removing files where `Trace Is Duplicate` is set to `True`. Only one Data Transformation of type Deduplication should be associated with each Data Source.
 
 **Required Fields for Deduplication**
 
 Deduplication of a Data Source requires that the following Relativity fields be mapped in the Data Source's associated Ingestion Profile.
 
-1. Trace Document Hash
-2. Group Identifier
-3. Native File Path -- must be specified, but not necessarily mapped.
-   
-   Because of this requirement, Deduplication is incompatible with [Ingestion Profiles](#Ingestion-Profiles) where Import Natives is set to no.
-   {: .info}
+1. Trace Is Duplicate
 
 ## Communication Direction Data Transformation
 
@@ -167,7 +191,7 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
   Data Transformation of type `AI Extracted Text Cleansing` can be used to identify and remove non-authored content and duplicative content from the Extracted Text of an email document. A single instance of this data transformation must be added to a data source to enable cleansing. It can be configured to remove confidentiality disclaimers, email signatures, email headers, and duplicative email content that has already been ingested, allowing users to review and run rules on only new authored content. This will reduce both false positive and duplicative alert volumes.
 
   There are two categories of cleansing : <u>Non-Authored Content Removal</u> and <u>Duplicative Content Removal</u>. Non-Authored Content removal automatically removes content that was not written by the sender of the email, such as headers, signatures, and disclaimers. Duplicative Content Removal automatically removes content within an email that was previously ingested in a separate email. For example, when you reply or forward an email previous emails within the chain will be included in your new email below your new message. If these prior emails were already ingested by the system, this content would be removed from the new email, leaving only the new authored content. This is also called Email Thread Deduplication, since the content that gets removed are email threads within the email chain that were previously ingested in another email document. This allows users to only review and alert on net new emails as they come in.
-  
+
 ### AI Extracted Text Cleasning - Short Messaged
 
   Trace allows clients to identify and remove non-authored content across short message data sources (RSMFs). This data transformation is part of the AI Extracted Text Cleansing Data Transformation and needs to be applied to a data source. It removes the following:
@@ -176,11 +200,11 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
    - Short Message: Remove Short Message Time Stamps 
    - Short Message: Remove Short Message Disclaimer 
    - Short Message: Remove Short Message Username 
-   
+
  Use the 'Filter By' function to show removed text in the Native Viewer
- 
+
  ![RSMF_suppression.png](media/data_transforms/RSMF_suppression.png)
- 
+
   There are five fields that are used through the cleansing transformation process:
 
   1. <u>Extracted Text</u> - input field for cleansing that is generated during enrichment
@@ -188,7 +212,7 @@ Use of the `Communication Direction` Data Transformation type requires that a lo
   3. <u>Trace Removed Extracted Text</u> - field that gets populated with the content that was removed from Extracted Text if content was removed during cleansing. It will be empty if nothing was cleansed. This content is stored in a JSON format and contains information on why the content was removed.
   4. <u>Trace AI Extracted Text Cleansing Status</u> - field that contains the status of the cleansing transformation. There are 4 possible statuses for cleansing. See status section below for the possible statuses.
   5. <u>Trace AI Extracted Text Cleansing Error Details</u> - field that contains the error details of cleansing transform if an error occurred. It will be empty if no error occurred.
- 
+
 **Alerting on Cleansed Data**
 
 To get the alert reduction benefit of text cleansing, you will need to have Term Searching for Rules run across the newly generated `Trace Cleansed Extracted Text` rather than the original `Extracted Text` that contains non-authored and duplicative content. 
@@ -196,7 +220,7 @@ To get the alert reduction benefit of text cleansing, you will need to have Term
 One can migrate to 'Trace Cleansed Extracted Text' in the Setup -> Data Transformation tab -> `Use Trace Cleansed Extracted Text` option. Please see the image below. 
 
 ![](media/data_transforms/cleansed-text-for-alerting-check-box.png)
- 
+
 Changing the `Trace All Documents` saved search will impact all functionality that relies on it. Prior to making this change, check search indexes (global search), analytics indexes (classification and conceptual), to better understand how this saved search is being used. In certain cases you may want to create a new saved search that uses the `Extracted Text` field for index builds and other downstream functionality.  
 {: .danger}
 
@@ -225,7 +249,7 @@ More information on the Viewer can be found [here](https://relativitydev.github.
 When `AI Extracted Text Cleansing` is performed on a document, `Trace AI Extracted Text Cleansing Status` document field will be populated. `Trace AI Extracted Text Cleansing Status` stores a status denoting whether extracted text was cleansed, not cleansed, or a warning if an error occurred when attempting to cleanse. If an error occurred, information regarding the error will be populated on the `Trace AI Extracted Text Cleansing Error Details` document field.
 
   There are four possible outcome after cleansing and are denoted with the following four statuses:
-  
+
   Regardless of the `AI Extracted Text Cleansing Status` a document will move through the document flow and be analyzed for alerts. If a warning status occurs on a document, it purely means that cleansing could not be performed and that analysis and alerting will occur on the original text. 
      {: .info}
      
@@ -279,10 +303,10 @@ When the "Duplicative Content - Remove Already Ingested Email segments" configur
   1. Cleansing is meant to only work on email documents. This means emails that have clear and defined headers will get cleansed. Email headers need to contain From, Sent, Subject, Body, and at least one of To, CC, or BCC. If these headers can't be parsed, then cleansing will fail with a status of Warning - Document Error. No other type of documents are currently supported for cleansing.
   2. AI Extracted Text Cleansing transformation occurs before any Replace transformations take place. This means, if there are Replace transform that target non-authored content, they will not take effect if that portion of the text is removed by the AI Extracted Text Cleansing transform first.
 
- 
+
 ## Group Identifier Truncation for External Data Sources
 
-`Group Identifier` is a special field in Relativity Trace that is used to power several features including Deduplication. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
+`Group Identifier` is a special field in Relativity Trace that is used to power several features including Duplicate Analysis. It is essential that a value for `Group Identifier` be provided for every document imported with Trace. Relativity imposes a restriction on the Group Identifier field where the value is not allowed to be longer than 400 characters. The Trace team has found that some external Data Sources populate Group Identifier with a value longer than 400 characters. Instead of failing to import documents from these Data Sources, if the value provided in the field mapped to Group Identifier is longer than 400 characters, Trace will calculate the SHA256 hash of the value and use the hashed value instead. If Group Identifier Truncation occurs, the document is marked as `Trace Has Errors` and the `Trace Error Details` field is filled with a message explaining that a hashed value was used instead of the original Group Identifier value provided.  The message template is of the following format: `{groupIdentifier_SourceFieldDisplayName} length ({groupIdentifierString.Length}) exceeded 400 characters - used hashed string instead`
 
 `Group Identifier` Truncation occurs for EXTERNAL DATA SOURCES ONLY. External Data Sources have a `Provider` on their `Data Source Type` that is not equal to `Trace` or `Globanet`. Running `Group Identifier` Truncation will result in generation of a separate `loadfile.replaced.dat` load file even if no other Data Transformations are defined on the Data Source. For additional information, please contact [support@relativity.com](mailto:support@relativity.com).
 {: .info}
