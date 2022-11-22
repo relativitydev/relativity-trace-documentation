@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Veritas Enterprise Vault On-Premises Archive
+title: Smarsh
 nav_exclude: true
 ---
 

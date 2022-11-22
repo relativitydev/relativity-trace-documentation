@@ -42,28 +42,28 @@ If your specific data source is not found on this page, Trace has numerious capa
 
 | Type  | Data Source      | Data Collection Method | Data Transfer Method |
 |:-------:|:------------------:|--------------------|--------------------|
-| Email | [Microsoft O365 Email and Calendar]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/office_365_email_and_calendar_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
-| Email | [Microsoft O365 Mail Archive Mailbox]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %}) | Cloud-to-cloud | Relativity Collect |
-| Email | [Google Suite]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
-| Email | [Bloomberg Mail]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/bloomberg_mail_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
-| Email | [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_exchange_server_via_verqu.md %}) | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) |
+| Email | [Microsoft O365 Email and Calendar]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/office_365_email_and_calendar_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
+| Email | [Microsoft O365 Mail Archive Mailbox]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
+| Email | [Google Suite]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
+| Email | [Bloomberg Mail]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/bloomberg_mail_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
+| Email | [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_exchange_server_via_verqu.md %}) | On-premises software required - Relativity Collect On-Premises | [Trace Shipper](shipper.md#trace-shipper) |
 
 ### Chat Data Sources
 
 | Type  | Data Source      | Data Collection Method | Data Transfer Method |
 |:-------:|:------------------:|--------------------|--------------------|
-| Chat | [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
-| Chat | [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Collect |
-| Chat | [Refinitiv Eikon Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/refinitiv_eikon_chat_and_fxt_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Collect |
+| Chat | [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
+| Chat | [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Cloud Collect |
+| Chat | [Refinitiv Eikon Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/refinitiv_eikon_chat_and_fxt_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Cloud Collect |
 | Chat | Symphony | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | Skype for Business | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
-| Chat | [Microsoft O365 Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/microsoft_office_365_teams_chat_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
+| Chat | [Microsoft O365 Teams Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/microsoft_office_365_teams_chat_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
 | Chat | FXConnect | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | Cisco WebEx Teams Chat | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | ServiceNow | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
-| Chat | Google Chat | Cloud-to-cloud | Relativity Collect |
+| Chat | Google Chat | Cloud-to-cloud | Relativity Cloud Collect |
 | Chat | Salesforce Chatter | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
-| Chat | [Slack Enterprise Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/slack_enterprise_via_collect.md %}) | Cloud-to-cloud | Relativity Collect |
+| Chat | [Slack Enterprise Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/slack_enterprise_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
 | Chat | Microsoft Yammer | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | Facebook Workplace | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | YieldBroker | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
@@ -108,7 +108,7 @@ Trace supports picking up mobile data from customer's mailbox. In other words, m
 |:-------:|:------------------:|--------------------|--------------------|
 | Collaboration | OneDrive for Business | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Collaboration | SharePoint | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
-| Collaboration | Google Drive | Cloud-to-cloud | Relativity Collect |
+| Collaboration | Google Drive | Cloud-to-cloud | Relativity Cloud Collect |
 | Collaboration | Box | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Collaboration | AWS S3 | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Collaboration | Dropbox | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
@@ -117,8 +117,8 @@ Trace supports picking up mobile data from customer's mailbox. In other words, m
 
 | Type | Data Source      | Notes | Data Collection Method | Data Transfer Method |
 |:----:|:------------------:|--------------------|--------------------|--------------------|
-| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |  | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) |
-| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) |
+| Archive | [Proofpoint]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/proofpoint_via_verqu.md %}) |  | On-premises software required - Relativity Collect On-Premises | [Trace Shipper](shipper.md#trace-shipper) |
+| Archive | [Enterprise Vault]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/archive_data_sources/veritas_enterprise_vault_on_premises_via_verqu.md %}) |  | On-premises software required - Relativity Collect On-Premises | [Trace Shipper](shipper.md#trace-shipper) |
 | Archive | [Smarsh](all_data_sources/archive_data_sources/smarsh.md) | Data must be recieved via Scheduled Export configured in Smarsh | N / A | [R1 SFTP](shipper.md#sftp) |
 
 ### People / HR Data Sources
@@ -127,10 +127,10 @@ In Trace People / HR data is refered to as `Monitored Individuals`. A Monitored 
 
 `Monitored Individuals` are used as a unit of billing by Relativity Trace. Generally a Relativity Trace license will specify a number of Monitored Individuals available and the number of data sources they can be used on.
 
-|         Type         |                         Data Source                          | Data Collection Method                | Data Transfer Method                                         |
-| :------------------: | :----------------------------------------------------------: | ------------------------------------- | ------------------------------------------------------------ |
-| Monitored Individual | [Microsoft Azure Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_azure_active_directory_via_collect.md %}) | Cloud-to-cloud                        | Relativity Collect                                           |
-| Monitored Individual | [Microsoft Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_active_directory_via_verqu.md %}) | On-premises software required - VerQu | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
+|         Type         |                         Data Source                          | Data Collection Method                                       | Data Transfer Method                                         |
+| :------------------: | :----------------------------------------------------------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Monitored Individual | [Microsoft Azure Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_azure_active_directory_via_collect.md %}) | Cloud-to-cloud                                               | Relativity Cloud Collect                                     |
+| Monitored Individual | [Microsoft Active Directory]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/monitored_individual_data_sources/monitored_individual_auto_sync_active_directory_via_verqu.md %}) | On-premises software required - Relativity Collect On-Premises | [Trace Shipper](shipper.md#trace-shipper) OR  [R1 SFTP](shipper.md#sftp) |
 
 ## Data Source Details
 

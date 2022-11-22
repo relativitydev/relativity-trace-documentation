@@ -18,6 +18,15 @@ Audio data from any source can be processed, transcribed, and ingested if provid
 ## Overview
 Although audio data can be retrieved directly from the most common audio data channels through our standard audio data sources, we understand that some users either do not want Trace to connect directly to these sources or are using unique call recording capabilities that do not support direct connect. For these cases, data can still be processed, transcribed, and ingested as long as it's provided to Trace in one of our standard supported formats and structures.
 
+### Configuration
+
+![AudioDataSource](AudioDataSource.png)
+
+Configuration for the Audio Data Source is pretty simple. In fact, there are only a few things that need to be set up:
+
+- **Source Folder Path** - Path where media and the metadata file files will be retrieved by the data source, relative to the root of the file share for the workspace (beneath the EDDSXXXXXX folder). The Source Folder does not need to exist when settings are saved as it will be created automatically. If the file path does not resolve to a location within the file share for the workspace, an error will be thrown.
+- **Transcription Service Address** - URL address of transcription service.
+- **Model Ids** - Ids of language models used during transcription (models from data source configuration are used only if populated monitored individual doesn't have language assigned).
 
 ### Supported Formats and Structures
 Two formats are currently supported for generic audio data. There is a JSON format and an XML format. The JSON format is preferred, while the XML format should be used only as a secondary option.
