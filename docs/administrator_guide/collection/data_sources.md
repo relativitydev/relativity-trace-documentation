@@ -52,7 +52,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 
 | Type  | Data Source      | Data Collection Method | Data Transfer Method |
 |:-------:|:------------------:|--------------------|--------------------|
-| Chat | [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
+| Chat | [Bloomberg Chat and PChat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/bloomberg_chat_pchat_via_collect.md %}) | Cloud-to-cloud OR R1 SFTP Drop | Relativity Cloud Collect |
 | Chat | [ICE Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/ice_chat_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Cloud Collect |
 | Chat | [Refinitiv Eikon Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/refinitiv_eikon_chat_and_fxt_via_collect.md %}) | Cloud-to-cloud (via Relativity Collect) | Relativity Cloud Collect |
 | Chat | Symphony | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
