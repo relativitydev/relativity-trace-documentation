@@ -21,24 +21,32 @@ Trace offers predefined notification reports for complete defensibility and repo
 ## Monitor Your Surveillance Team
 Companies must protect themselves from bad actors within their compliance teams. Notifications allow for supervisors to get notified when potentially questionable actions are being taken by their surveillance team. Both emails and in-product reports (Reports tab) will be generated for notifications that are configured.
 
-## Notification Types
+### Notification Types
 
-### Non-Alerted Document Review Reports
+#### Non-Alerted Document Review Reports
 Get notified when a surveillance team member views a document that was not alerted on.
 
-### Rule Change Report
+#### Rule Change Report
 Get notified when a surveillance team member updates a Term associated to a Rule.
 
-### System Health Report
+#### System Health Report
 Get notified there are task errors in the system.
 
 Task errors are escalated to Trace support automatically and fixed generally without any customer interaction and therefor this notification does not need to be enabled.
 {: .info}
 
+## Monitor Your Data Processing
+Notifications can be used to ensure all your data is getting to Trace and is being processed correctly. Compare reports with connected services to validate data collection, and compare with Relativity to validate processing. Both emails and in-product reports (Reports tab) will be generated for notifications that are configured.
+
+### Notification Types
+
+#### Reconciliation Report
+Get notified daily about incoming data, organized by data source and date. Choose the number of previous days included in each report.
+
 ## Setting Up Notifications
 
 1. Navigate to the `Setup` tab
-1. Click the `Reporting` task 
+1. Click the `Reporting` task
     ![](media/notifications/Non-Alerted Doc Reports Tab in Setup.png)
 
 1. Populate the `Reporting Type Configuration` field based on the json configuration settings below
@@ -64,16 +72,15 @@ System Health Report: `SystemHealthReport`
 
 - ExcludedTraceTypes - *Non-Alerted Document Review Report Only* - an optional field that allows for the exclusion of communications of a certain `Trace Type` from a report. Multiple values can be excluded if comma delimited. `["Office 365 Email", "Slack]`
 - IncludeDetails - *System Health Report Only* - a true/false value which pro. Currently only used by the SystemHealthAlertsReport to provide extra details on the error each Task encountered
+- UtcEndOfDay - *Reconciliation Report Only* - the UTC time your team treats as End-of-Day. This is used to separate data in the report into days on which the data was retrieved.
+- Days - *Reconciliation Report Only* - an optional number of days to include in each report, by default 7. You will still receive the report at the frequency set above.
 
 *Example JSON Configuration*
 
 ```json
 {"NonAlertedDocumentReviewReport":{"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one", "ExcludedTraceTypes":"Slack"},
-"RuleChangeReport": {"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}, "SystemHealthReport": {"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}}
+"RuleChangeReport": {"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}, "SystemHealthReport": {"Enabled":true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one"}, "ReconciliationReport": {"Enabled": true,"Recipients":"user@domain.com","FrequencyInMinutes":1440,"EmailFrom":"noreply@relativity.one","UtcEndOfDay":"17:00:00","Days":7}}
 ```
-
-#### Example JSON Configuration with All Reports
-![](media/notifications/Updated Configuration.PNG)
 
 - If there is nothing to report an email will not be sent, but an Automated Report object will still be created within the product
 - The Non-Alerted Document Review Report only analyzes events that occurred the previous day, and cannot gather historical results

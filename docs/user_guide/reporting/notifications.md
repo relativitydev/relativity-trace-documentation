@@ -27,7 +27,7 @@ All reports are configured by system administrators. For configuration informati
 {: .info}
 
 ### Non-Alerted Document Review Report
-Companies can track when surveillance team members view communications that have not been alerted on to identify scenarios where compliance team members are abusing their access to view employees communications. Trace will send an email report or real-time notifications regarding these privacy issues where reviewers are looking at non-alerted documents. 
+Companies can track when surveillance team members view communications that have not been alerted on to identify scenarios where compliance team members are abusing their access to view employees communications. Trace will send an email report or real-time notifications regarding these privacy issues where reviewers are looking at non-alerted documents.
 
 Sample notification emailed with attachment ![](media/Supervisor_Notifications/Non_Alerted_Document_Report/Non-Alerted Doc Sample Email Report - cleaned v2.png)
 Sample report file ![](media/Supervisor_Notifications/Non_Alerted_Document_Report/Non-Alerted Sample Email.PNG )
@@ -45,7 +45,12 @@ The Trace team gets notified of system health issue in realtime and remediates a
 Sample notification emailed with attachment ![](media/Supervisor_Notification/System_Health_Report/System Health Email.png)
 Sample csv ![](media/Supervisor_Notification/System_Health_Report/System Health CSV.png)
 
-**General Notes:** 
+### Reconciliation Report
+Companies can track how much data Trace is retrieving and ingesting every day, per data source. This helps to reconcile data Trace has received with data your sources have sent, ensuring no communications are missed.
+
+Sample emailed report ![](media/notifications/Reconciliation Report Sample.png)
+
+**General Notes:**
 - If there are no incidents, the email will be sent but not have content
 - Notifications only review previous day, not historical data
 {: .info}

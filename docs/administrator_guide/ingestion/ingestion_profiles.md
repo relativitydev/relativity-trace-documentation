@@ -48,7 +48,7 @@ Most fields have a default value that will not need to be changed except for adv
 
 `Import Natives` - A yes/no field specifying whether or not Natives should be linked to any documents imported with the Ingestion Profile. If Yes, `Native File Path Location` is required to be linked to a data mapping of type NativeFilePath. If No, `Native File Path` MUST be unlinked. 
 
-Importing Native files is required for [Deduplication](#deduplication-data-transformation), [Communication Direction](#communication-direction-data-transformation), and [Exempt List](#exempt-list-data-transformation) Data Transformations.
+Importing Native files is required for [Duplicate Analysis](#duplicate-analysis-data-transformation), [Communication Direction](#communication-direction-data-transformation), and [Exempt List](#exempt-list-data-transformation) Data Transformations.
 {: .info }
 
 
