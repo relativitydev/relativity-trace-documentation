@@ -7,7 +7,7 @@ nav_exclude: true
 # Veritas Enterprise Vault On-Premises Archive
 {: .no_toc }
 
-This topic provides details on how to capture Veritas Enterprise Vault on-premises archive data via the VerQu on-premises collection application.
+This topic provides details on how to capture Veritas Enterprise Vault on-premises archive data via the Relativity Collect On-Premises application.
 {: .fs-6 .fw-300 }
 
 1. TOC
@@ -68,23 +68,21 @@ This section provides details on the prerequisites and steps for setting up this
     autonumber
 
     participant EV
-    participant VerQu
+    participant Relativity Collect OnPremises
     participant Trace Shipper
     participant RelativityOne Trace
 
     RelativityOne Trace ->> RelativityOne Trace: Setup Data Source
 
-    rect rgb(200, 150, 255)
-        note left of VerQu: Customer On-Premises Infrastructure
-        EV->>EV: Check pre reqs
-        VerQu->>VerQu: Install and Configure
-        Trace Shipper ->> Trace Shipper: Install and Configure
-        VerQu->>VerQu: Start Run Scheduler
-        loop daily
-            EV->>VerQu:Net New Data
-            VerQu->>Trace Shipper: Net New Data
-        end
+    EV->>EV: Check pre reqs
+    Relativity Collect OnPremises->>Relativity Collect OnPremises: Install and Configure
+    Trace Shipper ->> Trace Shipper: Install and Configure
+    Relativity Collect OnPremises->>Relativity Collect OnPremises: Run Scheduler
+    loop daily
+    	EV->>Relativity Collect OnPremises:Net New Data
+    	Relativity Collect OnPremises->>Trace Shipper: Net New Data
     end
+
    
     loop daily
         Trace Shipper->>RelativityOne Trace: Net New Data
@@ -115,13 +113,13 @@ It is recommended to have retention policy to be set for at least 30 days or mor
 
 ### Setup in Trace
 
-The following sections provide the steps for installing the VerQu On-Premises Application to collect the data locally, how to use a data transfer method for moving data to RelativityOne, and how to configure the data source in Relativity Trace.
+The following sections provide the steps for installing the Relativity Collect On-Premises Application to collect the data locally, how to use a data transfer method for moving data to RelativityOne, and how to configure the data source in Relativity Trace.
 
-#### VerQu On-Premises Application for Data Collection
+#### Relativity Collect On-Premises Application for Data Collection
 
-1. Navigate to the [Using VerQu]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_verqu.md %}) and install, configure, and schedule VerQu.
+1. Navigate to the [Using Relativity Collect On-Premises]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_verqu.md %}) and install, configure, and schedule Relativity Collect On-Premises.
 
-Some data source specific configuration is required while following the [Using VerQu]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_verqu.md %}) steps. That configuration can be found below.
+Some data source specific configuration is required while following the [Using Relativity Collect On-Premises]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_verqu.md %}) steps. That configuration can be found below.
 
 
 1. Locate the **EnterpriseVault.json** file
@@ -140,11 +138,11 @@ Some data source specific configuration is required while following the [Using V
       | **DataRangeStart / DataRangeEnd** | This contains information on the start date of the first run |
       | **ConnectionString**              | This a standard SQL Server connection string that support all possible ways of connecting to SQL Server, including Windows Authentication and SQL Server Authentication |
 
-1. Save the .json configuration files and navigate back to the [Using VerQu]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_verqu.md %}) documentation to complete the steps to configure VerQu.
+1. Save the .json configuration files and navigate back to the [Using Relativity Collect On-Premises]({{ site.baseurl }}{% link docs/administrator_guide/collection/general_data_source_information/using_verqu.md %}) documentation to complete the steps to configure Relativity Collect On-Premises.
 
 ### Data Transfer
 
-[Shipper]({{ site.baseurl }}{% link docs/administrator_guide/collection/shipper.md %}) will be used to transfer on-premises data collected by the VerQu application to Relativity Trace in the cloud.
+[Shipper]({{ site.baseurl }}{% link docs/administrator_guide/collection/shipper.md %}) will be used to transfer on-premises data collected by the Relativity Collect On-Premises application to Relativity Trace in the cloud.
 
 ### Data Source
 
