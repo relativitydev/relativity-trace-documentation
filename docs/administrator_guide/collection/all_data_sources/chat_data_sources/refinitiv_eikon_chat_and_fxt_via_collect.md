@@ -91,6 +91,11 @@ In **General** section, select **Eikon Chat** for the **Data Source Type**.
 
 ![](media/refinitiv_eikon_chat_and_fxt_viacollect/SelectItem_DataSourceType.png)
 
+For this Data Source, **Start Time** should always be set to **12:00 AM**.
+{: .info}
+
+![](media/BloombergChatPchat_viaCollect/StartTime.png)
+
 In **Settings** section:
 
 1. **Username:** SFTP user.
