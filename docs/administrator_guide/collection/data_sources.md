@@ -44,7 +44,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 |:-------:|:------------------:|--------------------|--------------------|
 | Email | [Microsoft O365 Email and Calendar]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/office_365_email_and_calendar_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
 | Email | [Microsoft O365 Mail Archive Mailbox]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_office_365_mail_archive_mailbox.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
-| Email | [Google Suite]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
+| Email | [Google Mail]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
 | Email | [Bloomberg Mail]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/bloomberg_mail_via_collect.md %}) | Cloud-to-cloud OR R1 SFTP Drop | Relativity Cloud Collect |
 | Email | [Microsoft Exchange Server]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/microsoft_exchange_server_via_verqu.md %}) | On-premises software required - Relativity Collect On-Premises | [Trace Shipper](shipper.md#trace-shipper) |
 
@@ -61,7 +61,7 @@ If your specific data source is not found on this page, Trace has numerious capa
 | Chat | FXConnect | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | Cisco WebEx Teams Chat | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | ServiceNow | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
-| Chat | Google Chat | Cloud-to-cloud | Relativity Cloud Collect |
+| Chat | [Google Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
 | Chat | Salesforce Chatter | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Chat | [Slack Enterprise Chat]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/chat_data_sources/slack_enterprise_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
 | Chat | Microsoft Yammer | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
@@ -108,7 +108,7 @@ Trace supports picking up mobile data from customer's mailbox. In other words, m
 |:-------:|:------------------:|--------------------|--------------------|
 | Collaboration | OneDrive for Business | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Collaboration | SharePoint | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
-| Collaboration | Google Drive | Cloud-to-cloud | Relativity Cloud Collect |
+| Collaboration | [Google Drive]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/email_data_sources/google_gsuite_via_collect.md %}) | Cloud-to-cloud | Relativity Cloud Collect |
 | Collaboration | Box | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Collaboration | AWS S3 | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
 | Collaboration | Dropbox | On-premises software required - Merge1 | [Trace Shipper](shipper.md#trace-shipper) |
@@ -197,7 +197,7 @@ See [Data Retrieval](https://relativitydev.github.io/relativity-trace-documentat
 - **Collection Period Offset In Minutes:** 0 (default) – Modify Collection Period by adding offset in minutes to both Start and End Date. This parameter is used to collect data that are available to be retrieved with some delay e.g. 24 hours.
 - **Only Retrieve Natives And Copy To Folder:** Relative path to the fileshare folder (e.g. **BloombergMailDrop\Drop**). This parameter is used to improve performance of ingesting big portion of data e.g. 300,000 files (typical scenario for Bloombertg Chat and Mail). When the parameter is set, the Data Source will only retrieve files and store those files in the given folder. Neither enrichmnet nor ingestion will be performed on those files. To complete enrichment and ingestion, another Data Source (Globanet type of Data Source) needs to be created and configured to point to the folder. Eventually, there will be two Data Sources:
   - Retrieving - For retrieving files via Collect.
-  - Pocessing - for enriching and ingestion those files in smaller chunks (1000 files each).
+  - Processing - for enriching and ingestion those files in smaller chunks (1000 files each).
 - **Password Bank** Used to specify known passwords to attempt while encountering protected native files. Multiple passwords can be separated by the pipe character, `|`. Passwords containing the pipe character are supported through escaping the pipe character with a second pipe. Pipes are always escaped left to right.
   
   **Example Password Bank:** `passw0rd|Trace1234!|aaa|bb|cccc||dd||eee|||ff|||ggg||||hhh|||||`

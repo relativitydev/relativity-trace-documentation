@@ -92,6 +92,11 @@ In **General** section, select **Bloomberg Chat** for the **Data Source Type**.
 
 ![](media/BloombergChatPchat_viaCollect/General_BloomChat_DataSourceType.png)
 
+For this Data Source, **Start Time** should always be set to **12:00 AM**.
+{: .info}
+
+![](media/BloombergChatPchat_viaCollect/StartTime.png)
+
 In **Settings** section, do the following:
 
 1. **Use Unc Path**:
