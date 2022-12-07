@@ -26,7 +26,7 @@ Monitored Individuals can be automatically added, updated and removed via Trace 
 **Manually Creating a Monitored Individual**
 
 1. Navigate to the `Monitored Individuals` tab and click `New Monitored Individual`.
-2. Fill out the fields related to the Monitored Individual and click save
+2. Fill out the fields related to the Monitored Individual and click save.
 
 ## Monitored Individual Fields
 
