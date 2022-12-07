@@ -18,9 +18,26 @@ A Monitored Indidual is a person within the organization whose communications ar
 ## Overview
 Monitored Individuals can be added an removed manually within Relativity Trace. They can be assigned to multiple Data Sources to collect data for that individual from a specific communication channel.
 
-The only thress fields on Monitored Individual currently used in application logic are the `Identifier`, `Secondary Identifier` and `Language` fields. All other fields are simply for display purposes. Each Monitored Individual must have a unique value in the Identifier field. Typically the Identifier is the employee’s email address. Identifier is **case-sensitive**, with the exception of the domain of an email address (e.g. `Test@test.com` and `test@test.com` are treated as two different email addresses / identifiers, while `test@Test.com` and `test@test.com` are treated as the same email addresses / identifiers). The Secondary Identifier field is used to list other email addresses that may be associated with this Monitored Individual. Email addresses in the Secondary Identifier field should be delimited with a semi-colon (;).
-Language is multiple choice type field. It is used in Audio data sources to identify language model used for transcription for particular Monitored Individual.
-{: .info }
+## Creating or Updating a Monitored Individual
 
-It is also possible to automatically add / update / remove Monitored Individuals via [Extensible API's]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %}).
+Monitored Individuals can be automatically added, updated and removed via Trace Extensible API's. More information can be found [here]({{ site.baseurl }}{% link docs/administrator_guide/proactive_ingestion_api_documentation.md %}).
 {: .info } 
+
+**Manually Creating a Monitored Individual**
+
+1. Navigate to the `Monitored Individuals` tab and click `New Monitored Individual`.
+2. Fill out the fields related to the Monitored Individual and click save.
+
+## Monitored Individual Fields
+
+| **Field Name** | **Description**          | **Notes**    |
+| ------------------------ | ----------------------------- | ----------------- |
+| Identifier | Unique Monitored Individual identifier. Typically the employee's email address.  | **Case-sensitive** with the exception of the domain of an email address (e.g. `Test@test.com` and `test@test.com` are treated as two different email addresses / identifiers, while `test@Test.com` and `test@test.com` are treated as the same email addresses / identifiers).      |
+| Secondary Identifier | Alternative Monitored Individual identifiers. Typically alternate email adresses.   | Accepts multiple email addresses delimited with a semi-colon (;).      |
+| Language    |  Primary language used by Monitored Individual    |  Multiple-choice. Used in Audio data sources to identify language model used for transcription for particular Monitored Individual. More information [here]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md#transcription %}).    |
+| Full Name    |     | For display purpose only.        |
+| First Name    |      | For display purpose only.         |
+| Last Name    |      | For display purpose only.         |
+| Email    |     | For display purpose only.          |
+
+
