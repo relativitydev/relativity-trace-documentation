@@ -36,6 +36,7 @@ Monitored Individuals can be automatically added, updated and removed via Trace 
 | Secondary Identifier | Alternative Monitored Individual identifiers. Typically alternate email adresses.   | Accepts multiple email addresses delimited with a semi-colon (;).      |
 | Language    |  Primary language used by Monitored Individual    |  Multiple-choice. Used in Audio data sources to identify language model used for transcription for particular Monitored Individual. More information [here]({{ site.baseurl }}{% link docs/administrator_guide/collection/all_data_sources/voice_data_sources/generic_audio_data.md#transcription %}).    |
 | Full Name    |     | For display purpose only.        |
+| First Name    |      | For display purpose only.         |
 | Last Name    |      | For display purpose only.         |
 | Email    |     | For display purpose only.          |
 
