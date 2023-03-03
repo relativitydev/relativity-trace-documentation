@@ -42,6 +42,10 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
    2. Fewer dependent components in data transfer.
 3. Fast data transfer rates.
 4. Secure (data encrypted in flight).
+5. Support multiple data transfer protocols:
+   1. **Aspera** default protocol for RelativityOne instances.
+   2. **Azure** Azure ADLS protocol for RelativityOne instances.
+   3. **Web** default protocol for Server.
 
 ### Prerequisites Before Installing
 
@@ -70,6 +74,9 @@ The Trace Shipper Service is a Windows service released by Trace that delivers d
             IP Min and Max can be calculated using tools such as https://jodies.de/ipcalc
             {: .info }
 
+      2. For Web and Azure data transfer protocol:
+         1. **TCP port 443** - required to be opened for the **[customerinstance].relativity.one** endpoint.
+
 5. Create/identify a Windows user to run the service (Log on as...) that has access to all folders that need to be shipped and that can be allowed access to Relativity user credentials stored in configuration.
 
 6. Identify what source folder(s) on your local network need their files shipped to a Relativity Windows service. The newly created Windows user must have read/write/modify permissions to the source folder(s).
@@ -91,11 +98,11 @@ To view the file shares the user must be in a group, other than the System Admin
 
   a) Open RelativityOne portal.
 
-  b) Create a new Group e.g. **Trace Shipper Aspera**.
+  b) Create a new Group e.g. **Trace Shipper Group**.
 
   ![TraceShipperGroup](media/shipper/TraceShipperGroup.png)
 
-  c) Create a ne User e.g. **Trace Shipper**.
+  c) Create a ne User e.g. **Trace Shipper User**.
 
   ![TraceShipperUser](media/shipper/TraceShipperUser.png)
 
@@ -103,31 +110,59 @@ To view the file shares the user must be in a group, other than the System Admin
 
   ![DefaultPasswordSettings](media/shipper/DefaultPasswordSettings.png)
 
-  e) Add **Trace Shipper** User to **Trace Shipper Aspera** Group.
+   * Only for Azure data transfer protocol:
+      - Go to **OAuth2 Client** tab.
+      - Click **New OAuth2 Client** button.
+      - On **OAuth2 Client Information** screen provide the following information:
+         - **Name** the name of the client e.g. **Trace Shipper**.
+         - **Enabled** set to true.
+         - **Flow Grant Type** select **Client Credentials**.
+         - **Context User** select **Trace Shipper User** configured above.
+         - **Access Token Lifetime** set to 480.
+      - Save.
 
-  f) Open **Instance Details** and **Manage Permissions**. On **Group Management** tab add **Trace Shipper Aspera** Group to the Instance.
+  ![OAuth2ClientNew](media/shipper/OAuth2ClientNew.png)
+
+      - Locate newly created client and edit it.
+      - Collect **Client Id** value. It will be needed to configure **Trace Shipper** on the local machine.
+
+  ![OAuth2ClientEdit](media/shipper/OAuth2ClientEdit.png)
+
+  e) Add **Trace Shipper User** to **Trace Shipper Group**.
+
+  f) Open **Instance Details** and **Manage Permissions**. On **Group Management** tab add **Trace Shipper Group** to the Instance.
 
   ![AdminPermissions](media/shipper/AdminPermissions.png)
 
-  g) On **Admin Operations** tab, select **Trace Shipper Aspera** Group then check **Access RelativityOne Staging Explorer** option. Then click **Save** and **Close**.
+  g) On **Admin Operations** tab, select **Trace Shipper Group** then check **Access RelativityOne Staging Explorer** option. Then click **Save** and **Close**.
 
   ![AdminSecurity](media/shipper/AdminSecurity.png)
 
-  h) Go to Trace Workspace. Open **Workspace Details** and **Manage Workspace Permissions**. On **Group Management** tab add **Trace Shipper Aspera** Group to the Workspace.
+   - Additionaly, for **Azure** protocol, go to **Manage Permissions** and do additional steps:
+      - On **Admin Operations** tab, select **View Admin Repository**.
+      - On **Object Security** tab, add **View** and **Edit** permissions to **OAuth2 Client** object.
+
+  ![ObjectPermissionsAzure](media/shipper/ObjectPermissionsAzure.png)
+
+  h) Go to Trace Workspace. Open **Workspace Details** and **Manage Workspace Permissions**. On **Group Management** tab add **Trace Shipper Group** to the Workspace.
 
   ![WorkspacePermissions](media/shipper/WorkspacePermissions.png)
 
-  i) View **Trace Shipper Aspera** Group Users to confirm **Trace Shipper** User is present.
+   - Additionally, for **Azure** protocol, go to **Other Settings** and select **View Workspace Details**.
+
+  ![WorkspacePermissionsAzure](media/shipper/WorkspacePermissionsAzure.png)
+
+  i) View **Trace Shipper Group** to confirm **Trace Shipper User** is present.
 
   ![ViewUsers](media/shipper/ViewUsers.png)
 
-  j) Open **Trace Shipper Aspera** Group again. Confirm that Trace Shipper User and Trace Workspace is linked to it.
+  j) Open **Trace Shipper Group** again. Confirm that **Trace Shipper User** and **Trace Workspace** is linked to it.
 
 - Request the Trace Shipper deployment package by submitting a ticket to [support@relativity.com](mailto:support@relativity.com).
 
 - Download and install ROSE (Staging Explorer), login to ROSE as **Trace Shipper** User and Password and run Test Connectivity ([available here](https://help.relativity.com/RelativityOne/Content/Relativity/RelativityOne_Staging_Explorer/RelativityOne_Staging_Explorer.htm#connection)).
 
-This step is requried to confirm that all TCP and UDP ports required for transferring data from the client local machine to the RelativityOne instance are opened.
+This step is requried to confirm that all TCP and UDP ports required for **Aspera** protocol for transferring data from the client local machine to the RelativityOne instance are opened.
 {: .info }
 
 - (Only for Web protocol) Request the Relativity Transfer API Services application (Relativity.TransferApi.Services.rap) by submitting a ticket to support@relativity.com. [Install](https://help.relativity.com/10.3/Content/Relativity/Applications/Installing_applications.htm#Installi3) the Relativity Transfer API Services application to the Application Library.
@@ -149,7 +184,7 @@ Do not install the Relativity Transfer API Services application to any workspace
 5. In the `Trace Shipper Service` folder, edit the `serviceConfiguration.json` file. 
 All fields must comply with JSON formatting. The type of each value is specified below. Special characters (for `\` and `"`) will need to be escaped by a `\` character.
 
-Sample configuration file
+Sample configuration file for **Aspera** protocol:
 
 ```json
 {
@@ -230,6 +265,39 @@ Sample configuration file
 }
 ```
 
+Sample configuration file for **Azure** protocol:
+```json
+{
+	"shippers": [{
+			"localDirectoryPath": "C:\\Users\\superuser\\Downloads\\Globanet3
+			Exchange",
+			"remoteRelativePath": "Globanet
+			Exchange",
+			"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs
+			Shipper_Exchange.log",
+			"externalServiceLogLocations": [
+				{
+					"logFilePath": "C:\\Users\\superuser\\Downloads\\Globanet3\\Logs\\Office 365.log",
+					"uniqueRemoteName": "Exchange.log"
+				}
+			],
+			"logLevel": "Information",
+			"relativityUrl": "https://trace.relativity.one",
+			"relativityUserName": "trace.shipper@test.com",
+			"relativityPassword": "SomePassword!!!!",
+            "oAuth2ClientId": "4b0d8bebec01da4c6a3398226c",
+			"workspaceId": 5345612,
+			"localConfigDestinationPath": "",
+			"remoteRelativeConfigPath": "",
+			"retrieveConfigurationIntervalInMinutes": 5,
+			"cacheLengthInMinutes": 20,
+			"logUploadIntervalInMinutes": 10,
+			"clientType": "Azure"
+		}
+	]
+}
+```
+
 See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) for help with JSON formatting.
 {: .info }
 
@@ -247,9 +315,10 @@ See [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
    | logFilePath                            | yes      | string           | A local file path **ACCESSIBLE TO THE SERVICE USER** where the log files for the application should be stored. The log files roll automatically every 100MB, so there will be more than one file, it is best to dedicate a folder to these Trace Shipper logs. Each configured local folder requires a unique `logFilePath` |
    | logUploadIntervalInMinutes             | no       | number           | How frequently Trace Shipper Service pushes its log files to the Relativity workspace fileshare, contact support@relativity.com for more information before changing this setting.<br />*Default: 10* |
    | externalServiceLogLocations            | no       | array of objects | An array of External Service Log Locations to push to the Relativity workspace fileshare. See below for definition of each object<br />*Default: [] (empty)* |
-   | clientType                             | no       | string           | Transfer API client type to use, current supported options are Aspera, Fileshare and Web, contact support@relativity.com for more information<br />*Default: Aspera* |
+   | clientType                             | no       | string           | Transfer API client type to use, current supported options are: **Aspera**, **Web** or **Azure**, contact support@relativity.com for more information<br />*Default: Aspera* |
    | relativityUserName                     | yes      | string           | The username used to connect to Relativity to upload files. **It is recommended to secure the TraceShipperService folder as a way to reduce risk of exposing these credentials.** |
    | relativityPassword                     | yes      | string           | The password used to connect to Relativity to upload files. **It is recommended to secure the TraceShipperService folder as a way to reduce risk of exposing these credentials.** |
+   | oAuth2ClientId                         | yes      | string           | This parameter is only required for **Azure** protocol. It is OAuth2 Client Id captured during **Trace Shipper User** configuration. |
    | relativityUrl                          | yes      | string           | The URL of the Relativity Instance where the files will be shipped. |
    | workspaceId                            | yes      | whole number     | The workspace ID of the workspace where the files will be shipped. |
 
